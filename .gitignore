@@ -4,4 +4,14 @@
 /font/ 
 /build/ 
 
-
+.classpath
+.project
+.settings      
+*.7z  
+*.dmg  
+*.gz  
+*.iso  
+*.jar  
+*.rar  
+*.tar  
+*.zip  
