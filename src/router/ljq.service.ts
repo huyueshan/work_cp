@@ -15,9 +15,7 @@ export class InterceptorService implements HttpInterceptor{
       // url: (req.url + '&token=ujusaruu19')  //对任意请求的url添加token参数
 	  url: (req.url) 
     });
-	console.log('22222222')
     return next.handle(authReq).pipe(mergeMap((event: any) => {
-		userModel.platform = true
         if (event instanceof HttpResponse && event.status != 200) {
           return ErrorObservable.create(event);
         }

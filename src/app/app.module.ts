@@ -50,4 +50,5 @@ export class AppModule {
 }
 
 // 启动
-platformBrowserDynamic().bootstrapModule(AppModule); 
+platformBrowserDynamic().bootstrapModule(AppModule)
+.catch(err => console.log(err)); 

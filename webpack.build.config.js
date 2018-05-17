@@ -9,7 +9,7 @@ var publicPath = '';   // 可用来定义打包生成文件存放的地址前缀
 
 module.exports = {
     entry: {
-        bootstrap: [__dirname + '/src/bootstrap.ts'],
+        bootstrap: [__dirname + '/src/app/app.module.ts'],
         angular: ['@angular/core', '@angular/platform-browser', '@angular/common', '@angular/router', '@angular/http', '@angular/forms', '@ntesmail/shark-angular2'],
         polyfill: ['zone.js/dist/zone', 'reflect-metadata'],
         thirdparty: ['jquery', 'flatpickr', 'echarts']

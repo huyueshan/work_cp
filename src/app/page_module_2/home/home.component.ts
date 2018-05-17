@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import {Base} from '../../../factory/base.model';
-import { Api } from '../../../factory/api.model';
 import { SharkModule } from '@ntesmail/shark-angular2';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
+
+import { Base } from '../../../factory/base.model';
+import { Api } from '../../../factory/api.model';
+import userModel from '../../../status/user.model';
 
 @Component({
     selector: 'home',
@@ -14,8 +17,9 @@ export class HomeComponent {
 	constructor(private FormsModule:FormsModule) { 
         let that = this
 	}
+	loadpage=false;
 	ngOnInit(){
-		
+		this.loadpage = userModel.platform
 	}
 	
     tooltipContent = '用户名和密码请随便输入';

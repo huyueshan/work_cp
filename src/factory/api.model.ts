@@ -1,5 +1,5 @@
 const host = '';
 
 export const Api= {
-  getuser: host + '/api/', // 接口
+  gettemple: host + 'https://api.github.com/orgs/angular/members?page=1&per_page=5', // 接口
 };
