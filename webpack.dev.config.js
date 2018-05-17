@@ -87,10 +87,6 @@ module.exports = {
                     loader: 'expose-loader',
                     options: '$'
                 }]
-            },
-            {
-                test : /\.json$/,
-                loader : 'json-loader'
             }
         ]
     },

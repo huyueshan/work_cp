@@ -18,11 +18,16 @@ export class RouteguardService implements CanActivate{
 			  return;
 			}
 			
-			if(Base.Store.get){
+			if(!Base.Store.get('isTemplet')){
 				// 根据域名配置不通路由模块
 				this.httpClient.get(Api.gettemple)
 				.subscribe(menuGroups => {
 					const appnewRoutes: Routes =[
+						{
+							path: '',
+							redirectTo: 'home',
+							pathMatch: 'full'
+						},
 						{
 							path: 'home',
 							loadChildren: '../app/page_module_2/home/home.module#HomeModule'
@@ -49,6 +54,7 @@ export class RouteguardService implements CanActivate{
 					userModel.platform = true
 				});
 			}else{
+				userModel.platform = true
 				// 返回值 true: 跳转到当前路由 false: 不跳转到当前路由
 				// 当前路由名称
 				var path = route.routeConfig.path;  
