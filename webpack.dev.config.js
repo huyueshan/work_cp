@@ -44,22 +44,6 @@ module.exports = {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
             }, {
-				test: /\.less$/,
-				exclude: [
-                    path.join(__dirname, 'src/app')
-                ],
-                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader!less-loader' })
-            }, {
-                test: /\.less$/,
-                include: [
-                    path.join(__dirname, 'src/app')
-                ],
-                loaders: [
-                    'to-string-loader',
-                    'css-loader',
-                    'less-loader'
-                ]
-            },{
                 test: /\.scss$/,
                 exclude: [
                     path.join(__dirname, 'src/app')
