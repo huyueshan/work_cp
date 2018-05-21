@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { SharkModule } from '@ntesmail/shark-angular2';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HeadComponent } from '../component/head.component';
 
 
 import { Base } from '../../../factory/base.model';
