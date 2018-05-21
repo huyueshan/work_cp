@@ -6,20 +6,29 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Base } from '../../../factory/base.model';
 import { Api } from '../../../factory/api.model';
 import userModel from '../../../status/user.model';
+import Sstore from '../../../factory/Sstore'
+import  { LanguageComponent } from '../component/language/language.component'
 
 @Component({
     selector: 'home',
-    templateUrl: './home.component.html',
+    template: `<LanguageComponent></LanguageComponent>`,
     styleUrls: ['./home.component.scss']
 })
 
 export class HomeComponent {
 	constructor(private FormsModule:FormsModule) { 
         let that = this
+        console.log(LanguageComponent)
 	}
 	loadpage=false;
+    //公共读取
+    now_lang  =  Sstore.langpackage;
+
+    //公共读取结束
 	ngOnInit(){
 		this.loadpage = userModel.platform
+        console.log(this.now_lang)
+        console.log(Sstore.langpackage)
 	}
 	
     tooltipContent = '用户名和密码请随便输入';
