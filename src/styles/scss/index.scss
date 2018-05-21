@@ -1,2 +1,9 @@
 @import 'node_modules/@ntesmail/shark-css/src/main/webapp/style/scss/examples/example';
 @import 'base';
+
+.flex-r{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
