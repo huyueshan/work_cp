@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from '../router/router.module';
 import { RouteguardService } from '../router/router.service';
 import { InterceptorService } from '../router/ljq.service';
-import { LanguageComponent } from './page_module_1/component/language/language.component';
+// import { LanguageComponent } from './page_module_1/component/language/language.component';
 
 
 if (ENV === 'prod') {
@@ -23,7 +23,7 @@ if (ENV === 'prod') {
 
 @NgModule({
     imports: [BrowserModule, FormsModule, SharkModule, AppRoutingModule,HttpClientModule],
-    declarations: [AppComponent,LanguageComponent],
+    declarations: [AppComponent],
 	providers: [
 		{provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true}
 	],

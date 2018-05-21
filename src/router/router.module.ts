@@ -6,7 +6,7 @@ import { RouteguardService } from '../router/router.service';
 import { ResolveService } from '../router/resole.service';
 
 
-// 定义默认 路由
+// ！！！注意：定义默认 路由 打包是根据这里进行分路由打包的，所以每一个模板的路由必须放进去
 const appRoutes: Routes = [
     {
         path: '',
@@ -26,6 +26,35 @@ const appRoutes: Routes = [
 	{
         path: 'test',
         loadChildren: '../app/page_module_1/test/detail.module#DetailModule',
+		canActivate: [RouteguardService]
+    },
+	{
+        path: 'home',
+        loadChildren: '../app/page_module_2/home/home.module#HomeModule',
+		canActivate: [RouteguardService]
+    }, 
+	{
+        path: 'detail',
+        loadChildren: '../app/page_module_2/detail/detail.module#DetailModule',
+		canActivate: [RouteguardService]
+    },
+	{
+        path: 'test',
+        loadChildren: '../app/page_module_2/test/detail.module#DetailModule',
+		canActivate: [RouteguardService]
+    },{
+        path: 'home',
+        loadChildren: '../app/page_module_3/home/home.module#HomeModule',
+		canActivate: [RouteguardService]
+    }, 
+	{
+        path: 'detail',
+        loadChildren: '../app/page_module_3/detail/detail.module#DetailModule',
+		canActivate: [RouteguardService]
+    },
+	{
+        path: 'test',
+        loadChildren: '../app/page_module_3/test/detail.module#DetailModule',
 		canActivate: [RouteguardService]
     },
     {

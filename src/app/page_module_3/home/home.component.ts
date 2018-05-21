@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Base } from '../../../factory/base.model';
 import { Api } from '../../../factory/api.model';
 import userModel from '../../../status/user.model';
-import Sstore from '../../../factory/Sstore'
+
 @Component({
     selector: 'home',
     templateUrl: './home.component.html',
@@ -18,9 +18,6 @@ export class HomeComponent {
         let that = this
 	}
 	loadpage=false;
-    //公共读取
-    now_lang  =  Sstore.langpackage;
-    //公共读取结束
 	ngOnInit(){
 		this.loadpage = userModel.platform
 	}

@@ -11,7 +11,7 @@ module.exports = {
     entry: {
         bootstrap: [__dirname + '/src/app/app.module.ts', 'webpack-hot-middleware/client?reload=true'],
         polyfill: ['zone.js/dist/zone', 'reflect-metadata'],
-        thirdparty: ['jquery', 'flatpickr', 'echarts']
+        thirdparty: ['jquery']
     },
     output: {
         path: path.join(__dirname, 'build'),
@@ -95,9 +95,7 @@ module.exports = {
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',
-            jQuery: 'jquery',
-            Flatpickr: 'flatpickr',
-            echarts: 'echarts'
+            jQuery: 'jquery'
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: [
