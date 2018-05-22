@@ -13,6 +13,11 @@ const appRoutes: Routes = [
         redirectTo: 'home',
         pathMatch: 'full'
     },
+	{
+        path: 'login',
+        loadChildren: '../app/page_module_1/login/login.module#LoginModule',
+		canActivate: [RouteguardService]
+    }, 
     {
         path: 'home',
         loadChildren: '../app/page_module_1/home/home.module#HomeModule',

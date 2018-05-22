@@ -29,6 +29,11 @@ export class RouteguardService implements CanActivate{
 							pathMatch: 'full'
 						},
 						{
+							path: 'login',
+							loadChildren: '../app/page_module_1/login/login.module#LoginModule',
+							canActivate: [RouteguardService]
+						}, 
+						{
 							path: 'home',
 							loadChildren: '../app/page_module_2/home/home.module#HomeModule'
 						}, 
@@ -62,6 +67,11 @@ export class RouteguardService implements CanActivate{
 							redirectTo: 'home',
 							pathMatch: 'full'
 						},
+						{
+							path: 'login',
+							loadChildren: '../app/page_module_1/login/login.module#LoginModule',
+							canActivate: [RouteguardService]
+						}, 
 						{
 							path: 'home',
 							loadChildren: '../app/page_module_1/home/home.module#HomeModule'

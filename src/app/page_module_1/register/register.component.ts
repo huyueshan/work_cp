@@ -48,9 +48,17 @@ export class RegisterComponent implements OnInit {
 
 
   let data = `account=${this.formdata.account}&account=${this.formdata.password1}&account=${this.formdata.phone}`;
+  // let val = <any>{}
+  // val = formmod.GetName(['mobile','password','tx_code']);
+  // if(!formmod.Vaildform(val)){
+  //   return
+  // }
+  // let data = {
+  //   username: val.mobile.value,
+  //   password: val.password.value
+  // }
 
-
-    return false
+  //   return false
   }
 
 }

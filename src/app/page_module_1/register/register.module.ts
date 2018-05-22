@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 /***********components***************/
 import { RegisterComponent } from './register.component';
+import { ErrtipComponent } from '../component/errtip/errtip.component';
 
 const routes = [
     { path: '', component: RegisterComponent},
@@ -13,6 +14,6 @@ const routes = [
     imports: [
         SharkModule,FormsModule, RouterModule.forChild(routes)
     ],
-    declarations: [RegisterComponent]
+    declarations: [RegisterComponent,ErrtipComponent]
 })
 export class RegisterModule { }
