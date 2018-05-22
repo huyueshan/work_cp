@@ -3,6 +3,7 @@ import { SharkModule } from '@ntesmail/shark-angular2';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @Component({
+		
     selector: 'headwq',
     template: '122131313',
 	styleUrls: []

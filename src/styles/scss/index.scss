@@ -5,5 +5,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    
+    align-content: center;
+    align-items: center;
+}
+.flex-c{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
 }
