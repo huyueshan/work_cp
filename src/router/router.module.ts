@@ -29,6 +29,11 @@ const appRoutes: Routes = [
 		canActivate: [RouteguardService]
     },
 	{
+        path: 'register',
+		loadChildren: '../app/page_module_1/register/register.module#RegisterModule',
+		canActivate: [RouteguardService]
+    },
+	{
         path: 'home',
         loadChildren: '../app/page_module_2/home/home.module#HomeModule',
 		canActivate: [RouteguardService]

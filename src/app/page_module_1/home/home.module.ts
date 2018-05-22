@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common'
 /***********components***************/
 import { HomeComponent } from './home.component';
 import { HeadComponent } from '../component/head.component';
-
 const routes = [
     { path: '', component: HomeComponent },
 ];
