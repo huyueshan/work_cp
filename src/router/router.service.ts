@@ -7,16 +7,42 @@ import userModel from '../status/user.model';
 import { Base } from '../factory/base.model';
 import { Api } from '../factory/api.model';
 
+import { setCookie,getCookie,delCookie } from '../factory/utils';
+import languagepackage from '../status/language';
+
+import Sstore from '../factory/Sstore';
 @Injectable()
 export class RouteguardService implements CanActivate{
 	constructor(private router: Router, private httpClient : HttpClient) { }
 	private isLoaded = false;
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean>{
 		return new Promise(resolve => {
+			let that = this;
 			if (this.isLoaded) {
 			  resolve(true);
 			  return;
 			}
+			//语言检测
+			let lang_config = userModel.lang_config;
+			let now_lang = {}
+			function  check_language(){
+		      //   console.log(getCookie('now_lot_lang'))
+		        if (getCookie('now_lot_lang')==null) {
+		            setCookie('now_lot_lang',lang_config.default_lan,1)
+		            let now_lot_lang = getCookie('now_lot_lang');
+		            load_langpackge(now_lot_lang)
+		        }else{
+		            //这里手动改变语言后不做任何操作,但是同样调用引用语言包函数;
+		            let now_lot_lang = getCookie('now_lot_lang');
+		            load_langpackge(now_lot_lang)
+		        }
+		    }
+		    function load_langpackge(lang){
+		        now_lang = languagepackage[lang];
+		        Sstore['langpackage'] = now_lang;
+		        console.log(Sstore['langpackage'])
+		    }
+		    check_language();
 			Base.Store.set('isTemplet','1',false)
 			if(!Base.Store.get('isTemplet')){
 				// 根据域名配置不通路由模块

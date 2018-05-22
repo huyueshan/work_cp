@@ -9,14 +9,16 @@ const WARN = (name,str) => {
 	let warn = GetName([name])
 	warn[name].style.border=str!=''?"1px solid #AB003A":""
 	$(".errtip").find('.alltip').text(str)
-	$(".tipsh").show()
+	if(str!=''){
+		$(".tipsh").show()
+	}
 	return false
 };
 const CANCLEWARN = (name,str) => {	
 	let warn = GetName([name])
 	warn[name].style.border=""
 	$("input[name="+name+"]").parent().find('.tip').css("color",'green')
-	$("input[name="+name+"]").parent().find('.tip').text(str)
+	// $("input[name="+name+"]").parent().find('.tip').text(str)
 	return false
 	
 };
@@ -69,12 +71,14 @@ const Vaildform = function(dom){
 		//-- 正则判断
 		if(val.getAttributeNode('rule')){
 			let getatt = val.getAttributeNode('rule').nodeValue
+			
 			if(getatt && val.value && !val.value.match(formtype[getatt])){
 					val.nodeName == 'INPUT' && WARN(name,formtip[getatt])
 					val.focus()
 					return false
 				}
-				val.nodeName == 'INPUT' && WARN(name,'提交有误')
+				
+				val.nodeName == 'INPUT' && WARN(name,'')
 		}else{
 			val.nodeName == 'INPUT' && WARN(name,'')
 		}
