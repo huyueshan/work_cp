@@ -13,6 +13,11 @@ const appRoutes: Routes = [
         redirectTo: 'home',
         pathMatch: 'full'
     },
+	{
+        path: 'login',
+        loadChildren: '../app/page_module_1/login/login.module#LoginModule',
+		canActivate: [RouteguardService]
+    }, 
     {
         path: 'home',
         loadChildren: '../app/page_module_1/home/home.module#HomeModule',
@@ -26,35 +31,6 @@ const appRoutes: Routes = [
 	{
         path: 'test',
         loadChildren: '../app/page_module_1/test/detail.module#DetailModule',
-		canActivate: [RouteguardService]
-    },
-	{
-        path: 'home',
-        loadChildren: '../app/page_module_2/home/home.module#HomeModule',
-		canActivate: [RouteguardService]
-    }, 
-	{
-        path: 'detail',
-        loadChildren: '../app/page_module_2/detail/detail.module#DetailModule',
-		canActivate: [RouteguardService]
-    },
-	{
-        path: 'test',
-        loadChildren: '../app/page_module_2/test/detail.module#DetailModule',
-		canActivate: [RouteguardService]
-    },{
-        path: 'home',
-        loadChildren: '../app/page_module_3/home/home.module#HomeModule',
-		canActivate: [RouteguardService]
-    }, 
-	{
-        path: 'detail',
-        loadChildren: '../app/page_module_3/detail/detail.module#DetailModule',
-		canActivate: [RouteguardService]
-    },
-	{
-        path: 'test',
-        loadChildren: '../app/page_module_3/test/detail.module#DetailModule',
 		canActivate: [RouteguardService]
     },
     {
