@@ -1,4 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+// import { Routes, RouterModule } from '@angular/router'; 
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -49,7 +51,9 @@ public errtiplist:string[] = [
   '验证码不能为空！',
   '验证码格式为4位数字'
 ];
-  constructor(private el:ElementRef) { }
+  constructor(private el:ElementRef,  private route: ActivatedRoute, private router: Router) {
+
+   }
   ngOnInit() {}
 
   private trim(param) {
@@ -207,6 +211,7 @@ public errtiplist:string[] = [
 
       let data = `account=${this.formdata.account}&password=${this.formdata.password1}&phone=${this.formdata.phone}`;
       alert(data);
+      this.router.navigate(['/home']); 
     }
     return false
   }
