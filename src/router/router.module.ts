@@ -33,6 +33,40 @@ const appRoutes: Routes = [
         loadChildren: '../app/page_module_1/test/detail.module#DetailModule',
 		canActivate: [RouteguardService]
     },
+	{
+        path: 'register',
+		loadChildren: '../app/page_module_1/register/register.module#RegisterModule',
+		canActivate: [RouteguardService]
+    },
+	{
+        path: 'home',
+        loadChildren: '../app/page_module_2/home/home.module#HomeModule',
+		canActivate: [RouteguardService]
+    }, 
+	{
+        path: 'detail',
+        loadChildren: '../app/page_module_2/detail/detail.module#DetailModule',
+		canActivate: [RouteguardService]
+    },
+	{
+        path: 'test',
+        loadChildren: '../app/page_module_2/test/detail.module#DetailModule',
+		canActivate: [RouteguardService]
+    },{
+        path: 'home',
+        loadChildren: '../app/page_module_3/home/home.module#HomeModule',
+		canActivate: [RouteguardService]
+    }, 
+	{
+        path: 'detail',
+        loadChildren: '../app/page_module_3/detail/detail.module#DetailModule',
+		canActivate: [RouteguardService]
+    },
+	{
+        path: 'test',
+        loadChildren: '../app/page_module_3/test/detail.module#DetailModule',
+		canActivate: [RouteguardService]
+    },
     {
 		path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
 		redirectTo: 'home',

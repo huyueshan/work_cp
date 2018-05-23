@@ -4,8 +4,9 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common'
 /***********components***************/
 import { HomeComponent } from './home.component';
-
 import { LanguageComponent } from '../component/language/language.component';
+
+// import { LanguageComponent } from '../component/language/language.component';
 
 import { HeadComponent } from '../component/head.component';
 
