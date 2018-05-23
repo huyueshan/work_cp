@@ -3,18 +3,18 @@ import { SharkModule } from '@ntesmail/shark-angular2';
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClient, HttpHeaders } from '@angular/common/http'; 
 
-import { Base } from '../../../factory/base.model';
-import { Api } from '../../../factory/api.model';
-import { formmod } from '../../../factory/form';
-import userModel from '../../../status/user.model';
+import { Base } from '../../../../factory/base.model';
+import { Api } from '../../../../factory/api.model';
+import { formmod } from '../../../../factory/form';
+import userModel from '../../../../status/user.model';
 
 @Component({
-    selector: 'login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+    selector: 'ssccredit',
+    templateUrl: './ssc.component.html',
+    styleUrls: ['./ssc.component.scss']
 })
 
-export class LoginComponent implements OnInit {
+export class SSCcreditComponent implements OnInit {
 	constructor(private httpClient:HttpClient) { }
 	loadpage=false;
     httpOptions = {  
@@ -35,14 +35,6 @@ export class LoginComponent implements OnInit {
 			password: val.password.value
 		}
 		
-		this.httpClient.post(Api.login, data, this.httpOptions)  
-		.subscribe(  
-			val => {  
-				console.log('post请求成功', val);    
-			},  
-			error => {  
-				formmod.WARNPOST('fail', '请求失败，请稍后再试！');   
-			}  
-		);
+		
 	}
 }

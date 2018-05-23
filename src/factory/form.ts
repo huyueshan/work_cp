@@ -11,6 +11,8 @@ const WARN = (name,str) => {
 	$(".errtip").find('.alltip').text(str)
 	if(str!=''){
 		$(".tipsh").show()
+	}else{
+		$(".tipsh").hide()
 	}
 	return false
 };
@@ -20,6 +22,22 @@ const CANCLEWARN = (name,str) => {
 	$("input[name="+name+"]").parent().find('.tip').css("color",'green')
 	// $("input[name="+name+"]").parent().find('.tip').text(str)
 	return false
+	
+};
+const WARNPOST = (type,title) => {	
+	if(type=='success'){
+		$.fn.sharkToastr({
+			type: 'success',
+			content: title?title:'保存成功！',
+			duration: 2000
+		});
+	}else{
+		$.fn.sharkToastr({
+			type: 'success',
+			content: title?title:'保存失败！',
+			duration: 2000
+		});
+	}
 	
 };
 const Vaildform = function(dom){
@@ -90,6 +108,7 @@ export const formmod = {
 	GetName,
 	CANCLEWARN,
     WARN,
-	Vaildform
+	Vaildform,
+	WARNPOST
 };
 

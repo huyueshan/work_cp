@@ -99,6 +99,11 @@ export class RouteguardService implements CanActivate{
 							canActivate: [RouteguardService]
 						}, 
 						{
+							path: 'sscmod',
+							loadChildren: '../app/page_module_1/sscmod/official/ssc.module#SSCofficialModule',
+							canActivate: [RouteguardService]
+						}, 
+						{
 							path: 'home',
 							loadChildren: '../app/page_module_1/home/home.module#HomeModule'
 						}, 
