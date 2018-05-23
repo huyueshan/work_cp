@@ -1,0 +1,137 @@
+/* 导航公用部分 */
+  .mid{
+      margin: 0 auto;
+      width: 1000px;
+  }
+  .darkyellow{
+      color: #C49D11;
+  }
+  .darkyellow_bg{
+      background-color: #C49D11;
+  }
+  .bold{
+      font-weight: 700;
+  }
+  .btn_small{
+      border: 1px solid transparent;
+      border-radius: 5px;
+
+      padding: 5px 5px!important;
+  }
+  .btn_mid{
+      text-align: center;
+      border: 1px solid transparent;
+      box-sizing:border-box;
+      border-radius: 5px;
+      padding: 12px 5px!important;
+  }
+  .dividline{
+      font-style:normal;
+      color: #666;
+  }
+/* 导航公用部分 */
+/* 上部选择栏 */
+  .topbar {
+    height: 35px;
+    width: 100%;
+    background-color: #070707;
+  }
+  .topbar_container {
+    height: 100%;
+    /* background-color: pink; */
+  }
+  .tb_child {
+    height: 100%;
+    display: inline-block;
+    /* background-color: orange; */
+  }
+  .tb_child > div {
+    min-width: 100px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 35px;
+    float: left;
+    vertical-align: middle;
+    padding: 0 5px ;
+  }
+  .name_bar:after {
+    content: '▼';
+    color: #fff;
+    font-size: 12px;
+    margin-left: 5px;
+  }
+  .tb_left {
+    min-width: 450px;
+    float: left;
+  }
+  .money_bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: around;
+    align-items: center;
+  }
+  .refresh_money {
+    height: 35px;
+    width: 30px;
+    display: inline-block;
+    background: url(../../static/language/img/refresh.png) center center no-repeat;
+  }
+  .money_btn_bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: around;
+    align-items: center;
+  }
+  .money_btn_bar div {
+    /* width: 33%; */
+    padding: 0 10px;
+  }
+  .money_btn_bar .inmoney_btn {
+    line-height: 100%;
+  }
+  .tb_right {
+    float: right;
+    /* background-color: pink; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: around;
+    align-items: center;
+  }
+  .tb_right > div {
+    width: 25%;
+    min-width: 70px;
+    height: 100%;
+    text-align: center;
+  }
+  .down_app {
+    text-indent: 10px;
+    background: url(../../static/language/img/phone.png) center left 10px no-repeat;
+  }
+  .language_btn_box {
+    min-width: 80px!important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: around;
+    align-items: center;
+    padding: 0!important;
+  }
+  .language_btn {
+    height: 100%;
+    width: 33%;
+    cursor:pointer;
+    background-color: #fff;
+  }
+  .chinese {
+    background: url(../../static/language/img/lan1.png) center center no-repeat;
+  }
+  .english {
+    background: url(../../static/language/img/lan2.png) center center no-repeat;
+  }
+  .japanese {
+    background: url(../../static/language/img/lan3.png) center center no-repeat;
+  }
+/* 上部导航结束 */
