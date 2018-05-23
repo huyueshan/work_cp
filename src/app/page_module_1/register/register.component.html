@@ -5,13 +5,14 @@
       </div>
     </div>
     <div class="main">
-      <form id="reform" class="reform flex-c">
+      <form id="reform" class="reform flex-c rel">
+        <div class="abs errtip" *ngIf="errtip"><i class="account-icon"></i> &nbsp;{{errtip}}</div>
         <div class="head">
           <span>用户注册</span>
         </div>
-        <app-errtip [message]="errtip"></app-errtip>
         <div calss="account">
-          <div class="flex-r reform-item trans-bg">
+          <!-- <app-errtip [message]="errtip" style=""></app-errtip> -->
+          <div class="flex-r reform-item trans-bg" [ngClass]="{'errborder': inborder.account}">
             <label for="account">
               <i class="account-icon"></i>
             </label>
@@ -20,7 +21,7 @@
           </div>
         </div>
         <div calss="password">
-          <div class="flex-r reform-item trans-bg">
+          <div class="flex-r reform-item trans-bg" [ngClass]="{'errborder': inborder.password1}">
             <label for="password1">
               <i class="password-icon"></i>
             </label>
@@ -29,7 +30,7 @@
           </div>
         </div>
         <div calss="password">
-          <div class="flex-r reform-item trans-bg">
+          <div class="flex-r reform-item trans-bg" [ngClass]="{'errborder': inborder.password2}">
             <label for="password2">
               <i class="password-icon"></i>
             </label>
@@ -38,7 +39,7 @@
           </div>
         </div>
         <div calss="phone">
-          <div class="flex-r reform-item trans-bg">
+          <div class="flex-r reform-item trans-bg" [ngClass]="{'errborder': inborder.phone}">
             <label for="apassword2">
               <i class="phone-icon"></i>
             </label>
@@ -48,7 +49,7 @@
         </div>
         <div>
           <div class="flex-r">
-            <div class="flex-r reform-item trans-bg security-l">
+            <div class="flex-r reform-item trans-bg security-l" [ngClass]="{'errborder': inborder.security}">
               <label for="security">
                 <i class="security-icon"></i>
               </label>
@@ -64,7 +65,7 @@
           </div>
         </div>
         <div>
-          <button class="sub-btn">立即注册</button>
+          <button class="sub-btn" (click)="onsubmit()">立即注册</button>
         </div>
         <div class="linktip color-white">
           <a class="color-white" href="javascript:;">我要注册</a> &nbsp;|&nbsp;
