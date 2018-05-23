@@ -149,7 +149,6 @@ public errtiplist:string[] = [
         }
         break;
       case "phone":
-      console.log('phone');
         this.inborder.phone = true ;
         value = this.formdata.phone;
         if (this.trim(value) == "") {
@@ -206,7 +205,6 @@ public errtiplist:string[] = [
       this.validator(item)
     }
     if(this.errtip){
-      console.log(this.errtip)
     }else{
 
       let data = `account=${this.formdata.account}&password=${this.formdata.password1}&phone=${this.formdata.phone}`;
