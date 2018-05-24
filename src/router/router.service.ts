@@ -43,7 +43,6 @@ export class RouteguardService implements CanActivate{
 		        console.log(Sstore['langpackage'])
 		    }
 		    check_language();
-			Base.Store.set('isTemplet','1',false)
 			if(!Base.Store.get('isTemplet')){
 				// 根据域名配置不通路由模块
 				this.httpClient.get(Api.gettemple)
@@ -80,7 +79,7 @@ export class RouteguardService implements CanActivate{
 					this.router.resetConfig(appnewRoutes);
 					this.isLoaded = true;
 					resolve(true);
-					this.router.navigateByUrl(state.url);
+					this.router.navigateByUrl(userModel.currenturl);
 					Base.Store.set('isTemplet','1',false)
 					userModel.platform = true
 				});
@@ -128,7 +127,7 @@ export class RouteguardService implements CanActivate{
 					this.router.resetConfig(appnewRoutes);
 					this.isLoaded = true;
 					resolve(true);
-					this.router.navigateByUrl(state.url);
+					this.router.navigateByUrl(userModel.currenturl);
 				}else if(Base.Store.get('isTemplet')=='2'){
 					const appnewRoutes: Routes =[
 						{
@@ -157,7 +156,7 @@ export class RouteguardService implements CanActivate{
 					this.router.resetConfig(appnewRoutes);
 					this.isLoaded = true;
 					resolve(true);
-					this.router.navigateByUrl(state.url);
+					this.router.navigateByUrl(userModel.currenturl);
 				}else{
 					const appnewRoutes: Routes =[
 						{
@@ -186,7 +185,7 @@ export class RouteguardService implements CanActivate{
 					this.router.resetConfig(appnewRoutes);
 					this.isLoaded = true;
 					resolve(true);
-					this.router.navigateByUrl(state.url);
+					this.router.navigateByUrl(userModel.currenturl);
 				}
 				
 				

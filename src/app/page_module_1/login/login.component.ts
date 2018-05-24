@@ -14,7 +14,7 @@ import userModel from '../../../status/user.model';
     styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 	constructor(private httpClient:HttpClient) { }
 	loadpage=false;
     httpOptions = {  

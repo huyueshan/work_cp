@@ -4,10 +4,10 @@ import { FormsModule} from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 /***********components***************/
-import { SSCcreditComponent } from './ssc.component';
+import { SSCofficialComponent } from './ssc.component';
 
 const routes = [
-    { path: '', component: SSCofficialComponent },
+    { path: 'creadit', component: SSCofficialComponent },
 ];
 
 @NgModule({
@@ -15,6 +15,8 @@ const routes = [
         SharkModule, RouterModule.forChild(routes),CommonModule,
 		FormsModule
     ],
-    declarations: [SSCcreditComponent]
+    declarations: [SSCofficialComponent]
 })
-export class SSCcreditModule { }
+export class SSCofficialModule {
+	
+	}

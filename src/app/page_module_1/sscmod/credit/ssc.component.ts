@@ -9,18 +9,19 @@ import { formmod } from '../../../../factory/form';
 import userModel from '../../../../status/user.model';
 
 @Component({
-    selector: 'ssccredit',
+    selector: 'sscofficial',
     templateUrl: './ssc.component.html',
     styleUrls: ['./ssc.component.scss']
 })
 
-export class SSCcreditComponent implements OnInit {
+export class SSCofficialComponent {
 	constructor(private httpClient:HttpClient) { }
 	loadpage=false;
     httpOptions = {  
 		headers: new HttpHeaders({ 'Content-Type': 'application/json;application/x-www-form-urlencodeed; charset=utf-8'})  
 	};
 	ngOnInit(){
+		console.log('1231');
 		this.loadpage = userModel.platform;
 		Base.DOM.title('用户登录')
 	}

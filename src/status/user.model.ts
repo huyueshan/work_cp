@@ -3,6 +3,7 @@ let userModel = {
   accout: '',
   password: '',
   platform: false,
+  currenturl:location.hash.split('#')[1],
   lang_config:{
 	  default_lan:'zh',
 	  lang_expt:10000000000
