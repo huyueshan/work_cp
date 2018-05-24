@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Base } from '../../../factory/base.model';
 import { Api } from '../../../factory/api.model';
 import userModel from '../../../status/user.model';
-import Sstore from '../../../factory/Sstore'
+import Sstore from '../../../factory/Sstore';
 @Component({
     selector: 'home',
     templateUrl: './home.component.html',
