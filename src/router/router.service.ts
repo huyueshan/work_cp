@@ -125,6 +125,10 @@ export class RouteguardService implements CanActivate{
 							loadChildren: '../app/page_module_1/register/register.module#RegisterModule'
 						},
 						{
+							path: 'index',
+							loadChildren: '../app/page_module_1/index/index.module#IndexModule'
+						},
+						{
 							path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
 							redirectTo: 'home',
 							pathMatch: 'full'  // 必须要设置
