@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { SharkModule } from '@ntesmail/shark-angular2';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common';
+import { ComponentsModule } from '../component/components.module';
 /***********components***************/
 import { HomeComponent } from './home.component';
-import { LanguageComponent } from '../component/language/language.component';
+// import { LanguageComponent } from '../component/language/language.component';
 
 import { HeadComponent } from '../component/head.component';
 
@@ -15,8 +16,11 @@ const routes = [
 
 @NgModule({
     imports: [
-        SharkModule, RouterModule.forChild(routes),CommonModule
+        SharkModule, RouterModule.forChild(routes),CommonModule,ComponentsModule
     ],
-    declarations: [HomeComponent,HeadComponent,LanguageComponent]
+    declarations: [HomeComponent,HeadComponent,
+        // LanguageComponent
+    ],
+    
 })
 export class HomeModule { }

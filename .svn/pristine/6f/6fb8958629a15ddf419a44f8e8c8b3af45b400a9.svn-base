@@ -1,0 +1,144 @@
+<div class="body" [hidden]="!loadpage">
+	<div class="nav" style="background:#000000;">
+		<div class="topbox">
+			<div class="topleft">
+				<span class="time">2018-05-17 10:10</span>
+				<a class="language"><img src="../../images/lang.png" /></a>
+			</div>
+			<div class="topright">
+				<div class="userinfo"><span class="title">欢迎您，</span><a class="getinfo mr20" href="">test007</a><span class="title mr20">我的账户</span><span class="title">余额：</span><span class="money">999999.99</span><span class="titlerel bg-refaul_03"></span></div>
+				<ul class="centerlist">
+					<li><a>充值</a></li>
+					<li><a>提款</a></li>
+					<li><a>资金转换</a></li>
+					<li><a>在线客服</a></li>
+					<li><a>设置声音</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 导航 -->
+	<div class="nav" style="background:#fff;">
+		<div class="headbox">
+			<div class="headleft">
+				<img class="logo" src="../../images/LOGO.png" />
+			</div>
+			<div class="headright">
+				<ul class="navtab">
+					<li><a><p class="pc">首页</p><p class="pe">Home</p></a></li>
+					<li><a><p class="pc">彩票大厅</p><p class="pe">Lootery</p></a></li>
+					<li><a><p class="pc">用户中心</p><p class="pe">UserCenter</p></a></li>
+					<li><a><p class="pc">优惠活动</p><p class="pe">Activity</p></a></li>
+					<li><a><p class="pc">平台公告</p><p class="pe">Announncement</p></a></li>
+					<li><a><p class="pc">彩种信息</p><p class="pe">GameInformation</p></a></li>
+					<li><a><p class="pc">手机下注</p><p class="pe">Mobile</p></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class='banner'>
+		<img src="../../images/banner_10.jpg" />
+	</div>
+	<div class="conbox">
+		<div class="content">
+			<div class="gamenav">
+				<div class="alltype">
+					<div class="fltitle">全部彩种</div>
+					<div class="frimg">
+						<img src="../../images/cqssc_13.png" />
+					</div>
+				</div>
+				<div class="gametime">
+					<div class="fltitle">
+						<p>第<span>20180517022</span>期</p>
+						<p>预售时间</p>
+					</div>
+					<ul class="frtime">
+						<li>00</li>
+						<li>04</li>
+						<li>36</li>
+					</ul>
+				</div>
+				<div class="gameresult">
+					<div class="fltitle">
+						<p>第<span>20180517022</span>期</p>
+						<p>预售时间</p>
+					</div>
+					<ul class="frnumber">
+						<li>2</li>
+						<li>9</li>
+						<li>0</li>
+						<li>8</li>
+						<li>7</li>
+					</ul>
+					<div class="line"></div>
+					<div class="currresult">
+						<p class="pt">近期开奖</p>
+						<p class="pimg"><span></span></p>
+					</div>
+				</div>
+			</div>
+			<div class="sscorder">
+				<div class="sscleft">
+					<div class="tabbox">
+						<span class="pointl"><i></i></span>
+						<ul class="typetab">
+							<li class="active">五星</li>
+							<li>前四</li>
+							<li>后四</li>
+							<li>后三码</li>
+							<li>前三码</li>
+							<li>中三码</li>
+							<li>二码</li>
+							<li>定位胆</li>
+							<li>不定胆</li>
+							<li>大小单双</li>
+							<li>趣味</li>
+							<li>任选二</li>
+							<li>龙虎</li>
+						</ul>
+						<span class="pointr"><i></i></span>
+						<ul class="totaltype">
+							<li class="active"><a>官方</a></li>
+							<li><a>信用</a></li>
+						</ul>
+					</div>
+					<div class="tabcon">
+						<div class="tabshow">
+							<ul class="navcon">
+								<span class="labtit">五星直选</span>
+								<li class="active">五星复选</li>
+								<li>五星单式</li>
+								<li>五星组合</li>
+							</ul>
+							<ul class="navcon">
+								<span class="labtit">五星组选</span>
+								<li>组选120</li>
+								<li>组选60</li>
+								<li>组选30</li>
+								<li>组选20</li>
+								<li>组选10</li>
+								<li>组选5</li>
+							</ul>
+							<p class="tip">提示：重庆时时彩单玩法最高派奖 300000 元</p>
+						</div>
+					</div>
+					<div class="chooseno">
+						<div class="typeno_1">
+							<div class="helpbox">
+								<label><input type="checkbox" />遗漏</label>
+								<label><input type="checkbox" />冷热</label>
+								<div class="tip"><i></i>从千位、百位、十位、个位中至少各选择一个号码组成一注。</div>
+								<div class="example"><i></i>玩法示例</div>
+								<div class="example"><i></i>选号示例</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="sscright">
+				
+				</div>
+			</div>
+		</div>
+	<div>
+</div>

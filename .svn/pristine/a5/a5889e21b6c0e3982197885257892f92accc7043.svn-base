@@ -1,0 +1,245 @@
+<div class="container">
+  <div id="header">
+    <div class="flex-r head">
+      <div class="flex-r">
+        <div class="sidenavl">
+          <span *ngFor="let item of navdatal; let i=index" [style.background-position-y.px]="item.bgpositiony" [ngClass]="{'navhover': item.isover}"
+            (mouseenter)="navmouseenter(i,'left')" (mouseleave)="navmouseleave(i,'left')">{{item.text}}</span>
+        </div>
+      </div>
+      <div class="flex-c headmid">
+        <div class="topnav">
+          <span>加入收藏</span>|
+          <span>设为首页</span>|
+          <span>代理加盟</span>|
+          <span>代理登录</span>|
+          <span>手机投注</span>
+          <span>
+            <img src="../images/langs.png" alt="">
+          </span>
+        </div>
+        <div class="topimg">
+          <img src="../images/logo_03.png" alt="">
+
+        </div>
+
+      </div>
+      <div class="flex-r">
+        <div class="sidenavr">
+          <span *ngFor="let item of navdatar; let i=index" [style.background-position-y.px]="item.bgpositiony" [ngClass]="{'navhover': item.isover}"
+            (mouseenter)="navmouseenter(i,'right')" (mouseleave)="navmouseleave(i,'right')">{{item.text}}</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="headformbox">
+      <div class="headformbg flex-r">
+        <div class="accountbox">
+          <label for="account"></label>
+          <input type="text" name="name" id="account" placeholder="用户名">
+        </div>
+        <div class="passbox">
+          <label for="password"></label>
+          <input type="text" name="password" id="password" placeholder="密码">
+          <span class="forgetbtn">忘记?</span>
+        </div>
+        <div class="secubox flex-r">
+          <label for="security"></label>
+          <input type="text" name="security" id="security" placeholder="验证码">
+          <span class="secuimg"></span>
+        </div>
+<<<<<<< HEAD
+        <div class="btngroup flex-r">
+=======
+        <div class="flex-r">
+>>>>>>> e56c7ffdc8c8974d6f691c0eba24dfba123b61ee
+          <div class="btn_loding">
+            <span>登录</span>
+          </div>
+          <div class="btn_reg">
+            <span>注册</span>
+          </div>
+          <div class="btn_demo">
+            <span>试玩</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div id="contain">
+<<<<<<< HEAD
+=======
+    <div class="flex-c cont">
+      <div class="md-top">
+        <div class="flex-r md-tab">
+          <span *ngFor="let item of mdtabdata; let i=index" [ngClass]="{'tableactive': tabactive==i}" (click)="mdtabclick(i)">{{item.text}}</span>
+
+          <div class="flex-r md-new">
+            <i></i>
+            最新消息：
+          </div>
+          <div class="marq">
+            <marquee>[ 尊敬的用户：您好！豪彩年度钜献“VR彩”“完美彩”同时上线，火爆新彩种热力来袭，极速体验，更有美女</marquee>
+          </div>
+        </div>
+      </div>
+      <!-- tab内容热门游戏 -->
+      <div class="flex-c hot" *ngIf="tabactive == 0">
+        <div class="flex-r md-ball">
+          <div (click)="ballclick('left')" class="l-icon">
+            <i></i>
+          </div>
+          <div class="ball-box">
+            <div>
+              <div class="ball" *ngFor="let item of ball_list; let i=index" [style.background-position-y.px]="item.y" [style.background-position-x.px]="item.x"
+                [style.left.px]="item.left"></div>
+            </div>
+          </div>
+          <div (click)="ballclick('right')" class="r-icon">
+            <i></i>
+          </div>
+        </div>
+        <div class="flex-r  md-content">
+          <div class="hot-card">
+            <div>
+              <img src="../images/shishicai.jpg" alt="" width="100%" height="auto" />
+            </div>
+            <div class="flex-c hot-card-info">
+              <span class="flex-r card-head">
+                <i></i>
+                <span>时时彩</span>
+                <i></i>
+              </span>
+              <span>知名顶级的彩票平台之一</span>
+              <span class="card-btn">立即开始</span>
+            </div>
+          </div>
+          <div class="hot-card">
+            <div>
+              <img src="../images/shifencai.jpg" alt="" width="100%" height="auto">
+            </div>
+            <div class="flex-c hot-card-info">
+              <span class="flex-r card-head">
+                <i></i>
+                <span>分时彩</span>
+                <i></i>
+              </span>
+              <span>知名顶级的彩票平台之一</span>
+              <span class="card-btn">立即开始</span>
+            </div>
+          </div>
+          <div class="hot-card">
+            <div>
+              <img src="../images/VR_cai.jpg" alt="" width="100%" height="auto">
+            </div>
+            <div class="flex-c hot-card-info">
+              <span class="flex-r card-head">
+                <i></i>
+                <span>VR彩</span>
+                <i></i>
+              </span>
+              <span>知名顶级的彩票平台之一</span>
+              <span class="card-btn">立即开始</span>
+            </div>
+          </div>
+          <div class="hot-card paihang-card">
+            <div class="tab_btn">
+              <span class="tableactive">投注排行</span>
+              <span>中奖排行</span>
+            </div>
+            <div class="flex-c tab_info">
+              <div class="flex-r info_tr" *ngFor="let item of touzhu_list">
+                <i></i>
+                <div class="flex-r info-text">
+                  <span>QWE******</span>
+                  <span>
+                    <span style="color:#FEA202;">12345678</span>元</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- tab移动端下载 -->
+      <div class="phonedown" *ngIf="tabactive == 1">
+      </div>
+      <!-- tab优惠活动 -->
+      <div class="special" *ngIf="tabactive == 2">
+        <div class="flex-r special-content">
+          <div class="l-icon">
+            <i></i>
+          </div>
+          <div class="flex-c special-box">
+            <div>
+              <img src="../images/special_01.jpg" alt="">
+            </div>
+            <div>
+              <img src="../images/special_02.jpg" alt="">
+            </div>
+            <div>
+              <img src="../images/special_03.jpg" alt="">
+            </div>
+
+          </div>
+          <div class="r-icon">
+            <i></i>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div id="footer">
+    <div class="flex-c foot">
+      <div class="flex-r foottop">
+        <div class="flex-r  foottopitem" *ngFor="let item of foottopitem_list">
+          <i [style.background-position-x.px]="item.x"></i>
+          <div class="flex-c" style="padding:0 8px;">
+            <span>{{item.zh}}</span>
+            <span>{{item.en}}</span>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="flex-r footmid">
+        <div class="footbank">
+          <p>银行卡类型 Bank card type</p>
+          <img src="../images/banks.png" alt="">
+        </div>
+        <div class="foothelp">
+          <p>使用帮助 Guide</p>
+          <div class="flex-r">
+            <div class="flex-r foothelpitem" *ngFor="let item of foothelp_list">
+              <i></i>
+              <span>{{item.text}}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="footbottom">
+        <p class="font14">
+          <a href="javascript:;">首页</a>&nbsp;|&nbsp;
+          <a href="javascript:;">用户中心</a>&nbsp;|&nbsp;
+          <a href="javascript:;">彩票大厅</a>&nbsp;|&nbsp;
+          <a href="javascript:;">优惠活动</a>&nbsp;|&nbsp;
+          <a href="javascript:;">平台公告</a>&nbsp;|&nbsp;
+          <a href="javascript:;">彩种信息</a>&nbsp;|&nbsp;
+          <a href="javascript:;">手机下注</a>
+          <p class="font12">豪彩娱乐版权所有 Copyright © 2018 HaoCaiYuLe Co. Group All Rights Reser</p>
+      </div>
+
+    </div>
+>>>>>>> e56c7ffdc8c8974d6f691c0eba24dfba123b61ee
+
+  </div>
+</div>

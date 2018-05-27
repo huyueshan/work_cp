@@ -1,0 +1,8 @@
+ 
+ 
+ <div class="errtip">
+    <div class="tipsh">
+      <span class="icon-err"></span>
+      <p class="alltip">{{message}}</p>
+    </div>
+  </div>

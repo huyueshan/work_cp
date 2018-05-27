@@ -1,37 +1,35 @@
 <div class="container">
   <div id="header">
-    <div class="flex-r head">
+    <div class="flex-r head  font14">
       <div class="flex-r">
         <div class="sidenavl">
           <span *ngFor="let item of navdatal; let i=index" [style.background-position-y.px]="item.bgpositiony" [ngClass]="{'navhover': item.isover}"
-            (mouseenter)="navmouseenter(i,'left')" (mouseleave)="navmouseleave(i,'left')">{{item.text}}</span>
+            (mouseenter)="navmouseenter(i,'left')" (mouseleave)="navmouseleave(i,'left')" (click)="linkrouter(item.link)">{{item.text}}</span>
         </div>
       </div>
       <div class="flex-c headmid">
-        <div class="topnav">
+        <div class="flex-r topnav">
           <span>加入收藏</span>|
           <span>设为首页</span>|
           <span>代理加盟</span>|
           <span>代理登录</span>|
           <span>手机投注</span>
-          <span>
-            <img src="../images/langs.png" alt="">
-          </span>
+          <div class="langgroup">
+            <i class="langimg" style="background-position-x: 0;" title="日语"></i>
+            <i class="langimg" style="background-position-x: -27px;" title="汉语"></i>
+            <i class="langimg" style="background-position-x: -54px;" title="英语"></i>
+          </div>
         </div>
         <div class="topimg">
           <img src="../images/logo_03.png" alt="">
-
         </div>
-
       </div>
       <div class="flex-r">
         <div class="sidenavr">
           <span *ngFor="let item of navdatar; let i=index" [style.background-position-y.px]="item.bgpositiony" [ngClass]="{'navhover': item.isover}"
             (mouseenter)="navmouseenter(i,'right')" (mouseleave)="navmouseleave(i,'right')">{{item.text}}</span>
         </div>
-
       </div>
-
     </div>
 
     <div class="headformbox">
@@ -50,11 +48,7 @@
           <input type="text" name="security" id="security" placeholder="验证码">
           <span class="secuimg"></span>
         </div>
-<<<<<<< HEAD
         <div class="btngroup flex-r">
-=======
-        <div class="flex-r">
->>>>>>> e56c7ffdc8c8974d6f691c0eba24dfba123b61ee
           <div class="btn_loding">
             <span>登录</span>
           </div>
@@ -104,42 +98,14 @@
           </div>
         </div>
         <div class="flex-r  md-content">
-          <div class="hot-card">
+          <div class="hot-card" *ngFor="let item of hotcard_list; let i=index">
             <div>
-              <img src="../images/shishicai.jpg" alt="" width="100%" height="auto" />
+              <img src="{{item.src}}" alt="" width="100%" height="auto" />
             </div>
             <div class="flex-c hot-card-info">
               <span class="flex-r card-head">
                 <i></i>
-                <span>时时彩</span>
-                <i></i>
-              </span>
-              <span>知名顶级的彩票平台之一</span>
-              <span class="card-btn">立即开始</span>
-            </div>
-          </div>
-          <div class="hot-card">
-            <div>
-              <img src="../images/shifencai.jpg" alt="" width="100%" height="auto">
-            </div>
-            <div class="flex-c hot-card-info">
-              <span class="flex-r card-head">
-                <i></i>
-                <span>分时彩</span>
-                <i></i>
-              </span>
-              <span>知名顶级的彩票平台之一</span>
-              <span class="card-btn">立即开始</span>
-            </div>
-          </div>
-          <div class="hot-card">
-            <div>
-              <img src="../images/VR_cai.jpg" alt="" width="100%" height="auto">
-            </div>
-            <div class="flex-c hot-card-info">
-              <span class="flex-r card-head">
-                <i></i>
-                <span>VR彩</span>
+                <span>{{item.title}}</span>
                 <i></i>
               </span>
               <span>知名顶级的彩票平台之一</span>
@@ -148,16 +114,28 @@
           </div>
           <div class="hot-card paihang-card">
             <div class="tab_btn">
-              <span class="tableactive">投注排行</span>
-              <span>中奖排行</span>
+              <span [ngClass]="{'tableactive': tableactive==0}" (click)="tableactive=0">投注排行</span>
+              <span [ngClass]="{'tableactive': tableactive==1}" (click)="tableactive=1">中奖排行</span>
             </div>
-            <div class="flex-c tab_info">
+            <div class="flex-c tab_info" *ngIf="tableactive==0">
               <div class="flex-r info_tr" *ngFor="let item of touzhu_list">
                 <i></i>
                 <div class="flex-r info-text">
                   <span>QWE******</span>
                   <span>
                     <span style="color:#FEA202;">12345678</span>元</span>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="flex-c tab_info" *ngIf="tableactive==1">
+              <div class="flex-r info_tr" *ngFor="let item of touzhu_list">
+                <i></i>
+                <div class="flex-r info-text">
+                  <span>CZH+++++</span>
+                  <span>
+                    <span style="color:#FEA202;">123456</span>元</span>
                 </div>
               </div>
 
@@ -185,7 +163,6 @@
             <div>
               <img src="../images/special_03.jpg" alt="">
             </div>
-
           </div>
           <div class="r-icon">
             <i></i>
@@ -196,50 +173,8 @@
 
     </div>
   </div>
-  <div id="footer">
-    <div class="flex-c foot">
-      <div class="flex-r foottop">
-        <div class="flex-r  foottopitem" *ngFor="let item of foottopitem_list">
-          <i [style.background-position-x.px]="item.x"></i>
-          <div class="flex-c" style="padding:0 8px;">
-            <span>{{item.zh}}</span>
-            <span>{{item.en}}</span>
-
-          </div>
-
-        </div>
-
-      </div>
-      <div class="flex-r footmid">
-        <div class="footbank">
-          <p>银行卡类型 Bank card type</p>
-          <img src="../images/banks.png" alt="">
-        </div>
-        <div class="foothelp">
-          <p>使用帮助 Guide</p>
-          <div class="flex-r">
-            <div class="flex-r foothelpitem" *ngFor="let item of foothelp_list">
-              <i></i>
-              <span>{{item.text}}</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class="footbottom">
-        <p class="font14">
-          <a href="javascript:;">首页</a>&nbsp;|&nbsp;
-          <a href="javascript:;">用户中心</a>&nbsp;|&nbsp;
-          <a href="javascript:;">彩票大厅</a>&nbsp;|&nbsp;
-          <a href="javascript:;">优惠活动</a>&nbsp;|&nbsp;
-          <a href="javascript:;">平台公告</a>&nbsp;|&nbsp;
-          <a href="javascript:;">彩种信息</a>&nbsp;|&nbsp;
-          <a href="javascript:;">手机下注</a>
-          <p class="font12">豪彩娱乐版权所有 Copyright © 2018 HaoCaiYuLe Co. Group All Rights Reser</p>
-      </div>
-
-    </div>
->>>>>>> e56c7ffdc8c8974d6f691c0eba24dfba123b61ee
-
-  </div>
+<<<<<<< HEAD
+=======
+  <app-footer></app-footer>
 </div>
+>>>>>>> chenzhenguo

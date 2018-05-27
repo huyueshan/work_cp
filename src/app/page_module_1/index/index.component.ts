@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute, Params } from "@angular/router";
 
 @Component({
   selector: "app-index",
@@ -6,11 +7,10 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./index.component.scss"]
 })
 export class IndexComponent implements OnInit {
-<<<<<<< HEAD
-  public url = "background:url('../images/nav_01.png') 0 -104px;";
-=======
-  public tabactive = 0;
->>>>>>> e56c7ffdc8c8974d6f691c0eba24dfba123b61ee
+  public tabactive = 0; // 头部导航是否鼠标经过
+  public tableactive = 0; // 底部大图标链接位置是否鼠标经过
+  // 头部左边导航数据
+
   public navdatal = [
     {
       text: "首页",
@@ -28,7 +28,7 @@ export class IndexComponent implements OnInit {
       text: "用户中心",
       bgpositiony: "-208",
       isover: false,
-      link: ""
+      link: "/usercenter"
     },
     {
       text: "优惠活动",
@@ -37,6 +37,7 @@ export class IndexComponent implements OnInit {
       link: ""
     }
   ];
+  // 头部右边导航数据
   public navdatar = [
     {
       text: "平台公告",
@@ -63,175 +64,147 @@ export class IndexComponent implements OnInit {
       link: ""
     }
   ];
-<<<<<<< HEAD
 
-  constructor() {}
+  // 中间内容取tab数据
 
-  ngOnInit() {}
-=======
   public mdtabdata = [
     {
-      text:'热门游戏',
-      link:''
+      text: "热门游戏",
+      link: ""
     },
     {
-      text:'移动端下载',
-      link:''
+      text: "移动端下载",
+      link: ""
     },
     {
-      text:'优惠活动',
-      link:''
-    },
+      text: "优惠活动",
+      link: ""
+    }
   ];
+  // 热门游戏彩种球数据
   public ball_list = [
     {
-      url:'url("../images/ball_01.png")',
-      x: -346,
-      y: -10,
-      left:'0'
-    },
-    {
-      url:'url("../images/ball_02.png")',
-      x: -346,
-      y: -134,
-      left:'120'
-    },
-    {
-      url:'url("../images/ball_03.png")',
-      x: -10,
-      y: -258,
-      left:'240'
-    },
-    {
-      url:'url("../images/ball_04.png")',
-      x: -10,
-      y: -258,
-      left:'360'
-    },
-    {
-      url:'url("../images/ball_05.png")',
-      x: -10,
-      y: -258,
-      left:'480'
-    },
-    {
-      url:'url("../images/ball_06.png")',
+      url: 'url("../images/ball_04.png")',
       x: -10,
       y: -10,
-      left:'600'
+      left: "-240"
     },
     {
-      url:'url("../images/ball_07.png")',
+      url: 'url("../images/ball_05.png")',
       x: -122,
       y: -134,
-      left:'720'
+      left: "-120"
     },
     {
-      url:'url("../images/ball_08.png")',
+      url: 'url("../images/ball_01.png")',
+      x: -346,
+      y: -10,
+      left: "0"
+    },
+    {
+      url: 'url("../images/ball_02.png")',
+      x: -346,
+      y: -134,
+      left: "120"
+    },
+    {
+      url: 'url("../images/ball_03.png")',
+      x: -10,
+      y: -258,
+      left: "240"
+    },
+    {
+      url: 'url("../images/ball_04.png")',
+      x: -10,
+      y: -258,
+      left: "360"
+    },
+    {
+      url: 'url("../images/ball_05.png")',
+      x: -10,
+      y: -258,
+      left: "480"
+    },
+    {
+      url: 'url("../images/ball_06.png")',
+      x: -10,
+      y: -10,
+      left: "600"
+    },
+    {
+      url: 'url("../images/ball_07.png")',
+      x: -122,
+      y: -134,
+      left: "720"
+    },
+    {
+      url: 'url("../images/ball_08.png")',
       x: -234,
       y: -10,
-      left:'840'
+      left: "840"
     },
     {
-      url:'url("../images/ball_09.png")',
+      url: 'url("../images/ball_09.png")',
       x: -10,
       y: -134,
-      left:'960'
+      left: "960"
     },
     {
-      url:'url("../images/ball_08.png")',
+      url: 'url("../images/ball_08.png")',
       x: -234,
-      y: -10,
-      left:'840'
+      y: -9,
+      left: "1080"
     },
     {
-      url:'url("../images/ball_09.png")',
+      url: 'url("../images/ball_09.png")',
       x: -10,
       y: -134,
-      left:'960'
-    },
+      left: "1200"
+    }
   ];
-  public touzhu_list= [,,,,,,,,,,,];
-  public foottopitem_list=[
+  // 热门游戏内容区数据
+  public hotcard_list= [
     {
-      x:'-1',
-      zh:'如何存款',
-      en:'HOW TO DEPOSIT',
-      link:''
+      src : require("../images/shishicai.jpg"),
+      title: '时时彩',
+      link: '',
     },
     {
-      x:'-254',
-      zh:'如何取款',
-      en:'WITHDRAW MONEY',
-      link:''
+      src : require("../images/shifencai.jpg"),
+      title: '分时彩',
+      link: '',
     },
     {
-      x:'-506',
-      zh:'代理加盟',
-      en:'AGENT TO JOIN',
-      link:''
+      src : require("../images/VR_cai.jpg"),
+      title: 'VR彩',
+      link: '',
     },
-    {
-      x:'-759',
-      zh:'手机投注',
-      en:'MOBILEBETTING',
-      link:''
-    },
+    
+  ];
+  // 投注排行和中奖排行数据
+  public touzhu_list = [, , , , , , , , , , ,];
 
-  ];
-  public foothelp_list=[
-    {
-      text:'存款帮助',
-      link:''
-    },
-    {
-      text:'联系我们',
-      link:''
-    },
-    {
-      text:'取款帮助',
-      link:''
-    },
-    {
-      text:'常见问题',
-      link:''
-    },
+  constructor(private route: ActivatedRoute,
+    private router: Router) {}
 
-  ];
-  constructor() {}
-  
-  ngOnInit() {
-  }
-  mdtabclick(i){
+  ngOnInit() {}
+  // 中间内容区tab切换事件
+  mdtabclick(i) {
     this.tabactive = i;
   }
->>>>>>> e56c7ffdc8c8974d6f691c0eba24dfba123b61ee
+   // 头部左右导航鼠标经过事件
   navmouseenter(i, t) {
     if (t == "left") {
       this.navdatal[i].isover = true;
+    }else{
+      this.navdatar[i].isover = true;
     }
-    this.navdatar[i].isover = true;
   }
   navmouseleave(i, t) {
     if (t == "left") {
       this.navdatal[i].isover = false;
+    }else{
+      this.navdatar[i].isover = false;
     }
-    this.navdatar[i].isover = false;
   }
-<<<<<<< HEAD
-=======
-  // todo:热门游戏小球移动效果
-  ballclick(t){
-    console.log('dianjil');
-    let data = this.ball_list;
-    for (let i = 0; i < data.length; i++) {
-      if (t == "left") {
-        data[i].left =''+ (Number(data[i].left)-120);
-      }else{
-        data[i].left =''+ (Number(data[i].left)+120);      }
-      
-    }
-
-  }
->>>>>>> e56c7ffdc8c8974d6f691c0eba24dfba123b61ee
 }
