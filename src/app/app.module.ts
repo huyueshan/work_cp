@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from '../router/router.module';
 import { RouteguardService } from '../router/router.service';
 import { InterceptorService } from '../router/ljq.service';
-// import { LanguageComponent } from './page_module_1/component/language/language.component';
 
 
 if (ENV === 'prod') {

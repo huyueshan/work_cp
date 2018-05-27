@@ -21,7 +21,6 @@ export class SSCofficialComponent implements OnInit {
 		headers: new HttpHeaders({ 'Content-Type': 'application/json;application/x-www-form-urlencodeed; charset=utf-8'})  
 	};
 	ngOnInit(){
-		console.log('1231');
 		this.loadpage = userModel.platform;
 		Base.DOM.title('用户登录')
 	}

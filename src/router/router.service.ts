@@ -1,17 +1,24 @@
-import { Injectable } from '@angular/core';
-import { Resolve, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, NavigationStart } from '@angular/router';
-import { RouterModule, Routes, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import {
+  Resolve,
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  NavigationStart
+} from "@angular/router";
+import { RouterModule, Routes, Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
 
-import userModel from '../status/user.model';
-import { Base } from '../factory/base.model';
-import { Api } from '../factory/api.model';
+import userModel from "../status/user.model";
+import { Base } from "../factory/base.model";
+import { Api } from "../factory/api.model";
 
-import { setCookie,getCookie,delCookie } from '../factory/utils';
-import languagepackage from '../status/language';
+import { setCookie, getCookie, delCookie } from "../factory/utils";
+import languagepackage from "../status/language";
 
-import Sstore from '../factory/Sstore';
+import Sstore from "../factory/Sstore";
 @Injectable()
+
 export class RouteguardService implements CanActivate{
 	constructor(private router: Router, private httpClient : HttpClient) { }
 	private isLoaded = false;

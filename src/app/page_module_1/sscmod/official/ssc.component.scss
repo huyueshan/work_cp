@@ -165,8 +165,11 @@ $yellow:#fe8f00;
 	float:left;
 	text-align:center;
 	height:200px;
-	img{
+	.img{
 		height:200px;
+		margin:0 auto;
+		background:url(../../images/banner_10.jpg) center no-repeat;
+		background-size:cover;
 	}
 }
 .conbox{
@@ -471,6 +474,176 @@ $yellow:#fe8f00;
 							float:left;
 						}
 					}
+				}
+				.chooseno{
+					width:100%;
+					height:40px;
+					float:left;
+					padding-left:40px;
+					background:#fff;
+					padding-right:30px;
+					.helpbox{
+						width:100%;
+						line-height:40px;
+						label{
+							float:left;
+							margin-right:15px;
+							color:#333;
+							input[type=checkbox]{
+								border:1px solid $yellow;
+								color:$yellow;
+								width:18px;
+								height:18px;
+								float:left;
+								margin-top: 12px;
+								margin-right:3px;
+							}
+						}
+						.tip{
+							float:left;
+							position:relative;
+							padding-left:13px;
+							i{
+								width: 8px; height: 17px;
+								background: url('../../images/sscsprites.png') -141px -72px;
+								position:absolute;
+								top:11px;
+								left:0px;
+							}
+						}
+						.example{
+							float:right;
+							position:relative;
+							padding-left:13px;
+							margin-left:20px;
+							.i1{
+								width: 8px; height: 17px;
+								background: url('../../images/sscsprites.png') -141px -72px;
+								position:absolute;
+								top:11px;
+								left:0px;
+								cursor:pointer;
+							}
+							.i2{
+								width: 16px; height: 18px;
+								background: url('../../images/sscsprites.png') -141px -18px;
+								position:absolute;
+								top:11px;
+								left:0px;
+								cursor:pointer;
+							}
+						}
+					}
+				}
+				.chooselist{
+					width:100%;
+					float:left;
+					padding-left:40px;
+					background:#fff;
+					padding-right:30px;
+					.leftnum{
+						width:540px;
+						float:left;
+						padding:10px 0px;
+						.numcon{
+							width:100%;
+							float:left;
+							.name{
+								float:left;
+								width: 65px; height: 26px;
+								background: url('../../images/sscsprites.png') -0 -53px;
+								color:#333;
+								font-size:12px;
+								text-align:center;
+								line-height:24px;
+								margin-top:6px;
+							}
+							.numlist{
+								float:left;
+								margin-left:15px;
+								li{
+									float:left;
+									width: 38px; height: 38px;
+									background: url('../../images/sscsprites.png') -103px -0;
+									text-align:center;
+									line-height:36px;
+									font-size:16px;
+									color:#333;
+									margin-right:5px;
+									cursor:pointer;
+								}
+								:hover{
+									width: 38px; height: 38px;
+									background: url('../../images/sscsprites.png') -103px -38px;
+									color:#fff;
+								}
+								.active{
+									width: 38px; height: 38px;
+									background: url('../../images/sscsprites.png') -103px -38px;
+									color:#fff;
+								}
+							}
+						}
+						.choosecheck{
+							width:100%;
+							float:left;
+							.name{
+								float:left;
+								width: 65px; height: 15px;
+								color:#333;
+								font-size:12px;
+								text-align:center;
+								line-height:15px;
+							}
+							.numlist{
+								float:left;
+								margin-left:15px;
+								li{
+									float:left;
+									width: 38px; height: 15px;
+									text-align:center;
+									font-size:12px;
+									color:#333;
+									margin-right:5px;
+								}
+								.active{
+									color:$yellow;
+								}
+							}
+						}
+					}
+					.numright{
+						float:right;
+						padding:10px 0px;
+						li{
+							float:left;
+							width: 38px; height: 38px;
+							background: url('../../images/sscsprites.png') -103px -0;
+							text-align:center;
+							line-height:34px;
+							font-size:14px;
+							color:#333;
+							margin-right:5px;
+							padding-right:0px;
+							cursor:pointer;
+						}
+						:last-child{
+							margin-right:0px;
+						}
+						:hover{
+							width: 38px; height: 38px;
+							background: url('../../images/sscsprites.png') -103px -38px;
+							color:#fff;
+						}
+						.active{
+							width: 38px; height: 38px;
+							background: url('../../images/sscsprites.png') -103px -38px;
+							color:#fff;
+						}
+					}
+				}
+				.elsebg{
+					background:#eeeeee;
 				}
 			}
 			.sscright{

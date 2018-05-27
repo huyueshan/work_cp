@@ -3,20 +3,22 @@ import { SharkModule } from '@ntesmail/shark-angular2';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common'
 /***********components***************/
-import { HomeComponent } from './home.component';
+import { IndexComponent } from './index.component';
 import { LanguageComponent } from '../component/language/language.component';
+
+// import { LanguageComponent } from '../component/language/language.component';
 
 import { HeadComponent } from '../component/head.component';
 
 
 const routes = [
-    { path: '', component: HomeComponent },
+    { path: '', component: IndexComponent },
 ];
 
 @NgModule({
     imports: [
         SharkModule, RouterModule.forChild(routes),CommonModule
     ],
-    declarations: [HomeComponent,HeadComponent,LanguageComponent]
+    declarations: [IndexComponent]
 })
-export class HomeModule { }
+export class IndexModule { }

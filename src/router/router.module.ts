@@ -24,6 +24,11 @@ const appRoutes: Routes = [
 		canActivate: [RouteguardService]
     }, 
 	{
+        path: 'sscmod',
+		loadChildren: '../app/page_module_1/sscmod/official/ssc.module#SSCofficialModule',
+		canActivate: [RouteguardService]
+    }, 
+	{
         path: 'detail',
         loadChildren: '../app/page_module_1/detail/detail.module#DetailModule',
 		canActivate: [RouteguardService]
@@ -36,6 +41,11 @@ const appRoutes: Routes = [
 	{
         path: 'register',
 		loadChildren: '../app/page_module_1/register/register.module#RegisterModule',
+		canActivate: [RouteguardService]
+    },
+	{
+        path: 'index',
+		loadChildren: '../app/page_module_1/index/index.module#IndexModule',
 		canActivate: [RouteguardService]
     },
 	{
