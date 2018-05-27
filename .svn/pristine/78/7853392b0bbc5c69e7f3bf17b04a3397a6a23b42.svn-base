@@ -1,0 +1,659 @@
+@charset "UTF-8";
+@import '../../images/common';
+html,body {height:100%;}
+$yellow:#fe8f00;
+.nav{
+	width:100%;
+	position:relative;
+	float:left;
+}
+
+.topbox{
+	width:1200px;
+	margin:0 auto;
+	overflow:hidden;
+	height:40px;
+	.topleft{
+		float:left;
+		overflow:hidden;
+		height:40px;
+		.time{
+			float:left;
+			height:15px;
+			line-height:15px;
+			border-right:1px solid #ffffff;
+			padding-right:10px;
+			color:#fff;
+			margin-top:12px;
+			font-size:14px;
+		}
+		.language{
+			margin-top:9px;
+			float:left;
+			margin-left:10px;
+			cursor:pointer;
+			img{
+				height:16px;
+			}
+		}
+	}
+	.topright{
+		float:right;
+		overflow:hidden;
+		height:40px;
+		.userinfo{
+			float:left;
+			padding:10px;
+			font-size:14px;
+			color:#fff;
+			.title{
+				float:left;
+			}
+			.getinfo{
+				float:left;
+				color:#fff;
+			}
+			.mr20{
+				margin-right:20px;
+			}
+			.ml10{
+				margin-left:20px;
+			}
+			.money{
+				float:left;
+				color:$yellow;
+			}
+			.titlerel{
+				float:left;
+				margin-left:10px;
+				margin-top:3px;
+				cursor:pointer;
+			}
+		}
+		.centerlist{
+			float:left; 
+			height:40px;
+			padding:12px 0px;
+			margin-left:20px;
+			li{
+				float:left;
+				color:#fff;
+				list-style:none;
+				padding:0px 10px;
+				height:14px;
+				line-height:14px;
+				border-right:1px solid #fff;
+				a{
+					color:#fff;
+					cursor:pointer;
+					:hover{
+						color:$yellow;
+					}
+				}
+			}
+			:last-child{
+				padding-right:0px;
+				border-right:none;
+			}
+			
+		}
+	}
+}
+
+.headbox{
+	width:1200px;
+	margin:0 auto;
+	overflow:hidden;
+	height:80px;
+	padding:10px 0px;
+	.headleft{
+		float:left;
+		overflow:hidden;
+		height:100%;
+		width:370px;
+		.logo{
+			height:60px;
+		}
+	}
+	.headright{
+		float:right;
+		overflow:hidden;
+		height:100%;
+		width:830px;
+		.navtab{
+			float:right; 
+			padding:12px 0px;
+			margin-left:20px;
+			li{
+				float:left;
+				color:#fff;
+				list-style:none;
+				margin-right:45px;
+				.pc{
+					font-size:16px;
+					text-align:center;
+					margin-bottom:0px;
+					font-weight:bold;
+				}
+				.pe{
+					font-size:12px;
+					text-align:center;
+					width:100%;
+					margin-bottom:0px;
+				}
+				a{
+					color:#333;
+					cursor:pointer;
+					text-decoration:none;
+					:hover{
+						color:$yellow;
+					}
+				}
+				:hover{
+					color:$yellow;
+				}
+			}
+			:last-child{
+				margin-right:0px;
+			}
+			
+		}
+	}
+}
+.banner{
+	width:100%;
+	float:left;
+	text-align:center;
+	height:200px;
+	.img{
+		height:200px;
+		margin:0 auto;
+		background:url(../../images/banner_10.jpg) center no-repeat;
+		background-size:cover;
+	}
+}
+.conbox{
+	width:100%;
+	float:left;
+	overflow:hidden;
+	background:url("../../images/bg_02.jpg") center no-repeat;
+	background-size: cover;
+	.content{
+		width:1200px;
+		position:relative;
+		margin:0 auto;
+		overflow:hidden;
+		.gamenav{
+			width:100%;
+			float:left;
+			position:relative;
+			margin-top:30px;
+			.alltype{
+				width:240px;
+				height:100px;
+				float:left;
+				border-radius:4px;
+				overflow:hidden;
+				cursor:pointer;
+				.fltitle{
+					background:$yellow;
+					width:40px;
+					color:#fff;
+					font-size:14px;
+					text-align:center;
+					line-height:20px;
+					height:100px;
+					float:left;
+					padding:10px 10px;
+				}
+				.frimg{
+					background:#333333;
+					width:200px;
+					text-align:center;
+					float:left;
+					line-height:100px;
+					img{
+						height:83px;
+					}
+				}
+			}
+			.gametime{
+				width:340px;
+				height:100px;
+				float:left;
+				border-radius:4px;
+				overflow:hidden;
+				padding:25px;
+				background:#333333;
+				margin-left:20px;
+				.fltitle{
+					width:40px;
+					color:#fff;
+					font-size:12px;
+					float:left;
+					width:125px;
+					height:100%;
+					p{
+						width:100%;
+						color:#fff;
+						margin:0;
+						line-height:20px;
+						span{
+							color:$yellow;
+							padding:0 3px;
+						}
+					}
+				}
+				.frtime{
+					text-align:center;
+					float:right;
+					margin:0px;
+					padding:0px;
+					li{
+						float:left;
+						list-style:none;
+						width: 50px; height: 50px;
+						background: url('../../images/sscsprites.png') -53px -0;
+						line-height:50px;
+						text-align:center;
+						color:#fff;
+						font-size:16px;
+					}
+				}
+			}
+			.gameresult{
+				width:580px;
+				height:100px;
+				float:right;
+				border-radius:4px;
+				padding:25px;
+				background:#333333;
+				.fltitle{
+					width:40px;
+					color:#fff;
+					font-size:12px;
+					float:left;
+					width:125px;
+					height:100%;
+					p{
+						width:100%;
+						color:#fff;
+						margin:0;
+						line-height:20px;
+						span{
+							color:$yellow;
+							padding:0 3px;
+						}
+					}
+				}
+				.frnumber{
+					float:left;
+					margin:0px;
+					padding:0px;
+					li{
+						float:left;
+						list-style:none;
+						width: 53px; height: 53px;
+						background: url('../../images/sscsprites.png') -0 -0;
+						line-height:50px;
+						text-align:center;
+						color:#fff;
+						font-size:22px;
+						margin-right:10px
+					}
+				}
+				.line{
+					float:left;
+					width: 2px; height: 52px;
+					background: url('../../images/sscsprites.png') -161px -0;
+					margin-left:10px;
+				}
+				.currresult{
+					width:40px;
+					color:#fff;
+					font-size:12px;
+					float:right;
+					width:60px;
+					height:100%;
+					.pt{
+						width:100%;
+						color:$yellow;
+						font-size:14px;
+						margin:0;
+						text-align:center;
+						margin-top:5px;
+					}
+					.pimg{
+						text-align:center;
+						width:100%;
+						height:15px;
+						margin:0;
+						margin-top:5px;
+						span{
+							display: inline-block;
+							width: 14px; height: 15px;
+							background: url('../../images/sscsprites.png') -141px -36px;
+						}
+					}
+				}
+			}
+		}
+		.sscorder{
+			width:100%;
+			float:left;
+			position:relative;
+			margin-top:20px;
+			overflow:hidden;
+			.sscleft{
+				width:900px;
+				float:left;
+				overflow:hidden;
+				border-radius:4px;
+				.tabbox{
+					height:50px;
+					width:100%;
+					float:left;
+					background:#333;
+					.pointl{
+						float:left;
+						width:50px;
+						height:50px;
+						line-height:50px;
+						text-align:center;
+						padding-top: 5px;
+						cursor:pointer;
+						i{
+							width: 20px; height: 20px;
+							background: url('../../images/sscsprites.png') -120px -111px;
+						}
+					}
+					.typetab{
+						float:left;
+						max-width:690px;
+						overflow:hidden;
+						height:50px;
+						li{
+							height:50px;
+							float:left;
+							font-size:14px;
+							color:#fff;
+							padding:0px 10px;
+							line-height:50px;
+							cursor:pointer;
+						}
+						.active{
+							background:#3d3d3d;
+						}
+					}
+					.pointr{
+						float:left;
+						width:50px;
+						height:50px;
+						line-height:50px;
+						text-align:center;
+						padding-top: 5px;
+						cursor:pointer;
+						i{
+							width: 20px; height: 20px;
+							background: url('../../images/sscsprites.png') -100px -111px;
+						}
+					}
+					.totaltype{
+						height:25px;
+						float:right;
+						border-radius:2px;
+						border:1px solid #fff;
+						overflow:hidden;
+						margin-right:20px;
+						margin-top:13px;
+						li{
+							float:left;
+							padding:0px 10px;
+							line-height:23px;
+							cursor:pointer;
+							color:#fff;
+							a{
+								color:#fff;
+								text-decoration: none;
+							}
+						}
+						.active{
+							color:#333;
+							background:#fff;
+							a{
+								color:#333;
+								text-decoration: none;
+							}
+						}
+					}
+				}
+				.tabcon{
+					width:100%;
+					float:left;
+					background:#3d3d3d;
+					overflow:hidden;
+					padding:20px 40px;
+					.tabshow{
+						width:100%;
+						float:left;
+						.navcon{
+							width:100%;
+							float:left;	
+							margin-bottom:10px;
+							.labtit{
+								color:#fff;
+								float:left;
+								width:80px;
+								height:30px;
+								line-height:30px;
+								font-size:14px;
+							}
+							li{
+								cursor:pointer;
+								width:80px;
+								height:30px;
+								line-height:30px;
+								text-align:center;
+								font-size:14px;
+								color:#fff;
+								float:left;
+								background:#525151;
+								margin-left:10px;
+								border-radius:4px;
+							}
+							.active{
+								background:$yellow;
+								color:#333;
+							}
+						}
+						.tip{
+							font-size:12px;
+							color:#fff;
+							width:100%;
+							margin-top:10px;
+							float:left;
+						}
+					}
+				}
+				.chooseno{
+					width:100%;
+					height:40px;
+					float:left;
+					padding-left:40px;
+					background:#fff;
+					padding-right:30px;
+					.helpbox{
+						width:100%;
+						line-height:40px;
+						label{
+							float:left;
+							margin-right:15px;
+							color:#333;
+							input[type=checkbox]{
+								border:1px solid $yellow;
+								color:$yellow;
+								width:18px;
+								height:18px;
+								float:left;
+								margin-top: 12px;
+								margin-right:3px;
+							}
+						}
+						.tip{
+							float:left;
+							position:relative;
+							padding-left:13px;
+							i{
+								width: 8px; height: 17px;
+								background: url('../../images/sscsprites.png') -141px -72px;
+								position:absolute;
+								top:11px;
+								left:0px;
+							}
+						}
+						.example{
+							float:right;
+							position:relative;
+							padding-left:13px;
+							margin-left:20px;
+							.i1{
+								width: 8px; height: 17px;
+								background: url('../../images/sscsprites.png') -141px -72px;
+								position:absolute;
+								top:11px;
+								left:0px;
+								cursor:pointer;
+							}
+							.i2{
+								width: 16px; height: 18px;
+								background: url('../../images/sscsprites.png') -141px -18px;
+								position:absolute;
+								top:11px;
+								left:0px;
+								cursor:pointer;
+							}
+						}
+					}
+				}
+				.chooselist{
+					width:100%;
+					float:left;
+					padding-left:40px;
+					background:#fff;
+					padding-right:30px;
+					.leftnum{
+						width:540px;
+						float:left;
+						padding:10px 0px;
+						.numcon{
+							width:100%;
+							float:left;
+							.name{
+								float:left;
+								width: 65px; height: 26px;
+								background: url('../../images/sscsprites.png') -0 -53px;
+								color:#333;
+								font-size:12px;
+								text-align:center;
+								line-height:24px;
+								margin-top:6px;
+							}
+							.numlist{
+								float:left;
+								margin-left:15px;
+								li{
+									float:left;
+									width: 38px; height: 38px;
+									background: url('../../images/sscsprites.png') -103px -0;
+									text-align:center;
+									line-height:36px;
+									font-size:16px;
+									color:#333;
+									margin-right:5px;
+									cursor:pointer;
+								}
+								:hover{
+									width: 38px; height: 38px;
+									background: url('../../images/sscsprites.png') -103px -38px;
+									color:#fff;
+								}
+								.active{
+									width: 38px; height: 38px;
+									background: url('../../images/sscsprites.png') -103px -38px;
+									color:#fff;
+								}
+							}
+						}
+						.choosecheck{
+							width:100%;
+							float:left;
+							.name{
+								float:left;
+								width: 65px; height: 15px;
+								color:#333;
+								font-size:12px;
+								text-align:center;
+								line-height:15px;
+							}
+							.numlist{
+								float:left;
+								margin-left:15px;
+								li{
+									float:left;
+									width: 38px; height: 15px;
+									text-align:center;
+									font-size:12px;
+									color:#333;
+									margin-right:5px;
+								}
+								.active{
+									color:$yellow;
+								}
+							}
+						}
+					}
+					.numright{
+						float:right;
+						padding:10px 0px;
+						li{
+							float:left;
+							width: 38px; height: 38px;
+							background: url('../../images/sscsprites.png') -103px -0;
+							text-align:center;
+							line-height:34px;
+							font-size:14px;
+							color:#333;
+							margin-right:5px;
+							padding-right:0px;
+							cursor:pointer;
+						}
+						:last-child{
+							margin-right:0px;
+						}
+						:hover{
+							width: 38px; height: 38px;
+							background: url('../../images/sscsprites.png') -103px -38px;
+							color:#fff;
+						}
+						.active{
+							width: 38px; height: 38px;
+							background: url('../../images/sscsprites.png') -103px -38px;
+							color:#fff;
+						}
+					}
+				}
+				.elsebg{
+					background:#eeeeee;
+				}
+			}
+			.sscright{
+				width:280px;
+				float:right;
+				overflow:hidden;
+				border-radius:4px;
+			}
+		}
+	}
+}
+
+
