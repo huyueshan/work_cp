@@ -1,0 +1,84 @@
+.flex-r {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+.flex-c {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.container {
+  width: 950px;
+  padding: 0;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.querycontent {
+  width: 100%;
+  height: 50px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.querybtn {
+  width: 70px;
+  height: 30px;
+  line-height: 28px;
+  padding: 0;
+  text-align: center;
+  background-color: #fe8f00;
+  color: white;
+  outline: none;
+}
+#wrap {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  outline: none;
+  color: #fe8f00;
+  background-color: white;
+}
+.tablebox {
+  width: 100%;
+  padding: 10px 0 0;
+}
+.tablewrap {
+  width: 100%;
+  overflow-x: scroll;
+  border: 1px solid #ccc;
+}
+#table{
+    border: 1px solid #ccc;
+    width:1300px;
+}
+#table th{
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+.page{
+    align-self: center;
+}
+.page .pagination > li > a, .page .pagination > li > span{
+    color: black;
+}
+
+.tablebox .pagination > .active > a{
+    color: black;
+    background-color: white;
+
+}
+
+

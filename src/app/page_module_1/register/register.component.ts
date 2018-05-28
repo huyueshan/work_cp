@@ -220,7 +220,7 @@ export class RegisterComponent implements OnInit {
       this.formdata.password1
     }&phone=${this.formdata.phone}`;
     alert(data);
-    this.router.navigate(["/home"]);
+    this.router.navigate(["/index"]);
     return false;
   }
 }
