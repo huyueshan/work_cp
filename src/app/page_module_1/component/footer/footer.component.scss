@@ -32,32 +32,37 @@
   padding: 16px 160px;
   border-bottom: 1px solid #0d0d19;
 }
+.foottop{
+  padding: 16px 120px;
+}
 .footmid {
   height: 118px;
   border-top: 1px solid #20203b;
   justify-content: flex-start;
 }
 .foottopitem {
-  width: 238px;
+  width: 240px;
   height: 64px;
-  color: white;
+  text-decoration: none;
+  color: #faae30;
   text-align: center;
   justify-content: center;
   cursor: pointer;
 }
-.foottopitem.itemhoves {
-  color: #faae30;
-}
 .foottopitem i {
-  width: 60px;
-  height: 60px;
-  background: url("../../images/bottomicon.png");
+  width: 64px;
+  height: 64px;
+  background: url("../../images/bottomicon.png") center no-repeat;
   background-position-x: -1px;
-  background-position-y: -1px;
+  background-position-y: -62px;
+  z-index: 9;
 }
-.foottopitem i.hoves {
-  background-position-y: -63px;
+.foottopitem span.enginfo{
+  font-size: 8px;
 }
+// .foottopitem i.hoves {
+//   background-position-y: -63px;
+// }
 .footbank,
 .foothelp {
   height: 90px;
@@ -78,7 +83,7 @@
   background: url("../../images/index_1.png") -140px -72px;
 }
 .foothelpitem {
-  width: 80px;
+  width: 100px;
 }
 .foothelpitem span {
   cursor: pointer;
@@ -101,9 +106,15 @@
 .footbottom a:hover {
   color: #faae30;
 }
+.font10 {
+  font-size: 10px;
+}
 .font12 {
   font-size: 12px;
 }
 .font14 {
   font-size: 14px;
+}
+.font16 {
+  font-size: 16px;
 }

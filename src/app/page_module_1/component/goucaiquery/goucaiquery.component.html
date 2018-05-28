@@ -1,0 +1,182 @@
+<div class="flex-c container">
+  <div class="flex-r querycontent">
+    <span>时间：
+      <select id="starttime" name="starttime" [(ngModel)]="querydata.starttime">
+        <option value="全部" selected>全部</option>
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+      </select>
+      至
+      <select id="endtime" name="endtime" [(ngModel)]="querydata.endtime">
+        <option value="全部" selected>全部</option>
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+      </select>
+    </span>
+    <span>彩种：
+
+      <select id="caizhong" name="caizhong" [(ngModel)]="querydata.caizhong">
+        <option value="全部" selected>全部</option>
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+      </select>
+    </span>
+    <span>玩法：
+
+      <select id="playtype" name="playtype" [(ngModel)]="querydata.playtype">
+        <option value="全部" selected>全部</option>
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+      </select>
+    </span>
+    <span>状态：
+
+      <select id="status" name="status" [(ngModel)]="querydata.status">
+        <option value="全部" selected>全部</option>
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+      </select>
+    </span>
+    <span class="flex-r">
+
+      <input type="checkbox" id="wrap" name="wrap" [(ngModel)]="querydata.iswrap" />&nbsp;包含下级
+    </span>
+    <button class="querybtn">查&nbsp;询</button>
+  </div>
+  <div class=" flex-c tablebox">
+    <div class="tablewrap">
+      <table id="table" width="100%" border="1" cellspacing="1" cellpadding="4" bgcolor="#ccc" align="center">
+        <tr class="">
+          <th width="100px">注册编号</th>
+          <th>投注时间</th>
+          <th>用户</th>
+          <th>彩种</th>
+          <th>玩法</th>
+          <th>投注内容</th>
+          <th>投注期号</th>
+          <th>投注金额</th>
+          <th>投注返点</th>
+          <th>奖金</th>
+          <th>开奖号码</th>
+          <th>状态</th>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+
+    </div>
+
+    <div class="page" shark-pager 
+    [currentPage]="pagination.page" 
+    [totalPage]="pagination.totalPage" 
+    [gopage]="pagination.gopage"
+    [hl]="hl"
+    [segmentSize]="pagination.segmentSize"
+    [startFrom]="pagination.startFrom"
+    (onPageChanged)="onPageChanged($event);" 
+>
+</div>
+
+  </div>
+</div>

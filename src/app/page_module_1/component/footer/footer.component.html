@@ -1,16 +1,15 @@
 <div id="footer">
   <div class="flex-c foot">
     <div class="flex-r foottop">
-      <div class="flex-r  foottopitem" *ngFor="let item of foottopitem_list; let i=index" [ngClass]="{'itemhoves': item.isover}"
-        (mouseenter)="footmouseenter(i)" (mouseleave)="footmouseleave(i)">
-        <i [style.background-position-x.px]="item.x" [ngClass]="{'hoves': item.isover}"></i>
-        <div class="flex-c" style="padding:0 8px;">
-          <span>{{item.zh}}</span>
-          <span>{{item.en}}</span>
+      <a class="flex-r  foottopitem" *ngFor="let item of foottopitem_list; let i=index">
+        <i [style.background-position-x.px]="item.x"></i>
+        <div class="flex-c" style="padding-left: 4px">
+          <span class="font16">{{item.zh}}</span>
+          <span class="font10">{{item.en}}</span>
 
         </div>
 
-      </div>
+      </a>
 
     </div>
     <div class="flex-r footmid">

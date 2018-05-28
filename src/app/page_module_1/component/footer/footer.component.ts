@@ -9,29 +9,25 @@ export class FooterComponent implements OnInit {
   // 底部大图链接处数据
   public foottopitem_list = [
     {
-      x: "-1",
-      isover: false,
+      x: "0",
       zh: "如何存款",
       en: "HOW TO DEPOSIT",
       link: ""
     },
     {
       x: "-254",
-      isover: false,
       zh: "如何取款",
       en: "WITHDRAW MONEY",
       link: ""
     },
     {
-      x: "-506",
-      isover: false,
+      x: "-505",
       zh: "代理加盟",
       en: "AGENT TO JOIN",
       link: ""
     },
     {
       x: "-759",
-      isover: false,
       zh: "手机投注",
       en: "MOBILEBETTING",
       link: ""
@@ -61,11 +57,11 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
   }
    // 底部大图标链接处鼠标经过事件
-   footmouseenter(i) {
-    this.foottopitem_list[i].isover = true;
-  }
-  footmouseleave(i) {
-    this.foottopitem_list[i].isover = false;
-  }
+  //  footmouseenter(i) {
+  //   this.foottopitem_list[i].isover = true;
+  // }
+  // footmouseleave(i) {
+  //   this.foottopitem_list[i].isover = false;
+  // }
 
 }
