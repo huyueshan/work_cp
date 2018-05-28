@@ -10,7 +10,6 @@ export class IndexComponent implements OnInit {
   public tabactive = 0; // 头部导航是否鼠标经过
   public tableactive = 0; // 底部大图标链接位置是否鼠标经过
   // 头部左边导航数据
-
   public navdatal = [
     {
       text: "首页",
@@ -64,9 +63,7 @@ export class IndexComponent implements OnInit {
       link: ""
     }
   ];
-
   // 中间内容取tab数据
-
   public mdtabdata = [
     {
       text: "热门游戏",
@@ -206,5 +203,33 @@ export class IndexComponent implements OnInit {
     }else{
       this.navdatar[i].isover = false;
     }
+  }
+  // todo:热门游戏小球移动效果
+  ballclick(t) {
+    let data = this.ball_list;
+    if(t == "left"){
+      if (Number(data[0].left) < -600) {
+        return;
+      } else {
+        for (let i = 0; i < data.length; i++) {
+            data[i].left = "" + (Number(data[i].left) - 120);
+          }
+        }
+    }else{
+      if(Number(data[data.length - 1].left) > 1320){
+        return;
+      } else{
+        for (let i = 0; i < data.length; i++) {
+          data[i].left = "" + (Number(data[i].left) + 120);
+        }
+      }
+    }
+      
+  }
+  linkrouter(t){
+    console.log(t);
+    // let e = "/login"
+    this.router.navigate([t]);
+    // this.router.navigate(["/home"]);
   }
 }
