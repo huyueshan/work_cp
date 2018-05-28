@@ -33,14 +33,6 @@ input {
     height: 530px;
 }
 
-#header,
-#contain {
-  position: relative;
-  width: 100%;
-  min-width: 1200px;
-  background-size: cover;
-  border-bottom: 1px solid #44230f;
-}
 #header {
   background: url("../images/index-bg_01.jpg") center no-repeat;
   height: 530px;
@@ -49,6 +41,14 @@ input {
   background: url("../images/index-bg_02.jpg") center no-repeat;
   height: 720px;
   border-bottom: none;
+}
+#header,
+#contain {
+  position: relative;
+  width: 100%;
+  min-width: 1200px;
+  background-size: cover;
+  border-bottom: 1px solid #44230f;
 }
 .head {
   width: 1200px;
@@ -61,7 +61,7 @@ input {
   width: 90px;
   height: 104px;
   text-align: center;
-  padding-top: 62px;
+  padding-top: 60px;
   color: white;
 }
 .sidenavl span {
@@ -193,7 +193,6 @@ input {
 .btn_demo{
     width:86px;
     background-position: -112px 0;
-  padding: 0 90px;
 }
 .accountbox,
 .passbox,
