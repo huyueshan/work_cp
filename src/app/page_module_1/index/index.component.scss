@@ -1,3 +1,4 @@
+
 .flex-r {
   display: flex;
   flex-direction: row;
@@ -11,7 +12,6 @@
   justify-content: space-between;
   align-content: space-between;
 }
-
 input {
   outline: none;
   color: white;
@@ -22,16 +22,17 @@ input {
   margin: 0;
   padding: 0;
 }
-#header,
+
 #contain {
-  position: relative;
-  width: 100%;
-  min-width: 1200px;
-  background-size: cover;
-  // background-position: center center;
-  // background-repeat: no-repeat;
-  border-bottom: 1px solid #44230f;
+    background: url("../images/index-bg_02.jpg");
+    height: 720px;
 }
+#header{
+
+    background: url("../images/index-bg_01.jpg");
+    height: 530px;
+}
+
 #header {
   background: url("../images/index-bg_01.jpg") center no-repeat;
   height: 530px;
@@ -40,6 +41,14 @@ input {
   background: url("../images/index-bg_02.jpg") center no-repeat;
   height: 720px;
   border-bottom: none;
+}
+#header,
+#contain {
+  position: relative;
+  width: 100%;
+  min-width: 1200px;
+  background-size: cover;
+  border-bottom: 1px solid #44230f;
 }
 .head {
   width: 1200px;
@@ -121,6 +130,69 @@ input {
   height: 57px;
   margin: 0 auto;
   background: url(../images/zh-bg_02.png) no-repeat;
+  padding:0 90px;
+}
+.accountbox , .passbox , .secubox{
+    width: 150px;
+    height: 30px;
+    border: 1px solid #555555;
+    border-radius: 3px;
+    background-color:#1C1C1C;
+}
+.secubox{
+    width: 120px;
+    padding-right: 4px;
+}
+#account, #password, #security{
+    width: 140px;
+    height: 28px;
+    line-height: 28px;
+    background-origin: none;
+    background-color:rgba(75, 77, 104, 0) ;
+}
+#password{
+    width: 96px;
+}
+#security{
+    width: 68px;
+}
+.forgetbtn{
+    display: inline-block;
+    width:  40px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #363636;
+    border: none;
+    border-radius: 2px;
+    color: #999999;
+}
+.secuimg{
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: white;
+    border: none;
+    border-radius: 2px;
+}
+.btn_loding, .btn_reg,.btn_demo{
+    height: 36px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    background: url(../images/loding.png);
+    cursor: pointer;
+}
+.btn_loding{
+    width:56px;
+    background-position: 0 0;
+}
+.btn_reg{
+    width:56px;
+    background-position: -56px 0;
+}
+.btn_demo{
+    width:86px;
+    background-position: -112px 0;
   padding: 0 90px;
 }
 .accountbox,
@@ -191,7 +263,6 @@ input {
   width: 86px;
   background-position: -112px 0;
 }
-
 // 中间区域
 
 .cont {
