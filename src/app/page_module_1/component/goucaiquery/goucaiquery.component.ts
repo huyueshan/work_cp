@@ -97,7 +97,7 @@ export class GoucaiqueryComponent implements OnInit {
     }
     this.goucaidata = data;
   }
-  // 设置数据量小于10条时的空表格数据
+  // 设置空数据表格单元行
   setemptydata() {
     let data = {};
     for (let item in userdef.Goucdef) {

@@ -16,6 +16,7 @@ export class UsercenterComponent implements OnInit {
   public usersidedata = [
     {
       title:'投注记录',
+      icon_x:-10,
       isover: false,
       isactive:false,
       items:[
@@ -31,16 +32,17 @@ export class UsercenterComponent implements OnInit {
     },
     {
       title:'报表管理',
+      icon_x:-56,
       isover: false,
       isactive:false,
       items:[
         {
           text:'充值记录',
-          link:'/usercenter/goucaiquery',
+          link:'/usercenter/moneyrecord',
         },
         {
           text:'帐变报表',
-          link:'/usercenter/Zhuihaoquery',
+          link:'/usercenter/acchange',
         },
         {
           text:'个人报表',
@@ -54,6 +56,7 @@ export class UsercenterComponent implements OnInit {
     },
     {
       title:'账户管理',
+      icon_x:-102,
       isover: false,
       isactive:false,
       items:[
@@ -85,6 +88,7 @@ export class UsercenterComponent implements OnInit {
     },
     {
       title:'代理管理',
+      icon_x:-148,
       isover: false,
       isactive:false,
       items:[
@@ -100,6 +104,7 @@ export class UsercenterComponent implements OnInit {
     },
     {
       title:'短信公告',
+      icon_x:-194,
       isover: false,
       isactive:false,
       items:[
@@ -129,6 +134,12 @@ export class UsercenterComponent implements OnInit {
     }else{
       this.currentactive = i;
     }
+  }
+  itemboxenter(i){
+    this.usersidedata[i].isover = true;
+  }
+  itemboxleave(i){
+    this.usersidedata[i].isover = false;
   }
   // 左侧导航栏二级菜单点击事件
   itemclick(f,t,L){

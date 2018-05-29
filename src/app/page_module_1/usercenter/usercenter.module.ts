@@ -8,6 +8,8 @@ import { ComponentsModule } from "../component/components.module";
 import { FormsModule } from "@angular/forms";
 import { GoucaiqueryComponent } from "../component/goucaiquery/goucaiquery.component";
 import { ZhuihaoqueryComponent } from "../component/zhuihaoquery/zhuihaoquery.component";
+import { AccountchangeComponent } from "../component/accountchange/accountchange.component";
+import { MoneyrecordComponent } from "../component/moneyrecord/moneyrecord.component";
 
 /***********components***************/
 import { UsercenterComponent } from "./usercenter.component";
@@ -28,9 +30,19 @@ const routes = [
         component: ZhuihaoqueryComponent
       },
       {
+        path: "moneyrecord",
+
+        component: MoneyrecordComponent
+      },
+      {
+        path: "acchange",
+
+        component: AccountchangeComponent
+      },
+      {
         path: "",
 
-        component: GoucaiqueryComponent
+        component: MoneyrecordComponent
       }
     ]
   }

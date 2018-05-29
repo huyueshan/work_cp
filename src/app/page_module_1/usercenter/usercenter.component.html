@@ -1,7 +1,6 @@
 <div class="flex-c" style="min-height:800px;">
   <div>
     <app-header></app-header>
-
   </div>
   <div class="usercontent flex-r">
     <div class="sidebox">
@@ -10,15 +9,21 @@
           <strong>|</strong>&nbsp;用户中心
         </li>
         <li class="flex-c" *ngFor="let item of usersidedata; let i=index">
-          <div class="flex-r itembox" (click)="itemboxclick(i)" [ngClass]="{'yborder': currentactive == i}">
-            <div>
+          <div class="flex-r itembox" 
+          (click)="itemboxclick(i)" 
+          (mouseenter)="itemboxenter(i)"
+          (mouseleave)="itemboxleave(i)"
+          [ngClass]="{'yborder': currentactive == i}">
+            <div class="flex-r">
               <!-- 图标需更换'h -->
-              <i class="icon-clock-o"></i>
-              <span>{{item.title}}</span>
+              <i 
+              class="sideicon sideiconhoverbg" 
+              [ngClass]="{sideiconhoverbg: item.isover || currentactive == i}"
+              [style.background-position-x.px]="item.icon_x" ></i>
+              <span style="padding-left: 10px;">{{item.title}}</span>
             </div>
             <div>
               <i class="itemboxiconr" [ngClass]="{'iconactive': currentactive == i}"> &#8250; </i>
-
             </div>
           </div>
           <ng-container *ngIf="currentactive == i">
@@ -26,7 +31,6 @@
               {{child.text}}
             </div>
           </ng-container>
-
         </li>
         <li></li>
         <li></li>
