@@ -52,33 +52,37 @@
   overflow-x: scroll;
   border: 1px solid #ccc;
 }
-#table{
-    border: 1px solid #ccc;
-    width:1300px;
+#table {
+  table-layout: fixed;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 1400px;
 }
-#table th{
-    text-align: center;
+#table th,{
+  font-size: 14px;
+  font-weight: bold;
 }
-
-
-
-
-
-
-
-
-
-.page{
-    align-self: center;
-}
-.page .pagination > li > a, .page .pagination > li > span{
-    color: black;
+#table th,
+#table td {
+  text-align: center;
 }
 
-.tablebox .pagination > .active > a{
-    color: black;
-    background-color: white;
+.page {
+  align-self: center;
+}
+.page .pagination > li > a,
+.page .pagination > li > span {
+  color: black;
+}
 
+.tablebox .pagination > .active > a {
+  color: black;
+  background-color: white;
 }
 
 
+.tablewrap .pagination > .active > a, .tablewrap .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus{
+  background-color: red;
+  color:blue;
+
+}

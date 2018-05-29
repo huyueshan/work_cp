@@ -10,9 +10,7 @@
           <strong>|</strong>&nbsp;用户中心
         </li>
         <li class="flex-c" *ngFor="let item of usersidedata; let i=index">
-          <div class="flex-r itembox" 
-          (click)="itemboxclick(i)"
-          [ngClass]="{'yborder': currentactive == i}">
+          <div class="flex-r itembox" (click)="itemboxclick(i)" [ngClass]="{'yborder': currentactive == i}">
             <div>
               <!-- 图标需更换'h -->
               <i class="icon-clock-o"></i>
@@ -56,8 +54,8 @@
               <strong>9999.00</strong>&nbsp;
               <small>元</small>
             </span>
-            <button id="chongzhi">充&nbsp;值</button>
-            <button id="tixian">提&nbsp;现</button>
+            <button class="chongzhi">充&nbsp;值</button>
+            <button class="tixian">提&nbsp;现</button>
           </div>
           <span class="cotinfo">
             上次登录时间： 2018-05-22 10：07：10
@@ -65,12 +63,16 @@
         </div>
       </div>
       <!-- 面包屑 -->
-      <div class="crumbs">
+      <div class="flex-r crumbs">
         <p>
           <a>用户中心</a>&nbsp;>&nbsp;
           <a>{{currentfristitem}}</a>&nbsp;>&nbsp;
           <span>{{currentitem}}</span>
         </p>
+        <div *ngIf="currentfristitem=='报表管理'">
+          <a href="javascript:;"><button class="chongzhi">充值记录</button></a>
+          <a href="javascript:;"><button class="tixian">取现记录</button></a>
+        </div>
       </div>
       <!-- 表格内容 -->
       <div class="tablecontent">

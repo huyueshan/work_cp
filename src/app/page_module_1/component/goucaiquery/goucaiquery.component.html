@@ -50,11 +50,11 @@
   </div>
   <div class=" flex-c tablebox">
     <div class="tablewrap">
-      <table id="table" width="100%" border="1" cellspacing="1" cellpadding="4" bgcolor="#ccc" align="center">
+      <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
         <tr class="">
-          <th width="100px">注册编号</th>
-          <th>投注时间</th>
-          <th>用户</th>
+          <th width="160px">注册编号</th>
+          <th width="140px">投注时间</th>
+          <th width="120px">用户</th>
           <th>彩种</th>
           <th>玩法</th>
           <th>投注内容</th>
@@ -65,118 +65,27 @@
           <th>开奖号码</th>
           <th>状态</th>
         </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
+        <tr *ngFor="let item of goucaidata">
+          <td>{{item.id?item.id:'&nbsp;'}}</td>
+          <td>{{item.time}}</td>
+          <td>{{item.user}}</td>
+          <td>{{item.style}}</td>
+          <td>{{item.playtype}}</td>
+          <td>{{item.content}}</td>
+          <td>{{item.issue}}</td>
+          <td>{{item.money}}</td>
+          <td>{{item.rebates}}</td>
+          <td>{{item.bonus}}</td>
+          <td>{{item.currentnumber}}</td>
+          <td>{{item.state?'中奖':item.id?'未中奖':'&nbsp;'}}</td>
         </tr>
       </table>
 
     </div>
 
-    <div class="page" shark-pager 
-    [currentPage]="pagination.page" 
-    [totalPage]="pagination.totalPage" 
-    [gopage]="pagination.gopage"
-    [hl]="hl"
-    [segmentSize]="pagination.segmentSize"
-    [startFrom]="pagination.startFrom"
-    (onPageChanged)="onPageChanged($event);" 
->
-</div>
+    <div class="page" shark-pager [currentPage]="pagination.page" [totalPage]="pagination.totalPage" [gopage]="pagination.gopage"
+      [hl]="hl" [segmentSize]="pagination.segmentSize" [startFrom]="pagination.startFrom" (onPageChanged)="onPageChanged($event);">
+    </div>
 
   </div>
 </div>

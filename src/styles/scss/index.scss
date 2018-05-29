@@ -22,3 +22,18 @@ textarea:hover{border-color:#ccc;}
 input[type="text"],input[type="button"]{-webkit-appearance: none;border-radius: 0;font-family:'Microsoft Yahei','黑体', Arial, Helvetica, sans-serif;}
 input[type="text"]{border:solid 1px #ccc; border-radius:0;}
 dfn {font-style: normal;font-family: Arial;}
+
+// 分页组件样式改动，需要放置在此处
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+    color: #fff;
+    background-color: #fe8f00;
+    border-color: #fe8f00;
+    cursor: default;
+}
+.pagination > li > a, .pagination > li > span {
+    color: black;
+}
+.pagination > li > a:hover, .pagination > li > span:hover {
+    color: #fe8f00;
+}
+// 分页修改样式end
