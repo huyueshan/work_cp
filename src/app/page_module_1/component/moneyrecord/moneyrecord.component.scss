@@ -11,7 +11,9 @@
     justify-content: space-between;
     align-content: space-between;
   }
-  
+  .bg_1 {
+    background-color: #f5f5f5;
+  }
   .container {
     width: 950px;
     padding: 0;
@@ -20,7 +22,7 @@
   }
   #starttime,
   #endtime {
-    width: 100px;
+    width: 120px;
   }
   #numb{
       width: 140px;
@@ -31,6 +33,11 @@
     padding: 0 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    background-color: #f5f5f5;
+  }
+  .query_item{
+    flex: none;
+    padding-right: 20px;
   }
   .querybtn {
     width: 70px;
@@ -52,41 +59,6 @@
     width: 100%;
     padding: 10px 0 0;
   }
-//   .checkcontent {
-//     width: 100%;
-//     border: 1px solid #ccc;
-//     font-size: 12px;
-//     line-height: 26px;
-//   }
-//   .checkwrap {
-//     color: #999;
-//     padding: 0 10px;
-//   }
-//   .checkcontent_top {
-//     height: 40px;
-//     border-bottom: 1px solid #ccc;
-//     background-color: #f5f5f5;
-//     justify-content: flex-start;
-//   }
-//   .checkcontent_top,
-//   .checksbox {
-//     padding: 5px 10px;
-//   }
-//   .checksbox {
-//     width: 100%;
-//   }
-//   .checksbox div {
-//     display: flex;
-//     flex-direction: row;
-//     flex-wrap: wrap;
-//     flex-grow: 20px;
-//     justify-content: flex-start;
-//     align-items: flex-start;
-//   }
-//   .checktitle {
-//     flex-shrink: 0;
-//     color: #fe8f00;
-//   }
   
   .tablewrap {
     width: 100%;
@@ -106,17 +78,17 @@
   #table td {
     text-align: center;
     height: 40px;
+    border: 1px solid #ccc;
   }
   .total_tr{
       font-size: 14px;
       color: #fe8f00;
   }
-  .info{
-      height: 54px;
-      line-height: 54px;
-      font-size: 10px;
-      color: #999;
-  
+  .color_r{
+    color:#C82839;
+  }
+  .color_y{
+    color:#fe8f00;
   }
   .page {
     align-self: center;

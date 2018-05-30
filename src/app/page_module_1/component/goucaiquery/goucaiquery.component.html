@@ -1,22 +1,12 @@
 <div class="flex-c container">
   <div class="flex-r querycontent">
-    <span>时间：
-      <select id="starttime" name="starttime" [(ngModel)]="querydata.starttime">
-        <option value="全部" selected>全部</option>
-        <option value="option1">option1</option>
-        <option value="option2">option2</option>
-        <option value="option3">option3</option>
-      </select>
-      至
-      <select id="endtime" name="endtime" [(ngModel)]="querydata.endtime">
-        <option value="全部" selected>全部</option>
-        <option value="option1">option1</option>
-        <option value="option2">option2</option>
-        <option value="option3">option3</option>
-      </select>
+    <span><label for="starttime">时间： </label>
+      <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime"/>
+      <label for="endtime">至 </label>
+      <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime"/>
     </span>
-    <span>彩种：
-
+    <span>
+      <label for="caizhong">彩种：</label>
       <select id="caizhong" name="caizhong" [(ngModel)]="querydata.caizhong">
         <option value="全部" selected>全部</option>
         <option value="option1">option1</option>
@@ -24,8 +14,8 @@
         <option value="option3">option3</option>
       </select>
     </span>
-    <span>玩法：
-
+    <span>
+      <label for="playtype">玩法：</label>
       <select id="playtype" name="playtype" [(ngModel)]="querydata.playtype">
         <option value="全部" selected>全部</option>
         <option value="option1">option1</option>
@@ -33,8 +23,8 @@
         <option value="option3">option3</option>
       </select>
     </span>
-    <span>状态：
-
+    <span>
+      <label for="status">状态：</label>
       <select id="status" name="status" [(ngModel)]="querydata.status">
         <option value="全部" selected>全部</option>
         <option value="option1">option1</option>
@@ -51,7 +41,7 @@
   <div class=" flex-c tablebox">
     <div class="tablewrap">
       <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
-        <tr class="">
+        <tr class="bg_1">
           <th width="160px">注册编号</th>
           <th width="140px">投注时间</th>
           <th width="120px">用户</th>

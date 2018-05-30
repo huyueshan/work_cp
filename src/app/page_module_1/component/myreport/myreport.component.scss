@@ -24,13 +24,8 @@
 #endtime {
   width: 120px;
 }
-
-#username {
-  width: 136px;
-}
-.query_item{
-  flex: none;
-  padding-right: 20px;
+#numb {
+  width: 140px;
 }
 .querycontent {
   width: 100%;
@@ -39,6 +34,10 @@
   border: 1px solid #ccc;
   border-radius: 3px;
   background-color: #f5f5f5;
+}
+.query_item {
+  flex: none;
+  padding-right: 20px;
 }
 .querybtn {
   width: 70px;
@@ -50,53 +49,15 @@
   color: white;
   outline: none;
 }
-#wrap,
-#all,
-.checkitems {
+#wrap {
   outline: none;
   width: 14px;
   height: 14px;
   // padding-left:10px;
 }
-.tablebox,
-.checkboxs {
+.tablebox {
   width: 100%;
   padding: 10px 0 0;
-}
-.checkcontent {
-  width: 100%;
-  border: 1px solid #ccc;
-  font-size: 12px;
-  line-height: 26px;
-}
-.checkwrap {
-  color: #999;
-  padding: 0 10px;
-}
-.checkcontent_top {
-  height: 40px;
-  border-bottom: 1px solid #ccc;
-  background-color: #f5f5f5;
-  justify-content: flex-start;
-}
-.checkcontent_top,
-.checksbox {
-  padding: 5px 10px;
-}
-.checksbox {
-  width: 100%;
-}
-.checksbox div {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex-grow: 20px;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.checktitle {
-  flex-shrink: 0;
-  color: #fe8f00;
 }
 
 .tablewrap {
@@ -113,22 +74,24 @@
   font-size: 14px;
   font-weight: bold;
 }
+
 #table th,
 #table td {
   text-align: center;
   height: 40px;
   border: 1px solid #ccc;
 }
-.total_tr{
-    font-size: 14px;
-    color: #fe8f00;
+.total_tr {
+  font-size: 14px;
+  color: #fe8f00;
 }
-.info{
-    height: 54px;
-    line-height: 54px;
-    font-size: 10px;
-    color: #999;
+.color_y {
+  color: #fe8f00;
 }
+.color_y td {
+  font-weight: bold;
+}
+
 .page {
   align-self: center;
 }

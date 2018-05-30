@@ -73,7 +73,7 @@ export class MoneyrecordComponent implements OnInit {
       type: '支付宝',
       expense: '0',
       discounts: '0',
-      status: '充值中',
+      status: '等待支付',
       lastmoney: '1000',
     },
   ];

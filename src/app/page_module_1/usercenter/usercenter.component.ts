@@ -46,11 +46,11 @@ export class UsercenterComponent implements OnInit {
         },
         {
           text:'个人报表',
-          link:'/usercenter/Zhuihaoquery',
+          link:'/usercenter/myreport',
         },
         {
           text:'优惠活动详情',
-          link:'/usercenter/Zhuihaoquery',
+          link:'/usercenter/discount',
         }
       ]
     },
@@ -62,27 +62,27 @@ export class UsercenterComponent implements OnInit {
       items:[
         {
           text:'个人总览',
-          link:'/usercenter/goucaiquery',
+          link:'/usercenter/myoverview',
         },
         {
           text:'安全中心',
-          link:'/usercenter/Zhuihaoquery',
+          link:'/usercenter/security',
         },
         {
           text:'银行卡管理',
-          link:'/usercenter/Zhuihaoquery',
+          link:'/usercenter/bankmanage',
         },
         {
           text:'用户资料',
-          link:'/usercenter/Zhuihaoquery',
+          link:'/usercenter/userdata',
         },
         {
           text:'彩种信息',
-          link:'/usercenter/Zhuihaoquery',
+          link:'/usercenter/proinfo',
         },
         {
           text:'彩种限额',
-          link:'/usercenter/Zhuihaoquery',
+          link:'/usercenter/quota',
         },
       ]
     },

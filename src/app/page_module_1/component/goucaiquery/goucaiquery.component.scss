@@ -11,6 +11,9 @@
   justify-content: space-between;
   align-content: space-between;
 }
+.bg_1 {
+  background-color: #f5f5f5;
+}
 
 .container {
   width: 950px;
@@ -24,6 +27,7 @@
   padding: 0 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  background-color: #f5f5f5;
 }
 .querybtn {
   width: 70px;
@@ -65,6 +69,7 @@
 #table th,
 #table td {
   text-align: center;
+  border: 1px solid #ccc;
 }
 
 .page {

@@ -1,26 +1,17 @@
 <div class="flex-c container">
   <div class="flex-r querycontent">
-    <span class="flex-r" style="width:566px;">
-      <span>时间：
-        <select id="starttime" name="starttime" [(ngModel)]="querydata.starttime">
-          <option value="全部" selected>全部</option>
-          <option value="option1">option1</option>
-          <option value="option2">option2</option>
-          <option value="option3">option3</option>
-        </select>
-        至
-        <select id="endtime" name="endtime" [(ngModel)]="querydata.endtime">
-          <option value="全部" selected>全部</option>
-          <option value="option1">option1</option>
-          <option value="option2">option2</option>
-          <option value="option3">option3</option>
-        </select>
+    <span class="flex-r" style="justify-content: flex-start;">
+      <span class="query_item">
+        <label for="starttime">时间： </label>
+        <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
+        <label for="endtime">至 </label>
+        <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
       </span>
-      <span>
+      <span class="query_item">
         <label for="username">用户名： </label>
         <input type="text" id="username" name="username" [(ngModel)]="querydata.username" />
       </span>
-      <span class="flex-r">
+      <span class="flex-r query_item">
         <input type="checkbox" id="wrap" name="wrap" [(ngModel)]="querydata.iswrap" />&nbsp;包含下级</span>
     </span>
     <!-- <span class="flex-r">
@@ -58,7 +49,7 @@
   <div class=" flex-c tablebox">
     <div class="tablewrap">
       <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
-        <tr class="">
+        <tr class="bg_1">
           <th>用户名</th>
           <th style="width:160px">时间</th>
           <th>帐变类型</th>

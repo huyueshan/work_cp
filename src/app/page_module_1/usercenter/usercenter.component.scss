@@ -20,7 +20,7 @@
 }
 .sidebox{
   width: 230px;
-  height: 760px;
+  min-height: 760px;
   background-color: #ccc;
   border:none;
   border-radius: 3PX;
@@ -168,7 +168,6 @@
 .crumbs .chongzhi,.crumbs .tixian{
   width: 82px;
   height: 30px;
-  
   line-height: 28px;
   padding-top: 0;
   font-size: 14px;
@@ -195,6 +194,7 @@
 .crumbs{
   height: 66px;
   line-height: 66px;
+  font-size: 14px;
 }
 .crumbs a{
   text-decoration: none;
