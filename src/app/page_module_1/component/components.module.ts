@@ -21,6 +21,9 @@ import { ProinfoComponent } from "./proinfo/proinfo.component";
 import { UserdataComponent } from "./userdata/userdata.component";
 import { SecurityComponent } from "./security/security.component";
 import { BankmanageComponent } from "./bankmanage/bankmanage.component";
+import { PronoteComponent } from "./pronote/pronote.component";
+import { WebnoteComponent } from "./webnote/webnote.component";
+import { RechargeComponent } from "./recharge/recharge.component";
 
 @NgModule({
   imports: [SharkModule, CommonModule, FormsModule],
@@ -40,6 +43,9 @@ import { BankmanageComponent } from "./bankmanage/bankmanage.component";
     UserdataComponent,
     SecurityComponent,
     BankmanageComponent,
+    PronoteComponent,
+    WebnoteComponent,
+    RechargeComponent,
   ],
   exports: [
     LanguageComponent,
@@ -57,6 +63,9 @@ import { BankmanageComponent } from "./bankmanage/bankmanage.component";
     UserdataComponent,
     SecurityComponent,
     BankmanageComponent,
+    PronoteComponent,
+    WebnoteComponent,
+    RechargeComponent,
   ]
 })
 export class ComponentsModule {}

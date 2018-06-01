@@ -55,11 +55,15 @@
           </span>
           <div class="flex-r cotmid">
             <span>
-              <strong>9999.00</strong>&nbsp;
-              <small>元</small>
+              <strong>9999.00</strong>
+              <small>元</small> &nbsp;
             </span>
-            <button class="chongzhi">充&nbsp;值</button>
-            <button class="tixian">提&nbsp;现</button>
+            <span>
+              <button class="btn chongzhi" style="width: 100px;height: 40px;font-size: 18px" (click)="recharge()">充&nbsp;值</button>
+            </span>
+            <span>
+              <button class="btn tixian" style="width: 100px;height: 40px;font-size: 18px">提&nbsp;现</button>
+            </span>
           </div>
           <span class="cotinfo">
             上次登录时间： 2018-05-22 10：07：10
@@ -74,8 +78,12 @@
           <span>{{currentitem}}</span>
         </p>
         <div *ngIf="currentitem=='充值记录'">
-          <a href="javascript:;"><button class="chongzhi">充值记录</button></a>
-          <a href="javascript:;"><button class="tixian">取现记录</button></a>
+          <a href="javascript:;"><button class="btn chongzhi">充值记录</button></a>
+          <a href="javascript:;"><button class="btn tixian">取现记录</button></a>
+        </div>
+        <div *ngIf="currentitem=='站内短信'">
+          <a href="javascript:;"><button class="btn chongzhi">收件箱</button></a>
+          <a href="javascript:;"><button class="btn tixian">发件箱</button></a>
         </div>
       </div>
       <!-- 表格内容 -->

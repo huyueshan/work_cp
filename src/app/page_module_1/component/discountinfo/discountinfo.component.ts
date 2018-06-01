@@ -26,7 +26,7 @@ export class DiscountinfoComponent implements OnInit {
     lastpage: "尾页",
     gopage: "跳转"
   };
-  public moneycodefdata: DISCOUNT[];
+  public discountdata: DISCOUNT[];
 
   public takedata = [
     {
@@ -71,7 +71,7 @@ export class DiscountinfoComponent implements OnInit {
       let item = Object.assign({}, userdef.Discountdef, this.takedata[i]);
       data.push(item);
     }
-    this.moneycodefdata = data;
+    this.discountdata = data;
   }
   // 设置数据量小于10条时的空表格数据
   setemptydata() {

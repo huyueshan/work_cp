@@ -18,6 +18,9 @@ import { ProinfoComponent } from "../component/proinfo/proinfo.component";
 import { UserdataComponent } from "../component/userdata/userdata.component";
 import { SecurityComponent } from "../component/security/security.component";
 import { BankmanageComponent } from "../component/bankmanage/bankmanage.component";
+import { PronoteComponent } from "../component/pronote/pronote.component";
+import { WebnoteComponent } from "../component/webnote/webnote.component";
+import { RechargeComponent } from "../component/recharge/recharge.component";
 
 /***********components***************/
 import { UsercenterComponent } from "./usercenter.component";
@@ -76,8 +79,20 @@ const routes = [
         component: BankmanageComponent
       },
       {
+        path: "pronote",
+        component: PronoteComponent
+      },
+      {
+        path: "webnote",
+        component: WebnoteComponent 
+      },
+      {
+        path: "recharge",
+        component: RechargeComponent 
+      },
+      {
         path: "",
-        component: BankmanageComponent
+        component: RechargeComponent 
       }
     ]
   }

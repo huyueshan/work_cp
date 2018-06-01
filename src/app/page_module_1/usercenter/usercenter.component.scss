@@ -156,21 +156,17 @@
   font-weight: bold;
 }
 .cotmid{
-  width: 370px;
+  width: 100%;
 }
-.chongzhi, .tixian{
-  width: 100px;
-  height: 40px;
-  background-color: #ccc;
-  outline: none;
-  font-size: 18px;
+.cotmid span{
+  padding-right: 10px;
 }
-.crumbs .chongzhi,.crumbs .tixian{
-  width: 82px;
+.btn {
   height: 30px;
   line-height: 28px;
-  padding-top: 0;
+  padding: 0 10px;
   font-size: 14px;
+  background-color: #ccc;
 }
 .chongzhi, .tixian:hover{
   background-color: #fe8f00;

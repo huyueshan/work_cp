@@ -73,6 +73,10 @@ export class UsercenterComponent implements OnInit {
           link:'/usercenter/bankmanage',
         },
         {
+          text:'用户充值',
+          link:'/usercenter/recharge',
+        },
+        {
           text:'用户资料',
           link:'/usercenter/userdata',
         },
@@ -92,14 +96,14 @@ export class UsercenterComponent implements OnInit {
       isover: false,
       isactive:false,
       items:[
-        {
-          text:'购彩查询2',
-          link:'',
-        },
-        {
-          text:'追号查询2',
-          link:'',
-        }
+        // {
+        //   text:'购彩查询2',
+        //   link:'',
+        // },
+        // {
+        //   text:'追号查询2',
+        //   link:'',
+        // }
       ]
     },
     {
@@ -109,12 +113,12 @@ export class UsercenterComponent implements OnInit {
       isactive:false,
       items:[
         {
-          text:'购彩查询2',
-          link:'',
+          text:'站内短信',
+          link:'/usercenter/pronote',
         },
         {
-          text:'追号查询2',
-          link:'',
+          text:'网站公告',
+          link:'/usercenter/webnote',
         }
       ]
     },
@@ -125,7 +129,12 @@ export class UsercenterComponent implements OnInit {
 
   ngOnInit() {
   }
-  // }
+  // 充值按钮事件
+  recharge(){
+    this.router.navigate(["/usercenter/recharge"]);
+    this.currentfristitem = "账户管理";
+    this.currentitem ="用户充值";
+  }
 
   // 左侧导航栏一级菜单点击事件
   itemboxclick(i){
