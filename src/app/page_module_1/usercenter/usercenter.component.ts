@@ -49,6 +49,10 @@ export class UsercenterComponent implements OnInit {
           link:'/usercenter/myreport',
         },
         {
+          text:'团队报表',
+          link:'/usercenter/myreport',
+        },
+        {
           text:'优惠活动详情',
           link:'/usercenter/discount',
         }
@@ -96,14 +100,18 @@ export class UsercenterComponent implements OnInit {
       isover: false,
       isactive:false,
       items:[
-        // {
-        //   text:'购彩查询2',
-        //   link:'',
-        // },
-        // {
-        //   text:'追号查询2',
-        //   link:'',
-        // }
+        {
+          text:'用户列表',
+          link:'usercenter/userlist',
+        },
+        {
+          text:'注册管理',
+          link:'usercenter/regismanage',
+        },
+        {
+          text:'推广注册',
+          link:'usercenter/regisgenera',
+        }
       ]
     },
     {

@@ -21,6 +21,9 @@ import { BankmanageComponent } from "../component/bankmanage/bankmanage.componen
 import { PronoteComponent } from "../component/pronote/pronote.component";
 import { WebnoteComponent } from "../component/webnote/webnote.component";
 import { RechargeComponent } from "../component/recharge/recharge.component";
+import { UserlistComponent } from "../component/userlist/userlist.component";
+import { RegismanageComponent } from "../component/regismanage/regismanage.component";
+import { RegisgeneralizeComponent } from "../component/regisgeneralize/regisgeneralize.component";
 
 /***********components***************/
 import { UsercenterComponent } from "./usercenter.component";
@@ -91,8 +94,20 @@ const routes = [
         component: RechargeComponent 
       },
       {
+        path: "userlist",
+        component: UserlistComponent 
+      },
+      {
+        path: "regismanage",
+        component: RegismanageComponent 
+      },
+      {
+        path: "regisgenera",
+        component: RegisgeneralizeComponent 
+      },
+      {
         path: "",
-        component: RechargeComponent 
+        component:RegisgeneralizeComponent
       }
     ]
   }

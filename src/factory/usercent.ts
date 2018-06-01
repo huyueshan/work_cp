@@ -132,6 +132,28 @@ const Quotadef = {
   maxbonus: 1,
   max: 1,
 }
+//用户列表数据类型
+export class USERLIST {
+  name: string; //用户名
+  type: string; //用户类型
+  time: string; //注册时间
+  lasttime: string ; //最后登陆时间
+  money: { number; string };//余额
+  rebates: { number; string }; //返点
+  status: string; //状态
+  action: string[]; //操作
+}
+const Userlistdef={
+  name: "-",
+  type: "-",
+  time: "-",
+  lasttime: "-",
+  money: "-", 
+  rebates: "-", 
+  status: "-",
+  action: ["详情"], 
+}
+
 
 export const userdef = {
   Goucdef, //购彩查询数据默认值
@@ -140,4 +162,5 @@ export const userdef = {
   Myreportdef, //个人报表数据默认值
   Discountdef, //优惠活动数据默认值
   Quotadef, // 彩种限额数据默认值
+  Userlistdef, // 用户列表数据默认值
 };

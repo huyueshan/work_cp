@@ -24,6 +24,9 @@ import { BankmanageComponent } from "./bankmanage/bankmanage.component";
 import { PronoteComponent } from "./pronote/pronote.component";
 import { WebnoteComponent } from "./webnote/webnote.component";
 import { RechargeComponent } from "./recharge/recharge.component";
+import { UserlistComponent } from "./userlist/userlist.component";
+import { RegismanageComponent } from "./regismanage/regismanage.component";
+import { RegisgeneralizeComponent } from "./regisgeneralize/regisgeneralize.component";
 
 @NgModule({
   imports: [SharkModule, CommonModule, FormsModule],
@@ -46,6 +49,9 @@ import { RechargeComponent } from "./recharge/recharge.component";
     PronoteComponent,
     WebnoteComponent,
     RechargeComponent,
+    UserlistComponent,
+    RegismanageComponent,
+    RegisgeneralizeComponent,
   ],
   exports: [
     LanguageComponent,
@@ -66,6 +72,9 @@ import { RechargeComponent } from "./recharge/recharge.component";
     PronoteComponent,
     WebnoteComponent,
     RechargeComponent,
+    UserlistComponent,
+    RegismanageComponent,
+    RegisgeneralizeComponent,
   ]
 })
 export class ComponentsModule {}
