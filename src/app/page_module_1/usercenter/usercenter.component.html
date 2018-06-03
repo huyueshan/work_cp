@@ -27,7 +27,7 @@
             </div>
           </div>
           <ng-container *ngIf="currentactive == i">
-            <div class="item" *ngFor="let child of item.items; let n=index" (click)="itemclick(item.title,child.text,child.link)" [ngClass]="{'itemactive': currentitem== child.text}">
+            <div class="item" *ngFor="let child of item.items; let n=index" (click)="itemclick(child.link)" [ngClass]="{'itemactive': currentitem== child.text}">
               {{child.text}}
             </div>
           </ng-container>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MONEYCO, userdef } from "../../../../factory/usercent";
+import { MONEYCO, userdef } from "../../../../../factory/usercent";
 
 @Component({
   selector: 'app-moneyrecord',

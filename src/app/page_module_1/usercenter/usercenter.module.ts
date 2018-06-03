@@ -6,24 +6,24 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { ComponentsModule } from "../component/components.module";
 import { FormsModule } from "@angular/forms";
-import { GoucaiqueryComponent } from "../component/goucaiquery/goucaiquery.component";
-import { ZhuihaoqueryComponent } from "../component/zhuihaoquery/zhuihaoquery.component";
-import { AccountchangeComponent } from "../component/accountchange/accountchange.component";
-import { MyreportComponent } from "../component/myreport/myreport.component";
-import { MoneyrecordComponent } from "../component/moneyrecord/moneyrecord.component";
-import { DiscountinfoComponent } from "../component/discountinfo/discountinfo.component";
-import { MyoverviewComponent } from "../component/myoverview/myoverview.component";
-import { ProquotaComponent } from "../component/proquota/proquota.component";
-import { ProinfoComponent } from "../component/proinfo/proinfo.component";
-import { UserdataComponent } from "../component/userdata/userdata.component";
-import { SecurityComponent } from "../component/security/security.component";
-import { BankmanageComponent } from "../component/bankmanage/bankmanage.component";
-import { PronoteComponent } from "../component/pronote/pronote.component";
-import { WebnoteComponent } from "../component/webnote/webnote.component";
-import { RechargeComponent } from "../component/recharge/recharge.component";
-import { UserlistComponent } from "../component/userlist/userlist.component";
-import { RegismanageComponent } from "../component/regismanage/regismanage.component";
-import { RegisgeneralizeComponent } from "../component/regisgeneralize/regisgeneralize.component";
+import { GoucaiqueryComponent } from "../component/usercenter/goucaiquery/goucaiquery.component";
+import { ZhuihaoqueryComponent } from "../component/usercenter/zhuihaoquery/zhuihaoquery.component";
+import { AccountchangeComponent } from "../component/usercenter/accountchange/accountchange.component";
+import { MyreportComponent } from "../component/usercenter/myreport/myreport.component";
+import { MoneyrecordComponent } from "../component/usercenter/moneyrecord/moneyrecord.component";
+import { DiscountinfoComponent } from "../component/usercenter/discountinfo/discountinfo.component";
+import { MyoverviewComponent } from "../component/usercenter/myoverview/myoverview.component";
+import { ProquotaComponent } from "../component/usercenter/proquota/proquota.component";
+import { ProinfoComponent } from "../component/usercenter/proinfo/proinfo.component";
+import { UserdataComponent } from "../component/usercenter/userdata/userdata.component";
+import { SecurityComponent } from "../component/usercenter/security/security.component";
+import { BankmanageComponent } from "../component/usercenter/bankmanage/bankmanage.component";
+import { PronoteComponent } from "../component/usercenter/pronote/pronote.component";
+import { WebnoteComponent } from "../component/usercenter/webnote/webnote.component";
+import { RechargeComponent } from "../component/usercenter/recharge/recharge.component";
+import { UserlistComponent } from "../component/usercenter/userlist/userlist.component";
+import { RegismanageComponent } from "../component/usercenter/regismanage/regismanage.component";
+import { RegisgeneralizeComponent } from "../component/usercenter/regisgeneralize/regisgeneralize.component";
 
 /***********components***************/
 import { UsercenterComponent } from "./usercenter.component";
@@ -107,7 +107,8 @@ const routes = [
       },
       {
         path: "",
-        component:RegisgeneralizeComponent
+        redirectTo: 'regisgenera',
+        // component:RegisgeneralizeComponent
       }
     ]
   }

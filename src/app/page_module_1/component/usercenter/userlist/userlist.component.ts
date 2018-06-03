@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { USERLIST, userdef } from "../../../../factory/usercent";
+import { USERLIST, userdef } from "../../../../../factory/usercent";
 
 @Component({
   selector: "app-userlist",

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import { GOUC, userdef } from "../../../../factory/usercent";
+import { GOUC, userdef } from "../../../../../factory/usercent";
 
 @Component({
   selector: "app-goucaiquery",

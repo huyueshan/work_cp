@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import { ACCHANGE, userdef } from "../../../../factory/usercent";
+import { ACCHANGE, userdef } from "../../../../../factory/usercent";
 
 @Component({
   selector: "app-accountchange",

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MYREPORT, userdef } from "../../../../factory/usercent";
+import { MYREPORT, userdef } from "../../../../../factory/usercent";
 
 @Component({
   selector: 'app-myoverview',

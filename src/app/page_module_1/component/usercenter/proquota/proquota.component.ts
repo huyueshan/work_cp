@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QUOTA, userdef } from "../../../../factory/usercent";
+import { QUOTA, userdef } from "../../../../../factory/usercent";
 @Component({
   selector: 'app-proquota',
   templateUrl: './proquota.component.html',

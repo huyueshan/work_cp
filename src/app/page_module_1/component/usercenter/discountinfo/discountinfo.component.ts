@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DISCOUNT, userdef } from "../../../../factory/usercent";
+import { DISCOUNT, userdef } from "../../../../../factory/usercent";
 
 @Component({
   selector: 'app-discountinfo',
