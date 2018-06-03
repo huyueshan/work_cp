@@ -24,6 +24,7 @@ import { RechargeComponent } from "../component/usercenter/recharge/recharge.com
 import { UserlistComponent } from "../component/usercenter/userlist/userlist.component";
 import { RegismanageComponent } from "../component/usercenter/regismanage/regismanage.component";
 import { RegisgeneralizeComponent } from "../component/usercenter/regisgeneralize/regisgeneralize.component";
+import { GrouportComponent } from "../component/usercenter/grouport/grouport.component"
 
 /***********components***************/
 import { UsercenterComponent } from "./usercenter.component";
@@ -52,6 +53,10 @@ const routes = [
       {
         path: "myreport",
         component: MyreportComponent
+      },
+      {
+        path: "groupreport",
+        component: GrouportComponent
       },
       {
         path: "discount",
@@ -107,7 +112,7 @@ const routes = [
       },
       {
         path: "",
-        redirectTo: 'regisgenera',
+        redirectTo: 'groupreport',
         // component:RegisgeneralizeComponent
       }
     ]

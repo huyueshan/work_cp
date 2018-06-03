@@ -57,7 +57,7 @@ export class UsercenterComponent
         },
         {
           text: "团队报表",
-          link: "/usercenter/myreport"
+          link: "/usercenter/groupreport"
         },
         {
           text: "优惠活动详情",

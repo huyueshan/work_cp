@@ -27,6 +27,7 @@ import { RechargeComponent } from "./usercenter/recharge/recharge.component";
 import { UserlistComponent } from "./usercenter/userlist/userlist.component";
 import { RegismanageComponent } from "./usercenter/regismanage/regismanage.component";
 import { RegisgeneralizeComponent } from "./usercenter/regisgeneralize/regisgeneralize.component";
+import { GrouportComponent } from "./usercenter/grouport/grouport.component"
 
 @NgModule({
   imports: [SharkModule, CommonModule, FormsModule],
@@ -52,6 +53,7 @@ import { RegisgeneralizeComponent } from "./usercenter/regisgeneralize/regisgene
     UserlistComponent,
     RegismanageComponent,
     RegisgeneralizeComponent,
+    GrouportComponent,
   ],
   exports: [
     LanguageComponent,
@@ -75,6 +77,7 @@ import { RegisgeneralizeComponent } from "./usercenter/regisgeneralize/regisgene
     UserlistComponent,
     RegismanageComponent,
     RegisgeneralizeComponent,
+    GrouportComponent,
   ]
 })
 export class ComponentsModule {}

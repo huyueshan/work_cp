@@ -1,0 +1,33 @@
+<div class="flex-c container">
+  <div class="flex-c querycontent">
+    <span class="flex-r" style="justify-content: flex-start; height: 50px; border-bottom: 1px solid #ccc; padding: 0 10px;">
+      <span class="query_item">
+        <label for="username">用户名： </label>
+        <input type="text" id="username" name="username" [(ngModel)]="querydata.username" />
+      </span>
+      <span class="query_item">
+        <label for="username">余额： </label>
+        <input type="text" id="min" name="min" [(ngModel)]="querydata.min" />
+        <label for="username">至 </label>
+        <input type="text" id="max" name="max" [(ngModel)]="querydata.max" />
+      </span>
+      <span class="query_item">
+        <label for="starttime">登陆时间： </label>
+        <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
+        <label for="endtime">至 </label>
+        <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
+      </span>
+    </span>
+    <div class="flex-r" style="height: 50px; padding: 0 10px;">
+      <span class="flex-r" style="justify-content: flex-start;">
+        <span class="query_item" *ngFor="let item of querydatelist; let i=index" style=" padding-right: 10px">
+          <span class="datebtn  " [ngClass]="{bd_y:querydatelistindex == i}" (click)="querydatelistindex = i">{{item.text}}</span>
+        </span>
+      </span>
+      <span class="flex-r">
+        <button class="querybtn">重&nbsp;置</button>&nbsp;&nbsp;
+        <button class="querybtn">查&nbsp;询</button>&nbsp;&nbsp;
+      </span>
+    </div>
+  </div>
+</div>
