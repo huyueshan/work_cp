@@ -23,6 +23,13 @@ input[type="text"],input[type="button"]{-webkit-appearance: none;border-radius: 
 input[type="text"]{border:solid 1px #ccc; border-radius:0;}
 dfn {font-style: normal;font-family: Arial;}
 
+
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    margin-top: 0;
+  }
 // 分页组件样式改动，需要放置在此处
 .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
     color: #fff;
@@ -35,5 +42,6 @@ dfn {font-style: normal;font-family: Arial;}
 }
 .pagination > li > a:hover, .pagination > li > span:hover {
     color: #fe8f00;
+    cursor: pointer;
 }
 // 分页修改样式end

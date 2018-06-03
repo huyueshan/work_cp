@@ -25,6 +25,8 @@ import { UserlistComponent } from "../component/usercenter/userlist/userlist.com
 import { RegismanageComponent } from "../component/usercenter/regismanage/regismanage.component";
 import { RegisgeneralizeComponent } from "../component/usercenter/regisgeneralize/regisgeneralize.component";
 import { GrouportComponent } from "../component/usercenter/grouport/grouport.component"
+import { GroupviewComponent } from "../component/usercenter/groupview/groupview.component"
+import { ProstatisticsComponent } from "../component/usercenter/prostatistics/prostatistics.component"
 
 /***********components***************/
 import { UsercenterComponent } from "./usercenter.component";
@@ -111,8 +113,16 @@ const routes = [
         component: RegisgeneralizeComponent 
       },
       {
+        path: "groupview",
+        component: GroupviewComponent 
+      },
+      {
+        path: "prostatistics",
+        component: ProstatisticsComponent 
+      },
+      {
         path: "",
-        redirectTo: 'groupreport',
+        redirectTo: 'groupview',
         // component:RegisgeneralizeComponent
       }
     ]

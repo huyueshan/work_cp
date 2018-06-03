@@ -1,33 +1,162 @@
-<div class="flex-c container">
-  <div class="flex-c querycontent">
-    <span class="flex-r" style="justify-content: flex-start; height: 50px; border-bottom: 1px solid #ccc; padding: 0 10px;">
+<div class="flex-c container" style="border: 1px solid #ccc;" *ngIf="toggleindex == 0">
+  <div class="flex-r querycontent">
+    <div class="flex-c" style="width: 770px;  ">
+
+      <div class="flex-r itemr_box">
+        <div class="flex-r">
+          <span class="query_item">
+            <label for="starttime">时间： </label>
+            <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
+            <label for="endtime">至 </label>
+            <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
+          </span>
+          <span class="flex-r" style="justify-content: flex-start;">
+            <span class="query_item" *ngFor="let item of querydatelist; let i=index" style=" padding-right: 10px">
+              <span class="datebtn" [ngClass]="{bd_y:querydatelistindex == i}" (click)="querydatelistindex = i">{{item.text}}</span>
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="flex-r itemr_box">
+        <span class="query_item">
+          <label for="username">账号查询： </label>
+          <input type="text" id="username" name="username" [(ngModel)]="querydata.username" />
+        </span>
+      </div>
+      <div class="flex-r itemr_box">
+        <div class="flex-r query_item">
+          <span>彩票类型：</span>
+          <span class="flex-r checkwrap">
+            <input type="checkbox" class="checkitems" name="{{checkdatas1.title}}" [(ngModel)]="checkdatas1.all" (change)="checksall('checkdatas1')"
+            />&nbsp;{{checkdatas1.title}}
+          </span>
+          <span class="flex-r checkwrap" *ngFor="let item of checkdatas1.income; let i = index">
+            <input type="checkbox" class="checkitems" name="{{item.title}}" [(ngModel)]="item.checked" (change)="checkchange('checkdatas1',i)"
+            />&nbsp;{{item.title}}
+          </span>
+        </div>
+      </div>
+      <div class="flex-r itemr_box">
+        <div class="flex-r query_item">
+          <span>全部选中：</span>
+          <span class="flex-r checkwrap">
+            <input type="checkbox" class="checkitems" name="{{checkdatas2.title}}" [(ngModel)]="checkdatas2.all" (change)="checksall('checkdatas2')"
+            />&nbsp;{{checkdatas1.title}}&nbsp;
+            <span class="color_y">( 勾选后，查询所有彩种，包括被禁用的玩法 )</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <span class="flex-r" style="justify-content: center;flex:1;">
+      <button class="querybtn" (click)="toggleindex = 1">查&nbsp;询</button>&nbsp;&nbsp;
+    </span>
+  </div>
+  <div class="checksbox">
+    <div class="flex-r" style="padding: 10px; width:100%">
+      <div class="checktitle">全部彩种：</div>
+      <div class="flex-r" style="flex:1; flex-wrap: wrap; justify-content: flex-start;">
+        <span class="flex-r checkwrap checkwrapitem" *ngFor="let item of checkdatas2.income; let i = index">
+          <input type="checkbox" class="checkitems" name="{{item.title}}" [(ngModel)]="item.checked" (change)="checkchange('checkdatas2',i)"
+          />&nbsp;{{item.title}}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===========查询结果页面=========== -->
+<div class="flex-c container" *ngIf="toggleindex == 1">
+
+  <div class="flex-r querycontent1">
+    <span class="flex-r" style="justify-content: flex-start;">
       <span class="query_item">
-        <label for="username">用户名： </label>
-        <input type="text" id="username" name="username" [(ngModel)]="querydata.username" />
-      </span>
-      <span class="query_item">
-        <label for="username">余额： </label>
-        <input type="text" id="min" name="min" [(ngModel)]="querydata.min" />
-        <label for="username">至 </label>
-        <input type="text" id="max" name="max" [(ngModel)]="querydata.max" />
-      </span>
-      <span class="query_item">
-        <label for="starttime">登陆时间： </label>
+        <label for="starttime">时间： </label>
         <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
         <label for="endtime">至 </label>
         <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
       </span>
     </span>
-    <div class="flex-r" style="height: 50px; padding: 0 10px;">
-      <span class="flex-r" style="justify-content: flex-start;">
-        <span class="query_item" *ngFor="let item of querydatelist; let i=index" style=" padding-right: 10px">
-          <span class="datebtn  " [ngClass]="{bd_y:querydatelistindex == i}" (click)="querydatelistindex = i">{{item.text}}</span>
-        </span>
-      </span>
-      <span class="flex-r">
-        <button class="querybtn">重&nbsp;置</button>&nbsp;&nbsp;
-        <button class="querybtn">查&nbsp;询</button>&nbsp;&nbsp;
-      </span>
+    <span>
+
+      <button class="querybtn">查&nbsp;询</button>
+      <button class="querybtn querybtn2" (click)="toggleindex = 0">返&nbsp;回</button>
+    </span>
+  </div>
+  <div class=" flex-c tablebox">
+    <div class="tablewrap">
+      <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+        <tr class="bg_1">
+          <th style="width:110px">用户名</th>
+          <th>所属组</th>
+          <th>投注人数</th>
+          <th>投注金额</th>
+          <th>有效投注金额</th>
+          <th>投注返点</th>
+          <th>代理返点</th>
+          <th>返奖总额 </th>
+          <th>活动金额</th>
+          <th>日工资</th>
+          <th>充值总额</th>
+          <th>提现总额</th>
+          <th>净盈亏</th>
+          <th>总盈亏</th>
+        </tr>
+        <tr *ngFor="let item of resultdata">
+          <td>{{item.name}}</td>
+          <td>{{item.group}}</td>
+          <td>{{item.mannumb}}</td>
+          <td>{{item.moneytou}}</td>
+          <td>{{item.vaildtou}}</td>
+          <td>{{item.rebates}}</td>
+          <td>{{item.rebatesage}}</td>
+          <td>{{item.rebatesadd}}</td>
+          <td>{{item.bonus}}</td>
+          <td>{{item.datesalary}}</td>
+          <td>{{item.atmadd}}</td>
+          <td>{{item.Withdrawadd}}</td>
+          <td>{{item.profitorloss}}</td>
+          <td>{{item.profitorlossadd}}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr class="weight">
+          <td colspan="2">
+            <span>总计</span>
+            <small>（资金变动总额）</small>
+          </td>
+          <td>{{add('mannumb')}}</td>
+          <td>{{add('moneytou')}}</td>
+          <td>{{add('vaildtou')}}</td>
+          <td>{{add('rebates')}}</td>
+          <td>{{add('rebatesage')}}</td>
+          <td>{{add('rebatesadd')}}</td>
+          <td>{{add('bonus')}}</td>
+          <td>{{add('datesalary')}}</td>
+          <td>{{add('atmadd')}}</td>
+          <td>{{add('Withdrawadd')}}</td>
+          <td>{{add('profitorloss')}}</td>
+          <td>{{add('profitorlossadd')}}</td>
+        </tr>
+
+      </table>
     </div>
+    <div class="page" shark-pager [currentPage]="pagination.page" [totalPage]="pagination.totalPage" [gopage]="pagination.gopage"
+      [hl]="hl" [segmentSize]="pagination.segmentSize" [startFrom]="pagination.startFrom" (onPageChanged)="onPageChanged($event);">
+    </div>
+
   </div>
 </div>

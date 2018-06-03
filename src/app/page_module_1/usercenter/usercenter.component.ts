@@ -108,6 +108,10 @@ export class UsercenterComponent
       isactive: false,
       items: [
         {
+          text: "团队总览",
+          link: "/usercenter/groupview"
+        },
+        {
           text: "用户列表",
           link: "/usercenter/userlist"
         },
@@ -118,7 +122,11 @@ export class UsercenterComponent
         {
           text: "推广注册",
           link: "/usercenter/regisgenera"
-        }
+        },
+        {
+          text: "彩种统计",
+          link: "/usercenter/prostatistics"
+        },
       ]
     },
     {

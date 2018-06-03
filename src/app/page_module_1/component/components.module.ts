@@ -28,6 +28,8 @@ import { UserlistComponent } from "./usercenter/userlist/userlist.component";
 import { RegismanageComponent } from "./usercenter/regismanage/regismanage.component";
 import { RegisgeneralizeComponent } from "./usercenter/regisgeneralize/regisgeneralize.component";
 import { GrouportComponent } from "./usercenter/grouport/grouport.component"
+import { GroupviewComponent } from "./usercenter/groupview/groupview.component"
+import { ProstatisticsComponent } from "./usercenter/prostatistics/prostatistics.component"
 
 @NgModule({
   imports: [SharkModule, CommonModule, FormsModule],
@@ -54,6 +56,8 @@ import { GrouportComponent } from "./usercenter/grouport/grouport.component"
     RegismanageComponent,
     RegisgeneralizeComponent,
     GrouportComponent,
+    GroupviewComponent,
+    ProstatisticsComponent,
   ],
   exports: [
     LanguageComponent,
@@ -78,6 +82,8 @@ import { GrouportComponent } from "./usercenter/grouport/grouport.component"
     RegismanageComponent,
     RegisgeneralizeComponent,
     GrouportComponent,
+    GroupviewComponent,
+    ProstatisticsComponent,
   ]
 })
 export class ComponentsModule {}

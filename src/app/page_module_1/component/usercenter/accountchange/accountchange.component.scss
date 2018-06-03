@@ -20,9 +20,19 @@
   align-content: flex-start;
   align-items: flex-start;
 }
-#starttime,
-#endtime {
-  width: 120px;
+input {
+  width: 125px;
+  height: 30px;
+  line-height: 28px;
+  padding: 5px 0 4px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ccc;
+  margin-top: 0;
 }
 
 #username {
@@ -50,14 +60,14 @@
   color: white;
   outline: none;
 }
-#wrap,
-#all,
-.checkitems {
-  outline: none;
-  width: 14px;
-  height: 14px;
+// #wrap,
+// #all,
+// .checkitems {
+  // outline: none;
+  // width: 14px;
+  // height: 14px;
   // padding-left:10px;
-}
+// }
 .tablebox,
 .checkboxs {
   width: 100%;
@@ -71,7 +81,7 @@
 }
 .checkwrap {
   color: #999;
-  padding: 0 10px;
+  padding: 0 14px;
 }
 .checkcontent_top {
   height: 40px;

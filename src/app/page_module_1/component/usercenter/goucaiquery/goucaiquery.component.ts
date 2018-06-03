@@ -88,8 +88,8 @@ export class GoucaiqueryComponent implements OnInit {
       let item = Object.assign({}, userdef.Goucdef, this.takedata[i]);
       data.push(item);
     }
-    if (data.length < 20) {
-      let n = 20 - data.length;
+    if (data.length < 10) {
+      let n = 10 - data.length;
       for (let q = 0; q < n; q++) {
         let item = this.setemptydata();
         data.push(item);

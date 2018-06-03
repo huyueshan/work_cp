@@ -127,13 +127,13 @@ export class UserlistComponent implements OnInit {
     this.userlistdata = data;
   }
   // 设置数据量小于10条时的空表格数据
-  setemptydata() {
-    let data = {};
-    for (let item in userdef.Goucdef) {
-      data[item] = "";
-    }
-    return data;
-  }
+  // setemptydata() {
+  //   let data = {};
+  //   for (let item in userdef.Goucdef) {
+  //     data[item] = "";
+  //   }
+  //   return data;
+  // }
   // 分页组建事件，e.data.page为需要跳转的页数
   onPageChanged(e) {
     console.log(e.data.page);

@@ -20,12 +20,18 @@
   align-content: flex-start;
   align-items: flex-start;
 }
-#starttime,
-#endtime {
-  width: 120px;
+input {
+  width: 125px;
+  height: 30px;
+  line-height: 20px;
+  padding: 5px 0 4px;
+  border: 1px solid #ccc;
 }
-#numb {
-  width: 140px;
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ccc;
+  margin-top: 0;
 }
 .querycontent {
   width: 100%;

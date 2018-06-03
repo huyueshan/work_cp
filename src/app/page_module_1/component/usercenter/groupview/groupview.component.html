@@ -1,0 +1,145 @@
+<div class="flex-c container">
+  <div class="flex-r querycontent">
+    <span class="flex-r" style="justify-content: flex-start;">
+      <span class="query_item">
+        <label for="starttime">时间： </label>
+        <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
+        <label for="endtime">至 </label>
+        <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
+      </span>
+      <span class="flex-r" style="justify-content: flex-start;">
+        <span class="query_item" *ngFor="let item of querydatelist; let i=index" style=" padding-right: 10px">
+          <span class="datebtn" [ngClass]="{bd_y:querydatelistindex == i}" (click)="querydatelistindex = i">{{item.text}}</span>
+        </span>
+      </span>
+    </span>
+    <span>
+      <button class="querybtn">查&nbsp;询</button>
+    </span>
+  </div>
+  <div class=" flex-c tablebox">
+    <div class="tablewrap">
+      <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+        <tr class="bg_1" style="height: 60px;">
+          <th>团队余额
+            <p>（元）</p>
+          </th>
+          <th>团队充值
+            <p>（元）</p>
+          </th>
+          <th>团队提现
+            <p>（元）</p>
+          </th>
+          <th>总团队人数
+            <p>（元）</p>
+          </th>
+          <th>新增人数
+            <p>（元）</p>
+          </th>
+          <th>活跃人数
+            <p>（元）</p>
+          </th>
+          <th>当前在线
+            <p>（元）</p>
+          </th>
+          <th>3天未登陆
+            <p>（元）</p>
+          </th>
+          <th>7天未登陆
+            <p>（元）</p>
+          </th>
+        </tr>
+        <tr>
+          <td>999</td>
+          <td>0</td>
+          <td>0</td>
+          <td class="flex-r" style="justify-content: center; border: none;">
+            <span>186</span> &nbsp;
+            <span class="flex-c" style="align-items: flex-start;">
+              <p>代理 147</p>
+              <p>会员 39</p>
+            </span>
+          </td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>172</td>
+          <td>171</td>
+        </tr>
+      </table>
+    </div>
+    <div class="flex-r bg_1 midinfo">彩票</div>
+    <div class="tablewrap">
+      <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+        <tr class="bg_1">
+          <th>投注金额</th>
+          <th>中奖金额</th>
+          <th>打和返款</th>
+          <th>投注返点</th>
+          <th>代理返点</th>
+          <th>活动奖励</th>
+          <th>净盈利</th>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </table>
+    </div>
+    <div class="flex-c viewbox bg_1">
+      <div class="flex-r wraning color_y">
+        <i></i>
+        <p> 净盈利=中奖金额+打和返款 +投注返点+代理返点+活动奖励-投注金额</p>
+      </div>
+      <div class="flex-c draw">
+        <div class="flex-r radiobox">
+          <span class="flex-r" *ngFor="let item of drawdatalist; let i = index">
+            <input type="radio" name="drawradio" value="{{i}}" [(ngModel)]="drawradio" (change)="setdrawdata(i)" />
+            <span>{{item.name}}</span>
+          </span>
+        </div>
+        <div class="flex-c radioinfobox">
+          <div class="flex-r itembox">
+            <span class="flex-r radioinfoitem" *ngFor="let item of drawdatalist">
+              <i [style.background-color]="item.color"></i>
+              <span>{{item.name}}</span>
+            </span>
+          </div>
+          <p>X 轴代表时间 &nbsp;&nbsp;&nbsp; Y 轴代表数量</p>
+        </div>
+        <div style="padding-top: 10px;">
+          <div class="flex-c drawbox">
+            <span class="assistline"></span>
+            <span class="assistline"></span>
+            <span class="assistline"></span>
+            <span class="assistline"></span>
+            <span class="assistline"></span>
+            <div class="flex-r absitem time">
+              <span>00:00:00</span>
+              <span>04:00:00</span>
+              <span>08:00:00</span>
+              <span>12:00:00</span>
+              <span>16:00:00</span>
+              <span>20:00:00</span>
+            </div>
+            <div class="flex-c absitem numb">
+              <span>0</span>
+              <span>200</span>
+              <span>400</span>
+              <span>600</span>
+              <span>800</span>
+            </div>
+            <div class="absitem canvasbox"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
