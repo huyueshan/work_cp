@@ -27,6 +27,7 @@ import { RegisgeneralizeComponent } from "../component/usercenter/regisgeneraliz
 import { GrouportComponent } from "../component/usercenter/grouport/grouport.component"
 import { GroupviewComponent } from "../component/usercenter/groupview/groupview.component"
 import { ProstatisticsComponent } from "../component/usercenter/prostatistics/prostatistics.component"
+import { WithdrawdepositComponent } from "../component/usercenter/withdrawdeposit/withdrawdeposit.component"
 
 /***********components***************/
 import { UsercenterComponent } from "./usercenter.component";
@@ -121,8 +122,12 @@ const routes = [
         component: ProstatisticsComponent 
       },
       {
+        path: "withdrawdeposit",
+        component: WithdrawdepositComponent 
+      },
+      {
         path: "",
-        redirectTo: 'groupview',
+        redirectTo: 'withdrawdeposit',
         // component:RegisgeneralizeComponent
       }
     ]

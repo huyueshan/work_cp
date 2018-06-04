@@ -41,7 +41,11 @@
 .bankcontent {
   position: relative;
   padding: 15px 0;
+  justify-content: flex-start;
   flex-wrap: wrap;
+}
+.bankitembox{
+  padding:8px;
 }
 
 .bankitem {
@@ -81,6 +85,10 @@
   border-radius: 9px;
   cursor: pointer;
 }
+.del:hover{
+  color: #fe8f00;
+  border-color: #fe8f00;
+}
 .add {
   padding: 0;
   justify-content: center;
@@ -101,7 +109,8 @@
   font-size: 14px;
   color: #333;
   background-color: white;
-  box-shadow: 0 0 1px 4px rgba(58, 57, 57, 0.1);
+  box-shadow: 0 0 6px 2px #fe8f00;
+  z-index: 99;
 }
 #addcontent,
 .addform {
@@ -170,6 +179,7 @@
   border: 1px solid #ccc;
   border-radius: 3px;
   text-align: center;
+  cursor: pointer;
 }
 .getnote:hover, .btngroup span:hover{
   color: white;
@@ -179,4 +189,12 @@
   width: 100%;
   padding-top: 30px;
   justify-content: center;
+}
+
+.shade{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 19;
 }

@@ -88,6 +88,10 @@ export class UsercenterComponent
           link: "/usercenter/recharge"
         },
         {
+          text: "用户提现",
+          link: "/usercenter/withdrawdeposit"
+        },
+        {
           text: "用户资料",
           link: "/usercenter/userdata"
         },
@@ -171,13 +175,6 @@ export class UsercenterComponent
         }
       }
     }
-  }
-
-  // 充值按钮事件
-  recharge() {
-    this.router.navigate(["/usercenter/recharge"]);
-    this.currentfristitem = "账户管理";
-    this.currentitem = "用户充值";
   }
 
   // 左侧导航栏一级菜单点击事件

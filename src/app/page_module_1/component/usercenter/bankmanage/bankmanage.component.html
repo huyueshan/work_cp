@@ -5,7 +5,43 @@
       <i class="color_y">2</i>张储蓄银行卡</p>
   </div>
   <div class="flex-r bankcontent">
-    <div class="flex-c bankitem">
+    <div class="bankitembox">
+      <div class="flex-c bankitem">
+        <div class="flex-r">
+          <i></i>
+          <span class="bold">尾号8888&nbsp;&nbsp;
+            <span class="cardtype">储蓄卡</span>
+          </span>
+        </div>
+        <div class="flex-r bankinfo">
+          <span>
+            <p>持卡人姓名：*赌神</p>
+            <p>手机号：188****3333</p>
+          </span>
+          <span class="del">删除</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="bankitembox">
+      <div class="flex-c bankitem">
+        <div class="flex-r">
+          <i></i>
+          <span class="bold">尾号8888&nbsp;&nbsp;
+            <span class="cardtype">储蓄卡</span>
+          </span>
+        </div>
+        <div class="flex-r bankinfo">
+          <span>
+            <p>持卡人姓名：*赌神</p>
+            <p>手机号：188****3333</p>
+          </span>
+          <span class="del">删除</span>
+        </div>
+      </div>
+
+    </div>
+    <!-- <div class="flex-c bankitem">
       <div class="flex-r">
         <i></i>
         <span class="bold">尾号8888&nbsp;&nbsp;
@@ -35,9 +71,27 @@
         <span class="del">删除</span>
       </div>
     </div>
-    <div class="flex-c bankitem add"  (click)="addbank()">
-      <strong>+</strong>
-      <span>添加银行卡</span>
+    <div class="flex-c bankitem">
+      <div class="flex-r">
+        <i></i>
+        <span class="bold">尾号8888&nbsp;&nbsp;
+          <span class="cardtype">储蓄卡</span>
+        </span>
+      </div>
+      <div class="flex-r bankinfo">
+        <span>
+          <p>持卡人姓名：*赌神</p>
+          <p>手机号：188****3333</p>
+        </span>
+        <span class="del">删除</span>
+      </div>
+    </div> -->
+    <div class="bankitembox">
+
+      <div class="flex-c bankitem add" (click)="addbank()">
+        <strong>+</strong>
+        <span>添加银行卡</span>
+      </div>
     </div>
     <div id="addcontent" *ngIf="addbanck" class="flex-c">
       <div class="flex-r addgead">
@@ -74,7 +128,7 @@
         </div>
         <div class="flex-r formitem ">
           <label for="check"></label>
-          <div  class="flex-r check">
+          <div class="flex-r check">
             <input type="checkbox" id="check" name="check" [(ngModel)]="formdata.checkvalue" />
             <p>我已阅读并同意
               <span class="color_y">《豪彩平台服务协议》</span>
@@ -91,3 +145,4 @@
     </div>
   </div>
 </div>
+<div class="shade" [style.width.px]="shade.w" [style.height.px]="shade.h" *ngIf="addbanck"></div>

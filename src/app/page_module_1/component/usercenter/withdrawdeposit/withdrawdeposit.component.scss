@@ -1,0 +1,373 @@
+.flex-r {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+.flex-c {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+}
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+table td,
+table th {
+  border: 1px solid #ccc;
+  height: 40px;
+  line-height: 38px;
+  text-align: center;
+}
+.mainbox {
+  position: relative;
+  align-items: flex-start;
+  padding: 30px 0;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+}
+.itembox {
+  justify-content: flex-start;
+  align-items: flex-start;
+  line-height: 40px;
+}
+.itemlabel {
+  width: 168px;
+  padding-top: 8px;
+  padding-right: 30px;
+  text-align: right;
+  font-size: 14px;
+  line-height: 40px;
+}
+.bankitembox {
+  padding: 8px 16px 8px 0;
+}
+.bankitembox p {
+  padding-left: 20px;
+}
+.bankitem {
+  width: 280px;
+  height: 136px;
+  font-size: 12px;
+  padding: 18px 10px 18px 20px;
+  background-color: white;
+}
+.bankitem i {
+  width: 96px;
+  height: 22px;
+  background: url("../../../images/user01.png") -10px -10px no-repeat;
+}
+.bold {
+  font-weight: bold;
+  color: black;
+}
+.cardtype {
+  padding: 3px;
+  background-color: #fe8f00;
+  color: white;
+}
+.bankinfo {
+  color: #999;
+  align-items: flex-end;
+}
+.bankinfo {
+  line-height: 22px;
+}
+.del {
+  width: 40px;
+  height: 20px;
+  line-height: 18px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 9px;
+  cursor: pointer;
+}
+.del:hover {
+  color: #fe8f00;
+  border-color: #fe8f00;
+}
+.add {
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+  cursor: pointer;
+}
+.add strong {
+  font-size: 60px;
+  line-height: 70px;
+}
+input[type="date"]{
+    width: 140px;
+    height: 30px;
+    line-height: 20px;
+    padding: 5px 0 4px 5px;
+    border: 1px solid #ccc;
+}
+ #money,
+#password {
+  width: 125px;
+  height: 40px;
+  line-height: 38px;
+  padding-left: 5px;
+  border: 1px solid #ccc;
+}
+.btntab {
+  justify-content: flex-start;
+}
+.btntab span {
+  padding: 30px 8px 30px 0;
+}
+.btntab button {
+  font-size: 16px;
+  height: 40px;
+  // line-height: 38px;
+  background-color: #fe8f00;
+  border: 1px solid #d17702;
+  color: white;
+}
+table td.alignr {
+  text-align: right;
+  padding-right: 10px;
+}
+table td.alignl {
+  text-align: left;
+  padding-left: 10px;
+}
+
+// 添加银行卡弹窗样式
+#addcontent {
+  position: absolute;
+  top: -96px;
+  left: 180px;
+  width: 500px;
+  height: 520px;
+  font-size: 14px;
+  color: #333;
+  background-color: white;
+  box-shadow: 0 0 6px 2px #fe8f00;
+  z-index: 99;
+}
+#addcontent,
+.addform {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.addform {
+  width: 100%;
+  padding: 10px 0;
+}
+.addgead {
+  width: 100%;
+  height: 50px;
+  line-height: 48px;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  // justify-content: center;
+}
+.addgead span {
+  width: 450px;
+  text-align: center;
+}
+.addgead i {
+  height: 50px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+}
+.formitem {
+  height: 50px;
+  justify-content: flex-start;
+}
+.formitem label {
+  width: 160px;
+  text-align: right;
+}
+
+.formitem input {
+  width: 240px;
+  height: 32px;
+  line-height: 30px;
+  padding-left: 8px;
+}
+.formitem input[name="check"] {
+  width: 16px;
+  height: 16px;
+}
+.formitem input#note {
+  width: 130px;
+}
+.note,
+.check {
+  width: 240px;
+}
+.check {
+  font-size: 12px;
+  justify-content: flex-start;
+}
+.check p {
+  padding-left: 5px;
+}
+.getnote,
+.btngroup span {
+  width: 90px;
+  height: 30px;
+  line-height: 28px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  text-align: center;
+  cursor: pointer;
+}
+.getnote:hover,
+.btngroup span:hover {
+  color: white;
+  background-color: #fe8f00;
+}
+.btngroup {
+  width: 100%;
+  padding-top: 30px;
+  justify-content: center;
+}
+.color_y {
+  color: #fe8f00;
+}
+.shade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 19;
+}
+
+// ======查看流水样式=========
+.flowbox {
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #f5f5f5;
+}
+.flowboxtop{
+    width: 100%;
+    padding-left: 20px;
+    padding-top: 10px;
+    border: 1px solid #ccc;
+    border-bottom: none;
+}
+.topinfo {
+  font-size: 12px;
+  line-height: 30px;
+}
+.flowbox .btntab span {
+  padding: 8px 8px 20px 0;
+}
+.flowbox .btntab button {
+  font-size: 12px;
+  height: 30px;
+  line-height: 28px;
+  background-color: #ccc;
+  border: 1px solid #999;
+  color: #333;
+  border-radius: 2px;
+  padding-top: 0;
+}
+.flowbox .btntab button.btnactive,.flowbox .btntab button:hover{
+    background-color: #fe8f00;
+    border: 1px solid #d17702;
+    color: white;
+}
+.tablebox{
+    width:100%;
+    border: 1px solid #ccc;
+    border-top: none;
+    overflow-x: scroll;
+}
+.tablebox th,.tablebox td{
+    text-align: center;
+}
+.tablebox td{
+    height: 80px;
+}
+.tablebox th{
+    font-weight: bold;
+}
+.datecell span:first-child{
+    border-bottom: 1px solid #ccc;
+}
+.tablebox table tr{
+    background-color: white;
+}
+.tablebox table tr:nth-of-type(even){
+    background-color: #f5f5f5;
+}
+.tablebox table tr .color11{
+    background-color: #ffe7c8;
+}
+.tablebox table tr .color22{
+    background-color: #ffe0e0;
+}
+.tablebox table tr .color33{
+    background-color: #edfbe7;
+}
+.color_r{
+    color:#fe0000;
+}
+.bottinfo{
+    font-size: 12px;
+  line-height: 30px;
+    padding:20px 30px;
+}
+.warning{
+ padding-bottom: 10px;
+ padding-top: 5px;
+}
+.warning p{
+    padding: 0 10px;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #fe8f00;
+    color: white;
+    border-radius: 2px;
+}
+
+// ==================
+.querycontent {
+    width: 100%;
+    height: 50px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #f5f5f5;
+  }
+  .query_item {
+    flex: none;
+    padding-right: 20px;
+  }
+  .querybtn {
+    width: 70px;
+    height: 30px;
+    line-height: 28px;
+    padding: 0;
+    text-align: center;
+    background-color: #fe8f00;
+    color: white;
+    outline: none;
+  }
+  .tablebox1 {
+    width: 100%;
+    padding: 10px 0 0;
+  }
+  
+  .tablewrap {
+    width: 100%;
+    overflow-x: scroll;
+    border: 1px solid #ccc;
+  }
+  .tablewrap table td{
+      height: 40px;
+  }

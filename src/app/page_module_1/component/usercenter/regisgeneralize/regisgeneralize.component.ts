@@ -21,6 +21,11 @@ export class RegisgeneralizeComponent implements OnInit {
     validate: "一天",
     money: "选择其他资金组"
   };
+  // 遮罩层
+  public shade = {
+    w:0,
+    h:0,
+  };
   public pagination = {
     pagenumber: 10, // 每页显示数量
     page: 1, //当前页
@@ -83,6 +88,8 @@ export class RegisgeneralizeComponent implements OnInit {
   }
   show(data, t){
     this.viewdata = data;
+    this.shade.w = document.body.clientWidth;
+    this.shade.h = screen.height;
     if(t == 1){
       this.editform.type = data.type;
       this.editform.status = data.status;

@@ -68,6 +68,7 @@
   border: 1px solid #999;
   border-radius: 2px;
   background-color: #ccc;
+  cursor: pointer;
 }
 .bg_y,
 .btn1:hover {
@@ -95,7 +96,7 @@
 
 .tablewrap {
   width: 100%;
-  border: 1px solid #ccc;
+  // border: 1px solid #ccc;
 }
 #table {
   table-layout: fixed;
@@ -139,7 +140,7 @@
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 0 0 4px rgba(153, 153, 153, 0.7);
-  z-index: 999;
+  z-index: 29;
 }
 .addgead {
   width: 100%;
@@ -208,4 +209,11 @@
     line-height: 24px;
     top:3px;;
     left:0;
+}
+.shade{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 19;
 }

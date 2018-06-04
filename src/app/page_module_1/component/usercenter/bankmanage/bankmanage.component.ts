@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BankmanageComponent implements OnInit {
   public addbanck = false;
+  public shade = {
+    w:0,
+    h:0,
+  };
   public formdata = {
     username:'',
     bankname:'',
@@ -21,6 +25,8 @@ export class BankmanageComponent implements OnInit {
   ngOnInit() {
   }
   addbank(){
+    this.shade.w = document.body.clientWidth;
+    this.shade.h = screen.height;
     this.addbanck = true;
   }
   deladd(){

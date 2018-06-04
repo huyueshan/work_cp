@@ -2,7 +2,6 @@ import { Component, OnInit,Input, Type } from "@angular/core";
 import { SharkModule } from "@ntesmail/shark-angular2";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
 
 import { Base } from "../../../../factory/base.model";
 import { Api } from "../../../../factory/api.model";
