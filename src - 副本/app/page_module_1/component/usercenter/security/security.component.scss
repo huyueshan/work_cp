@@ -1,0 +1,133 @@
+.flex-r {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+.flex-c {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.color_y,
+.securityinfo p.color_y {
+  color: #fe8f00;
+}
+
+.securitybox {
+  width: 100%;
+  height: 680px;
+  padding: 10px 30px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  justify-content: flex-start;
+}
+.securityhead {
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  font-size: 24px;
+  font-weight: 500;
+  // padding-top: 20px;
+  justify-content: flex-start;
+}
+.securityhead span {
+  padding-right: 20px;
+}
+.pipe {
+  position: relative;
+  width: 436px;
+  height: 10px;
+  background: url("../../../images/security_bg.png") center no-repeat;
+}
+.pipetop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 326px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #fe8f00;
+}
+.securityitem {
+  width: 100%;
+  height: 80px;
+  border-bottom: 1px solid #ccc;
+}
+.securityitem i {
+  width: 35px;
+  height: 35px;
+}
+.securityinfo {
+  height: 40px;
+  padding-left: 14px;
+}
+.securityinfo span {
+  font-size: 14px;
+  font-weight: bold;
+}
+.securityinfo p {
+  font-size: 12px;
+  color: #999;
+}
+.securityicon1 {
+  background: url("../../../images/user01.png") -60px -52px no-repeat;
+}
+.securityicon2 {
+  background: url("../../../images/user01.png") -125px -10px no-repeat;
+}
+.securityicon3 {
+  background: url("../../../images/user01.png") -10px -52px no-repeat;
+}
+.securityicon4 {
+  background: url("../../../images/user01.png") -125px -60px no-repeat;
+}
+.xiugaibtn {
+  width: 80px;
+  height: 30px;
+  line-height: 28px;
+  padding: 0;
+  text-align: center;
+  border-radius: 2px;
+  background-color: #ccc;
+  cursor: pointer;
+  outline: none;
+}
+.xiugaibtn:hover {
+  background-color: #fe8f00;
+  border: 1px solid #d17702;
+  color: white;
+}
+.histinfo {
+  padding: 10px 0;
+  color: #999;
+}
+.tablewrap {
+  width: 100%;
+  // border: 1px solid #ccc;
+}
+#table {
+  table-layout: fixed;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 100%;
+}
+#table th {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#table th,
+#table td {
+  text-align: center;
+  height: 40px;
+  border: 1px solid #ccc;
+}
+.bg_1 {
+  background-color: #f5f5f5;
+}
+.bg_2 {
+  background-color: white;
+}

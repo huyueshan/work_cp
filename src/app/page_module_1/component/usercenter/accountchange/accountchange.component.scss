@@ -21,12 +21,11 @@
   align-items: flex-start;
 }
 input {
-  width: 125px;
+  width: 132px;
   height: 30px;
-  line-height: 28px;
-  padding: 5px 0 4px;
+  line-height: 20px;
+  padding: 5px 0 4px 5px;
   border: 1px solid #ccc;
-  outline: none;
 }
 input[type="checkbox"] {
   width: 16px;
@@ -38,7 +37,7 @@ input[type="checkbox"] {
 #username {
   width: 136px;
 }
-.query_item{
+.query_item {
   flex: none;
   padding-right: 20px;
 }
@@ -60,14 +59,6 @@ input[type="checkbox"] {
   color: white;
   outline: none;
 }
-// #wrap,
-// #all,
-// .checkitems {
-  // outline: none;
-  // width: 14px;
-  // height: 14px;
-  // padding-left:10px;
-// }
 .tablebox,
 .checkboxs {
   width: 100%;
@@ -111,7 +102,6 @@ input[type="checkbox"] {
 
 .tablewrap {
   width: 100%;
-  // border: 1px solid #ccc;
 }
 #table {
   table-layout: fixed;
@@ -129,15 +119,15 @@ input[type="checkbox"] {
   height: 40px;
   border: 1px solid #ccc;
 }
-.total_tr{
-    font-size: 14px;
-    color: #fe8f00;
+.total_tr {
+  font-size: 14px;
+  color: #fe8f00;
 }
-.info{
-    height: 54px;
-    line-height: 54px;
-    font-size: 10px;
-    color: #999;
+.info {
+  height: 54px;
+  line-height: 54px;
+  font-size: 10px;
+  color: #999;
 }
 .page {
   align-self: center;

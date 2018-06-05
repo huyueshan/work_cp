@@ -21,10 +21,10 @@
   align-items: flex-start;
 }
 input {
-  width: 125px;
+  width: 132px;
   height: 30px;
   line-height: 20px;
-  padding: 5px 0 4px;
+  padding: 5px 0 4px 5px;
   border: 1px solid #ccc;
 }
 input[type="checkbox"] {
@@ -55,20 +55,12 @@ input[type="checkbox"] {
   color: white;
   outline: none;
 }
-#wrap {
-  outline: none;
-  width: 14px;
-  height: 14px;
-  // padding-left:10px;
-}
 .tablebox {
   width: 100%;
   padding: 10px 0 0;
 }
-
 .tablewrap {
   width: 100%;
-  // border: 1px solid #ccc;
 }
 #table {
   table-layout: fixed;
@@ -87,15 +79,14 @@ input[type="checkbox"] {
   height: 40px;
   border: 1px solid #ccc;
 }
-.total_tr {
-  font-size: 14px;
-  color: #fe8f00;
-}
 .color_y {
   color: #fe8f00;
 }
 .color_y td {
   font-weight: bold;
+}
+.colordef{
+  color:#333;
 }
 
 .page {

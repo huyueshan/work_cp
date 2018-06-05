@@ -6,7 +6,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./regisgeneralize.component.scss"]
 })
 export class RegisgeneralizeComponent implements OnInit {
-  public btninfo = "推广管理";
+  public btninfo = "推广链接";
   public infobox = false;
   public edit = false;
   public viewdata ;

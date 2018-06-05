@@ -1,0 +1,44 @@
+<div class="flex-c container">
+  <div class="flex-r querycontent">
+    <span class="flex-r" style="justify-content: flex-start;">
+      <span class="query_item">
+        <label for="starttime">时间： </label>
+        <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
+        <label for="endtime">至 </label>
+        <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
+      </span>
+    </span>
+    <button class="querybtn">查&nbsp;询</button>
+  </div>
+  <div class=" flex-c tablebox">
+    <div class="tablewrap">
+      <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+        <tr class="bg_1">
+          <th>余额</th>
+          <th>充值</th>
+          <th>提款</th>
+          <th>投注金额</th>
+          <th>中奖金额</th>
+          <th>投注返点</th>
+          <th>代理返点</th>
+          <th>打和返款</th>
+          <th>净盈利</th>
+        </tr>
+        <tr>
+          <td>9999</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2000</td>
+          <td>4000</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2000</td>
+        </tr>
+      </table>
+    </div>
+    <div class="info">
+      <p>注：净盈利=中奖金额+打和返款+投注返点+代理返点-投注金额</p>
+    </div>
+  </div>
+</div>

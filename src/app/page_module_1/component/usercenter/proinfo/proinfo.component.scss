@@ -11,6 +11,12 @@
     justify-content: space-between;
     align-content: space-between;
   }
+  select#protype{
+    width: 180px;
+    height: 30px;
+    line-height: 20px;
+    border: 1px solid #ccc;
+  }
   .bg_1 {
     background-color: #ccc;
   }
@@ -32,12 +38,6 @@
     flex: none;
     padding-right: 20px;
   }
-  #wrap {
-    outline: none;
-    width: 14px;
-    height: 14px;
-    // padding-left:10px;
-  }
   .tablebox {
     width: 100%;
     padding: 10px 0 0;
@@ -45,7 +45,6 @@
   
   .tablewrap {
     width: 100%;
-    // border: 1px solid #ccc;
   }
   #table {
     table-layout: fixed;

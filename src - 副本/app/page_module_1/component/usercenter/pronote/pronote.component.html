@@ -1,0 +1,40 @@
+<div class="flex-c container">
+  <div class="flex-r querycontent">
+    <span class="flex-r" style="justify-content: flex-start;">
+      <span class="query_item">
+        <span class="btn" (click)="clear()">删除所选</span>&nbsp;&nbsp;
+        <span class="btn" (click)="read()">标为已读</span>
+      </span>
+    </span>
+    <p>未读（
+      <span class="color_y">{{noread}}</span>）/全部（{{pronotedata.length}}）</p>
+  </div>
+  <div class=" flex-c tablebox">
+    <div class="tablewrap">
+      <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+        <tr class="bg_1">
+          <th class=" flex-r" style="justify-content: center;">
+            <input type="checkbox" name="all" id="all" [(ngModel)]="checkall"  (change)="allchange()">&nbsp;全选
+          </th>
+          <th>发件人</th>
+          <th>主题</th>
+          <th>时间</th>
+        </tr>
+        <tr *ngFor="let item of pronotedata"
+        [ngClass]="{color_dark:item.isread}" >
+          <td>
+            <input type="checkbox" name="{{item.id}}" id="{{item.id}}" [(ngModel)]="item.check"
+            (change)="itemchange()"/>
+          </td>
+          <td>{{item.addresser}}</td>
+          <td>{{item.theme}}</td>
+          <td>{{item.time}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="page" shark-pager [currentPage]="pagination.page" [totalPage]="pagination.totalPage" [gopage]="pagination.gopage"
+      [hl]="hl" [segmentSize]="pagination.segmentSize" [startFrom]="pagination.startFrom" (onPageChanged)="onPageChanged($event);">
+    </div>
+
+  </div>
+</div>

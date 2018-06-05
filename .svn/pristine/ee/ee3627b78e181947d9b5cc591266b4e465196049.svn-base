@@ -1,0 +1,92 @@
+<div class="flex-c container">
+  <div class="flex-r querycontent">
+    <span class="flex-r" style="justify-content: flex-start;">
+      <span class="query_item">
+        <label for="starttime">时间： </label>
+        <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
+        <label for="endtime">至 </label>
+        <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
+      </span>
+      <span class="query_item">
+        <label for="username">用户名： </label>
+        <input type="text" id="username" name="username" [(ngModel)]="querydata.username" />
+      </span>
+      <span class="flex-r query_item">
+        <input type="checkbox" id="wrap" name="wrap" [(ngModel)]="querydata.iswrap" />&nbsp;包含下级</span>
+    </span>
+    <!-- <span class="flex-r">
+
+    </span> -->
+    <button class="querybtn">查&nbsp;询</button>
+  </div>
+  <div class="checkboxs">
+    <div class="flex-c checkcontent">
+      <div class="flex-r checkcontent_top">
+        类型：&nbsp;<input type="checkbox" id="all"  name="all" [(ngModel)]="checkdatas.all" (click)="checksall()" />&nbsp;&nbsp;所有类型
+      </div>
+      <div class="checksbox">
+        <div class="flex-r" style="flex-wrap: nowrap;">
+          <span class="checktitle">收入:</span>
+          <div class="flex-r">
+            <span class="flex-r checkwrap" *ngFor="let item of checkdatas.income; let i = index" >
+                <input type="checkbox" class="checkitems" name="{{item.title}}" [(ngModel)]="item.checked" (change)="checkchange('income',i)" />&nbsp;{{item.title}}
+            </span>
+          </div>
+        </div>
+        <div class="flex-r" style="flex-wrap: nowrap;">
+          <span class="checktitle">支出:</span>
+          <div class="flex-r">
+            <span class="flex-r checkwrap" *ngFor="let item of checkdatas.expend; let q = index" >
+                <input type="checkbox" class="checkitems" name="{{item.title}}" [(ngModel)]="item.checked" (change)="checkchange('expend',q)" />&nbsp;{{item.title}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class=" flex-c tablebox">
+    <div class="tablewrap">
+      <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+        <tr class="bg_1">
+          <th>用户名</th>
+          <th style="width:160px">时间</th>
+          <th>帐变类型</th>
+          <th>支出</th>
+          <th>收入</th>
+          <th>余额</th>
+          <th style="width:200px">备注</th>
+        </tr>
+        <tr *ngFor="let item of acchangedata">
+          <td>{{item.user}}</td>
+          <td>{{item.time}}</td>
+          <td>{{item.type}}</td>
+          <td>{{item.expend}}</td>
+          <td>{{item.income}}</td>
+          <td>{{item.money}}</td>
+          <td>{{item.rebates}}</td>
+        </tr>
+        <tr class="total_tr">
+          <td colspan="2">小计0笔</td>
+          <td colspan="3">总支出 0 (0)</td>
+          <td colspan="2">总收入 0 (0)</td>
+        </tr>
+        <tr class="total_tr">
+          <td colspan="2">总计0笔</td>
+          <td colspan="3">总支出 0 (0)</td>
+          <td colspan="2">总收入 0 (0)</td>
+        </tr>
+      </table>
+
+    </div>
+    <div class="info">
+      <p>备注：本页资金变动为所有用户资金变动之和</p>
+    </div>
+    
+    <div class="page" shark-pager [currentPage]="pagination.page" [totalPage]="pagination.totalPage" [gopage]="pagination.gopage"
+      [hl]="hl" [segmentSize]="pagination.segmentSize" [startFrom]="pagination.startFrom" (onPageChanged)="onPageChanged($event);">
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,204 @@
+.flex-r {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+.flex-c {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.usercontent {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 30px 0;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.sidebox{
+  width: 230px;
+  min-height: 760px;
+  background-color: #ccc;
+  border:none;
+  border-radius: 3PX;
+}
+.sidel {
+  width: 230px;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  transition: all 5s linear;
+}
+.sidel li {
+  width: 100%;
+  font-size: 14px;
+  color: #333333;
+}
+.sidel li .itembox,
+.sidel li .item {
+  height: 50px;
+  line-height: 50px;
+  padding: 0 18px;
+  border-bottom: 1px solid #ccc;
+  // border-bottom: none;
+}
+.yborder{
+  border: 1px solid #fe8f00;
+  color: #fe8f00;
+}
+.sidel li .itembox {
+  padding-left: 20px;
+  font-weight: bold;
+  background-color: white;
+}
+.sidel li .itembox .itemboxiconr {
+  font-size: 30px;
+  line-height: 50px;
+  transform: rotate(0);
+}
+.sidel li .itembox .iconactive {
+  line-height: 60px;
+  transform: rotate(90deg);
+}
+.sidel li .itembox:hover {
+  color: #fe8f00;
+}
+.sidel li .itembox .sideicon{
+  width: 28px;
+  height: 28px;
+  background-image: url("../images/sidebg.png");
+  background-repeat: no-repeat;
+  background-position-y: -10px;
+}
+.sidel li .itembox .sideiconhoverbg{
+  background-image: url("../images/sidebg_hove.png");
+  background-repeat: no-repeat;
+  background-position-y: -10px;
+}
+.sidel li .item {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 60px;
+  background-color: #fee0b9;
+  color: #666;
+  // transition: all .5s linear;
+}
+.sidel li .item.itemactive,
+.sidel li .item:hover {
+  background-color: #fe8f00;
+  color: white;
+}
+.sidel li.sidetop {
+  height: 60px;
+  line-height: 60px;
+  color: white;
+  font-size: 24px;
+  padding-left: 20px;
+  background-color: #18182b;
+}
+.sidel li strong {
+  font-weight: bold;
+  color: #c48c15;
+}
+.item {
+  width: 100%;
+  height: 20px;
+  background-color: red;
+}
+
+//  =========
+.content {
+  width: 950px;
+  min-height: 530px;
+  justify-content: flex-start;
+}
+.contop {
+  width: 100%;
+  height: 140px;
+  padding: 18px 30px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  justify-content: flex-start;
+}
+.contopl {
+  width: 300px;
+  height: 100%;
+  border-right: 1px solid #ccc;
+  justify-content: flex-start;
+}
+.contopl i {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background-color: #666;
+}
+.contopl div {
+  padding-left: 22px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.contopl div span {
+  color: #fe8f00;
+}
+
+.contopr {
+  height: 100%;
+  align-items: flex-start;
+  padding-left: 30px;
+  font-size: 18px;
+}
+.cottitle span {
+  color: #999;
+  font-weight: bold;
+}
+.cotmid{
+  width: 100%;
+}
+.cotmid span{
+  padding-right: 10px;
+}
+.btn {
+  height: 30px;
+  line-height: 28px;
+  padding: 0 10px;
+  font-size: 14px;
+  background-color: #ccc;
+}
+.chongzhi, .tixian:hover{
+  background-color: #fe8f00;
+  border: 1px solid #c48c15;
+  color:white;
+}
+  
+.cotmid span{
+
+  font-size: 22px;
+}
+.cotmid small{
+  font-size: 18px;
+  font-weight: bold;
+}
+.cotmid strong{
+  color:#fe8f00;
+}
+.cotinfo{
+  font-size: 12px;
+}
+.crumbs{
+  height: 66px;
+  line-height: 66px;
+  font-size: 14px;
+}
+.crumbs a{
+  text-decoration: none;
+  color:black;
+  cursor: pointer;
+}
+
+.tablecontent{
+  width:100%;
+}

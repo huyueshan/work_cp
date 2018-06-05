@@ -29,9 +29,6 @@
           <span>添加银行卡</span>
         </div>
       </div>
-
-
-
     </div>
   </div>
   <div class="flex-r itembox">
@@ -52,9 +49,6 @@
       </div>
       <div class="bankitembox">
       </div>
-
-
-
     </div>
   </div>
   <div class="flex-r itembox">
@@ -161,13 +155,11 @@
       </div>
 
     </form>
-
   </div>
-  
   <!-- 遮罩层 -->
   <div class="shade" [style.width.px]="shade.w" [style.height.px]="shade.h" *ngIf="addbanck"></div>
 </div>
-
+<!-- 查看流水内容 -->
 <div class="flex-c flowbox" *ngIf="status == 1">
   <div class="flex-c itembox flowboxtop">
     <div class="flex-c  topinfo">
@@ -241,9 +233,10 @@
         </span>
         <span>此次出款时间为：2018-06-06  17:15:16</span>
       </div>
-  
   </div>
 </div>
+
+<!-- 查看进度内容 -->
 <div class="flex-c planbox" *ngIf="status == 2">
     <div class="flex-c">
         <div class="flex-r querycontent">
@@ -255,7 +248,10 @@
               <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
             </span>
           </span>
-          <button class="querybtn">查&nbsp;询</button>
+          <span>
+            <button class="querybtn">查&nbsp;询</button>&nbsp;&nbsp;
+            <button class="querybtn" (click)="status=0">返回提现</button>
+          </span>
         </div>
         <div class=" flex-c tablebox1">
           <div class="tablewrap">

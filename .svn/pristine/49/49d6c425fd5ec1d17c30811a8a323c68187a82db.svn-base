@@ -1,0 +1,183 @@
+<div class="flex-c container">
+  <div class="flex-r subbox bg_1">
+    <span class="btn1" [ngClass]="{bg_y:btninfo=='推广链接'}" (click)="btninfo='推广链接'">推广链接</span>&nbsp;&nbsp;
+    <span class="btn1" [ngClass]="{bg_y:btninfo=='推广管理'}" (click)="btninfo='推广管理'">推广管理</span>
+  </div>
+
+  <!-- ==推广链接-->
+  <div class="flex-c formbox" *ngIf="btninfo =='推广链接'">
+    <span class="flex-r formitem">
+      <label for="domainname">推广域名：</label>
+      <select id="domainname" name="domainname" [(ngModel)]="formdata.domainname">
+        <option value="本站" selected>本站</option>
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+      </select>
+    </span>
+    <span class="flex-r formitem">
+      <label for="type">用户类型：</label>
+      <select id="type" name="type" [(ngModel)]="formdata.type">
+        <option value="会员" selected>会员</option>
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+      </select>
+    </span>
+    <span class="flex-r formitem">
+      <label for="validate">链接有效期：</label>
+      <select id="validate" name="validate" [(ngModel)]="formdata.validate">
+        <option value="一天" selected>一天</option>
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+      </select>
+    </span>
+    <span class="flex-r formitem">
+      <strong class="settitle">
+        奖金组设定
+      </strong>
+    </span>
+    <span class="flex-r formitem">
+      <label for="money">设置奖金：</label>
+      <select id="money" name="money" [(ngModel)]="formdata.money">
+        <option value="选择其他资金组" selected>选择其他资金组</option>
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+      </select>
+      <p class="warning">奖金组一旦上调后则无法降低，请谨慎操作</p>
+    </span>
+
+    <span class="flex-r formitem">
+      <span class="flex-r linkbtn">
+        <button class="btn1 bg_y">生成链接</button>
+      </span>
+    </span>
+  </div>
+  <!-- ==推广管理-->
+  <div class="flex-c tablebox" *ngIf="btninfo =='推广管理'">
+    <div class=" flex-c">
+      <div class="tablewrap">
+        <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+          <tr class="bg_1">
+            <th style="width: 250px">推广渠道链接</th>
+            <th>访问量</th>
+            <th>注册人数</th>
+            <th>开户类型</th>
+            <th>状态</th>
+            <th style="width: 150px">生成时间</th>
+            <th>返点率</th>
+            <th style="width: 140px">操作</th>
+          </tr>
+          <tr *ngFor="let item of regisdatalist; let i = index">
+            <td>
+              <a class="color_y" href="javascript:;">{{item.link}}</a>
+            </td>
+            <td>{{item. callnumb}}</td>
+            <td>{{item.mannumb}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.status}}</td>
+            <td>{{item.time}}</td>
+            <td>{{item.rebates}}</td>
+            <td>
+              <span class="color_y" (click)="show(item, 0)">详情</span>&nbsp;
+              <span class="color_y" (click)="show(item, 1)">编辑</span>&nbsp;
+              <span class="color_y" (click)="del(i)">删除</span>
+            </td>
+            <!-- <td>
+              <span *ngFor="let child of item.action">
+                <a class="color_y" href="javascript:;">{{child}}</a>
+                &nbsp;
+              </span>
+            </td> -->
+          </tr>
+        </table>
+      </div>
+      <div class="page" shark-pager [currentPage]="pagination.page" [totalPage]="pagination.totalPage" [gopage]="pagination.gopage"
+        [hl]="hl" [segmentSize]="pagination.segmentSize" [startFrom]="pagination.startFrom" (onPageChanged)="onPageChanged($event);">
+      </div>
+    </div>
+
+    <div id="addcontent" *ngIf="infobox" class="flex-c">
+      <div class="flex-r addgead">
+        <span>详情</span>
+        <i (click)="hide()"> &times; </i>
+      </div>
+      <div class="contentbox">
+        <div class="flex-c content">
+          <div class="flex-r contentitem">
+            <span class="labelspan">推广渠道链接：</span>
+            <span class="contentinfo">
+              <a class="color_y" href="javascript:;">{{viewdata.link}}</a>
+            </span>
+          </div>
+          <div class="flex-r contentitem">
+            <span class="labelspan">访问量：</span>
+            <span class="contentinfo"> {{viewdata.callnumb}}
+            </span>
+          </div>
+          <div class="flex-r contentitem">
+            <span class="labelspan">注册人数：</span>
+            <span class="contentinfo"> {{viewdata.mannumb}}
+            </span>
+          </div>
+          <div class="flex-r contentitem">
+            <span class="labelspan">开户类型：</span>
+            <span class="contentinfo"> {{viewdata.type}}
+              <select id="edittype" name="edittype" [(ngModel)]="editform.type" *ngIf="edit">
+                <option value="会员" selected>会员</option>
+                <option value="option1">option1</option>
+                <option value="option2">option2</option>
+                <option value="option3">option3</option>
+              </select>
+
+            </span>
+          </div>
+          <div class="flex-r contentitem">
+            <span class="labelspan">状态：</span>
+            <span class="contentinfo"> {{viewdata.status}}
+              <select id="editstatus" name="editstatus" [(ngModel)]="editform.status" *ngIf="edit">
+                <option value="永久有效" selected>永久有效</option>
+                <option value="option1">option1</option>
+                <option value="option2">option2</option>
+                <option value="option3">option3</option>
+              </select>
+
+            </span>
+          </div>
+          <div class="flex-r contentitem">
+            <span class="labelspan">生成时间：</span>
+            <span class="contentinfo"> {{viewdata.time}}
+            </span>
+          </div>
+          <div class="flex-r contentitem">
+            <span class="labelspan">返点率：</span>
+            <span class="contentinfo"> {{viewdata.rebates}}
+              <select id="editrebates" name="editrebates" [(ngModel)]="editform.rebates" *ngIf="edit">
+                <option value="0.071" selected>0.071</option>
+                <option value="option1">option1</option>
+                <option value="option2">option2</option>
+                <option value="option3">option3</option>
+              </select>
+            </span>
+          </div>
+          <div class="flex-r contentitem code">
+            <span class="labelspan">二维码：</span>
+            <span class="contentinfo">
+              <span class="codeimg"></span>
+            </span>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</div>
+<div class="shade" [style.width.px]="shade.w" [style.height.px]="shade.h" *ngIf="infobox"></div>

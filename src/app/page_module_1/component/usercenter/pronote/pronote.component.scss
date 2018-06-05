@@ -14,18 +14,11 @@
   .bg_1 {
     background-color: #f5f5f5;
   }
-  .container {
+  .mycontainer {
     width: 950px;
     padding: 0;
     align-content: flex-start;
     align-items: flex-start;
-  }
-  input {
-    width: 125px;
-    height: 30px;
-    line-height: 20px;
-    padding: 5px 0 4px;
-    border: 1px solid #ccc;
   }
   input[type="checkbox"] {
     width: 16px;
@@ -33,15 +26,15 @@
     border: 1px solid #ccc;
     margin-top: 0;
   }
-  #numb{
-      width: 140px;
+  input[type="checkbox"]#all{
+    line-height: 40px;
   }
   .querycontent {
     width: 100%;
     height: 50px;
     padding: 0 10px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-bottom: none;
     background-color: #f5f5f5;
   }
   .query_item{
@@ -61,25 +54,17 @@
   .btn:hover{
       border-color: #fe8f00;
   }
-  #wrap{
-    outline: none;
-    width: 14px;
-    height: 14px;
-    // padding-left:10px;
-  }
   .tablebox{
     width: 100%;
     padding: 0;
   }
-  
   .tablewrap {
     width: 100%;
-    // border: 1px solid #ccc;
   }
   #table {
     table-layout: fixed;
-    // border: 1px solid #ccc;
-    // border-collapse: collapse;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
     width: 100%;
   }
   #table th {
@@ -98,13 +83,11 @@
   }
   .color_y{
     color:#fe8f00;
-    // cursor: pointer;
   }
   .color_dark{
       color:#999
 
   }
-  
   .page {
     align-self: center;
   }

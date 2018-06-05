@@ -8,8 +8,6 @@ import { Component, OnInit } from "@angular/core";
 export class GrouportComponent implements OnInit {
   public toggleindex = 0;
   public querydatelistindex = 0;
-  
-
   public querydata = {
     starttime: "",
     endtime: "",
@@ -489,5 +487,8 @@ export class GrouportComponent implements OnInit {
       n += Number(d[i][t]);
     }
     return n
+  }
+  onPageChanged(e) {
+    console.log(e.data.page);
   }
 }
