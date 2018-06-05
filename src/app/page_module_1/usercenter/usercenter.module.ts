@@ -6,31 +6,31 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { ComponentsModule } from "../component/components.module";
 import { FormsModule } from "@angular/forms";
-import { GoucaiqueryComponent } from "../component/usercenter/goucaiquery/goucaiquery.component";
-import { ZhuihaoqueryComponent } from "../component/usercenter/zhuihaoquery/zhuihaoquery.component";
-import { AccountchangeComponent } from "../component/usercenter/accountchange/accountchange.component";
-import { MyreportComponent } from "../component/usercenter/myreport/myreport.component";
-import { MoneyrecordComponent } from "../component/usercenter/moneyrecord/moneyrecord.component";
-import { DiscountinfoComponent } from "../component/usercenter/discountinfo/discountinfo.component";
-import { MyoverviewComponent } from "../component/usercenter/myoverview/myoverview.component";
-import { ProquotaComponent } from "../component/usercenter/proquota/proquota.component";
-import { ProinfoComponent } from "../component/usercenter/proinfo/proinfo.component";
-import { UserdataComponent } from "../component/usercenter/userdata/userdata.component";
-import { SecurityComponent } from "../component/usercenter/security/security.component";
-import { BankmanageComponent } from "../component/usercenter/bankmanage/bankmanage.component";
-import { PronoteComponent } from "../component/usercenter/pronote/pronote.component";
-import { WebnoteComponent } from "../component/usercenter/webnote/webnote.component";
-import { RechargeComponent } from "../component/usercenter/recharge/recharge.component";
-import { UserlistComponent } from "../component/usercenter/userlist/userlist.component";
-import { RegismanageComponent } from "../component/usercenter/regismanage/regismanage.component";
-import { RegisgeneralizeComponent } from "../component/usercenter/regisgeneralize/regisgeneralize.component";
-import { GrouportComponent } from "../component/usercenter/grouport/grouport.component"
-import { GroupviewComponent } from "../component/usercenter/groupview/groupview.component"
-import { ProstatisticsComponent } from "../component/usercenter/prostatistics/prostatistics.component"
-import { WithdrawdepositComponent } from "../component/usercenter/withdrawdeposit/withdrawdeposit.component"
 
 /***********components***************/
 import { UsercenterComponent } from "./usercenter.component";
+import { GoucaiqueryComponent } from "./usercenter/goucaiquery/goucaiquery.component";
+import { ZhuihaoqueryComponent } from "./usercenter/zhuihaoquery/zhuihaoquery.component";
+import { AccountchangeComponent } from "./usercenter/accountchange/accountchange.component";
+import { MyreportComponent } from "./usercenter/myreport/myreport.component";
+import { MoneyrecordComponent } from "./usercenter/moneyrecord/moneyrecord.component";
+import { DiscountinfoComponent } from "./usercenter/discountinfo/discountinfo.component";
+import { MyoverviewComponent } from "./usercenter/myoverview/myoverview.component";
+import { ProquotaComponent } from "./usercenter/proquota/proquota.component";
+import { ProinfoComponent } from "./usercenter/proinfo/proinfo.component";
+import { UserdataComponent } from "./usercenter/userdata/userdata.component";
+import { SecurityComponent } from "./usercenter/security/security.component";
+import { BankmanageComponent } from "./usercenter/bankmanage/bankmanage.component";
+import { PronoteComponent } from "./usercenter/pronote/pronote.component";
+import { WebnoteComponent } from "./usercenter/webnote/webnote.component";
+import { RechargeComponent } from "./usercenter/recharge/recharge.component";
+import { UserlistComponent } from "./usercenter/userlist/userlist.component";
+import { RegismanageComponent } from "./usercenter/regismanage/regismanage.component";
+import { RegisgeneralizeComponent } from "./usercenter/regisgeneralize/regisgeneralize.component";
+import { GrouportComponent } from "./usercenter/grouport/grouport.component"
+import { GroupviewComponent } from "./usercenter/groupview/groupview.component"
+import { ProstatisticsComponent } from "./usercenter/prostatistics/prostatistics.component"
+import { WithdrawdepositComponent } from "./usercenter/withdrawdeposit/withdrawdeposit.component"
 
 const routes = [
   {
@@ -143,7 +143,29 @@ const routes = [
     FormsModule
   ],
   declarations: [
-    UsercenterComponent
+    UsercenterComponent,
+    GoucaiqueryComponent,
+    ZhuihaoqueryComponent,
+    AccountchangeComponent,
+    MoneyrecordComponent,
+    DiscountinfoComponent,
+    MyreportComponent,
+    MyoverviewComponent,
+    ProquotaComponent,
+    ProinfoComponent,
+    UserdataComponent,
+    SecurityComponent,
+    BankmanageComponent,
+    PronoteComponent,
+    WebnoteComponent,
+    RechargeComponent,
+    UserlistComponent,
+    RegismanageComponent,
+    RegisgeneralizeComponent,
+    GrouportComponent,
+    GroupviewComponent,
+    ProstatisticsComponent,
+    WithdrawdepositComponent,
   ]
 })
 export class UsercenterModule {}

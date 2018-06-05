@@ -17,13 +17,25 @@ import { GOUC, userdef } from "../../../factory/usercent";
 })
 export class UsercenterComponent
   implements OnInit, AfterViewInit, AfterContentChecked {
-  public currentfristitem: string = "投注记录";
-  public currentitem: string = "购彩查询";
+  public currentfristitem: string;
+  public currentitem: string;
   public currentactive = 0;
+  // TODO: 如果使用不同的背景图标；必须先在父组件中线require 这张图片
+  public bgurlinit = require("../images/sidebg1.png");
+  public bgurl = 'url("../../images/sidebg1.png")';
   public usersidedata = [
     {
-      title: "投注记录",
+      title: "投注记录", 
       icon_x: -10,
+      bg:{
+        url:'url("../../images/sidebg1.png")',
+        x:-332,
+        y:-10,
+        defx:-332,
+        defy:-10,
+        hovx:-102,
+        hovy:-10,
+      },
       isover: false,
       isactive: false,
       items: [
@@ -40,6 +52,15 @@ export class UsercenterComponent
     {
       title: "报表管理",
       icon_x: -56,
+      bg:{
+        url:'url("../../images/sidebg1.png")',
+        x:-378,
+        y:-10,
+        defx:-378,
+        defy:-10,
+        hovx:-148,
+        hovy:-10,
+      },
       isover: false,
       isactive: false,
       items: [
@@ -68,6 +89,15 @@ export class UsercenterComponent
     {
       title: "账户管理",
       icon_x: -102,
+      bg:{
+        url:'url("../../images/sidebg1.png")',
+        x:-424,
+        y:-6,
+        defx:-424,
+        defy:-6,
+        hovx:-194,
+        hovy:-6,
+      },
       isover: false,
       isactive: false,
       items: [
@@ -108,6 +138,15 @@ export class UsercenterComponent
     {
       title: "代理管理",
       icon_x: -148,
+      bg:{
+        url:'url("../../images/sidebg1.png")',
+        x:-10,
+        y:-10,
+        defx:-10,
+        defy:-10,
+        hovx:-240,
+        hovy:-10,
+      },
       isover: false,
       isactive: false,
       items: [
@@ -136,6 +175,15 @@ export class UsercenterComponent
     {
       title: "短信公告",
       icon_x: -194,
+      bg:{
+        url:'url("../../images/sidebg1.png")',
+        x:-56,
+        y:-10,
+        defx:-56,
+        defy:-10,
+        hovx:-286,
+        hovy:-10,
+      },
       isover: false,
       isactive: false,
       items: [
