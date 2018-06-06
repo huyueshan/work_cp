@@ -21,7 +21,6 @@ button {
 }
 .trans-bg {
   background-color: rgba(0,0,0,0.3);
-  // background-color: rgba(75, 76, 80, 0.5);
 }
 .reform-item.errborder{
   border: 1px solid red;
@@ -64,7 +63,6 @@ button {
   border: 0;
   border-radius: 5px;
   background-color:rgba(255, 255, 255, 0.3);
-  // background-color: rgba(205, 217, 228, 0.5);rgba(255, 255, 255, 0.3)
 }
 .reform {
   height: 400px;
@@ -88,17 +86,12 @@ button {
   width: 30px;
   text-align: right;
 }
-.reform-item i, .errtip i {
+.reform-item i{
   display: block;
   width: 20px;
   height: 20px;
 }
-.errtip i {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-}
-.reform-item i.account-icon,.errtip i {
+.reform-item i.account-icon,{
   background: url("../images/log-reg.png") -100px -10px;
 }
 .reform-item i.password-icon {
@@ -171,25 +164,9 @@ button {
 #reform{
   position: relative;
 }
-.errtip{
+.errbox{
   position: absolute;
   width: 320px;
-  height: 24px;
-  font-size: 12px;
-  padding-left: 10px;
-  background-color: #f2dede;;
-  color:#6C6C6C;
   top: 36px;
   left:0;
-  border: none;
-  border-radius: 3px;
-  justify-content: flex-start;
-
-}
-.errtip span{
-  height: 20px;
-  line-height: 20px;
-  padding-left: 8px;
-  
-
 }

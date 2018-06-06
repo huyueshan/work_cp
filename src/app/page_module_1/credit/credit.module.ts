@@ -3,20 +3,24 @@ import { SharkModule } from '@ntesmail/shark-angular2';
 import { FormsModule} from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ComponentsModule } from "../component/components.module";
 /***********components***************/
-import { SSCofficialComponent } from './ssc.component';
+import { CreditComponent } from './credit.component';
 
 const routes = [
-    { path: 'creadit', component: SSCofficialComponent },
+    { path: '', component: CreditComponent },
+    { path: 'credit', component: CreditComponent },
+    { path: '**', component: CreditComponent },
 ];
 
 @NgModule({
     imports: [
         SharkModule, RouterModule.forChild(routes),CommonModule,
-		FormsModule
+        FormsModule,
+        ComponentsModule,
     ],
-    declarations: [SSCofficialComponent]
+    declarations: [CreditComponent ]
 })
-export class SSCofficialModule {
+export class CreditModule {
 	
 	}

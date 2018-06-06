@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
       text: "彩票大厅",
       bgpositiony: "-104",
       isover: false,
-      link: ""
+      link: "/sscmod"
     },
     {
       text: "用户中心",
@@ -227,9 +227,6 @@ export class IndexComponent implements OnInit {
       
   }
   linkrouter(t){
-    console.log(t);
-    // let e = "/login"
     this.router.navigate([t]);
-    // this.router.navigate(["/home"]);
   }
 }

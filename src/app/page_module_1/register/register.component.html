@@ -6,12 +6,13 @@
     </div>
     <div class="main">
       <form id="reform" class="reform flex-c rel">
-        <div class="abs errtip flex-r" *ngIf="errtip"><i class="account-icon"></i><span>{{errtip}}</span></div>
+        <div class="errbox" *ngIf="errtip">
+          <app-errtip [message]="errtip"></app-errtip>
+        </div>
         <div class="head">
           <span>用户注册</span>
         </div>
         <div calss="account">
-          <!-- <app-errtip [message]="errtip" style=""></app-errtip> -->
           <div class="flex-r reform-item trans-bg" [ngClass]="{'errborder': inborder.account}">
             <label for="account">
               <i class="account-icon"></i>

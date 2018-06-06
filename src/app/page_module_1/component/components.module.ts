@@ -7,9 +7,11 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 /***********components***************/
 import { LanguageComponent } from "../component/language/language.component";
+import { ErrtipComponent } from './errtip/errtip.component';
 import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
 import { SideComponent } from "./side/side.component";
+import { CredtopComponent } from "./credtop/credtop.component";
 
 @NgModule({
   imports: [SharkModule, CommonModule, FormsModule],
@@ -18,12 +20,16 @@ import { SideComponent } from "./side/side.component";
     HeaderComponent,
     FooterComponent,
     SideComponent,
+    ErrtipComponent,
+    CredtopComponent,
   ],
   exports: [
     LanguageComponent,
     HeaderComponent,
     FooterComponent,
     SideComponent,
+    ErrtipComponent,
+    CredtopComponent,
   ]
 })
 export class ComponentsModule {}

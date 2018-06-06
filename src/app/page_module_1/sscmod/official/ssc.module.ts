@@ -7,6 +7,10 @@ import { CommonModule } from '@angular/common';
 import { SSCofficialComponent } from './ssc.component';
 
 const routes = [
+	{
+
+		path: '', component: SSCofficialComponent,
+	},
     { 
 		path: 'official', component: SSCofficialComponent,
 		children:[

@@ -1,0 +1,149 @@
+<div class="flex-c bankbox">
+  <div class="flex-r bankhead">
+    <span>我的银行卡</span>
+    <p>已添加
+      <i class="color_y">2</i>
+      张储蓄银行卡</p>
+  </div>
+  <div class="flex-r bankcontent">
+    <div class="bankitembox">
+      <div class="flex-c bankitem">
+        <div class="flex-r">
+          <i></i>
+          <span class="bold">尾号8888&nbsp;&nbsp;
+            <span class="cardtype">储蓄卡</span>
+          </span>
+        </div>
+        <div class="flex-r bankinfo">
+          <span>
+            <p>持卡人姓名：*赌神</p>
+            <p>手机号：188****3333</p>
+          </span>
+          <span class="del">删除</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="bankitembox">
+      <div class="flex-c bankitem">
+        <div class="flex-r">
+          <i></i>
+          <span class="bold">尾号8888&nbsp;&nbsp;
+            <span class="cardtype">储蓄卡</span>
+          </span>
+        </div>
+        <div class="flex-r bankinfo">
+          <span>
+            <p>持卡人姓名：*赌神</p>
+            <p>手机号：188****3333</p>
+          </span>
+          <span class="del">删除</span>
+        </div>
+      </div>
+
+    </div>
+    <!-- <div class="flex-c bankitem">
+      <div class="flex-r">
+        <i></i>
+        <span class="bold">尾号8888&nbsp;&nbsp;
+          <span class="cardtype">储蓄卡</span>
+        </span>
+      </div>
+      <div class="flex-r bankinfo">
+        <span>
+          <p>持卡人姓名：*赌神</p>
+          <p>手机号：188****3333</p>
+        </span>
+        <span class="del">删除</span>
+      </div>
+    </div>
+    <div class="flex-c bankitem">
+      <div class="flex-r">
+        <i></i>
+        <span class="bold">尾号8888&nbsp;&nbsp;
+          <span class="cardtype">储蓄卡</span>
+        </span>
+      </div>
+      <div class="flex-r bankinfo">
+        <span>
+          <p>持卡人姓名：*赌神</p>
+          <p>手机号：188****3333</p>
+        </span>
+        <span class="del">删除</span>
+      </div>
+    </div>
+    <div class="flex-c bankitem">
+      <div class="flex-r">
+        <i></i>
+        <span class="bold">尾号8888&nbsp;&nbsp;
+          <span class="cardtype">储蓄卡</span>
+        </span>
+      </div>
+      <div class="flex-r bankinfo">
+        <span>
+          <p>持卡人姓名：*赌神</p>
+          <p>手机号：188****3333</p>
+        </span>
+        <span class="del">删除</span>
+      </div>
+    </div> -->
+    <div class="bankitembox">
+
+      <div class="flex-c bankitem add" (click)="addbank()">
+        <strong>+</strong>
+        <span>添加银行卡</span>
+      </div>
+    </div>
+    <div id="addcontent" *ngIf="addbanck" class="flex-c">
+      <div class="flex-r addgead">
+        <span>添加银行卡</span>
+        <i (click)="deladd()"> &times; </i>
+      </div>
+      <form class="flex-c addform">
+        <div class="flex-r formitem">
+          <label for="name">持卡人姓名：&nbsp;</label>
+          <input type="text" id="name" name="name" placeholder="输入持卡人姓名" [(ngModel)]="formdata.username" />
+        </div>
+        <div class="flex-r formitem">
+          <label for="name">开户银行：&nbsp;</label>
+          <input type="text" id="bankname" name="bankname" placeholder="输入开户银行名称" [(ngModel)]="formdata.bankname" />
+        </div>
+        <div class="flex-r formitem">
+          <label for="name">支行名称：&nbsp;</label>
+          <input type="text" id="bankbranch" name="bankbranch" placeholder="输入银行支行" [(ngModel)]="formdata.bankbranch" />
+        </div>
+        <div class="flex-r formitem">
+          <label for="name">银行卡号：&nbsp;</label>
+          <input type="text" id="cardnmb" name="cardnmb" placeholder="输入银行卡号" [(ngModel)]="formdata.cardnmb" />
+        </div>
+        <div class="flex-r formitem">
+          <label for="name">银行预留手机号码：&nbsp;</label>
+          <input type="text" id="phone" name="phone" placeholder="输入办卡时预留手机号码" [(ngModel)]="formdata.phone" />
+        </div>
+        <div class="flex-r formitem">
+          <label for="name">短信验证码：&nbsp;</label>
+          <span class="flex-r note">
+            <input type="text" id="note" name="note" placeholder="" [(ngModel)]="formdata.note" />
+            <span class="getnote">获取验证码</span>
+          </span>
+        </div>
+        <div class="flex-r formitem ">
+          <label for="check"></label>
+          <div class="flex-r check">
+            <input type="checkbox" id="check" name="check" [(ngModel)]="formdata.checkvalue" />
+            <p>我已阅读并同意
+              <span class="color_y">《豪彩平台服务协议》</span>
+            </p>
+          </div>
+        </div>
+        <div class="flex-r formitem btngroup">
+          <span>确定</span> &nbsp; &nbsp; &nbsp;
+          <span>取消</span>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+<div class="shade" [style.width.px]="shade.w" [style.height.px]="shade.h" *ngIf="addbanck"></div>

@@ -96,7 +96,7 @@ export class RouteguardService implements CanActivate{
 					const appnewRoutes: Routes =[
 						{
 							path: '',
-							redirectTo: 'home',
+							redirectTo: 'credit',
 							pathMatch: 'full'
 						},
 						{
@@ -117,6 +117,11 @@ export class RouteguardService implements CanActivate{
 							loadChildren: '../app/page_module_1/sscmod/official/ssc.module#SSCofficialModule',
 							canActivate: [RouteguardService]
 						}, 
+						{
+							path: 'credit',
+							loadChildren: '../app/page_module_1/credit/credit.module#CreditModule',
+							canActivate: [RouteguardService]
+						},  
 						{
 							path: 'home',
 							loadChildren: '../app/page_module_1/home/home.module#HomeModule'

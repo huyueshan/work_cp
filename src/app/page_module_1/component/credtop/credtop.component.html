@@ -1,0 +1,45 @@
+<div class="flex-r gamenav">
+  <div class="padright">
+    <div class="flex-r navitem alltype">
+      <div class="fltitle">全部彩种</div>
+      <div class="frimg">
+        <img src="../../images/cqssc_13.png" />
+      </div>
+    </div>
+  </div>
+  <div class="padright">
+    <div class="flex-r navitem gametime">
+      <div class="fltitle">
+        <p>第
+          <span class="color_y">{{next}}</span>
+          期</p>
+        <p>预售时间</p>
+      </div>
+      <ul class="flex-r frtime">
+        <li>{{timedate| date:'hh'}}</li>
+        <li>{{timedate| date:'mm'}}</li>
+        <li>{{timedate| date:'ss'}}</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <div class="flex-r navitem gameresult">
+      <div class="fltitle">
+        <p>第
+          <span class="color_y">{{previous}}</span>
+          期</p>
+        <p>开奖号码</p>
+      </div>
+      <ul class="flex-r frnumber">
+        <li *ngFor="let item of otterynumber" > <span>{{item}}</span> </li>
+      </ul>
+      <div class="line"></div>
+      <div class="flex-c currresult">
+        <p class="pt">近期开奖</p>
+        <p class="pimg">
+          <span></span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

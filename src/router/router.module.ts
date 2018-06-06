@@ -10,7 +10,7 @@ import { ResolveService } from '../router/resole.service';
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'credit',
         pathMatch: 'full'
     },
 	{
@@ -32,7 +32,12 @@ const appRoutes: Routes = [
         path: 'detail',
         loadChildren: '../app/page_module_1/detail/detail.module#DetailModule',
 		canActivate: [RouteguardService]
-    },
+    }, 
+    {
+        path: 'credit',
+        loadChildren: '../app/page_module_1/credit/credit.module#CreditModule',
+        canActivate: [RouteguardService]
+    }, 
 	{
         path: 'test',
         loadChildren: '../app/page_module_1/test/detail.module#DetailModule',

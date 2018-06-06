@@ -1,12 +1,11 @@
-<div class="flex-c" style="min-height:800px;">
+<div class="flex-c">
   <div>
     <app-header></app-header>
   </div>
   <div class="usercontent flex-r">
     <div class="sidebox">
-        <app-side [navtitle]="'用户中心'" [currentactive]="currentactive"
-        [currentitem]="currentitem"
-        [data]="usersidedata" [bgurl]="bgurl"></app-side>
+        <app-side [navtitle]="'用户中心'"
+        [data]="usersidedata" [bgurl]="bgurl" #side></app-side>
 
     </div>
     <div class="flex-c content">
@@ -49,15 +48,15 @@
       <!-- 面包屑 -->
       <div class="flex-r crumbs">
         <p>
-          <a>用户中心</a>&nbsp;>&nbsp;
-          <a>{{currentfristitem}}</a>&nbsp;>&nbsp;
-          <span>{{currentitem}}</span>
+          <a>{{side.navtitle}}</a>&nbsp;>&nbsp;
+          <a>{{side.currentparent}}</a>&nbsp;>&nbsp;
+          <span>{{side.currentitem}}</span>
         </p>
-        <div *ngIf="currentitem=='充值记录'">
+        <div *ngIf="side.currentitem=='充值记录'">
           <a href="javascript:;"><button class="btn chongzhi">充值记录</button></a>
           <a href="javascript:;"><button class="btn tixian">取现记录</button></a>
         </div>
-        <div *ngIf="currentitem=='站内短信'">
+        <div *ngIf="side.currentitem=='站内短信'">
           <a href="javascript:;"><button class="btn chongzhi">收件箱</button></a>
           <a href="javascript:;"><button class="btn tixian">发件箱</button></a>
         </div>
