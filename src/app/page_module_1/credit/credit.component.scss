@@ -1,30 +1,333 @@
 .flex-r {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-content: center;
-    align-items: center;
-  }
-  .flex-c {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-content: flex-start;
-    align-items: flex-start;
-  }
-  .sscbox{
-    width: 100%;
-    min-width : 1200px;
-  }
-  .ssccontain{
-    width:100%;
-    align-self: center;
-    background: #111 url(../images/bg_02.jpg) center no-repeat;
-    background-size: cover;
-  }
-  .contaner{
-    width:1200px;
-    min-height:500px ;
-    align-self: center;
-    padding: 30px 0;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+.flex-c {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.color_y {
+  color: #fe8f00;
+}
+.sscbox {
+  width: 100%;
+  min-width: 1200px;
+  font-size: 14px;
+}
+.ssccontain {
+  width: 100%;
+  align-self: center;
+  background: #111 url(../images/bg_02.jpg) center no-repeat;
+  background-size: cover;
+}
+.contaner {
+  width: 1200px;
+  min-height: 500px;
+  align-self: center;
+  padding: 30px 0;
+}
+.mainbox {
+  padding-top: 20px;
+  justify-content: space-between;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.contentbox {
+  width: 900px;
+  border-radius: 4px;
+  background-color: #eee;
+  align-self: stretch;
+  overflow: hidden;
+}
+.tabbox {
+  width: 100%;
+  padding-right: 20px;
+  justify-content: space-between;
+  background-color: #333;
+}
+
+.tabcontent span {
+  height: 50px;
+  line-height: 50px;
+  padding: 0 18px;
+  color: white;
+  cursor: pointer;
+}
+.tabactive {
+  background-color: #3d3d3d;
+}
+.togglebtn {
+  width: 100px;
+  height: 20px;
+  line-height: 18px;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 3px;
+  color: #111;
+  overflow: hidden;
+}
+.togglebtn span {
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+}
+.togglebtn span.togactive,
+.togglebtn span:hover {
+  color: white;
+  background-color: #333;
+}
+.selctbox {
+  width: 100%;
+  height: 60px;
+  padding: 0 20px 0 30px;
+  justify-content: space-between;
+  background-color: #3d3d3d;
+}
+.selctbox strong {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #fe8f00;
+  color: white;
+}
+.rangebox {
+  color: white;
+}
+.showvalue {
+  flex: 0 0 70px;
+  width: 50px;
+  text-align: right;
+  padding-right: 20px;
+}
+.rangebox .icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: white;
+  cursor: pointer;
+}
+.btngroup button {
+  font-size: 14px;
+  height: 32px;
+  line-height: 30px;
+  padding: 0 25px;
+  background-color: #b7b7b7;
+  color: #333;
+  border: 1px solid #999;
+  border-radius: 3px;
+}
+.btngroup button.btnactive,
+.btngroup button:hover {
+  color: white;
+  background-color: #fe8f00;
+  border: 1px solid #999;
+}
+
+// 右边信息区域样式开始
+.infobox {
+  width: 280px;
+}
+.infoitem {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.userinfobox {
+  padding: 30px 25px;
+  color: white;
+  background-color: #333;
+}
+.userinfo {
+  padding-bottom: 20px;
+}
+.userinfo i {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background-color: #111;
+}
+.userinfo span {
+  padding-left: 20px;
+  font-size: 18px;
+}
+.userbtngroupbtngroup {
+  width: 100%;
+  padding-top: 16px;
+  justify-content: space-between;
+}
+.userbtngroupbtngroup span {
+  width: 70px;
+  height: 30px;
+  line-height: 28px;
+  text-align: center;
+  background-color: #525151;
+  color: #ccc;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+.resultinfobox {
+  width: 100%;
+  padding-top: 20px;
+}
+.resultinfo,
+.tabtn {
+  width: 100%;
+}
+.tabtn span {
+  width: 50%;
+  height: 50px;
+  font-size: 16px;
+  line-height: 50px;
+  text-align: center;
+  color: white;
+  background-color: #333;
+}
+.tabtn span.btnactive,
+.tabtn span:hover,
+.btngroup span:hover {
+  color: white;
+  border-color: #fe8f00;
+  background-color: #fe8f00;
+}
+.resultitem {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 12px;
+  justify-content: space-between;
+  padding: 0 25px;
+  background-color: #eee;
+  border-bottom: 1px solid white;
+}
+.resultitem:last-child {
+  border-bottom: none;
+}
+.querybox {
+  padding: 5px 20px;
+  justify-content: flex-end;
+  background-color: #eee;
+}
+select#qishu {
+  width: 100px;
+  height: 30px;
+  line-height: 28px;
+  border-color: #ccc;
+}
+.querybox,
+.resultbox,
+.resulttable {
+  width: 100%;
+}
+.resulttable {
+  height: 340px;
+  background-color: white;
+  overflow-y: scroll;
+}
+.resulttable table {
+  table-layout: fixed;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+.resulttable table td {
+  text-align: left;
+  padding-left: 8px;
+  height: 30px;
+  border: 1px solid #ccc;
+}
+// 右边信息区域样式结束
+
+input[type="range"] {
+  display: block;
+  position: relative;
+  width: 130px;
+  height: 30px;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/*range中心圆点*/
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 18px;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  margin-top: -4px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  -moz-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 18px;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+input[type="range"]::-ms-thumb {
+  -ms-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 18px;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  margin-top: 1px;
+}
+input[type="range"]::slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 18px;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  margin-top: -6px;
+}
+/*range轨道*/
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100px;
+  height: 4px;
+  background-color: #fe8f00;
+  border-radius: 2px;
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-track {
+  width: 100px;
+  height: 4px;
+  background-color: #fe8f00;
+  border-radius: 2px;
+  cursor: pointer;
+}
+input[type="range"]::-ms-track {
+  width: 100px;
+  height: 4px;
+  border-color: transparent;
+  color: #fe8f00;
+  border-radius: 2px;
+  background: #fe8f00;
+  cursor: pointer;
+}

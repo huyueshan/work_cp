@@ -1,0 +1,138 @@
+.flex-r {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+.flex-c {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.color_y {
+  color: #fe8f00;
+}
+.mycontaion {
+  position: relative;
+  width: 900px;
+}
+.btngroup button {
+  font-size: 14px;
+  height: 32px;
+  line-height: 30px;
+  padding: 0 25px;
+  background-color: #b7b7b7;
+  color: #333;
+  border: 1px solid #999;
+  border-radius: 3px;
+}
+.btngroup button.btnactive,
+.btngroup button:hover {
+  color: white;
+  background-color: #fe8f00;
+  border: 1px solid #999;
+}
+.content {
+  width: 100%;
+  align-items: center;
+  background-color: #eee;
+}
+.contenttop,
+.conmain {
+  width: 100%;
+}
+.itembox {
+  flex: 0 0 20%;
+  height: 40px;
+  border-right: 1px solid #ddd;
+}
+.conmain .itembox {
+  border-bottom: 1px solid #ddd;
+}
+.conmain {
+  flex-wrap: wrap;
+  background-color: white;
+}
+.contenttop .itembox:last-child,
+.itembox span:last-child {
+  border-right: none;
+}
+.itembox .item1,
+.itembox .item2 {
+  flex: 3;
+  line-height: 24px;
+}
+.itembox .item3 {
+  flex: 4;
+}
+.itembox span {
+  height: 24px;
+  text-align: center;
+  border-right: 1px solid #ddd;
+}
+.conmain .itembox span {
+  border-right: none;
+}
+.conmain .itembox .item1 span {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  color: white;
+  border-radius: 50%;
+  background-color: #fe8f00;
+  text-align: center;
+}
+.inmoney {
+  width: 60px;
+  font-size: 12px;
+  height: 22px;
+  padding-left: 5px;
+  border: 1px solid #ccc;
+}
+.subbox {
+  padding-top: 20px;
+}
+.subbox .inmoney {
+  width: 80px;
+  height: 32px;
+}
+#selectbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 160px;
+  padding-top: 6px;
+}
+.selectwrap {
+  position: relative;
+  padding-top: 4px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+}
+#selectbox i {
+  position: absolute;
+  top: -4px;
+  left: 37px;
+  width: 6px;
+  height: 6px;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  background-color: white;
+  transform: rotate(45deg);
+}
+.option {
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+}
+.option:hover {
+  background-color: #ccc;
+}
