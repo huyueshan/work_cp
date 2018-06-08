@@ -9,9 +9,9 @@
                 <div class="flex-c contentbox">
                     <div class="flex-r tabbox">
                         <div class="flex-r tabcontent">
-                            <span>整合</span>
-                            <span>龙虎斗</span>
-                            <span class="tabactive">全5中1</span>
+                            <span [ngClass]="{tabactive:this.type == 1}" (click)="type = 1">整合</span>
+                            <span [ngClass]="{tabactive:this.type == 2}" (click)="type = 2">龙虎斗</span>
+                            <span [ngClass]="{tabactive:this.type == 3}" (click)="type = 3">全5中1</span>
                         </div>
                         <div class="flex-r togglebtn">
                             <span>官方</span>
@@ -34,9 +34,157 @@
                             <button [ngClass]="{btnactive:selectbtnvalue == 2}" (click)="selectbtnvalue = 2">快选金额</button>
                         </span>
                     </div>
-                    <app-credtype3 [rangevalue]="rangevalue" [selectbtnvalue]="selectbtnvalue"></app-credtype3>
-                    <!-- 左边信用玩法投注内容 -->
-                    <!-- <router-outlet></router-outlet> -->
+                    <div class="flex-c mycontaion">
+                        <!-- // 全5中1 -->
+                        <div class="flex-c content" *ngIf="type == 3">
+                            <div class="flex-r contenttop">
+                                <span class="flex-r itembox" *ngFor="let item of contenttoptitle3">
+                                    <span class="item1">号码</span>
+                                    <span class="item2">赔率</span>
+                                    <span class="item3" [hidden]="selectbtnvalue == 1">金额</span>
+                                </span>
+
+                            </div>
+                            <div class="flex-r conmain">
+                                <span class="flex-r itembox" *ngFor="let item of betdata3;let i=index" [ngStyle]="{'order': item.order}">
+                                    <span class="item1">
+                                        <span>{{item.numb}}</span>
+                                    </span>
+                                    <span class="item2 color_y">{{(2.29+(rangevalue/0.078*0.00191)).toFixed(3)}} </span>
+                                    <span class="item3" [hidden]="selectbtnvalue == 1">
+                                        <input type="text" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfocus($event,i)" (blur)="inmoneyblur()">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- // 龙虎斗 -->
+                        <div class="flex-c content" *ngIf="type == 2">
+                            <div class="flex-r conmain2">
+                                <div class="itemwrap2" *ngFor="let item of betdata2;let i=index">
+                                    <div class="flex-c itembox2">
+                                        <span class="item1">
+                                            {{item.title}}
+                                        </span>
+                                        <span class="flex-r item2">
+                                            <span class=" item2info" [ngClass]="{togstyle2:selectbtnvalue == 1}">
+                                                <span class="color_r">龙</span>
+                                                <span class="color_y">{{(2.168+(rangevalue/0.078*0.00224)).toFixed(3)}}</span>
+                                            </span>
+                                            <span class="item2info" [ngClass]="{togstyle2:selectbtnvalue == 1}">
+                                                <span class="color_g">和</span>
+                                                <span class="color_y">{{(9.76+(rangevalue/0.078*0.0078)).toFixed(2)}}</span>
+                                            </span>
+                                            <span class="item2info" [ngClass]="{togstyle2:selectbtnvalue == 1}">
+                                                <span class="color_b">虎</span>
+                                                <span class="color_y">{{(2.168+(rangevalue/0.078*0.00224)).toFixed(3)}}</span>
+                                            </span>
+                                        </span>
+                                        <span class="flex-r item3" *ngIf="selectbtnvalue !== 1">
+                                            <input type="text" class="inmoney" name="inmoney" [(ngModel)]="item.value1.value" (focus)="inmoney2focus($event,i,'value1')"
+                                                (blur)="inmoneyblur()">
+                                            <input type="text" class="inmoney" name="inmoney" [(ngModel)]="item.value2.value" (focus)="inmoney2focus($event,i,'value2')"
+                                                (blur)="inmoneyblur()">
+                                            <input type="text" class="inmoney" name="inmoney" [(ngModel)]="item.value3.value" (focus)="inmoney2focus($event,i,'value3')"
+                                                (blur)="inmoneyblur()">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 整合 -->
+                        <div class="flex-c content content1" *ngIf="type == 1">
+                            <div class="flex-r contenttop contenttop1">
+                                <span class="flex-r itembox" *ngFor="let item of contenttoptitle1; let i = index">
+                                    {{item}}
+                                </span>
+
+                            </div>
+                            <div class="flex-r contenttop contenttop3">
+                                <span class="flex-r itembox" *ngFor="let item of contenttoptitle1">
+                                    <span class="item1">号码</span>
+                                    <span class="item2">赔率</span>
+                                    <span class="item3" [hidden]="selectbtnvalue == 1">金额</span>
+                                </span>
+
+                            </div>
+                            <div class="flex-r conmain">
+                                <div class="flex-c conmainbox" *ngFor="let item of betdata1.data1;let i=index">
+                                    <span class="flex-r itembox" *ngFor="let child of betdata1.data1[i];let q=index">
+                                        <span class="item1">
+                                            {{child.name}}
+                                        </span>
+                                        <span class="item2 color_y">{{(1.956+(rangevalue/0.078*0.00156)).toFixed(3)}} </span>&nbsp;
+                                        <span class="item3" [hidden]="selectbtnvalue == 1">
+                                            <input type="text" class="inmoney" name="inmoney" [(ngModel)]="child.value" (focus)="inmoney1focus($event,'data1',i,q)" (blur)="inmoneyblur()">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="flex-r conmain">
+                                <div class="flex-c conmainbox ballbox" *ngFor="let item of betdata1.data2;let i=index">
+                                    <span class="flex-r itembox" *ngFor="let child of betdata1.data2[i];let q=index">
+                                        <span class=" item1">
+                                            <i>{{child.numb}}</i>
+                                        </span>
+                                        <span class="item2 color_y">{{(9.78+(rangevalue/0.078*0.0078)).toFixed(2)}} </span>&nbsp;
+                                        <span class=" item3" [hidden]="selectbtnvalue == 1">
+                                            <input type="text" class="inmoney" name="inmoney" [(ngModel)]="child.value" (focus)="inmoney1focus($event,'data2',i,q)" (blur)="inmoneyblur()">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="flex-r contenttop contenttop2">
+                                <span class="flex-r itembox" [ngClass]="{bg_y:btolast==0}"  (click)="btolast=0">前三</span>
+                                <span class="flex-r itembox" [ngClass]="{bg_y:btolast==1}"  (click)="btolast=1">中三</span>
+                                <span class="flex-r itembox" [ngClass]="{bg_y:btolast==2}"  (click)="btolast=2">后三</span>
+
+                            </div>
+                            <div class="flex-r contenttop">
+                                <span class="flex-r itembox" *ngFor="let item of contenttoptitle3">
+                                    <span class="item1">号码</span>
+                                    <span class="item2">赔率</span>
+                                    <span class="item3" [hidden]="selectbtnvalue == 1">金额</span>
+                                </span>
+
+                            </div>
+                            <div class="flex-r conmain">
+                                <span class="flex-r itembox" *ngFor="let item of betdata1.data3;let i=index">
+                                    <span class="item1 itembold">
+                                        {{item.name}}
+                                    </span>
+                                    <span class="item2 color_y">{{(12.933+(rangevalue/0.078*0.0013)).toFixed(3)}} </span>
+                                    <span class="item3" [hidden]="selectbtnvalue == 1">
+                                        <input type="text" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfocus($event,i)" (blur)="inmoneyblur()">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- 按钮 -->
+                        <div class="flex-r subbox">
+                            <span class="flex-r btngroup">
+                                <input type="text" class="inmoney" id="allinmoney" name="allinmoney" [(ngModel)]="setallmoney.value" [hidden]="selectbtnvalue !== 1"
+                                    value="" (focus)="inmoneyfocus($event,'all')" (blur)="inmoneyblur()" (change)="allchange()"> &nbsp;&nbsp;&nbsp;
+                                <button class="btnactive" (click)="sub()">确定</button> &nbsp;&nbsp;&nbsp;
+                                <button (click)="reset()">取消</button>
+                            </span>
+
+                        </div>
+                        <!-- 活动选择框 -->
+                        <div id="selectbox" [ngStyle]="{'top': boxposition.y, 'left': boxposition.x}" [hidden]="!boxshow">
+                            <div class="flex-c selectwrap">
+                                <i></i>
+                                <span class="option" (click)="optinclick(100)">100元</span>
+                                <span class="option" (click)="optinclick(200)">200元</span>
+                                <span class="option" (click)="optinclick(500)">500元</span>
+                                <span class="option" (click)="optinclick(1000)">1000元</span>
+                                <span class="option" (click)="optinclick(5000)">5000元</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
                 <!-- 右边信息区内容 -->
                 <div class="flex-c infobox">

@@ -6,11 +6,22 @@ import { CommonModule } from "@angular/common";
 import { ComponentsModule } from "../component/components.module";
 /***********components***************/
 import { CreditComponent } from "./credit.component";
+import { Credtype3Component } from "./credcomponents/credtype3/credtype3.component";
 
 const routes = [
   {
     path: "",
-    component: CreditComponent
+    component: CreditComponent,
+    // children: [
+    //   {
+    //     path: "",
+    //     component: Credtype3Component
+    //   },
+    //   {
+    //     path: "credtype3",
+    //     component: Credtype3Component
+    //   },
+    // ]
   }
 ];
 
@@ -22,6 +33,6 @@ const routes = [
     FormsModule,
     ComponentsModule
   ],
-  declarations: [CreditComponent,]
+  declarations: [CreditComponent, Credtype3Component]
 })
 export class CreditModule {}

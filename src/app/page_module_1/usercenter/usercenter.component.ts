@@ -9,6 +9,7 @@ import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
 import { GOUC, userdef } from "../../../factory/usercent";
+import userModel from '../../../status/user.model';
 
 @Component({
   selector: "app-usercenter",
@@ -17,6 +18,8 @@ import { GOUC, userdef } from "../../../factory/usercent";
 })
 export class UsercenterComponent
   implements OnInit, AfterViewInit, AfterContentChecked {
+    loadpage=false;
+
   // TODO: 如果使用不同的背景图标；必须先在父组件中线require 这张图片
   public bgurlinit = require("../images/sidebg1.png");
   public bgurl = 'url("../../images/sidebg1.png")';
@@ -192,12 +195,13 @@ export class UsercenterComponent
           text: "网站公告",
           link: "/usercenter/webnote"
         }
-      ]
-    }
-  ];
+    ]
+}
+];
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
+    this.loadpage = userModel.platform;
   }
   ngAfterContentChecked() {}
   ngAfterViewInit() {}

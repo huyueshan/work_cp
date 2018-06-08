@@ -1,0 +1,106 @@
+<div class="flex-c sscbox">
+    <div>
+        <app-header></app-header>
+    </div>
+    <div class="flex-c ssccontain">
+        <div class="contaner">
+            <app-credtop></app-credtop>
+            <div class="flex-r mainbox">
+                <div class="flex-c contentbox">
+                    <div class="flex-r tabbox">
+                        <div class="flex-r tabcontent">
+                            <span>整合</span>
+                            <span>龙虎斗</span>
+                            <span class="tabactive">全5中1</span>
+                        </div>
+                        <div class="flex-r togglebtn">
+                            <span>官方</span>
+                            <span class="togactive">信用</span>
+                        </div>
+                    </div>
+                    <div class="flex-r selctbox">
+                        <span class="flex-r">
+                            <strong>$</strong>
+                            <span class="flex-r rangebox">
+                                <span class="showvalue">{{(rangevalue*-1).toFixed(1)}}%</span>
+                                <span class="icon">-</span>&nbsp;&nbsp;
+                                <input type="range" name="points" min="-7.8" max="0" step="0.078" id="points" [(ngModel)]="rangevalue"> &nbsp;&nbsp;
+                                <span class="icon">+</span>
+                            </span>
+                        </span>
+                        <span class="flex-r btngroup">
+                            <button [ngClass]="{btnactive:selectbtnvalue == 0}" (click)="selectbtnvalue = 0">一般</button> &nbsp;&nbsp;
+                            <button [ngClass]="{btnactive:selectbtnvalue == 1}" (click)="selectbtnvalue = 1">快捷</button>&nbsp;&nbsp;
+                            <button [ngClass]="{btnactive:selectbtnvalue == 2}" (click)="selectbtnvalue = 2">快选金额</button>
+                        </span>
+                    </div>
+                    <app-credtype3 [rangevalue]="rangevalue" [selectbtnvalue]="selectbtnvalue"></app-credtype3>
+                    <!-- 左边信用玩法投注内容 -->
+                    <!-- <router-outlet></router-outlet> -->
+                </div>
+                <!-- 右边信息区内容 -->
+                <div class="flex-c infobox">
+                    <div class="infoitem userinfobox">
+                        <span class="flex-r userinfo">
+                            <i></i>
+                            <span>赌神</span>
+                        </span>
+                        <span>账户余额：
+                            <span class="color_y">9999.99</span> 元</span>
+                        <span class="flex-r userbtngroup">
+                            <span>充值</span>
+                            <span>提现</span>
+                            <span>转账</span>
+                        </span>
+
+                    </div>
+                    <div class="resultinfobox">
+                        <div class="flex-c infoitem  resultinfo">
+                            <span class="flex-r tabtn">
+                                <span class="btnactive">开奖结果</span>
+                                <span>本期投注</span>
+                            </span>
+                            <span class="flex-r resultitem" *ngFor="let item of resultdata">
+                                <span>20180517014 期</span>
+                                <strong class="flex-r resultitemr color_y">2 9 0 8 7</strong>
+                            </span>
+                        </div>
+
+                        <div class="resultinfobox">
+                            <div class="flex-c infoitem  resultinfo">
+                                <span class="flex-r tabtn">
+                                    <span class="btnactive">出码排行</span>
+                                    <span>遗漏排行</span>
+                                </span>
+                                <div class="flex-c resultbox">
+                                    <span class="flex-r querybox">
+                                        <span>期数 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <span>
+                                            <select id="qishu" name="qishu" [(ngModel)]="querydata.qishu">
+                                                <option value="2期" selected>2期</option>
+                                                <option value="option1">option1</option>
+                                                <option value="option2">option2</option>
+                                                <option value="option3">option3</option>
+                                            </select>
+                                        </span>
+                                    </span>
+                                    <div class="resulttable">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+                                            <tr *ngFor="let item of resultdata">
+                                                <td style="width:200px">第一球VS第二球
+                                                    <span class="color_y">@和</span>
+                                                </td>
+                                                <td>2期</td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
