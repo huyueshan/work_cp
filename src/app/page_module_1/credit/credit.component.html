@@ -9,9 +9,9 @@
                 <div class="flex-c contentbox">
                     <div class="flex-r tabbox">
                         <div class="flex-r tabcontent">
-                            <span [ngClass]="{tabactive:this.type == 1}" (click)="type = 1">整合</span>
-                            <span [ngClass]="{tabactive:this.type == 2}" (click)="type = 2">龙虎斗</span>
-                            <span [ngClass]="{tabactive:this.type == 3}" (click)="type = 3">全5中1</span>
+                            <span [ngClass]="{tabactive:this.type == 1}" (click)="togtype(1)">整合</span>
+                            <span [ngClass]="{tabactive:this.type == 2}" (click)="togtype(2)">龙虎斗</span>
+                            <span [ngClass]="{tabactive:this.type == 3}" (click)="togtype(3)">全5中1</span>
                         </div>
                         <div class="flex-r togglebtn">
                             <span>官方</span>
@@ -154,7 +154,7 @@
                                     </span>
                                     <span class="item2 color_y">{{(12.933+(rangevalue/0.078*0.0013)).toFixed(3)}} </span>
                                     <span class="item3" [hidden]="selectbtnvalue == 1">
-                                        <input type="text" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfocus($event,i)" (blur)="inmoneyblur()">
+                                        <input type="text" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney1focus($event,'data3',i,null)" (blur)="inmoneyblur()">
                                     </span>
                                 </span>
                             </div>

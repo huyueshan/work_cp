@@ -9,13 +9,14 @@ import userModel from "../../../status/user.model";
 })
 export class CreditComponent implements OnInit, OnDestroy {
   loadpage = false;
+  public delay = true; // 选择金额框判断
   public rangevalue = 0; //绑定滑动条数据
   public boxshow = false; // 选择金额框显示判断
   public type = 1;
   public points1;
   public selectbtnvalue = 0; //一般 、快捷按钮控制数据
   public resultdata = [, , , , , , ,];
-  public btolast=0; //前中后选择
+  public btolast = 0; //前中后选择
   public querydata = {
     qishu: "2期"
   };
@@ -152,27 +153,27 @@ export class CreditComponent implements OnInit, OnDestroy {
       ]
     ],
     data2: [],
-    data3:[
-        {
-            name:'豹子',
-            value:'',
-        },
-        {
-            name:'顺子',
-            value:'',
-        },
-        {
-            name:'对子',
-            value:'',
-        },
-        {
-            name:'杂六',
-            value:'',
-        },
-        {
-            name:'半顺',
-            value:'',
-        },
+    data3: [
+      {
+        name: '豹子',
+        value: '',
+      },
+      {
+        name: '顺子',
+        value: '',
+      },
+      {
+        name: '对子',
+        value: '',
+      },
+      {
+        name: '杂六',
+        value: '',
+      },
+      {
+        name: '半顺',
+        value: '',
+      },
     ]
   };
 
@@ -361,13 +362,18 @@ export class CreditComponent implements OnInit, OnDestroy {
     }
   ];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.loadpage = userModel.platform;
     this.betdata1.data2 = this.setballdata();
+   
   }
-  ngOnDestroy() {}
+  ngOnDestroy() { }
+  togtype(i){
+    this.type = i;
+    this.setallmoney.value = "";
+  }
 
   inmoneyfocus(e, i) {
     this.setposition(e);
@@ -379,10 +385,14 @@ export class CreditComponent implements OnInit, OnDestroy {
   }
   inmoney1focus(e, t, i, q) {
     this.setposition(e);
-    if (i == "all") {
-      this.curinpt = this.setallmoney;
-    } else {
-      this.curinpt = this.betdata1[t][i][q];
+    if(q){
+      if (i == "all") {
+        this.curinpt = this.setallmoney;
+      } else {
+        this.curinpt = this.betdata1[t][i][q];
+      }
+    }else{
+      this.curinpt = this.betdata1[t][i];
     }
   }
   inmoney2focus(e, i, t) {
@@ -394,14 +404,22 @@ export class CreditComponent implements OnInit, OnDestroy {
     }
   }
   setposition(e) {
-    this.boxshow = true;
+    this.delay = true;
     let box = this.boxposition;
     box.x = e.target.offsetLeft - 4 + "px";
     box.y = e.target.offsetTop + 24 + "px";
+    // 延迟是避免切换输入框后 显示的选择框被延迟的离开焦点时间又隐藏
+    setTimeout(() => {
+      this.boxshow = true;
+      this.delay = false;
+    }, 200);
   }
   inmoneyblur() {
+    // 必须延迟，不然点击不到选择框
     setTimeout(() => {
-      this.boxshow = false;
+      if (!this.delay) {
+        this.boxshow = false;
+      }
     }, 200);
   }
   optinclick(i) {
@@ -420,14 +438,20 @@ export class CreditComponent implements OnInit, OnDestroy {
           d[q].value3.value = i;
         }
       }
-      //   if (this.type == 1) {
-      //     let d = this.betdata1;
-      //     for (let q = 0; q < d.length; q++) {
-      //       d[q].value1.value = i;
-      //       d[q].value2.value = i;
-      //       d[q].value3.value = i;
-      //     }
-      //   }
+      if (this.type == 1){
+        let d = this.betdata1;
+        for (let w = 0; w < d.data1.length; w++) {
+          for(let q = 0; q<d.data1[w].length; q++)
+          d.data1[w][q].value = i;
+        }
+        for (let w = 0; w < d.data2.length; w++) {
+          for(let q = 0; q<d.data2[w].length; q++)
+          d.data2[w][q].value = i;
+        }
+        for (let w = 0; w < d.data3.length; w++) {
+          d.data3[w].value = i;
+        }
+      }
     }
     this.curinpt.value = i;
     this.boxshow = false;
@@ -449,21 +473,50 @@ export class CreditComponent implements OnInit, OnDestroy {
       }
       this.setallmoney.value = "";
     }
+    if (this.type == 1){
+      let d = this.betdata1;
+      for (let i = 0; i < d.data1.length; i++) {
+        for(let q = 0; q<d.data1[i].length; q++)
+        d.data1[i][q].value = "";
+      }
+      for (let i = 0; i < d.data2.length; i++) {
+        for(let q = 0; q<d.data2[i].length; q++)
+        d.data2[i][q].value = "";
+      }
+      for (let i = 0; i < d.data3.length; i++) {
+        d.data3[i].value = "";
+      }
+    }
   }
 
   allchange() {
+    let v = this.setallmoney.value;
     if (this.type == 3) {
       let d = this.betdata3;
       for (let q = 0; q < d.length; q++) {
-        d[q].value = this.setallmoney.value;
+        d[q].value = v;
       }
     }
     if (this.type == 2) {
       let d = this.betdata2;
       for (let q = 0; q < d.length; q++) {
-        d[q].value1.value = this.setallmoney.value;
-        d[q].value2.value = this.setallmoney.value;
-        d[q].value3.value = this.setallmoney.value;
+        d[q].value1.value = v;
+        d[q].value2.value = v;
+        d[q].value3.value = v;
+      }
+    }
+    if (this.type == 1){
+      let d = this.betdata1;
+      for (let i = 0; i < d.data1.length; i++) {
+        for(let q = 0; q<d.data1[i].length; q++)
+        d.data1[i][q].value = v;
+      }
+      for (let i = 0; i < d.data2.length; i++) {
+        for(let q = 0; q < d.data2[i].length; q++)
+        d.data2[i][q].value = v;
+      }
+      for (let i = 0; i < d.data3.length; i++) {
+        d.data3[i].value = v;
       }
     }
   }
@@ -479,13 +532,26 @@ export class CreditComponent implements OnInit, OnDestroy {
       }
       alert(str);
     }
+    if (this.type == 2){
+      let str1 = '赔率1 = '+ (2.168+(this.rangevalue/0.078*0.00224)).toFixed(3);
+      let str2 = '赔率2 = '+ (9.76+(this.rangevalue/0.078*0.0078)).toFixed(2);
+      let str3 = '赔率3 = '+ (2.168+(this.rangevalue/0.078*0.00224)).toFixed(3);
+
+      console.log(str1,str2,str3, this.betdata2);
+    }
+    if (this.type == 1){
+      let str1 = '赔率1 = '+ (1.956+(this.rangevalue/0.078*0.00156)).toFixed(3);
+      let str2 = '赔率1 = '+ (9.78+(this.rangevalue/0.078*0.0078)).toFixed(2);
+      let str3 = '赔率1 = '+ (12.933+(this.rangevalue/0.078*0.0013)).toFixed(3);
+      console.log(str1,str2,str3,this.betdata1);
+    }
     return false;
   }
 
   setballdata() {
     let data = [];
     for (let i = 0; i < 5; i++) {
-        data[i]=[];
+      data[i] = [];
       for (let q = 0; q < 10; q++) {
         let o = Object.assign({}, this.BALL);
         o.numb = q;

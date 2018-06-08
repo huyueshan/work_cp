@@ -1,1 +1,1 @@
-npm install && npm run dll && npm run start
+cnpm install && npm run dll && npm run start
