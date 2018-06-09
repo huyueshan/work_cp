@@ -174,8 +174,10 @@
                         <!-- 按钮 -->
                         <div class="flex-r subbox">
                             <span class="flex-r btngroup">
-                                <input type="text" class="inmoney" id="allinmoney" name="allinmoney" [(ngModel)]="setallmoney.value" [hidden]="selectbtnvalue !== 1"
-                                    value="" (focus)="inmoneyfocus($event,'all')" (blur)="inmoneyblur()" (change)="allchange()"> &nbsp;&nbsp;&nbsp;
+                                <span [hidden]="selectbtnvalue !== 1">
+                                    <input type="text" class="inmoney" id="allinmoney" name="allinmoney" [(ngModel)]="setallmoney.value" 
+                                        value="" (focus)="inmoneyfocus($event,'all')" (blur)="inmoneyblur()" (change)="allchange()">&nbsp;&nbsp;&nbsp;
+                                </span>
                                 <button class="btnactive" (click)="sub()">确定</button> &nbsp;&nbsp;&nbsp;
                                 <button class="resetbtn" (click)="reset()">重置</button>
                             </span>
