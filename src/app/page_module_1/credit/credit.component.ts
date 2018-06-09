@@ -12,8 +12,9 @@ export class CreditComponent implements OnInit, OnDestroy {
   public delay = true; // 选择金额框判断
   public rangevalue = 0; //绑定滑动条数据
   public boxshow = false; // 选择金额框显示判断
-  public type = 1;
-  public points1;
+  public type = 1; // 玩法
+  public queresult =0; // 开奖结果列表区
+  public listresult = 0 ; // 排行列表区
   public selectbtnvalue = 0; //一般 、快捷按钮控制数据
   public resultdata = [, , , , , , ,];
   public btolast = 0; //前中后选择
@@ -366,10 +367,21 @@ export class CreditComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadpage = userModel.platform;
-    this.betdata1.data2 = this.setballdata();
+    this.betdata1.data2 = this.setballdata(); // 初始数据，
    
   }
   ngOnDestroy() { }
+
+  rangevaluelessen(){
+    if(this.rangevalue>-7.8){
+      this.rangevalue-=0.078;
+    }
+  }
+  rangevalueadd(){
+    if(this.rangevalue<0){
+      this.rangevalue+=0.078;
+    }
+  }
   togtype(i){
     this.type = i;
     this.setallmoney.value = "";
@@ -385,7 +397,7 @@ export class CreditComponent implements OnInit, OnDestroy {
   }
   inmoney1focus(e, t, i, q) {
     this.setposition(e);
-    if(q){
+    if(q!==null){
       if (i == "all") {
         this.curinpt = this.setallmoney;
       } else {
@@ -541,8 +553,8 @@ export class CreditComponent implements OnInit, OnDestroy {
     }
     if (this.type == 1){
       let str1 = '赔率1 = '+ (1.956+(this.rangevalue/0.078*0.00156)).toFixed(3);
-      let str2 = '赔率1 = '+ (9.78+(this.rangevalue/0.078*0.0078)).toFixed(2);
-      let str3 = '赔率1 = '+ (12.933+(this.rangevalue/0.078*0.0013)).toFixed(3);
+      let str2 = '赔率2 = '+ (9.78+(this.rangevalue/0.078*0.0078)).toFixed(2);
+      let str3 = '赔率3 = '+ (12.933+(this.rangevalue/0.078*0.0013)).toFixed(3);
       console.log(str1,str2,str3,this.betdata1);
     }
     return false;

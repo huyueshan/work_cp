@@ -47,6 +47,7 @@
   line-height: 20px;
   height: 100px;
   padding: 10px 10px;
+  cursor: pointer;
 }
 .gametime .fltitle,
 .gameresult .fltitle {
@@ -102,6 +103,7 @@
     height: 100px;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .pimg span {
     display: inline-block;

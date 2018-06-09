@@ -143,7 +143,7 @@
   border: 1px solid #999;
   border-radius: 3px;
 }
-.btngroup button.btnactive{
+.btngroup button.btnactive,.btngroup button.resetbtn:hover{
   color: white;
   background-color: #fe8f00;
   border: 1px solid #999;
@@ -217,15 +217,11 @@
 .itemwrap2 {
   padding: 2px 2px;
 }
-.conmain2 .itemwrap2:nth-child(5) {
-  padding-left: 100px;
+.conmain2 .itemwrap2:nth-child(8) {
+  padding-left: 220px;
 }
-.conmain2 .itemwrap2:nth-child(7) {
-  padding-right: 100px;
-}
-.conmain2 .itemwrap2:last-child {
-  padding-left: 200px;
-  padding-right: 200px;
+.conmain2 .itemwrap2:nth-child(9) {
+  padding-right: 220px;
 }
 .itembox2 {
   width: 220px;
@@ -441,12 +437,12 @@
   padding-left: 20px;
   font-size: 18px;
 }
-.userbtngroupbtngroup {
+.userbtngroup {
   width: 100%;
   padding-top: 16px;
   justify-content: space-between;
 }
-.userbtngroupbtngroup span {
+.userbtngroup span {
   width: 70px;
   height: 30px;
   line-height: 28px;
@@ -455,6 +451,7 @@
   color: #ccc;
   border: 1px solid #ccc;
   border-radius: 2px;
+  cursor: pointer;
 }
 .resultinfobox {
   width: 100%;
@@ -472,10 +469,10 @@
   text-align: center;
   color: white;
   background-color: #333;
+  cursor: pointer;
 }
 .tabtn span.btnactive,
-.tabtn span:hover,
-.btngroup span:hover {
+.userbtngroup span:hover {
   color: white;
   border-color: #fe8f00;
   background-color: #fe8f00;
