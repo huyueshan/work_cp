@@ -388,15 +388,14 @@ export class CreditComponent implements OnInit, OnDestroy {
   }
 
   inmoneyfocus(e, i) {
-    this.setposition(e);
     if (i == "all") {
       this.curinpt = this.setallmoney;
     } else {
       this.curinpt = this.betdata3[i];
     }
+    this.setposition(e);
   }
   inmoney1focus(e, t, i, q) {
-    this.setposition(e);
     if(q!==null){
       if (i == "all") {
         this.curinpt = this.setallmoney;
@@ -406,21 +405,26 @@ export class CreditComponent implements OnInit, OnDestroy {
     }else{
       this.curinpt = this.betdata1[t][i];
     }
+    this.setposition(e);
   }
   inmoney2focus(e, i, t) {
-    this.setposition(e);
     if (i == "all") {
       this.curinpt = this.setallmoney;
     } else {
       this.curinpt = this.betdata2[i][t];
     }
+    this.setposition(e);
   }
   setposition(e) {
     this.delay = true;
     let box = this.boxposition;
     box.x = e.target.offsetLeft - 4 + "px";
-    box.y = e.target.offsetTop + 24 + "px";
-    // 延迟是避免切换输入框后 显示的选择框被延迟的离开焦点时间又隐藏
+    if (this.curinpt == this.setallmoney) {
+      box.y = e.target.offsetTop + 30 + "px";
+    }else{
+      box.y = e.target.offsetTop + 22 + "px";
+    }
+    // 延迟是避免切换输入框后 显示的选择框被延迟的离开焦点事件影响又隐藏
     setTimeout(() => {
       this.boxshow = true;
       this.delay = false;
