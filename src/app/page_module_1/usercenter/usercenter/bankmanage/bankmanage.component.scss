@@ -65,6 +65,7 @@
   padding: 3px;
   background-color: #fe8f00;
   color: white;
+  margin-left: 5px;
 }
 .bankinfo {
   color: #999;
@@ -144,6 +145,7 @@
 .formitem label {
   width: 160px;
   text-align: right;
+  padding-right: 5px;
 }
 .formitem input {
   width: 240px;
@@ -176,6 +178,9 @@
   border-radius: 3px;
   text-align: center;
   cursor: pointer;
+}
+.btngroup span:last-child{
+    margin-left: 10px;
 }
 .getnote:hover, .btngroup span:hover{
   color: white;

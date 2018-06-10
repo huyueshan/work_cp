@@ -82,6 +82,18 @@ span.bankicon{
 .setpadding {
   padding: 15px 30px;
 }
+.tip{
+    justify-content: flex-start;
+}
+.tip p{
+    padding-left: 8px;
+}
+.padl{
+ padding-left:5px;
+}
+.padr{
+ padding-right:5px;
+}
 .card {
   position: relative;
   width: 270px;
@@ -146,6 +158,9 @@ span.bankicon{
 }
 .setpad{
     padding: 15px 0;
+}
+.setpad button:last-child{
+    margin-left: 10px;
 }
 .table{
     table-layout: fixed;

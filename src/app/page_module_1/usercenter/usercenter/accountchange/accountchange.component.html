@@ -12,21 +12,21 @@
         <input type="text" id="username" name="username" [(ngModel)]="querydata.username" />
       </span>
       <span class="flex-r query_item">
-        <input type="checkbox" id="wrap" name="wrap" [(ngModel)]="querydata.iswrap" />&nbsp;包含下级</span>
+        <input type="checkbox" id="wrap" name="wrap" [(ngModel)]="querydata.iswrap" />包含下级</span>
     </span>
-    <button class="querybtn">查&nbsp;询</button>
+    <button class="querybtn">查 询</button>
   </div>
   <div class="checkboxs">
     <div class="flex-c checkcontent">
       <div class="flex-r checkcontent_top">
-        类型：&nbsp;<input type="checkbox" id="all"  name="all" [(ngModel)]="checkdatas.all" (click)="checksall()" />&nbsp;&nbsp;所有类型
+        类型：<input type="checkbox" id="all"  name="all" [(ngModel)]="checkdatas.all" (click)="checksall()" />所有类型
       </div>
       <div class="checksbox">
         <div class="flex-r" style="flex-wrap: nowrap;">
           <span class="checktitle">收入:</span>
           <div class="flex-r">
             <span class="flex-r checkwrap" *ngFor="let item of checkdatas.income; let i = index" >
-                <input type="checkbox" class="checkitems" name="{{item.title}}" [(ngModel)]="item.checked" (change)="checkchange('income',i)" />&nbsp;{{item.title}}
+                <input type="checkbox" class="checkitems" name="{{item.title}}" [(ngModel)]="item.checked" (change)="checkchange('income',i)" />{{item.title}}
             </span>
           </div>
         </div>
@@ -34,7 +34,7 @@
           <span class="checktitle">支出:</span>
           <div class="flex-r">
             <span class="flex-r checkwrap" *ngFor="let item of checkdatas.expend; let q = index" >
-                <input type="checkbox" class="checkitems" name="{{item.title}}" [(ngModel)]="item.checked" (change)="checkchange('expend',q)" />&nbsp;{{item.title}}
+                <input type="checkbox" class="checkitems" name="{{item.title}}" [(ngModel)]="item.checked" (change)="checkchange('expend',q)" />{{item.title}}
             </span>
           </div>
         </div>

@@ -61,6 +61,7 @@
   text-align: center;
   line-height: 28px;
   padding: 0;
+  margin-right: 8px;
   border: 1px solid #999;
   border-radius: 2px;
   background-color: #ccc;
@@ -117,6 +118,9 @@
   color: blue;
   cursor: pointer;
   text-decoration: none;
+}
+.padr{
+    padding-right: 6px;
 }
 
 .page {

@@ -60,6 +60,9 @@ input[type="checkbox"] {
   border: 1px solid #ccc;
   margin-top: 0;
 }
+.checkitems{
+    margin-right: 5px;
+}
 label {
   font-size: 14px;
   font-weight: normal;
@@ -93,6 +96,7 @@ label {
   cursor: pointer;
 }
 .querybtn2 {
+    margin-left: 10px;
   background-color: #ccc;
   color: #333;
   border: 1px solid #999;

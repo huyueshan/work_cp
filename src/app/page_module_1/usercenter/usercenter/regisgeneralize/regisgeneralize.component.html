@@ -1,6 +1,6 @@
 <div class="flex-c container">
   <div class="flex-r subbox bg_1">
-    <span class="btn1" [ngClass]="{bg_y:btninfo=='推广链接'}" (click)="btninfo='推广链接'">推广链接</span>&nbsp;&nbsp;
+    <span class="btn1" [ngClass]="{bg_y:btninfo=='推广链接'}" (click)="btninfo='推广链接'">推广链接</span>
     <span class="btn1" [ngClass]="{bg_y:btninfo=='推广管理'}" (click)="btninfo='推广管理'">推广管理</span>
   </div>
 
@@ -81,8 +81,8 @@
             <td>{{item.time}}</td>
             <td>{{item.rebates}}</td>
             <td>
-              <span class="color_y" (click)="show(item, 0)">详情</span>&nbsp;
-              <span class="color_y" (click)="show(item, 1)">编辑</span>&nbsp;
+              <span class="color_y padr" (click)="show(item, 0)">详情</span>
+              <span class="color_y padr" (click)="show(item, 1)">编辑</span>
               <span class="color_y" (click)="del(i)">删除</span>
             </td>
           </tr>

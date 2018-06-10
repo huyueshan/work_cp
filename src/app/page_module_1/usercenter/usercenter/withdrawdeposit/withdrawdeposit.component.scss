@@ -69,6 +69,7 @@ table th {
   padding: 3px;
   background-color: #fe8f00;
   color: white;
+  margin-left: 5px;
 }
 .bankinfo {
   color: #999;
@@ -186,6 +187,7 @@ table td.alignl {
 .formitem label {
   width: 160px;
   text-align: right;
+  padding-right: 5px;
 }
 .formitem input {
   width: 240px;
@@ -225,6 +227,9 @@ table td.alignl {
 .btngroup span:hover {
   color: white;
   background-color: #fe8f00;
+}
+.btngroup span:last-child{
+    margin-left: 8px;
 }
 .btngroup {
   width: 100%;
@@ -354,6 +359,9 @@ table td.alignl {
     background-color: #fe8f00;
     color: white;
     outline: none;
+  }
+  .rbtn .querybtn:last-child{
+      margin-left: 8px;
   }
   .tablebox1 {
     width: 100%;

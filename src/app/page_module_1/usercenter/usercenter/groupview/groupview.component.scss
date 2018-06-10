@@ -14,6 +14,9 @@
 .bg_1 {
   background-color: #f5f5f5;
 }
+.padr {
+  padding-right: 5px;
+}
 .container {
   width: 950px;
   padding: 0;
@@ -103,6 +106,10 @@ label {
   text-align: center;
   height: 40px;
   border: 1px solid #ccc;
+}
+.addtd {
+  justify-content: center;
+  border: none;
 }
 
 .midinfo {

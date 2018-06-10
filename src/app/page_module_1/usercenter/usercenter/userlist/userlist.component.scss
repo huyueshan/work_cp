@@ -61,6 +61,7 @@
     background-color: #fe8f00;
     color: white;
     outline: none;
+    margin-right: 8px;
   }
   .tablebox{
     width: 100%;
@@ -84,6 +85,9 @@
     text-align: center;
     height: 40px;
     border: 1px solid #ccc;
+  }
+  .padr {
+    padding-right: 5px;
   }
   .total_tr{
       font-size: 14px;

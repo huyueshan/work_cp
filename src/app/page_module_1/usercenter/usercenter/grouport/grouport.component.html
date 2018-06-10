@@ -28,11 +28,11 @@
           <span>彩票类型：</span>
           <span class="flex-r checkwrap">
             <input type="checkbox" class="checkitems" name="{{checkdatas1.title}}" [(ngModel)]="checkdatas1.all" (change)="checksall('checkdatas1')"
-            />&nbsp;{{checkdatas1.title}}
+            />{{checkdatas1.title}}
           </span>
           <span class="flex-r checkwrap" *ngFor="let item of checkdatas1.income; let i = index">
             <input type="checkbox" class="checkitems" name="{{item.title}}" [(ngModel)]="item.checked" (change)="checkchange('checkdatas1',i)"
-            />&nbsp;{{item.title}}
+            />{{item.title}}
           </span>
         </div>
       </div>
@@ -41,14 +41,14 @@
           <span>全部选中：</span>
           <span class="flex-r checkwrap">
             <input type="checkbox" class="checkitems" name="{{checkdatas2.title}}" [(ngModel)]="checkdatas2.all" (change)="checksall('checkdatas2')"
-            />&nbsp;{{checkdatas1.title}}&nbsp;
-            <span class="color_y">( 勾选后，查询所有彩种，包括被禁用的玩法 )</span>
+            />{{checkdatas1.title}}
+            <span class="color_y" style="padding-left: 5px">(勾选后，查询所有彩种，包括被禁用的玩法)</span>
           </span>
         </div>
       </div>
     </div>
     <span class="flex-r" style="justify-content: center;flex:1;">
-      <button class="querybtn" (click)="toggleindex = 1">查&nbsp;询</button>&nbsp;&nbsp;
+      <button class="querybtn" (click)="toggleindex = 1">查 询</button>
     </span>
   </div>
   <div class="checksbox">
@@ -57,7 +57,7 @@
       <div class="flex-r" style="flex:1; flex-wrap: wrap; justify-content: flex-start;">
         <span class="flex-r checkwrap checkwrapitem" *ngFor="let item of checkdatas2.income; let i = index">
           <input type="checkbox" class="checkitems" name="{{item.title}}" [(ngModel)]="item.checked" (change)="checkchange('checkdatas2',i)"
-          />&nbsp;{{item.title}}
+          />{{item.title}}
         </span>
       </div>
     </div>
@@ -78,8 +78,8 @@
     </span>
     <span>
 
-      <button class="querybtn">查&nbsp;询</button>
-      <button class="querybtn querybtn2" (click)="toggleindex = 0">返&nbsp;回</button>
+      <button class="querybtn">查 询</button>
+      <button class="querybtn querybtn2" (click)="toggleindex = 0">返 回</button>
     </span>
   </div>
   <div class=" flex-c tablebox">

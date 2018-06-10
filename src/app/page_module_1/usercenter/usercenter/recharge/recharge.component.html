@@ -14,8 +14,8 @@
       <div class="flex-c">
         <!-- 状态1显示 -->
         <div class="flex-c" *ngIf=" status.bank ==1">
-          <span class="flex-r" style="justify-content: flex-start">
-            <i class="bgicon">1</i>&nbsp;&nbsp;
+          <span class="flex-r tip">
+            <i class="bgicon">1</i>
             <p>请选择入款银行账号：</p>
           </span>
           <span class="setpadding">
@@ -44,8 +44,8 @@
               中国农业银行
             </span>充值服务
           </span>
-          <span class="flex-r setpad" style="justify-content: flex-start; padding-top:10px;">
-            <i class="bgicon">2</i>&nbsp;&nbsp;
+          <span class="flex-r setpad  tip" style="padding-top:10px;">
+            <i class="bgicon">2</i>
             <p>填写转账资料：</p>
           </span>
           <span class="flex-r">
@@ -66,17 +66,17 @@
             </table>
             <span class="flex-c rightinfo">
               <P>
-                <i class="warnicon"></i>&nbsp;
-                <span class="color-red">*</span>此处所填写姓名必须与您付款卡姓名一致，若不一致，将无法自动到账。
+                <i class="warnicon"></i>
+                <span class="color-red padl">*</span>此处所填写姓名必须与您付款卡姓名一致，若不一致，将无法自动到账。
               </P>
               <P>
-                <i class="warnicon"></i>&nbsp;
-                <span class="color-red">*</span>此处所填写金额必须与您实际支付金额一致，若不一致，将无法自动到账
+                <i class="warnicon"></i>
+                <span class="color-red padl">*</span>此处所填写金额必须与您实际支付金额一致，若不一致，将无法自动到账
               </P>
             </span>
           </span>
-          <span class="flex-r" style="justify-content: flex-start; padding-top:10px;">
-            <i class="bgicon">3</i>&nbsp;&nbsp;
+          <span class="flex-r tip" style=" padding-top:10px;">
+            <i class="bgicon">3</i>
             <p>选择转账类型：</p>
           </span>
           <!-- =============下面的选择转账类型 -->
@@ -91,7 +91,7 @@
             </div>
           </div>
           <span class="flex-r setpad">
-            <button class="btn" (click)="set_status(1)">上一步</button>&nbsp;&nbsp;
+            <button class="btn" (click)="set_status(1)">上一步</button>
             <button class="btn" (click)="set_status(3)">确认</button>
           </span>
         </div>
@@ -156,24 +156,24 @@
 
           <span class="info">
             <p>
-              <i class="warnicon"></i>&nbsp;
-              <span class="color-red">*</span>点击复制按钮将收款银行信息复制到您银行转账信息填写页面进行转账充值；
+              <i class="warnicon"></i>
+              <span class="color-red padl">*</span>点击复制按钮将收款银行信息复制到您银行转账信息填写页面进行转账充值；
               <p>
-                <i class="warnicon"></i>&nbsp;
-                <span class="color-red">*</span>转账成功后，点击提交按钮提交此次订单信息，若不提交，无法自动到账；
+                <i class="warnicon"></i>
+                <span class="color-red padl">*</span>转账成功后，点击提交按钮提交此次订单信息，若不提交，无法自动到账；
               </p>
               <p>
-                <i class="warnicon"></i>&nbsp;
-                <span class="color-red">*</span>若由于充值错误导致资金受损，本公司恕不负责；
+                <i class="warnicon"></i>
+                <span class="color-red padl">*</span>若由于充值错误导致资金受损，本公司恕不负责；
               </p>
               <p>
-                <i class="warnicon"></i>&nbsp;
-                <span class="color-red">*</span>若付款后5分钟未到账，请将您的信息，以及您成功转账的截图提交给客服进行处理。
+                <i class="warnicon"></i>
+                <span class="color-red padl">*</span>若付款后5分钟未到账，请将您的信息，以及您成功转账的截图提交给客服进行处理。
               </p>
 
           </span>
           <span class="flex-r setpad">
-            <button class="btn" (click)="set_status(2)">上一步</button>&nbsp;&nbsp;
+            <button class="btn" (click)="set_status(2)">上一步</button>
             <button class="btn">提交</button>
           </span>
         </div>
@@ -201,8 +201,8 @@
     <!-- 在线支付 -->
     <div class="rechcontent"   [hidden]="!(rechitemindex == 1)">
       <div class="flex-c">
-        <span class="flex-r" style="justify-content: flex-start">
-          <i class="bgicon">1</i>&nbsp;&nbsp;
+        <span class="flex-r tip">
+          <i class="bgicon">1</i>
           <p>请选择线上支付通道：</p>
         </span>
         <div class="flex-r rechbox setpad" style="padding-left: 30px;">
@@ -215,8 +215,8 @@
             </span>
           </div>
         </div>
-        <span class="flex-r" style="justify-content: flex-start">
-          <i class="bgicon">2</i>&nbsp;&nbsp;
+        <span class="flex-r tip">
+          <i class="bgicon">2</i>
           <p>请选择银行：</p>
         </span>
         <div class="flex-r rechbox setpadding" style="width: 890px; height: 140px;align-content: space-between; flex-wrap: wrap;">
@@ -228,8 +228,8 @@
             </span>
           </div>
         </div>
-        <span class="flex-r" style="justify-content: flex-start">
-          <i class="bgicon">3</i>&nbsp;&nbsp;
+        <span class="flex-r tip">
+          <i class="bgicon">3</i>
           <p>充值金额：
             <span style="font-size: 12px;color: #999;">单笔最低存款金额:
               <span class="color-y">10</span>元以上；
@@ -248,8 +248,8 @@
     <!-- 支付宝支付 -->
     <div class="rechcontent"   [hidden]="!(rechitemindex == 2)">
       <div class="flex-c">
-        <span class="flex-r" style="justify-content: flex-start">
-          <i class="bgicon">1</i>&nbsp;&nbsp;
+        <span class="flex-r tip">
+          <i class="bgicon">1</i>
           <p>请选择线上支付通道：</p>
         </span>
         <div class="flex-r rechbox setpad" style="padding-left: 30px;">
@@ -262,8 +262,8 @@
             </span>
           </div>
         </div>
-        <span class="flex-r" style="justify-content: flex-start">
-          <i class="bgicon">2</i>&nbsp;&nbsp;
+        <span class="flex-r tip">
+          <i class="bgicon">2</i>
           <p>充值金额：
             <span style="font-size: 12px;color: #999;">单笔最低存款金额:
               <span class="color-y">10</span>元以上；
@@ -282,8 +282,8 @@
     <!-- 微信支付 -->
     <div class="rechcontent"   [hidden]="!(rechitemindex == 3)">
       <div class="flex-c">
-        <span class="flex-r" style="justify-content: flex-start">
-          <i class="bgicon">1</i>&nbsp;&nbsp;
+        <span class="flex-r tip">
+          <i class="bgicon">1</i>
           <p>请选择线上支付通道：</p>
         </span>
         <div class="flex-r rechbox setpad" style="padding-left: 30px;">
@@ -296,8 +296,8 @@
             </span>
           </div>
         </div>
-        <span class="flex-r" style="justify-content: flex-start">
-          <i class="bgicon">2</i>&nbsp;&nbsp;
+        <span class="flex-r tip">
+          <i class="bgicon">2</i>
           <p>充值金额：
             <span style="font-size: 12px;color: #999;">单笔最低存款金额:
               <span class="color-y">10</span>元以上；
@@ -316,8 +316,8 @@
     <!-- 京东支付 -->
     <div class="rechcontent"   [hidden]="!(rechitemindex == 4)">
       <div class="flex-c">
-        <span class="flex-r" style="justify-content: flex-start">
-          <i class="bgicon">1</i>&nbsp;&nbsp;
+        <span class="flex-r tip">
+          <i class="bgicon">1</i>
           <p>请选择线上支付通道：</p>
         </span>
         <div class="flex-r rechbox setpad" style="padding-left: 30px;">
@@ -330,8 +330,8 @@
             </span>
           </div>
         </div>
-        <span class="flex-r" style="justify-content: flex-start">
-          <i class="bgicon">2</i>&nbsp;&nbsp;
+        <span class="flex-r tip">
+          <i class="bgicon">2</i>
           <p>充值金额：
             <span style="font-size: 12px;color: #999;">单笔最低存款金额:
               <span class="color-y">10</span>元以上；
