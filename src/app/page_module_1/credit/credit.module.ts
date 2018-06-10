@@ -10,8 +10,12 @@ import { CreditComponent } from "./credit.component";
 const routes = [
   {
     path: "",
+    redirectTo: "creditssc/cq",
+  },
+  {
+    path: "creditssc/:id",
     component: CreditComponent
-  }
+  },
 ];
 
 @NgModule({

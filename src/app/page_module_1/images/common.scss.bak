@@ -223,27 +223,3 @@
     width: 26px; height: 18px;
     background: url('../../images/sidebg1.png') -424px -10px;
 }
-.bg-user01_01{
-    width: 20px; height: 20px;
-    background: url('../../images/user01.png') -10px -107px;
-}
-.bg-user01_02{
-    width: 30px; height: 30px;
-    background: url('../../images/user01.png') -60px -52px;
-}
-.bg-user01_03{
-    width: 30px; height: 30px;
-    background: url('../../images/user01.png') -125px -10px;
-}
-.bg-user01_04{
-    width: 30px; height: 35px;
-    background: url('../../images/user01.png') -10px -52px;
-}
-.bg-user01_05{
-    width: 30px; height: 27px;
-    background: url('../../images/user01.png') -125px -60px;
-}
-.bg-user01_06{
-    width: 95px; height: 22px;
-    background: url('../../images/user01.png') -10px -10px;
-}

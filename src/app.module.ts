@@ -9,14 +9,11 @@ import { ApplicationRef } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import "../styles/scss/index.scss";
+import "./styles/scss/index.scss";
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from '../router/router.module';
-import { RouteguardService } from '../router/router.service';
-import { InterceptorService } from '../router/ljq.service';
-// import { LanguageComponent } from './page_module_1/component/language/language.component';
-// import { HeaderComponent } from './page_module_1/component/header/header.component';
-// import { FooterComponent } from './page_module_1/component/footer/footer.component';
+import { AppRoutingModule } from './router/router.module';
+import { RouteguardService } from './router/router.service';
+import { InterceptorService } from './router/ljq.service';
 
 
 if (ENV === 'prod') {
@@ -25,10 +22,7 @@ if (ENV === 'prod') {
 
 @NgModule({
     imports: [BrowserModule, FormsModule, SharkModule, AppRoutingModule,HttpClientModule],
-    declarations: [AppComponent,
-        // HeaderComponent,
-        // FooterComponent
-    ],
+    declarations: [AppComponent],
 	providers: [
 		{provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true}
 	],

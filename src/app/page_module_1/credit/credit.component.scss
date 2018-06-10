@@ -39,22 +39,18 @@
   width: 1200px;
   align-self: center;
   padding-top: 30px;
- 
 }
 .mainbox {
   padding-top: 20px;
   justify-content: space-between;
   align-content: flex-start;
   align-items: flex-start;
- 
 }
 .contentbox {
   width: 900px;
   border-radius: 4px;
   background-color: #ddd;
   align-self: stretch;
-  // 临时
-  padding-bottom: 200px;
 }
 .tabbox {
   width: 100%;
@@ -143,8 +139,10 @@
   color: #333;
   border: 1px solid #999;
   border-radius: 3px;
+  margin-left: 10px;
 }
-.btngroup button.btnactive,.btngroup button.resetbtn:hover{
+.btngroup button.btnactive,
+.btngroup button.resetbtn:hover {
   color: white;
   background-color: #fe8f00;
   border: 1px solid #999;
@@ -305,7 +303,7 @@
   }
   .conmain {
     width: 100%;
-    
+
     .conmainbox {
       width: 150px;
 
@@ -348,13 +346,12 @@
         }
       }
     }
-    
   }
 }
 .itembold {
-    font-weight: bold;
-    // color: red;
-  }
+  font-weight: bold;
+  // color: red;
+}
 
 .inmoney {
   width: 60px;
@@ -365,7 +362,7 @@
 }
 .subbox {
   width: 100%;
-  padding-top: 20px;
+  padding: 30px 0 40px 0;
   justify-content: center;
 }
 .subbox .inmoney {
@@ -409,6 +406,124 @@
 }
 .option:hover {
   background-color: #ccc;
+}
+
+// 底部问路区域========================================================
+.sscbottom {
+  width: 100%;
+  padding: 30px 10px 60px 10px;
+  background-color: white;
+  border: none;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  .tabbox {
+    width: 100%;
+    padding-bottom: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 0;
+    justify-content: flex-start;
+    .tabitem {
+      padding-right: 10px;
+      select {
+        width: 110px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #999;
+        border-radius: 2px;
+      }
+      .tabbtn {
+        display: inline-block;
+        padding: 0 14px;
+        height: 30px;
+        line-height: 28px;
+        text-align: center;
+        border: 1px solid #999;
+        border-radius: 2px;
+        background-color: #ccc;
+        cursor: pointer;
+      }
+      .tabbtnactive {
+        background-color: #fe8f00;
+        border-color: #fe7200;
+      }
+    }
+    .tabitem:first-child {
+      padding-right: 20px;
+    }
+  }
+  .wenlu {
+    width: 100%;
+    padding-bottom: 20px;
+    align-items: center;
+    .wenlubtn {
+      width: 44px;
+      height: 98px;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+      background-color: #fe7200;
+      border-radius: 4px;
+      cursor: pointer;
+      strong {
+        width: 18px;
+        font-size: 18px;
+        line-height: 40px;
+        color: white;
+        text-align: center;
+      }
+    }
+    .wtablebox {
+      flex: 1;
+      height: 98px;
+      padding: 0;
+      padding-left: 24px;
+      .wtable {
+        width: 100%;
+        height: 98px;
+        border: 1px solid #999;
+        overflow: hidden;
+        .iteminfo {
+          width: 30px;
+          height: 100%;
+          background-color: #333;
+          border-right: 1px solid #999;
+          font-size: 16px;
+          line-height: 40px;
+          color: white;
+          text-align: center;
+          padding-top: 6px;
+        }
+        .infosmall{
+            line-height: 28px;
+            padding-top: 6px;
+        }
+        .wrapbox {
+        position: relative;
+          height: 100%;
+          overflow: hidden;
+          align-self: flex-start;
+            .tablebox {
+              position: absolute;
+              top: 0;
+              left: 0;
+              cursor: move;
+              z-index: 99;
+              table {
+                table-layout: fixed;
+                border: none;
+                border-collapse: collapse;
+                td {
+                  width: 16px;
+                  height: 16px;
+                  border: 1px solid #999;
+                }
+              }
+          }
+        }
+      }
+    }
+  }
 }
 
 // 右边信息区域样式开始
@@ -491,10 +606,16 @@
 .resultitem:last-child {
   border-bottom: none;
 }
+.resultitemr strong {
+  padding-right: 10px;
+}
 .querybox {
   padding: 5px 20px;
   justify-content: flex-end;
   background-color: #eee;
+}
+.querybox span:first-child {
+  padding-right: 20px;
 }
 select#qishu {
   width: 100px;
@@ -526,6 +647,7 @@ select#qishu {
 }
 // 右边信息区域样式结束
 
+// 各浏览器滑块样式
 input[type="range"] {
   display: block;
   position: relative;
