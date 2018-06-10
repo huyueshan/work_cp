@@ -23,11 +23,8 @@
                             <strong>$</strong>
                             <span class="flex-r rangebox">
                                 <span class="showvalue">{{(rangevalue*-1).toFixed(1)}}%</span>
-                                <span class="icon" (click)="rangevaluelessen()">-</span>
-                                <span class="flex-r" style="width:130px; padding: 0 10px; align-items: center;">
-
-                                    <input type="range" name="points" min="-7.8" max="0" step="0.078" id="points" [(ngModel)]="rangevalue">
-                                </span>
+                                <span class="icon" (click)="rangevaluelessen()">-</span>&nbsp;&nbsp;
+                                <input type="range" name="points" min="-7.8" max="0" step="0.078" id="points" [(ngModel)]="rangevalue"> &nbsp;&nbsp;
                                 <span class="icon" (click)="rangevalueadd()">+</span>
                             </span>
                         </span>
