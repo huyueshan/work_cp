@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
       text: "彩票大厅",
       bgpositiony: "-104",
       isover: false,
-      link: "/sscmod"
+      link: "/creditssc"
     },
     {
       text: "用户中心",
@@ -84,79 +84,92 @@ export class IndexComponent implements OnInit {
       url: 'url("../images/ball_04.png")',
       x: -10,
       y: -10,
-      left: "-240"
+      left: "-240",
+      link:'/creditssc/xj',
     },
     {
       url: 'url("../images/ball_05.png")',
       x: -122,
       y: -134,
-      left: "-120"
+      left: "-120",
+      link:'/creditssc/pk10',
     },
     {
       url: 'url("../images/ball_01.png")',
       x: -346,
       y: -10,
-      left: "0"
+      left: "0",
+      link:'/creditssc/sh',
     },
     {
       url: 'url("../images/ball_02.png")',
       x: -346,
       y: -134,
-      left: "120"
+      left: "120",
+      link:'/creditssc/jx',
     },
     {
       url: 'url("../images/ball_03.png")',
       x: -10,
       y: -258,
-      left: "240"
+      left: "240",
+      link:'/creditssc/cq',
     },
     {
       url: 'url("../images/ball_04.png")',
       x: -10,
       y: -258,
-      left: "360"
+      left: "360",
+      link:'/creditssc/cq',
     },
     {
       url: 'url("../images/ball_05.png")',
       x: -10,
       y: -258,
-      left: "480"
+      left: "480",
+      link:'/creditssc/cq',
     },
     {
       url: 'url("../images/ball_06.png")',
       x: -10,
       y: -10,
-      left: "600"
+      left: "600",
+      link:'/creditssc/xj',
     },
     {
       url: 'url("../images/ball_07.png")',
       x: -122,
       y: -134,
-      left: "720"
+      left: "720",
+      link:'/creditssc/pk10',
     },
     {
       url: 'url("../images/ball_08.png")',
       x: -234,
       y: -10,
-      left: "840"
+      left: "840",
+      link:'/creditssc/kl10',
     },
     {
       url: 'url("../images/ball_09.png")',
       x: -10,
       y: -134,
-      left: "960"
+      left: "960",
+      link:'/creditssc/xy28',
     },
     {
       url: 'url("../images/ball_08.png")',
       x: -234,
       y: -9,
-      left: "1080"
+      left: "1080",
+      link:'/creditssc/kl10',
     },
     {
       url: 'url("../images/ball_09.png")',
       x: -10,
       y: -134,
-      left: "1200"
+      left: "1200",
+      link:'/creditssc/xy28',
     }
   ];
   // 热门游戏内容区数据

@@ -10,7 +10,7 @@ import { ResolveService } from '../router/resole.service';
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'creditssc',
+        redirectTo: 'index',
         pathMatch: 'full'
     },
 	

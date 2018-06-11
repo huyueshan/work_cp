@@ -86,28 +86,26 @@
 }
 
 .togglebtn {
-    width: 90px;
-    height: 25px;
+    width: 100px;
+    height: 20px;
     line-height: 18px;
+    background-color: white;
     border: 1px solid white;
     border-radius: 3px;
-    color: white;
-    background-color: #333;
+    color: #111;
     overflow: hidden;
 }
 
 .togglebtn span {
     width: 50%;
-    height: 100%;
-    line-height: 24px;
     text-align: center;
     cursor: pointer;
 }
 
 .togglebtn span.togactive,
 .togglebtn span:hover {
-    color: #111;
-    background-color: white;
+    color: white;
+    background-color: #333;
 }
 
 .selctbox {
@@ -145,11 +143,11 @@
     width: 16px;
     height: 16px;
     font-size: 14px;
-    line-height: 14px;
+    line-height: 16px;
     text-align: center;
     font-weight: bold;
     border-radius: 50%;
-    background-color: #999;
+    background-color: #ccc;
     color: white;
     cursor: pointer;
 }
@@ -164,7 +162,6 @@
     border: 1px solid #999;
     border-radius: 3px;
     margin-left: 10px;
-    outline: none;
 }
 
 .btngroup button.btnactive,

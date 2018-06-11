@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ElementRef } from "@angular/core";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+
 import userModel from "../../../status/user.model";
 
 @Component({
@@ -9,47 +9,24 @@ import userModel from "../../../status/user.model";
 })
 export class CreditComponent implements OnInit, OnDestroy {
   loadpage = false;
-  public odds = 7.8 ; // 赔率
-  public rangevalue = 100; //绑定滑动条数据
   public delay = true; // 选择金额框判断
+  public rangevalue = 0; //绑定滑动条数据
   public boxshow = false; // 选择金额框显示判断
   public type = 1; // 玩法
   public curinpt; //当前操作的金额输入框
   public queresult = 0; // 开奖结果列表区
   public listresult = 0; // 排行列表区
-  // 排行列表期数绑定数据
-  public querydata = {
-    qishu: "2期"
-  };
   public selectbtnvalue = 0; //一般 、快捷按钮控制数据
   public resultdata = [, , , , , , ,];
   public btolast = 0; //前中后选择
-  public bottabactive = 0; // 底部问路tab标签变量
+  public querydata = {
+    qishu: "2期"
+  };
   public typeoption = "龙虎斗"; //底部问路选择框数据
   public BALL = {
     numb: 0,
     value: ""
   };
-  oddsdata1 = {
-      max:'',
-      min:'',
-
-  }
-  public typedata =[
-      {
-          id:1,
-          name:'整合',
-      },
-      {
-          id:2,
-          name:'龙虎斗',
-      },
-      {
-          id:3,
-          name:'全5中1',
-      },
-
-  ];
   public contenttoptitle1 = [
     "第一球",
     "第二球",
@@ -387,6 +364,7 @@ export class CreditComponent implements OnInit, OnDestroy {
       order: 9
     }
   ];
+  public bottabactive = 0;
   public bottomtabdata = [
     {
       name: "1vs2"
@@ -460,7 +438,7 @@ export class CreditComponent implements OnInit, OnDestroy {
     data: []
   };
 
-  constructor(private el: ElementRef,private router: Router) {}
+  constructor(private el: ElementRef) {}
 
   ngOnInit() {
     this.loadpage = userModel.platform;
@@ -475,14 +453,14 @@ export class CreditComponent implements OnInit, OnDestroy {
 
   // 滑块左侧递减事件
   rangevaluelessen() {
-    if (this.rangevalue > 0) {
-      this.rangevalue -= 1;
+    if (this.rangevalue > -7.8) {
+      this.rangevalue -= 0.078;
     }
   }
   // 滑块左侧递加事件
   rangevalueadd() {
-    if (this.rangevalue < 100) {
-      this.rangevalue += 1;
+    if (this.rangevalue < 0) {
+      this.rangevalue += 0.078;
     }
   }
   // 切换玩法事件 /整合/龙虎斗/全五中一
@@ -640,7 +618,7 @@ export class CreditComponent implements OnInit, OnDestroy {
   // 确认提交按钮事件
   sub() {
     if (this.type == 3) {
-      let point = (1.944+(this.rangevalue*0.00224)).toFixed(3);
+      let point = (2.29 + (this.rangevalue / 0.078) * 0.00191).toFixed(3);
       let str = "赔率=" + point;
       let d = this.betdata3;
       for (let i = 0; i < d.length; i++) {
@@ -652,21 +630,21 @@ export class CreditComponent implements OnInit, OnDestroy {
     }
     if (this.type == 2) {
       let str1 =
-        "赔率1 = " + (1.944 + (this.rangevalue * 0.00224)).toFixed(3);
+        "赔率1 = " + (2.168 + (this.rangevalue / 0.078) * 0.00224).toFixed(3);
       let str2 =
-        "赔率2 = " + (98.98 + (this.rangevalue * 0.0078)).toFixed(2);
+        "赔率2 = " + (9.76 + (this.rangevalue / 0.078) * 0.0078).toFixed(2);
       let str3 =
-        "赔率3 = " + (1.944 + (this.rangevalue * 0.00224)).toFixed(3);
+        "赔率3 = " + (2.168 + (this.rangevalue / 0.078) * 0.00224).toFixed(3);
 
       console.log(str1, str2, str3, this.betdata2);
     }
     if (this.type == 1) {
       let str1 =
-        "赔率1 = " + (1.8 + (this.rangevalue * 0.00156)).toFixed(3);
+        "赔率1 = " + (1.956 + (this.rangevalue / 0.078) * 0.00156).toFixed(3);
       let str2 =
-        "赔率2 = " + (9 + (this.rangevalue * 0.0078)).toFixed(2);
+        "赔率2 = " + (9.78 + (this.rangevalue / 0.078) * 0.0078).toFixed(2);
       let str3 =
-        "赔率3 = " + (11.633 + (this.rangevalue * 0.013)).toFixed(3);
+        "赔率3 = " + (12.933 + (this.rangevalue / 0.078) * 0.0013).toFixed(3);
       console.log(str1, str2, str3, this.betdata1);
     }
     return false;
@@ -702,10 +680,6 @@ export class CreditComponent implements OnInit, OnDestroy {
         d.left = n + "px";
       }
     }
-  }
-
-  linkrouter(t){
-    this.router.navigate([t]);
   }
   // 设置整合中间5个球的数据
   setballdata() {

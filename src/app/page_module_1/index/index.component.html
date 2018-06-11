@@ -89,7 +89,7 @@
           <div class="ball-box">
             <div>
               <div class="ball" *ngFor="let item of ball_list; let i=index" [style.background-position-y.px]="item.y" [style.background-position-x.px]="item.x"
-                [style.left.px]="item.left"></div>
+                [style.left.px]="item.left" (click)="linkrouter(item.link)"></div>
             </div>
           </div>
           <div (click)="ballclick('right')" class="r-icon">

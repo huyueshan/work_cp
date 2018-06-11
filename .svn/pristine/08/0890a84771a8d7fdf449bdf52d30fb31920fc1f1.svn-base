@@ -95,7 +95,7 @@ export class RouteguardService implements CanActivate{
 					const appnewRoutes: Routes =[
 						{
 							path: '',
-							redirectTo: 'index',
+							redirectTo: 'creditssc',
 							pathMatch: 'full'
 						},
 						{
@@ -144,7 +144,7 @@ export class RouteguardService implements CanActivate{
 						},
 						{
 							path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
-							redirectTo: 'index',
+							redirectTo: 'home',
 							pathMatch: 'full'  // 必须要设置
 						}
 					];
