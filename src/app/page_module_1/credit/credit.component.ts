@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy,ElementRef } from "@angular/core";
+import { Component, OnInit, OnDestroy, ElementRef } from "@angular/core";
 
 import userModel from "../../../status/user.model";
 
@@ -8,11 +8,12 @@ import userModel from "../../../status/user.model";
   styleUrls: ["./credit.component.scss"]
 })
 export class CreditComponent implements OnInit, OnDestroy {
-  //   loadpage = false;
+  loadpage = false;
   public delay = true; // 选择金额框判断
   public rangevalue = 0; //绑定滑动条数据
   public boxshow = false; // 选择金额框显示判断
   public type = 1; // 玩法
+  public curinpt; //当前操作的金额输入框
   public queresult = 0; // 开奖结果列表区
   public listresult = 0; // 排行列表区
   public selectbtnvalue = 0; //一般 、快捷按钮控制数据
@@ -42,7 +43,7 @@ export class CreditComponent implements OnInit, OnDestroy {
     x: "",
     y: ""
   };
-  public curinpt;
+
   public betdata1 = {
     data1: [
       [
@@ -397,51 +398,51 @@ export class CreditComponent implements OnInit, OnDestroy {
     }
   ];
   public tablebox1 = {
-    name:'大路',
-    width: '780px',
+    name: "大路",
+    width: "780px",
     evleft: 0,
-    drag:false,
+    drag: false,
     left: "0px",
-    data:[],
+    data: []
   };
   public tablebox2 = {
-    name:'盘珠路',
-    width: '170px',
+    name: "盘珠路",
+    width: "170px",
     evleft: 0,
-    drag:false,
+    drag: false,
     left: "0px",
-    data:[],
+    data: []
   };
   public tablebox3 = {
-    name:'大眼路',
-    width: '170px',
+    name: "大眼路",
+    width: "170px",
     evleft: 0,
-    drag:false,
+    drag: false,
     left: "0px",
-    data:[],
+    data: []
   };
   public tablebox4 = {
-    name:'小路',
-    width: '170px',
+    name: "小路",
+    width: "170px",
     evleft: 0,
-    drag:false,
+    drag: false,
     left: "0px",
-    data:[],
+    data: []
   };
   public tablebox5 = {
-    name:'曱甴路',
-    width: '170px',
+    name: "曱甴路",
+    width: "170px",
     evleft: 0,
-    drag:false,
+    drag: false,
     left: "0px",
-    data:[],
+    data: []
   };
 
-  constructor(private el:ElementRef) {}
+  constructor(private el: ElementRef) {}
 
   ngOnInit() {
-    // this.loadpage = userModel.platform;
-    this.betdata1.data2 = this.setballdata(); // 初始数据，
+    this.loadpage = userModel.platform;
+    this.betdata1.data2 = this.setballdata(); // 初始球数据，
     this.tablebox1.data = this.setwenludata(); //临时测试数据
     this.tablebox2.data = this.setwenludata(); //临时测试数据
     this.tablebox3.data = this.setwenludata(); //临时测试数据
@@ -450,20 +451,26 @@ export class CreditComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {}
 
+  // 滑块左侧递减事件
   rangevaluelessen() {
     if (this.rangevalue > -7.8) {
       this.rangevalue -= 0.078;
     }
   }
+  // 滑块左侧递加事件
   rangevalueadd() {
     if (this.rangevalue < 0) {
       this.rangevalue += 0.078;
     }
   }
+  // 切换玩法事件 /整合/龙虎斗/全五中一
   togtype(i) {
     this.type = i;
     this.setallmoney.value = "";
   }
+  // 全五中一 和底部快捷选项输入框 获得焦点事件
+  // curinpt为当前操作输入框 变量
+  // i 数组当前index
   inmoneyfocus(e, i) {
     if (i == "all") {
       this.curinpt = this.setallmoney;
@@ -472,26 +479,32 @@ export class CreditComponent implements OnInit, OnDestroy {
     }
     this.setposition(e);
   }
+  // 整合 金额框获得焦点事件 /curinpt为当前操作输入框 变量
+  // t、i 、q 为对应数据的key值或者index
   inmoney1focus(e, t, i, q) {
     if (q !== null) {
-      if (i == "all") {
-        this.curinpt = this.setallmoney;
-      } else {
-        this.curinpt = this.betdata1[t][i][q];
-      }
+      this.curinpt = this.betdata1[t][i][q];
     } else {
       this.curinpt = this.betdata1[t][i];
     }
     this.setposition(e);
   }
+  // 龙虎斗 金额框获得焦点事件 /curinpt为当前操作输入框 变量
+  // t、i 、q 为对应数据的key值或者index
   inmoney2focus(e, i, t) {
-    if (i == "all") {
-      this.curinpt = this.setallmoney;
-    } else {
-      this.curinpt = this.betdata2[i][t];
-    }
+    this.curinpt = this.betdata2[i][t];
     this.setposition(e);
   }
+  //页面输入框焦点离开后隐藏金额选择框方法
+  inmoneyblur() {
+    // 必须延迟，不然点击不到选择框
+    setTimeout(() => {
+      if (!this.delay) {
+        this.boxshow = false;
+      }
+    }, 200);
+  }
+  // 获取选择框显示位置方法
   setposition(e) {
     this.delay = true;
     let box = this.boxposition;
@@ -507,14 +520,7 @@ export class CreditComponent implements OnInit, OnDestroy {
       this.delay = false;
     }, 200);
   }
-  inmoneyblur() {
-    // 必须延迟，不然点击不到选择框
-    setTimeout(() => {
-      if (!this.delay) {
-        this.boxshow = false;
-      }
-    }, 200);
-  }
+  // 选择框点击选项方法，赋值给当前操作的输入框
   optinclick(i) {
     if (this.curinpt == this.setallmoney) {
       if (this.type == 3) {
@@ -547,6 +553,7 @@ export class CreditComponent implements OnInit, OnDestroy {
     this.curinpt.value = i;
     this.boxshow = false;
   }
+  // 重置当前页面所有的输入框
   reset() {
     if (this.type == 3) {
       let d = this.betdata3;
@@ -577,7 +584,7 @@ export class CreditComponent implements OnInit, OnDestroy {
       }
     }
   }
-
+  // 快捷选项下的输入框值改变后的方法，
   allchange() {
     let v = this.setallmoney.value;
     if (this.type == 3) {
@@ -607,6 +614,8 @@ export class CreditComponent implements OnInit, OnDestroy {
       }
     }
   }
+
+  // 确认提交按钮事件
   sub() {
     if (this.type == 3) {
       let point = (2.29 + (this.rangevalue / 0.078) * 0.00191).toFixed(3);
@@ -639,41 +648,40 @@ export class CreditComponent implements OnInit, OnDestroy {
       console.log(str1, str2, str3, this.betdata1);
     }
     return false;
-  }
-
+  }  
+  
   // 底部问路拖拽事件
   // ev 事件对象 ， t 当前表格数据对象
-  dragdown(ev,t) {
+  dragdown(ev, t) {
     let _that = this;
     let d = _that[t];
     let e = ev || event;
-    let str = '#'+t;
-    let ele = this.el.nativeElement.querySelector(str)
-    d.evleft =e.clientX - ele.offsetLeft;
+    let str = "#" + t;
+    let ele = this.el.nativeElement.querySelector(str);
+    d.evleft = e.clientX - ele.offsetLeft;
     d.drag = true;
   }
   // ev 事件对象 ， t 当前表格数据对象
-  dragmove(ev,t){
-      let _that = this;
-      let d = _that[t];
-      
-      if(d.drag){
-          let e = ev || event;
-          let str = '#'+t;
-          let ele = this.el.nativeElement.querySelector(str);
-          let n = e.clientX - d.evleft;
-          let w = d.data[0].length*16; //table的宽度，16为表格td的宽度
-          let p = parseInt(d.width); // 包裹table元素的宽度；
-          if( n > 0 ){
-            d.left = '0px';
-          }else if( n < (p-w)){
-              d.left = (p-w)+'px';
-            }else{
-            d.left = n+'px';
-          }
+  dragmove(ev, t) {
+    let _that = this;
+    let d = _that[t];
+    if (d.drag) {
+      let e = ev || event;
+      let str = "#" + t;
+      let ele = this.el.nativeElement.querySelector(str);
+      let n = e.clientX - d.evleft;
+      let w = d.data[0].length * 16; //table的宽度，16为表格td的宽度
+      let p = parseInt(d.width); // 包裹table元素的宽度；
+      if (n > 0) {
+        d.left = "0px";
+      } else if (n < p - w) {
+        d.left = p - w + "px";
+      } else {
+        d.left = n + "px";
       }
+    }
   }
-// 设置整合中间5个球的数据
+  // 设置整合中间5个球的数据
   setballdata() {
     let data = [];
     for (let i = 0; i < 5; i++) {
@@ -686,7 +694,6 @@ export class CreditComponent implements OnInit, OnDestroy {
     }
     return data;
   }
-
   //临时测试数据方法
   setwenludata() {
     let data = [];

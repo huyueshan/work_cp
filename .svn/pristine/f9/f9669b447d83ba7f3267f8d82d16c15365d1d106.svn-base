@@ -1,0 +1,59 @@
+<div class="flex-c container">
+  <div class="flex-r querycontent">
+    <span class="flex-r" style="justify-content: flex-start;">
+      <span class="query_item">
+        <label for="starttime">时间： </label>
+        <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
+        <label for="endtime">至 </label>
+        <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
+      </span>
+    </span>
+    <button class="querybtn">查 询</button>
+  </div>
+  <div class=" flex-c tablebox">
+    <div class="tablewrap">
+      <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+        <tr class="bg_1">
+          <th style="width:110px">日期</th>
+          <th>充值</th>
+          <th>提款</th>
+          <th>彩票投注</th>
+          <th>有效投注</th>
+          <th>彩票中奖</th>
+          <th>投注返点</th>
+          <th>代理返点</th>
+          <th>活动奖金</th>
+          <th>彩票盈亏</th>
+        </tr>
+        <tr *ngFor="let item of myreportdata">
+          <td>{{item.date}}</td>
+          <td>{{item.recharge}}</td>
+          <td>{{item.atm}}</td>
+          <td>{{item.caitou}}</td>
+          <td>{{item.vaildtou}}</td>
+          <td>{{item.winning}}</td>
+          <td>{{item.rebates}}</td>
+          <td>{{item.rebatesage}}</td>
+          <td>{{item.bonus}}</td>
+          <td>{{item.profitorloss}}</td>
+        </tr>
+        <tr class="color_y">
+          <td class="colordef">本页合计</td>
+          <td>{{add('recharge')}}</td>
+          <td>{{add('atm')}}</td>
+          <td>{{add('caitou')}}</td>
+          <td>{{add('vaildtou')}}</td>
+          <td>{{add('winning')}}</td>
+          <td>{{add('rebates')}}</td>
+          <td>{{add('rebatesage')}}</td>
+          <td>{{add('bonus')}}</td>
+          <td>{{add('profitorloss')}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="page" shark-pager [currentPage]="pagination.page" [totalPage]="pagination.totalPage" [gopage]="pagination.gopage"
+      [hl]="hl" [segmentSize]="pagination.segmentSize" [startFrom]="pagination.startFrom" (onPageChanged)="onPageChanged($event);">
+    </div>
+
+  </div>
+</div>

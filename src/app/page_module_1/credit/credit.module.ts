@@ -10,10 +10,10 @@ import { CreditComponent } from "./credit.component";
 const routes = [
   {
     path: "",
-    redirectTo: "creditssc/cq",
+    redirectTo: "cq",
   },
   {
-    path: "creditssc/:id",
+    path: ":id",
     component: CreditComponent
   },
 ];
