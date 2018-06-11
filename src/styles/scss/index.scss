@@ -144,6 +144,10 @@ input[type="checkbox"] {
   border: 1px solid #ccc;
   margin-top: 0;
 }
+button:hover {
+    outline: none;
+    box-shadow: none;
+}
 // 分页组件样式改动，需要放置在此处
 .pagination > .active > a,
 .pagination > .active > a:hover,

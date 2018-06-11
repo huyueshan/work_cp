@@ -81,7 +81,12 @@ label {
   border-radius: 2px;
   color: white;
   outline: none;
+  box-shadow: none;
   cursor: pointer;
+}
+.querybtn:hover{
+    outline: none;
+    box-shadow: none;
 }
 .tablebox {
   width: 100%;

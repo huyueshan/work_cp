@@ -87,11 +87,15 @@
   padding: 0 10px;
   font-size: 14px;
   background-color: #ccc;
+  outline: none;
+  box-shadow: none;
 }
-.chongzhi, .tixian:hover{
+.chongzhi,.chongzhi:hover, .tixian:hover{
   background-color: #fe8f00;
   border: 1px solid #c48c15;
   color:white;
+  outline: none;
+  box-shadow: none;
 }
   
 .cotmid span{
