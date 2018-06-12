@@ -20,11 +20,93 @@
 }
 
 .gamenav {
-    position: relative;
     width: 100%;
     color: #ccc;
     .padright {
+        position: relative;
         padding-right: 20px;
+        .allnav {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 240px;
+            z-index: 999;
+            .sidel {
+                width: 100%;
+                border: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-content: space-between;
+                .flex-sr {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-content: center;
+                    align-items: center;
+                }
+                .flex-sc {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-content: space-between;
+                }
+                li {
+                    width: 100%;
+                    font-size: 14px;
+                    color: white;
+                    .itembox {
+                        font-size: 14px;
+                        height: 42px;
+                        line-height: 40px;
+                        padding:0 12px 0 20px;
+                        font-weight: bold;
+                        background-color: #fe8f00;
+                        border-bottom: 2px solid white;
+                        cursor: pointer;
+                        .itemboxiconr {
+                            font-size: 30px;
+                            line-height: 32px;
+                            padding-top: 4px;
+                            padding-right: 6px;
+                            transform: rotate(0);
+                        }
+                        .iconactive {
+                            line-height: 48px;
+                            padding-right: 0;
+                            transform: rotate(90deg);
+                        }
+                        .sideicon {
+                            width: 36px;
+                            height: 24px;
+                            background: url('../../images/cred01.png');
+                            background-repeat: no-repeat;
+                        }
+                    }
+                    .itembox:hover {
+                        background-color: #FE7200;
+                    }
+                    .item {
+                        font-size: 12px;
+                        height: 32px;
+                        line-height: 30px;
+                        padding:0 18px 0 60px;
+                        background-color: #525151;
+                        color: white;
+                        border-bottom: 1px solid white;
+                        cursor: pointer;
+                    }
+                    .itemactive,
+                    .item:hover {
+                        color: #fe8f00;
+                    }
+                    .yborder {
+                        background-color: #FE7200;
+                    }
+                }
+            }
+        }
+
     }
     .navitem {
         height: 100px;
@@ -38,6 +120,7 @@
         }
     }
     .alltype {
+        
         width: 240px;
         .fltitle {
             background: #fe8f00;
@@ -53,6 +136,7 @@
         .frimg {
             padding-left: 50px;
         }
+    
     }
     .gametime {
         width: 340px;
@@ -111,85 +195,6 @@
                 width: 14px;
                 height: 15px;
                 background: url("../../images/sscsprites.png") -141px -36px;
-            }
-        }
-    }
-    .allnav {
-        position: absolute;
-        top: 100px;
-        left: 0;
-        width: 240px;
-        z-index: 999;
-        .sidel {
-            width: 100%;
-            border: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-content: space-between;
-            .flex-sr {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-content: center;
-                align-items: center;
-            }
-            .flex-sc {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-content: space-between;
-            }
-            li {
-                width: 100%;
-                font-size: 14px;
-                color: white;
-                .itembox {
-                    font-size: 14px;
-                    height: 42px;
-                    line-height: 40px;
-                    padding:0 18px 0 20px;
-                    font-weight: bold;
-                    background-color: #999;
-                    border-bottom: 2px solid white;
-                    cursor: pointer;
-                    .itemboxiconr {
-                        font-size: 30px;
-                        line-height: 32px;
-                        padding-top: 4px;
-                        transform: rotate(0);
-                    }
-                    .iconactive {
-                        line-height: 48px;
-                        transform: rotate(90deg);
-                    }
-                    .sideicon {
-                        width: 36px;
-                        height: 24px;
-                        background: url('../../images/cred01.png');
-                        background-repeat: no-repeat;
-                    }
-                }
-                .itembox:hover {
-                    background-color: #fe8f00;
-                }
-                .item {
-                    font-size: 12px;
-                    height: 32px;
-                    line-height: 30px;
-                    padding:0 18px 0 60px;
-                    background-color: #525151;
-                    color: white;
-                    border-bottom: 1px solid white;
-                    cursor: pointer;
-                }
-                .itemactive,
-                .item:hover {
-                    color: #fe8f00;
-                }
-                .yborder {
-                    background-color: #fe8f00;
-                }
             }
         }
     }

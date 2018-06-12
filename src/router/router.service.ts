@@ -30,9 +30,6 @@ export class RouteguardService implements CanActivate{
 			//语言检测
 			let lang_config = userModel.lang_config;
 			let now_lang = {}
-
-			// console.log('你就是个大笨蛋')
-			// console.log(Base.Store.get(key))
 			function  check_language(){
 		        if (Base.Store.get('now_lot_lang')==null) {
 		            Base.Store.set('now_lot_lang',lang_config.default_lan)
@@ -51,6 +48,7 @@ export class RouteguardService implements CanActivate{
 		        
 		    }
 		    check_language();
+			Base.Store.set('isTemplet','1',false)
 
 
 			if(!Base.Store.get('isTemplet')){
@@ -60,8 +58,12 @@ export class RouteguardService implements CanActivate{
 					const appnewRoutes: Routes =[
 						{
 							path: '',
-							redirectTo: 'home',
+							redirectTo: 'index',
 							pathMatch: 'full'
+                        },
+                        {
+							path: 'index',
+							loadChildren: '../app/page_module_1/index/index.module#IndexModule'
 						},
 						{
 							path: 'login',

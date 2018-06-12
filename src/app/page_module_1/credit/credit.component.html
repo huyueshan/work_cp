@@ -1,6 +1,6 @@
-<div class="flex-c sscbox">
+<div class="flex-c sscbox" [hidden]="!loadpage">
     <div>
-        <app-header></app-header>
+            <app-header [username]="'test08'" [curpath]="'officialssc'"></app-header>
     </div>
     <div class="flex-c ssccontain">
         <div class="contaner">
@@ -215,10 +215,11 @@
                                 <div class="flex-r wenlubtn">
                                     <strong></strong>
                                 </div>
+                                <!-- //大路 -->
                                 <div class="flex-r wtablebox">
                                     <div class="flex-r wtable">
                                         <div class="iteminfo">
-                                            大路
+                                            {{tablebox1.name}}
                                         </div>
                                         <div class="wrapbox" [ngStyle]="{'width': tablebox1.width}">
                                             <div class="tablebox" id="tablebox1" [ngStyle]="{'left': tablebox1.left}" (mousedown)="dragdown($event,'tablebox1')" (mouseup)="tablebox1.drag = false"
@@ -236,7 +237,7 @@
                                 </div>
 
                             </div>
-                            <!-- =============================================== -->
+                            <!-- ===盘珠路======== -->
                             <div class="flex-r wenlu">
                                 <div class="flex-r wenlubtn">
                                     <strong></strong>
@@ -244,7 +245,7 @@
                                 <div class="flex-r wtablebox">
                                     <div class="flex-r wtable">
                                         <div class="iteminfo infosmall">
-                                            盘珠路
+                                            {{tablebox2.name}}
                                         </div>
                                         <div class="wrapbox" [ngStyle]="{'width': tablebox2.width}">
                                             <div class="tablebox" id="tablebox2" [ngStyle]="{'left': tablebox2.left}" (mousedown)="dragdown($event,'tablebox2')" (mouseup)="tablebox2.drag = false"
@@ -259,9 +260,10 @@
                                         </div>
 
                                     </div>
+                                    <!-- 大眼路 -->
                                     <div class="flex-r wtable">
                                         <div class="iteminfo infosmall">
-                                            大眼路
+                                            {{tablebox3.name}}
                                         </div>
                                         <div class="wrapbox" [ngStyle]="{'width': tablebox3.width}">
                                             <div class="tablebox" id="tablebox3" [ngStyle]="{'left': tablebox3.left}" (mousedown)="dragdown($event,'tablebox3')" (mouseup)="tablebox3.drag = false"
@@ -276,9 +278,10 @@
                                         </div>
 
                                     </div>
+                                    <!-- 小路 -->
                                     <div class="flex-r wtable">
                                         <div class="iteminfo">
-                                            小路
+                                            {{tablebox4.name}}
                                         </div>
                                         <div class="wrapbox" [ngStyle]="{'width': tablebox4.width}">
                                             <div class="tablebox" id="tablebox4" [ngStyle]="{'left': tablebox4.left}" (mousedown)="dragdown($event,'tablebox4')" (mouseup)="tablebox4.drag = false"
@@ -293,9 +296,10 @@
                                         </div>
 
                                     </div>
+                                    <!-- 曱甴路 -->
                                     <div class="flex-r wtable">
                                         <div class="iteminfo infosmall">
-                                            曱甴路
+                                            {{tablebox5.name}}
                                         </div>
                                         <div class="wrapbox" [ngStyle]="{'width': tablebox5.width}">
                                             <div class="tablebox" id="tablebox5" [ngStyle]="{'left': tablebox5.left}" (mousedown)="dragdown($event,'tablebox5')" (mouseup)="tablebox5.drag = false"
