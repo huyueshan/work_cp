@@ -10,7 +10,7 @@ import userModel from "../../../status/user.model";
 export class CreditComponent implements OnInit, OnDestroy {
   loadpage = false;
   public odds = 7.8 ; // 赔率
-  public rangevalue = 100; //绑定滑动条数据
+  public rangevalue = 7.8; //绑定滑动条数据
   public delay = true; // 选择金额框判断
   public boxshow = false; // 选择金额框显示判断
   public type = 1; // 玩法
@@ -477,13 +477,13 @@ export class CreditComponent implements OnInit, OnDestroy {
   // 滑块左侧递减事件
   rangevaluelessen() {
     if (this.rangevalue > 0) {
-      this.rangevalue -= 1;
+      this.rangevalue -= 0.1;
     }
   }
   // 滑块左侧递加事件
   rangevalueadd() {
-    if (this.rangevalue < 100) {
-      this.rangevalue += 1;
+    if (this.rangevalue < 7.8) {
+      this.rangevalue += 0.1;
     }
   }
   // 切换玩法事件 /整合/龙虎斗/全五中一
