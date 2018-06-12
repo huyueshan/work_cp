@@ -1,6 +1,6 @@
-<div class="flex-c sscbox">
+<div class="flex-c sscbox" [hidden]="!loadpage">
     <div>
-        <app-header></app-header>
+            <app-header [username]="'test08'" [curpath]="'officialssc'"></app-header>
     </div>
     <div class="flex-c ssccontain">
         <div class="contaner">
@@ -9,12 +9,10 @@
                 <div class="flex-c contentbox">
                     <div class="flex-r tabbox">
                         <div class="flex-r tabcontent">
-                            <span [ngClass]="{tabactive:this.type == 1}" (click)="togtype(1)">整合</span>
-                            <span [ngClass]="{tabactive:this.type == 2}" (click)="togtype(2)">龙虎斗</span>
-                            <span [ngClass]="{tabactive:this.type == 3}" (click)="togtype(3)">全5中1</span>
+                            <span *ngFor="let item of typedata"  [ngClass]="{tabactive:this.type == item.id}" (click)="togtype(item.id)">{{item.name}}</span>
                         </div>
                         <div class="flex-r togglebtn">
-                            <span>官方</span>
+                            <span (click)="linkrouter('/officialssc')">官方</span>
                             <span class="togactive">信用</span>
                         </div>
                     </div>
@@ -22,15 +20,18 @@
                         <span class="flex-r">
                             <strong>$</strong>
                             <span class="flex-r rangebox">
-                                <span class="showvalue">{{(rangevalue*-1).toFixed(1)}}%</span>
-                                <span class="icon" (click)="rangevaluelessen()">-</span>&nbsp;&nbsp;
-                                <input type="range" name="points" min="-7.8" max="0" step="0.078" id="points" [(ngModel)]="rangevalue"> &nbsp;&nbsp;
+                                <span class="showvalue">{{(rangevalue/-100*odds+odds)| number : '1.0-1'}}%</span>
+                                <span class="icon" (click)="rangevaluelessen()">-</span>
+                                <span class="flex-r" style="width:130px; padding: 0 10px; align-items: center;">
+
+                                    <input type="range" name="points" min="0" max="100" step="1" id="points" [(ngModel)]="rangevalue">
+                                </span>
                                 <span class="icon" (click)="rangevalueadd()">+</span>
                             </span>
                         </span>
                         <span class="flex-r btngroup">
-                            <button [ngClass]="{btnactive:selectbtnvalue == 0}" (click)="selectbtnvalue = 0">一般</button> &nbsp;&nbsp;
-                            <button [ngClass]="{btnactive:selectbtnvalue == 1}" (click)="selectbtnvalue = 1">快捷</button>&nbsp;&nbsp;
+                            <button [ngClass]="{btnactive:selectbtnvalue == 0}" (click)="selectbtnvalue = 0">一般</button>
+                            <button [ngClass]="{btnactive:selectbtnvalue == 1}" (click)="selectbtnvalue = 1">快捷</button>
                             <button [ngClass]="{btnactive:selectbtnvalue == 2}" (click)="selectbtnvalue = 2">快选金额</button>
                         </span>
                     </div>
@@ -50,7 +51,7 @@
                                     <span class="item1">
                                         <span>{{item.numb}}</span>
                                     </span>
-                                    <span class="item2 color_y">{{(2.29+(rangevalue/0.078*0.00191)).toFixed(3)}} </span>
+                                    <span class="item2 color_y">{{(2.099+(rangevalue*0.00191))| number : '1.0-3'}} </span>
                                     <span class="item3" [hidden]="selectbtnvalue == 1">
                                         <input type="text" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfocus($event,i)" (blur)="inmoneyblur()">
                                     </span>
@@ -68,15 +69,15 @@
                                         <span class="flex-r item2">
                                             <span class=" item2info" [ngClass]="{togstyle2:selectbtnvalue == 1}">
                                                 <span class="color_r">龙</span>
-                                                <span class="color_y">{{(2.168+(rangevalue/0.078*0.00224)).toFixed(3)}}</span>
+                                                <span class="color_y">{{(1.944+(rangevalue*0.00224))| number : '1.0-3'}}</span>
                                             </span>
                                             <span class="item2info" [ngClass]="{togstyle2:selectbtnvalue == 1}">
                                                 <span class="color_g">和</span>
-                                                <span class="color_y">{{(9.76+(rangevalue/0.078*0.0078)).toFixed(2)}}</span>
+                                                <span class="color_y">{{(8.98+(rangevalue*0.0078))| number : '1.0-2'}}</span>
                                             </span>
                                             <span class="item2info" [ngClass]="{togstyle2:selectbtnvalue == 1}">
                                                 <span class="color_b">虎</span>
-                                                <span class="color_y">{{(2.168+(rangevalue/0.078*0.00224)).toFixed(3)}}</span>
+                                                <span class="color_y">{{(1.944+(rangevalue*0.00224))| number : '1.0-3'}}</span>
                                             </span>
                                         </span>
                                         <span class="flex-r item3" *ngIf="selectbtnvalue !== 1">
@@ -113,7 +114,7 @@
                                         <span class="item1">
                                             {{child.name}}
                                         </span>
-                                        <span class="item2 color_y">{{(1.956+(rangevalue/0.078*0.00156)).toFixed(3)}} </span>&nbsp;
+                                        <span class="item2 color_y">{{(1.8+(rangevalue*0.00156))| number : '1.0-3'}} </span>
                                         <span class="item3" [hidden]="selectbtnvalue == 1">
                                             <input type="text" class="inmoney" name="inmoney" [(ngModel)]="child.value" (focus)="inmoney1focus($event,'data1',i,q)" (blur)="inmoneyblur()">
                                         </span>
@@ -126,7 +127,7 @@
                                         <span class=" item1">
                                             <i>{{child.numb}}</i>
                                         </span>
-                                        <span class="item2 color_y">{{(9.78+(rangevalue/0.078*0.0078)).toFixed(2)}} </span>&nbsp;
+                                        <span class="item2 color_y">{{(9+(rangevalue*0.0078))| number : '1.0-3'}} </span>
                                         <span class=" item3" [hidden]="selectbtnvalue == 1">
                                             <input type="text" class="inmoney" name="inmoney" [(ngModel)]="child.value" (focus)="inmoney1focus($event,'data2',i,q)" (blur)="inmoneyblur()">
                                         </span>
@@ -137,7 +138,7 @@
                                     <span class="flex-r itembox" *ngFor="let child of betdata1.data2[0];let q=index">
                                         <span class=" item1">
                                         </span>
-                                        <span class="item2 color_y"></span>&nbsp;
+                                        <span class="item2 color_y"></span>
                                         <span class=" item3" [hidden]="selectbtnvalue == 1">
                                         </span>
                                     </span>
@@ -162,7 +163,7 @@
                                     <span class="item1 itembold">
                                         {{item.name}}
                                     </span>
-                                    <span class="item2 color_y">{{(12.933+(rangevalue/0.078*0.0013)).toFixed(3)}} </span>
+                                    <span class="item2 color_y">{{(11.633+(rangevalue*0.013))| number : '1.0-3'}} </span>
                                     <span class="item3" [hidden]="selectbtnvalue == 1">
                                         <input type="text" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney1focus($event,'data3',i,null)"
                                             (blur)="inmoneyblur()">
@@ -176,9 +177,9 @@
                             <span class="flex-r btngroup">
                                 <span [hidden]="selectbtnvalue !== 1">
                                     <input type="text" class="inmoney" id="allinmoney" name="allinmoney" [(ngModel)]="setallmoney.value" value="" (focus)="inmoneyfocus($event,'all')"
-                                        (blur)="inmoneyblur()" (change)="allchange()">&nbsp;&nbsp;&nbsp;
+                                        (blur)="inmoneyblur()" (change)="allchange()">
                                 </span>
-                                <button class="btnactive" (click)="sub()">确定</button> &nbsp;&nbsp;&nbsp;
+                                <button class="btnactive" (click)="sub()">确定</button>
                                 <button class="resetbtn" (click)="reset()">重置</button>
                             </span>
 
@@ -195,6 +196,128 @@
                             </div>
 
                         </div>
+                        <!-- 底部问路-->
+                        <div class="flex-c sscbottom" *ngIf="type!==3">
+                            <ul class="flex-r tabbox">
+                                <li class="tabitem">
+                                    <select id="typeoption" name="typeoption" [(ngModel)]="typeoption">
+                                        <option *ngFor="let item of typedata"  value="{{item.name}}">{{item.name}}</option>
+                                    </select>
+
+                                </li>
+                                <li class="tabitem" *ngFor="let item of bottomtabdata; let i=index">
+                                    <span class="tabbtn" [ngClass]="{tabbtnactive:bottabactive == i }" (click)="bottabactive = i">
+                                        {{item.name}}
+                                    </span>
+                                </li>
+                            </ul>
+                            <div class="flex-r wenlu">
+                                <div class="flex-r wenlubtn">
+                                    <strong></strong>
+                                </div>
+                                <!-- //大路 -->
+                                <div class="flex-r wtablebox">
+                                    <div class="flex-r wtable">
+                                        <div class="iteminfo">
+                                            {{tablebox1.name}}
+                                        </div>
+                                        <div class="wrapbox" [ngStyle]="{'width': tablebox1.width}">
+                                            <div class="tablebox" id="tablebox1" [ngStyle]="{'left': tablebox1.left}" (mousedown)="dragdown($event,'tablebox1')" (mouseup)="tablebox1.drag = false"
+                                                (mousemove)="dragmove($event,'tablebox1')" (mouseleave)="tablebox1.drag = false">
+                                                <table id="table1" width="100%" border="0" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+                                                    <tr *ngFor="let item of tablebox1.data">
+                                                        <td *ngFor="let child of item"></td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- ===盘珠路======== -->
+                            <div class="flex-r wenlu">
+                                <div class="flex-r wenlubtn">
+                                    <strong></strong>
+                                </div>
+                                <div class="flex-r wtablebox">
+                                    <div class="flex-r wtable">
+                                        <div class="iteminfo infosmall">
+                                            {{tablebox2.name}}
+                                        </div>
+                                        <div class="wrapbox" [ngStyle]="{'width': tablebox2.width}">
+                                            <div class="tablebox" id="tablebox2" [ngStyle]="{'left': tablebox2.left}" (mousedown)="dragdown($event,'tablebox2')" (mouseup)="tablebox2.drag = false"
+                                                (mousemove)="dragmove($event,'tablebox2')" (mouseleave)="tablebox2.drag = false">
+                                                <table id="table2" width="100%" border="0" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+                                                    <tr *ngFor="let item of tablebox2.data">
+                                                        <td *ngFor="let child of item"></td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- 大眼路 -->
+                                    <div class="flex-r wtable">
+                                        <div class="iteminfo infosmall">
+                                            {{tablebox3.name}}
+                                        </div>
+                                        <div class="wrapbox" [ngStyle]="{'width': tablebox3.width}">
+                                            <div class="tablebox" id="tablebox3" [ngStyle]="{'left': tablebox3.left}" (mousedown)="dragdown($event,'tablebox3')" (mouseup)="tablebox3.drag = false"
+                                                (mousemove)="dragmove($event,'tablebox3')" (mouseleave)="tablebox3.drag = false">
+                                                <table id="table3" width="100%" border="0" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+                                                    <tr *ngFor="let item of tablebox3.data">
+                                                        <td *ngFor="let child of item"></td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- 小路 -->
+                                    <div class="flex-r wtable">
+                                        <div class="iteminfo">
+                                            {{tablebox4.name}}
+                                        </div>
+                                        <div class="wrapbox" [ngStyle]="{'width': tablebox4.width}">
+                                            <div class="tablebox" id="tablebox4" [ngStyle]="{'left': tablebox4.left}" (mousedown)="dragdown($event,'tablebox4')" (mouseup)="tablebox4.drag = false"
+                                                (mousemove)="dragmove($event,'tablebox4')" (mouseleave)="tablebox4.drag = false">
+                                                <table id="table4" width="100%" border="0" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+                                                    <tr *ngFor="let item of tablebox4.data">
+                                                        <td *ngFor="let child of item"></td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- 曱甴路 -->
+                                    <div class="flex-r wtable">
+                                        <div class="iteminfo infosmall">
+                                            {{tablebox5.name}}
+                                        </div>
+                                        <div class="wrapbox" [ngStyle]="{'width': tablebox5.width}">
+                                            <div class="tablebox" id="tablebox5" [ngStyle]="{'left': tablebox5.left}" (mousedown)="dragdown($event,'tablebox5')" (mouseup)="tablebox5.drag = false"
+                                                (mousemove)="dragmove($event,'tablebox5')" (mouseleave)="tablebox5.drag = false">
+                                                <table id="table5" width="100%" border="0" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+                                                    <tr *ngFor="let item of tablebox5.data">
+                                                        <td *ngFor="let child of item"></td>
+                                                    </tr>
+
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ========================================== -->
+                        </div>
 
                     </div>
 
@@ -209,11 +332,10 @@
                         <span>账户余额：
                             <span class="color_y">9999.99</span> 元</span>
                         <span class="flex-r userbtngroup">
-                            <span>充值</span>
-                            <span>提现</span>
+                            <span (click)="linkrouter('/usercenter/recharge')">充值</span>
+                            <span (click)="linkrouter('/usercenter/withdrawdeposit')">提现</span>
                             <span>转账</span>
                         </span>
-
                     </div>
                     <div class="resultinfobox">
                         <div class="flex-c infoitem  resultinfo">
@@ -233,12 +355,11 @@
                                     <span>龙虎斗 和</span>
                                     <span class="flex-r resultitemr ">
 
-                                        <strong class="color_y">8888</strong>&nbsp; 元
+                                        <strong class="color_y">8888</strong>元
                                     </span>
                                 </span>
                             </ng-container>
                         </div>
-
                         <div class="resultinfobox">
                             <div class="flex-c infoitem  resultinfo">
                                 <span class="flex-r tabtn">
@@ -247,7 +368,7 @@
                                 </span>
                                 <div class="flex-c resultbox">
                                     <span class="flex-r querybox">
-                                        <span>期数 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <span>期数</span>
                                         <span>
                                             <select id="qishu" name="qishu" [(ngModel)]="querydata.qishu">
                                                 <option value="2期" selected>2期</option>
@@ -282,7 +403,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

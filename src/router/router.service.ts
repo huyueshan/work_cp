@@ -15,8 +15,6 @@ import { Api } from "../factory/api.model";
 
 import { setCookie, getCookie, delCookie } from "../factory/utils";
 import languagepackage from "../status/language";
-
-import Sstore from "../factory/Sstore";
 @Injectable()
 
 export class RouteguardService implements CanActivate{
@@ -33,23 +31,26 @@ export class RouteguardService implements CanActivate{
 			let lang_config = userModel.lang_config;
 			let now_lang = {}
 			function  check_language(){
-		      //   console.log(getCookie('now_lot_lang'))
-		        if (getCookie('now_lot_lang')==null) {
-		            setCookie('now_lot_lang',lang_config.default_lan,1)
-		            let now_lot_lang = getCookie('now_lot_lang');
+		        if (Base.Store.get('now_lot_lang')==null) {
+		            Base.Store.set('now_lot_lang',lang_config.default_lan)
+		            let now_lot_lang = Base.Store.get('now_lot_lang');
 		            load_langpackge(now_lot_lang)
 		        }else{
 		            //这里手动改变语言后不做任何操作,但是同样调用引用语言包函数;
-		            let now_lot_lang = getCookie('now_lot_lang');
+		            let now_lot_lang = Base.Store.get('now_lot_lang');
 		            load_langpackge(now_lot_lang)
 		        }
 		    }
 		    function load_langpackge(lang){
 		        now_lang = languagepackage[lang];
-		        Sstore['langpackage'] = now_lang;
-		        console.log(Sstore['langpackage'])
+		        // Sstore['langpackage'] = now_lang;
+		        userModel.langpackage = now_lang;
+		        
 		    }
 		    check_language();
+			Base.Store.set('isTemplet','1',false)
+
+
 			if(!Base.Store.get('isTemplet')){
 				// 根据域名配置不通路由模块
 				this.httpClient.get(Api.gettemple)
@@ -57,8 +58,12 @@ export class RouteguardService implements CanActivate{
 					const appnewRoutes: Routes =[
 						{
 							path: '',
-							redirectTo: 'home',
+							redirectTo: 'index',
 							pathMatch: 'full'
+                        },
+                        {
+							path: 'index',
+							loadChildren: '../app/page_module_1/index/index.module#IndexModule'
 						},
 						{
 							path: 'login',
@@ -72,10 +77,6 @@ export class RouteguardService implements CanActivate{
 						{
 							path: 'detail',
 							loadChildren: '../app/page_module_2/detail/detail.module#DetailModule'
-						},
-						{
-							path: 'test',
-							loadChildren: '../app/page_module_2/test/detail.module#DetailModule'
 						},
 						{
 							path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
@@ -96,7 +97,7 @@ export class RouteguardService implements CanActivate{
 					const appnewRoutes: Routes =[
 						{
 							path: '',
-							redirectTo: 'credit',
+							redirectTo: 'index',
 							pathMatch: 'full'
 						},
 						{
@@ -113,12 +114,12 @@ export class RouteguardService implements CanActivate{
 							loadChildren: '../app/page_module_1/index/index.module#IndexModule'
 						},
 						{
-							path: 'sscmod',
-							loadChildren: '../app/page_module_1/sscmod/official/ssc.module#SSCofficialModule',
+							path: 'officialssc',
+							loadChildren: '../app/page_module_1/official/ssc/ssc.module#SSCofficialModule',
 							canActivate: [RouteguardService]
 						}, 
 						{
-							path: 'credit',
+							path: 'creditssc',
 							loadChildren: '../app/page_module_1/credit/credit.module#CreditModule',
 							canActivate: [RouteguardService]
 						},  
@@ -129,10 +130,6 @@ export class RouteguardService implements CanActivate{
 											{
 							path: 'detail',
 							loadChildren: '../app/page_module_1/detail/detail.module#DetailModule'
-						},
-						{
-							path: 'test',
-							loadChildren: '../app/page_module_1/test/detail.module#DetailModule'
 						},
 						{
 							path: 'register',
@@ -149,7 +146,7 @@ export class RouteguardService implements CanActivate{
 						},
 						{
 							path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
-							redirectTo: 'home',
+							redirectTo: 'index',
 							pathMatch: 'full'  // 必须要设置
 						}
 					];

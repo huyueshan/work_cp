@@ -1,0 +1,90 @@
+
+.flex-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+  }
+  .flex-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+  }
+.userbox{
+    width:100%;
+    height:554px;
+    padding:10px 30px;
+    background-color: #F5F5F5;
+    border: 1px solid #ccc;
+}
+.usertitle{
+    width:100%;
+    height: 64px;
+    line-height: 64px;
+    font-size: 24px;
+    font-weight: bold;
+    padding-top: 20px;
+    border-bottom: 1px solid #ccc;
+}
+.usercontent{
+    position: relative;
+    width: 100%;
+    font-size: 14px;
+    padding:36px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+.usercontent input{
+    border:none;
+    outline: none;
+    background-color: #F5F5F5;
+    height: 20px;
+    line-height: 20px;
+}
+.usseritem{
+    width: 350px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+
+}
+.lable{
+    width:70px;
+    text-align: right;
+    color:black;
+}
+.userup{
+    position: absolute;
+    left: 116px;
+    width:230px;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid #fe8f00;
+    background-color: #F5F5F5;
+}
+.userup i{
+    width:22px;
+    height: 22px;
+    background: url("../../../images/user01.png") -10px -107px no-repeat;
+}
+.xiugai{
+    color:#fe8f00;
+    cursor: pointer;
+}
+.userbtn{
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fe8f00;
+    border: 1px solid #d17702;
+    border-radius: 2px;
+    cursor: pointer;
+    color: white;
+    outline: none;
+}
