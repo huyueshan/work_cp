@@ -5,6 +5,7 @@ import { SharkModule } from '@ntesmail/shark-angular2';
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'; 
+import { HttpModule } from '@angular/http';
 import { ApplicationRef } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -21,7 +22,7 @@ if (ENV === 'prod') {
 }
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, SharkModule, AppRoutingModule,HttpClientModule],
+    imports: [BrowserModule, FormsModule, SharkModule, AppRoutingModule,HttpModule ,HttpClientModule],
     declarations: [AppComponent],
 	providers: [
 		{provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true}
