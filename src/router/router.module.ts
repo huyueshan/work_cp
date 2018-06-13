@@ -9,7 +9,7 @@ import { ResolveService } from '../router/resole.service';
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'index',
+        redirectTo: 'lottery',
         pathMatch: 'full'
     },
 	
@@ -37,6 +37,11 @@ const appRoutes: Routes = [
     {
         path: 'creditssc',
         loadChildren: '../app/page_module_1/credit/credit.module#CreditModule',
+        canActivate: [RouteguardService]
+    },
+    {
+        path: 'lottery',
+        loadChildren: '../app/page_module_1/lottery/lottery.module#LotteryModule',
         canActivate: [RouteguardService]
     }, 
 	{

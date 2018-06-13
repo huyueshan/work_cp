@@ -124,6 +124,11 @@ export class RouteguardService implements CanActivate{
 							canActivate: [RouteguardService]
 						},  
 						{
+							path: 'lottery',
+							loadChildren: '../app/page_module_1/lottery/lottery.module#LotteryModule',
+							canActivate: [RouteguardService]
+						},  
+						{
 							path: 'home',
 							loadChildren: '../app/page_module_1/home/home.module#HomeModule'
 						}, 

@@ -1,10 +1,10 @@
 <div class="flex-c sscbox" [hidden]="!loadpage">
     <div>
-            <app-header [username]="'test08'" [curpath]="'officialssc'"></app-header>
+            <app-header [username]="'test08'" [curpath]="'lottery'"></app-header>
     </div>
     <div class="flex-c ssccontain">
         <div class="contaner">
-            <app-credtop></app-credtop>
+            <app-credtop [type] ="'creditssc'"></app-credtop>
             <div class="flex-r mainbox">
                 <div class="flex-c contentbox">
                     <div class="flex-r tabbox">
@@ -23,7 +23,6 @@
                                 <span class="showvalue">{{(odds-rangevalue)| number : '1.0-1'}}%</span>
                                 <span class="icon" (click)="rangevaluelessen()">-</span>
                                 <span class="flex-r" style="width:130px; padding: 0 10px; align-items: center;">
-
                                     <input type="range" name="points" min="0" max="7.8" step="0.1" id="points" [(ngModel)]="rangevalue">
                                 </span>
                                 <span class="icon" (click)="rangevalueadd()">+</span>

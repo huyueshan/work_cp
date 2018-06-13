@@ -1,0 +1,22 @@
+.flex-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+}
+
+.flex-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+.mainbox{
+    width:100%;
+    min-height: 500px;
+}
+.footer{
+    width:100%;
+}

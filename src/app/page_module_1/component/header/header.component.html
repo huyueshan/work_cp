@@ -19,8 +19,8 @@
           <!-- <a class="getinfo mr20" href="javascript:;">test007</a> -->
           <span class="title mr20">{{now_lang.HEADER.MYCOUNT}}</span>
           <span class="title mr20">{{now_lang.HEADER.BALANCE}}</span>
-          <span class="money">999999.99</span>
-          <span class="titlerel bg-refaul_03"></span>
+          <span class="money" #money>999999.99</span>
+          <span class="titlerel bg-refaul_03" #refresh (click)="refresh_money(money,refresh)"></span>
         </div>
         <ul class="centerlist">
           <li>
@@ -57,7 +57,7 @@
             </a>
           </li>
           <li>
-            <a href="#/officialssc" [ngClass]="{color_y:curpath == 'officialssc'}">
+            <a href="#/lottery" [ngClass]="{color_y:curpath == 'lottery'}">
               <p class="pc">{{now_lang.NAV.LOOTERY}}</p>
               <p class="pe">Lootery</p>
             </a>

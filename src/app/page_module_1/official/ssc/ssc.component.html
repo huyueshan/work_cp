@@ -1,7 +1,7 @@
 <div class="flex-c body" [hidden]="!loadpage">
-    <app-header [username]="'test08'" [curpath]="'officialssc'"></app-header>
+    <app-header [username]="'test08'" [curpath]="'lottery'"></app-header>
 	<div class="conbox">
-		<div class="content">
+		<div class="content" style="margin-top:30px;">
 			<!-- <div class="gamenav">
 				<div class="alltype">
 					<div class="fltitle">{{now_lang.LOT_NAV.ALL_LOT}}</div>
@@ -39,7 +39,7 @@
 					</div>
 				</div>
 			</div> -->
-			<app-credtop></app-credtop>
+			<app-credtop [type] ="'officialssc'"></app-credtop>
 			<div class="sscorder">
 				<div class="sscleft">
 					<div class="tabbox">
@@ -50,7 +50,7 @@
 						<span class="pointr"><i></i></span>
 						<ul class="totaltype">
 							<li class="active"><a>官方</a></li>
-							<li><a>信用</a></li>
+							<li (click)="linkrouter('/creditssc')"><a>信用</a></li>
 						</ul>
 					</div>   
 					<div class="tabcon">
@@ -88,21 +88,13 @@
 							</div>
 						</div>
 					</div>
-					<div class="chooselist elsebg">
+					<div *ngIf="up_ball == 1">
+					<div class="chooselist elsebg" [ngClass]="{elsebg: i%2==0}"  *ngFor="let val of now_balllist;let i = index">
 						<div class="leftnum">
 							<div class="numcon">
-								<div class="name">万位</div>
+								<div class="name">{{val.title}}</div>
 								<ul class="numlist">
-									<li class="active">0</li>
-									<li>1</li>
-									<li>2</li>
-									<li>3</li>
-									<li>4</li>
-									<li>5</li>
-									<li>6</li>
-									<li>7</li>
-									<li>8</li>
-									<li>9</li>
+									<li #ballid [ngClass]="{active: item==now_matchtab[val.index][item]}" *ngFor="let item of val.ball;let f = index" (click)= 'oneball(val.index,f,item,ballid)'>{{item}}</li>
 								</ul>
 							</div>
 							<div class="choosecheck">
@@ -122,181 +114,12 @@
 							</div>
 						</div>
 						<ul class="numright">
-							<li class="active">全</li>
-							<li>大</li>
-							<li>小</li>
-							<li>奇</li>
-							<li>偶</li>
-							<li>清</li>
+							<li #nowid *ngFor="let valtab of val.tab;let d = index" (click)="choosetab(val.index,d,valtab,nowid)">{{valtab}}</li>
 						</ul>
 					</div>
-					<div class="chooselist">
-						<div class="leftnum">
-							<div class="numcon">
-								<div class="name">千位</div>
-								<ul class="numlist">
-									<li class="active">0</li>
-									<li>1</li>
-									<li>2</li>
-									<li>3</li>
-									<li>4</li>
-									<li>5</li>
-									<li>6</li>
-									<li>7</li>
-									<li>8</li>
-									<li>9</li>
-								</ul>
-							</div>
-							<div class="choosecheck">
-								<div class="name">当前遗漏</div>
-								<ul class="numlist">
-									<li class="active">05</li>
-									<li>25</li>
-									<li>13</li>
-									<li>26</li>
-									<li>33</li>
-									<li>16</li>
-									<li>10</li>
-									<li>34</li>
-									<li>29</li>
-									<li>19</li>
-								</ul>
-							</div>
-						</div>
-						<ul class="numright">
-							<li class="active">全</li>
-							<li>大</li>
-							<li>小</li>
-							<li>奇</li>
-							<li>偶</li>
-							<li>清</li>
-						</ul>
 					</div>
-					<div class="chooselist elsebg">
-						<div class="leftnum">
-							<div class="numcon">
-								<div class="name">百位</div>
-								<ul class="numlist">
-									<li class="active">0</li>
-									<li>1</li>
-									<li>2</li>
-									<li>3</li>
-									<li>4</li>
-									<li>5</li>
-									<li>6</li>
-									<li>7</li>
-									<li>8</li>
-									<li>9</li>
-								</ul>
-							</div>
-							<div class="choosecheck">
-								<div class="name">当前遗漏</div>
-								<ul class="numlist">
-									<li class="active">05</li>
-									<li>25</li>
-									<li>13</li>
-									<li>26</li>
-									<li>33</li>
-									<li>16</li>
-									<li>10</li>
-									<li>34</li>
-									<li>29</li>
-									<li>19</li>
-								</ul>
-							</div>
-						</div>
-						<ul class="numright">
-							<li class="active">全</li>
-							<li>大</li>
-							<li>小</li>
-							<li>奇</li>
-							<li>偶</li>
-							<li>清</li>
-						</ul>
-					</div>
-					<div class="chooselist">
-						<div class="leftnum">
-							<div class="numcon">
-								<div class="name">十位</div>
-								<ul class="numlist">
-									<li class="active">0</li>
-									<li>1</li>
-									<li>2</li>
-									<li>3</li>
-									<li>4</li>
-									<li>5</li>
-									<li>6</li>
-									<li>7</li>
-									<li>8</li>
-									<li>9</li>
-								</ul>
-							</div>
-							<div class="choosecheck">
-								<div class="name">当前遗漏</div>
-								<ul class="numlist">
-									<li class="active">05</li>
-									<li>25</li>
-									<li>13</li>
-									<li>26</li>
-									<li>33</li>
-									<li>16</li>
-									<li>10</li>
-									<li>34</li>
-									<li>29</li>
-									<li>19</li>
-								</ul>
-							</div>
-						</div>
-						<ul class="numright">
-							<li class="active">全</li>
-							<li>大</li>
-							<li>小</li>
-							<li>奇</li>
-							<li>偶</li>
-							<li>清</li>
-						</ul>
-					</div>
-					<div class="chooselist elsebg">
-						<div class="leftnum">
-							<div class="numcon">
-								<div class="name">个位</div>
-								<ul class="numlist">
-									<li class="active">0</li>
-									<li>1</li>
-									<li>2</li>
-									<li>3</li>
-									<li>4</li>
-									<li>5</li>
-									<li>6</li>
-									<li>7</li>
-									<li>8</li>
-									<li>9</li>
-								</ul>
-							</div>
-							<div class="choosecheck">
-								<div class="name">当前遗漏</div>
-								<ul class="numlist">
-									<li class="active">05</li>
-									<li>25</li>
-									<li>13</li>
-									<li>26</li>
-									<li>33</li>
-									<li>16</li>
-									<li>10</li>
-									<li>34</li>
-									<li>29</li>
-									<li>19</li>
-								</ul>
-							</div>
-						</div>
-						<ul class="numright">
-							<li class="active">全</li>
-							<li>大</li>
-							<li>小</li>
-							<li>奇</li>
-							<li>偶</li>
-							<li>清</li>
-						</ul>
+					<div *ngIf="up_ball==2">
+					 11111111111
 					</div>
 					<div class="addchoose">
 						<div class="funleft">
@@ -323,8 +146,8 @@
 									
 								</div>
 								<div class="amount">
-									<span class="title mr10">0%</span>
-									<em class="btnaddrem">-</em><input class="mathrange fl" type="range" name="points" min="-7.8" max="0" step="0.078" id="points" [(ngModel)]="rangevalue"><em class="btnaddrem">+</em><span class="title ml10">195600</span>
+									<span class="title mr10">{{rangepercent}}%</span>
+									<em class="btnaddrem" (click)="rangevaluelessen()">-</em><input class="mathrange fl" type="range" name="points" min="0" max="30"   step="1" id="points" [(ngModel)]="rangepercent"><em class="btnaddrem" (click)="rangevalueadd()">+</em><span class="title ml10">{{rangepercent*riskvalue + 1950}}</span>
 								</div>
 							</div>
 							<div class="tip">

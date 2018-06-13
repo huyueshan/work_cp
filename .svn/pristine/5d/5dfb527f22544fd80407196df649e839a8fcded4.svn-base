@@ -50,6 +50,7 @@ export class RouteguardService implements CanActivate{
 		    check_language();
 			Base.Store.set('isTemplet','1',false)
 
+
 			if(!Base.Store.get('isTemplet')){
 				// 根据域名配置不通路由模块
 				this.httpClient.get(Api.gettemple)
@@ -120,6 +121,11 @@ export class RouteguardService implements CanActivate{
 						{
 							path: 'creditssc',
 							loadChildren: '../app/page_module_1/credit/credit.module#CreditModule',
+							canActivate: [RouteguardService]
+						},  
+						{
+							path: 'lottery',
+							loadChildren: '../app/page_module_1/lottery/lottery.module#LotteryModule',
 							canActivate: [RouteguardService]
 						},  
 						{
