@@ -641,7 +641,7 @@ export class CreditComponent implements OnInit, OnDestroy {
   // 确认提交按钮事件
   sub() {
     if (this.type == 3) {
-      let point = (1.944+(this.rangevalue*0.00224)).toFixed(3);
+      let point = (2.099+(0.191/7.8*this.rangevalue)).toFixed(3);
       let str = "赔率=" + point;
       let d = this.betdata3;
       for (let i = 0; i < d.length; i++) {
@@ -653,21 +653,21 @@ export class CreditComponent implements OnInit, OnDestroy {
     }
     if (this.type == 2) {
       let str1 =
-        "赔率1 = " + (1.944 + (this.rangevalue * 0.00224)).toFixed(3);
+        "赔率1 = " + (1.944 + (0.224/7.8*this.rangevalue)).toFixed(3);
       let str2 =
-        "赔率2 = " + (98.98 + (this.rangevalue * 0.0078)).toFixed(2);
+        "赔率2 = " + (8.98 + (0.78/7.8*this.rangevalue)).toFixed(2);
       let str3 =
-        "赔率3 = " + (1.944 + (this.rangevalue * 0.00224)).toFixed(3);
+        "赔率3 = " + (1.944 + (0.224/7.8*this.rangevalue)).toFixed(3);
 
       console.log(str1, str2, str3, this.betdata2);
     }
     if (this.type == 1) {
       let str1 =
-        "赔率1 = " + (1.8 + (this.rangevalue * 0.00156)).toFixed(3);
+        "赔率1 = " + (1.8 + (0.156/7.8*this.rangevalue)).toFixed(3);
       let str2 =
-        "赔率2 = " + (9 + (this.rangevalue * 0.0078)).toFixed(2);
+        "赔率2 = " + (9 + (0.78/7.8*this.rangevalue)).toFixed(2);
       let str3 =
-        "赔率3 = " + (11.633 + (this.rangevalue * 0.013)).toFixed(3);
+        "赔率3 = " + (11.633 + (1.3/7.8*this.rangevalue)).toFixed(3);
       console.log(str1, str2, str3, this.betdata1);
     }
     return false;
