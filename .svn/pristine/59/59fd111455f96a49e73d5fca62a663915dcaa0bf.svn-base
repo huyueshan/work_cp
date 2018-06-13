@@ -1,0 +1,13 @@
+<div class="flex-c lotbox" [hidden]="!loadpage">
+    <div>
+        <app-header [username]="'test08'" [curpath]="'officialssc'"></app-header>
+</div>
+<div class="mainbox">
+    中间内容
+</div>
+
+
+<div class="footer" >
+    <app-footer></app-footer>
+</div>
+</div>

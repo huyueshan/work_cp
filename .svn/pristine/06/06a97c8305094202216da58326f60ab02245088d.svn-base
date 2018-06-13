@@ -1,0 +1,17 @@
+import { Component, OnInit } from '@angular/core';
+import userModel from "../../../status/user.model";
+@Component({
+  selector: 'app-lottery',
+  templateUrl: './lottery.component.html',
+  styleUrls: ['./lottery.component.scss']
+})
+export class LotteryComponent implements OnInit {
+    loadpage = false;
+
+  constructor() { }
+
+  ngOnInit() {
+    this.loadpage = userModel.platform;
+  }
+
+}

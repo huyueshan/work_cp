@@ -16,6 +16,7 @@ import {
     styleUrls: ["./credtop.component.scss"]
 })
 export class CredtopComponent implements OnInit, OnDestroy {
+    @Input() type: string;
     public routid;  //路由ID
     public shownav = false;
     public number = [2, 9, 0, 8, 7]; //开奖区开奖号码
@@ -38,15 +39,21 @@ export class CredtopComponent implements OnInit, OnDestroy {
           items: [
             {
               text: "重庆时时彩",
-              link: "/creditssc/cq"
+              officialssc:true,
+              creditssc:true,
+              link: "cq"
             },
             {
               text: "天津时时彩",
-              link: "/creditssc/tj"
+              officialssc:true,
+              creditssc:true,
+              link: "tj"
             },
             {
               text: "新疆时时彩",
-              link: "/creditssc/xj"
+              officialssc:true,
+              creditssc:true,
+              link: "xj"
             },
           ]
         },
@@ -61,15 +68,21 @@ export class CredtopComponent implements OnInit, OnDestroy {
           items: [
             {
               text: "重庆时时彩1",
-              link: "/creditssc/cq1"
+              officialssc:true,
+              creditssc:true,
+              link: "cq1"
             },
             {
               text: "天津时时彩1",
-              link: "/creditssc/tj1"
+              officialssc:true,
+              creditssc:true,
+              link: "tj1"
             },
             {
               text: "新疆时时彩1",
-              link: "/creditssc/xj1"
+              officialssc:true,
+              creditssc:true,
+              link: "xj1"
             },
           ]
         },
@@ -84,15 +97,21 @@ export class CredtopComponent implements OnInit, OnDestroy {
           items: [
             {
               text: "重庆时时彩2",
-              link: "/creditssc/cq2"
+              officialssc:true,
+              creditssc:true,
+              link: "cq2"
             },
             {
               text: "天津时时彩2",
-              link: "/creditssc/tj2"
+              officialssc:true,
+              creditssc:true,
+              link: "tj2"
             },
             {
               text: "新疆时时彩2",
-              link: "/creditssc/xj2"
+              officialssc:true,
+              creditssc:true,
+              link: "xj2"
             },
           ]
         },
@@ -107,15 +126,21 @@ export class CredtopComponent implements OnInit, OnDestroy {
           items: [
             {
               text: "重庆时时彩3",
-              link: "/creditssc/cq3"
+              officialssc:true,
+              creditssc:true,
+              link: "cq3"
             },
             {
               text: "天津时时彩3",
-              link: "/creditssc/tj3"
+              officialssc:true,
+              creditssc:true,
+              link: "tj3"
             },
             {
               text: "新疆时时彩3",
-              link: "/creditssc/xj3"
+              officialssc:true,
+              creditssc:true,
+              link: "xj3"
             },
           ]
         },
@@ -130,15 +155,21 @@ export class CredtopComponent implements OnInit, OnDestroy {
           items: [
             {
               text: "重庆时时彩4",
-              link: "/creditssc/cq4"
+              officialssc:true,
+              creditssc:true,
+              link: "cq4"
             },
             {
               text: "天津时时彩4",
-              link: "/creditssc/tj4"
+              officialssc:true,
+              creditssc:true,
+              link: "tj4"
             },
             {
               text: "新疆时时彩4",
-              link: "/creditssc/xj4"
+              officialssc:true,
+              creditssc:true,
+              link: "xj4"
             },
           ]
         },
@@ -153,15 +184,21 @@ export class CredtopComponent implements OnInit, OnDestroy {
           items: [
             {
               text: "重庆时时彩5",
-              link: "/creditssc/cq5"
+              officialssc:true,
+              creditssc:true,
+              link: "cq5"
             },
             {
               text: "天津时时彩5",
-              link: "/creditssc/tj5"
+              officialssc:true,
+              creditssc:true,
+              link: "tj5"
             },
             {
               text: "新疆时时彩5",
-              link: "/creditssc/xj5"
+              officialssc:true,
+              creditssc:true,
+              link: "xj5"
             },
           ]
         },
@@ -176,15 +213,21 @@ export class CredtopComponent implements OnInit, OnDestroy {
           items: [
             {
               text: "重庆时时彩6",
-              link: "/creditssc/cq6"
+              officialssc:true,
+              creditssc:true,
+              link: "cq6"
             },
             {
               text: "天津时时彩6",
-              link: "/creditssc/tj6"
+              officialssc:true,
+              creditssc:true,
+              link: "tj6"
             },
             {
               text: "新疆时时彩6",
-              link: "/creditssc/xj6"
+              officialssc:true,
+              creditssc:true,
+              link: "xj6"
             },
           ]
         },
@@ -199,15 +242,21 @@ export class CredtopComponent implements OnInit, OnDestroy {
           items: [
             {
               text: "重庆时时彩7",
-              link: "/creditssc/cq7"
+              officialssc:true,
+              creditssc:true,
+              link: "cq7"
             },
             {
               text: "天津时时彩7",
-              link: "/creditssc/tj7"
+              officialssc:true,
+              creditssc:true,
+              link: "tj7"
             },
             {
               text: "新疆时时彩7",
-              link: "/creditssc/xj7"
+              officialssc:true,
+              creditssc:true,
+              link: "xj7"
             },
           ]
         },
@@ -222,15 +271,21 @@ export class CredtopComponent implements OnInit, OnDestroy {
           items: [
             {
               text: "重庆时时彩8",
-              link: "/creditssc/cq8"
+              officialssc:true,
+              creditssc:true,
+              link: "cq8"
             },
             {
               text: "天津时时彩8",
-              link: "/creditssc/tj8"
+              officialssc:true,
+              creditssc:true,
+              link: "tj8"
             },
             {
               text: "新疆时时彩8",
-              link: "/creditssc/xj8"
+              officialssc:true,
+              creditssc:true,
+              link: "xj8"
             },
           ]
         },
@@ -278,7 +333,13 @@ export class CredtopComponent implements OnInit, OnDestroy {
   // 导航栏二级菜单点击事件
   itemclick(L) {
     // 跳转路由
-    this.router.navigate([L]);
+    let str ;
+    if(this.type == 'creditssc'){
+        str = `/creditssc/${L}`;
+    }else{
+        str = `/officialssc/${L}`;
+    }
+    this.router.navigate([str]);
     this.shownav = false;
   }
 }

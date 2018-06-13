@@ -7,7 +7,9 @@
       (click)="itemboxclick(i)" 
       (mouseenter)="itemboxenter(i)"
       (mouseleave)="itemboxleave(i)"
-      [ngClass]="{'yborder': currentactive == i}">
+      [ngClass]="{'yborder': currentactive == i}"
+      onselectstart="return false;"
+      style="-moz-user-select:none;">
         <div class="flex-r">
           <!-- 图标可以更换'h -->
           <i 

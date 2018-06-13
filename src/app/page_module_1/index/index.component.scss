@@ -415,7 +415,11 @@ div.errbd{
   width: 286px;
   height: 396px;
   background-color: #464646;
+  img{
+      cursor: pointer;
+  }
 }
+
 .hot-card-info {
   padding-top: 25px;
   height: 116px;

@@ -120,7 +120,7 @@
                 <div class="flex-r  md-content">
                     <div class="hot-card" *ngFor="let item of hotcard_list; let i=index">
                         <div>
-                            <img src="{{item.src}}" alt="" width="100%" height="auto" />
+                            <img src="{{item.src}}" alt="" width="100%" height="auto" (click)="linkrouter(item.link)" />
                         </div>
                         <div class="flex-c hot-card-info">
                             <span class="flex-r card-head">

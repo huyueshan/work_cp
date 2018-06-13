@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
       text: "彩票大厅",
       bgpositiony: -114,
       isover: false,
-      link: "/creditssc"
+      link: "/lottery"
     },
     {
       text: "用户中心",
@@ -170,7 +170,7 @@ export class IndexComponent implements OnInit {
     {
       src: require("../images/shishicai.jpg"),
       title: "时时彩",
-      link: "/creditssc/cq"
+      link: "/officialssc"
     },
     {
       src: require("../images/shifencai.jpg"),
