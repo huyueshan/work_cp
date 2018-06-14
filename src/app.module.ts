@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './router/router.module';
 import { RouteguardService } from './router/router.service';
 import { InterceptorService } from './router/ljq.service';
+import { HttpInterceptorService } from './app/page_module_1/Http.Service';
 
 
 if (ENV === 'prod') {
@@ -25,7 +26,7 @@ if (ENV === 'prod') {
     imports: [BrowserModule, FormsModule, SharkModule, AppRoutingModule,HttpModule ,HttpClientModule],
     declarations: [AppComponent],
 	providers: [
-		{provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true}
+		{provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true},HttpInterceptorService
 	],
     bootstrap: [AppComponent,
         

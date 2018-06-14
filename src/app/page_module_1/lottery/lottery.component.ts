@@ -564,37 +564,24 @@ export class LotteryComponent implements OnInit {
   ngOnInit() {
     this.loadpage = userModel.platform;
     this.setdata();
-    // ==========================================================================================
-    // this.http.get('http://127.0.0.1:3000').subscribe(data => {
-    //   this.testdata = data['msg'];
-    //   console.log('打印消息:', data)
-    // }, err => {
-    //   console.log(err)
-    //   console.log('请求失败')
+    // ===============================   HTTP 测试  ===========================================================
+    // this.hserve.post('http://127.0.0.1:3000/dologin','nameOrEmail=bar&password=moe',)
+    // .then(result => {  
+    //   console.log("登录接口返回的信息是：" , result);//打印返回的数据  
     // });
-    // this.hserve.con();
-    // this.hserve.get('http://localhost:3000')
-    this.hserve.post('http://127.0.0.1:3000/dologin','nameOrEmail=bar&password=moe',)
-    .then(result => {  
-      // this.testdata = result.data; 
-      console.log("登录接口返回的信息是：" , result);//打印返回的数据  
-    });
-
-
-    // =================================================================================
-    this.hserve.get('http://127.0.0.1:3000','')
-    .then(result => {  
-      // this.testdata = result.data; 
-      console.log("登录接口返回的信息是：" , result);//打印返回的数据  
-      if (result.status == 200 && result.data) {
-         // 登录成功  在这里做判断，路由跳转  
-        console.log('qingqiu neirong:',result.data);
-        console.log('qingqiu code',result.statusText);
-      } else { // 登录失败  
-        alert(result.message);  
-      }  
-    });
-    // =========================================================================
+    // // =================================================================================
+    // this.hserve.get('http://127.0.0.1:3000','')
+    // .then(result => {  
+    //   console.log("登录接口返回的信息是：" , result);//打印返回的数据  
+    //   if (result.status == 200 && result.data) {
+    //      // 登录成功  在这里做判断，路由跳转  
+    //     console.log('qingqiu neirong:',result.data);
+    //     console.log('status:',result.status);
+    //   } else { // 登录失败  
+    //     alert(result.message);  
+    //   }  
+    // });
+    // ==============================          HTTP 测试  end  ===========================================
   
   }
   linkrouter(i, o, c) {

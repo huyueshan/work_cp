@@ -2,16 +2,11 @@
 
 import {Injectable}    from '@angular/core';  
 import {Http, Response, Headers }   from '@angular/http'; 
-// import { HttpClient,HttpHeaders } from '@angular/common/http';
-
-// import {Observable} from 'rxjs';
 import 'rxjs/add/operator/toPromise';  
   
 @Injectable()  
 export class HttpInterceptorService {  
   
-//   constructor(private http: HttpClient) {  
-//   }  
   constructor(private http: Http) {  
   }  
   /** 
@@ -76,8 +71,6 @@ export class HttpInterceptorService {
     } else { // 无数据返回  
       return {  
         data: res.json()|| {}, // 返回内容  
-        // code: res.json().code || {}, // 返回code  
-        // message: res.json().message || {}, // 返回信息  
         statusText: res.statusText,  
         status: res.status,  
         success: true  
