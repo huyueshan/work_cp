@@ -1,5 +1,26 @@
 <div class="flex-c body" [hidden]="!loadpage">
-<app-header [username]="'test08'" [curpath]="'lottery'"></app-header>	<div class="conbox">
+<div id="layer"></div>
+	<!-- <div class="cover_bg" #cover_bg>
+		
+	</div>
+	<div id="layer_box" #layer>
+		<div class="top_til">
+			<div class="til">
+				操作提示
+			</div>
+			<div class="close">
+				x
+			</div>
+		</div>
+		<div class="content_box">
+			您还没有输入号码您还没有输入号码您还没有输入号码您还没有输入号码您还没有输入号码您还没有输入号码您还没有输入号码
+		</div>
+		<div class="confirm_box">
+			<div class="confirm_btn">确定</div>
+		</div>
+	</div> -->
+    <app-header [username]="'test08'" [curpath]="'officialssc'"></app-header>
+	<div class="conbox">
 		<div class="content" style="margin-top:30px;">
 			<!-- <div class="gamenav">
 				<div class="alltype">
@@ -38,7 +59,7 @@
 					</div>
 				</div>
 			</div> -->
-			<app-credtop [type] ="'officialssc'"></app-credtop>
+			<app-credtop></app-credtop>
 			<div class="sscorder">
 				<div class="sscleft">
 					<div class="tabbox">
@@ -165,7 +186,7 @@
 					<div class="resultarea">
 						<div class="betcheck">
 							<ul class="betarea">
-								<li *ngFor="let val of sureballlist;let i = index"><div class="lot_type">{{val.name}}</div><div class="lot_num">{{val.ball}}</div><div>元</div><div>1注</div><div>1倍</div><div>2元</div> <a class="lot_close" (click)="delball('del',val)"></a></li>
+								<li *ngFor="let val of sureballlist;let i = index"><span class="title">{{val.name}}</span><span class="title">{{val.ball}}</span><a (click)="delball('del',val)">X</a></li>
 							</ul>
 							<p class="info">
 								第<span>20180517021</span>期投注截止时间：<span>00:04:22</span>订单总数：<span>4</span>个，总注数<span>4</span>注，总金额￥<span>8</span>元

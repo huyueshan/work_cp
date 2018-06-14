@@ -894,29 +894,6 @@ input[type="number"]{
 								float:left;
 								border-bottom:1px solid #CCCCCC;
 								line-height:30px;
-								display: flex;
-								.lot_type{
-									text-align: left;
-								}
-								.lot_num{
-									width: 40%;
-									letter-spacing: 3px;
-								}
-								.lot_close{
-									height: 100%;
-									width: 5%;
-									cursor: pointer;
-									text-align: right;
-									background:  url(../../images/close01.png) center right no-repeat;
-								}
-
-
-
-							}
-							li>div{
-								display: inline-block;
-								text-align: center;
-								width: 20%;
 							}
 						}
 						.info{

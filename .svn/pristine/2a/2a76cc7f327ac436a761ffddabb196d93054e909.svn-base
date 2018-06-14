@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
 import { RouteguardService } from '../router/router.service';
 import { ResolveService } from '../router/resole.service';
 
@@ -10,9 +9,11 @@ import { ResolveService } from '../router/resole.service';
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'lottery',
         pathMatch: 'full'
     },
+	
+	//模板1的路由
 	{
         path: 'login',
         loadChildren: '../app/page_module_1/login/login.module#LoginModule',
@@ -24,20 +25,25 @@ const appRoutes: Routes = [
 		canActivate: [RouteguardService]
     }, 
 	{
-        path: 'sscmod',
-		loadChildren: '../app/page_module_1/sscmod/official/ssc.module#SSCofficialModule',
+        path: 'officialssc',
+		loadChildren: '../app/page_module_1/official/ssc/ssc.module#SSCofficialModule',
 		canActivate: [RouteguardService]
     }, 
 	{
         path: 'detail',
         loadChildren: '../app/page_module_1/detail/detail.module#DetailModule',
 		canActivate: [RouteguardService]
+    }, 
+    {
+        path: 'creditssc',
+        loadChildren: '../app/page_module_1/credit/credit.module#CreditModule',
+        canActivate: [RouteguardService]
     },
-	{
-        path: 'test',
-        loadChildren: '../app/page_module_1/test/detail.module#DetailModule',
-		canActivate: [RouteguardService]
-    },
+    {
+        path: 'lottery',
+        loadChildren: '../app/page_module_1/lottery/lottery.module#LotteryModule',
+        canActivate: [RouteguardService]
+    }, 
 	{
         path: 'register',
 		loadChildren: '../app/page_module_1/register/register.module#RegisterModule',
@@ -53,6 +59,7 @@ const appRoutes: Routes = [
 		loadChildren: '../app/page_module_1/usercenter/usercenter.module#UsercenterModule',
 		canActivate: [RouteguardService]
     },
+	//模板2的路由
 	{
         path: 'home',
         loadChildren: '../app/page_module_2/home/home.module#HomeModule',

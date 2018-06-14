@@ -165,7 +165,7 @@
 					<div class="resultarea">
 						<div class="betcheck">
 							<ul class="betarea">
-								<li *ngFor="let val of sureballlist;let i = index"><div class="lot_type">{{val.name}}</div><div class="lot_num">{{val.ball}}</div><div>元</div><div>1注</div><div>1倍</div><div>2元</div> <a class="lot_close" (click)="delball('del',val)"></a></li>
+								<li *ngFor="let val of sureballlist;let i = index"><span class="title">{{val.name}}</span><span class="title">{{val.ball}}</span><a (click)="delball('del',val)">X</a></li>
 							</ul>
 							<p class="info">
 								第<span>20180517021</span>期投注截止时间：<span>00:04:22</span>订单总数：<span>4</span>个，总注数<span>4</span>注，总金额￥<span>8</span>元

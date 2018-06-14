@@ -577,8 +577,10 @@ export class SSCofficialComponent implements OnInit {
 		})
 		$('#layer').append(dom);
 		setTimeout(function(){
+			// document.getElementById("layer_box").classList.add('tobig')
 			dom.addClass('tobig')
 		}, 10)
+
 		window.onresize = function () {
 			console.log('x')
 		}
