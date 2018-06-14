@@ -395,6 +395,7 @@ $browser: null;
     /* box */
     .content{ width: $content+$unit; margin:0 auto; }
 }
+<<<<<<< HEAD
 /* 弹框 */
 #layer{
     z-index: 999;
@@ -474,3 +475,5 @@ $browser: null;
 #layer_box.tobig{
     transform:translateY(-50%) translateX(-50%) scale(1);
 }
+=======
+>>>>>>> master

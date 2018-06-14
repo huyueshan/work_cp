@@ -1,5 +1,6 @@
 <div class="flex-c body" [hidden]="!loadpage">
-<app-header [username]="'test08'" [curpath]="'lottery'"></app-header>	<div class="conbox">
+    <app-header [username]="'test08'" [curpath]="'lottery'"></app-header>
+	<div class="conbox">
 		<div class="content" style="margin-top:30px;">
 			<!-- <div class="gamenav">
 				<div class="alltype">
@@ -63,22 +64,22 @@
 					</div>
 					<div class="chooseno">
 						<div class="helpbox">
-							<label><input #curel type="checkbox" (click)="checkomit(curel,'yl')" name="ballcheck" />遗漏</label>
-							<label><input #lr type="checkbox" (click)="checkomit(lr,'lr')" name="ballcheck" />冷热</label>
-							<div class="tip" ><i (mouseenter)="show_tips('i3',tips2)"  (mouseleave)="hid_tips('i3',tips2)"></i>从千位、百位、十位、个位中至少各选择一个号码组成一注。
+							<label><input type="checkbox" />遗漏</label>
+							<label><input type="checkbox" />冷热</label>
+							<div class="tip" (mouseenter)="show_tips('i3',tips2)"  (mouseleave)="hid_tips('i3',tips2)"><i></i>从千位、百位、十位、个位中至少各选择一个号码组成一注。
 								<div class="tips" #tips2 [ngClass]="{tipshidden:tips_hidden}">
 									<span>{{now_tips}}</span>
 									<!-- 111 -->
 								</div>
 							</div>
-							<div class="example"  style="padding-left:19px;"><i class="i2" (mouseenter)="show_tips('i2',tips1)"  (mouseleave)="hid_tips('i2',tips1)"></i>
+							<div class="example" (mouseenter)="show_tips('i2',tips1)"  (mouseleave)="hid_tips('i2',tips1)" style="padding-left:19px;"><i class="i2"></i>
 							选号示例
 								<div class="tips" #tips1 [ngClass]="{tipshidden:tips_hidden}">
 									<span>{{now_tips}}</span>
 									<!-- 111 -->
 								</div>
 							</div>
-							<div class="example" ><i class="i1" (mouseenter)="show_tips('i1',tips)"  (mouseleave)="hid_tips('i1',tips)"></i>
+							<div class="example" (mouseenter)="show_tips('i1',tips)"  (mouseleave)="hid_tips('i1',tips)"><i class="i1" ></i>
 								玩法示例
 								<div class="tips" #tips  [ngClass]="{tipshidden:tips_hidden}">
 									<span [innerHtml]='now_tips'></span>
@@ -93,35 +94,32 @@
 							<div class="numcon">
 								<div class="name">{{val.title}}</div>
 								<ul class="numlist">
-									<li #ballid [ngClass]="{active: item==now_matchtab[i][item]}" *ngFor="let item of val.ball;let f = index" (click)= 'oneball(i,f,item,ballid)'>{{item}}</li>
+									<li #ballid [ngClass]="{active: item==now_matchtab[val.index][item]}" *ngFor="let item of val.ball;let f = index" (click)= 'oneball(val.index,f,item,ballid)'>{{item}}</li>
 								</ul>
 							</div>
-							<div class="choosecheck" [hidden]="!omitarr[val.index] || omitarr[val.index].length<1">
-								<div class="name">{{omitname}}</div>
+							<div class="choosecheck">
+								<div class="name">当前遗漏</div>
 								<ul class="numlist">
-									<li class="active" *ngFor="let eldata of omitarr[val.index]">{{eldata}}</li>
+									<li class="active">05</li>
+									<li>25</li>
+									<li>13</li>
+									<li>26</li>
+									<li>33</li>
+									<li>16</li>
+									<li>10</li>
+									<li>34</li>
+									<li>29</li>
+									<li>19</li>
 								</ul>
 							</div>
 						</div>
 						<ul class="numright">
-							<li #nowid *ngFor="let valtab of val.tab;let d = index" (click)="choosetab(i,d,valtab,nowid)">{{valtab}}</li>
+							<li #nowid *ngFor="let valtab of val.tab;let d = index" (click)="choosetab(val.index,d,valtab,nowid)">{{valtab}}</li>
 						</ul>
 					</div>
 					</div>
 					<div *ngIf="up_ball==2">
-						<div class="sumBtn_box">
-							<div class="left_input">
-								<textarea name="" id="" ></textarea>
-							</div>
-							<div class="btn_box">
-								<div class="rt_btn btnh_w120_h40" (click)="show_layer({'msg':'这就是我想说的话','til':'操作提示'})">删除重复号</div>
-								<div class="rt_btn btnh_w120_h40">导入文件</div>
-								<div class="rt_btn btnh_w120_h40">清空</div>
-							</div>
-							<div class="input_tips">
-									程序会自动过滤掉不合法的号码,您也可以点击  <span class="gray_font">"删除重复号"</span> 按钮对输入内容进行格式化。
-							</div>
-						</div>
+					 11111111111
 					</div>
 					<div class="addchoose">
 						<div class="funleft">
@@ -158,29 +156,29 @@
 							</div>
 						</div>
 						<div class="btnright">
-							<a class="btnh_w120_h40 mb10 bgyellow" (click)='addball()'>添加号码</a>
+							<a class="btnh_w120_h40 mb10 bgyellow">添加号码</a>
 							<a class="btnh_w120_h40 bgyellow">随机添加</a>
 						</div>
 					</div>
 					<div class="resultarea">
 						<div class="betcheck">
 							<ul class="betarea">
-								<li *ngFor="let val of sureballlist;let i = index"><div class="lot_type">{{val.name}}</div><div class="lot_num">{{val.ball}}</div><div>元</div><div>1注</div><div>1倍</div><div>2元</div> <a class="lot_close" (click)="delball('del',val)"></a></li>
+								<li><span class="title">五星复选</span></li>
 							</ul>
 							<p class="info">
 								第<span>20180517021</span>期投注截止时间：<span>00:04:22</span>订单总数：<span>4</span>个，总注数<span>4</span>注，总金额￥<span>8</span>元
 							</p>
 						</div>
 						<div class="btnright">
-							<a class="btnh_w120_h40 bgfff mb10">订单记录</a>
-							<a class="btnh_w120_h40 bgfff mb10">我要追号</a>
+							<a class="btnh_w120_h40 bgfff mb10">添加号码</a>
+							<a class="btnh_w120_h40 bgfff mb10">随机添加</a>
 							<label><input type="checkbox" />官方跳开即停</label>
 							<label><input type="checkbox" />中奖后停止追号</label>
 						</div>
 					</div>
 					<div class="surearea">
-						<a class="btnh_w120_h40 bgyellowcenter" (click)="delball('clear')">清空号码</a>
-						<a class="btnh_w120_h40 bgyellowcenter">确认投注</a>
+						<a class="btnh_w120_h40 bgyellowcenter">添加号码</a>
+						<a class="btnh_w120_h40 bgyellowcenter">随机添加</a>
 					</div>
 				</div>
 				<!-- 右边信息区内容 -->

@@ -7,6 +7,8 @@ import { ComponentsModule } from "../component/components.module";
 /***********components***************/
 import { LotteryComponent } from "./lottery.component";
 
+import { HttpInterceptorService } from '../Http.Service';
+
 const routes = [
   {
     path: "",
@@ -22,6 +24,7 @@ const routes = [
     FormsModule,
     ComponentsModule
   ],
-  declarations: [LotteryComponent,]
+  declarations: [LotteryComponent,],
+  providers:[HttpInterceptorService],
 })
 export class LotteryModule {}

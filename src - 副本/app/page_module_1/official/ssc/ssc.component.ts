@@ -38,11 +38,17 @@ export class SSCofficialComponent implements OnInit {
 	// public rangevalue = rangevalue;
 	now_lang={};
 	status = {
+<<<<<<< HEAD
 		menu_1:1,//一级tab默认项
 		menu_2:1  //二级tab默认项
 	}
 	
 	// 一级tab
+=======
+		menu_1:1,
+		menu_2:1
+	}
+>>>>>>> master
 	menu_1 = [
 		{
 			name:'五星',
@@ -105,8 +111,11 @@ export class SSCofficialComponent implements OnInit {
 			href:'#/'
 		}
 	];
+<<<<<<< HEAD
 	
 	// 2级tab数据以及对应要显示的内容
+=======
+>>>>>>> master
 	menu_2_data = [
 		{
 			title:'五星直选',
@@ -115,7 +124,11 @@ export class SSCofficialComponent implements OnInit {
 		},
 		{
 			title:'五星组选',
+<<<<<<< HEAD
 			menu:[{name:'组选120',index:4,arr:['120']},{name:'组选60',index:5,arr:['2ch','dh']},{name:'组选30',index:6,arr:['2ch','dh']},{name:'组选20',index:7,arr:['3ch','dh']},{name:'组选10',index:8,arr:['3ch','2ch']},{name:'组选5',index:9,arr:['4ch','dh']}],
+=======
+			menu:[{name:'组选120',index:4,arr:['120']},{name:'组选60',index:5,arr:['120']},{name:'组选30',index:6,arr:['120']},{name:'组选20',index:7,arr:['120']},{name:'组选10',index:8,arr:['120']},{name:'组选5',index:9,arr:['120']}],
+>>>>>>> master
 			active:1
 		},
 		{
@@ -229,63 +242,103 @@ export class SSCofficialComponent implements OnInit {
 			active:14
 		}
 	]
+<<<<<<< HEAD
 	menu_2 = []; //存储当前一级导航对应的耳机导航
+=======
+	menu_2 = [];
+	choosebet = {};
+>>>>>>> master
 	ball_tab = {
 		1:['全','大','小','单','双','清'],
 		2:['全','清'],
 	};
+<<<<<<< HEAD
 	now_balllist = []; //当前号码列表
 	
 	// 所有号码的列表数据
 	ball_data = {
 		'w':{
+=======
+	now_balllist = []; //当前号码区列表
+	ball_data = {
+		w:{
+>>>>>>> master
 			title:'万位',
 			ball:[0,1,2,3,4,5,6,7,8,9],
 			tab:this.ball_tab[1],
 			index:0
 		},
+<<<<<<< HEAD
 		'q':{
+=======
+		q:{
+>>>>>>> master
 			title:'千位',
 			ball:[0,1,2,3,4,5,6,7,8,9],
 			tab:this.ball_tab[1],
 			index:1
 		},
+<<<<<<< HEAD
 		'b':{
+=======
+		b:{
+>>>>>>> master
 			title:'百位',
 			ball:[0,1,2,3,4,5,6,7,8,9],
 			tab:this.ball_tab[1],
 			index:2
 		},
+<<<<<<< HEAD
 		's':{
+=======
+		s:{
+>>>>>>> master
 			title:'十位',
 			ball:[0,1,2,3,4,5,6,7,8,9],
 			tab:this.ball_tab[1],
 			index:3
 		},
+<<<<<<< HEAD
 		'g':{
+=======
+		g:{
+>>>>>>> master
 			title:'个位',
 			ball:[0,1,2,3,4,5,6,7,8,9],
 			tab:this.ball_tab[1],
 			index:4
 		},
+<<<<<<< HEAD
 		'24':{
+=======
+		24:{
+>>>>>>> master
 			title:'组选24',
 			ball:[0,1,2,3,4,5,6,7,8,9],
 			tab:this.ball_tab[1],
 			index:5
 		},
+<<<<<<< HEAD
 		'2ch':{
+=======
+		ech:{
+>>>>>>> master
 			title:'二重号',
 			ball:[0,1,2,3,4,5,6,7,8,9],
 			tab:this.ball_tab[1],
 			index:6
 		},
+<<<<<<< HEAD
 		'dh':{
+=======
+		dh:{
+>>>>>>> master
 			title:'单号',
 			ball:[0,1,2,3,4,5,6,7,8,9],
 			tab:this.ball_tab[1],
 			index:7
 		},
+<<<<<<< HEAD
 		'120':{
 			title:'组选120',
 			ball:[0,1,2,3,4,5,6,7,8,9],
@@ -310,6 +363,15 @@ export class SSCofficialComponent implements OnInit {
 		0:[],1:[],2:[],3:[],4:[]
 	}
 	// 所有要用到的号码
+=======
+		120:{
+			title:'组选120',
+			ball:[0,1,2,3,4,5,6,7,8,9],
+			tab:this.ball_tab[1],
+			index:5
+		}
+	};
+>>>>>>> master
 	match_tab = {
 		0:{0:0,1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9},
 		1:{5:5,6:6,7:7,8:8,9:9},
@@ -318,10 +380,18 @@ export class SSCofficialComponent implements OnInit {
 		4:{0:0,2:2,4:4,6:6,8:8},
 		5:{}
 	};
+<<<<<<< HEAD
 	now_matchtab = {0:{},1:{},2:{},3:{},4:{},5:{}};//用来存储选中的号
 	now_matchball = {0:{},1:{},2:{},3:{},4:{},5:{}}; //选中的大小单双的tab
 	ballindex = -1;
 	up_ball = 2;
+=======
+	now_matchtab = {0:{},1:{},2:{},3:{},4:{},5:{}};
+	now_matchone = {0:{},1:{},2:{},3:{},4:{},5:{},6:{},7:{},8:{},9:{}};
+	now_matchball = {0:{},1:{},2:{},3:{},4:{},5:{}};
+	ballindex = -1;
+	up_ball = 1;
+>>>>>>> master
 	ngOnInit(){
 		let that = this
 		this.loadpage = userModel.platform;
@@ -357,19 +427,26 @@ export class SSCofficialComponent implements OnInit {
 	// 时时彩一级导航切换
 	tabmenu(data){
 		let that = this
+<<<<<<< HEAD
 		that.inittab()
+=======
+>>>>>>> master
 		if(data.href){
 			that.router.navigateByUrl(data.href)
 		}else{
 			that.status.menu_1 = data.active
 			that.status.menu_2 = 1
 			that.menu_2 = []
+<<<<<<< HEAD
 			that.up_ball = 1
+=======
+>>>>>>> master
 			that.menu_2_data.map(function(res){
 				if(res.active == that.status.menu_1){
 					that.menu_2.push(res)
 				}
 			})
+<<<<<<< HEAD
 			
 			if(that.menu_2[0].menu[0].arr){
 				that.balllist(that.menu_2[0].menu[0].arr)
@@ -378,15 +455,22 @@ export class SSCofficialComponent implements OnInit {
 			}
 			
 			that.currtabname = that.menu_2[0].menu[0].name
+=======
+>>>>>>> master
 		}
 	}
 	
 	// 时时彩二级导航切换
+<<<<<<< HEAD
 	currtabname = '五星组合'
 	tabmenu2(data){
 		let that = this
 		that.inittab()
 		that.currtabname = data.name
+=======
+	tabmenu2(data){
+		let that = this
+>>>>>>> master
 		that.status.menu_2 = data.index
 		if(data.isupload){
 			that.up_ball = 2
@@ -408,6 +492,7 @@ export class SSCofficialComponent implements OnInit {
 	// 选中号码
 	choosetab(index,clickindex,val,that){
 		this.now_matchball = {0:{},1:{},2:{},3:{},4:{},5:{}}
+<<<<<<< HEAD
 		this.match_tab = {
 			0:{0:0,1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9},
 			1:{5:5,6:6,7:7,8:8,9:9},
@@ -418,6 +503,8 @@ export class SSCofficialComponent implements OnInit {
 		};
 		this.now_matchtab[index] = {}
 		
+=======
+>>>>>>> master
 		this.ballindex = index
 		this.now_matchtab[index] = this.match_tab[clickindex]
 		$(that).parent('.numright').find('li').removeClass('active');
@@ -427,6 +514,7 @@ export class SSCofficialComponent implements OnInit {
 			this.now_matchball[clickindex] = val
 			$(that).addClass('active')
 		}
+<<<<<<< HEAD
 	}
 	
 	//选中单个号码
@@ -510,6 +598,13 @@ export class SSCofficialComponent implements OnInit {
 		}{
 			Base._.removeArr(val,this.sureballlist)
 		}
+=======
+		
+	}
+	
+	oneball(index,clickindex,val,that){
+		$(that).addClass('active')
+>>>>>>> master
 	}
 	
 	addrem(item){
@@ -542,21 +637,34 @@ export class SSCofficialComponent implements OnInit {
 			this.multiple_input = parseInt(this.multiple_input.toString())
 		}
 	}
+<<<<<<< HEAD
 
 	show_tips(item,em){
 		this.now_tips = this.now_tiparray[item];
 		em.classList.add("tipsshow");
+=======
+	show_tips(item,em){
+	
+		this.now_tips = this.now_tiparray[item];
+		em.classList.add("tipsshow");
+		// this.tips_hidden=!this.tips_hidden;
+
+>>>>>>> master
 	}
 	hid_tips(item,em){
 		em.classList.remove("tipsshow");
 	}
+<<<<<<< HEAD
 	// inputurl隐藏显示
+=======
+>>>>>>> master
 	toggle_ul(e){
 		let self = this;
 		setTimeout(function(){
 			self.ul_hidden = !self.ul_hidden;
 		}, 200)
 	}
+<<<<<<< HEAD
 	// 弹层1
 	parseDom(arg) {
 	　　 var objE = document.createElement("div");
@@ -587,4 +695,9 @@ export class SSCofficialComponent implements OnInit {
 		console.log('有反应么')
 		document.getElementById("layer").innerHTML = '';
 	}
+=======
+
+
+
+>>>>>>> master
 }

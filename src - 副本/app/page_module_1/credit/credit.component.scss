@@ -7,159 +7,159 @@
 }
 
 .flex-r {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
 }
 
 .flex-c {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-content: flex-start;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
 }
 
 .color_y {
-    color: #fe8f00;
+  color: #fe8f00;
 }
 
 .color_r {
-    color: #d00216;
+  color: #d00216;
 }
 
 .color_g {
-    color: #0f954e;
+  color: #0f954e;
 }
 
 .color_b {
-    color: #002eff;
+  color: #002eff;
 }
 
 .sscbox {
-    width: 100%;
-    min-width: 1200px;
-    font-size: 14px;
+  width: 100%;
+  min-width: 1200px;
+  font-size: 14px;
 }
 
 .ssccontain {
-    width: 100%;
-    align-self: center;
-    background: #111 url(../images/bg_02.jpg) center no-repeat;
-    background-size: cover;
+  width: 100%;
+  align-self: center;
+  background: #111 url(../images/bg_02.jpg) center no-repeat;
+  background-size: cover;
 }
 
 .contaner {
-    width: 1200px;
-    align-self: center;
-    padding-top: 30px;
+  width: 1200px;
+  align-self: center;
+  padding-top: 30px;
 }
 
 .mainbox {
-    padding-top: 20px;
-    justify-content: space-between;
-    align-content: flex-start;
-    align-items: flex-start;
+  padding-top: 20px;
+  justify-content: space-between;
+  align-content: flex-start;
+  align-items: flex-start;
 }
 
 .contentbox {
-    width: 900px;
-    border-radius: 5px;
-    background-color: #ddd;
-    align-self: stretch;
+  width: 900px;
+  border-radius: 5px;
+  background-color: #ddd;
+  align-self: stretch;
 }
 
 .tabbox {
-    width: 100%;
-    padding-right: 20px;
-    justify-content: space-between;
-    background-color: #333;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    overflow: hidden;
+  width: 100%;
+  padding-right: 20px;
+  justify-content: space-between;
+  background-color: #333;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  overflow: hidden;
 }
 
 .tabcontent span {
-    height: 50px;
-    line-height: 50px;
-    padding: 0 18px;
-    color: white;
-    cursor: pointer;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 18px;
+  color: white;
+  cursor: pointer;
 }
 
 .tabactive {
-    background-color: #3d3d3d;
+  background-color: #3d3d3d;
 }
 
 .togglebtn {
-    width: 90px;
-    height: 25px;
-    line-height: 18px;
-    border: 1px solid white;
-    border-radius: 3px;
-    color: white;
-    background-color: #333;
-    overflow: hidden;
+  width: 90px;
+  height: 25px;
+  line-height: 18px;
+  border: 1px solid white;
+  border-radius: 3px;
+  color: white;
+  background-color: #333;
+  overflow: hidden;
 }
 
 .togglebtn span {
-    width: 50%;
-    height: 100%;
-    line-height: 24px;
-    text-align: center;
-    cursor: pointer;
+  width: 50%;
+  height: 100%;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .togglebtn span.togactive,
 .togglebtn span:hover {
-    color: #111;
-    background-color: white;
+  color: #111;
+  background-color: white;
 }
 
 .selctbox {
-    width: 100%;
-    height: 60px;
-    padding: 0 20px 0 30px;
-    justify-content: space-between;
-    background-color: #3d3d3d;
+  width: 100%;
+  height: 60px;
+  padding: 0 20px 0 30px;
+  justify-content: space-between;
+  background-color: #3d3d3d;
 }
 
 .selctbox strong {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 50%;
-    background-color: #fe8f00;
-    color: white;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #fe8f00;
+  color: white;
 }
 
 .rangebox {
-    color: white;
+  color: white;
 }
 
 .showvalue {
-    flex: 0 0 70px;
-    width: 50px;
-    text-align: right;
-    padding-right: 20px;
+  flex: 0 0 70px;
+  width: 50px;
+  text-align: right;
+  padding-right: 20px;
 }
 
 .rangebox .icon {
-    flex: none;
-    width: 16px;
-    height: 16px;
-    font-size: 14px;
-    line-height: 14px;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 50%;
-    background-color: #999;
-    color: white;
-    cursor: pointer;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  font-size: 14px;
+  line-height: 14px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 50%;
+  background-color: #999;
+  color: white;
+  cursor: pointer;
 }
 
 .btngroup button {
@@ -185,56 +185,56 @@
 }
 
 .mycontaion {
-    position: relative;
-    width: 900px;
+  position: relative;
+  width: 900px;
 }
 
 .content {
-    width: 100%;
-    align-items: center;
+  width: 100%;
+  align-items: center;
 }
 
 .contenttop,
 .conmain {
-    width: 100%;
+  width: 100%;
 }
 
 .contenttop {
-    background-color: #eee;
+  background-color: #eee;
 }
 
 .conmain {
-    background-color: white;
+  background-color: white;
 }
 
 .itembox {
-    flex: 0 0 20%;
-    height: 40px;
-    border-right: 1px solid #ddd;
+  flex: 0 0 20%;
+  height: 40px;
+  border-right: 1px solid #ddd;
 }
 
 .conmain .itembox {
-    border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .conmain {
-    flex-wrap: wrap;
-    background-color: white;
+  flex-wrap: wrap;
+  background-color: white;
 }
 
 .contenttop .itembox:last-child,
 .itembox span:last-child {
-    border-right: none;
+  border-right: none;
 }
 
 .itembox .item1,
 .itembox .item2 {
-    flex: 3;
-    line-height: 24px;
+  flex: 3;
+  line-height: 24px;
 }
 
 .itembox .item3 {
-    flex: 4;
+  flex: 4;
 }
 
 .itembox span {
@@ -244,7 +244,7 @@
 }
 
 .conmain .itembox span {
-    border-right: none;
+  border-right: none;
 }
 
 .conmain .itembox .item1 span {
@@ -261,51 +261,51 @@
 
 //龙虎斗
 .conmain2 {
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .itemwrap2 {
-    padding: 2px 2px;
+  padding: 2px 2px;
 }
 
 .conmain2 .itemwrap2:nth-child(8) {
-    padding-left: 220px;
+  padding-left: 220px;
 }
 
 .conmain2 .itemwrap2:nth-child(9) {
-    padding-right: 220px;
+  padding-right: 220px;
 }
 
 .itembox2 {
-    width: 220px;
-    font-size: 14px;
-    align-content: center;
-    align-items: center;
+  width: 220px;
+  font-size: 14px;
+  align-content: center;
+  align-items: center;
 }
 
 .itembox2 .item1 {
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    color: white;
-    background-color: #fe7200;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+  background-color: #fe7200;
 }
 
 .itembox2 .item2,
 .itembox2 .item3 {
-    width: 100%;
-    text-align: center;
-    background-color: #eee;
-    justify-content: space-around;
+  width: 100%;
+  text-align: center;
+  background-color: #eee;
+  justify-content: space-around;
 }
 
 .itembox2 .item3 {
-    height: 40px;
-    line-height: 40px;
-    background-color: white;
+  height: 40px;
+  line-height: 40px;
+  background-color: white;
 }
 
 .item2info {
@@ -417,69 +417,69 @@
 }
 
 .itembold {
-    font-weight: bold; // color: red;
+  font-weight: bold; // color: red;
 }
 
 .inmoney {
-    width: 60px;
-    font-size: 12px;
-    height: 22px;
-    padding-left: 5px;
-    border: 1px solid #ccc;
+  width: 60px;
+  font-size: 12px;
+  height: 22px;
+  padding-left: 5px;
+  border: 1px solid #ccc;
 }
 
 .subbox {
-    width: 100%;
-    padding: 30px 0 40px 0;
-    justify-content: center;
+  width: 100%;
+  padding: 30px 0 40px 0;
+  justify-content: center;
 }
 
 .subbox .inmoney {
-    width: 80px;
-    height: 32px;
+  width: 80px;
+  height: 32px;
 }
 
 #selectbox {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 70px;
-    height: 160px;
-    padding-top: 6px;
-    z-index: 999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 160px;
+  padding-top: 6px;
+  z-index: 999;
 }
 
 .selectwrap {
-    position: relative;
-    padding-top: 4px;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: white;
+  position: relative;
+  padding-top: 4px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
 }
 
 #selectbox i {
-    position: absolute;
-    top: -4px;
-    left: 37px;
-    width: 6px;
-    height: 6px;
-    border-left: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    background-color: white;
-    transform: rotate(45deg);
+  position: absolute;
+  top: -4px;
+  left: 37px;
+  width: 6px;
+  height: 6px;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  background-color: white;
+  transform: rotate(45deg);
 }
 
 .option {
-    width: 100%;
-    height: 32px;
-    line-height: 32px;
-    text-align: center;
-    cursor: pointer;
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .option:hover {
-    background-color: #ccc;
+  background-color: #ccc;
 }
 
 // 底部问路区域========================================================
@@ -605,233 +605,233 @@
 
 // 右边信息区域样式开始
 .infobox {
-    width: 280px;
+  width: 280px;
 }
 
 .infoitem {
-    width: 100%;
-    border-radius: 4px;
-    overflow: hidden;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .userinfobox {
-    padding: 30px 25px;
-    color: white;
-    background-color: #333;
+  padding: 30px 25px;
+  color: white;
+  background-color: #333;
 }
 
 .userinfo {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .userinfo i {
-    width: 74px;
-    height: 74px;
-    border-radius: 50%;
-    background-color: #111;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background-color: #111;
 }
 
 .userinfo span {
-    padding-left: 20px;
-    font-size: 18px;
+  padding-left: 20px;
+  font-size: 18px;
 }
 
 .userbtngroup {
-    width: 100%;
-    padding-top: 16px;
-    justify-content: space-between;
+  width: 100%;
+  padding-top: 16px;
+  justify-content: space-between;
 }
 
 .userbtngroup span {
-    width: 70px;
-    height: 30px;
-    line-height: 28px;
-    text-align: center;
-    background-color: #525151;
-    color: #ccc;
-    border: 1px solid #ccc;
-    border-radius: 2px;
-    cursor: pointer;
+  width: 70px;
+  height: 30px;
+  line-height: 28px;
+  text-align: center;
+  background-color: #525151;
+  color: #ccc;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  cursor: pointer;
 }
 
 .resultinfobox {
-    width: 100%;
-    padding-top: 20px;
+  width: 100%;
+  padding-top: 20px;
 }
 
 .resultinfo,
 .tabtn {
-    width: 100%;
+  width: 100%;
 }
 
 .tabtn span {
-    width: 50%;
-    height: 50px;
-    font-size: 16px;
-    line-height: 50px;
-    text-align: center;
-    color: white;
-    background-color: #333;
-    cursor: pointer;
+  width: 50%;
+  height: 50px;
+  font-size: 16px;
+  line-height: 50px;
+  text-align: center;
+  color: white;
+  background-color: #333;
+  cursor: pointer;
 }
 
 .tabtn span.btnactive,
 .userbtngroup span:hover {
-    color: white;
-    border-color: #fe8f00;
-    background-color: #fe8f00;
+  color: white;
+  border-color: #fe8f00;
+  background-color: #fe8f00;
 }
 
 .resultitem {
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    font-size: 12px;
-    justify-content: space-between;
-    padding: 0 25px;
-    background-color: #eee;
-    border-bottom: 1px solid white;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 12px;
+  justify-content: space-between;
+  padding: 0 25px;
+  background-color: #eee;
+  border-bottom: 1px solid white;
 }
 
 .resultitem:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .resultitemr strong {
-    padding-right: 10px;
+  padding-right: 10px;
 }
 
 .querybox {
-    padding: 5px 20px;
-    justify-content: flex-end;
-    background-color: #eee;
+  padding: 5px 20px;
+  justify-content: flex-end;
+  background-color: #eee;
 }
 
 .querybox span:first-child {
-    padding-right: 20px;
+  padding-right: 20px;
 }
 
 select#qishu {
-    width: 100px;
-    height: 30px;
-    line-height: 28px;
-    border-color: #ccc;
+  width: 100px;
+  height: 30px;
+  line-height: 28px;
+  border-color: #ccc;
 }
 
 .querybox,
 .resultbox,
 .resulttable {
-    width: 100%;
+  width: 100%;
 }
 
 .resulttable {
-    height: 340px;
-    background-color: white;
-    overflow-y: scroll;
+  height: 340px;
+  background-color: white;
+  overflow-y: scroll;
 }
 
 .resulttable table {
-    table-layout: fixed;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
 }
 
 .resulttable table td {
-    text-align: left;
-    padding-left: 8px;
-    height: 30px;
-    border: 1px solid #ccc;
+  text-align: left;
+  padding-left: 8px;
+  height: 30px;
+  border: 1px solid #ccc;
 }
 
 // 右边信息区域样式结束
 // 各浏览器滑块样式
 input[type="range"] {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 30px;
-    background: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    outline: none;
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
 }
 
 /*range中心圆点*/
 
 input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    height: 12px;
-    width: 18px;
-    border: none;
-    border-radius: 5px;
-    background-color: #fff;
-    cursor: pointer;
-    margin-top: -4px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  margin-top: -4px;
 }
 
 input[type="range"]::-moz-range-thumb {
-    -moz-appearance: none;
-    appearance: none;
-    height: 12px;
-    width: 18px;
-    border: none;
-    border-radius: 5px;
-    background-color: #fff;
-    cursor: pointer;
+  -moz-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
 }
 
 input[type="range"]::-ms-thumb {
-    -ms-appearance: none;
-    appearance: none;
-    height: 12px;
-    width: 18px;
-    border: none;
-    border-radius: 5px;
-    background-color: #fff;
-    cursor: pointer;
-    margin-top: 1px;
+  -ms-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  margin-top: 1px;
 }
 
 input[type="range"]::slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    height: 12px;
-    width: 18px;
-    border: none;
-    border-radius: 5px;
-    background-color: #fff;
-    cursor: pointer;
-    margin-top: -6px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  margin-top: -6px;
 }
 
 /*range轨道*/
 
 input[type="range"]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 4px;
-    background-color: #fe8f00;
-    border-radius: 2px;
-    cursor: pointer;
+  width: 100%;
+  height: 4px;
+  background-color: #fe8f00;
+  border-radius: 2px;
+  cursor: pointer;
 }
 
 input[type="range"]::-moz-range-track {
-    width: 100%;
-    height: 4px;
-    background-color: #fe8f00;
-    border-radius: 2px;
-    cursor: pointer;
+  width: 100%;
+  height: 4px;
+  background-color: #fe8f00;
+  border-radius: 2px;
+  cursor: pointer;
 }
 
 input[type="range"]::-ms-track {
-    width: 100%;
-    height: 4px;
-    border-color: transparent;
-    color: #fe8f00;
-    border-radius: 2px;
-    background: #fe8f00;
-    cursor: pointer;
+  width: 100%;
+  height: 4px;
+  border-color: transparent;
+  color: #fe8f00;
+  border-radius: 2px;
+  background: #fe8f00;
+  cursor: pointer;
 }

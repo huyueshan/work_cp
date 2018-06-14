@@ -14,8 +14,6 @@ $yellow:#fe8f00;
 	user-select:none;
 	font-size:12px;
 }
-
-
 /* 提示 */
 .tips{
 	width: 250px;
@@ -29,7 +27,7 @@ $yellow:#fe8f00;
 	color: white;
 	/* margin-top: -125%; */
 	transform:translateY(-110%) scale(0.5);
-	margin-left: -125px;
+	margin-left: -100px;
 	border:2px solid #fe8f00;
 	border-radius: 4px;
 	text-align: center;
@@ -573,7 +571,6 @@ input[type="number"]{
 								position:absolute;
 								top:11px;
 								left:0px;
-								cursor: pointer;
 							}
 						}
 
@@ -716,53 +713,6 @@ input[type="number"]{
 				.elsebg{
 					background:#eeeeee;
 				}
-				.sumBtn_box{
-					height: 350px;
-					margin-top: 236px;
-					background-color: #fff;
-					.left_input{
-						width: 700px;
-						height: 85%;
-						/* background-color: blue; */
-						float: left;
-						textarea{
-							color: #333;
-						    border: 1px solid #D7D1D1;
-						    background: #fff;
-							width: 650px;
-						    height: 265px;
-						    margin-left: 25px;
-						    margin-top: 15px;
-						    padding: 15px;
-						    border-radius: 8px;
-						    background-color: #eee;
-						    resize: none;
-						}
-					}
-					.btn_box{
-						width: 200px;
-						height: 85%;
-						/* background-color: green; */
-						float: right;
-						.rt_btn{
-							margin: 0 auto;
-							margin-top: 15px;
-							background-color: #fe8f00;
-						}
-						.rt_btn:nth-child(1){
-							margin-top: 75px;
-						}
-					}
-					.input_tips{
-						height: 15%;
-						/* background-color: pink; */
-						padding-left: 30px;
-						clear: both;
-						.gray_font{
-							font-weight: bold;
-						}
-					}
-				}
 				.addchoose{
 					width:100%;
 					float:left;
@@ -894,29 +844,6 @@ input[type="number"]{
 								float:left;
 								border-bottom:1px solid #CCCCCC;
 								line-height:30px;
-								display: flex;
-								.lot_type{
-									text-align: left;
-								}
-								.lot_num{
-									width: 40%;
-									letter-spacing: 3px;
-								}
-								.lot_close{
-									height: 100%;
-									width: 5%;
-									cursor: pointer;
-									text-align: right;
-									background:  url(../../images/close01.png) center right no-repeat;
-								}
-
-
-
-							}
-							li>div{
-								display: inline-block;
-								text-align: center;
-								width: 20%;
 							}
 						}
 						.info{
@@ -982,16 +909,6 @@ input[type="number"]{
     width: 120px;
     height: 35px;
     line-height: 35px;
-    text-align: center;
-    font-size: 16px;
-    color: #fff;
-    border-radius: 4px;
-}
-.btnh_w150_h50{
-	cursor: pointer;
-    width: 150px;
-    height: 45px;
-    line-height: 45px;
     text-align: center;
     font-size: 16px;
     color: #fff;
