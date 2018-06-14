@@ -84,85 +84,85 @@ export class IndexComponent implements OnInit {
       x: -10,
       y: -10,
       left: "-240",
-      link: "/creditssc/xj"
+      link: "/officialssc"
     },
     {
       x: -122,
       y: -134,
       left: "-120",
-      link: "/creditssc/pk10"
+      link: "/officialssc"
     },
     {
       x: -10,
       y: -258,
       left: "0",
-      link: "/creditssc/cq"
+      link: "/officialssc/cq"
     },
     {
       x: -346,
       y: -134,
       left: "120",
-      link: "/creditssc/jx"
+      link: "/officialssc"
     },
     {
       x: -10,
       y: -258,
       left: "240",
-      link: "/creditssc/cq"
+      link: "/officialssc"
     },
     {
       x: -10,
       y: -258,
       left: "360",
-      link: "/creditssc/cq"
+      link: "/officialssc"
     },
     {
       x: -10,
       y: -258,
       left: "480",
-      link: "/creditssc/cq"
+      link: "/officialssc"
     },
     {
       x: -10,
       y: -10,
       left: "600",
-      link: "/creditssc/xj"
+      link: "/officialssc"
     },
     {
       x: -122,
       y: -134,
       left: "720",
-      link: "/creditssc/pk10"
+      link: "/officialssc"
     },
     {
       x: -346,
       y: -134,
       left: "840",
-      link: "/creditssc/jx"
+      link: "/officialssc"
     },
     {
       x: -10,
       y: -258,
       left: "960",
-      link: "/creditssc/cq"
+      link: "/officialssc"
     },
     {
       x: -10,
       y: -10,
       left: "1080",
-      link: "/creditssc/xj"
+      link: "/officialssc"
     },
     {
       x: -122,
       y: -134,
       left: "1200",
-      link: "/creditssc/pk10"
+      link: "/officialssc"
     },
     {
       x: -346,
       y: -134,
       left: "1320",
-      link: "/creditssc/jx"
+      link: "/officialssc"
     },
   ];
   // 热门游戏内容区数据
@@ -175,7 +175,7 @@ export class IndexComponent implements OnInit {
     {
       src: require("../images/shifencai.jpg"),
       title: "分时彩",
-      link: ""
+      link: "/creditffc"
     },
     {
       src: require("../images/VR_cai.jpg"),
@@ -190,28 +190,23 @@ export class IndexComponent implements OnInit {
     name: {
       value: "",
       err: false,
-      errtext:'请输入正确的手机号',
-      errx:'90px',
+      errtext:'手机号格式不正确！',
     },
     password: {
       value: "",
       err: false,
-      errtext:'请输入正确的密码',
-      errx:'246px',
+      errtext:'请输入您的密码！',
     },
     security: {
       value: "",
       err: false,
       errtext:'验证码不正确！',
-      errx:'404px',
     }
   };
   // 登陆表单错误提示信息
   public errinfo = {
     show: false,
-    name: "",
     content: "",
-    left:'90px',
   };
 // 登陆表单验证正则
   private formtype = {
@@ -273,6 +268,13 @@ export class IndexComponent implements OnInit {
     this.logindata[t].err = false;
     this.errinfo.show = false;
   }
+  // 错误提示框显示
+  errboxshow(){
+    this.errinfo.show = true;
+    setTimeout(() => {
+      this.errinfo.show = false;
+    }, 2000);
+  }
   // 登陆表单提交
   onsubmit() {
     let data = this.logindata;
@@ -280,10 +282,9 @@ export class IndexComponent implements OnInit {
     let reg = this.formtype;
     for (let item in this.logindata){
         if (!reg[item].test(data[item].value)) {
-          err.show = true;
           err.content = data[item].errtext;
-          err.left = data[item].errx;
           data[item].err = true;
+          this.errboxshow();
           return false;
         } else {
           data[item].err = false;

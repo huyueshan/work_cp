@@ -34,17 +34,15 @@
 
         <div class="headformbox">
             <div class="headformbg flex-r">
-                <div class="errtip"
-                [hidden]="!errinfo.show"
-                [ngStyle]="{'left': errinfo.left}">
-                    <app-errtip [message]="errinfo.content"></app-errtip>
+                <div class="flex-r errbox" *ngIf="errinfo.show">
+                    <p><span class="color_r">*</span>{{errinfo.content}}</p>
                 </div>
                 <div class="accountbox" [ngClass]="{errbd:logindata.name.err}">
                     <label for="account"></label>
                     <input type="text"
                     name="name"
                     id="account"
-                    placeholder="用户名"
+                    placeholder="用户名/手机号码"
                     [(ngModel)]="logindata.name.value"
                     (focus)="focus('name')" />
                 </div>
@@ -196,6 +194,5 @@
 
     <app-footer></app-footer>
 
-    <!-- </div> -->
 
 </div>
