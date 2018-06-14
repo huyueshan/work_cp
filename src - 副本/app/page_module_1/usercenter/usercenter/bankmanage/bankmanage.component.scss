@@ -1,0 +1,201 @@
+.flex-r {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+.flex-c {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.color_y {
+  color: #fe8f00;
+}
+
+.bankbox {
+  width: 100%;
+  height: 554px;
+  padding: 10px 30px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  justify-content: flex-start;
+}
+.bankhead {
+  width: 100%;
+  height: 44px;
+  padding: 5px 0;
+  font-size: 24px;
+  font-weight: 500;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+.bankhead p {
+  padding-left: 20px;
+  font-size: 14px;
+}
+.bankcontent {
+  position: relative;
+  padding: 15px 0;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.bankitembox{
+  padding:8px;
+}
+.bankitem {
+  width: 280px;
+  height: 136px;
+  font-size: 12px;
+  padding: 18px 10px 18px 20px;
+  background-color: white;
+}
+.bankitem i {
+  width: 96px;
+  height: 22px;
+  background: url("../../../images/user01.png") -10px -10px no-repeat;
+}
+.bold {
+  font-weight: bold;
+  color: black;
+}
+.cardtype {
+  padding: 3px;
+  background-color: #fe8f00;
+  color: white;
+  margin-left: 5px;
+}
+.bankinfo {
+  color: #999;
+  align-items: flex-end;
+}
+.bankinfo {
+  line-height: 22px;
+}
+.del {
+  width: 40px;
+  height: 20px;
+  line-height: 18px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 9px;
+  cursor: pointer;
+}
+.del:hover{
+  color: #fe8f00;
+  border-color: #fe8f00;
+}
+.add {
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+  cursor: pointer;
+}
+.add strong {
+  font-size: 60px;
+  line-height: 70px;
+}
+#addcontent {
+  position: absolute;
+  top: -96px;
+  left: 180px;
+  width: 500px;
+  height: 520px;
+  font-size: 14px;
+  color: #333;
+  background-color: white;
+  box-shadow: 0 0 6px 2px #fe8f00;
+  z-index: 99;
+}
+#addcontent,
+.addform {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.addform {
+  width: 100%;
+  padding: 10px 0;
+}
+.addgead {
+  width: 100%;
+  height: 50px;
+  line-height: 48px;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+.addgead span{
+  width: 450px;
+  text-align: center;
+}
+.addgead i{
+  height: 50px;
+  font-size: 36px;
+  font-weight: bold;  
+  color: #999;
+  cursor: pointer;
+}
+.formitem {
+  height: 50px;
+  justify-content: flex-start;
+}
+.formitem label {
+  width: 160px;
+  text-align: right;
+  padding-right: 5px;
+}
+.formitem input {
+  width: 240px;
+  height: 32px;
+  line-height: 30px;
+  padding-left: 8px;
+}
+.formitem input[name="check"]{
+  width: 16px;
+  height: 16px;
+}
+.formitem input#note{
+  width:130px;
+}
+.note, .check{
+  width: 240px;
+}
+.check{
+  font-size: 12px;
+  justify-content: flex-start;
+}
+.check p{
+  padding-left: 5px;
+}
+.getnote, .btngroup span{
+  width: 90px;
+  height: 30px;
+  line-height: 28px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  text-align: center;
+  cursor: pointer;
+}
+.btngroup span:last-child{
+    margin-left: 10px;
+}
+.getnote:hover, .btngroup span:hover{
+  color: white;
+  background-color: #fe8f00;
+}
+.btngroup{
+  width: 100%;
+  padding-top: 30px;
+  justify-content: center;
+}
+
+.shade{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 19;
+}

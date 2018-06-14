@@ -1,0 +1,69 @@
+<div class="flex-c container">
+  <div class="flex-c querycontent">
+    <span class="flex-r" style="justify-content: flex-start; height: 50px; border-bottom: 1px solid #ccc; padding: 0 10px;">
+      <span class="query_item">
+        <label for="username">用户名： </label>
+        <input type="text" id="username" name="username" [(ngModel)]="querydata.username" />
+      </span>
+      <span class="query_item">
+        <label for="username">余额： </label>
+        <input type="text" id="min" name="min" [(ngModel)]="querydata.min" />
+        <label for="username">至 </label>
+        <input type="text" id="max" name="max" [(ngModel)]="querydata.max" />
+      </span>
+      <span class="query_item">
+        <label for="starttime">登陆时间： </label>
+        <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
+        <label for="endtime">至 </label>
+        <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
+      </span>
+    </span>
+    <div class="flex-r" style="height: 50px; padding: 0 10px;">
+      <span class="flex-r" style="justify-content: flex-start;">
+        <span class="query_item" *ngFor="let item of querydatelist; let i=index" style=" padding-right: 10px">
+          <span class="datebtn  " [ngClass]="{bd_y:querydatelistindex == i}" (click)="querydatelistindex = i">{{item.text}}</span>
+        </span>
+      </span>
+      <span class="flex-r">
+        <button class="querybtn">重 置</button>
+        <button class="querybtn">查 询</button>
+      </span>
+    </div>
+  </div>
+
+  <div class=" flex-c tablebox">
+    <div class="tablewrap">
+      <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+        <tr class="bg_1">
+          <th>用户名</th>
+          <th>用户类型</th>
+          <th style="width: 140px">注册时间</th>
+          <th style="width: 140px">最后登录时间</th>
+          <th>余额</th>
+          <th>返点级别</th>
+          <th>状态</th>
+          <th style="width: 240px">用户操作</th>
+        </tr>
+        <tr *ngFor="let item of userlistdata">
+          <td>{{item.name}}</td>
+          <td>{{item.type}}</td>
+          <td>{{item.time}}</td>
+          <td>{{item.lasttime}}</td>
+          <td>{{item.money}}</td>
+          <td>{{item.rebates}}</td>
+          <td>{{item.status}}</td>
+          <td>
+            <span class="padr" *ngFor="let child of item.action">
+              <a class="color_y" href="javascript:;">{{child}}</a>
+              
+              </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="page" shark-pager [currentPage]="pagination.page" [totalPage]="pagination.totalPage" [gopage]="pagination.gopage"
+      [hl]="hl" [segmentSize]="pagination.segmentSize" [startFrom]="pagination.startFrom" (onPageChanged)="onPageChanged($event);">
+    </div>
+
+  </div>
+</div>
