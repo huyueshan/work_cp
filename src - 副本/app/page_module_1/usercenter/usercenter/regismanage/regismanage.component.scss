@@ -1,0 +1,113 @@
+.flex-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+.flex-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.bg_1 {
+    background-color: #f5f5f5;
+}
+
+.mycontainer {
+    width: 950px;
+    padding: 0;
+    align-content: flex-start;
+    align-items: flex-start;
+    border: 1px solid #ccc;
+}
+
+.formbox {
+    width: 100%;
+    min-height: 200px;
+    padding: 10px 0 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.formitem {
+    height: 50px;
+    padding-top: 20px;
+    justify-content: flex-start;
+}
+
+.formitem label {
+    width: 150px;
+    height: 30px;
+    line-height: 28px;
+    text-align: right;
+}
+
+.formitem select,
+.formitem input {
+    width: 240px;
+    height: 30px;
+    line-height: 28px;
+    padding-left: 8px;
+    border: 1px solid #ccc;
+}
+
+.radiobox {
+    padding-left: 84px;
+}
+
+.radiobox label {
+    width: auto;
+}
+
+.radiobox input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    margin: 0 4px 0 10px;
+}
+
+.groupbox {
+    width: 180px;
+    height: 30px;
+    line-height: 28px;
+    border: 1px solid #d17702;
+}
+
+.groupbox span {
+    width: 50%;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.groupbox span:first-child {
+    border-right: 1px solid #d17702;
+}
+
+.bg_y {
+    color: white;
+    background-color: #fe8f00;
+}
+
+.subbox {
+    padding: 20px 0 0 84px;
+    height: 171px;
+}
+
+.btn {
+    width: 90px;
+    height: 30px;
+    line-height: 28px;
+    padding: 0;
+    border: 1px solid #d17702;
+    outline: none;
+    box-shadow: none;
+}
+
+#other {
+    width: 150px;
+    height: 30px;
+    line-height: 28px;
+}
