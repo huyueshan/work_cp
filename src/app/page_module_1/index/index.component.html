@@ -90,7 +90,7 @@
         <div class="flex-c cont">
             <div class="md-top">
                 <div class="flex-r md-tab">
-                    <span *ngFor="let item of mdtabdata; let i=index" [ngClass]="{'tableactive': tabactive==i}" (click)="mdtabclick(i)">{{item.text}}</span>
+                    <span *ngFor="let item of mdtabdata; let i=index" [ngClass]="{'tableactive': tabactive === i}" (click)="mdtabclick(i)">{{item.text}}</span>
 
                     <div class="flex-r md-new">
                         <i></i>
@@ -102,7 +102,7 @@
                 </div>
             </div>
             <!-- tab内容热门游戏 -->
-            <div class="flex-c hot" *ngIf="tabactive == 0">
+            <div class="flex-c hot" *ngIf="tabactive === 0">
                 <div class="flex-r md-ball">
                     <div (click)="ballclick('left')" class="l-icon">
                         <i></i>
@@ -134,10 +134,10 @@
                     </div>
                     <div class="hot-card paihang-card">
                         <div class="tab_btn">
-                            <span [ngClass]="{'tableactive': tableactive==0}" (click)="tableactive=0">投注排行</span>
-                            <span [ngClass]="{'tableactive': tableactive==1}" (click)="tableactive=1">中奖排行</span>
+                            <span [ngClass]="{'tableactive': tableactive===0}" (click)="tableactive=0">投注排行</span>
+                            <span [ngClass]="{'tableactive': tableactive===1}" (click)="tableactive=1">中奖排行</span>
                         </div>
-                        <div class="flex-c tab_info" *ngIf="tableactive==0">
+                        <div class="flex-c tab_info" *ngIf="tableactive===0">
                             <div class="flex-r info_tr" *ngFor="let item of touzhu_list">
                                 <i></i>
                                 <div class="flex-r info-text">
@@ -149,7 +149,7 @@
 
                         </div>
 
-                        <div class="flex-c tab_info" *ngIf="tableactive==1">
+                        <div class="flex-c tab_info" *ngIf="tableactive===1">
                             <div class="flex-r info_tr" *ngFor="let item of touzhu_list">
                                 <i></i>
                                 <div class="flex-r info-text">
@@ -165,10 +165,10 @@
                 </div>
             </div>
             <!-- tab移动端下载 -->
-            <div class="phonedown" *ngIf="tabactive == 1">
+            <div class="phonedown" *ngIf="tabactive === 1">
             </div>
             <!-- tab优惠活动 -->
-            <div class="special" *ngIf="tabactive == 2">
+            <div class="special" *ngIf="tabactive === 2">
                 <div class="flex-r special-content">
                     <div class="l-icon">
                         <i></i>

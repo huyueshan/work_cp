@@ -105,7 +105,7 @@ export class LotteryComponent implements OnInit {
         src: require("../images/caip/FFC6HC.png"),
         credit: false,
         official: true,
-        linkc: "creditffc/lhc",
+        linkc: "creditssc/lhc",
         linko: "officialssc/lhc",
         bcolor: "#fcc0e5"
       },
@@ -114,7 +114,7 @@ export class LotteryComponent implements OnInit {
         src: require("../images/caip/FFCAZ3.png"),
         credit: true,
         official: true,
-        linkc: "creditffc/aoz",
+        linkc: "creditssc/aoz",
         linko: "officialssc/aoz",
         bcolor: "#fcc0e5"
       },
@@ -123,7 +123,7 @@ export class LotteryComponent implements OnInit {
         src: require("../images/caip/FFCDJ1.5.png"),
         credit: true,
         official: false,
-        linkc: "creditffc/bj",
+        linkc: "creditssc/bj",
         linko: "officialssc/bj",
         bcolor: "#fcc0e5"
       },
@@ -132,7 +132,7 @@ export class LotteryComponent implements OnInit {
         src: require("../images/caip/FFCHGKLC.png"),
         credit: true,
         official: true,
-        linkc: "creditffc/hg",
+        linkc: "creditssc/hg",
         linko: "officialssc/hg",
         bcolor: "#fcc0e5"
       },
@@ -141,7 +141,7 @@ export class LotteryComponent implements OnInit {
         src: require("../images/caip/FFCJNDKLC.png"),
         credit: false,
         official: true,
-        linkc: "creditffc/jnd",
+        linkc: "creditssc/jnd",
         linko: "officialssc/jnd",
         bcolor: "#fcc0e5"
       },
@@ -150,7 +150,7 @@ export class LotteryComponent implements OnInit {
         src: require("../images/caip/FFCQQ.png"),
         credit: true,
         official: true,
-        linkc: "creditffc/qq",
+        linkc: "creditssc/qq",
         linko: "officialssc/qq",
         bcolor: "#fcc0e5"
       },
@@ -159,7 +159,7 @@ export class LotteryComponent implements OnInit {
         src: require("../images/caip/FFCSLFK5.png"),
         credit: false,
         official: true,
-        linkc: "creditffc/slf",
+        linkc: "creditssc/slf",
         linko: "officialssc/slf",
         bcolor: "#fcc0e5"
       },
@@ -168,7 +168,7 @@ export class LotteryComponent implements OnInit {
         src: require("../images/caip/FFCTW5.png"),
         credit: true,
         official: true,
-        linkc: "creditffc/tw",
+        linkc: "creditssc/tw",
         linko: "officialssc/tw",
         bcolor: "#fcc0e5"
       },
@@ -177,7 +177,7 @@ export class LotteryComponent implements OnInit {
         src: require("../images/caip/FFCTX.png"),
         credit: true,
         official: false,
-        linkc: "credit/tx",
+        linkc: "creditssc/tx",
         linko: "officialssc/tx",
         bcolor: "#fcc0e5"
       }

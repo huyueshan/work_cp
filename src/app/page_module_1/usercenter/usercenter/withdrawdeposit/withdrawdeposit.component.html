@@ -204,9 +204,11 @@
         <th class="color33">需扣除行政费</th>
       </tr>
       <tr *ngFor="let item of tabledata" >
-        <td class="flex-c datecell">
-          <span>{{item.starttime}}</span>
-          <span>{{item.endtime}}</span>
+        <td>
+            <span class="flex-c datecell">
+                <span>{{item.starttime}}</span>
+                <span>{{item.endtime}}</span>
+            </span>
         </td>
         <td>{{item.data1}}</td>
         <td>{{item.data2}}</td>

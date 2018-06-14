@@ -1,0 +1,847 @@
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 12px;
+}
+
+.flex-r {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+
+.flex-c {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.color_y {
+  color: #fe8f00;
+}
+
+.color_r {
+  color: #d00216;
+}
+
+.color_g {
+  color: #0f954e;
+}
+
+.color_b {
+  color: #002eff;
+}
+
+.sscbox {
+  width: 100%;
+  min-width: 1200px;
+  font-size: 14px;
+}
+
+.ssccontain {
+  width: 100%;
+  align-self: center;
+  background: #111 url(../../images/bg_02.jpg) center no-repeat;
+  background-size: cover;
+}
+
+.contaner {
+  width: 1200px;
+  align-self: center;
+  padding-top: 30px;
+}
+
+.mainbox {
+  padding-top: 20px;
+  justify-content: space-between;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.contentbox {
+  width: 900px;
+  border-radius: 5px;
+  background-color: #ddd;
+  align-self: stretch;
+}
+
+.tabbox {
+  width: 100%;
+  padding-right: 20px;
+  justify-content: space-between;
+  background-color: #333;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  overflow: hidden;
+}
+
+.tabcontent span {
+  height: 50px;
+  line-height: 50px;
+  padding: 0 18px;
+  color: white;
+  cursor: pointer;
+}
+
+.tabactive {
+  background-color: #3d3d3d;
+}
+
+.togglebtn {
+  width: 90px;
+  height: 25px;
+  line-height: 18px;
+  border: 1px solid white;
+  border-radius: 3px;
+  color: white;
+  background-color: #333;
+  overflow: hidden;
+}
+
+.togglebtn span {
+  width: 50%;
+  height: 100%;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.togglebtn span.togactive,
+.togglebtn span:hover {
+  color: #111;
+  background-color: white;
+}
+
+.selctbox {
+  width: 100%;
+  height: 60px;
+  padding: 0 20px 0 30px;
+  justify-content: space-between;
+  background-color: #3d3d3d;
+}
+
+.selctbox strong {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #fe8f00;
+  color: white;
+}
+
+.rangebox {
+  color: white;
+}
+
+.showvalue {
+  flex: 0 0 70px;
+  width: 50px;
+  text-align: right;
+  padding-right: 20px;
+}
+
+.rangebox .icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  font-size: 14px;
+  line-height: 14px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 50%;
+  background-color: #999;
+  color: white;
+  cursor: pointer;
+}
+
+.btngroup button {
+    width: 80px;
+    font-size: 14px;
+    height: 32px;
+    line-height: 30px;
+    // letter-spacing:3px;
+    text-align: center;
+    padding:0;
+    background-color: #ccc;
+    color: #333;
+    border: 1px solid #999;
+    border-radius: 3px;
+    margin-left: 10px;
+    outline: none;
+}
+.btngroup button.lactive{
+    margin-left: 0px;
+}
+
+
+.btngroup button.btnactive,
+.btngroup button.resetbtn:hover {
+    color: white;
+    background-color: #fe8f00;
+    background: linear-gradient(to top, #c76401, #fba915);
+    border: 1px solid #d17702;
+    outline: none;
+}
+
+.mycontaion {
+  position: relative;
+  width: 900px;
+}
+
+.content {
+  width: 100%;
+  align-items: center;
+}
+
+.contenttop,
+.conmain {
+  width: 100%;
+}
+
+.contenttop {
+  background-color: #eee;
+}
+
+.conmain {
+  background-color: white;
+}
+
+.itembox {
+  flex: 0 0 20%;
+  height: 40px;
+  border-right: 1px solid #ddd;
+}
+
+.conmain .itembox {
+  border-bottom: 1px solid #ddd;
+}
+
+.conmain {
+  flex-wrap: wrap;
+  background-color: white;
+}
+
+.contenttop .itembox:last-child,
+.itembox span:last-child {
+  border-right: none;
+}
+
+.itembox .item1,
+.itembox .item2 {
+  flex: 3;
+  line-height: 24px;
+}
+
+.itembox .item3 {
+  flex: 4;
+}
+
+.itembox span {
+    text-align: center;
+    border-right: 1px solid #ddd;
+}
+
+.conmain .itembox span {
+  border-right: none;
+}
+
+.conmain .itembox .item1 span {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    color: white;
+    border-radius: 50%;
+    background-color: #fe8f00;
+    box-shadow: 0 -2px 8px 1px rgba(211,122,8,.6) inset;
+}
+
+//龙虎斗
+.conmain2 {
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.itemwrap2 {
+  padding: 0 2px 10px 2px;
+}
+.itemwrap2:last-child{
+    padding-bottom: 0;
+}
+
+.conmain2 .itemwrap2:nth-child(8) {
+  padding-left: 220px;
+}
+
+.conmain2 .itemwrap2:nth-child(9) {
+  padding-right: 220px;
+}
+
+.itembox2 {
+  width: 220px;
+  font-size: 14px;
+  align-content: center;
+  align-items: center;
+}
+
+.itembox2 .item1 {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+  background-color: #fe7200;
+}
+
+.itembox2 .item2,
+.itembox2 .item3 {
+  width: 100%;
+  text-align: center;
+  background-color: #eee;
+  justify-content: space-around;
+}
+
+.itembox2 .item3 {
+  height: 40px;
+  line-height: 40px;
+  background-color: white;
+}
+
+.item2info {
+    width: 73px;
+    justify-content: flex-start;
+}
+
+.item2info span {
+    // flex: 1;
+    height: 40px;
+    line-height: 40px; // text-align: center;
+}
+
+.item2info span:first-child {
+    flex: 0 0 30px;
+}
+
+.togstyle2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.content1 {
+    .contenttop {
+        .itembox {
+            height: 40px;
+            border-right: 1px solid #ddd;
+        }
+        .itembox:last-child {
+            border-right: none;
+        }
+    }
+    .contenttop1 {
+        .itembox {
+            flex: 0 0 150px;
+            justify-content: center;
+            background-color: #fe7200;
+            font-size: 16px;
+            color: white;
+        }
+    }
+    .contenttop3 {
+        .itembox {
+            flex: 0 0 150px;
+            justify-content: center;
+        }
+    }
+    .contenttop2 {
+        .itembox {
+            flex: 0 0 300px;
+            justify-content: center;
+            background-color: #999;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+        }
+        .bg_y {
+            color: white;
+            background: linear-gradient(to top, #c76401, #fba915);
+        }
+    }
+    .conmain {
+        width: 100%;
+        .conmainbox {
+            width: 150px;
+            align-content: center;
+            align-items: center;
+            span {
+                width: 100%;
+            }
+            .itembox {
+                padding-right: 2px;
+                justify-content: space-between;
+                .item1 {
+                    font-weight: bold;
+                }
+                .item3 {
+                    input {
+                        width: 56px;
+                    }
+                }
+            }
+        }
+        .ballbox {
+            .itembox {
+                align-items: center;
+                align-content: center;
+                span {
+                    height: 30px;
+                    line-height: 30px;
+                }
+                .item1 {
+                    i {
+                        width: 26px;
+                        height: 26px;
+                        line-height: 26px;
+                        color: white;
+                        background-color: #fe8f00;
+                        border-radius: 50%;
+                        box-shadow: 0 -2px 8px 1px rgba(211,122,8,.6) inset;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.itembold {
+  font-weight: bold;
+}
+
+.inmoney {
+  width: 60px;
+  font-size: 12px;
+  height: 22px;
+  padding-left: 5px;
+  border: 1px solid #ccc;
+}
+
+.subbox {
+  width: 100%;
+  padding: 20px 0 40px 0;
+  justify-content: center;
+}
+
+.subbox .inmoney {
+  width: 80px;
+  height: 32px;
+}
+
+#selectbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 160px;
+  padding-top: 6px;
+  z-index: 999;
+}
+
+.selectwrap {
+  position: relative;
+  padding-top: 4px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 2px 4px 0px rgba(0,0,0,.2);
+}
+
+#selectbox i {
+  position: absolute;
+  top: -4px;
+  left: 37px;
+  width: 6px;
+  height: 6px;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  background-color: white;
+  transform: rotate(45deg);
+}
+
+.option {
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: #ccc;
+}
+
+// 底部问路区域========================================================
+.sscbottom {
+    width: 100%;
+    padding: 30px 10px 60px 10px;
+    background-color: white;
+    border: none;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    .tabbox {
+        width: 100%;
+        padding-bottom: 10px;
+        background-color: white;
+        border: none;
+        border-radius: 0;
+        justify-content: flex-start;
+        .tabitem {
+            padding-right: 10px;
+            select {
+                width: 110px;
+                height: 30px;
+                line-height: 30px;
+                border: 1px solid #999;
+                border-radius: 2px;
+            }
+            .tabbtn {
+                display: inline-block;
+                padding: 0 14px;
+                height: 30px;
+                line-height: 28px;
+                text-align: center;
+                border: 1px solid #999;
+                border-radius: 2px;
+                background-color: #ccc;
+                cursor: pointer;
+            }
+            .tabbtnactive {
+                color: white;
+                background: linear-gradient(to top, #c76401, #fba915);
+                border: none;
+            }
+        }
+        .tabitem:first-child {
+            padding-right: 20px;
+        }
+    }
+    .wenlu {
+        width: 100%;
+        padding-bottom: 20px;
+        align-items: center;
+        .wenlubtn {
+            width: 44px;
+            height: 98px;
+            justify-content: center;
+            align-items: center;
+            background: url("../../images/wenlu.png") center no-repeat;
+            background-size: cover;
+            cursor: pointer; //   padding: 0 10px;
+            //   background-color: #fe7200;
+            //   border-radius: 4px;
+            //   strong {
+            //     width: 18px;
+            //     font-size: 18px;
+            //     line-height: 40px;
+            //     color: white;
+            //     text-align: center;
+            //     font-weight: 600;
+            //   }
+        }
+        .wtablebox {
+            flex: 1;
+            height: 98px;
+            padding: 0;
+            padding-left: 24px;
+            .wtable {
+                width: 100%;
+                height: 98px;
+                border: 1px solid #999;
+                overflow: hidden;
+                .iteminfo {
+                    width: 30px;
+                    height: 100%;
+                    background-color: #333;
+                    border-right: 1px solid #999;
+                    font-size: 16px;
+                    line-height: 40px;
+                    color: white;
+                    text-align: center;
+                    padding-top: 6px;
+                }
+                .infosmall {
+                    line-height: 28px;
+                    padding-top: 6px;
+                }
+                .wrapbox {
+                    position: relative;
+                    height: 100%;
+                    overflow: hidden;
+                    align-self: flex-start;
+                    .tablebox {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        cursor: move;
+                        z-index: 99;
+                        table {
+                            table-layout: fixed;
+                            border: none;
+                            border-collapse: collapse;
+                            td {
+                                width: 16px;
+                                height: 16px;
+                                border: 1px solid #999;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 右边信息区域样式开始
+.infobox {
+  width: 280px;
+}
+
+.infoitem {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.userinfobox {
+  padding: 30px 25px;
+  color: white;
+  background-color: #333;
+}
+
+.userinfo {
+  padding-bottom: 20px;
+}
+
+.userinfo i {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background-color: #111;
+}
+
+.userinfo span {
+  padding-left: 20px;
+  font-size: 18px;
+}
+
+.userbtngroup {
+  width: 100%;
+  padding-top: 16px;
+  justify-content: space-between;
+}
+
+.userbtngroup span {
+  width: 70px;
+  height: 30px;
+  line-height: 28px;
+  text-align: center;
+  background-color: #525151;
+  color: #ccc;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.resultinfobox {
+  width: 100%;
+  padding-top: 20px;
+}
+
+.resultinfo,
+.tabtn {
+  width: 100%;
+}
+
+.tabtn span {
+  width: 50%;
+  height: 50px;
+  font-size: 16px;
+  line-height: 50px;
+  text-align: center;
+  color: white;
+  background-color: #333;
+  cursor: pointer;
+}
+
+.tabtn span.btnactive,
+.userbtngroup span:hover {
+  color: white;
+  border-color: #fe8f00;
+  background-color: #fe8f00;
+}
+
+.resultitem {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 12px;
+  justify-content: space-between;
+  padding: 0 25px;
+  background-color: #eee;
+  border-bottom: 1px solid white;
+}
+
+.resultitem:last-child {
+  border-bottom: none;
+}
+
+.resultitemr strong {
+  padding-right: 10px;
+}
+
+.querybox {
+  padding: 5px 20px;
+  justify-content: flex-end;
+  background-color: #eee;
+}
+
+.querybox span:first-child {
+  padding-right: 20px;
+}
+
+select#qishu {
+  width: 100px;
+  height: 30px;
+  line-height: 28px;
+  border-color: #ccc;
+}
+
+.querybox,
+.resultbox,
+.resulttable {
+  width: 100%;
+}
+
+.resulttable {
+  height: 340px;
+  background-color: white;
+  overflow-y: scroll;
+}
+
+.resulttable table {
+  table-layout: fixed;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+
+.resulttable table td {
+  text-align: left;
+  padding-left: 8px;
+  height: 30px;
+  border: 1px solid #ccc;
+}
+
+// 右边信息区域样式结束
+// 各浏览器滑块样式
+input[type="range"] {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/*range中心圆点*/
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  margin-top: -4px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  -moz-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+input[type="range"]::-ms-thumb {
+  -ms-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  margin-top: 1px;
+}
+
+input[type="range"]::slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  margin-top: -6px;
+}
+
+/*range轨道*/
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  background-color: #fe8f00;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  background-color: #fe8f00;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 4px;
+  border-color: transparent;
+  color: #fe8f00;
+  border-radius: 2px;
+  background: #fe8f00;
+  cursor: pointer;
+}

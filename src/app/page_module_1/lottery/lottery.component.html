@@ -8,17 +8,17 @@
         <div class="flex-c main">
             <div class="toptab">
                 <ul class="flex-r">
-                    <li [ngClass]="{active: toptab == 0}" (click)="toptabclick(0)">全部彩种</li>
-                    <li [ngClass]="{active: toptab == 1 , bodl: toptab == 2 , bodr: toptab == 0}" (click)="toptabclick(1)">官方</li>
-                    <li [ngClass]="{active: toptab == 2}" (click)="toptabclick(2)">信用</li>
+                    <li [ngClass]="{active: toptab === 0}" (click)="toptabclick(0)">全部彩种</li>
+                    <li [ngClass]="{active: toptab === 1 , bodl: toptab === 2 , bodr: toptab === 0}" (click)="toptabclick(1)">官方</li>
+                    <li [ngClass]="{active: toptab === 2}" (click)="toptabclick(2)">信用</li>
                 </ul>
             </div>
             <div class="tab">
                 <ul class="flex-r">
                     <li class="flex-r" *ngFor="let item of tabdata; let i=index"> 
-                        <span [ngClass]="{active: tab == i}" (click)="tabclick(i)">{{item.name}}</span>
+                        <span [ngClass]="{active: tab === i}" (click)="tabclick(i)">{{item.name}}</span>
                         <span class="bdicon">
-                            <i [hidden]="tab == i || tab == (i+1)"></i>
+                            <i [hidden]="tab === i || tab === (i+1)"></i>
                         </span>
                     </li>
                 </ul>

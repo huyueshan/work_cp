@@ -3,16 +3,18 @@ import { SharkModule } from "@ntesmail/shark-angular2";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { ComponentsModule } from "../component/components.module";
+import { ComponentsModule } from "../../component/components.module";
 /***********components***************/
-import { LotteryComponent } from "./lottery.component";
-
-import { HttpInterceptorService } from '../../Http.Service';
+import { FfccreditComponent } from "./ffc.component";
 
 const routes = [
   {
     path: "",
-    component: LotteryComponent
+    redirectTo: "cq",
+  },
+  {
+    path: ":id",
+    component: FfccreditComponent
   },
 ];
 
@@ -24,7 +26,6 @@ const routes = [
     FormsModule,
     ComponentsModule
   ],
-  declarations: [LotteryComponent,],
-  providers:[HttpInterceptorService],
+  declarations: [FfccreditComponent,]
 })
-export class LotteryModule {}
+export class FFCcreditModule {}

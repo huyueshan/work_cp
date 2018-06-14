@@ -36,7 +36,12 @@ const appRoutes: Routes = [
     }, 
     {
         path: 'creditssc',
-        loadChildren: '../app/page_module_1/credit/credit.module#CreditModule',
+        loadChildren: '../app/page_module_1/credit/ssc/ssc.module#SSCcreditModule',
+        canActivate: [RouteguardService]
+    },  
+    {
+        path: 'creditffc',
+        loadChildren: '../app/page_module_1/credit/ffc/ffc.module#FFCcreditModule',
         canActivate: [RouteguardService]
     },
     {
