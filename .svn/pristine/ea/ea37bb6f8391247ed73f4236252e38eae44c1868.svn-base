@@ -1017,6 +1017,13 @@ export class SSCofficialComponent implements OnInit {
 			// 配置规则提示
 			that.now_tips_menu = that.status.menu_1+'_'+that.status.menu_2;
 			that.now_description = that.lot_rules[that.now_tips_menu]['description'];
+			// console.log(that.now_tips_menu)
+			// console.log(x)
+			if(that.status.menu_1>8){
+				that.hothidden = true;
+			}else{
+				that.hothidden = false;
+			}
 		}
 	}
 	
@@ -1035,17 +1042,18 @@ export class SSCofficialComponent implements OnInit {
 		}
 		that.now_tips_menu = that.status.menu_1+'_'+that.status.menu_2;
 		that.now_description = that.lot_rules[that.now_tips_menu]['description'];
+		// 隐藏遗漏
+		if(data.isupload){
+			that.hothidden = true;
+		}else{
+			that.hothidden = false;
+		}
 	}
 	// 时时彩下注区左侧显示列表
 	balllist(arr){
 		let that = this
 		that.now_balllist = []
 		arr.map(function(res){
-			if(res == 'w' || res == 'q' || res == 'b' || res == 's' || res == 'g'){
-				that.hothidden = false;
-			}else{
-				that.hothidden = true;
-			}
 			that.now_balllist.push(that.ball_data[res])
 		})
 	}
@@ -1126,7 +1134,7 @@ export class SSCofficialComponent implements OnInit {
 	
 	// 确认选号
 	sureballlist :any=[]
-	addball(arrob){
+	addball(){
 		let that = this
 		let arr = []
 		let obj:any={}
@@ -1142,6 +1150,7 @@ export class SSCofficialComponent implements OnInit {
 			}else{
 				obj.ball = arr.join(',')
 			}
+			
 		}
 		obj.name=that.currtabname
 		that.sureballlist.push(obj)

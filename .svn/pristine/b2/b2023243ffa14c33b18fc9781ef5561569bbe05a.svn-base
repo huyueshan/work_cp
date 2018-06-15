@@ -144,7 +144,7 @@
 							</div>
 						</div>
 						<div class="btnright">
-							<a class="btnh_w120_h40 mb10 bgyellow" (click)='addball(menu_2)'>添加号码</a>
+							<a class="btnh_w120_h40 mb10 bgyellow" (click)='addball()'>添加号码</a>
 							<a class="btnh_w120_h40 bgyellow" (click)='mathball(menu_2)'>随机添加</a>
 						</div>
 					</div>

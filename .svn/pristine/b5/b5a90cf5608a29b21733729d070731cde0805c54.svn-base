@@ -589,7 +589,6 @@ input[type="number"]{
 						line-height:40px;
 						.hot_lost{
 							display: inline-block;
-							float:left;
 						}
 						.hot_hidden{
 							display: none;
