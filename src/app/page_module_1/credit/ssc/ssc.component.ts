@@ -17,18 +17,10 @@ export class SscComponent implements OnInit, OnDestroy {
     public curinpt; //当前操作的金额输入框
     public selectbtnvalue = 0; //控制 一般 、快捷按钮数据
     public btolast = 0; //控制 前中后选择
-    public queresult = 0; // 控制 开奖结果列表区
-    public listresult = 0; // 控制 排行列表区
     public bottabactive = 0; // 控制 底部问路tab标签变量
     public typeoption = "龙虎斗"; //绑定 底部问路选择框数据
     public typeoptiondata = ['第一球','第二球','第三球','第四球','第五球','龙虎斗'];
-  
-    //    绑定 排行列表期数数据
-    public querydata = {
-      qishu: "2期"
-    };
     public selmoeny = [100, 200, 500, 1000, 5000]; // 活动选择金额框数据
-    public resultdata = [, , , , , , ,];
     public BALL = {
       numb: 0,
       value: ""

@@ -565,10 +565,13 @@ export class LotteryComponent implements OnInit {
     this.loadpage = userModel.platform;
     this.setdata();
     // ===============================   HTTP 测试  ===========================================================
+    // let testdata2 = this.tabdata.JSON();
+    let data = JSON.stringify(this.tabdata);
+    this.hserve.post('http://127.0.0.1:3000/dologin',data,)
     // this.hserve.post('http://127.0.0.1:3000/dologin','nameOrEmail=bar&password=moe',)
-    // .then(result => {  
-    //   console.log("登录接口返回的信息是：" , result);//打印返回的数据  
-    // });
+    .then(result => {  
+      console.log("登录接口返回的信息是：" , result);//打印返回的数据  
+    });
     // // =================================================================================
     // this.hserve.get('http://127.0.0.1:3000','')
     // .then(result => {  

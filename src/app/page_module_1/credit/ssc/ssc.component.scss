@@ -162,34 +162,36 @@
   cursor: pointer;
 }
 
-.btngroup button {
-    width: 80px;
-    font-size: 14px;
-    height: 32px;
-    line-height: 30px;
-    // letter-spacing:3px;
-    text-align: center;
-    padding:0;
-    background-color: #ccc;
-    color: #333;
-    border: 1px solid #999;
-    border-radius: 3px;
-    margin-left: 10px;
-    outline: none;
-}
-.btngroup button.lactive{
-    margin-left: 0px;
-}
+.btngroup{
+  button {
+      width: 80px;
+      font-size: 14px;
+      height: 32px;
+      line-height: 30px;
+      text-align: center;
+      padding:0;
+      background-color: #ccc;
+      color: #333;
+      border: 1px solid #999;
+      border-radius: 3px;
+      margin-left: 10px;
+      outline: none;
+    }
+        .lactive{
+            margin-left: 0px;
+        }
+        .btnactive,
+        .resetbtn:hover {
+            color: white;
+            background-color: #fe8f00;
+            background: linear-gradient(to top, #c76401, #fba915);
+            border: 1px solid #d17702;
+            outline: none;
+        }
+
+} 
 
 
-.btngroup button.btnactive,
-.btngroup button.resetbtn:hover {
-    color: white;
-    background-color: #fe8f00;
-    background: linear-gradient(to top, #c76401, #fba915);
-    border: 1px solid #d17702;
-    outline: none;
-}
 
 .mycontaion {
   position: relative;
@@ -323,9 +325,8 @@
 }
 
 .item2info span {
-    // flex: 1;
     height: 40px;
-    line-height: 40px; // text-align: center;
+    line-height: 40px;
 }
 
 .item2info span:first-child {
@@ -455,7 +456,7 @@
   width: 70px;
   height: 160px;
   padding-top: 6px;
-  z-index: 999;
+  z-index: 888;
 }
 
 .selectwrap {
@@ -548,17 +549,7 @@
             align-items: center;
             background: url("../../images/wenlu.png") center no-repeat;
             background-size: cover;
-            cursor: pointer; //   padding: 0 10px;
-            //   background-color: #fe7200;
-            //   border-radius: 4px;
-            //   strong {
-            //     width: 18px;
-            //     font-size: 18px;
-            //     line-height: 40px;
-            //     color: white;
-            //     text-align: center;
-            //     font-weight: 600;
-            //   }
+            cursor: pointer;
         }
         .wtablebox {
             flex: 1;
@@ -613,148 +604,6 @@
     }
 }
 
-// 右边信息区域样式开始
-.infobox {
-  width: 280px;
-}
-
-.infoitem {
-  width: 100%;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.userinfobox {
-  padding: 30px 25px;
-  color: white;
-  background-color: #333;
-}
-
-.userinfo {
-  padding-bottom: 20px;
-}
-
-.userinfo i {
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  background-color: #111;
-}
-
-.userinfo span {
-  padding-left: 20px;
-  font-size: 18px;
-}
-
-.userbtngroup {
-  width: 100%;
-  padding-top: 16px;
-  justify-content: space-between;
-}
-
-.userbtngroup span {
-  width: 70px;
-  height: 30px;
-  line-height: 28px;
-  text-align: center;
-  background-color: #525151;
-  color: #ccc;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.resultinfobox {
-  width: 100%;
-  padding-top: 20px;
-}
-
-.resultinfo,
-.tabtn {
-  width: 100%;
-}
-
-.tabtn span {
-  width: 50%;
-  height: 50px;
-  font-size: 16px;
-  line-height: 50px;
-  text-align: center;
-  color: white;
-  background-color: #333;
-  cursor: pointer;
-}
-
-.tabtn span.btnactive,
-.userbtngroup span:hover {
-  color: white;
-  border-color: #fe8f00;
-  background-color: #fe8f00;
-}
-
-.resultitem {
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  font-size: 12px;
-  justify-content: space-between;
-  padding: 0 25px;
-  background-color: #eee;
-  border-bottom: 1px solid white;
-}
-
-.resultitem:last-child {
-  border-bottom: none;
-}
-
-.resultitemr strong {
-  padding-right: 10px;
-}
-
-.querybox {
-  padding: 5px 20px;
-  justify-content: flex-end;
-  background-color: #eee;
-}
-
-.querybox span:first-child {
-  padding-right: 20px;
-}
-
-select#qishu {
-  width: 100px;
-  height: 30px;
-  line-height: 28px;
-  border-color: #ccc;
-}
-
-.querybox,
-.resultbox,
-.resulttable {
-  width: 100%;
-}
-
-.resulttable {
-  height: 340px;
-  background-color: white;
-  overflow-y: scroll;
-}
-
-.resulttable table {
-  table-layout: fixed;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-}
-
-.resulttable table td {
-  text-align: left;
-  padding-left: 8px;
-  height: 30px;
-  border: 1px solid #ccc;
-}
-
-// 右边信息区域样式结束
 // 各浏览器滑块样式
 input[type="range"] {
   display: block;
