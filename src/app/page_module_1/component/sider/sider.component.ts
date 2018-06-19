@@ -6,7 +6,7 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
   templateUrl: "./sider.component.html",
   styleUrls: ["./sider.component.scss"]
 })
-export class SiderComponent implements OnInit, OnDestroy {
+export class CSiderComponent implements OnInit, OnDestroy {
     public queresult = 0; // 控制 开奖结果列表区
     public listresult = 0; // 控制 排行列表区
   

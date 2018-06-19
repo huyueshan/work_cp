@@ -6,7 +6,6 @@ import { CommonModule } from "@angular/common";
 import { ComponentsModule } from "../../component/components.module";
 /***********components***************/
 import { VRcComponent } from "./vrc.component";
-import { SiderComponent } from '../components/sider/sider.component';
 
 const routes = [
   {
@@ -23,6 +22,6 @@ const routes = [
     FormsModule,
     ComponentsModule
   ],
-  declarations: [VRcComponent,SiderComponent]
+  declarations: [VRcComponent]
 })
 export class VRCModule {}

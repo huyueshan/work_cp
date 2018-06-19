@@ -264,7 +264,6 @@ export class IndexComponent implements OnInit {
     }
   }
   linkrouter(t) {
-      console.log(t);
     this.router.navigate([t]);
   }
   // 登陆表单输入框获取焦点事件

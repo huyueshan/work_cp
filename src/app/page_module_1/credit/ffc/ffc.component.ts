@@ -9,6 +9,7 @@ import userModel from "../../../../status/user.model";
 })
 export class FfccreditComponent implements OnInit, OnDestroy {
   loadpage = false;
+  public outnumber = [2,5,9,0,8] //开奖号码
   public odds = 7.8; // 赔率
   public rangevalue = 7.8; //绑定滑动条数据
   public delay = true; // 选择金额框判断

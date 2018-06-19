@@ -15,7 +15,6 @@ import userModel from '../../../../status/user.model';
 })
 
 export class SSCofficialComponent implements OnInit {
-    public outnumber = [2,5,9,0,8] //开奖号码
 	constructor(private httpClient:HttpClient,private router: Router) { }
 	loadpage=false;
 	public resultdata = [{'sta':'20180517014','num':'2 9 0 8 7'},{'sta':'20180517014','num':'2 9 0 8 7'} ,{'sta':'20180517014','num':'2 9 0 8 7'} , {'sta':'20180517014','num':'2 9 0 8 7'},{'sta':'20180517014','num':'2 9 0 8 7'} , {'sta':'20180517014','num':'2 9 0 8 7'},{'sta':'20180517014','num':'2 9 0 8 7'} ,{'sta':'20180517014','num':'2 9 0 8 7'}];

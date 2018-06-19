@@ -25,7 +25,7 @@ export class BankmanageComponent implements OnInit {
   ngOnInit() {
   }
   addbank(){
-    this.shade.w = document.body.clientWidth;
+    this.shade.w = screen.width;
     this.shade.h = screen.height;
     this.addbanck = true;
   }

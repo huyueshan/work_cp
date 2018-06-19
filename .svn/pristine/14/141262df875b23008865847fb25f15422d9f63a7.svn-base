@@ -3,7 +3,7 @@
 	<div><app-header [username]="'test08'" [curpath]="'lottery'"></app-header>	</div>
 	<div class="conbox">
 		<div class="content" style="margin-top:30px;">
-			<app-credtop [type] ="'ssc'" [number]="outnumber"></app-credtop>
+			<app-credtop [type] ="'officialssc'"></app-credtop>
 			<div class="sscorder">
 				<div class="sscleft">
 					<div class="tabbox">
@@ -173,7 +173,7 @@
                 <div class="flex-c infobox">
                     <div class="infoitem userinfobox">
                         <span class="flex-r userinfo">
-                            <i><img  [src]="userInfo.img" height="177" width="688" alt=""></i>
+                            <i><img src="../../images/cqssc_13.png" height="177" width="688" alt=""></i>
                             <span>{{userInfo.name}}</span>
                         </span>
                         <span>账户余额：

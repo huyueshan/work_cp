@@ -134,7 +134,8 @@
             cursor: pointer;
         }
         .frimg {
-            padding-left: 50px;
+            flex: 1;
+            justify-content: center;
         }
     
     }
@@ -159,6 +160,8 @@
     .gameresult {
         width: 580px;
         .frnumber {
+            flex: 1;
+            justify-content: space-around;
             padding-right: 10px;
             li {
                 padding-right: 10px;

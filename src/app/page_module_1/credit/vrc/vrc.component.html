@@ -4,7 +4,7 @@
     </div>
     <div class="flex-c ssccontain">
         <div class="contaner">
-            <app-credtop [type]="'creditssc'"></app-credtop>
+            <app-credtop [type]="'vrc'" [number]="outnumber"></app-credtop>
             <div class="flex-r mainbox">
                 <div class="flex-c contentbox">
                     <div class="flex-r tabbox">
@@ -46,8 +46,19 @@
                             </div>
 
                         </div>
-                        <div class="flex-r mediabox chatbox">
-                            <!--======================= todo============ -->
+                        <div class="flex-c mediabox chatbox">
+                            <div class="flex-r head">
+                                <span [ngClass]="{active:chattab === 0}" (click)="chattab = 0" > 聊天室 Chat</span>
+                                <span [ngClass]="{active:chattab === 1}" (click)="chattab = 1">路单 Trend</span>
+
+                            </div>
+                            <div class="flex-r foot">
+                                <i class="face"></i>
+                                <input type="text" id="chatput"
+                                name="chatput" placeholder="请输入文字....." [(ngModel)]="chatput">
+                                <i class="chat"></i>
+
+                            </div>
 
                         </div>
 
@@ -118,6 +129,145 @@
                         <div class="flex-r butgroup">
                             <span (click)="clear()">清空</span>
                             <span (click)="sub()">确认投注</span>
+                        </div>
+                    </div>
+
+                    <!-- 信息表单 -->
+                    <div class="flex-c tablebox">
+                        <div class="flex-r qcontent">
+                            <span class="flex-r lquery">
+                                <span class="flex-r" [ngClass]="{color_y:querystyle == 0}" (click)="querystyle = 0">
+                                    <span>我的投注</span>
+                                    <i></i>
+                                </span>
+                                <span class="flex-r" [ngClass]="{color_y:querystyle == 1}" (click)="querystyle = 1">
+                                    <span>我的追号</span>
+                                    <i></i>
+                                </span>
+
+                            </span>
+                            <span class="rquery">
+                                <span class="query_item" *ngFor="let item of querydatelist; let i=index" style=" padding-right: 10px">
+                                    <span class="datebtn  " [ngClass]="{bd_y:querydatelistindex == i}" (click)="querydatelistindex = i">{{item.text}}</span>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="tablewrap">
+                            <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4" bgcolor="#ccc" align="center">
+                                <tr class="bg_1">
+                                    <th>频道</th>
+                                    <th>玩法</th>
+                                    <th>期号</th>
+                                    <th>号码</th>
+                                    <th>金额</th>
+                                    <th>奖金</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                <tbody>
+
+                                    <tr *ngFor="let item of tabledata; let i=index">
+                                        <td>{{item.channel}}</td>
+                                        <td>{{item.play}}</td>
+                                        <td>{{item.issue}}</td>
+                                        <td>{{item.numb}}</td>
+                                        <td>{{item.money1}}</td>
+                                        <td>{{item.money2}}</td>
+                                        <td>
+                                            <span class="tablebtn" (click)="shadec(i)">{{item.status===0?'未开奖':item.status===1?'撤单':item.status===2?'中奖':item.status===3?'未中奖':'--'}}</span>
+                                        </td>
+                                        <td>
+                                            <i class="delicon" (click)="del(i)"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="page" shark-pager [currentPage]="pagination.page" [totalPage]="pagination.totalPage" [gopage]="pagination.gopage"
+                            [hl]="hl" [segmentSize]="pagination.segmentSize" [startFrom]="pagination.startFrom" (onPageChanged)="onPageChanged($event);">
+                        </div>
+                        <!-- 弹窗 -->
+                        <div class="flex-c infobox" *ngIf="shade.show">
+                            <div class="flex-r title">
+                                <span class="flex-r titlel">
+                                    <i></i>
+                                    <span>投注详情</span>
+                                </span>
+                                <span class="close" (click)="closec()">
+                                    &times;
+                                </span>
+
+                            </div>
+                            <div class="flex-c infocont">
+                                <table class="infotable" width="100%" border="0" cellspacing="0" cellpadding="4" bgcolor="#fe8f00;" align="center">
+                                    <tr>
+                                        <td>账号</td>
+                                        <td>DGHAKJFHA</td>
+                                        <td>倍数/模式</td>
+                                        <td>10倍/1元</td>
+                                        <td>频道</td>
+                                        <td>VR彩票百家乐</td>
+                                    </tr>
+                                    <tr>
+                                        <td>交易编号</td>
+                                        <td>10613152943502180596</td>
+                                        <td>玩法</td>
+                                        <td>百家乐</td>
+                                        <td>注数</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>下注时间</td>
+                                        <td>2018/06/14 16:53:15</td>
+                                        <td>位置</td>
+                                        <td>位置</td>
+                                        <td>投注金额</td>
+                                        <td>10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>期号</td>
+                                        <td>20180614260</td>
+                                        <td>开奖号码</td>
+                                        <td>---</td>
+                                        <td>中奖金额</td>
+                                        <td>---</td>
+                                    </tr>
+                                    <tr>
+                                        <td>一倍奖金</td>
+                                        <td>2/2/9/9/0.5</td>
+                                        <td>状态</td>
+                                        <td>未开奖</td>
+                                        <td>备注</td>
+                                        <td></td>
+                                    </tr>
+
+                                </table>
+                                <p class="pad">投注号码</p>
+                                <div class="info">
+                                    <p>闲赢</p>
+                                </div>
+                                <!-- 撤单按钮 -->
+                                <div class="flex-r btnbox" *ngIf="shadedata.status === 0">
+                                    <span (click)="chedan()">撤单</span>
+                                </div>
+                                <!-- 开奖结果 -->
+                                <table class="resuttable" width="100%" *ngIf="shadedata.status === 2 || shadedata.status === 3 ">
+                                    <tr>
+                                        <th>奖项</th>
+                                        <th>中奖号码</th>
+                                        <th>中奖注数</th>
+                                    </tr>
+                                    <tr>
+                                        <td>闲赢</td>
+                                        <td>庄赢</td>
+                                        <td>1</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+                        <!-- 遮罩 -->
+                        <div class="shade" [style.width.px]="shade.w" [style.height.px]="shade.h" *ngIf="shade.show">
                         </div>
                     </div>
 
