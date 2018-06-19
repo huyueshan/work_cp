@@ -258,7 +258,7 @@ export class RouteguardService implements CanActivate{
 						return true;
 					}else{
 						// 已登录，跳转到home
-						this.router.navigate(['credit']);
+						this.router.navigate(['index']);
 						resolve(false);
 					}
 				}else{

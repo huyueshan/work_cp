@@ -195,7 +195,7 @@
                             <div id="selectbox" [ngStyle]="{'top': boxposition.y, 'left': boxposition.x}" [hidden]="!boxshow">
                                 <div class="flex-c selectwrap">
                                     <i></i>
-                                    <span class="option" *ngFor="let item of selmoeny" (click)="optinclick(item)">{{item}}元</span>
+                                    <span class="option" *ngFor="let item of selmoeny" (mousedown)="optinclick(item)">{{item}}元</span>
                                 </div>
                             </div>
                             <!-- 底部问路-->
