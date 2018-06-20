@@ -55,19 +55,19 @@ export class CredtopComponent implements OnInit, OnDestroy {
               text: "重庆时时彩",
               officialssc:true,
               creditssc:true,
-              link: "/officialssc/cq"
+              link: "/lottery/officialssc/cq"
             },
             {
               text: "天津时时彩",
               officialssc:true,
               creditssc:true,
-              link: "/officialssc/cq"
+              link: "/lottery/officialssc/cq"
             },
             {
               text: "新疆时时彩",
               officialssc:true,
               creditssc:true,
-              link: "/officialssc/cq"
+              link: "/lottery/officialssc/cq"
             },
           ]
         },
@@ -84,25 +84,25 @@ export class CredtopComponent implements OnInit, OnDestroy {
               text: "重庆时时彩1",
               officialssc:true,
               creditssc:true,
-              link: "/creditffc/cq"
+              link: "/lottery/creditffc/cq"
             },
             {
               text: "腾讯分分彩",
               officialssc:true,
               creditssc:true,
-              link: "/officialffc/tx"
+              link: "/lottery/officialffc/tx"
             },
             {
               text: "天津时时彩1",
               officialssc:true,
               creditssc:true,
-              link: "/creditffc/cq"
+              link: "/lottery/creditffc/cq"
             },
             {
               text: "新疆时时彩1",
               officialssc:true,
               creditssc:true,
-              link: "/creditffc/cq"
+              link: "/lottery/creditffc/cq"
             },
           ]
         },
@@ -293,19 +293,19 @@ export class CredtopComponent implements OnInit, OnDestroy {
               text: "重庆时时彩8",
               officialssc:true,
               creditssc:true,
-              link: "/vrc"
+              link: "/lottery/vrc"
             },
             {
               text: "天津时时彩8",
               officialssc:true,
               creditssc:true,
-              link: "/vrc"
+              link: "/lottery/vrc"
             },
             {
               text: "新疆时时彩8",
               officialssc:true,
               creditssc:true,
-              link: "/vrc"
+              link: "/lottery/vrc"
             },
           ]
         },
