@@ -1,0 +1,45 @@
+
+
+<div class="flex-c">
+    <div class="mainbox">
+        <div class="flex-c main">
+            <div class="toptab">
+                <ul class="flex-r">
+                    <li [ngClass]="{active: toptab === 0}" (click)="toptabclick(0)">全部彩种</li>
+                    <li [ngClass]="{active: toptab === 1 , bodl: toptab === 2 , bodr: toptab === 0}" (click)="toptabclick(1)">官方</li>
+                    <li [ngClass]="{active: toptab === 2}" (click)="toptabclick(2)">信用</li>
+                </ul>
+            </div>
+            <div class="tab">
+                <ul class="flex-r">
+                    <li class="flex-r" *ngFor="let item of tabdata; let i=index"> 
+                        <span [ngClass]="{active: tab === i}" (click)="tabclick(i)">{{item.name}}</span>
+                        <span class="bdicon">
+                            <i [hidden]="tab === i || tab === (i+1)"></i>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="content">
+                <ul class="flex-r czbox">
+                    <li  class="flex-c" *ngFor="let child of outdata; let i=index">
+                        <span  class="flex-c item">
+                            <span class="flex-r imgbox" [ngStyle]="{'background-color': child.bcolor}">
+                                    <img src="{{child.src}}" alt="child.name"
+                                    (click)="linkrouter(i,child.linko,child.linkc)">
+                            </span>
+                            <span class="flex-r infobox">
+                                <span class="info">{{child.name}}</span>
+                                <span class="link" (click)="linkrouter(i,child.linko,child.linkc)">进入游戏></span>
+                            </span>
+
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <app-footer></app-footer>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+
+
+<div class="flex-c" [hidden]="!loadpage">
+    <div>
+        <app-header [username]="'test08'" [curpath]="'lottery'"></app-header>
+    </div>
+    <router-outlet></router-outlet>
+</div>

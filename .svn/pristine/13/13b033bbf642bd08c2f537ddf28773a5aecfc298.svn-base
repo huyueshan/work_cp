@@ -1,9 +1,6 @@
 
 
-<div class="flex-c lotbox" [hidden]="!loadpage">
-    <div>
-        <app-header [username]="'test08'" [curpath]="'lottery'"></app-header>
-    </div>
+<div class="flex-c">
     <div class="mainbox">
         <div class="flex-c main">
             <div class="toptab">
