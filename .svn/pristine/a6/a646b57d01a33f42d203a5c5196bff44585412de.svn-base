@@ -317,18 +317,18 @@ export class CredtopComponent implements OnInit, OnDestroy {
         this.setimg();
         //获取当前路由的id
         
-    //     this.router.events
-    //   .filter(event => event instanceof NavigationEnd)
-    //   .subscribe((event: NavigationEnd) => {
-    //     this.route.params.subscribe(
-    //       data =>{
-    //         this.routid=data.id
-    //         console.log(this.routid)
-    //       }
+        this.router.events
+      .filter(event => event instanceof NavigationEnd)
+      .subscribe((event: NavigationEnd) => {
+        this.route.params.subscribe(
+          data =>{
+            this.routid=data.id
+            console.log(this.routid)
+          }
           
-    //     )
-    //   });
-        console.log(this.router.url)
+        )
+      });
+        console.log(this.routid)
         this.time = setInterval(() => {
             this.timedate = new Date();
         }, 1000);

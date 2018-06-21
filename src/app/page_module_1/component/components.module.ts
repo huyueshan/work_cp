@@ -12,6 +12,7 @@ import { FooterComponent } from "./footer/footer.component";
 import { SideComponent } from "./side/side.component";
 import { CredtopComponent } from "./credtop/credtop.component";
 import { CSiderComponent } from './sider/sider.component';
+import { WenluComponent } from './wenlu/wenlu.component';
 import { LanguageComponent } from "./language/language.component";
 
 @NgModule({
@@ -23,6 +24,7 @@ import { LanguageComponent } from "./language/language.component";
     ErrtipComponent,
     CredtopComponent,
     CSiderComponent,
+    WenluComponent,
     LanguageComponent
   ],
   exports: [
@@ -32,6 +34,7 @@ import { LanguageComponent } from "./language/language.component";
     ErrtipComponent,
     CredtopComponent,
     CSiderComponent,
+    WenluComponent,
     LanguageComponent,
   ]
 })

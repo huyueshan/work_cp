@@ -9,7 +9,6 @@ import userModel from "../../../../status/user.model";
 })
 export class SscComponent implements OnInit, OnDestroy {
   loadpage = false;
-  // public outnumber = [2,5,9,0,8] //开奖号码
   public cpnav = {
     prev: "20180517022",
     prevball: [2, 5, 9, 0, 8],
@@ -23,17 +22,8 @@ export class SscComponent implements OnInit, OnDestroy {
   public type = 1; // 控制 玩法
   public curinpt; //当前操作的金额输入框
   public selectbtnvalue = 0; //控制 一般 、快捷按钮数据
+  public inputshow = true;
   public btolast = 0; //控制 前中后选择
-  public bottabactive = 0; // 控制 底部问路tab标签变量
-  public typeoption = "龙虎斗"; //绑定 底部问路选择框数据
-  public typeoptiondata = [
-    "第一球",
-    "第二球",
-    "第三球",
-    "第四球",
-    "第五球",
-    "龙虎斗"
-  ];
   public selmoeny = [100, 200, 500, 1000, 5000]; // 活动选择金额框数据
   public BALL = {
     numb: 0,
@@ -326,119 +316,52 @@ export class SscComponent implements OnInit, OnDestroy {
       order: 9
     }
   ];
-  public bottomtabdata;
-  public bottomtabdata1 = [
-    {
-      name: "1vs2"
+
+  // 遮罩层
+  public shade = {
+    w: 0,
+    h: 0
+  };
+  // =弹窗对话框数据
+
+  public popup = {
+    shade: {
+      show: false,
+      w: 0,
+      h: 0
     },
-    {
-      name: "1vs3"
+    setnumb: {
+      show: false,
+      value: "",
+      data: []
     },
-    {
-      name: "1vs4"
-    },
-    {
-      name: "1vs5"
-    },
-    {
-      name: "2vs3"
-    },
-    {
-      name: "2vs4"
-    },
-    {
-      name: "2vs5"
-    },
-    {
-      name: "3vs4"
-    },
-    {
-      name: "3vs5 "
-    },
-    {
-      name: "4vs5"
+    sub: {
+      show: false,
+      top:'10px',
+      data: []
     }
-  ];
-  public bottomtabdata2 = [
-    {
-      name: "球号"
-    },
-    {
-      name: "单双"
-    },
-    {
-      name: "大小"
-    },
-    {
-      name: "总和单双"
-    },
-    {
-      name: "总和大小"
-    }
-  ];
-  public tablebox1 = {
-    name: "大路",
-    width: "780px",
-    evleft: 0,
-    drag: false,
-    left: "0px",
-    data: []
   };
-  public tablebox2 = {
-    name: "盘珠路",
-    width: "170px",
-    evleft: 0,
-    drag: false,
-    left: "0px",
-    data: []
-  };
-  public tablebox3 = {
-    name: "大眼路",
-    width: "170px",
-    evleft: 0,
-    drag: false,
-    left: "0px",
-    data: []
-  };
-  public tablebox4 = {
-    name: "小路",
-    width: "170px",
-    evleft: 0,
-    drag: false,
-    left: "0px",
-    data: []
-  };
-  public tablebox5 = {
-    name: "曱甴路",
-    width: "170px",
-    evleft: 0,
-    drag: false,
-    left: "0px",
-    data: []
+  public subdata = [];
+  public submoney = 0;
+  public subob = {
+    channel: "重庆时时彩",
+    type: "-",
+    id: "20180808",
+    ball: "-",
+    number: "-",
+    point: "-",
+    money: "-"
   };
 
   constructor(private el: ElementRef, private router: Router) {}
 
   ngOnInit() {
     this.loadpage = userModel.platform;
-    //   this.betdata1.data2 = this.setballdata(); // 初始球数据，
-    this.typeoptchange(); //初始问路tab数据；
-    this.tablebox1.data = this.setwenludata(); //临时测试数据
-    this.tablebox2.data = this.setwenludata(); //临时测试数据
-    this.tablebox3.data = this.setwenludata(); //临时测试数据
-    this.tablebox4.data = this.setwenludata(); //临时测试数据
-    this.tablebox5.data = this.setwenludata(); //临时测试数据
-    console.log(this.betdatam);
+
+    this.popup.shade.w = screen.width;
+    this.popup.shade.h = screen.height;
   }
   ngOnDestroy() {}
-  typeoptchange() {
-    this.bottabactive = 0;
-    if (this.typeoption === "龙虎斗") {
-      this.bottomtabdata = this.bottomtabdata1;
-    } else {
-      this.bottomtabdata = this.bottomtabdata2;
-    }
-  }
 
   // 滑块左侧递减事件
   rangevaluelessen() {
@@ -457,6 +380,73 @@ export class SscComponent implements OnInit, OnDestroy {
     this.type = i;
     this.setallmoney.value = "";
   }
+  // 切换一般 /快捷 事件
+  tabclick(i) {
+    this.selectbtnvalue = i;
+    if (i === 0) {
+      this.inputshow = true;
+    }
+    if (i === 1) {
+      this.inputshow = false;
+    }
+    if (i === 2) {
+      let p = this.popup;
+      let d = this.popup.setnumb.data;
+      for (let i = 0; i < this.selmoeny.length; i++) {
+        d[i] = {
+          value: this.selmoeny[i]
+        };
+      }
+      p.setnumb.show = true;
+
+      p.shade.show = true;
+    }
+  }
+
+  //====快选金额事件开始=============
+  savenum() {
+    let d = [];
+    let p = this.popup.setnumb.data;
+    for (let i = 0; i < p.length; i++) {
+      d.push(p[i].value);
+    }
+    this.selmoeny = d;
+    this.close();
+  }
+  numbdel() {
+    this.popup.setnumb.value = "";
+  }
+  setnumbdel(i) {
+    let p = this.popup;
+    p.setnumb.data.splice(i, 1);
+  }
+  addnumb() {
+    let p = this.popup;
+    let n = Number(p.setnumb.value);
+    if (n > 0) {
+      let l = p.setnumb.data.length;
+      p.setnumb.data[l] = {
+        value: n
+      };
+    }
+    p.setnumb.value = "";
+  }
+  changeregset(i) {
+    let p = this.popup;
+    if (i === -1) {
+      p.setnumb.value = p.setnumb.value.replace(/\D/g, "");
+    } else {
+      p.setnumb.data[i].value = p.setnumb.data[i].value.replace(/\D/g, "");
+    }
+  }
+  close() {
+    let p = this.popup;
+    p.setnumb.show = false;
+    p.shade.show = false;
+    p.sub.show = false;
+  }
+  //====快选金额事件end=============
+
   // 全五中一 和底部快捷选项输入框 获得焦点事件
   // curinpt为当前操作输入框 变量
   // i 数组当前index
@@ -616,68 +606,123 @@ export class SscComponent implements OnInit, OnDestroy {
 
   // 确认提交按钮事件
   sub() {
+    let data = [];
     if (this.type == 3) {
+        this.popup.sub.top = "10px";
       let point = (2.099 + (0.191 / 7.8) * this.rangevalue).toFixed(3);
-      let str = "赔率=" + point;
       let d = this.betdata3;
       for (let i = 0; i < d.length; i++) {
-        if (d[i].value) {
-          str += "&" + d[i].numb + "=" + d[i].value;
+        if (Number(d[i].value) > 0) {
+          let l = data.length;
+          data[l] = Object.assign({}, this.subob);
+          data[l].number = d[i].numb;
+          data[l].type = "全5中1";
+          data[l].point = point;
+          data[l].money = d[i].value;
         }
       }
-      alert(str);
     }
     if (this.type == 2) {
-      let str1 =
-        "赔率1 = " + (1.944 + (0.224 / 7.8) * this.rangevalue).toFixed(3);
-      let str2 =
-        "赔率2 = " + (8.98 + (0.78 / 7.8) * this.rangevalue).toFixed(2);
-      let str3 =
-        "赔率3 = " + (1.944 + (0.224 / 7.8) * this.rangevalue).toFixed(3);
-
-      console.log(str1, str2, str3, this.betdata2);
-    }
-    if (this.type == 1) {
-      let str1 =
-        "赔率1 = " + (1.8 + (0.156 / 7.8) * this.rangevalue).toFixed(3);
-      let str2 = "赔率2 = " + (9 + (0.78 / 7.8) * this.rangevalue).toFixed(2);
-      let str3 =
-        "赔率3 = " + (11.633 + (1.3 / 7.8) * this.rangevalue).toFixed(3);
-      console.log(str1, str2, str3, this.betdatam, this.betdatab);
-    }
-    return false;
-  }
-
-  // 底部问路拖拽事件
-  // ev 事件对象 ， t 当前表格数据对象
-  dragdown(ev, t) {
-    let _that = this;
-    let d = _that[t];
-    let e = ev || event;
-    let str = "#" + t;
-    let ele = this.el.nativeElement.querySelector(str);
-    d.evleft = e.clientX - ele.offsetLeft;
-    d.drag = true;
-  }
-  // ev 事件对象 ， t 当前表格数据对象
-  dragmove(ev, t) {
-    let _that = this;
-    let d = _that[t];
-    if (d.drag) {
-      let e = ev || event;
-      let str = "#" + t;
-      let ele = this.el.nativeElement.querySelector(str);
-      let n = e.clientX - d.evleft;
-      let w = d.data[0].length * 16; //table的宽度，16为表格td的宽度
-      let p = parseInt(d.width); // 包裹table元素的宽度；
-      if (n > 0) {
-        d.left = "0px";
-      } else if (n < p - w) {
-        d.left = p - w + "px";
-      } else {
-        d.left = n + "px";
+        this.popup.sub.top = "100px";
+      let point1 = (1.944 + (0.224 / 7.8) * this.rangevalue).toFixed(3);
+      let point2 = (8.98 + (0.78 / 7.8) * this.rangevalue).toFixed(2);
+      let point3 = (1.944 + (0.224 / 7.8) * this.rangevalue).toFixed(3);
+      let d = this.betdata2;
+      for (let i = 0; i < d.length; i++) {
+        if (Number(d[i].value1.value) > 0) {
+          let l = data.length;
+          data[l] = Object.assign({}, this.subob);
+          data[l].channel = d[i].title;
+          data[l].type = "龙虎斗";
+          data[l].ball = "龙";
+          data[l].point = point1;
+          data[l].money = d[i].value1.value;
+        }
+        if (Number(d[i].value2.value) > 0) {
+          let l = data.length;
+          data[l] = Object.assign({}, this.subob);
+          data[l].channel = d[i].title;
+          data[l].type = "龙虎斗";
+          data[l].ball = "和";
+          data[l].point = point2;
+          data[l].money = d[i].value2.value;
+        }
+        if (Number(d[i].value3.value) > 0) {
+          let l = data.length;
+          data[l] = Object.assign({}, this.subob);
+          data[l].channel = d[i].title;
+          data[l].type = "龙虎斗";
+          data[l].ball = "虎";
+          data[l].point = point3;
+          data[l].money = d[i].value3.value;
+        }
       }
     }
+    if (this.type == 1) {
+        this.popup.sub.top = "350px";
+      let point1 = (1.8 + (0.156 / 7.8) * this.rangevalue).toFixed(3);
+      let point2 = (9 + (0.78 / 7.8) * this.rangevalue).toFixed(2);
+      let point3 = (11.633 + (1.3 / 7.8) * this.rangevalue).toFixed(3);
+      let d = this.betdatam;
+      let p = this.betdatab;
+      for (let i = 0; i < d.length; i++) {
+        let d1 = d[i].data1;
+        let d2 = d[i].data2;
+        for (let q = 0; q < d1.length; q++) {
+          if (Number(d1[q].value) > 0) {
+            let l = data.length;
+            data[l] = Object.assign({}, this.subob);
+            data[l].channel = d[i].title;
+            data[l].type = "整合";
+            data[l].ball = d1[q].name;
+            data[l].point = point1;
+            data[l].money = d1[q].value;
+          }
+        }
+        for (let q = 0; q < d2.length; q++) {
+          if (Number(d2[q].value) > 0) {
+            let l = data.length;
+            data[l] = Object.assign({}, this.subob);
+            data[l].channel = d[i].title;
+            data[l].type = "整合";
+            data[l].number = d2[q].numb;
+            data[l].point = point2;
+            data[l].money = d2[q].value;
+          }
+        }
+      }
+
+      for (let q = 0; q < p.length; q++) {
+        if (Number(p[q].value) > 0) {
+          let l = data.length;
+          data[l] = Object.assign({}, this.subob);
+          data[l].channel =
+            this.btolast === 0
+              ? "前三"
+              : this.btolast === 1
+                ? "中三"
+                : this.btolast === 2
+                  ? "后三"
+                  : "-";
+          data[l].type = "整合";
+          data[l].ball = p[q].name;
+          data[l].point = point3;
+          data[l].money = p[q].value;
+        }
+      }
+    }
+
+    this.submoney = 0;
+    for (let i = 0; i < data.length; i++) {
+        this.submoney += Number(data[i].money);
+    }
+    
+    this.subdata = data;
+    this.popup.sub.show = true;
+    this.popup.shade.show = true;
+    // this.reset();
+    // this.setallmoney.value = '';
+    return false;
   }
 
   linkrouter(t) {
@@ -685,18 +730,6 @@ export class SscComponent implements OnInit, OnDestroy {
   }
 
   // 设置整合 球的数据
-  // setballdata() {
-  //   let data = [];
-  //   for (let i = 0; i < 5; i++) {
-  //     data[i] = [];
-  //     for (let q = 0; q < 10; q++) {
-  //       let o = Object.assign({}, this.BALL);
-  //       o.numb = q;
-  //       data[i].push(o);
-  //     }
-  //   }
-  //   return data;
-  // }
   setball() {
     let data = [];
     for (let q = 0; q < 10; q++) {
@@ -714,17 +747,6 @@ export class SscComponent implements OnInit, OnDestroy {
         name: d[i],
         value: ""
       };
-    }
-    return data;
-  }
-  //临时测试数据方法
-  setwenludata() {
-    let data = [];
-    for (let i = 0; i < 6; i++) {
-      data[i] = [];
-      for (let q = 0; q < 60; q++) {
-        data[i][q] = "";
-      }
     }
     return data;
   }
