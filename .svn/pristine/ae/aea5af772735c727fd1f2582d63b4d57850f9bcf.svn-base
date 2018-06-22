@@ -166,7 +166,7 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
           ]
         },
         {
-          title: "PK10", 
+          title: "北京赛车", 
           bg:{
             x:-10,
             y:-98,
@@ -175,18 +175,25 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
           isactive: false,
           items: [
             {
-              text: "北京PK10",
+              text: "重庆时时彩2",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialpk10/bjpk",
-              linkc: "/lottery/creditpk10/bjpk"
+              linko: "",
+              linkc: "/lottery/credit"
             },
             {
-              text: "幸运飞艇",
+              text: "天津时时彩2",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialpk10/xyft",
-              linkc: "/lottery/creditpk10/xyft"
+              linko: "",
+              linkc: "/lottery/credit"
+            },
+            {
+              text: "新疆时时彩2",
+              officialssc:true,
+              creditssc:true,
+              linko: "",
+              linkc: "/lottery/credit"
             },
           ]
         },
@@ -406,7 +413,7 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
      // 设置的logo图片
     setimg(){
         let idarray = this.router.url.split("/");
-       let str = idarray[idarray.length-1]+ "_" + this.type;
+       let str = idarray[idarray.length-1]+'_ffc';
         if (this.imgsrc[str]) {
             this.isrc = this.imgsrc[str];
         }else{

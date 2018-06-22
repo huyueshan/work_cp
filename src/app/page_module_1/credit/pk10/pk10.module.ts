@@ -5,16 +5,16 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { ComponentsModule } from "../../component/components.module";
 /***********components***************/
-import { FfccreditComponent } from "./ffc.component";
+import { Pk10Component } from "./pk10.component";
 
 const routes = [
   {
     path: "",
-    redirectTo: "bj",
+    redirectTo: "bjpk",
   },
   {
     path: ":id",
-    component: FfccreditComponent
+    component: Pk10Component
   },
 ];
 
@@ -26,6 +26,6 @@ const routes = [
     FormsModule,
     ComponentsModule
   ],
-  declarations: [FfccreditComponent,]
+  declarations: [Pk10Component,]
 })
-export class FFCcreditModule {}
+export class Pk10Module {}

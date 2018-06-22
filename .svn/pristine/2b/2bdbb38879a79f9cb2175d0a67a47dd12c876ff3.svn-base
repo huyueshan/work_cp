@@ -34,19 +34,11 @@ const routes:Routes = [
             loadChildren: '../credit/ffc/ffc.module#FFCcreditModule',
         },  
           {
-            path: 'creditpk10',
-            loadChildren: '../credit/pk10/pk10.module#Pk10Module',
-        },  
-          {
-            path: 'credit11or5',
-            loadChildren: '../credit/11or5/11or5.module#Or5Module',
-        },  
-          {
             path: 'vrc',
             loadChildren: '../credit/vrc/vrc.module#VRCModule',
         },  
         {
-            path: "officialpk10",
+            path: "officialscc",
             loadChildren: '../official/scc/scc.module#SCCofficialModule',
           }
     ],

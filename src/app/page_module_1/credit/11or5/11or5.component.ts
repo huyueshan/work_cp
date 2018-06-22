@@ -12,11 +12,11 @@ import { Base } from "../../../../factory/base.model";
 import "rxjs/add/operator/filter";
 
 @Component({
-  selector: "app-credit",
-  templateUrl: "./ffc.component.html",
-  styleUrls: ["./ffc.component.scss"]
+  selector: "app-11or5",
+  templateUrl: "./11or5.component.html",
+  styleUrls: ["./11or5.component.scss"]
 })
-export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
+export class Or5Component implements OnInit, OnDestroy, AfterViewInit {
   loadpage = false;
   public cpnav = {
     style: "credit",
@@ -53,14 +53,14 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
       name: "全5中1"
     }
   ];
-//   public contenttoptitle1 = [
-//     "第一球",
-//     "第二球",
-//     "第三球",
-//     "第四球",
-//     "第五球",
-//     "总和"
-//   ];
+  public contenttoptitle1 = [
+    "第一球",
+    "第二球",
+    "第三球",
+    "第四球",
+    "第五球",
+    "总和"
+  ];
   public contenttoptitle3 = [, , , , ,];
   public setallmoney = {
     value: ""

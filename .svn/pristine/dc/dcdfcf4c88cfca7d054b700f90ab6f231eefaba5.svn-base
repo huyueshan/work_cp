@@ -136,7 +136,7 @@
 								</div>
 								<div class="amount">
 									<span class="title mr10">{{rangepercent}}%</span>
-									<em class="btnaddrem" (click)="rangevaluelessen()">-</em><input class="mathrange fl" type="range" name="points" min="0" max="30"    step="1" id="points" [(ngModel)]="rangepercent"><em class="btnaddrem" (click)="rangevalueadd()">+</em><span class="title ml10">{{rangepercent*riskvalue + 1950}}</span>
+									<em class="btnaddrem" (click)="rangevaluelessen()">-</em><input class="mathrange fl" type="range" name="points" min="0" max="6"    step="1" id="points" [(ngModel)]="rangepercent"><em class="btnaddrem" (click)="rangevalueadd()">+</em><span class="title ml10">{{rangepercent*riskvalue + 1950}}</span>
 								</div>
 							</div>
 							<div class="tip">

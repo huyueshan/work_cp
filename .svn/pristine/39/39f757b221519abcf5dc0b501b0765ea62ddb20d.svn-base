@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SharkModule } from '@ntesmail/shark-angular2';
+import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClient, HttpHeaders } from '@angular/common/http'; 
 import { RouterModule, Routes, Router } from "@angular/router";
 
 import { Base } from '../../../../factory/base.model';
@@ -13,13 +16,12 @@ import userModel from '../../../../status/user.model';
 
 export class SSCofficialComponent implements OnInit {
     public cpnav = {
-        style:"official",
         prev:'20180517022',
         prevball:[8,5,2,3,9],
         next:'20180517023',
         time:''
     };
-	constructor(private router: Router) { }
+	constructor(private httpClient:HttpClient,private router: Router) { }
 	loadpage=false;
 	public resultdata = [{'sta':'20180517014','num':'2 9 0 8 7'},{'sta':'20180517014','num':'2 9 0 8 7'} ,{'sta':'20180517014','num':'2 9 0 8 7'} , {'sta':'20180517014','num':'2 9 0 8 7'},{'sta':'20180517014','num':'2 9 0 8 7'} , {'sta':'20180517014','num':'2 9 0 8 7'},{'sta':'20180517014','num':'2 9 0 8 7'} ,{'sta':'20180517014','num':'2 9 0 8 7'}];
 	public rankdata = [{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'}];

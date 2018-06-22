@@ -1,25 +1,17 @@
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  AfterViewInit,
-  ViewChild,
-  ElementRef
-} from "@angular/core";
-import { Router,Route, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
+import { Component, OnInit, OnDestroy, ElementRef } from "@angular/core";
+import { Router, ActivatedRoute, Params } from "@angular/router";
 import userModel from "../../../../status/user.model";
-import { Base } from "../../../../factory/base.model";
-import "rxjs/add/operator/filter";
+import { Base } from '../../../../factory/base.model';
 
 @Component({
   selector: "app-credit",
-  templateUrl: "./ffc.component.html",
-  styleUrls: ["./ffc.component.scss"]
+  templateUrl: "./ssc.component.html",
+  styleUrls: ["./ssc.component.scss"]
 })
-export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
+export class SscComponent implements OnInit, OnDestroy {
   loadpage = false;
   public cpnav = {
-    style: "credit",
+    style:"credit",
     prev: "20180517022",
     prevball: [2, 5, 9, 0, 8],
     next: "20180517023",
@@ -53,14 +45,14 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
       name: "全5中1"
     }
   ];
-//   public contenttoptitle1 = [
-//     "第一球",
-//     "第二球",
-//     "第三球",
-//     "第四球",
-//     "第五球",
-//     "总和"
-//   ];
+  public contenttoptitle1 = [
+    "第一球",
+    "第二球",
+    "第三球",
+    "第四球",
+    "第五球",
+    "总和"
+  ];
   public contenttoptitle3 = [, , , , ,];
   public setallmoney = {
     value: ""
@@ -347,7 +339,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     },
     sub: {
       show: false,
-      top: "10px",
+      top:'10px',
       data: []
     }
   };
@@ -362,26 +354,24 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     point: "-",
     money: "-"
   };
-  constructor(private el: ElementRef, private router: Router, private route: ActivatedRoute) {}
+
+  constructor(private el: ElementRef, private router: Router) {}
 
   ngOnInit() {
     this.loadpage = userModel.platform;
 
-    if (!Base.Store.get("selmoeny")) {
-      Base.Store.set("selmoeny", this.selmoeny, true);
-    } else {
-      let arr = JSON.parse(JSON.stringify(Base.Store.get("selmoeny")));
-      this.selmoeny = arr;
+    if (!Base.Store.get('selmoeny')) {
+        Base.Store.set('selmoeny',this.selmoeny,true);
+    }else{
+         let arr = JSON.parse(JSON.stringify(Base.Store.get('selmoeny'))); 
+         this.selmoeny = arr ;
     }
-
+    
     this.popup.shade.w = screen.width;
     this.popup.shade.h = screen.height;
-    // 跳转官方路由设置
-    // this.setlink();
-
   }
-  ngAfterViewInit() {}
-  ngOnDestroy() {}  
+  ngOnDestroy() {}
+
   // 滑块左侧递减事件
   rangevaluelessen() {
     if (this.rangevalue > 0) {
@@ -429,7 +419,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     for (let i = 0; i < p.length; i++) {
       d.push(Number(p[i].value));
     }
-    Base.Store.set("selmoeny", d, true);
+    Base.Store.set('selmoeny',d,true);
     this.selmoeny = d;
     this.close();
   }
@@ -628,7 +618,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
   sub() {
     let data = [];
     if (this.type == 3) {
-      this.popup.sub.top = "10px";
+        this.popup.sub.top = "10px";
       let point = (2.099 + (0.191 / 7.8) * this.rangevalue).toFixed(3);
       let d = this.betdata3;
       for (let i = 0; i < d.length; i++) {
@@ -643,7 +633,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
       }
     }
     if (this.type == 2) {
-      this.popup.sub.top = "100px";
+        this.popup.sub.top = "100px";
       let point1 = (1.944 + (0.224 / 7.8) * this.rangevalue).toFixed(3);
       let point2 = (8.98 + (0.78 / 7.8) * this.rangevalue).toFixed(2);
       let point3 = (1.944 + (0.224 / 7.8) * this.rangevalue).toFixed(3);
@@ -679,7 +669,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
       }
     }
     if (this.type == 1) {
-      this.popup.sub.top = "350px";
+        this.popup.sub.top = "350px";
       let point1 = (1.8 + (0.156 / 7.8) * this.rangevalue).toFixed(3);
       let point2 = (9 + (0.78 / 7.8) * this.rangevalue).toFixed(2);
       let point3 = (11.633 + (1.3 / 7.8) * this.rangevalue).toFixed(3);
@@ -734,9 +724,9 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.submoney = 0;
     for (let i = 0; i < data.length; i++) {
-      this.submoney += Number(data[i].money);
+        this.submoney += Number(data[i].money);
     }
-
+    
     this.subdata = data;
     this.popup.sub.show = true;
     this.popup.shade.show = true;
@@ -747,12 +737,6 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
 
   linkrouter(t) {
     this.router.navigate([t]);
-  }
-  routlink(){
-    let idarray = this.router.url.split("/");
-    let str = idarray[idarray.length - 1];
-    this.route.params.subscribe(data=>str=data.id);
-    this.router.navigate(['/lottery/officialffc', str]);
   }
 
   // 设置整合 球的数据

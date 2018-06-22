@@ -9,6 +9,9 @@ import {
 import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
 import "rxjs/add/operator/filter";
 
+import {
+    Base
+} from "./../../../../factory/base.model";
 @Component({
     selector: "app-credtop",
     templateUrl: "./credtop.component.html",
@@ -19,20 +22,22 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
     @Input() type: string; //当前的彩种
     // @Input() number: number[];  //开奖区开奖号码
     @Input() indata:{
-        style:string,
         prev:string,  //上一期开奖期号
         prevball:number[], // 开奖区上一期开奖号码
         next:string, //x下期开奖期号
         time:any 
     };
     ngOnChanges(changes: SimpleChanges) {
-        // this.setimg();
+        this.setimg();
     }
     public timedate = new Date();
     public time;
     public routid;  //路由ID
     public shownav = false;
     public textnumber = 1;
+    // public number = [2, 9, 0, 8, 7]; //开奖区开奖号码
+    // public previous = 20180517022; //上一期开奖期号
+    // public next = 20180517023; //上一期开奖期号
     public currentparent:string; //一级导航
     public currentitem:string; // 二级导航
     public currentactive:number; // 当前展开的子导航
@@ -65,22 +70,19 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
               text: "重庆时时彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialssc/cq",
-              linkc: "/lottery/creditssc/cq"
+              link: "/lottery/officialssc/cq"
             },
             {
               text: "天津时时彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialssc/cq",
-              linkc: "/lottery/creditssc/cq"
+              link: "/lottery/officialssc/cq"
             },
             {
               text: "新疆时时彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialssc/cq",
-              linkc: "/lottery/creditssc/cq"
+              link: "/lottery/officialssc/cq"
             },
           ]
         },
@@ -97,76 +99,78 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
               text: "韩式1.5分彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialffc/hs",
-              linkc: "/lottery/creditffc/hs"
+              link: "/officialffc/hs"
             },
             {
               text: "北京时时彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialffc/bj",
-              linkc: "/lottery/creditffc/bj"
+              link: "/officialffc/bj"
             },
             {
               text: "台湾5分彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialffc/tw",
-              linkc: "/lottery/creditffc/tw"
+              link: "/officialffc/tw"
             },
             {
               text: "加拿大3.5分彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialffc/jnd",
-              linkc: "/lottery/creditffc/jnd"
+              link: "/officialffc/jnd"
             },
             {
               text: "澳洲3分彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialffc/az",
-              linkc: "/lottery/creditffc/az"
+              link: "/officialffc/az"
             },
             {
               text: "斯洛伐克5分彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialffc/slfk",
-              linkc: "/lottery/creditffc/slfk"
+              link: "/officialffc/slfk"
             },
             {
               text: "腾讯分分彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialffc/tx",
-              linkc: "/lottery/creditffc/tx"
+              link: "/lottery/officialffc/tx"
             },
             {
               text: "QQ分分彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialffc/qq",
-              linkc: "/lottery/creditffc/qq"
+<<<<<<< .mine
+              link: "/officialffc/qq"
+||||||| .r83
+              link: "/creditffc/cq"
+=======
+              link: "/lottery/creditffc/cq"
+>>>>>>> .r89
             },
             {
               text: "东京1.5分彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialffc/dj",
-              linkc: "/lottery/creditffc/dj"
+<<<<<<< .mine
+              link: "/officialffc/dj"
+||||||| .r83
+              link: "/creditffc/cq"
+=======
+              link: "/lottery/creditffc/cq"
+>>>>>>> .r89
             },
             {
               text: "极速分分彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialffc/js",
-              linkc: "/lottery/creditffc/js"
+              link: "/officialffc/js"
             },
           ]
         },
         {
-          title: "PK10", 
+          title: "北京赛车", 
           bg:{
             x:-10,
             y:-98,
@@ -175,18 +179,22 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
           isactive: false,
           items: [
             {
-              text: "北京PK10",
+              text: "重庆时时彩2",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialpk10/bjpk",
-              linkc: "/lottery/creditpk10/bjpk"
+              link: ""
             },
             {
-              text: "幸运飞艇",
+              text: "天津时时彩2",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialpk10/xyft",
-              linkc: "/lottery/creditpk10/xyft"
+              link: ""
+            },
+            {
+              text: "新疆时时彩2",
+              officialssc:true,
+              creditssc:true,
+              link: ""
             },
           ]
         },
@@ -203,22 +211,19 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
               text: "重庆时时彩3",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
             {
               text: "天津时时彩3",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
             {
               text: "新疆时时彩3",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
           ]
         },
@@ -235,22 +240,19 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
               text: "重庆时时彩4",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
             {
               text: "天津时时彩4",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
             {
               text: "新疆时时彩4",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
           ]
         },
@@ -267,22 +269,19 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
               text: "重庆时时彩5",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
             {
               text: "天津时时彩5",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
             {
               text: "新疆时时彩5",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
           ]
         },
@@ -299,22 +298,19 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
               text: "重庆时时彩6",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
             {
               text: "天津时时彩6",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
             {
               text: "新疆时时彩6",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
           ]
         },
@@ -331,22 +327,19 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
               text: "重庆时时彩7",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
             {
               text: "天津时时彩7",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
             {
               text: "新疆时时彩7",
               officialssc:true,
               creditssc:true,
-              linko: "",
-              linkc: "/lottery/credit"
+              link: ""
             },
           ]
         },
@@ -363,55 +356,76 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
               text: "重庆时时彩8",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/vrc",
-              linkc: "/lottery/credit"
+              link: "/lottery/vrc"
             },
             {
               text: "天津时时彩8",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/vrc",
-              linkc: "/lottery/credit"
+              link: "/lottery/vrc"
             },
             {
               text: "新疆时时彩8",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/vrc",
-              linkc: "/lottery/vrc"
+              link: "/lottery/vrc"
             },
           ]
         },
     ];
     constructor(private route: ActivatedRoute, private router: Router) {}
+    // constructor(router:Router) {
+    //   router.events.subscribe(event:Event => {
+    //    console.log('改变路由')
+    //   });
+    // }
     ngOnInit() {
         // 设置应该显示的logo图片
         this.setimg();
-
+        //获取当前路由的id
+<<<<<<< .mine
+        this.router.events
+        .filter(event => event instanceof NavigationEnd)
+        .subscribe((event: NavigationEnd) => {
+          this.route.params.subscribe(data => this.routid=data.id)
+        });
+||||||| .r83
+        this.router.events
+      .filter(event => event instanceof NavigationEnd)
+      .subscribe((event: NavigationEnd) => {
+        this.route.params.subscribe(
+          data =>{
+            this.routid=data.id
+            console.log(this.routid)
+          }
+          
+        )
+      });
+        console.log(this.routid)
+=======
+    //     this.router.events
+    //   .filter(event => event instanceof NavigationEnd)
+    //   .subscribe((event: NavigationEnd) => {
+    //     this.route.params.subscribe(
+    //       data =>{
+    //         this.routid=data.id
+    //         console.log(this.routid)
+    //       }
+          
+    //     )
+    //   });
+        console.log(this.router.url)
+>>>>>>> .r89
         this.time = setInterval(() => {
             this.timedate = new Date();
         }, 1000);
-    }
-    ngAfterViewInit(){
-        // 获取当前路由的id
-        this.router.events
-      .filter(event => event instanceof NavigationEnd)
-      .subscribe((event:NavigationEnd) => {
-        this.setimg();
-    });
     }
     ngOnDestroy() {
         clearInterval(this.time);
     }
      // 设置的logo图片
     setimg(){
-        let idarray = this.router.url.split("/");
-       let str = idarray[idarray.length-1]+ "_" + this.type;
-        if (this.imgsrc[str]) {
-            this.isrc = this.imgsrc[str];
-        }else{
-            this.isrc = this.imgsrc["ssc"];
-        }
+        this.isrc = this.imgsrc[this.type];
     }
      // 导航栏目录点击事件
   itemboxclick(i) {
@@ -435,10 +449,16 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
     d.isover = false;
   }
   // 导航栏二级菜单点击事件
-  itemclick(O) {
+  itemclick(L) {
+    console.log(L)
     // 跳转路由
-    let str = this.indata.style==='credit'?O.linkc:O.linko;
-    this.router.navigate([str]);
+    // let str ;
+    // if(this.type == 'creditssc'){
+        // str = `/creditssc/${L}`;
+    // }else{
+        // str = `/officialssc/${L}`;
+    // }
+    this.router.navigate([L]);
     // this.shownav = false;
   }
 }

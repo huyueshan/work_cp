@@ -5,16 +5,16 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { ComponentsModule } from "../../component/components.module";
 /***********components***************/
-import { FfccreditComponent } from "./ffc.component";
+import { Or5Component } from "./11or5.component";
 
 const routes = [
   {
     path: "",
-    redirectTo: "bj",
+    redirectTo: "hlj",
   },
   {
     path: ":id",
-    component: FfccreditComponent
+    component: Or5Component
   },
 ];
 
@@ -26,6 +26,6 @@ const routes = [
     FormsModule,
     ComponentsModule
   ],
-  declarations: [FfccreditComponent,]
+  declarations: [Or5Component,]
 })
-export class FFCcreditModule {}
+export class Or5Module {}

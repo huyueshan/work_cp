@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ElementRef } from "@angular/core";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import userModel from "../../../../status/user.model";
+import { Base } from '../../../../factory/base.model';
 
 @Component({
   selector: "app-credit",
@@ -10,6 +11,7 @@ import userModel from "../../../../status/user.model";
 export class SscComponent implements OnInit, OnDestroy {
   loadpage = false;
   public cpnav = {
+    style:"credit",
     prev: "20180517022",
     prevball: [2, 5, 9, 0, 8],
     next: "20180517023",
@@ -43,14 +45,14 @@ export class SscComponent implements OnInit, OnDestroy {
       name: "全5中1"
     }
   ];
-  public contenttoptitle1 = [
-    "第一球",
-    "第二球",
-    "第三球",
-    "第四球",
-    "第五球",
-    "总和"
-  ];
+//   public contenttoptitle1 = [
+//     "第一球",
+//     "第二球",
+//     "第三球",
+//     "第四球",
+//     "第五球",
+//     "总和"
+//   ];
   public contenttoptitle3 = [, , , , ,];
   public setallmoney = {
     value: ""
@@ -358,6 +360,13 @@ export class SscComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loadpage = userModel.platform;
 
+    if (!Base.Store.get('selmoeny')) {
+        Base.Store.set('selmoeny',this.selmoeny,true);
+    }else{
+         let arr = JSON.parse(JSON.stringify(Base.Store.get('selmoeny'))); 
+         this.selmoeny = arr ;
+    }
+    
     this.popup.shade.w = screen.width;
     this.popup.shade.h = screen.height;
   }
@@ -408,8 +417,9 @@ export class SscComponent implements OnInit, OnDestroy {
     let d = [];
     let p = this.popup.setnumb.data;
     for (let i = 0; i < p.length; i++) {
-      d.push(p[i].value);
+      d.push(Number(p[i].value));
     }
+    Base.Store.set('selmoeny',d,true);
     this.selmoeny = d;
     this.close();
   }

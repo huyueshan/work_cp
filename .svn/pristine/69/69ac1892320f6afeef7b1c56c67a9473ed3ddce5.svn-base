@@ -1,7 +1,7 @@
 <div class="flex-c sscbox" [hidden]="!loadpage">
         <div class="flex-c ssccontain">
             <div class="contaner">
-                <app-credtop [type]="'ffc'" [indata]="cpnav"></app-credtop>
+                <app-credtop [type]="'ssc'" [indata]="cpnav"></app-credtop>
                 <div class="flex-r mainbox">
                     <div class="flex-c contentbox">
                         <div class="flex-r tabbox">
@@ -9,7 +9,7 @@
                                 <span *ngFor="let item of typedata" [ngClass]="{tabactive:this.type == item.id}" (click)="togtype(item.id)">{{item.name}}</span>
                             </div>
                             <div class="flex-r togglebtn">
-                                <span (click)="routlink()">官方</span>
+                                <span (click)="linkrouter('/lottery/officialssc')">官方</span>
                                 <span class="togactive">信用</span>
                             </div>
                         </div>

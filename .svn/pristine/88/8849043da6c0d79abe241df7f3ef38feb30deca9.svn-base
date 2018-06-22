@@ -2,20 +2,20 @@
 	<div id="layer"></div>
 	<div class="conbox">
 		<div class="content" style="margin-top:30px;">
-			<app-credtop [type] ="'ssc'" [indata]="cpnav"></app-credtop>
+			<app-credtop [type] ="nowPageId" [indata]="cpnav"></app-credtop>
 			<div class="sscorder">
 				<div class="sscleft">
 					<div class="tabbox">
 						<span class="pointl"><i></i></span>
-						<ul class="typetab">
-							<ng-container *ngFor="let val of menu_1; let i = index;">	
-								<li  class="tab_li" [ngClass]="{active: status.menu_1 === val.active}"  (click)="tabmenu(val)">{{val.name}}</li>
+						<ul class="typetab"> 
+							<ng-container *ngFor="let val of menu_1;let i = index;">
+								<li  class="tab_li" *ngIf='nowitems.tabitem.indexOf(val.name)!=-1' [ngClass]="{active: status.menu_1 === val.active}" (click)="tabmenu(val)">{{val.name}}</li>
 							</ng-container>
 						</ul>
 						<span class="pointr"><i></i></span>
 						<ul class="totaltype">
 							<li class="active"><a>官方</a></li>
-							<li (click)="linkrouter('/lottery/creditssc')"><a>信用</a></li>
+							<li (click)="linkrouter('/lottery/creditffc')"><a>信用</a></li>
 						</ul>
 					</div>   
 					<div class="tabcon">
@@ -24,7 +24,7 @@
 								<span class="labtit">{{val.title}}</span>
 								<li [ngClass]="{active: status.menu_2 === item.index}"  *ngFor="let item of val.menu" (click)="tabmenu2(item)">{{item.name}}</li>
 							</ul>
-							<p class="tip">提示：重庆时时彩单玩法最高派奖 300000 元</p>
+							<p class="tip">提示：新疆分分彩单玩法最高派奖 300000 元</p>
 						</div>
 					</div>
 					<div class="chooseno">
@@ -136,11 +136,18 @@
 								</div>
 								<div class="amount">
 									<span class="title mr10">{{rangepercent}}%</span>
-									<em class="btnaddrem" (click)="rangevaluelessen()">-</em><input class="mathrange fl" type="range" name="points" min="0" max="30"    step="1" id="points" [(ngModel)]="rangepercent"><em class="btnaddrem" (click)="rangevalueadd()">+</em><span class="title ml10">{{rangepercent*riskvalue + 1950}}</span>
+									<em class="btnaddrem" (click)="rangevaluelessen()">-</em><input class="mathrange fl" type="range" name="points" min="0" max="6"    step="1" id="points" [(ngModel)]="rangepercent"><em class="btnaddrem" (click)="rangevalueadd()">+</em><span class="title ml10">{{rangepercent*riskvalue + 1950}}</span>
 								</div>
 							</div>
 							<div class="tip">
 								<span class="comtext">共选<em>0</em>注，共投<em>0</em>注，盈利<em>0</em>元</span>
+								<div class="jiangjin_tips" *ngIf='nowitems.reward_show' (mouseenter)="show_tips('reward_rule',tips3)"  (mouseleave)="hid_tips('reward_rule',tips3)">
+									奖金计算说明
+									<div class="tips long_tips" #tips3  [ngClass]="{tipshidden:tips_hidden}">
+										<span [innerHtml]='now_tips'></span>
+										<!-- 111 -->
+									</div>
+								</div>
 								<label><input type="checkbox" />是否锁定倍数</label>
 							</div>
 						</div>
@@ -174,7 +181,7 @@
                 <div class="flex-c infobox">
                     <div class="infoitem userinfobox">
                         <span class="flex-r userinfo">
-                            <i><img  [src]="userInfo.img" height="177" width="688" alt=""></i>
+                            <i><img src="../../images/cqssc_13.png" height="177" width="688" alt=""></i>
                             <span>{{userInfo.name}}</span>
                         </span>
                         <span>账户余额：

@@ -6,14 +6,13 @@ import { Api } from '../../../../factory/api.model';
 import { formmod } from '../../../../factory/form';
 import userModel from '../../../../status/user.model';
 @Component({
-    selector: 'sscofficial',
-    templateUrl: './ssc.component.html',
-    styleUrls: ['./ssc.component.scss']
+    selector: 'pk10official',
+    templateUrl: './pk10.component.html',
+    styleUrls: ['./pk10.component.scss']
 })
 
-export class SSCofficialComponent implements OnInit {
+export class PK10officialComponent implements OnInit {
     public cpnav = {
-        style:"official",
         prev:'20180517022',
         prevball:[8,5,2,3,9],
         next:'20180517023',
@@ -51,60 +50,28 @@ export class SSCofficialComponent implements OnInit {
 	// 一级tab
 	menu_1 = [
 		{
-			name:'五星',
+			name:'猜冠军',
 			active:1
 		},
 		{
-			name:'前四',
+			name:'猜前二',
 			active:2
 		},
 		{
-			name:'后四',
+			name:'猜前三',
 			active:3
 		},
 		{
-			name:'后三码',
+			name:'猜前四',
 			active:4
 		},
 		{
-			name:'前三码',
+			name:'猜前五',
 			active:5
 		},
 		{
-			name:'中三码',
-			active:6
-		},
-		{
-			name:'二码',
-			active:7
-		},
-		{
 			name:'定位胆',
-			active:8
-		},
-		{
-			name:'不定胆',
-			active:9
-		},
-		{
-			name:'大小单双',
-			active:10
-		},
-		{
-			name:'趣味',
-			active:11
-		},
-		{
-			name:'任选二',
-			active:12
-		},
-		{
-			name:'任选三',
-			active:13
-		},
-		{
-			name:'任选四',
-			active:14
+			active:6
 		},
 		{
 			name:'龙虎',
@@ -115,13 +82,8 @@ export class SSCofficialComponent implements OnInit {
 	// 2级tab数据以及对应要显示的内容
 	menu_2_data = [
 		{
-			title:'五星直选',
-			menu:[{name:'五星复选',index:1,arr:['w','q','b','s','g']},{name:'五星单式',index:2,isupload:true},{name:'五星组合',index:3,arr:['w','q','b','s','g']}],
-			active:1
-		},
-		{
-			title:'五星组选',
-			menu:[{name:'组选120',index:4,arr:['120']},{name:'组选60',index:5,arr:['2ch','dh']},{name:'组选30',index:6,arr:['2ch','dh']},{name:'组选20',index:7,arr:['3ch','dh']},{name:'组选10',index:8,arr:['3ch','2ch']},{name:'组选5',index:9,arr:['4ch','dh']}],
+			title:'猜冠军',
+			menu:[{name:'猜冠军',index:1,arr:['cgj']}],
 			active:1
 		},
 		{
@@ -393,6 +355,12 @@ export class SSCofficialComponent implements OnInit {
 			ball:[0,1,2,3,4,5,6,7,8,9],
 			tab:this.ball_tab[1],
 			index:9
+		},
+		'cgj':{
+			title:'猜冠军',
+			ball:['01','02','03','04','05','06','07','08','09','10'],
+			tab:this.ball_tab[1],
+			index:10
 		}
 	};
 	// 遗漏数据
@@ -863,7 +831,7 @@ export class SSCofficialComponent implements OnInit {
 				that.menu_2.push(res)
 			}
 		})
-		this.balllist(['w','q','b','s','g']);
+		this.balllist(['cgj']);
 		this.now_description = this.lot_rules[this.now_tips_menu]['description'];
 		
 
@@ -960,7 +928,7 @@ export class SSCofficialComponent implements OnInit {
 	}
 	
 	// 时时彩二级导航切换
-	currtabname = '五星复选'
+	currtabname = '猜冠军'
 	tabmenu2(data){
 		let that = this
 		that.inittab()

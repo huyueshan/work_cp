@@ -53,14 +53,14 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
       name: "全5中1"
     }
   ];
-//   public contenttoptitle1 = [
-//     "第一球",
-//     "第二球",
-//     "第三球",
-//     "第四球",
-//     "第五球",
-//     "总和"
-//   ];
+  public contenttoptitle1 = [
+    "第一球",
+    "第二球",
+    "第三球",
+    "第四球",
+    "第五球",
+    "总和"
+  ];
   public contenttoptitle3 = [, , , , ,];
   public setallmoney = {
     value: ""

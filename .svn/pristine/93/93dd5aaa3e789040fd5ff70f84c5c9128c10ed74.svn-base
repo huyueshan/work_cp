@@ -13,7 +13,6 @@ import userModel from '../../../../status/user.model';
 
 export class SSCofficialComponent implements OnInit {
     public cpnav = {
-        style:"official",
         prev:'20180517022',
         prevball:[8,5,2,3,9],
         next:'20180517023',

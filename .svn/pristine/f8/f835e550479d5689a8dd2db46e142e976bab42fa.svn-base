@@ -1,25 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, Routes, Router } from "@angular/router";
+import { SharkModule } from '@ntesmail/shark-angular2';
+import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClient, HttpHeaders } from '@angular/common/http'; 
+import { RouterModule, Routes, Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
 
 import { Base } from '../../../../factory/base.model';
 import { Api } from '../../../../factory/api.model';
 import { formmod } from '../../../../factory/form';
 import userModel from '../../../../status/user.model';
 @Component({
-    selector: 'sscofficial',
-    templateUrl: './ssc.component.html',
-    styleUrls: ['./ssc.component.scss']
+    selector: 'ffcofficial',
+    templateUrl: './ffc.component.html',
+    styleUrls: ['./ffc.component.scss']
 })
 
-export class SSCofficialComponent implements OnInit {
-    public cpnav = {
-        style:"official",
-        prev:'20180517022',
-        prevball:[8,5,2,3,9],
-        next:'20180517023',
-        time:''
-    };
-	constructor(private router: Router) { }
+export class FFCofficialComponent implements OnInit {
+
+	constructor(private route: ActivatedRoute,private httpClient:HttpClient,private router: Router) { }
 	loadpage=false;
 	public resultdata = [{'sta':'20180517014','num':'2 9 0 8 7'},{'sta':'20180517014','num':'2 9 0 8 7'} ,{'sta':'20180517014','num':'2 9 0 8 7'} , {'sta':'20180517014','num':'2 9 0 8 7'},{'sta':'20180517014','num':'2 9 0 8 7'} , {'sta':'20180517014','num':'2 9 0 8 7'},{'sta':'20180517014','num':'2 9 0 8 7'} ,{'sta':'20180517014','num':'2 9 0 8 7'}];
 	public rankdata = [{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'}];
@@ -35,13 +32,68 @@ export class SSCofficialComponent implements OnInit {
 	public now_tips_menu :any='1_1';
 	public now_description = '';
 	public hothidden = false;
+	public nowPageId :any='';
+	public nowitems :any={};
 	public userInfo = {
 		name:'赌神',
 		balance:'9999.99',
-		id:'007',
-		img:'../../images/cqssc_13.png'
+		id:'007'
+
 	};
+	public other_rules = {
+		reward_rule:'<div> 奖金计算说明：<p style="margin-left:1em;">非常规时时彩中奖后，根据中奖号码球号的奖金组，中奖奖金需要乘以球号的奖金组，如：</p><p style="margin-left:1em;line-height: 25px;padding:3px 0;">1、北京时时彩后三直选（1800奖金组）：下注321，开奖号码54321，其中3号球的奖金组为：1.014，2号球的奖金组为：0.984，1号球的奖金组为1.022；那么中奖后的实际奖金=1800*1.014*0.984*1.022=1835.509</p><p style="margin-left:1em;line-height: 25px;padding:3px 0;">2、若北京时时彩后三直选（1800奖金组）：下注246，开奖号码54246，其中2号球的奖金组为：0.984，4号球的奖金组为：0.976，6号球的奖金组为0.98；那么中奖后的实际奖金=1800*0.984*0.976*0.98=1694.117</P></div>'
+	};
+	public cpnav = {
+	    prev:'20180517022',
+	    prevball:[2,5,9,0,8],
+	    next:'20180517023',
+	    time:''
+	};
+	public items_show = {
+		'tx_ffc':{
+			'tabitem':['后三码','前三码','中三码','二码','定位胆','不定胆','大小单双','趣味','任选二','任选三','龙虎'],
+			'reward_show':true
+		},
+		'bj_ffc':{
+			'tabitem':['后三码','前三码','中三码','二码','定位胆','不定胆','大小单双','趣味','任选二','任选三','龙虎'],
+			'reward_show':true
+		},
+		'tw_ffc':{
+			'tabitem':['后三码','前三码','中三码','二码','定位胆','不定胆','大小单双','趣味','任选二','任选三','龙虎'],
+			'reward_show':true
+		},
+		'qq_ffc':{
+			'tabitem':['二码','定位胆','大小单双','趣味','任选二','龙虎'],
+			'reward_show':true
+		},
+		'slfk_ffc':{
+			'tabitem':['后三码','前三码','中三码','二码','定位胆','不定胆','大小单双','趣味','任选二','任选三','龙虎'],
+			'reward_show':true
+		},
+		'dj_ffc':{
+			'tabitem':['后三码','前三码','中三码','二码','定位胆','不定胆','大小单双','趣味','任选二','任选三','龙虎'],
+			'reward_show':true
+		},
+		'js_ffc':{
+			'tabitem':['后三码','前三码','中三码','二码','定位胆','不定胆','大小单双','趣味','任选二','任选三','龙虎'],
+			'reward_show':false
+		},
+		'hs_ffc':{
+			'tabitem':['后三码','前三码','中三码','二码','定位胆','不定胆','大小单双','趣味','任选二','任选三','龙虎'],
+			'reward_show':true
+		},
+		'az_ffc':{
+			'tabitem':['后三码','前三码','中三码','二码','定位胆','不定胆','大小单双','趣味','任选二','任选三','龙虎'],
+			'reward_show':true
+		},
+		'jnd_ffc':{
+			'tabitem':['后三码','前三码','中三码','二码','定位胆','不定胆','大小单双','趣味','任选二','任选三','龙虎'],
+			'reward_show':true
+		}
+	}
 	public curinpt = {value:''};
+	//路由id
+	public routid;
 	// public rangevalue = rangevalue;
 	now_lang :any={};
 	status = {
@@ -851,6 +903,8 @@ export class SSCofficialComponent implements OnInit {
 	up_ball = 1;
 	ngOnInit(){
 		let that = this
+		//获取当前id
+		this.getPageId();
 		this.loadpage = userModel.platform;
 		Base.DOM.title('重庆时时彩')
 		this.now_lang=userModel.langpackage;
@@ -865,11 +919,22 @@ export class SSCofficialComponent implements OnInit {
 		})
 		this.balllist(['w','q','b','s','g']);
 		this.now_description = this.lot_rules[this.now_tips_menu]['description'];
-		
-
+		//路由控制
+		this.router.events
+          .filter((event) => event instanceof NavigationEnd)
+          .subscribe((event:NavigationEnd) => {
+            this.getPageId();
+        });
 	}
 	ngAfterViewInit(){
 		this.inittab2();
+	}
+	// 通过id获取目前显示的项目配置文件
+	getPageId(){
+		let idarray = this.router.url.split("/");
+		this.nowPageId = idarray[idarray.length-1]+'_ffc';
+		this.nowitems = this.items_show[this.nowPageId];
+
 	}
 	inittab2(){
 		let ulMax = $('.typetab').outerWidth();
@@ -883,9 +948,6 @@ export class SSCofficialComponent implements OnInit {
 					$(n).removeClass('hide_it')
 				}
 			});
-			if (liWidth<ulMax) {
-
-			}
 			liWidth = 0;
 		})
 		$('.pointr').on('click',function(){
@@ -896,6 +958,7 @@ export class SSCofficialComponent implements OnInit {
 				}else{
 					$(n).removeClass('hide_it')
 				}
+				
 			});
 			if (liWidth<ulMax) {
 				$('.tab_li').removeClass('hide_it');
@@ -947,6 +1010,7 @@ export class SSCofficialComponent implements OnInit {
 			}else{
 				that.up_ball = 2
 			}
+			
 			that.currtabname = that.menu_2[0].menu[0].name;
 			// 配置规则提示
 			that.now_tips_menu = that.status.menu_1+'_'+that.status.menu_2;
@@ -1157,6 +1221,8 @@ export class SSCofficialComponent implements OnInit {
 	}
 	// 限制input输入格式
 	regUpright(){
+		console.log('变了变')
+
 		if (this.multiple_input<0||this.multiple_input%1!=0||this.multiple_input === null) {
 			this.multiple_input = parseInt(this.multiple_input.toString().replace(/\D/g,''))
 			this.multiple_input = Math.abs(this.multiple_input);
@@ -1180,7 +1246,12 @@ export class SSCofficialComponent implements OnInit {
     }
 
 	show_tips(item,em){
-		this.now_tips = this.lot_rules[this.now_tips_menu][item];
+		if(item === 'reward_rule'){
+			this.now_tips = this.other_rules[item];
+		}else{
+			this.now_tips = this.lot_rules[this.now_tips_menu][item];
+		}
+		
 		em.classList.add("tipsshow");
 	}
 	hid_tips(item,em){
@@ -1201,6 +1272,7 @@ export class SSCofficialComponent implements OnInit {
 	　　 return objE.childNodes;
 	};
 	show_layer(param,nextrun){
+		console.log('是否是什么东西')
 		let msg = param.msg;
 		let til = param.til;
 		let self = this;
@@ -1217,9 +1289,11 @@ export class SSCofficialComponent implements OnInit {
 			dom.addClass('tobig')
 		}, 10)
 		window.onresize = function () {
+			console.log('x')
 		}
 	}
 	hid_layer(){
+		console.log('有反应么')
 		document.getElementById("layer").innerHTML = '';
 	}
 }
