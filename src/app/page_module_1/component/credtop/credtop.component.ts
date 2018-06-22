@@ -72,15 +72,15 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
               text: "天津时时彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialssc/cq",
-              linkc: "/lottery/creditssc/cq"
+              linko: "/lottery/officialssc/tj",
+              linkc: "/lottery/creditssc/tj"
             },
             {
               text: "新疆时时彩",
               officialssc:true,
               creditssc:true,
-              linko: "/lottery/officialssc/cq",
-              linkc: "/lottery/creditssc/cq"
+              linko: "/lottery/officialssc/xq",
+              linkc: "/lottery/creditssc/xq"
             },
           ]
         },
