@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ElementRef } from "@angular/core";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Router, Route, ActivatedRoute, Params } from "@angular/router";
 import userModel from "../../../../status/user.model";
 import { Base } from '../../../../factory/base.model';
 
@@ -108,7 +108,7 @@ export class SscComponent implements OnInit, OnDestroy {
           value: ""
         }
       ],
-      data2: []
+      data2: this.setempty(),
     }
   ];
   public betdatab = [
@@ -355,7 +355,7 @@ export class SscComponent implements OnInit, OnDestroy {
     money: "-"
   };
 
-  constructor(private el: ElementRef, private router: Router) {}
+  constructor(private el: ElementRef, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.loadpage = userModel.platform;
@@ -690,7 +690,7 @@ export class SscComponent implements OnInit, OnDestroy {
           }
         }
         for (let q = 0; q < d2.length; q++) {
-          if (Number(d2[q].value) > 0) {
+          if (Number(d2[q].value) > 0 && d2[q].numb !== null) {
             let l = data.length;
             data[l] = Object.assign({}, this.subob);
             data[l].channel = d[i].title;
@@ -738,6 +738,11 @@ export class SscComponent implements OnInit, OnDestroy {
   linkrouter(t) {
     this.router.navigate([t]);
   }
+  routlink(){
+    let str ;
+    this.route.params.subscribe(data=>str=data.id);
+    this.router.navigate(['/lottery/officialssc', str]);
+  }
 
   // 设置整合 球的数据
   setball() {
@@ -759,5 +764,14 @@ export class SscComponent implements OnInit, OnDestroy {
       };
     }
     return data;
+  }
+  setempty(){
+    let data = [];
+      for (let i = 0; i < 10; i++) {
+        let o = Object.assign({}, this.BALL);
+        o.numb = null;
+        data.push(o);
+      }
+      return data;
   }
 }

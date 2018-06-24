@@ -11,6 +11,7 @@ const routes = [
   {
     path: "",
     redirectTo: "cq",
+    pathMatch: 'full',
   },
   {
     path: ":id",
