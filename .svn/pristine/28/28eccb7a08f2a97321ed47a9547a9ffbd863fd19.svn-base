@@ -183,8 +183,8 @@ export class IndexComponent implements OnInit {
     {
       src: require("../images/VR_cai.jpg"),
       title: "VR彩",
-    //   link: "/lottery/creditpk10"
-      link: "/lottery/vrc"
+      link: "/lottery/creditpk10"
+    //   link: "/lottery/vrc"
     }
   ];
   // 投注排行和中奖排行数据
