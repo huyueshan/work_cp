@@ -170,6 +170,7 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit() {}
   ngOnDestroy() {}
 
+  // 特码包三选择框事件
   sanbaoclick(i) {
     let d = this.selballdata;
     d.number = i;
@@ -210,11 +211,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.rangevalue < 7.8) {
       this.rangevalue += 0.1;
     }
-  }
-  // 切换玩法事件 /整合/龙虎斗/全五中一
-  togtype(i) {
-    this.type = i;
-    this.setallmoney.value = "";
   }
   // 切换一般 /快捷 事件
   tabclick(i) {
@@ -285,7 +281,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   //====快选金额事件end=============
 
-  // 全五中一 和底部快捷选项输入框 获得焦点事件
   // curinpt为当前操作输入框 变量
   // i 数组当前index
   inmoneyfocus(e, i) {
@@ -461,29 +456,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     let data = [];
     for (let i = 0; i < 28; i++) {
       data[i] = i;
-    }
-    return data;
-  }
-  //del
-  setbigorsmall() {
-    let data = [];
-    let d = ["大", "小", "单", "双"];
-    for (let i = 0; i < d.length; i++) {
-      data[i] = {
-        name: d[i],
-        value: ""
-      };
-    }
-    return data;
-  }
-  setvs() {
-    let data = [];
-    for (let q = 1; q <= 10; q++) {
-      for (let w = q + 1; w <= 10; w++) {
-        let o = Object.assign({}, this.BALL2);
-        o.name = q + "-" + w;
-        data.push(o);
-      }
     }
     return data;
   }
