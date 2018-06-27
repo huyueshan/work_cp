@@ -102,7 +102,7 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     number: 1,
     left: "0px",
     value1: { value: 0, styn: "gray" },
-    value2: { value: 8, styn: "blue" },
+    value2: { value: 22, styn: "blue" },
     value3: { value: 6, styn: "red" },
     show: false
   };

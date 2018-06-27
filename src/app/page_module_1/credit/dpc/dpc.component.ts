@@ -37,10 +37,11 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
   public delay = true; // 选择金额框判断
   public boxshow = false; // 选择金额框显示判断
   public boxvalid = true; // 选择金额框禁用判断
-  public type = 2; // 控制 玩法
+  public type = 10; // 控制 玩法
   public curinpt; //当前操作的金额输入框
   public selectbtnvalue = 0; //控制 一般 、快捷按钮数据
   public inputshow = true;
+  public allinput = false;
   public btolast = 0; //控制 前中后选择
   public selmoeny = [100, 200, 500, 1000, 5000]; // 活动选择金额框数据
   public BALL = {
@@ -49,10 +50,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     green: false,
     blue: false,
     gray: false,
+    checked: false,
     value: ""
   };
   public BALL2 = {
     name: "",
+    checked: false,
     value: ""
   };
   public typedata = [
@@ -79,6 +82,25 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     x: "",
     y: ""
   };
+  public optionsdata = {
+    zhengte: [
+      "正码特一",
+      "正码特二",
+      "正码特三",
+      "正码特四",
+      "正码特五",
+      "正码特六"
+    ],
+    zhengteactive: 0,
+    lianma: ["单选/复式", "胆拖", "生肖对碰", "属性对碰", "混合对碰"],
+    lianmaactive: 0,
+    lianmastyle: ["三中二", "三全中", "二全中", "二中特", "特串"],
+    lianmastactive: 0,
+    zixuanno:["五不中","六不中","七不中","八不中","九不中","十不中","十一不中","十二不中",],
+    zixuactive:0,
+
+  };
+  public zhengma = ["单","双","大","小","合单","合双","红波","蓝波","绿波"];
   public dpcdata1 = {
     title: "特码",
     data1: this.setball(),
@@ -147,7 +169,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
       { name: "绿小", value: "", data: this.setball2("green", 24) }
     ]
   };
-
   public dpcdata3 = {
     title: "特肖",
     data1: [
@@ -167,9 +188,93 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
   };
   public dpcdata4 = {
     title: "正码",
-    data1: this.setball(),
+    data1: this.setball()
   };
+  public dpcdata5 = {
+    title: "正特 - 正码特一",
+    data1: this.setball()
+  };
+  public dpcdata6 = [
+    { title: "正码一", data1: this.setzhengma() },
+    { title: "正码二", data1: this.setzhengma() },
+    { title: "正码三", data1: this.setzhengma() },
+    { title: "正码四", data1: this.setzhengma() },
+    { title: "正码五", data1: this.setzhengma() },
+    { title: "正码六", data1: this.setzhengma() }
+  ];
 
+  public dpcdata7 = {
+    title: "连码 - 单选/复式 - 三中二",
+    data1: this.setball()
+  };
+  public dpcdata8 = {
+    title: "一肖",
+    data1: [
+      { name: "鼠", value: "", data: this.setball3(0) },
+      { name: "牛", value: "", data: this.setball3(1) },
+      { name: "虎", value: "", data: this.setball3(2) },
+      { name: "兔", value: "", data: this.setball3(3) },
+      { name: "龙", value: "", data: this.setball3(4) },
+      { name: "蛇", value: "", data: this.setball3(5) },
+      { name: "马", value: "", data: this.setball3(6) },
+      { name: "羊", value: "", data: this.setball3(7) },
+      { name: "猴", value: "", data: this.setball3(8) },
+      { name: "鸡", value: "", data: this.setball3(9) },
+      { name: "狗", value: "", data: this.setball3(10) },
+      { name: "猪", value: "", data: this.setball3(11) }
+    ]
+  };
+  public dpcdata9 = {
+    title: "尾数",
+    data1: [
+      { name: "1尾", value: "", data: this.setweiball(1) },
+      { name: "2尾", value: "", data: this.setweiball(2) },
+      { name: "3尾", value: "", data: this.setweiball(3) },
+      { name: "4尾", value: "", data: this.setweiball(4) },
+      { name: "5尾", value: "", data: this.setweiball(5) },
+      { name: "6尾", value: "", data: this.setweiball(6) },
+      { name: "7尾", value: "", data: this.setweiball(7) },
+      { name: "8尾", value: "", data: this.setweiball(8) },
+      { name: "9尾", value: "", data: this.setweiball(9) },
+      { name: "0尾", value: "", data: this.setweiball(0) },
+    ]
+  };
+  public dpcdata10 = {
+    title: "合肖",
+    data1: [
+      { name: "鼠", value: "", data: this.sethexiaoball(0) },
+      { name: "牛", value: "", data: this.sethexiaoball(1) },
+      { name: "虎", value: "", data: this.sethexiaoball(2) },
+      { name: "兔", value: "", data: this.sethexiaoball(3) },
+      { name: "龙", value: "", data: this.sethexiaoball(4) },
+      { name: "蛇", value: "", data: this.sethexiaoball(5) },
+      { name: "马", value: "", data: this.sethexiaoball(6) },
+      { name: "羊", value: "", data: this.sethexiaoball(7) },
+      { name: "猴", value: "", data: this.sethexiaoball(8) },
+      { name: "鸡", value: "", data: this.sethexiaoball(9) },
+      { name: "狗", value: "", data: this.sethexiaoball(10) },
+      { name: "猪", value: "", data: this.sethexiaoball(11) }
+    ]
+  };
+  public data10_1 = [
+    { title: "合肖一肖", value1:"合肖一肖 - 中", value2:"合肖一肖 - 不中", },
+    { title: "合肖二肖", value1:"合肖二肖 - 中", value2:"合肖二肖 - 不中", },
+    { title: "合肖三肖", value1:"合肖三肖 - 中", value2:"合肖三肖 - 不中", },
+    { title: "合肖四肖", value1:"合肖四肖 - 中", value2:"合肖四肖 - 不中", },
+    { title: "合肖五肖", value1:"合肖五肖 - 中", value2:"合肖五肖 - 不中", },
+    { title: "合肖六肖", value1:"合肖六肖 - 中", value2:"合肖六肖 - 不中", },
+    { title: "合肖七肖", value1:"合肖七肖 - 中", value2:"合肖七肖 - 不中", },
+    { title: "合肖八肖", value1:"合肖八肖 - 中", value2:"合肖八肖 - 不中", },
+    { title: "合肖九肖", value1:"合肖九肖 - 中", value2:"合肖九肖 - 不中", },
+    { title: "合肖十肖", value1:"合肖十肖 - 中", value2:"合肖十肖 - 不中", },
+    { title: "合肖十一肖", value1:"合肖十一肖 - 中", value2:"合肖十一肖 - 不中", },
+  ]
+  public radvalue;
+  
+  public dpcdata11 = {
+    title: "自选不中 - 单选/复式 - 三中二",
+    data1: this.setball()
+  };
 
   // 遮罩层
   public shade = {
@@ -231,7 +336,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
       this.subob.channel = "低频彩 - " + this.routeid;
     });
 
-    console.log(this.dpcdata3.data1);
+    console.log(this.sethexiaoball(2));
   }
   ngAfterViewInit() {}
   ngOnDestroy() {}
@@ -255,6 +360,10 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
   // 切换玩法事件 /整合/龙虎斗/全五中一
   togtype(i) {
     this.type = i;
+    this.allinput = false;
+    if (i === 7 ||i === 10 ||i === 11) {
+      this.allinput = true;
+    }
     this.setallmoney.value = "";
   }
   // 切换一般 /快捷 事件
@@ -280,7 +389,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
       p.shade.show = true;
     }
   }
-
   //====快选金额事件开始=============
   savenum() {
     let d = [];
@@ -341,7 +449,10 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
   inmoney1focus(e, n, t, i, z) {
     let _that = this;
     let str = "dpcdata" + n;
-    if (z === null) {
+    // ===============
+    if (_that[str] instanceof Array) {
+      this.curinpt = _that[str][i][t][z];
+    } else if (z === null) {
       this.curinpt = _that[str][t][i];
     } else {
       this.curinpt = _that[str][t][i][z];
@@ -350,10 +461,10 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   // 龙虎斗 金额框获得焦点事件 /curinpt为当前操作输入框 变量
   // t、i 、q 为对应数据的key值或者index
-  inmoney2focus(e, i, q) {
-    // this.curinpt = this.pcdata2[i][q];
-    this.setposition(e);
-  }
+  //   inmoney2focus(e, i, q) {
+  //     // this.curinpt = this.pcdata2[i][q];
+  //     this.setposition(e);
+  //   }
 
   //页面输入框焦点离开后隐藏金额选择框方法
   inmoneyblur() {
@@ -380,17 +491,67 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
       this.delay = false;
     }, 200);
   }
-  // 选择框点击选项方法，赋值给当前操作的输入框
-  optinclick(i) {
-    if (this.curinpt === this.setallmoney) {
-      this.amend(i);
-    }
-    this.curinpt.value = i;
-    this.boxshow = false;
+  // 正特选项点击事件
+  zhengteclick(i) {
+    let o = this.optionsdata;
+    o.zhengteactive = i;
+    this.dpcdata5.title = "正特 - " + o.zhengte[o.zhengteactive];
   }
+  lianmaclick(i, n) {
+    let o = this.optionsdata;
+    if (n) {
+      o.lianmaactive = i;
+    } else {
+      o.lianmastactive = i;
+    }
+    this.dpcdata7.title =
+      "连码 - " +
+      o.lianma[o.lianmaactive] +
+      " - " +
+      o.lianmastyle[o.lianmastactive];
+  }
+  zixuanclick(i){
+    this.optionsdata.zixuactive = i;
+    this.dpcdata11.title = "自选不中 - "+ this.optionsdata.zixuanno[i];
+  }
+  // 多选框选择事件
+  chechange(i) {
+    let str = "dpcdata" + this.type;
+    let _that = this;
+    let d = _that[str].data1;
+    if (d[i].checked) {
+      d[i].value = this.setallmoney.value;
+    } else {
+      d[i].value = "";
+    }
+  }
+  // 单选框选择事件
+  radchange(i,n) {
+     this.dpcdata10.title = this.radvalue;
+  }
+    // 选择框点击选项方法，赋值给当前操作的输入框
+    optinclick(i) {
+        if (this.curinpt === this.setallmoney) {
+          this.amend(i);
+        }
+        this.curinpt.value = i;
+        this.boxshow = false;
+      }
+    
   // 重置当前页面所有的输入框
   reset() {
     this.amend("");
+    let t = this.type;
+    // 如果是有多选框的页面
+    if (t === 7 ||t === 10 ||t === 11) {
+      let str = "dpcdata" + t;
+      let _that = this;
+      let d = _that[str].data1;
+      for (let i = 0; i < d.length; i++) {
+        d[i].value = "";
+        d[i].checked = false;
+      }
+    }
     this.setallmoney.value = "";
   }
   // 快捷选项下的输入框值改变后的方法，
@@ -401,34 +562,39 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
   amend(v) {
     let str = "dpcdata" + this.type;
     let _that = this;
-    let d1 = _that[str].data1;
-    let d2 = _that[str].data2;
-    if (d1) {
-      for (let q = 0; q < d1.length; q++) {
-        if (d1[q] instanceof Array) {
-          for (let w = 0; w < d1[q].length; w++) {
-            if (d1[q][w].numb !== null && d1[q][w].name !== null) {
-              d1[q][w].value = v;
-            }
-          }
-        } else {
-          if (d1[q].numb !== null && d1[q].name !== null) {
-            d1[q].value = v;
-          }
-        }
+    if (_that[str] instanceof Array) {
+      for (let q = 0; q < _that[str].length; q++) {
+        let d1 = _that[str][q].data1;
+        let d2 = _that[str][q].data2;
+        this.setvalue(d1, v);
+        this.setvalue(d2, v);
       }
+    } else {
+      let d1 = _that[str].data1;
+      let d2 = _that[str].data2;
+      this.setvalue(d1, v);
+      this.setvalue(d2, v);
     }
-    if (d2) {
-      for (let q = 0; q < d2.length; q++) {
-        if (d2[q] instanceof Array) {
-          for (let w = 0; w < d2[q].length; w++) {
-            if (d2[q][w].numb !== null && d2[q][w].name !== null) {
-              d2[q][w].value = v;
+  }
+  setvalue(d, v) {
+    if (d) {
+      for (let q = 0; q < d.length; q++) {
+        if (d[q] instanceof Array) {
+          for (let w = 0; w < d[q].length; w++) {
+            if (d[q][w].numb !== null && d[q][w].name !== null) {
+              d[q][w].value = v;
             }
           }
         } else {
-          if (d2[q].numb !== null && d2[q].name !== null) {
-            d2[q].value = v;
+          if (d[q].numb !== null && d[q].name !== null) {
+            // 如果是有多选框的页面
+            if (this.type === 7 || this.type === 10 || this.type === 11) {
+              if (d[q].checked) {
+                d[q].value = v;
+              }
+            } else {
+              d[q].value = v;
+            }
           }
         }
       }
@@ -443,30 +609,56 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
   sub() {
     let data = [];
     this.popup.sub.top = "10px";
-    if (this.type===1) {
-        this.popup.sub.top = "300px";
+    if (this.type === 1) {
+      this.popup.sub.top = "300px";
     }
+
     let point = (11.633 + (1.3 / 7.8) * this.rangevalue).toFixed(3);
     let _that = this;
     let str = "dpcdata" + this.type;
-    let d1 = _that[str].data1;
-    let d2 = _that[str].data2;
-    if (d1) {
-      if (d1[0] instanceof Array) {
-        for (let w = 0; w < d1.length; w++) {
-          this.setsubdata(d1[w], data, _that[str].title, point);
+    if (_that[str] instanceof Array) {
+      for (let q = 0; q < _that[str].length; q++) {
+        let d1 = _that[str][q].data1;
+        let d2 = _that[str][q].data2;
+        if (d1) {
+          if (d1[0] instanceof Array) {
+            for (let w = 0; w < d1.length; w++) {
+              this.setsubdata(d1[w], data, _that[str][q].title, point);
+            }
+          } else {
+            this.setsubdata(d1, data, _that[str][q].title, point);
+          }
         }
-      } else {
-        this.setsubdata(d1, data, _that[str].title, point);
+        if (d2) {
+          if (d2[0] instanceof Array) {
+            for (let w = 0; w < d2.length; w++) {
+              this.setsubdata(d2[w], data, _that[str][q].title, point);
+            }
+          } else {
+            this.setsubdata(d2, data, _that[str][q].title, point);
+          }
+        }
       }
-    }
-    if (d2) {
-      if (d2[0] instanceof Array) {
-        for (let w = 0; w < d2.length; w++) {
-          this.setsubdata(d2[w], data, _that[str].title, point);
+    } else {
+      let d1 = _that[str].data1;
+      let d2 = _that[str].data2;
+      if (d1) {
+        if (d1[0] instanceof Array) {
+          for (let w = 0; w < d1.length; w++) {
+            this.setsubdata(d1[w], data, _that[str].title, point);
+          }
+        } else {
+          this.setsubdata(d1, data, _that[str].title, point);
         }
-      } else {
-        this.setsubdata(d2, data, _that[str].title, point);
+      }
+      if (d2) {
+        if (d2[0] instanceof Array) {
+          for (let w = 0; w < d2.length; w++) {
+            this.setsubdata(d2[w], data, _that[str].title, point);
+          }
+        } else {
+          this.setsubdata(d2, data, _that[str].title, point);
+        }
       }
     }
 
@@ -507,7 +699,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     this.router.navigate([t]);
   }
 
-  // 设置整合 球的数据
+  // 设置波色球的数据
   setball() {
     let data = [];
     for (let q = 1; q <= 50; q++) {
@@ -574,6 +766,35 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     data[data.length - 1].numb = null;
     return data;
   }
+// 设置合肖数据
+sethexiaoball(n){
+    let data = this.setshengxiaoball();
+    for (let i = 0; i < data.length; i++) {
+       for (let q = 0; q < data[i].length; q++) {
+           if(data[i][q].numb === 49){
+               data[i].splice(q,1);
+           }
+       }
+    }
+    return data[n];
+}
+// 设置尾号数据
+setweiball(n){
+    let d = this.setball();
+    let data = [];
+    for (let i = 0; i < 10; i++) {
+        data[i] = [];
+        for (let q = 0; q < d.length; q++) {
+            if (d[q].numb % 10 === i) {
+                let o = Object.assign({},d[q]);
+                data[i].push(o);
+            }
+        }
+    }
+    return data[n];
+}
+
+  // 过滤波色 大小数据。 t为波色 n为大小判断
   setball2(t, n) {
     let d = this.setball();
     d.splice(48);
@@ -590,7 +811,13 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     });
     return data;
   }
+  // 设置生肖球数据
   setball3(z) {
+    let data = this.setshengxiaoball();
+    return data[z];
+  }
+  // 设置生肖球数据
+  setshengxiaoball() {
     let d = this.setball();
     d.splice(49);
     let data = [];
@@ -605,6 +832,17 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
       }
       data[n].push(o);
     }
-    return data[z];
+    return data;
+  }
+  // 设置正码球数据
+  setzhengma() {
+    let data = [];
+    let d = this.zhengma;
+    for (let i = 0; i < d.length; i++) {
+      let o = Object.assign({}, this.BALL2);
+      o.name = d[i];
+      data.push(o);
+    }
+    return data;
   }
 }

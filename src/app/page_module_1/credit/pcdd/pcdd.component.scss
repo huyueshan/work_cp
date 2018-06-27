@@ -40,6 +40,18 @@
 .color_b {
     color: #002eff;
 }
+.bgred{
+    background: url('../../images/ball26.png') -10px -10px;
+}
+.bgblue{
+    background: url('../../images/ball26.png') -10px -102px;
+}
+.bggreen{
+    background: url('../../images/ball26.png') -10px -56px;
+}
+.bggray{
+    background: url('../../images/ball26.png') -10px -148px;
+}
 
 .sscbox {
     width: 100%;
@@ -282,21 +294,8 @@
                         height: 26px;
                         line-height: 26px;
                         color: white;
-                        background-color: #fe8f00;
-                        border-radius: 50%; 
                     }
-                    .bgred{
-                        background: url('../../images/ball26.png') -10px -10px;
-                    }
-                    .bgblue{
-                        background: url('../../images/ball26.png') -10px -56px;
-                    }
-                    .bggreen{
-                        background: url('../../images/ball26.png') -10px -102px;
-                    }
-                    .bggray{
-                        background: url('../../images/ball26.png') -10px -148px;
-                    }
+            
                 }
                 .item3 {
                     flex:4;
@@ -405,18 +404,6 @@
                        font-size: 14px;
                        color: white;
                    } 
-                   .bgred{
-                    background: url('../../images/ball26.png') -10px -10px;
-                }
-                .bgblue{
-                    background: url('../../images/ball26.png') -10px -56px;
-                }
-                .bggreen{
-                    background: url('../../images/ball26.png') -10px -102px;
-                }
-                .bggray{
-                    background: url('../../images/ball26.png') -10px -148px;
-                }
                 }
                 .arrow-down {
                     width:8px;

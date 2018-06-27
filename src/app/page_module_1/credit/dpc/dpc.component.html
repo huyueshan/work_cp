@@ -9,7 +9,7 @@
                             <span *ngFor="let item of typedata" [ngClass]="{tabactive:this.type == item.id}" (click)="togtype(item.id)">{{item.name}}</span>
                         </div>
                     </div>
-                    <div class="flex-r selctbox" onselectstart="return false;" style="-moz-user-select:none;">
+                    <div class="flex-r selctbox">
                         <span class="flex-r">
                             <strong>$</strong>
                             <span class="flex-r rangebox">
@@ -22,8 +22,8 @@
                             </span>
                         </span>
                         <span class="flex-r btngroup">
-                            <button [ngClass]="{btnactive:selectbtnvalue === 0}" (click)="tabclick(0)">一般</button>
-                            <button [ngClass]="{btnactive:selectbtnvalue === 1}" (click)="tabclick(1)">快捷</button>
+                            <button [ngClass]="{btnactive:selectbtnvalue === 0}" (click)="tabclick(0)" [hidden]="type===7 ||type===10 ||type===11">一般</button>
+                            <button [ngClass]="{btnactive:selectbtnvalue === 1}" (click)="tabclick(1)" [hidden]="type===7 ||type===10 ||type===11">快捷</button>
                             <button class="kuxuan" (click)="tabclick(2)">快选金额</button>
                         </span>
                     </div>
@@ -33,7 +33,6 @@
                         <div class="flex-c content content1" *ngIf="type === 1">
                             <div class="flex-r conmain">
                                 <div class="flex-c conmainbox" *ngFor="let item of contenttoptitle;">
-
                                     <div class="flex-r contenttop">
                                         <span class="flex-r itembox">
                                             <span class="item1">号码</span>
@@ -72,14 +71,11 @@
                                     </span>
                                 </div>
                             </div>
-
-
                         </div>
                         <!-- 色波 -->
                         <div class="flex-c content content1" *ngIf="type === 2">
                             <div class="flex-r conmain">
                                 <div class="flex-c conmainbox conmainbox1">
-
                                     <div class="flex-r contenttop">
                                         <span class="flex-r itembox">
                                             <span class="item1">项目</span>
@@ -87,7 +83,6 @@
                                             <span class="item3" *ngIf="inputshow">金额</span>
                                         </span>
                                         <span class="flex-r item4box">号码</span>
-
                                     </div>
                                 </div>
                             </div>
@@ -108,13 +103,11 @@
                                     </span>
                                 </div>
                             </div>
-
                         </div>
                         <!-- 特肖 -->
                         <div class="flex-c content content1" *ngIf="type === 3">
                             <div class="flex-r conmain">
                                 <div class="flex-r conmainbox conmainbox2">
-
                                     <div class="flex-r contenttop">
                                         <span class="flex-r itembox">
                                             <span class="item1">生肖</span>
@@ -122,7 +115,6 @@
                                             <span class="item3" *ngIf="inputshow">金额</span>
                                         </span>
                                         <span class="flex-r item4box">号码</span>
-
                                     </div>
                                 </div>
                                 <div class="flex-r conmainbox conmainbox2">
@@ -155,7 +147,6 @@
                                     </span>
                                 </div>
                             </div>
-
                         </div>
                         <!-- 正码 -->
                         <div class="flex-c content content1" *ngIf="type === 4">
@@ -186,14 +177,318 @@
                                     </span>
                                 </div>
                             </div>
+                        </div>
 
+                        <!-- 正特 -->
+                        <div class="flex-c content content1" *ngIf="type === 5">
+                            <div class="flex-r electbox">
+                                <span class="flex-r btngroup">
+                                    <button *ngFor="let item of optionsdata.zhengte; let i=index" class="active" [ngClass]="{active: optionsdata.zhengteactive === i}"
+                                        (click)="zhengteclick(i)">{{item}}</button>
+                                </span>
+
+                            </div>
+                            <div class="flex-r conmain">
+                                <div class="flex-c conmainbox" *ngFor="let item of contenttoptitle;">
+
+                                    <div class="flex-r contenttop">
+                                        <span class="flex-r itembox">
+                                            <span class="item1">号码</span>
+                                            <span class="item2">赔率</span>
+                                            <span class="item3" *ngIf="inputshow">金额</span>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-c conmain" style="height: 400px;">
+                                <div class="flex-c conmainbox" *ngFor="let item of dpcdata5.data1; let i=index">
+                                    <span class="flex-r itembox">
+                                        <span class="flex-r item1 " *ngIf="item.numb !== null">
+                                            <i [ngClass]="{bgred: item.red , bgblue: item.blue, bggreen: item.green }">{{item.numb}}</i>
+                                        </span>
+                                        <span class="item2 color_y" *ngIf="item.numb !== null">{{(11.633+(1.3/7.8*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item3" *ngIf="inputshow && item.numb !== null">
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney1focus($event, 5,'data1', i,null)"
+                                                (blur)="inmoneyblur()" (keyup)="changereg()">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 正码1-6 -->
+                        <div class="flex-c content content1" *ngIf="type === 6">
+                            <div class="flex-r conmain">
+                                <div class="flex-c conmainbox conmainbox3" *ngFor="let item of dpcdata6; let i=index">
+                                    <div class="flex-r contenttop contenttop1">
+                                        <span class="flex-r itembox">
+                                            {{item.title}}
+                                        </span>
+                                    </div>
+                                    <div class="flex-r contenttop">
+                                        <span class="flex-r itembox">
+                                            <span class="item1">号码</span>
+                                            <span class="item2">赔率</span>
+                                            <span class="item3" *ngIf="inputshow">金额</span>
+                                        </span>
+
+                                    </div>
+                                    <span class="flex-r itembox" *ngFor="let child of item.data1; let q=index">
+                                        <span class="item1" *ngIf="child.name!==null">
+                                            {{child.name}}
+                                        </span>
+                                        <span class="item2 color_y" *ngIf="child.name!==null">{{(11.633+(1.3/7.8*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item3" *ngIf="inputshow">
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="child.value" (focus)="inmoney1focus($event, 6,'data1', i, q)"
+                                                (blur)="inmoneyblur()" (keyup)="changereg()" *ngIf="child.name!==null">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 连码 -->
+                        <div class="flex-c content content1" *ngIf="type === 7">
+                            <div class="flex-r electbox">
+                                <span class="flex-r btngroup">
+                                    <button *ngFor="let item of optionsdata.lianma; let i=index" [ngClass]="{active: optionsdata.lianmaactive === i}"
+                                        (click)="lianmaclick(i,1)">{{item}}</button>
+                                </span>
+
+                            </div>
+                            <div class="flex-r conmain">
+                                <div class="flex-c conmainbox" *ngFor="let item of contenttoptitle;">
+
+                                    <div class="flex-r contenttop">
+                                        <span class="flex-r itembox">
+                                            <span class="item1">号码</span>
+                                            <span class="item2">赔率</span>
+                                            <span class="item3" *ngIf="inputshow">勾选</span>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-c conmain" style="height: 400px;">
+                                <div class="flex-c conmainbox" *ngFor="let item of dpcdata7.data1; let i=index">
+                                    <span class="flex-r itembox">
+                                        <span class="flex-r item1 " *ngIf="item.numb !== null">
+                                            <i [ngClass]="{bgred: item.red , bgblue: item.blue, bggreen: item.green }">{{item.numb}}</i>
+                                        </span>
+                                        <span class="item2 color_y" *ngIf="item.numb !== null">{{(11.633+(1.3/7.8*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="flex-r item3" *ngIf="item.numb !== null">
+                                            <input type="checkbox" name="check" [(ngModel)]="item.checked" (change)="chechange(i)" />
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="flex-r electbox">
+                                <span class="flex-r btngroup">
+                                    <span>类别</span>
+                                    <button *ngFor="let item of optionsdata.lianmastyle; let i=index" [ngClass]="{active: optionsdata.lianmastactive === i}"
+                                        (click)="lianmaclick(i,0)">{{item}}</button>
+                                </span>
+
+                            </div>
+                        </div>
+                        <!-- 一肖 -->
+                        <div class="flex-c content content1" *ngIf="type === 8">
+                            <div class="flex-r conmain">
+                                <div class="flex-r conmainbox conmainbox2">
+                                    <div class="flex-r contenttop">
+                                        <span class="flex-r itembox">
+                                            <span class="item1">生肖</span>
+                                            <span class="item2">赔率</span>
+                                            <span class="item3" *ngIf="inputshow">金额</span>
+                                        </span>
+                                        <span class="flex-r item4box">号码</span>
+                                    </div>
+                                </div>
+                                <div class="flex-r conmainbox conmainbox2">
+
+                                    <div class="flex-r contenttop">
+                                        <span class="flex-r itembox">
+                                            <span class="item1">生肖</span>
+                                            <span class="item2">赔率</span>
+                                            <span class="item3" *ngIf="inputshow">金额</span>
+                                        </span>
+                                        <span class="flex-r item4box">号码</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-r conmain">
+                                <div class="flex-r conmainbox conmainbox2" *ngFor="let item of dpcdata8.data1; let i=index">
+                                    <span class="flex-r itembox">
+                                        <span class="flex-r item1 " *ngIf="item.name !== null">
+                                            {{item.name}}
+                                        </span>
+                                        <span class="item2 color_y" *ngIf="item.name !== null">{{(11.633+(1.3/7.8*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item3" *ngIf="inputshow && item.name !== null">
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney1focus($event, 8,'data1', i, null)"
+                                                (blur)="inmoneyblur()" (keyup)="changereg()">
+                                        </span>
+                                    </span>
+                                    <span class="flex-r item4box">
+                                        <i *ngFor="let child of item.data" [ngClass]="{bgred: child.red , bgblue: child.blue, bggreen: child.green }">{{child.numb}}</i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 尾数 -->
+                        <div class="flex-c content content1" *ngIf="type === 9">
+                            <div class="flex-r conmain">
+                                <div class="flex-r conmainbox conmainbox2">
+                                    <div class="flex-r contenttop">
+                                        <span class="flex-r itembox">
+                                            <span class="item1">生肖</span>
+                                            <span class="item2">赔率</span>
+                                            <span class="item3" *ngIf="inputshow">金额</span>
+                                        </span>
+                                        <span class="flex-r item4box">号码</span>
+                                    </div>
+                                </div>
+                                <div class="flex-r conmainbox conmainbox2">
+
+                                    <div class="flex-r contenttop">
+                                        <span class="flex-r itembox">
+                                            <span class="item1">生肖</span>
+                                            <span class="item2">赔率</span>
+                                            <span class="item3" *ngIf="inputshow">金额</span>
+                                        </span>
+                                        <span class="flex-r item4box">号码</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-r conmain">
+                                <div class="flex-r conmainbox conmainbox2" *ngFor="let item of dpcdata9.data1; let i=index">
+                                    <span class="flex-r itembox">
+                                        <span class="flex-r item1 " *ngIf="item.name !== null">
+                                            {{item.name}}
+                                        </span>
+                                        <span class="item2 color_y" *ngIf="item.name !== null">{{(11.633+(1.3/7.8*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item3" *ngIf="inputshow && item.name !== null">
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney1focus($event, 9,'data1', i, null)"
+                                                (blur)="inmoneyblur()" (keyup)="changereg()">
+                                        </span>
+                                    </span>
+                                    <span class="flex-r item4box">
+                                        <i *ngFor="let child of item.data" [ngClass]="{bgred: child.red , bgblue: child.blue, bggreen: child.green }">{{child.numb}}</i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 合肖 -->
+                        <div class="flex-c content content1" *ngIf="type === 10">
+                            <div class="flex-r conmain">
+                                <div class="flex-r conmainbox conmainbox4">
+                                    <div class="flex-r contenttop">
+                                        <span class="flex-r itembox">
+                                            <span class="item1">生肖</span>
+                                            <span class="item2">号码</span>
+                                            <span class="item3">勾选</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex-r conmainbox conmainbox4">
+
+                                    <div class="flex-r contenttop">
+                                        <span class="flex-r itembox">
+                                            <span class="item1">生肖</span>
+                                            <span class="item2">号码</span>
+                                            <span class="item3">勾选</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-r conmain">
+                                <div class="flex-r conmainbox conmainbox4" *ngFor="let item of dpcdata10.data1; let i=index">
+                                    <span class="flex-r itembox">
+                                        <span class="flex-r item1 " *ngIf="item.name !== null">
+                                            {{item.name}}
+                                        </span>
+                                        <span class="item2">
+                                            <i *ngFor="let child of item.data" [ngClass]="{bgred: child.red , bgblue: child.blue, bggreen: child.green }">{{child.numb}}</i>
+                                        </span>
+                                        <span class="item3">
+                                            <input type="checkbox" name="check" [(ngModel)]="item.checked" (change)="chechange(i)" />
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="flex-r conmain3">
+                                <div class="itemwrap2" *ngFor="let item of data10_1;let i=index">
+                                    <div class="flex-c itembox2">
+                                        <span class="item1">
+                                            {{item.title}}
+                                        </span>
+                                        <span class="flex-c item2">
+                                            <span class="flex-r item2info">
+                                                <span class="flex-r">
+                                                    <input type="radio" name="hexiao" [(ngModel)]="radvalue" value="{{item.value1}}" (change)="radchange(i,1)">
+                                                    <label>中</label>
+                                                </span>
+                                                <span class="item2 color_y">{{(11.633+(1.3/7.8*rangevalue))| number : '1.0-3'}} </span>
+                                            </span>
+                                            <span class="flex-r item2info">
+                                                <span class="flex-r">
+                                                        <input type="radio" name="hexiao" [(ngModel)]="radvalue" value="{{item.value2}}" (change)="radchange(i,2)">
+                                                        <label>不中</label>
+                                                </span>
+                                                <span class="item2 color_y">{{(11.633+(1.3/7.8*rangevalue))| number : '1.0-3'}} </span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
+
+                        <!-- 自选不中 -->
+                        <div class="flex-c content content1" *ngIf="type === 11">
+                                <div class="flex-r conmain">
+                                    <div class="flex-c conmainbox" *ngFor="let item of contenttoptitle;">
+    
+                                        <div class="flex-r contenttop">
+                                            <span class="flex-r itembox">
+                                                <span class="item1">号码</span>
+                                                <span class="item2">赔率</span>
+                                                <span class="item3" *ngIf="inputshow">勾选</span>
+                                            </span>
+    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-c conmain" style="height: 400px;">
+                                    <div class="flex-c conmainbox" *ngFor="let item of dpcdata11.data1; let i=index">
+                                        <span class="flex-r itembox">
+                                            <span class="flex-r item1 " *ngIf="item.numb !== null">
+                                                <i [ngClass]="{bgred: item.red , bgblue: item.blue, bggreen: item.green }">{{item.numb}}</i>
+                                            </span>
+                                            <span class="item2 color_y" *ngIf="item.numb !== null">{{(11.633+(1.3/7.8*rangevalue))| number : '1.0-3'}} </span>
+                                            <span class="flex-r item3" *ngIf="item.numb !== null">
+                                                <input type="checkbox" name="check" [(ngModel)]="item.checked" (change)="chechange(i)" />
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex-r electbox">
+                                    <span class="flex-r btngroup">
+                                        <button *ngFor="let item of optionsdata.zixuanno; let i=index"  [ngClass]="{active: optionsdata.zixuactive === i}"
+                                            (click)="zixuanclick(i)">{{item}}</button>
+                                    </span>
+    
+                                </div>
+                            </div>
 
                         <!-- 按钮 -->
                         <div class="flex-r subbox">
                             <span class="flex-r btngroup">
-                                <span *ngIf="!inputshow">
+                                <span *ngIf="allinput" class="jine">金额</span>
+                                <span *ngIf="!inputshow || allinput">
                                     <input type="text" maxlength="9" class="inmoney" id="allinmoney" name="allinmoney" [(ngModel)]="setallmoney.value" value=""
                                         (focus)="inmoneyfocus($event,'all')" (blur)="inmoneyblur()" (change)="allchange()" (keyup)="changereg()">
                                 </span>
@@ -242,8 +537,6 @@
                                         <span class="btn2" (click)="savenum()">保存</span>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
 
@@ -287,12 +580,8 @@
                                 </div>
                                 <span class="flex-r foot">总计投注金额
                                     <strong>{{submoney}}</strong> 元 </span>
-
-
                             </div>
-
                         </div>
-
                         <!-- 遮罩层 -->
                         <div class="shade" [style.width.px]="popup.shade.w" [style.height.px]="popup.shade.h" *ngIf="popup.shade.show"></div>
 
