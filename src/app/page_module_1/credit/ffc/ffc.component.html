@@ -132,14 +132,14 @@
                                 <div class="flex-r conmain">
     
                                     <div class="flex-r contenttop contenttop2">
-                                        <span class="flex-r itembo" [ngClass]="{bg_y:btolast===0}" (click)="btolast=0">前三</span>
-                                        <span class="flex-r itembo" [ngClass]="{bg_y:btolast===1}" (click)="btolast=1">中三</span>
-                                        <span class="flex-r itembo" [ngClass]="{bg_y:btolast===2}" (click)="btolast=2">后三</span>
+                                        <span class="flex-r itembo" [ngClass]="{bg_y:btolast===0}" (click)="btolastclick(0)">前三</span>
+                                        <span class="flex-r itembo" [ngClass]="{bg_y:btolast===1}" (click)="btolastclick(1)">中三</span>
+                                        <span class="flex-r itembo" [ngClass]="{bg_y:btolast===2}" (click)="btolastclick(2)">后三</span>
     
                                     </div>
                                 </div>
                                 <div class="flex-r conmain">
-                                    <div class="flex-c conmainbox bomainbox" *ngFor="let item of betdatab; let i=index">
+                                    <div class="flex-c conmainbox bomainbox" *ngFor="let item of betdatab.data1; let i=index">
     
                                         <div class="flex-r contenttop contenttop4">
                                             <span class="flex-r itembox">

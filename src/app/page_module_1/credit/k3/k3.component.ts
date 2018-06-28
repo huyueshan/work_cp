@@ -454,8 +454,15 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
     }
     // 限制输入框只能输入数字
     changereg() {
-        this.curinpt.value = Number(this.curinpt.value.replace(/\D/g, ""));
-    }
+        let v = this.curinpt;
+        v.value = v.value.replace(/\D/g, "");
+        if(Number(v.value)===0 && v.value !== ""){
+          v.value = 0;
+        }
+        if(Number(v.value)>0){
+          v.value = Number(v.value);
+        }
+      }
 
     // 确认提交按钮事件
     sub() {

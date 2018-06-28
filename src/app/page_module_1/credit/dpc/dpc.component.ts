@@ -242,18 +242,18 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
   public dpcdata10 = {
     title: "合肖",
     data1: [
-      { name: "鼠", value: "", data: this.sethexiaoball(0) },
-      { name: "牛", value: "", data: this.sethexiaoball(1) },
-      { name: "虎", value: "", data: this.sethexiaoball(2) },
-      { name: "兔", value: "", data: this.sethexiaoball(3) },
-      { name: "龙", value: "", data: this.sethexiaoball(4) },
-      { name: "蛇", value: "", data: this.sethexiaoball(5) },
-      { name: "马", value: "", data: this.sethexiaoball(6) },
-      { name: "羊", value: "", data: this.sethexiaoball(7) },
-      { name: "猴", value: "", data: this.sethexiaoball(8) },
-      { name: "鸡", value: "", data: this.sethexiaoball(9) },
-      { name: "狗", value: "", data: this.sethexiaoball(10) },
-      { name: "猪", value: "", data: this.sethexiaoball(11) }
+      { name: "鼠", value: "", checked:false, data: this.sethexiaoball(0) },
+      { name: "牛", value: "", checked:false, data: this.sethexiaoball(1) },
+      { name: "虎", value: "", checked:false, data: this.sethexiaoball(2) },
+      { name: "兔", value: "", checked:false, data: this.sethexiaoball(3) },
+      { name: "龙", value: "", checked:false, data: this.sethexiaoball(4) },
+      { name: "蛇", value: "", checked:false, data: this.sethexiaoball(5) },
+      { name: "马", value: "", checked:false, data: this.sethexiaoball(6) },
+      { name: "羊", value: "", checked:false, data: this.sethexiaoball(7) },
+      { name: "猴", value: "", checked:false, data: this.sethexiaoball(8) },
+      { name: "鸡", value: "", checked:false, data: this.sethexiaoball(9) },
+      { name: "狗", value: "", checked:false, data: this.sethexiaoball(10) },
+      { name: "猪", value: "", checked:false, data: this.sethexiaoball(11) }
     ]
   };
   public data10_1 = [
@@ -602,7 +602,14 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   // 限制输入框只能输入数字
   changereg() {
-    this.curinpt.value = Number(this.curinpt.value.replace(/\D/g, ""));
+    let v = this.curinpt;
+    v.value = v.value.replace(/\D/g, "");
+    if(Number(v.value)===0 && v.value !== ""){
+      v.value = 0;
+    }
+    if(Number(v.value)>0){
+      v.value = Number(v.value);
+    }
   }
 
   // 确认提交按钮事件

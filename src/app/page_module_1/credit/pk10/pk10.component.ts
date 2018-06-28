@@ -42,31 +42,14 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
   public inputshow = true;
   public btolast = 0; //控制 前中后选择
   public selmoeny = [100, 200, 500, 1000, 5000]; // 活动选择金额框数据
-  public BALL = {
-    numb: 0,
-    value: ""
-  };
-  public BALL2 = {
-    name: "",
-    value: ""
-  };
+  public routeid ;
+  public BALL = { numb: 0, value: "", };
+  public BALL2 = { name: "", value: "", };
   public typedata = [
-    {
-      id: 1,
-      name: "整合"
-    },
-    {
-      id: 2,
-      name: "第1-10名"
-    },
-    {
-      id: 3,
-      name: "冠亚和值"
-    },
-    {
-      id: 4,
-      name: "冠亚组合"
-    }
+    { id: 1, name: "整合", },
+    { id: 2, name: "第1-10名", },
+    { id: 3, name: "冠亚和值", },
+    { id: 4, name: "冠亚组合", },
   ];
   public contenttoptitle3 = [, , , , ,];
   public setallmoney = {
@@ -78,149 +61,47 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     y: ""
   };
   public pkdata1_1 = [
-    {
-      name: "冠亚大",
-      value: ""
-    },
-    {
-      name: "冠亚小",
-      value: ""
-    },
-    {
-      name: "冠亚单",
-      value: ""
-    },
-    {
-      name: "冠亚双",
-      value: ""
-    }
+    { name: "冠亚大", value: "", },
+    { name: "冠亚小", value: "", },
+    { name: "冠亚单", value: "", },
+    { name: "冠亚双", value: "", }
   ];
 
   public betdatam = [
-    {
-      title: "冠军",
-      data1: this.setbigorsmall()
-    },
-    {
-      title: "亚军",
-      data1: this.setbigorsmall()
-    },
-    {
-      title: "第三名",
-      data1: this.setbigorsmall()
-    },
-    {
-      title: "第四名",
-      data1: this.setbigorsmall()
-    },
-    {
-      title: "第五名",
-      data1: this.setbigorsmall()
-    },
-    {
-      title: "第六名",
-      data1: this.setbigorsmall()
-    },
-    {
-      title: "第七名",
-      data1: this.setbigorsmall()
-    },
-    {
-      title: "第八名",
-      data1: this.setbigorsmall()
-    },
-    {
-      title: "第九名",
-      data1: this.setbigorsmall()
-    },
-    {
-      title: "第十名",
-      data1: this.setbigorsmall()
-    }
+    { title: "冠军", data1: this.setbigorsmall(), },
+    { title: "亚军", data1: this.setbigorsmall(), },
+    { title: "第三名", data1: this.setbigorsmall(), },
+    { title: "第四名", data1: this.setbigorsmall(), },
+    { title: "第五名", data1: this.setbigorsmall(), },
+    { title: "第六名", data1: this.setbigorsmall(), },
+    { title: "第七名", data1: this.setbigorsmall(), },
+    { title: "第八名", data1: this.setbigorsmall(), },
+    { title: "第九名", data1: this.setbigorsmall(), },
+    { title: "第十名", data1: this.setbigorsmall(), },
   ];
   public pkdata1_3 = [
-    {
-      name: "1v10龙:",
-      value: ""
-    },
-    {
-      name: "2v9龙:",
-      value: ""
-    },
-    {
-      name: "3v8龙:",
-      value: ""
-    },
-    {
-      name: "4v7龙:",
-      value: ""
-    },
-    {
-      name: "5v6龙:",
-      value: ""
-    },
-    {
-      name: "1v10虎:",
-      value: ""
-    },
-    {
-      name: "2v9虎:",
-      value: ""
-    },
-    {
-      name: "3v8虎:",
-      value: ""
-    },
-    {
-      name: "4v7虎:",
-      value: ""
-    },
-    {
-      name: "5v6虎:",
-      value: ""
-    }
+    { name: "1v10龙:", value: "", },
+    { name: "2v9龙:", value: "", },
+    { name: "3v8龙:", value: "", },
+    { name: "4v7龙:", value: "", },
+    { name: "5v6龙:", value: "", },
+    { name: "1v10虎:", value: "", },
+    { name: "2v9虎:", value: "", },
+    { name: "3v8虎:", value: "", },
+    { name: "4v7虎:", value: "", },
+    { name: "5v6虎:", value: "", },
   ];
   public betdata2_1 = [
-    {
-      title: "冠军",
-      data: this.setball()
-    },
-    {
-      title: "亚军",
-      data: this.setball()
-    },
-    {
-      title: "第三名",
-      data: this.setball()
-    },
-    {
-      title: "第四名",
-      data: this.setball()
-    },
-    {
-      title: "第五名",
-      data: this.setball()
-    },
-    {
-      title: "第六名",
-      data: this.setball()
-    },
-    {
-      title: "第七名",
-      data: this.setball()
-    },
-    {
-      title: "第八名",
-      data: this.setball()
-    },
-    {
-      title: "第九名",
-      data: this.setball()
-    },
-    {
-      title: "第十名",
-      data: this.setball()
-    }
+    { title: "冠军", data: this.setball(), },
+    { title: "亚军", data: this.setball(), },
+    { title: "第三名", data: this.setball(), },
+    { title: "第四名", data: this.setball(), },
+    { title: "第五名", data: this.setball(), },
+    { title: "第六名", data: this.setball(), },
+    { title: "第七名", data: this.setball(), },
+    { title: "第八名", data: this.setball(), },
+    { title: "第九名", data: this.setball(), },
+    { title: "第十名", data: this.setball(), },
   ];
   public betdata3_1 = [
     [
@@ -310,8 +191,11 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
 
     this.popup.shade.w = screen.width;
     this.popup.shade.h = screen.height;
-    // 跳转官方路由设置
-    // this.setlink();
+
+    this.route.params.subscribe(data => {
+      this.routeid = data.id;
+      this.subob.channel = "PK10 - " + this.routeid;
+    });
   }
   ngAfterViewInit() {}
   ngOnDestroy() {}
@@ -477,140 +361,79 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
   // 选择框点击选项方法，赋值给当前操作的输入框
   optinclick(i) {
     if (this.curinpt === this.setallmoney) {
-      if (this.type === 4) {
-        let d = this.betdata4_1;
-        for (let q = 0; q < d.length; q++) {
-          d[q].value = i;
-        }
-      }
-      if (this.type === 3) {
-        let d = this.betdata3_1;
-        for (let q = 0; q < d.length; q++) {
-          for (let w = 0; w < d[q].length; w++) {
-            d[q][w].value = i;
-          }
-        }
-        for (let w = 0; w < this.betdata3_2.length; w++) {
-          this.betdata3_2[w].value = i;
-        }
-      }
-      if (this.type === 2) {
-        let d = this.betdata2_1;
-        for (let q = 0; q < d.length; q++) {
-          for (let w = 0; w < d[q].data.length; w++) {
-            d[q].data[w].value = i;
-          }
-        }
-      }
-      if (this.type === 1) {
-        let d = this.betdatam;
-        for (let w = 0; w < d.length; w++) {
-          for (let q = 0; q < d[w].data1.length; q++) {
-            d[w].data1[q].value = i;
-          }
-        }
-        for (let w = 0; w < this.pkdata1_1.length; w++) {
-          this.pkdata1_1[w].value = i;
-        }
-        for (let w = 0; w < this.pkdata1_3.length; w++) {
-          this.pkdata1_3[w].value = i;
-        }
-      }
+      this.amend(i);
     }
     this.curinpt.value = i;
     this.boxshow = false;
   }
   // 重置当前页面所有的输入框
   reset() {
-    if (this.type === 4) {
-        let d = this.betdata4_1;
-        for (let q = 0; q < d.length; q++) {
-          d[q].value = "";
-        }
-        this.setallmoney.value = ""
-      }
-    if (this.type == 3) {
-      let d = this.betdata3_1;
-      for (let q = 0; q < d.length; q++) {
-        for (let w = 0; w < d[q].length; w++) {
-          d[q][w].value = "";
-        }
-      }
-      for (let w = 0; w < this.betdata3_2.length; w++) {
-        this.betdata3_2[w].value = "";
-      }
-      this.setallmoney.value = "";
-    }
-    if (this.type == 2) {
-      let d = this.betdata2_1;
-      for (let q = 0; q < d.length; q++) {
-        for (let w = 0; w < d[q].data.length; w++) {
-          d[q].data[w].value = "";
-        }
-      }
-      this.setallmoney.value = "";
-    }
-    if (this.type == 1) {
-      let d = this.betdatam;
-      for (let w = 0; w < d.length; w++) {
-        for (let q = 0; q < d[w].data1.length; q++) {
-          d[w].data1[q].value = "";
-        }
-      }
-      for (let w = 0; w < this.pkdata1_1.length; w++) {
-        this.pkdata1_1[w].value = "";
-      }
-      for (let w = 0; w < this.pkdata1_3.length; w++) {
-        this.pkdata1_3[w].value = "";
-      }
-    }
+    this.amend("");
+    this.setallmoney.value = "";
   }
   // 快捷选项下的输入框值改变后的方法，
   allchange() {
     let v = this.setallmoney.value;
+    this.amend(v);
+  }
+
+  amend(v){
     if (this.type === 4) {
-        let d = this.betdata4_1;
-        for (let q = 0; q < d.length; q++) {
-          d[q].value = v;
-        }
-      }
+      let d = this.betdata4_1;
+      this.setvalue(d, v);
+    }
     if (this.type == 3) {
       let d = this.betdata3_1;
-      for (let q = 0; q < d.length; q++) {
-        for (let w = 0; w < d[q].length; w++) {
-          d[q][w].value = v;
-        }
-      }
-      for (let w = 0; w < this.betdata3_2.length; w++) {
-        this.betdata3_2[w].value = v;
-      }
+      let b = this.betdata3_2;
+      this.setvalue(d, v);
+      this.setvalue(b, v);
     }
     if (this.type == 2) {
       let d = this.betdata2_1;
       for (let q = 0; q < d.length; q++) {
-        for (let w = 0; w < d[q].data.length; w++) {
-          d[q].data[w].value = v;
-        }
+        this.setvalue(d[q].data, v);
       }
     }
     if (this.type == 1) {
       let d = this.betdatam;
       for (let w = 0; w < d.length; w++) {
-        for (let q = 0; q < d[w].data1.length; q++) {
-          d[w].data1[q].value = v;
+        this.setvalue(d[w].data1, v);
+      }
+      this.setvalue(this.pkdata1_1, v);
+      this.setvalue(this.pkdata1_3, v);
+    }
+
+  };
+
+  // 设置单元数据金额
+  setvalue(d, v) {
+    if (d) {
+      for (let q = 0; q < d.length; q++) {
+        if (d[q] instanceof Array) {
+          for (let w = 0; w < d[q].length; w++) {
+            if (d[q][w].numb !== null && d[q][w].name !== null) {
+              d[q][w].value = v;
+            }
+          }
+        } else {
+          if (d[q].numb !== null && d[q].name !== null) {
+              d[q].value = v;
+          }
         }
-      }
-      for (let w = 0; w < this.pkdata1_1.length; w++) {
-        this.pkdata1_1[w].value = v;
-      }
-      for (let w = 0; w < this.pkdata1_3.length; w++) {
-        this.pkdata1_3[w].value = v;
       }
     }
   }
+
   // 限制输入框只能输入数字
   changereg() {
-    this.curinpt.value = Number(this.curinpt.value.replace(/\D/g, ""));
+    let v = this.curinpt;
+    v.value = v.value.replace(/\D/g, "");
+    if(Number(v.value)===0 && v.value !== ""){
+      v.value = 0;
+    }
+    if(Number(v.value)>0){
+      v.value = Number(v.value);
+    }
   }
 
   // 确认提交按钮事件
@@ -620,62 +443,29 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         this.popup.sub.top = "10px";
         let point = (2.099 + (0.191 / 7.8) * this.rangevalue).toFixed(3);
         let d = this.betdata4_1;
-        for (let i = 0; i < d.length; i++) {
-          if (Number(d[i].value) > 0) {
-            let l = data.length;
-            data[l] = Object.assign({}, this.subob);
-            data[l].ball = d[i].name;
-            data[l].type = "冠亚组合";
-            data[l].point = point;
-            data[l].money = d[i].value;
-          }
-        }
+        let title =this.typedata[this.type - 1 ].name;
+        this.setsubdata(d, data, title, point);
       }
     if (this.type == 3) {
       this.popup.sub.top = "10px";
       let point1 = (13.6+(1.342/7.8)* this.rangevalue).toFixed(3);
       let point2 = (21.3+(1.78/7.8) * this.rangevalue).toFixed(3);
       let d = this.betdata3_1;
-      for (let i = 0; i < d.length; i++) {
-          for (let q = 0; q < d[i].length; q++) {
-              if (Number(d[i][q].value) > 0) {
-                let l = data.length;
-                data[l] = Object.assign({}, this.subob);
-                data[l].number = d[i][q].numb;
-                data[l].type = "冠亚和值";
-                data[l].point = point1;
-                data[l].money = d[i][q].value;
-              }
-          }
-      }
       let d2 = this.betdata3_2;
-        for (let i = 0; i < d2.length; i++) {
-          if (Number(d2[i].value) > 0) {
-            let l = data.length;
-            data[l] = Object.assign({}, this.subob);
-            data[l].ball = d2[i].name;
-            data[l].type = "冠亚组合";
-            data[l].point = point2;
-            data[l].money = d2[i].value;
-          }
-        }
+      let title =this.typedata[this.type - 1 ].name;
+      for (let i = 0; i < d.length; i++) {
+        this.setsubdata(d[i], data, title, point1);
+      }
+      this.setsubdata(d2, data, title, point2);
     }
     if (this.type == 2) {
       this.popup.sub.top = "500px";
       let point = (9 + (0.78 / 7.8) * this.rangevalue).toFixed(2);
       let d = this.betdata2_1;
       for (let i = 0; i < d.length; i++) {
-          for (let q = 0; q < d[i].data.length; q++) {
-              
-              if (Number(d[i].data[q].value) > 0) {
-                let l = data.length;
-                data[l] = Object.assign({}, this.subob);
-                data[l].type = d[i].title;
-                data[l].number = d[i].data[q].numb;
-                data[l].point = point;
-                data[l].money = d[i].data[q].value;
-              }
-          }
+        
+        let title =this.typedata[this.type - 1 ].name + " - " + d[i].title;
+        this.setsubdata(d[i].data,data, title, point);
       }
     }
     if (this.type == 1) {
@@ -686,43 +476,17 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
       let p = this.pkdata1_1;
       let d = this.betdatam;
       let k = this.pkdata1_3;
-      for (let q = 0; q < p.length; q++) {
-        if (Number(p[q].value) > 0) {
-          let l = data.length;
-          data[l] = Object.assign({}, this.subob);
-          data[l].type = "整合";
-          data[l].ball = p[q].name;
-          data[l].point = point1;
-          data[l].money = p[q].value;
-        }
-      }
-      
+      let title =this.typedata[this.type - 1 ].name + " - 冠、亚军和";
+      this.setsubdata(p,data, title,point1);
       for (let i = 0; i < d.length; i++) {
         let d1 = d[i].data1;
-        for (let q = 0; q < d1.length; q++) {
-          if (Number(d1[q].value) > 0) {
-            let l = data.length;
-            data[l] = Object.assign({}, this.subob);
-            data[l].type = "整合";
-            data[l].ball = d[i].title;
-            data[l].number = d1[q].name;
-            data[l].point = point2;
-            data[l].money = d1[q].value;
-          }
-        }
+        let title =this.typedata[this.type - 1 ].name + " - " + d[i].title;
+        this.setsubdata(d1, data, title, point2);
       }
-    
-      for (let q = 0; q < k.length; q++) {
-        if (Number(k[q].value) > 0) {
-          let l = data.length;
-          data[l] = Object.assign({}, this.subob);
-          data[l].type = "整合";
-          data[l].ball = k[q].name;
-          data[l].point = point3;
-          data[l].money = k[q].value;
-        }
-      }
+      title =this.typedata[this.type - 1 ].name;
+      this.setsubdata(k, data, title, point3);
     }
+
 
     this.submoney = 0;
     for (let i = 0; i < data.length; i++) {
@@ -735,6 +499,27 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     // this.reset();
     // this.setallmoney.value = '';
     return false;
+  }
+  
+  //设置单元数据提交
+  setsubdata(d, data, str, point) {
+    for (let q = 0; q < d.length; q++) {
+      if (d[q].numb !== null && d[q].name !== null) {
+        if (Number(d[q].value) > 0) {
+          let l = data.length;
+          data[l] = Object.assign({}, this.subob);
+          if (d[q].numb !== undefined) {
+            data[l].number = d[q].numb.toString();
+          }
+          if (d[q].name !== undefined) {
+            data[l].ball = d[q].name;
+          }
+          data[l].type = str;
+          data[l].point = point;
+          data[l].money = d[q].value;
+        }
+      }
+    }
   }
 
   linkrouter(t) {

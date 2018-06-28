@@ -40,7 +40,6 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
   public curinpt; //当前操作的金额输入框
   public selectbtnvalue = 0; //控制 一般 、快捷按钮数据
   public inputshow = true;
-  public btolast = 0; //控制 前中后选择
   public selmoeny = [100, 200, 500, 1000, 5000]; // 活动选择金额框数据
   public routeid ;
   public BALL = {
@@ -134,11 +133,11 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
     data1: this.setball(),
     data2: [
       { name: "上", value: "" },
-      { name: "和", value: "" },
+      { name: "上下和", value: "" },
       { name: "下", value: "" },
       { name: "总单", value: "" },
       { name: "奇", value: "" },
-      { name: "和", value: "" },
+      { name: "奇偶和", value: "" },
       { name: "偶", value: "" },
       { name: "总双", value: "" },
       { name: "特大", value: "" },
@@ -263,14 +262,12 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   ];
   public bettatab8_1 = this.setball();
-
   // 遮罩层
   public shade = {
     w: 0,
     h: 0
   };
   // =弹窗对话框数据
-
   public popup = {
     shade: {
       show: false,
@@ -292,7 +289,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
   public submoney = 0;
   public subob = {
     channel: "",
-    type: this.typedata[this.type - 1 ].name,
+    type: "",
     id: "20180808",
     ball: "-",
     number: "-",
@@ -317,11 +314,11 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.popup.shade.w = screen.width;
     this.popup.shade.h = screen.height;
-    // 跳转官方路由设置
-    // this.setlink();
+
     this.route.params.subscribe(data => {
-        this.routeid = data.id;
-      });
+      this.routeid = data.id;
+      this.subob.channel = "11选5 - " + this.routeid;
+    });
   }
   ngAfterViewInit() {}
   ngOnDestroy() {}
@@ -492,14 +489,12 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
     let v = this.setallmoney.value;
     this.amend(v);
   }
+
+  // 设置全部数据金额
   amend(v){
     if (this.type === 8) {
         let d = this.bettatab8_1;
-        for (let q = 0; q < d.length; q++) {
-            if(d[q].numb !== null){
-                d[q].value = v;
-            }
-        }
+        this.setvalue(d, v);
     }
     if (this.type === 7) {
         let d = this.betdatab7_1;
@@ -512,40 +507,52 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         let n = this.type - 3 ;
         let d = this.zhengma[n].data1;
         let b = this.zhengma[n].data2;
-        for (let q = 0; q < d.length; q++) {
-            if(d[q].numb !== null){
-                d[q].value = v;
-            }
-        }
-        for (let q = 0; q < b.length; q++) {
-          b[q].value = v;
-        }
+        this.setvalue(d, v);
+        this.setvalue(b, v);
     }
     if (this.type === 2) {
         let d = this.betdatab2_1;
-        for (let q = 0; q < d.data1.length; q++) {
-            if(d.data1[q].numb !== null){
-                d.data1[q].value = v;
-            }
-        }
-        for (let q = 0; q < d.data2.length; q++) {
-          d.data2[q].value = v;
-        }
+        this.setvalue(d.data1, v);
+        this.setvalue(d.data2, v);
     }
     if (this.type == 1) {
         let d = this.betdatab1_1;
         for (let w = 0; w < d.length; w++) {
-          for (let q = 0; q < d[w].data1.length; q++) {
-              if (d[w].data1[q].name !== null) {
-                  d[w].data1[q].value = v;
-              }
-          }
+          this.setvalue(d[w].data1, v);
         }
       }
   }
+
+  // 设置单元数据金额
+  setvalue(d, v) {
+    if (d) {
+      for (let q = 0; q < d.length; q++) {
+        if (d[q] instanceof Array) {
+          for (let w = 0; w < d[q].length; w++) {
+            if (d[q][w].numb !== null && d[q][w].name !== null) {
+              d[q][w].value = v;
+            }
+          }
+        } else {
+          if (d[q].numb !== null && d[q].name !== null) {
+              d[q].value = v;
+          }
+        }
+      }
+    }
+  }
+
+
   // 限制输入框只能输入数字
   changereg() {
-    this.curinpt.value = Number(this.curinpt.value.replace(/\D/g, ""));
+    let v = this.curinpt;
+    v.value = v.value.replace(/\D/g, "");
+    if(Number(v.value)===0 && v.value !== ""){
+      v.value = 0;
+    }
+    if(Number(v.value)>0){
+      v.value = Number(v.value);
+    }
   }
 
   // 确认提交按钮事件
@@ -555,17 +562,8 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
       this.popup.sub.top = "10px";
       let point = (11.633 + (1.3 / 7.8) * this.rangevalue).toFixed(3);
       let d = this.bettatab8_1;
-      for (let i = 0; i < d.length; i++) {
-        if (Number(d[i].value) > 0 && d[i].numb !== null) {
-            let l = data.length;
-            data[l] = Object.assign({}, this.subob);
-            data[l].channel = "11选5 - " + this.routeid,
-            data[l].type = this.typedata[this.type - 1 ].name,
-            data[l].number = d[i].numb;
-            data[l].point = point;
-            data[l].money = d[i].value;
-        }
-      }
+      let title =this.typedata[this.type - 1 ].name;
+      this.setsubdata(d,data, title,point);
     }
     if (this.type == 7) {
       this.popup.sub.top = "100px";
@@ -576,7 +574,6 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         if (Number(d[i].value1.value) > 0) {
             let l = data.length;
             data[l] = Object.assign({}, this.subob);
-            data[l].channel = "11选5 - " + this.routeid,
             data[l].type = this.typedata[this.type - 1 ].name,
             data[l].ball = d[i].title;
             data[l].number = "龙";
@@ -586,7 +583,6 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         if (Number(d[i].value2.value) > 0) {
             let l = data.length;
             data[l] = Object.assign({}, this.subob);
-            data[l].channel = "11选5 - " + this.routeid,
             data[l].type = this.typedata[this.type - 1 ].name,
             data[l].ball = d[i].title;
             data[l].number = "龙";
@@ -608,31 +604,9 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           d = this.zhengma[this.type - 3].data1;
           b = this.zhengma[this.type - 3].data2;
       }
-      for (let i = 0; i < d.length; i++) {
-        let d1 = d[i];
-          if (Number(d1.value) > 0 && d1.numb !== null ) {
-            let l = data.length;
-            data[l] = Object.assign({}, this.subob);
-            data[l].channel = "11选5 - " + this.routeid,
-            data[l].type = this.typedata[this.type - 1 ].name,
-            data[l].number = d1.numb;
-            data[l].point = point1;
-            data[l].money = d1.value;
-          }
-      }
-      for (let i = 0; i < b.length; i++) {
-        let d1 = b[i];
-          if (Number(d1.value) > 0 ) {
-            let l = data.length;
-            data[l] = Object.assign({}, this.subob);
-            data[l].channel = "11选5 - " + this.routeid,
-            data[l].type = this.typedata[this.type - 1 ].name,
-            data[l].ball = d1.name;
-            data[l].point = point2;
-            data[l].money = d1.value;
-          }
-      }
-
+      let title = this.typedata[this.type - 1 ].name;
+      this.setsubdata(d,data, title,point1);
+      this.setsubdata(b,data, title,point2);
     }
     if (this.type === 1) {
       this.popup.sub.top = "10px";
@@ -640,18 +614,8 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
       let d = this.betdatab1_1;
       for (let i = 0; i < d.length; i++) {
         let d1 = d[i].data1;
-        for (let q = 0; q < d1.length; q++) {
-          if (Number(d1[q].value) > 0 && d1[q].name !== null ) {
-            let l = data.length;
-            data[l] = Object.assign({}, this.subob);
-            data[l].channel = "11选5 - " + this.routeid,
-            data[l].type = this.typedata[this.type - 1 ].name,
-            data[l].ball = d[i].title;
-            data[l].number = d1[q].name;
-            data[l].point = point;
-            data[l].money = d1[q].value;
-          }
-        }
+        let title =this.typedata[this.type - 1 ].name + " - " + d[i].title;
+        this.setsubdata(d1,data, title, point);
       }
 
     }
@@ -666,6 +630,27 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
     // this.reset();
     // this.setallmoney.value = '';
     return false;
+  }
+
+  //设置单元数据提交
+  setsubdata(d, data, str, point) {
+    for (let q = 0; q < d.length; q++) {
+      if (d[q].numb !== null && d[q].name !== null) {
+        if (Number(d[q].value) > 0) {
+          let l = data.length;
+          data[l] = Object.assign({}, this.subob);
+          if (d[q].numb !== undefined) {
+            data[l].number = d[q].numb.toString();
+          }
+          if (d[q].name !== undefined) {
+            data[l].ball = d[q].name;
+          }
+          data[l].type = str;
+          data[l].point = point;
+          data[l].money = d[q].value;
+        }
+      }
+    }
   }
 
   linkrouter(t) {
@@ -714,15 +699,15 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   // 设置正码数据
   setzhengma(){
-    let d = {
+    let data = {
       data1: this.setball(),
       data2: [
         { name: "上", value: "" },
-        { name: "和", value: "" },
+        { name: "上下和", value: "" },
         { name: "下", value: "" },
         { name: "总单", value: "" },
         { name: "奇", value: "" },
-        { name: "和", value: "" },
+        { name: "奇偶和", value: "" },
         { name: "偶", value: "" },
         { name: "总双", value: "" },
         { name: "大", value: "" },
@@ -735,7 +720,6 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         { name: "总尾小", value: "" }
       ]
     };
-    let data = Object.assign({}, d);
     return data;
   }
 }

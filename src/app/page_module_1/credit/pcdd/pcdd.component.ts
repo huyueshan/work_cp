@@ -102,7 +102,7 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     number: 1,
     left: "0px",
     value1: { value: 0, styn: "gray" },
-    value2: { value: 22, styn: "blue" },
+    value2: { value: 26, styn: "blue" },
     value3: { value: 6, styn: "red" },
     show: false
   };
@@ -365,7 +365,14 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   // 限制输入框只能输入数字
   changereg() {
-    this.curinpt.value = Number(this.curinpt.value.replace(/\D/g, ""));
+    let v = this.curinpt;
+    v.value = v.value.replace(/\D/g, "");
+    if(Number(v.value)===0 && v.value !== ""){
+      v.value = 0;
+    }
+    if(Number(v.value)>0){
+      v.value = Number(v.value);
+    }
   }
 
   // 确认提交按钮事件
