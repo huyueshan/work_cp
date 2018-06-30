@@ -337,6 +337,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     });
 
     console.log(this.sethexiaoball(2));
+    console.log(this.dpcdata3);
   }
   ngAfterViewInit() {}
   ngOnDestroy() {}
@@ -833,7 +834,9 @@ setweiball(n){
     }
     for (let i = 0; i < d.length; i++) {
       let o = d[i];
-      let n = 48 - i + 10;
+      let date = new Date();
+      let Y = date.getFullYear();
+      let n = 48 - i + (Y+8)%12;
       if (n >= 12) {
         n = n % 12;
       }
