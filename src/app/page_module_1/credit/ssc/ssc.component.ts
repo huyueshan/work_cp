@@ -11,7 +11,7 @@ import { Base } from '../../../../factory/base.model';
 export class SscComponent implements OnInit, OnDestroy {
   loadpage = false;
   public cpnav = {
-    style:"credit",
+    style: "credit",
     prev: "20180517022",
     prevball: [2, 5, 9, 0, 8],
     next: "20180517023",
@@ -28,6 +28,7 @@ export class SscComponent implements OnInit, OnDestroy {
   public inputshow = true;
   public btolast = 0; //控制 前中后选择
   public selmoeny = [100, 200, 500, 1000, 5000]; // 活动选择金额框数据
+  public routeid ;
   public BALL = {
     numb: 0,
     value: ""
@@ -46,14 +47,6 @@ export class SscComponent implements OnInit, OnDestroy {
       name: "全5中1"
     }
   ];
-//   public contenttoptitle1 = [
-//     "第一球",
-//     "第二球",
-//     "第三球",
-//     "第四球",
-//     "第五球",
-//     "总和"
-//   ];
   public contenttoptitle3 = [, , , , ,];
   public setallmoney = {
     value: ""
@@ -109,31 +102,20 @@ export class SscComponent implements OnInit, OnDestroy {
           value: ""
         }
       ],
-      data2: this.setempty(),
+      data2: []
     }
   ];
-  public betdatab = [
-    {
-      name: "豹子",
-      value: ""
-    },
-    {
-      name: "顺子",
-      value: ""
-    },
-    {
-      name: "对子",
-      value: ""
-    },
-    {
-      name: "杂六",
-      value: ""
-    },
-    {
-      name: "半顺",
-      value: ""
-    }
-  ];
+  public betdatab = {
+    title: "整合 - 前三",
+    data1:[
+      { name: "豹子", value: "" },
+      { name: "顺子", value: "" },
+      { name: "对子", value: "" },
+      { name: "杂六", value: "" },
+      { name: "半顺", value: "" }
+    ]
+  };
+  
 
   public betdata2 = [
     {
@@ -268,56 +250,16 @@ export class SscComponent implements OnInit, OnDestroy {
     }
   ];
   public betdata3 = [
-    {
-      numb: 0,
-      value: "",
-      order: 0
-    },
-    {
-      numb: 1,
-      value: "",
-      order: 5
-    },
-    {
-      numb: 2,
-      value: "",
-      order: 1
-    },
-    {
-      numb: 3,
-      value: "",
-      order: 6
-    },
-    {
-      numb: 4,
-      value: "",
-      order: 2
-    },
-    {
-      numb: 5,
-      value: "",
-      order: 7
-    },
-    {
-      numb: 6,
-      value: "",
-      order: 3
-    },
-    {
-      numb: 7,
-      value: "",
-      order: 8
-    },
-    {
-      numb: 8,
-      value: "",
-      order: 4
-    },
-    {
-      numb: 9,
-      value: "",
-      order: 9
-    }
+    { numb: 0, value: "", order: 0 },
+    { numb: 1, value: "", order: 5 },
+    { numb: 2, value: "", order: 1 },
+    { numb: 3, value: "", order: 6 },
+    { numb: 4, value: "", order: 2 },
+    { numb: 5, value: "", order: 7 },
+    { numb: 6, value: "", order: 3 },
+    { numb: 7, value: "", order: 8 },
+    { numb: 8, value: "", order: 4 },
+    { numb: 9, value: "", order: 9 },
   ];
 
   // 遮罩层
@@ -340,7 +282,7 @@ export class SscComponent implements OnInit, OnDestroy {
     },
     sub: {
       show: false,
-      top:'10px',
+      top: "10px",
       data: []
     }
   };
@@ -355,29 +297,34 @@ export class SscComponent implements OnInit, OnDestroy {
     point: "-",
     money: "-"
   };
-
   constructor(private el: ElementRef, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.loadpage = userModel.platform;
 
-    if (!Base.Store.get('selmoeny')) {
-        Base.Store.set('selmoeny',this.selmoeny,true);
-    }else{
-         let arr = JSON.parse(JSON.stringify(Base.Store.get('selmoeny'))); 
-         this.selmoeny = arr ;
+    if (!Base.Store.get("selmoeny")) {
+      Base.Store.set("selmoeny", this.selmoeny, true);
+    } else {
+      let arr = JSON.parse(JSON.stringify(Base.Store.get("selmoeny")));
+      this.selmoeny = arr;
     }
-    
+
     this.popup.shade.w = screen.width;
     this.popup.shade.h = screen.height;
+    // 跳转官方路由设置
+    // this.setlink();
+    this.route.params.subscribe(data => {
+      this.routeid = data.id;
+      this.subob.channel = "时时彩 - " + this.routeid;
+    });
   }
-  ngOnDestroy() {}
+  ngAfterViewInit() {}
+  ngOnDestroy() {}  
 
   // 禁用快选活动框事件
   setboxvalid(){
       this.boxvalid = !this.boxvalid;
   }
-
   // 滑块左侧递减事件
   rangevaluelessen() {
     if (this.rangevalue > 0) {
@@ -389,6 +336,11 @@ export class SscComponent implements OnInit, OnDestroy {
     if (this.rangevalue < 7.8) {
       this.rangevalue += 0.1;
     }
+  }
+  //前中后三切换事件
+  btolastclick(i){
+    this.btolast = i;
+    this.betdatab.title = i===0?'整合 - 前三':i===1?'整合 - 中三':'整合 - 后三';
   }
   // 切换玩法事件 /整合/龙虎斗/全五中一
   togtype(i) {
@@ -426,7 +378,7 @@ export class SscComponent implements OnInit, OnDestroy {
     for (let i = 0; i < p.length; i++) {
       d.push(Number(p[i].value));
     }
-    Base.Store.set('selmoeny',d,true);
+    Base.Store.set("selmoeny", d, true);
     this.selmoeny = d;
     this.close();
   }
@@ -481,7 +433,7 @@ export class SscComponent implements OnInit, OnDestroy {
     if (q !== null) {
       this.curinpt = this.betdatam[i][t][q];
     } else {
-      this.curinpt = this.betdatab[i];
+      this.curinpt = this.betdatab.data1[i];
     }
     this.setposition(e);
   }
@@ -519,79 +471,26 @@ export class SscComponent implements OnInit, OnDestroy {
   // 选择框点击选项方法，赋值给当前操作的输入框
   optinclick(i) {
     if (this.curinpt == this.setallmoney) {
-      if (this.type == 3) {
-        let d = this.betdata3;
-        for (let q = 0; q < d.length; q++) {
-          d[q].value = i;
-        }
-      }
-      if (this.type == 2) {
-        let d = this.betdata2;
-        for (let q = 0; q < d.length; q++) {
-          d[q].value1.value = i;
-          d[q].value2.value = i;
-          d[q].value3.value = i;
-        }
-      }
-      if (this.type == 1) {
-        let d = this.betdatam;
-        for (let w = 0; w < d.length; w++) {
-          for (let q = 0; q < d[w].data1.length; q++) {
-            d[w].data1[q].value = i;
-          }
-          for (let t = 0; t < d[w].data2.length; t++) {
-            d[w].data2[t].value = i;
-          }
-        }
-        for (let w = 0; w < this.betdatab.length; w++) {
-          this.betdatab[w].value = i;
-        }
-      }
+      this.amend(i);
     }
     this.curinpt.value = i;
     this.boxshow = false;
   }
   // 重置当前页面所有的输入框
   reset() {
-    if (this.type == 3) {
-      let d = this.betdata3;
-      for (let i = 0; i < d.length; i++) {
-        d[i].value = "";
-      }
-      this.setallmoney.value = "";
-    }
-    if (this.type == 2) {
-      let d = this.betdata2;
-      for (let i = 0; i < d.length; i++) {
-        d[i].value1.value = "";
-        d[i].value2.value = "";
-        d[i].value3.value = "";
-      }
-      this.setallmoney.value = "";
-    }
-    if (this.type == 1) {
-      let d = this.betdatam;
-      for (let w = 0; w < d.length; w++) {
-        for (let q = 0; q < d[w].data1.length; q++) {
-          d[w].data1[q].value = "";
-        }
-        for (let t = 0; t < d[w].data2.length; t++) {
-          d[w].data2[t].value = "";
-        }
-      }
-      for (let w = 0; w < this.betdatab.length; w++) {
-        this.betdatab[w].value = "";
-      }
-    }
+    this.amend("");
+    this.setallmoney.value = "";
   }
   // 快捷选项下的输入框值改变后的方法，
   allchange() {
     let v = this.setallmoney.value;
+    this.amend(v);
+  }
+
+  amend(v){
     if (this.type == 3) {
       let d = this.betdata3;
-      for (let q = 0; q < d.length; q++) {
-        d[q].value = v;
-      }
+      this.setvalue(d, v);
     }
     if (this.type == 2) {
       let d = this.betdata2;
@@ -604,43 +503,57 @@ export class SscComponent implements OnInit, OnDestroy {
     if (this.type == 1) {
       let d = this.betdatam;
       for (let w = 0; w < d.length; w++) {
-        for (let q = 0; q < d[w].data1.length; q++) {
-          d[w].data1[q].value = v;
-        }
-        for (let t = 0; t < d[w].data2.length; t++) {
-          d[w].data2[t].value = v;
-        }
+        this.setvalue(d[w].data1, v);
+        this.setvalue(d[w].data2, v);
       }
-      for (let w = 0; w < this.betdatab.length; w++) {
-        this.betdatab[w].value = v;
+      let b = this.betdatab.data1;
+      this.setvalue(b, v);
+    }
+
+  };
+
+  // 设置单元数据金额
+  setvalue(d, v) {
+    if (d) {
+      for (let q = 0; q < d.length; q++) {
+        if (d[q] instanceof Array) {
+          for (let w = 0; w < d[q].length; w++) {
+            if (d[q][w].numb !== null && d[q][w].name !== null) {
+              d[q][w].value = v;
+            }
+          }
+        } else {
+          if (d[q].numb !== null && d[q].name !== null) {
+              d[q].value = v;
+          }
+        }
       }
     }
   }
+
   // 限制输入框只能输入数字
   changereg() {
-    this.curinpt.value = Number(this.curinpt.value.replace(/\D/g, ""));
+    let v = this.curinpt;
+    v.value = v.value.replace(/\D/g, "");
+    if(Number(v.value)===0 && v.value !== ""){
+      v.value = 0;
+    }
+    if(Number(v.value)>0){
+      v.value = Number(v.value);
+    }
   }
 
   // 确认提交按钮事件
   sub() {
     let data = [];
     if (this.type == 3) {
-        this.popup.sub.top = "10px";
+      this.popup.sub.top = "10px";
       let point = (2.099 + (0.191 / 7.8) * this.rangevalue).toFixed(3);
       let d = this.betdata3;
-      for (let i = 0; i < d.length; i++) {
-        if (Number(d[i].value) > 0) {
-          let l = data.length;
-          data[l] = Object.assign({}, this.subob);
-          data[l].number = d[i].numb;
-          data[l].type = "全5中1";
-          data[l].point = point;
-          data[l].money = d[i].value;
-        }
-      }
+      this.setsubdata(d,data, '全5中1', point);
     }
     if (this.type == 2) {
-        this.popup.sub.top = "100px";
+      this.popup.sub.top = "100px";
       let point1 = (1.944 + (0.224 / 7.8) * this.rangevalue).toFixed(3);
       let point2 = (8.98 + (0.78 / 7.8) * this.rangevalue).toFixed(2);
       let point3 = (1.944 + (0.224 / 7.8) * this.rangevalue).toFixed(3);
@@ -649,7 +562,6 @@ export class SscComponent implements OnInit, OnDestroy {
         if (Number(d[i].value1.value) > 0) {
           let l = data.length;
           data[l] = Object.assign({}, this.subob);
-          data[l].channel = d[i].title;
           data[l].type = "龙虎斗";
           data[l].ball = "龙";
           data[l].point = point1;
@@ -658,7 +570,6 @@ export class SscComponent implements OnInit, OnDestroy {
         if (Number(d[i].value2.value) > 0) {
           let l = data.length;
           data[l] = Object.assign({}, this.subob);
-          data[l].channel = d[i].title;
           data[l].type = "龙虎斗";
           data[l].ball = "和";
           data[l].point = point2;
@@ -667,7 +578,6 @@ export class SscComponent implements OnInit, OnDestroy {
         if (Number(d[i].value3.value) > 0) {
           let l = data.length;
           data[l] = Object.assign({}, this.subob);
-          data[l].channel = d[i].title;
           data[l].type = "龙虎斗";
           data[l].ball = "虎";
           data[l].point = point3;
@@ -676,7 +586,7 @@ export class SscComponent implements OnInit, OnDestroy {
       }
     }
     if (this.type == 1) {
-        this.popup.sub.top = "350px";
+      this.popup.sub.top = "350px";
       let point1 = (1.8 + (0.156 / 7.8) * this.rangevalue).toFixed(3);
       let point2 = (9 + (0.78 / 7.8) * this.rangevalue).toFixed(2);
       let point3 = (11.633 + (1.3 / 7.8) * this.rangevalue).toFixed(3);
@@ -685,61 +595,45 @@ export class SscComponent implements OnInit, OnDestroy {
       for (let i = 0; i < d.length; i++) {
         let d1 = d[i].data1;
         let d2 = d[i].data2;
-        for (let q = 0; q < d1.length; q++) {
-          if (Number(d1[q].value) > 0) {
-            let l = data.length;
-            data[l] = Object.assign({}, this.subob);
-            data[l].channel = d[i].title;
-            data[l].type = "整合";
-            data[l].ball = d1[q].name;
-            data[l].point = point1;
-            data[l].money = d1[q].value;
-          }
-        }
-        for (let q = 0; q < d2.length; q++) {
-          if (Number(d2[q].value) > 0 && d2[q].numb !== null) {
-            let l = data.length;
-            data[l] = Object.assign({}, this.subob);
-            data[l].channel = d[i].title;
-            data[l].type = "整合";
-            data[l].number = d2[q].numb;
-            data[l].point = point2;
-            data[l].money = d2[q].value;
-          }
-        }
+        let title = "整合 - " + d[i].title;
+        this.setsubdata(d1,data, title,point1);
+        this.setsubdata(d2,data, title,point2);
       }
-
-      for (let q = 0; q < p.length; q++) {
-        if (Number(p[q].value) > 0) {
-          let l = data.length;
-          data[l] = Object.assign({}, this.subob);
-          data[l].channel =
-            this.btolast === 0
-              ? "前三"
-              : this.btolast === 1
-                ? "中三"
-                : this.btolast === 2
-                  ? "后三"
-                  : "-";
-          data[l].type = "整合";
-          data[l].ball = p[q].name;
-          data[l].point = point3;
-          data[l].money = p[q].value;
-        }
-      }
+      let title = p.title;
+      this.setsubdata(p.data1, data, title, point3);
     }
 
     this.submoney = 0;
     for (let i = 0; i < data.length; i++) {
-        this.submoney += Number(data[i].money);
+      this.submoney += Number(data[i].money);
     }
-    
+
     this.subdata = data;
     this.popup.sub.show = true;
     this.popup.shade.show = true;
     // this.reset();
     // this.setallmoney.value = '';
     return false;
+  }
+  //设置单元数据提交
+  setsubdata(d, data, str, point) {
+    for (let q = 0; q < d.length; q++) {
+      if (d[q].numb !== null && d[q].name !== null) {
+        if (Number(d[q].value) > 0) {
+          let l = data.length;
+          data[l] = Object.assign({}, this.subob);
+          if (d[q].numb !== undefined) {
+            data[l].number = d[q].numb.toString();
+          }
+          if (d[q].name !== undefined) {
+            data[l].ball = d[q].name;
+          }
+          data[l].type = str;
+          data[l].point = point;
+          data[l].money = d[q].value;
+        }
+      }
+    }
   }
 
   linkrouter(t) {
@@ -771,14 +665,5 @@ export class SscComponent implements OnInit, OnDestroy {
       };
     }
     return data;
-  }
-  setempty(){
-    let data = [];
-      for (let i = 0; i < 10; i++) {
-        let o = Object.assign({}, this.BALL);
-        o.numb = null;
-        data.push(o);
-      }
-      return data;
   }
 }
