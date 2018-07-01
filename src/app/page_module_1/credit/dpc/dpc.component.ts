@@ -83,14 +83,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     y: ""
   };
   public optionsdata = {
-    zhengte: [
-      "正码特一",
-      "正码特二",
-      "正码特三",
-      "正码特四",
-      "正码特五",
-      "正码特六"
-    ],
+    zhengte: [ "正码特一", "正码特二", "正码特三", "正码特四", "正码特五", "正码特六" ],
     zhengteactive: 0,
     lianma: ["单选/复式", "胆拖", "生肖对碰", "属性对碰", "混合对碰"],
     lianmaactive: 0,
@@ -98,7 +91,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     lianmastactive: 0,
     zixuanno:["五不中","六不中","七不中","八不中","九不中","十不中","十一不中","十二不中",],
     zixuactive:0,
-
+    hexiao: ["前肖","后肖","天肖","地肖","野兽","家禽","单","双",],
+    hexiaoactive:0,
   };
   public zhengma = ["单","双","大","小","合单","合双","红波","蓝波","绿波"];
   public dpcdata1 = {
@@ -509,6 +503,10 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
       o.lianma[o.lianmaactive] +
       " - " +
       o.lianmastyle[o.lianmastactive];
+  }
+  hexiaoclick(i,n){
+    let o = this.optionsdata;
+    o.hexiaoactive = i;
   }
   zixuanclick(i){
     this.optionsdata.zixuactive = i;
