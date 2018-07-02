@@ -1,0 +1,44 @@
+
+<div class="flex-c" [hidden]="!loadpage">
+    <div>
+      <app-header [username]="'test08'" [curpath]="'usercenter'"></app-header>
+    </div>
+
+    <div class="flex-r result-head">
+        <div class="flex-r result-head-in">
+            <div class="game">
+                <label></label>
+                <select class="gamelist" [(ngModel)]="quergame" >
+                    <option *ngFor="let item of gamelist" >{{item.gamename}}</option>
+                </select>
+            </div>
+            <div class="flex-r checkbox-box">
+                标注形式选择<label class="flex-r">
+                    <input type="checkbox" name="checkbox" id="freeLine" [(ngModel)]="view_paramet.isshowline"  />显示走势折线
+                </label>
+                <label class="flex-r">
+                    <input type="checkbox" name="checkbox" value="checkbox" id="haowen" [(ngModel)]="view_paramet.ishaowen" />显示号温
+                </label>
+                <label class="flex-r">
+                    <input type="checkbox" name="checkbox" value="checkbox" id="yl_zhu" [(ngModel)]="view_paramet.isomission"/>显示遗漏分层
+                </label>
+                <label class="flex-r">
+                    <input type="checkbox" name="checkbox2" value="checkbox" id="c_yl" [(ngModel)]="view_paramet.isomissionshow" />显示遗漏
+                </label>
+                <label class="flex-r">
+                    <input  type="checkbox" name="checkbox3" value="checkbox" id="disdata" [(ngModel)]="view_paramet.isdisdata" />显示统计
+                </label>
+                <label class="flex-r">
+                    <input type="checkbox" name="checkbox3" value="checkbox" id="help_line" [(ngModel)]="view_paramet.issubline" />显示辅助线
+                </label>
+            </div>
+            <div class="flex-r period">
+                <a *ngFor="let item of numbdata; let i=index" [ngClass]="{active: numbdatactve===i}"
+                (click)="numbclick(i)">最近{{item}}期</a>
+            </div>
+        </div>
+    </div>
+    <div class="result-main">
+        <app-canvas [viewdata]="view_paramet" #canvas></app-canvas>
+    </div>
+</div>

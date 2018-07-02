@@ -112,32 +112,12 @@ export class RouteguardService implements CanActivate{
 						{
 							path: 'index',
 							loadChildren: '../app/page_module_1/index/index.module#IndexModule'
-						},
-						// {
-						// 	path: 'officialssc',
-						// 	loadChildren: '../app/page_module_1/official/ssc/ssc.module#SSCofficialModule',
-						// 	canActivate: [RouteguardService]
-						// }, 
-						// {
-						// 	path: 'officialffc',
-						// 	loadChildren: '../app/page_module_1/official/ffc/ffc.module#FFCofficialModule',
-						// 	canActivate: [RouteguardService]
-						// }, 
-						// {
-						// 	path: 'creditssc',
-						// 	loadChildren: '../app/page_module_1/credit/ssc/ssc.module#SSCcreditModule',
-						// 	canActivate: [RouteguardService]
-						// },  
-						// {
-						// 	path: 'creditffc',
-						// 	loadChildren: '../app/page_module_1/credit/ffc/ffc.module#FFCcreditModule',
-						// 	canActivate: [RouteguardService]
-						// },  
-						// {
-						// 	path: 'vrc',
-						// 	loadChildren: '../app/page_module_1/credit/vrc/vrc.module#VRCModule',
-						// 	canActivate: [RouteguardService]
-						// },  
+                        },
+                        {
+							path: 'result',
+							loadChildren: '../app/page_module_1/result/result.module#ResultModule',
+							canActivate: [RouteguardService]
+						},  
 						{
 							path: 'lottery',
 							loadChildren: '../app/page_module_1/lottery/layout.module#LayoutModule',
@@ -145,7 +125,7 @@ export class RouteguardService implements CanActivate{
 						},  
 						{
 							path: 'home',
-							loadChildren: '../app/page_module_1/home/home.module#HomeModule'
+							loadChildren: '../app/page_module_1/home/home.module#HomeModule',
 						}, 
 						{
 							path: 'register',

@@ -69,6 +69,11 @@ const appRoutes: Routes = [
 		loadChildren: '../app/page_module_1/usercenter/usercenter.module#UsercenterModule',
 		canActivate: [RouteguardService]
     },
+    {
+        path: 'result',
+        loadChildren: '../app/page_module_1/result/result.module#ResultModule',
+        canActivate: [RouteguardService]
+    },
 	//模板2的路由
 	{
         path: 'home',

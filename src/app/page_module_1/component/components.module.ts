@@ -25,7 +25,7 @@ import { LanguageComponent } from "./language/language.component";
     CredtopComponent,
     CSiderComponent,
     WenluComponent,
-    LanguageComponent
+    LanguageComponent,
   ],
   exports: [
     HeaderComponent,
