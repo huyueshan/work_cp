@@ -31,7 +31,7 @@
     font-size: 14px;
     justify-content: center;
     .result-head-in{
-        // min-width: 1200px;
+        min-width: 1200px;
         .game{
             margin-right: 16px;
             .gamelist{
@@ -82,24 +82,10 @@
     }
 
 }
-.loadinginfo{
+.result-main{
     width:100%;
-    // justify-content: center;
-    padding-top: 40px;
-    text-align: center;
-    p{
-        font-size: 14px;
-    }
-}
-.main{
-    width:1360px;
-    align-self: center;
-    .mainbox{
-        width: 100%; 
-        justify-content: flex-start;
-        .result-main{
-            min-width: 1360px;
-            padding: 5px 0 20px;
-        }
-    }
+    // margin: 0 auto;
+    // background: #111 url("../images/bg_02.jpg") center no-repeat;
+    // background-size: cover;
+    padding: 5px 0 20px;
 }

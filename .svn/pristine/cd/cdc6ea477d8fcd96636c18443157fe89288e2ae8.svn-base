@@ -1,24 +1,40 @@
-<div id="layout" [style.width.px]="game.width" [style.margin-left.px]="game.left">
+<div id="layout">
 
-    <div class="chart">
+    <div class="chart" [style.width.px]="canva.width">
         <table width=auto border="0" cellpadding="0" cellspacing="0" align="center" id="chartsTable">
             <tr class="thead">
-                <td rowspan="2" class="td_first" style="width:80px" align="center">
+                <td rowspan="2" class="td_first" style="width:60px" align="center">
                     <strong>期号</strong>
                 </td>
-                <td rowspan="2" [attr.colspan]="game.length" class="td_second" align="center">
+                <td rowspan="2" colspan="5" class="td_second" align="center">
                     开奖号码
                 </td>
-                <ng-container *ngFor="let item of game.title" >
-                    <td width="1" bgcolor="#333" class="line"></td>
-                    <td [attr.colspan]="game.len">{{item}}</td>
-                </ng-container>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td colspan="10">万位</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td colspan="10">千位</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td colspan="10">百位</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td colspan="10">十位</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td colspan="10">个位</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td colspan="10">号码分布</td>
             </tr>
             <tr class="thead">
-                    <ng-container *ngFor="let item of game.title" >
-                            <td width="1" bgcolor="#333" class="line"></td>
-                            <td *ngFor="let child of thdata">{{child}}</td>
-                    </ng-container>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td *ngFor="let item of thdata">{{item}}</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td *ngFor="let item of thdata">{{item}}</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td *ngFor="let item of thdata">{{item}}</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td *ngFor="let item of thdata">{{item}}</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td *ngFor="let item of thdata">{{item}}</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td *ngFor="let item of thdata">{{item}}</td>
             </tr>
 
             <tbody id="tdata">
@@ -55,7 +71,7 @@
             </tbody>
             <ng-container *ngIf="viewdata.isdisdata" >
                 <tr style="color:#ff00ff;">
-                    <td [attr.colspan]="game.length+1">出现总次数</td>
+                    <td colspan="6">出现总次数</td>
                     <ng-container *ngFor="let item of stdata.sumv.data">
                         <td bgcolor="#333" class="line"></td>
                         <td *ngFor="let child of item">{{child.value}}</td>
@@ -64,7 +80,7 @@
                     <td *ngFor="let child of stdata.sumv.disdata">{{child.value}}</td>
                 </tr>
                 <tr style="color:#485a30;">
-                    <td [attr.colspan]="game.length+1">平均遗漏</td>
+                    <td colspan="6">平均遗漏</td>
                     <ng-container *ngFor="let item of stdata.meanom.data">
                         <td bgcolor="#333" class="line"></td>
                         <td *ngFor="let child of item">{{child.value}}</td>
@@ -73,7 +89,7 @@
                     <td *ngFor="let child of stdata.meanom.disdata">{{child.value}}</td>
                 </tr>
                 <tr style="color:#803905;">
-                    <td [attr.colspan]="game.length+1">最大遗漏</td>
+                    <td colspan="6">最大遗漏</td>
                     <ng-container *ngFor="let item of stdata.maxom.data">
                         <td bgcolor="#333" class="line"></td>
                         <td *ngFor="let child of item">{{child.value}}</td>
@@ -82,7 +98,7 @@
                     <td *ngFor="let child of stdata.maxom.disdata">{{child.value}}</td>
                 </tr>
                 <tr style="color:#18566b;">
-                    <td [attr.colspan]="game.length+1">最大连出</td>
+                    <td colspan="6">最大连出</td>
                     <ng-container *ngFor="let item of stdata.maxre.data">
                         <td bgcolor="#333" class="line"></td>
                         <td *ngFor="let child of item">{{child.value}}</td>
@@ -95,20 +111,35 @@
                 <td rowspan="2" class="td_first" style="width:60px" align="center">
                     <strong>期号</strong>
                 </td>
-                <td rowspan="2" [attr.colspan]="game.length" class="td_second">
+                <td rowspan="2" colspan="5" class="td_second">
                     开奖号码
                 </td>
-                <ng-container *ngFor="let item of game.title" >
-
-                    <td width="1" bgcolor="#333" class="line"></td>
-                    <td *ngFor="let child of thdata">{{child}}</td>
-                </ng-container>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td *ngFor="let item of thdata">{{item}}</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td *ngFor="let item of thdata">{{item}}</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td *ngFor="let item of thdata">{{item}}</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td *ngFor="let item of thdata">{{item}}</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td *ngFor="let item of thdata">{{item}}</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td *ngFor="let item of thdata">{{item}}</td>
             </tr>
             <tr class="thead">
-                    <ng-container *ngFor="let item of game.title" >
-                            <td width="1" bgcolor="#333" class="line"></td>
-                            <td [attr.colspan]="game.len">{{item}}</td>
-                    </ng-container>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td colspan="10">万位</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td colspan="10">千位</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td colspan="10">百位</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td colspan="10">十位</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td colspan="10">个位</td>
+                <td width="1" bgcolor="#333" class="line"></td>
+                <td colspan="10">号码分布</td>
             </tr>
             <div class="canwrap" [hidden]="!viewdata.isshowline">
                 <canvas id="canva" width="{{canva.width}}" height="{{canva.height}}"></canvas>

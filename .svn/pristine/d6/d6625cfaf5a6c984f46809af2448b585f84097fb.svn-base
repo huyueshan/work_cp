@@ -14,22 +14,7 @@ import {
 })
 export class CanvasComponent
   implements OnInit, AfterViewChecked, AfterViewInit {
-  @Input() viewdata; // 控制数据
-  @Input() resultdata; // 开奖结果数据
-  @Input() omdata; // 开奖结果第一期遗漏数据
-  @Input() type; // 彩种类型
-
-  // 页面数据
-  public gamelist = {
-      ssc :{title:["万位", "千位", "百位", "十位", "个位", "号码分布"], min:0, max:9, len:10, length:5, width:1460, left:0, },
-      exf :{title:["万位", "千位", "百位", "十位", "个位", "号码分布"], min:1, max:11, len:11, length:5, width:1600, left:0, },
-      pk10 :{title:["冠军", "亚军", "季军", "第四名", "第五名", "第六名", "第七名", "第八名", "第九名", "第十名", "号码分布"], min:1, max:10, len:10, length:10, width:2500, left:0, },
-      fc3d :{title:["百位", "十位", "个位", "号码分布"], min:0, max:9, len:10, length:3, width:1000, left:180, },
-      k3 :{title:["百位", "十位", "个位", "号码分布"], min:1, max:6, len:6, length:3, width:660, left:350, },
-  };
-  public game;
-  public thdata;
- 
+  @Input() viewdata;
   // 单元格基础数据
   public BALL = {
     value: -1,
@@ -60,7 +45,12 @@ export class CanvasComponent
     body: [], // 表格分析数据
     disdata: [] // 号码分布数据
   };
- 
+  // 后台获取数据格式
+  public OB = { id: 0, number: "180100", data: [] };
+  public balldata = this.setballdata(30); // 后台的开奖数据
+  public ballomisdata = this.setbassomisdata(); // 接受的第一期数据的遗漏值
+
+  public thdata = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   public canva = {
     width: "",
     height: ""
@@ -71,22 +61,24 @@ export class CanvasComponent
   constructor(private el: ElementRef) {}
 
   ngOnInit() {
-    this.pageinit();
+    this.pageinit(30);
+    console.log(this.ballomisdata);
   }
   ngAfterViewInit() {}
   ngAfterViewChecked() {}
-  
-  pageinit(){
-    this.game = this.gamelist[this.type];
-    this.thdata = this.setthdata();
-    this.outdata = this.continvalue(this.omisssionvalue(this.creat_tr(this.resultdata), this.omdata));
+
+  pageinit(n) {
+    // 设置数据 此处请求后台数据
+    let d = this.setballdata(n);
+    let omd = this.setbassomisdata();
+    this.outdata = this.continvalue(this.omisssionvalue(this.creat_tr(d), omd));
     this.outdata = JSON.parse(JSON.stringify(this.outdata));
     // 画线
     setTimeout(() => {
       this.linedata = this.getcanvasdata();
       setTimeout(() => {
         this.drawline();
-      }, 300);
+      }, 600);
     }, 300);
     // 设置统计数据
     this.setstdata(this.outdata);
@@ -95,13 +87,12 @@ export class CanvasComponent
 
   // 设置画线数据
   getcanvasdata() {
-      let g =this.game;
     let data = [];
     //  获取canvas容器元素集
     const ele1 = this.el.nativeElement.querySelector("#chartsTable");
     this.canva.width = ele1.offsetWidth;
     this.canva.height = ele1.offsetHeight;
-    for (let q = 0; q < g.length; q++) {
+    for (let q = 0; q < 5; q++) {
       const str = `.cvs${q}.bgred`;
       const ele = this.el.nativeElement.querySelectorAll(str);
       const d = [];
@@ -143,11 +134,11 @@ export class CanvasComponent
   // 设置统计数据
   setstdata(d) {
     let D = d;
-    let g = this.game;
+    let l = 5;
     let std = this.stdata;
     let omd = std.omdata;
     let red = std.redata;
-    for (let i = 0; i < g.length; i++) {
+    for (let i = 0; i < l; i++) {
       std.sumv.data[i] = this.setstdatvalue(0);
       std.meanom.data[i] = this.setstdatvalue(0);
       std.maxom.data[i] = this.setstdatvalue(0);
@@ -163,8 +154,8 @@ export class CanvasComponent
     omd.disdata = this.setstdatvalue(1);
     red.disdata = this.setstdatvalue(1);
     // 出现总次数  、遗漏数组
-    for (let i = 0; i < g.length; i++) {
-      for (let w = 0; w < g.len; w++) {
+    for (let i = 0; i < D[0].body.length; i++) {
+      for (let w = 0; w < D[0].body[0].data.length; w++) {
         for (let q = 0; q < D.length; q++) {
           if (D[q].body[i].data[w].ischecked) {
             std.sumv.data[i][w].value += 1;
@@ -238,6 +229,7 @@ export class CanvasComponent
     }
     // 分布区最大遗漏、平均遗漏
     for (let i = 0; i < omd.disdata.length; i++) {
+      // for (let q = 0; q < omd.disdata[i].length; q++) {
       let d = omd.disdata[i].arr;
       // 最大遗漏
       if (d.length === 0) {
@@ -268,10 +260,12 @@ export class CanvasComponent
         std.maxre.disdata[i].value = d[0];
       }
     }
+
+    console.log(this.stdata);
   }
   setstdatvalue(n) {
     let data = [];
-    for (let i = this.game.min; i <= this.game.max; i++) {
+    for (let i = 0; i < 10; i++) {
       let o = {};
       if (n) {
         o = { ball: i, arr: [] };
@@ -409,59 +403,65 @@ export class CanvasComponent
       d[i].body = [];
       for (let q = 0; q < data[i].data.length; q++) {
         const n = data[i].data[q];
-        const arr = this.createball();
-        for (let w = 0; w < arr.length; w++) {
-            if (arr[w].value === n) {
-                arr[w].ischecked = true;
-            }
-        }
+        const arr = this.createball(10);
+        arr[n].ischecked = true;
         d[i].body[q] = {
-            clname: "cvs" + q,
-            data: arr
+          clname: "cvs" + q,
+          data: arr
         };
       }
       d[i].disdata = this.setdisdata(d[i].data);
     }
+    // console.log(d);
     return d;
   }
   // 创建球数据
-  createball() {
-    let g =this.game;
+  createball(n) {
     const data = [];
-    for (let i = g.min; i <= g.max; i++) {
-      let d = Object.assign({}, this.BALL);
-      d.value = i; // 初始显示单元格的数据参考值
+    for (let i = 0; i < n; i++) {
+      data[i] = Object.assign({}, this.BALL);
+      data[i].value = i; // 初始显示单元格的数据参考值
+    }
+    return data;
+  }
+
+  //创建分布区数据 参数d为 经过设置的开奖数据数组
+  setdisdata(d) {
+    let data = [];
+    data = this.createball(10);
+    for (let q = 0; q < d.length; q++) {
+      let n = Number(d[q]);
+      data[n].ischecked = true;
+      data[n].dbvalue += 1;
+      if (data[n].dbvalue > 1) {
+        data[n].isdouble = true;
+      }
+    }
+    return data;
+  }
+  // 创建开奖数据  n 为开奖数据期数
+  setballdata(n) {
+    let data = [];
+    for (let i = 0; i < n; i++) {
+      let d = Object.assign({}, this.OB);
+      d.id = i + 1;
+      d.number = 180101 + i + "";
+      d.data = [];
+      for (let q = 0; q < 5; q++) {
+        d.data[q] = Math.floor(Math.random() * 10);
+      }
       data.push(d);
     }
     return data;
   }
-
-  //创建分布区数据 参数d为经过设置的开奖数据数组
-  setdisdata(d) {
-    let data = [];
-    data = this.createball();
-    for (let q = 0; q < d.length; q++) {
-      let n = Number(d[q]);
-      for (let w = 0; w < data.length; w++) {
-          if (Number(data[w].value) === n) {
-                data[w].ischecked = true;
-                data[w].dbvalue += 1;
-                if (data[w].dbvalue > 1) {
-                  data[w].isdouble = true;
-                }
-            }
+  setbassomisdata() {
+    let d = [];
+    for (let i = 0; i < 5; i++) {
+      d[i] = [];
+      for (let q = 0; q < 10; q++) {
+        d[i].push(Math.floor(Math.random() * 10 + 1));
       }
     }
-    return data;
-  }
-
-  //设置表头数据
-  setthdata(){
-      let d = [];
-      let g = this.game;
-      for (let i = g.min; i <= g.max; i++) {
-          d.push(i)
-      }
-      return d
+    return d;
   }
 }

@@ -16,6 +16,9 @@
 
 #layout {
     width: 100%;
+    min-width: 1360px; // align-items: center;
+    // align-content: center; // z-index: 9;
+    // background-color: #fff;
     .chart {
         margin: 0 auto;
         #chartsTable {
@@ -29,7 +32,7 @@
                     border: 1px solid rgba(55, 55, 55, 0.3);
                     width: 20px;
                     height: 20px;
-                    font-size: 8px;
+                    font-size: 12px;
                     text-align: center;
                 }
                 .td_bg1 {
@@ -44,6 +47,7 @@
                 }
                 .omissionbg {
                     background-color: rgba(93, 61, 134, 0.2);
+                    // background-color: rgba(70, 108, 126, .3);
                 }
             }
             .thead {
@@ -70,7 +74,7 @@
                         width: 16px;
                         height: 16px;
                         line-height: 16px;
-                        font-size: 8px;
+                        font-size: 14px;
                         margin: auto auto;
                         background-color: red;
                         color: white;
@@ -83,6 +87,9 @@
                     .span.doubbg {
                         background-color: #9A019A;
                     }
+                    // .continbg {
+                    //     background-color: rgb(4, 88, 42);
+                    // }
                     .span.bgblue {
                         background-color: #2B9FF8;
                     }
