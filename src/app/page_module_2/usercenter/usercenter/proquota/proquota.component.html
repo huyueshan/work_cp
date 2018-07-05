@@ -1,0 +1,31 @@
+<div class="flex-c container">
+  <div class="flex-r querycontent">
+    <span>
+      <label for="protype">彩种：</label>
+      <select id="protype" name="protype" [(ngModel)]="protype">
+        <option value="重庆时时彩【信】" selected>重庆时时彩【信】</option>
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+      </select>
+    </span>
+  </div>
+  <div class=" flex-c tablebox">
+    <div class="tablewrap">
+      <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4"   align="center">
+        <tr class="bg_1">
+          <th style="width:110px">玩法类型</th>
+          <th>单注最低</th>
+          <th>最高奖金</th>
+          <th>单项最高</th>
+        </tr>
+        <tr *ngFor="let item of quotadefdata">
+          <td>{{item.type}}</td>
+          <td>{{item.min}}</td>
+          <td>{{item.maxbonus}}</td>
+          <td>{{item.max}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
