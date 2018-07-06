@@ -293,6 +293,7 @@
                                     line-height: 26px;
                                     text-align: center;
                                     font-size: 14px;
+                                    margin:0 5px;
                                     color: white;
                                     background: url('../images/ball26.png') -10px -102px;
                                 }
@@ -308,12 +309,34 @@
                                 .bg_gray{
                                     background: url('../images/ball26.png') -10px -148px;
                                 }
+                                i.ksbg{
+                                    width: 20px;
+                                    height: 20px;
+                                    background: url('../images/ks01.png');
+                                    background-repeat: no-repeat;
+                                    background-position-x: -10px;
+                                }
+                                i.pk10bg{
+                                    width: 47px;
+                                    height: 32px;
+                                    background: url('../images/saiche.png');
+                                    background-repeat: no-repeat;
+                                    background-position-x: -10px;
+                                }
                             }
                             .nomal{
                                 color:#111;
                             }
                             .color1 {
                                 color: red;
+                            }
+                            .coloryell{
+                                font-weight: bold;
+                                color:#FF5500;
+                            }
+                            .colorgreen{
+                                font-weight: bold;
+                                color:#2EA514;
                             }
                             .redbg{
                                 color:white;
@@ -329,10 +352,25 @@
                             }
                         }
                     }
-                    table.liuhel{
+                    table.layout{
                         table-layout: auto;
                         width: 1800px;
                         align-self: flex-start;
+                    }
+                    table.layout2{
+                        width: 1900px;
+                    }
+                    table.layout3{
+                        width: 2100px;
+                    }
+                    table.pk10{
+                        td,
+                        th {
+                            width: 90px;
+                            height: 36px;
+                            border: 1px solid #999;
+                            text-align: center;
+                        }
                     }
                 }
             }
