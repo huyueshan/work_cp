@@ -257,7 +257,6 @@ public OBJX = {sum:0, sumBigSmall:'', balls:'', lastBigSmall:'', specialOddEven:
                 this.resultdata[i].data = this.PCDD(this.resultdata[i].data);
             }
         }
-        console.log(this.resultdata);
     }
     setTimeout(() => {
         this.loadinfo = false;

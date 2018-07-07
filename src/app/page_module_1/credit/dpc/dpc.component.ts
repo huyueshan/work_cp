@@ -53,8 +53,25 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
       { name: "小", checked: false, fn:function(arr){let d = arr.filter(function (x) { return x.numb < 25; });return d} },
       { name: "单", checked: false, fn:function(arr){let d = arr.filter(function (x) { return x.numb%2 === 1; });return d} },
       { name: "双", checked: false, fn:function(arr){let d = arr.filter(function (x) { return x.numb%2 === 0; });return d} },
-      { name: "合单", checked: false, fn:function(arr){let d = arr.filter(function (x) { return x.heshu && x.numb%2 === 1; });return d} },
-      { name: "合双", checked: false, fn:function(arr){let d = arr.filter(function (x) { return x.heshu && x.numb%2 === 0; });return d} },
+      { name: "合单", checked: false, fn:function(arr){
+        let d = arr.filter(function (x) { 
+          let arr = String(x.numb).split('');
+          let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                sum += Number(arr[i]);
+            }
+          return sum%2 === 1; });
+        return d},
+      },
+      { name: "合双", checked: false, fn:function(arr){
+        let d = arr.filter(function (x) { 
+          let arr = String(x.numb).split('');
+          let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                sum += Number(arr[i]);
+            }
+          return sum%2 === 0; });
+        return d}, },
       { name: "大单", checked: false, fn:function(arr){let d = arr.filter(function (x) { return x.numb >= 25 && x.numb%2 === 1; });return d} },
       { name: "小单", checked: false, fn:function(arr){let d = arr.filter(function (x) { return x.numb < 25 && x.numb%2 === 0; });return d} },
       { name: "大双", checked: false, fn:function(arr){let d = arr.filter(function (x) { return x.numb >= 25 && x.numb%2 === 0; });return d} },
@@ -106,7 +123,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     shengxiao: "", //生肖
     poultry: false, // 家禽
     wild: false, //野兽
-    heshu: false, // 合数
+    // heshu: false, // 合数
     value: "" // 下注金额
   };
   public BALL2 = {
@@ -139,29 +156,13 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     y: ""
   };
   public optionsdata = {
-    zhengte: [
-      "正码特一",
-      "正码特二",
-      "正码特三",
-      "正码特四",
-      "正码特五",
-      "正码特六"
-    ],
+    zhengte: ["正码特一",  "正码特二", "正码特三", "正码特四",  "正码特五",  "正码特六" ],
     zhengteactive: 0,
     lianma: ["单选/复式", "胆拖", "生肖对碰", "属性对碰", "混合对碰"],
     lianmaactive: 0,
     lianmastyle: ["三中二", "三全中", "二全中", "二中特", "特串"],
     lianmastactive: 0,
-    zixuanno: [
-      "五不中",
-      "六不中",
-      "七不中",
-      "八不中",
-      "九不中",
-      "十不中",
-      "十一不中",
-      "十二不中"
-    ],
+    zixuanno: [ "五不中", "六不中", "七不中", "八不中",  "九不中", "十不中", "十一不中", "十二不中" ],
     zixuactive: 0,
     hexiao: ["前肖", "后肖", "天肖", "地肖", "野兽", "家禽", "单", "双"],
     hexiaoactive: 0,
@@ -170,17 +171,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     lianxiaostyle: ["连肖二肖", "连肖三肖", "连肖四肖", "连肖五肖"],
     lianxiaostactive: 0
   };
-  public zhengma = [
-    "单",
-    "双",
-    "大",
-    "小",
-    "合单",
-    "合双",
-    "红波",
-    "蓝波",
-    "绿波"
-  ];
+  public zhengma = [ "单", "双", "大", "小", "合单", "合双", "红波", "蓝波", "绿波", ];
   public dpcdata1 = {
     title: "特码",
     data1: this.setball(),
@@ -595,6 +586,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
       this.allinput = true;
     }
     this.setallmoney.value = "";
+    this.ktclick('rest', 0); //清空快速投注数据
   }
   // 切换一般 /快捷 事件
   tabclick(i) {
@@ -998,7 +990,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     let data = [];
     let d = this.kuaitoudata.data1;
     this.popup.sub.top = "500px";
-    let str = "dpcdata - 快速投注" ;
+    let str = this.typedata[this.type - 1].name +" - 快速投注" ;
+    // let str = "dpcdata - 快速投注" ;
     for (let i = 0; i < d.length; i++) {
         if (d[i].checked) {
             let l = data.length;
@@ -1229,7 +1222,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     let data = this.setshengxiaoball();
     let shengxiao = ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪" ];
     let poultry = ["狗", "鸡", "羊", "马", "牛", "猪" ];
-    let he = [4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20, 21, 22, 24, 25, 26, 27, 28, 30, 32, 33, 34, 35, 36, 38, 40, 42, 44, 45, 46, 48, 49];
     for (let i = 0; i < data.length; i++) {
       for (let q = 0; q < data[i].length; q++) {
         data[i][q].shengxiao = shengxiao[i];
@@ -1244,12 +1236,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     d.sort((a, b) => {
       return a.numb - b.numb;
     });
-    // 设置合数
-    for (let i = 0; i < d.length; i++) {
-        if(he.indexOf(d[i].numb)!==-1){
-            d[i].heshu = true;
-        }
-    }
     return d;
   }
 
