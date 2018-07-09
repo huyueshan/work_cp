@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 .flex-r {
     display: flex;
     flex-direction: row;
@@ -81,6 +84,10 @@
                             height: 30px;
                             background-image: url("../../images/caip/bg-03.png");
                         }
+                        i.hide{
+                            display: none;
+                        }
+                        
                     }
                     .active {
                         // font-weight: bold;
