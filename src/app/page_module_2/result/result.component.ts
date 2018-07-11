@@ -12,6 +12,7 @@ export class ResultComponent implements OnInit {
   // @ViewChild('canvas') canvas;
   loadpage = false;
   public gamelist = [
+    { gamename: "香港⑥合彩[信]", id: "1", type: "lhc", style:"信", url: "" },
     { gamename: "重庆时时彩[官]", id: "26", type: "ssc", style:"官", url: "" },
     { gamename: "上海时时乐[官]", id: "107", type: "ssc", style:"官", url: "" },
     { gamename: "新疆时时彩[官]", id: "40", type: "ssc", style:"官", url: "" },
@@ -53,43 +54,42 @@ export class ResultComponent implements OnInit {
     { gamename: "山东11选5[信]", id: "58", type: "exf", style:"信", url: "" },
     { gamename: "新疆11选5[信]", id: "77", type: "exf", style:"信", url: "" },
     { gamename: "新疆11选5[官]", id: "78", type: "exf", style:"信", url: "" },
-    { gamename: "加拿大3.5分[信]", id: "65", type: "", style:"信", url: "" },
-    { gamename: "安徽快3[信]", id: "85", type: "", style:"信", url: "" },
-    { gamename: "河北快3[信]", id: "87", type: "", style:"信", url: "" },
-    { gamename: "河南快3[信]", id: "97", type: "", style:"信", url: "" },
-    { gamename: "湖北快3[信]", id: "99", type: "", style:"信", url: "" },
-    { gamename: "上海快3[信]", id: "101", type: "", style:"信", url: "" },
-    { gamename: "北京快3[信]", id: "103", type: "", style:"信", url: "" },
-    { gamename: "广西快3[信]", id: "105", type: "", style:"信", url: "" },
-    { gamename: "香港⑥合彩[信]", id: "1", type: "", style:"信", url: "" },
-    { gamename: "广东快十[信]", id: "5", type: "", style:"信", url: "" },
-    { gamename: "广西快十[信]", id: "6", type: "", style:"信", url: "" },
-    { gamename: "重庆时时彩[信]", id: "7", type: "", style:"信", url: "" },
-    { gamename: "天津时时彩[信]", id: "9", type: "", style:"信", url: "" },
-    { gamename: "新疆时时彩[信]", id: "10", type: "", style:"信", url: "" },
-    { gamename: "重庆快十[信]", id: "13", type: "", style:"信", url: "" },
-    { gamename: "北京PK拾[信]", id: "15", type: "", style:"信", url: "" },
-    { gamename: "江苏快三[信]", id: "22", type: "", style:"信", url: "" },
-    { gamename: "韩式1.5分彩[信]", id: "53", type: "", style:"信", url: "" },
-    { gamename: "北京时时彩[官]", id: "57", type: "", style:"信", url: "" },
-    { gamename: "北京时时彩[信]", id: "59", type: "", style:"信", url: "" },
-    { gamename: "台湾5分彩[信]", id: "60", type: "", style:"信", url: "" },
-    { gamename: "斯洛伐克5分[信]", id: "71", type: "", style:"信", url: "" },
-    { gamename: "腾讯分分彩[信]", id: "79", type: "", style:"信", url: "" },
-    { gamename: "QQ分分彩[信]", id: "80", type: "", style:"信", url: "" },
-    { gamename: "东京1.5分彩[信]", id: "108", type: "", style:"信", url: "" },
-    { gamename: "幸运飞艇[信]", id: "112", type: "", style:"信", url: "" },
-    { gamename: "幸运28[信]", id: "114", type: "", style:"信", url: "" },
-    { gamename: "斯洛伐克28[信]", id: "115", type: "", style:"信", url: "" },
-    { gamename: "澳洲28[信]", id: "116", type: "", style:"信", url: "" },
-    { gamename: "加拿大28[信]", id: "117", type: "", style:"信", url: "" },
-    { gamename: "韩式28[信]", id: "118", type: "", style:"信", url: "" },
-    { gamename: "台湾28[信]", id: "119", type: "", style:"信", url: "" },
-    { gamename: "东京28[信]", id: "120", type: "", style:"信", url: "" },
-    { gamename: "极速分分彩[信]", id: "122", type: "", style:"信", url: "" }
+    { gamename: "重庆时时彩[信]", id: "7", type: "ssc", style:"信", url: "" },
+    { gamename: "天津时时彩[信]", id: "9", type: "ssc", style:"信", url: "" },
+    { gamename: "新疆时时彩[信]", id: "10", type: "ssc", style:"信", url: "" },
+    { gamename: "北京时时彩[官]", id: "57", type: "ssc", style:"信", url: "" },
+    { gamename: "北京时时彩[信]", id: "59", type: "ssc", style:"信", url: "" },
+    { gamename: "加拿大3.5分[信]", id: "65", type: "ssc", style:"信", url: "" },
+    { gamename: "韩式1.5分彩[信]", id: "53", type: "ssc", style:"信", url: "" },
+    { gamename: "台湾5分彩[信]", id: "60", type: "ssc", style:"信", url: "" },
+    { gamename: "斯洛伐克5分[信]", id: "71", type: "ssc", style:"信", url: "" },
+    { gamename: "腾讯分分彩[信]", id: "79", type: "ssc", style:"信", url: "" },
+    { gamename: "极速分分彩[信]", id: "122", type: "ssc", style:"信", url: "" },
+    { gamename: "QQ分分彩[信]", id: "80", type: "ssc", style:"信", url: "" },
+    { gamename: "东京1.5分彩[信]", id: "108", type: "ssc", style:"信", url: "" },
+    { gamename: "广东快十[信]", id: "5", type: "gdk10", style:"信", url: "" },
+    { gamename: "重庆快十[信]", id: "13", type: "gdk10", style:"信", url: "" },
+    { gamename: "广西快十[信]", id: "6", type: "gxk10", style:"信", url: "" },
+    { gamename: "安徽快3[信]", id: "85", type: "k3", style:"信", url: "" },
+    { gamename: "河北快3[信]", id: "87", type: "k3", style:"信", url: "" },
+    { gamename: "河南快3[信]", id: "97", type: "k3", style:"信", url: "" },
+    { gamename: "湖北快3[信]", id: "99", type: "k3", style:"信", url: "" },
+    { gamename: "上海快3[信]", id: "101", type: "k3", style:"信", url: "" },
+    { gamename: "北京快3[信]", id: "103", type: "k3", style:"信", url: "" },
+    { gamename: "广西快3[信]", id: "105", type: "k3", style:"信", url: "" },
+    { gamename: "江苏快三[信]", id: "22", type: "k3", style:"信", url: "" },
+    { gamename: "北京PK拾[信]", id: "15", type: "pk10", style:"信", url: "" },
+    { gamename: "幸运飞艇[信]", id: "112", type: "pk10", style:"信", url: "" },
+    { gamename: "幸运28[信]", id: "114", type: "pcdd", style:"信", url: "" },
+    { gamename: "斯洛伐克28[信]", id: "115", type: "pcdd", style:"信", url: "" },
+    { gamename: "澳洲28[信]", id: "116", type: "pcdd", style:"信", url: "" },
+    { gamename: "加拿大28[信]", id: "117", type: "pcdd", style:"信", url: "" },
+    { gamename: "韩式28[信]", id: "118", type: "pcdd", style:"信", url: "" },
+    { gamename: "台湾28[信]", id: "119", type: "pcdd", style:"信", url: "" },
+    { gamename: "东京28[信]", id: "120", type: "pcdd", style:"信", url: "" },
   ];
-  public quergame = "上海11选5[信]"; // 当前彩种
-  public curgametype = "exf"; // 当前彩种类型
+  public quergame = "香港⑥合彩[信]"; // 当前彩种
+  public curgametype = "lhc"; // 当前彩种类型
   public curgamestyle = "信"; // 当前彩种类型
 
   public loadinfo = true; //控制页面数据加载文字
@@ -107,45 +107,71 @@ export class ResultComponent implements OnInit {
   public numbdata = [30, 50, 100, 200, 300];
   public numbdatactve = 0;
   
-  public OB = { id: 0, number: "180100", tiem:'2018-07-04 15:09:00', data: [] };// 接受后台数据单期统一格式
-
   public resultdata; // 结果数据
   public resultomdata; // 第一期遗漏数据\
-
+  
   public querydata ={
     starttime:'',
     endtime:'',
     qishu:'',
     resttime:0,
-  };
+};
 
-  public OBJX = {sumBigSmall:'', balls:'', lastBigSmall:'', specialOddEven:'', specialBigSmall:'', specialCombOddEven:'', specialCombBigSmall:'', specialLastNum:'', specialAnimal:'', specialColor:'', upDown:'', oddEven:'', OneBigSmall:function(n){}, OneOddEven:function(n){}, sumOddEven:'',}
+public xintab = {
+    list: ["特码", "龙虎斗" ],
+    active: 0,
+}
+public longhulist = {
+    exf:['1v2','1v3','1v4','1v特','2v3','2v4','2v特','3v4','3v特','4v特',],
+    ssc:['1v2','1v3','1v4','1v5','2v3','2v4','2v5','3v4','3v5','4v5',],
+    lhc:['1v2','1v3','1v4','1v5','1v6','1v特','2v3','2v4','2v5','2v6','2v特','3v4','3v5','3v6','3v特','4v5','4v6','4v特','5v6','5v特', '6v特',],
+    gdk10:['1v2','1v3','1v4','1v5','1v6','1v7','1v特','2v3','2v4','2v5','2v6','2v7','2v特','3v4','3v5','3v6','3v7','3v特','4v5','4v6','4v7','4v特','5v6','5v7','5v特','6v7', '6v特', '7v特',],
+    gxk10:['1v2','1v3','1v4','1v特','2v3','2v4','2v特','3v4','3v特','4v特',],
+}
+public thlislt = {
+    gdk10:['正码一', '正码二', '正码三', '正码四', '正码五', '正码六', '正码七',],
+    gxk10:['正码一', '正码二', '正码三', '正码四',],
+    pk10_1:['冠军', '亚军', '第三名', '第四名', '第五名', ],
+    pk10_2:['第六名', '第七名', '第八名', '第九名', '第十名', ],
+};
+public imgtop = {
+    k3 : [{top:-10,}, {top:-50,}, {top:-90,}, {top:-130,}, {top:-170,}, {top:-210,}, ],
+    pk10 : [{top:-10,}, {top:-62,}, {top:-114,}, {top:-166,}, {top:-218,}, {top:-270,}, {top:-322,}, {top:-374,}, {top:-426,}, {top:-478,}, ],
+};
+
+public OBJX = {sum:0, sumBigSmall:'', balls:'', lastBigSmall:'', specialOddEven:'', specialBigSmall:'', specialCombOddEven:'', specialCombBigSmall:'', specialLastNum:'', specialAnimal:'', specialColor:'', upDown:'', oddEven:'', OneBigSmall:function(n){}, OneOddEven:function(n){}, sumOddEven:'',before:'', middle:'',  behind:'', pklh:function(l,h){},}
 
 
 
-  //临时设置开奖数据参数
+// ==========临时设置开奖数据参数
+
+  public OB = { id: 0, number: "180100", time:'2018-07-04 15:09:00', data: [] };// 接受后台数据单期统一格式
   public gamepam = {
     ssc: { min: 0, max: 9, len: 10, length: 5 },
     exf: { min: 1, max: 11, len: 11, length: 5 },
     pk10: { min: 1, max: 10, len: 10, length: 10 },
     fc3d: { min: 0, max: 9, len: 10, length: 3 },
-    k3: { min: 1, max: 6, len: 6, length: 3 }
+    k3: { min: 1, max: 6, len: 6, length: 3 },
+    lhc: { min: 1, max: 49, len: 49, length: 7 },
+    // gdk10: { min: 1, max: 20, len: 20, length: 8 },
+
   };
   public curgame = this.gamepam[this.curgametype];
-  // 临时数据end
+  // =========临时数据end
 
   constructor() {}
   ngOnInit() {
     this.loadpage = userModel.platform;
-
     this.pageinit();
-
   }
-
 
   // 彩种选择框事件
   selechange() {
         this.pageinit();
+  }
+  // 信用玩法查询按钮事件
+  query(){
+    this.pageinit();
   }
 
   pageinit(){
@@ -160,6 +186,7 @@ export class ResultComponent implements OnInit {
     }
     // ==================此处请求数据=====
     this.loadinfo = true;
+    this.xintab.active = 0 ;
     let tp = this.curgametype;
     // 模拟数据
     if (this.curgamestyle === '官') {
@@ -169,20 +196,67 @@ export class ResultComponent implements OnInit {
             this.resultomdata = this.setbassomisdata();
         }
         if (tp === "kl8") {
-            this.resultdata = this.kl8data( this.setkl8data(this.numbdata[this.numbdatactve]) );
+            let data = this.setkldata(this.numbdata[this.numbdatactve],20,1,80);
+            for (let i = 0; i < data.length; i++) {
+                data[i].data.sort((a,b)=>{return a-b});
+            }
+            this.resultdata = this.kl8data( data );
         }
     }
     if (this.curgamestyle === '信') {
         if ( tp === "exf" ) {
             this.curgame = this.gamepam[tp]; // 创建当前游戏数据
-            this.resultdata = this.setballdata(30);
+            this.resultdata = this.setballdata(20);
             for (let i = 0; i < this.resultdata.length; i++) {
                 this.resultdata[i].data = this.GD11X5(this.resultdata[i].data)
             }
-            console.log(this.resultdata);
         }
-
-
+        if ( tp === "ssc" ) {
+            this.curgame = this.gamepam[tp]; // 创建当前游戏数据
+            this.resultdata = this.setballdata(20);
+            for (let i = 0; i < this.resultdata.length; i++) {
+                this.resultdata[i].data = this.SSC(this.resultdata[i].data)
+            }
+        }
+        if ( tp === "lhc" ) {
+            this.curgame = this.gamepam[tp]; // 创建当前游戏数据
+            this.resultdata = this.setballdata(20);
+            let year = 2018; // 六合彩需要传入开奖时的 年份 数字类型
+            for (let i = 0; i < this.resultdata.length; i++) {
+                this.resultdata[i].data = this.SIX(year,this.resultdata[i].data)
+            }
+        }
+        if ( tp === "gdk10" ) {
+            this.resultdata = this.setkldata(20,8,1,20);
+            for (let i = 0; i < this.resultdata.length; i++) {
+                this.resultdata[i].data = this.GDKS(this.resultdata[i].data);
+            }
+        }
+        if ( tp === "gxk10" ) {
+            this.resultdata = this.setkldata(20,5,1,20);
+            for (let i = 0; i < this.resultdata.length; i++) {
+                this.resultdata[i].data = this.GXKS(this.resultdata[i].data);
+            }
+        }
+        if ( tp === "k3" ) {
+            this.curgame = this.gamepam[tp]; // 创建当前游戏数据
+            this.resultdata = this.setballdata(20);
+            for (let i = 0; i < this.resultdata.length; i++) {
+                this.resultdata[i].data = this.GXK3(this.resultdata[i].data);
+            }
+        }
+        if ( tp === "pk10" ) {
+            this.resultdata = this.setkldata(20,10,1,10);
+            for (let i = 0; i < this.resultdata.length; i++) {
+                this.resultdata[i].data = this.BJPK10(this.resultdata[i].data);
+            }
+        }
+        if ( tp === "pcdd" ) {
+            this.resultdata = this.setkldata(20,3,0,9);
+            for (let i = 0; i < this.resultdata.length; i++) {
+                this.resultdata[i].data = this.PCDD(this.resultdata[i].data);
+            }
+        }
     }
     setTimeout(() => {
         this.loadinfo = false;
@@ -190,7 +264,7 @@ export class ResultComponent implements OnInit {
   }
 
   // 选择多期开奖事件
-  numbclick(i) {
+  numbclick(i){
     this.numbdatactve = i;
     this.pageinit();
   }
@@ -198,7 +272,6 @@ export class ResultComponent implements OnInit {
   kl8data(D){
     let data = [];
     let o = {sum:0, bigSmall:'', evenOdd:'', upDown:'', danShuang:'' }
-
     for (let i = 0; i < D.length; i++) {
         data[i] = Object.assign({}, D[i], o);
         let d = data[i];
@@ -227,60 +300,61 @@ export class ResultComponent implements OnInit {
   }
 //   ======================信用页面数据分析
   // 信用玩法数据设置
-//   public ExtendAttr = {
-    // SIX(item, arr) {
-    //     let obj = Object.assign({}, this.OBJX);
-    //     obj.sumBigSmall = this.bigSmall(item.sum, 175, "zhi", { big: "总大", small: "总小" },undefined);
-    //     obj.balls = this.getZodiac(item.year, item.result, 1);
-
-    //     let special = item.result.match(/\d+$/)[0] * 1
-    //     let specialComb = this.compute(String(special).split(''));
-    //     let he = "和";
-    //     obj.specialOddEven = special === 49 ? he : (special % 2 === 0 ? "特双": "特单");
-    //     obj.specialBigSmall = special === 49 ? he : (special >= 25 ? "特大" : "特小");
-    //     obj.specialCombOddEven = special === 49 ? he : (specialComb % 2 === 0 ? "合双": "合单");
-    //     obj.specialCombBigSmall = special === 49 ? he : (specialComb > 6 ? "合大": "合小");
-    //     obj.specialLastNum = special === 25 ? he : (specialComb % 10 >= 5 ? "合尾大" : "合尾小");
-    //     obj.specialAnimal = special === 49 ? he : this.getZodiac(item.year, special, 2);
-    //     //==================================================================
-    //     obj.specialColor = this.color(special);
-    //     obj.upDown = this.three(arr.slice(0, -1), function (e) {
-    //         e = Number(e);
-    //         if (e === 49) {
-    //             return special > 24 ? special + '' : '';
-    //         } else {
-    //             return e > 24 ? e + '' : '';
-    //         }
-    //     }, 6, "updown");
-
-    //     obj.oddEven = this.three(arr.slice(0, -1), function (e) {
-    //         e = Number(e);
-    //         if (e === 49) {
-    //             return special % 2 === 0 ? special + '' : '';
-    //         } else {
-    //             return e % 2 === 0 ? e + '' : '';
-    //         }
-    //     }, 6, "oddeven");
-    //     return obj;
-    // };
-    GD11X5(arr){
-        let obj = Object.assign({}, this.OBJX);
-        let sum = this.compute(arr);
+    SIX(year,arr){
+        let _that = this;
+        let sum = _that.compute(arr);
+        let obj = Object.assign({}, _that.OBJX,);
         let result = arr.join(",");
-        obj.sumBigSmall = this.bigSmall(sum, 31, "zhi", { big: "总大", small: "总小" }, 30); // 总和大小
+        obj.sum = sum;
+        obj.sumBigSmall = _that.bigSmall(sum, 175, "zhi", { big: "总大", small: "总小" },undefined);
+        obj.sumOddEven = (function () {  return sum % 2 === 0 ? "总双" :"总单"; })();
+        obj.balls = JSON.parse(_that.getZodiac(year, result, 1));
+
+        let special = result.match(/\d+$/)[0] * 1
+        let specialComb = _that.compute(String(special).split(''));
+        let he = "和";
+        obj.specialOddEven = special === 49 ? he : (special % 2 === 0 ? "特双": "特单");
+        obj.specialBigSmall = special === 49 ? he : (special >= 25 ? "特大" : "特小");
+        obj.specialCombOddEven = special === 49 ? he : (specialComb % 2 === 0 ? "合双": "合单");
+        obj.specialCombBigSmall = special === 49 ? he : (specialComb > 6 ? "合大": "合小");
+        obj.specialLastNum = special === 25 ? he : (specialComb % 10 >= 5 ? "合尾大" : "合尾小");
+        obj.specialAnimal = special === 49 ? he : _that.getZodiac(year, special, 2);
+        obj.specialColor = _that.color(special) === 'red'?'红波':(_that.color(special)==='blue'?'蓝波':'绿波');
+        obj.upDown = _that.three(arr.slice(0, -1), function (e) {
+            e = Number(e);
+            if (e === 49) {
+                return special > 24 ? special + '' : '';
+            } else {
+                return e > 24 ? e + '' : '';
+            }
+        }, 6, "updown");
+
+        obj.oddEven = _that.three(arr.slice(0, -1), function (e) {
+            e = Number(e);
+            if (e === 49) {
+                return special % 2 === 0 ? special + '' : '';
+            } else {
+                return e % 2 === 0 ? e + '' : '';
+            }
+        }, 6, "oddeven");
+        obj.pklh = function (long, hu) {
+            return _that.pk(long, hu, arr, 49);
+        }
+        return obj;
+    };
+    GD11X5(arr){
+        let _that = this;
+        let obj = Object.assign({}, _that.OBJX);
+        let sum = _that.compute(arr);
+        let result = arr.join(",");
+        obj.sum = sum;
+        obj.sumBigSmall = _that.bigSmall(sum, 31, "zhi", { big: "总大", small: "总小" }, 30); // 总和大小
         obj.balls = result.split(",");
-        obj.lastBigSmall = this.bigSmall(sum, 5, "wei", { big: "总尾大", small: "总尾小" },undefined); // 总尾大小
+        obj.lastBigSmall = _that.bigSmall(sum, 5, "wei", { big: "总尾大", small: "总尾小" },undefined); // 总尾大小
         obj.sumOddEven = (function () {  return sum % 2 === 0 ? "总双" :"总单"; })();
         /// 单个号码的大小
         obj.OneBigSmall = function (num) {
-            num = Number(num);
-            if (num === 11) {
-                return "和";
-            } else if (num >= 6) {
-                return "大";
-            } else {
-                return "小";
-            }
+            return Number(num) === 11? "和":( Number(num) >= 6?"大": "小" )
         }
         /// 单个号码的单双
         obj.OneOddEven = function (num) {
@@ -288,7 +362,7 @@ export class ResultComponent implements OnInit {
         }
     
         let special = result.match(/\d+$/)[0] * 1;
-        obj.upDown = this.three(arr.slice(0, -1), function (e) {
+        obj.upDown = _that.three(arr.slice(0, -1), function (e) {
             e = Number(e);
             if (e === 11) {
                 return special > 5 ? special + '' : '';
@@ -297,7 +371,7 @@ export class ResultComponent implements OnInit {
             }
         }, 4, "updown");
     
-        obj.oddEven = this.three(arr.slice(0, -1), function (e) {
+        obj.oddEven = _that.three(arr.slice(0, -1), function (e) {
             e = Number(e);
             if (e === 11) {
                 return special % 2 === 0 ? special + '' : '';
@@ -305,160 +379,199 @@ export class ResultComponent implements OnInit {
                 return e % 2 === 0 ? e + '' : '';
             }
         }, 4, "oddeven");
+        obj.pklh = function (long, hu) {
+            return _that.pk(long, hu, arr, 11);
+        }
         return obj;
-    } ;   
-    // GDKS: function (item, arr) {
-    //     let obj = {};
-    //     obj.sumBigSmall = bigSmall(item.sum, 85, "zhi", { big: "总大", small: "总小" }, true); // 总和大小
-    //     obj.balls = item.result.split(",");
-    //     obj.lastBigSmall = bigSmall(item.sum, 5, "wei", { big: "总尾大", small: "总尾小" }); // 总尾大小
-    //     let special = item.result.match(/\d+$/)[0] * 1;
-    //     obj.specialBigSmall = special >= 11 ? showTag("大", "b") : showTag("小", "r");
-    //     obj.specialOddEven = special % 2 === 0 ? showTag("双", "b") : showTag("单", "r");
-    //     obj.specialLastBigSmall = bigSmall(special, 5, 'wei', { big: "尾大", small: "尾小" });
-    //     obj.specialCombSum = compute(String(special).split('')) % 2 === 0 ? showTag("合双", "b") : showTag("合单", "r");
+    };
+    SSC(arr){
+        let _that = this;
+        let obj = Object.assign({}, _that.OBJX);
+        let sum = _that.compute(arr);
+        let result = arr.join(",");
+        obj.sum = sum;
+        obj.sumBigSmall = _that.compute(arr) >= 23 ? "总大" : "总小"; // 总和大小
+        obj.balls = result.split(",");
+        obj.lastBigSmall = _that.bigSmall(sum, 5, "wei", { big: "总尾大", small: "总尾小" },undefined); // 总尾大小
+        obj.sumOddEven = (function () {  return sum % 2 === 0 ? "总双" :"总单"; })();
+        /// 单个号码的大小
+        obj.OneBigSmall = function (num) {
+            return Number(num) >= 5?"大": "小" 
+        }
+        /// 单个号码的单双
+        obj.OneOddEven = function (num) {
+            return Number(num) % 2 === 0 ? "双": "单";
+        }
+    
+        let special = result.match(/\d+$/)[0] * 1;
+        obj.upDown = _that.three(arr.slice(0, -1), function (e) {
+            e = Number(e);
+            if (e === 11) {
+                return special > 5 ? special + '' : '';
+            } else {
+                return e > 5 ? e + '' : '';
+            }
+        }, 4, "updown");
+    
+        obj.oddEven = _that.three(arr.slice(0, -1), function (e) {
+            e = Number(e);
+            if (e === 11) {
+                return special % 2 === 0 ? special + '' : '';
+            } else {
+                return e % 2 === 0 ? e + '' : '';
+            }
+        }, 4, "oddeven");
+        obj.pklh = function (long, hu) {
+            let l = Number(arr[long - 1])
+            let h = Number(arr[hu - 1]);
+            return l===h?'和':(l>h?'龙':'虎')
+        }
+        obj.before = _that.ssc(arr.slice(0, 3));
+        obj.middle = _that.ssc(arr.slice(1, 4));
+        obj.behind = _that.ssc(arr.slice(2));
+        return obj;
+    };
 
-    //     obj.upDown = three(arr, function (e) {
-    //         return Number(e) > 10 ? e : '';
-    //     }, 8, "updown");
+    GDKS(arr){
+        let _that = this;
+        let obj = Object.assign({}, _that.OBJX,{specialLastBigSmall:'',specialCombSum:'',OneCombOddEven:function(n){},OneLastBigSmall:function(n){},zhengballs:[]});
+        let sum = _that.compute(arr);
+        let result = arr.join(",");
+        obj.sum = sum;
+        obj.sumBigSmall = _that.bigSmall(sum, 85, "zhi", { big: "总大", small: "总小" }, true); // 总和大小
+        obj.balls = result.split(",");
+        obj.zhengballs = arr.slice(0,arr.length-1);
+        obj.lastBigSmall = _that.bigSmall(sum, 5, "wei", { big: "总尾大", small: "总尾小" },undefined); // 总尾大小
+        obj.sumOddEven = (function () {  return sum % 2 === 0 ? "总双" :"总单"; })();
+        let special = result.match(/\d+$/)[0] * 1;
+        obj.specialBigSmall = special >= 11 ? "大" :"小";
+        obj.specialOddEven = special % 2 === 0 ?"双":"单";
+        obj.specialLastBigSmall = _that.bigSmall(special, 5, 'wei', { big: "尾大", small: "尾小" },undefined);
+        obj.specialCombSum = _that.compute(String(special).split('')) % 2 === 0 ?"合双" : "合单";
 
-    //     obj.oddEven = three(arr, function (e) {
-    //         return Number(e) % 2 === 0 ? e : '';
-    //     }, 8, "oddeven");
+        obj.upDown = _that.three(arr, function (e) {
+            return Number(e) > 10 ? e : '';
+        }, 8, "updown");
 
-    //     obj.OneBigSmall = function (data) {
-    //         return bigSmall(data, 11, 'zhi', { big: '大', small: '小' });
-    //     }
-    //     obj.OneOddEven = function (data) {
-    //         return Number(data) % 2 === 0 ? showTag("双", "b") : showTag("单", "r");
-    //     }
-    //     obj.OneCombOddEven = function (data) {
-    //         return compute(data.split('')) % 2 === 0 ? showTag("双", "b") : showTag("单", "r");
-    //     }
-    //     obj.OneLastBigSmall = function (data) {
-    //         return bigSmall(Number(data), 5, 'wei', { big: '尾大', small: '尾小' });
-    //     }
-    //     return obj;
-    // },
-    // GXKS: function (item, arr) {
-    //     let obj = {};
-    //     let sixi = {
-    //         '_1_2_3_4_5_': '福',
-    //         '_6_7_8_9_10_': '禄',
-    //         '_11_12_13_14_15_': '寿',
-    //         '_16_17_18_19_20_': '喜'
-    //     };
-    //     obj.sumBigSmall = bigSmall(item.sum, 56, "zhi", { big: "总大", small: "总小", he: "和-和" }, true); // 总和大小
-    //     obj.sumOddEven = (function () {
+        obj.oddEven = _that.three(arr, function (e) {
+            return Number(e) % 2 === 0 ? e : '';
+        }, 8, "oddeven");
 
-    //         return item.sum % 2 === 0 ? showTag("总双", "b") : showTag("总单", "r");
+        obj.OneBigSmall = function (data) {
+            return _that.bigSmall(data, 11, 'zhi', { big: '大', small: '小' },undefined);
+        }
+        obj.OneOddEven = function (data) {
+            return Number(data) % 2 === 0 ? "双": "单";
+        }
+        obj.OneCombOddEven = function (data) {
+            let str = data.toString();
+            return ( _that.compute(str.split('')) % 2) === 0 ?"双":"单";
+        }
+        obj.OneLastBigSmall = function (data) {
+            return _that.bigSmall(Number(data), 5, 'wei', { big: '尾大', small: '尾小' },undefined);
+        }
+        obj.pklh = function (long, hu) {
+            return _that.pk(long, hu, arr, null);
+        }
+        return obj;
+    };
+    GXKS(arr){
+        let _that = this;
+        let obj = Object.assign({}, _that.OBJX,{specialLastBigSmall:'',specialCombSum:'',OneCombOddEven:function(n){},OneLastBigSmall:function(n){},sixi:function(n){},zhengballs:[],speciasixi:'',});
+        let sum = _that.compute(arr);
+        let result = arr.join(",");
+        obj.sum = sum;
+        let sixi = {
+            '_1_2_3_4_5_': '福',
+            '_6_7_8_9_10_': '禄',
+            '_11_12_13_14_15_': '寿',
+            '_16_17_18_19_20_': '喜'
+        };
+        obj.sumBigSmall = _that.bigSmall(sum, 56, "zhi", { big: "总大", small: "总小", he: "和-和" }, true); // 总和大小
+        obj.sumOddEven = (function () {
 
-    //     })();
-    //     obj.balls = arr;
-    //     obj.lastBigSmall = bigSmall(item.sum, 5, "wei", { big: "总尾大", small: "总尾小" }); // 总尾大小
-    //     obj.sixi = function (data) {
-    //         if (Number(data) === 21) return '输-和';
-    //         data = '_' + data + '_';
-    //         let text = '';
-    //         $.each(sixi, function (a, b) {
-    //             a.indexOf(data) > -1 && (text = b);
-    //         });
-    //         return text;
-    //     }
-    //     obj.OneBigSmall = function (data) {
-    //         data = $.isArray(data) ? Number(data[0]) : Number(data);
-    //         return data === 21 ? showTag("输-和") : (data >= 11 ? showTag("大", "b") : showTag("小", "r"));
-    //     }
-    //     obj.OneOddEven = function (data) {
-    //         data = $.isArray(data) ? Number(data[0]) : Number(data);
-    //         return data === 21 ? showTag("输-和") : (data % 2 === 0 ? showTag("双", "b") : showTag("单", "r"));
-    //     }
-    //     obj.OneCombOddEven = function (data) {
-    //         data = $.isArray(data) ? Number(data[0]) : Number(data);
-    //         return data === 21 ? showTag("输-和") : (compute(String(data).split('')) % 2 === 0 ? showTag("合双", "b") : showTag("合单", "r"));
-    //     }
-    //     obj.OneLastBigSmall = function (data) {
-    //         data = $.isArray(data) ? Number(data[0]) : Number(data);
-    //         return data === 21 ? showTag("输-和") : bigSmall(data, 5, 'wei', { big: "尾大", small: "尾小" });
-    //     }
+            return sum % 2 === 0 ? "总双" : "总单";
 
-    //     let special = item.result.match(/\d+$/)[0] * 1;
-    //     obj.upDown = three(arr.slice(0, -1), function (e) {
-    //         e = Number(e);
-    //         if (e === 21) {
-    //             return special > 10 ? special + '' : '';
-    //         } else {
-    //             return e > 10 ? e + '' : '';
-    //         }
-    //     }, 4, "updown");
-    //     obj.oddEven = three(arr.slice(0, -1), function (e) {
-    //         e = Number(e);
-    //         if (e === 21) {
-    //             return special % 2 === 0 ? special + '' : '';
-    //         } else {
-    //             return e % 2 === 0 ? e + '' : '';
-    //         }
-    //     }, 4, "oddeven");
-    //     return obj;
-    // },
-    // SSC: function (item, arr) {
-    //     let obj = {};
-    //     obj.balls = arr;
-    //     obj.sumBigSmall = compute(arr) >= 23 ? showTag("总大", "b") : showTag("总小", "r");
-    //     obj.OneBigSmall = function (data) {
-    //         return Number(data) >= 5 ? showTag("大", "b") : showTag("小", "r");
-    //     }
-    //     obj.OneOddEven = function (data) {
-    //         return Number(data) % 2 === 0 ? showTag("双", "b") : showTag("单", "r");
-    //     }
-    //     obj.before = ssc(arr.slice(0, 3));
-    //     obj.middle = ssc(arr.slice(1, 4));
-    //     obj.behind = ssc(arr.slice(2));
-    //     return obj;
-    // },
-    // BJPK10: function (item, arr) {
-    //     let obj = {};
-    //     obj.balls = arr;
-    //     obj.combFirstSecond = Number(arr[0]) + Number(arr[1]);
-    //     obj.combFirstSecondOddEven = obj.combFirstSecond === 11 ? BJPKSGYHZ11 == 2 ? showTag("单", "r") : showTag("和") : (obj.combFirstSecond % 2 === 0 ? showTag("双", "b") : showTag("单", "r"));
-    //     obj.combFirstSecondBigSmall = obj.combFirstSecond === 11 ? BJPKSGYHZ11 == 2 ? showTag("小", "r") : showTag("和") : (obj.combFirstSecond > 11 ? showTag("大", "b") : showTag("小", "r"));
-    //     obj.oneBigSmall = function (data) {
-    //         return Number(data) >= 6 ? showTag("大", "b") : showTag("小", "r");
-    //     }
-    //     obj.oneOddEven = function (data) {
-    //         return Number(data) % 2 === 0 ? showTag("双", "b") : showTag("单", "r");
-    //     }
-    //     obj.pk = function (data) {
-    //         if (data < 5) {
-    //             return Number(arr[data]) > Number(arr[9 - data]) ? showTag("龙", "b") : showTag("虎", "r");
-    //         } else {
-    //             return '';
-    //         }
-    //     }
-    //     return obj;
-    // },
-    // GXK3: function (item, arr) {
-    //     let obj = {};
-    //     obj.balls = arr;
-    //     obj.sumBigSmall = item.sum >= 11 ? showTag("大", "b") : showTag("小", "r");
-    //     return obj;
-    // },
-    // PCDD: function (item, arr) {
-    //     let obj = {};
-    //     obj.resultList = item.result.split(',');
-    //     obj.bigSmall = item.sum < 14 ? '<b style="color:#2EA514">小</b>' : '<b style="color:#ff5500">大</b>';
-    //     obj.evenOdd = item.sum % 2 == 0 ? '<b style="color:#ff5500">双</b>' : '<b style="color:#2EA514">单</b>';
-    //     let leopard = true;
-    //     for (let i = 0; i < obj.resultList.length - 1; i++) {
-    //         if (obj.resultList[i] != obj.resultList[i + 1]) {
-    //             leopard = false;
-    //             break;
-    //         }
-    //     }
-    //     obj.leopard = leopard ? '' : '<span style="color:#ccc;">---</span>'; '<span style="color:#666;">豹子【' + obj.resultList[0] + '】</span>'
-    //     return obj;
-    // }
-// };
+        })();
+        obj.balls = arr;
+        obj.zhengballs = arr.slice(0,arr.length-1);
+        obj.lastBigSmall = _that.bigSmall(sum, 5, "wei", { big: "总尾大", small: "总尾小" },undefined); // 总尾大小
+        let special = result.match(/\d+$/)[0] * 1;
+        obj.specialBigSmall = special >= 11 ? "大" :"小";
+        obj.specialOddEven = special % 2 === 0 ?"双":"单";
+        obj.specialLastBigSmall = _that.bigSmall(special, 5, 'wei', { big: "尾大", small: "尾小" },undefined);
+        obj.specialCombSum = _that.compute(String(special).split('')) % 2 === 0 ?"合双" : "合单";
+        obj.speciasixi = _that.sixi(special);
+        obj.sixi = function (data) {
+            return _that.sixi(data);
+        }
+        obj.OneBigSmall = function (data) {
+            return Number(data) === 21 ? "输-和" : (data >= 11 ? "大" : "小");
+        }
+        obj.OneOddEven = function (data) {
+            return Number(data) === 21 ? "输-和" : (data % 2 === 0 ? "双" : "单");
+        }
+        obj.OneCombOddEven = function (data) {
+            return Number(data) === 21 ? "输-和" : (_that.compute(String(data).split('')) % 2 === 0 ? "合双" : "合单");
+        }
+        obj.OneLastBigSmall = function (data) {
+            return Number(data) === 21 ? "输-和": _that.bigSmall(data, 5, 'wei', { big: "尾大", small: "尾小" },undefined);
+        }
+        obj.pklh = function (long, hu) {
+            return _that.pk(long, hu, arr, 21);
+        }
+        return obj;
+    };
+    BJPK10(arr){
+        let _that = this;
+        let obj = Object.assign({},{sum:0,combFirstSecondBigSmall:'',combFirstSecondOddEven:'',balls:[],oneBigSmall:function(n){},oneOddEven:function(n){},pk:function(n){},firstgroup:[],lastgroup:[],});
+        let sum = _that.compute(arr);
+        obj.balls = arr;
+        obj.firstgroup = arr.slice(0,5);
+        obj.lastgroup = arr.slice(5);
+        let combFirstSecond = Number(arr[0]) + Number(arr[1]);
+        obj.sum = combFirstSecond;
+        obj.combFirstSecondOddEven = combFirstSecond === 11 ? "和": (combFirstSecond % 2 === 0 ? "双":"单");
+        obj.combFirstSecondBigSmall = combFirstSecond === 11 ?"和": (combFirstSecond > 11 ?"大": "小");
+        obj.oneBigSmall = function (data) {
+            return Number(data) >= 6 ? "大" :"小";
+        }
+        obj.oneOddEven = function (data) {
+            return Number(data) % 2 === 0 ? "双":"单";
+        }
+        obj.pk = function (data) {
+            if (data < 5) {
+                return Number(arr[data]) > Number(arr[9 - data]) ? "龙" : "虎";
+            } else {
+                return '';
+            }
+        }
+        return obj;
+    };
+    GXK3(arr){
+        let _that = this;
+        let obj = Object.assign({},{sum:0,sumBigSmall:'',sumOddEven:'',balls:[],});
+        let sum = _that.compute(arr);
+        obj.balls = arr;
+        obj.sum = sum;
+        obj.sumOddEven = (function () {
+            return sum % 2 === 0 ? "总双" : "总单";
+        })();
+        obj.sumBigSmall = sum >= 11 ? "总大" : "总小";
+        return obj;
+    };
+    PCDD(arr){
+        let _that = this;
+        let obj = Object.assign({},{sum:0,bigSmall:'',evenOdd:'',ball1:0,ball2:0,ball3:0,});
+        let sum = _that.compute(arr);
+        obj.ball1 = arr[0];
+        obj.ball2 = arr[1];
+        obj.ball3 = arr[2];
+        obj.sum = sum;
+        obj.bigSmall = sum < 14 ? '小' : '大';
+        obj.evenOdd = sum % 2 == 0 ? '双' : '单';
+        return obj;
+    };
 
 
 
@@ -477,16 +590,17 @@ export class ResultComponent implements OnInit {
         let a = zodiac.slice(0, index + 1).reverse();
         let b = zodiac.slice(index + 1).reverse();
         let sortZodiac = a.concat(b);
-        let result = [];
+        let result;
         if (type === 1) {
             let nums = num.split(',');
-            // let nums = num;
+            result = [];
             for (let i = 0, len = nums.length; i < len; i++) {
                 result.push({
                     num: Number(nums[i]),
                     name: sortZodiac[(nums[i] - 1) % 12]
                 });
             }
+            result = JSON.stringify(result);
         } else if (type === 2) {
             if (Number(num) === 49) return '和';
             for (let i in cate) {
@@ -494,31 +608,54 @@ export class ResultComponent implements OnInit {
                     result = cate[i];
                 }
             }
-            // return result[0];
         }
         return result;
     }
+    sixi(num){
+        let xi = {
+            '_1_2_3_4_5_': '福',
+            '_6_7_8_9_10_': '禄',
+            '_11_12_13_14_15_': '寿',
+            '_16_17_18_19_20_': '喜'
+        };
+        if (Number(num) === 21) return '输-和';
+            let data = '_' + num + '_';
+            let text = '';
+            for(let key in xi){
+                if (key.indexOf(data) > -1) {
+                    return  xi[key];
+                }
+            }
+        return "";
+    }
 
      /// 色波
-     color(num) {
+    color(num) {
+        let n = Number(num);
         let arr = [
             [1,2,7,8,12,13,18,19,23,24,29,30,34,35,40,45,46,],
             [3,4,9,10,14,15,20,25,26,31,36,37,41,42,47,48,],
             [5,6,11,16,17,21,22,27,28,32,33,38,39,43,44,49,]
         ];
-        let arrCn = ["红波", "蓝波", "绿波"];
-        // let color = ["bg_red", "bg_blue", "bg_green"];
-        let index = 0;
+        let color = ['red', 'blue', 'green'];
         for (let i = 0; i < arr.length; i++) {
-            if (arr.indexOf(num)>-1) {
-                index = i;
-                break;
+            if ( arr[i].indexOf(n) > -1) {
+                return color[i];
             }
         }
-        // $.each(arr, function (a, b) {
-        //     b.indexOf(',' + num + ',') > -1 && (index = a);
-        // });
-        return arrCn[index];
+    }
+    colorpcdd(num) {
+        let n = Number(num);
+        let color="";
+        color = n % 3 === 0 ? "red" : (n % 3 === 1 ? "green" : "blue");
+        if (n === 0 || n === 13 || n === 14 || n === 27) {
+            color = "gray";
+        }
+        return color
+    }
+    colorks(num) {
+        let n = Number(num);
+        return n%3 === 1? 'red':(n%3 === 2?'blue':'green');
     }
      /// 求和
      compute(arr) {
@@ -528,10 +665,6 @@ export class ResultComponent implements OnInit {
         }
         return c;
     }
-        /// fn:{Function}筛选号码的函数，返回下盘或偶数的数组
-    /// length:{Number}参与上下奇偶的号码个数
-    /// type:{String} oddeven：上下   updown：奇偶
-    /// 相同规则：上下或者奇偶的个数相同则为和
     screen( arr, fn){
             if (!fn) return arr;
             var a = [];
@@ -541,6 +674,10 @@ export class ResultComponent implements OnInit {
             return a;
 
     }
+        /// fn:{Function}筛选号码的函数，返回下盘或偶数的数组
+    /// length:{Number}参与上下奇偶的号码个数
+    /// type:{String} oddeven：上下   updown：奇偶
+    /// 相同规则：上下或者奇偶的个数相同则为和
     three(arr, fn, length, type) {
         let text = [];
         if (type === "oddeven") {
@@ -572,7 +709,7 @@ export class ResultComponent implements OnInit {
             return '豹子';
         } else if ((arr[0] + 1 === arr[1] && arr[1] + 1 === arr[2]) || /^(019)|(089)$/.test(arr.join(''))) {
             return '顺子';
-        } else if (arr.unique().length === 2) {
+        } else if (arr[0] === arr[1] || arr[1] === arr[2] || arr[0] === arr[2]) {
             return '对子';
         } else if (arr[0] + 1 === arr[1] || arr[1] + 1 === arr[2] || /^0\d9$/.test(arr.join(''))) {
             return '半顺';
@@ -647,16 +784,32 @@ export class ResultComponent implements OnInit {
     }
     return d;
   }
-  // 创建快乐8数据
-  setkl8data(n){
+  // 创建快乐8数据 || 广东快10
+  setkldata(n,len,min,max){
         let d = [];
         for (let i = 0; i < n; i++) {
             d[i] = Object.assign({}, this.OB);
             d[i].id = i + 1;
             d[i].number = 180101 + i + "";
             let s = new Set();
-            for (let q = 0; q < 20; q = s.size) {
-                let a = Math.floor(Math.random() * 80 + 1);
+            for (let q = 0; q < len; q = s.size) {
+                let a = Math.floor(Math.random() * (max - min + 1) + min);
+                s.add(a);
+            }
+            d[i].data=Array.from(s);
+        }
+        return d
+  }
+  // 创建六合数据
+  setlhcdata(n){
+        let d = [];
+        for (let i = 0; i < n; i++) {
+            d[i] = Object.assign({}, this.OB);
+            d[i].id = i + 1;
+            d[i].number = 180101 + i + "";
+            let s = new Set();
+            for (let q = 0; q < 7; q = s.size) {
+                let a = Math.floor(Math.random() * 49 + 1);
                 s.add(a);
             }
             d[i].data=Array.from(s);

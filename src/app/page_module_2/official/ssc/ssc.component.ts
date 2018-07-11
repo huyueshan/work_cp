@@ -36,6 +36,7 @@ export class SSCofficialComponent implements OnInit {
 	public rangepercent = 0;
 	public now_tips_menu :any='1_1';
 	public now_description = '';
+	public rangenum = 180200;
 	public hothidden = false;
 	public userInfo = {
 		name:'赌神',
@@ -119,97 +120,97 @@ export class SSCofficialComponent implements OnInit {
 	menu_2_data = [
 		{
 			title:this.now_lang.Lot_tab.Five_star_str,
-			menu:[{name:this.now_lang.Lot_tab.Five_star_eve,index:1,arr:['w','q','b','s','g'],format: ["n|n|n|n|n"],datarule:['Rule_1',5]},{name:this.now_lang.Lot_tab.Five_star_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.Five_star_com,index:3,arr:['w','q','b','s','g'],format: ["n|n|n|n|n"],datarule:['Rule_1',5]}],
+			menu:[{name:this.now_lang.Lot_tab.Five_star_eve,index:1,arr:['w','q','b','s','g'],format: ["n|n|n|n|n"],datarule:['Rule_1',5]},{name:this.now_lang.Lot_tab.Five_star_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.Five_star_com,index:3,arr:['w','q','b','s','g'],format: ["n|n|n|n|n"],datarule:['Rule_2',5]}],
 			active:1
 		},
 		{
 			title:this.now_lang.Lot_tab.Five_star_gro,
-			menu:[{name:this.now_lang.Lot_tab.Com_120,index:4,arr:['120'],format: ["m|n|n|n|n"],datarule:['Rule_1',5]},{name:this.now_lang.Lot_tab.Com_60,index:5,arr:['2ch','dh']},{name:this.now_lang.Lot_tab.Com_30,index:6,arr:['2ch','dh']},{name:this.now_lang.Lot_tab.Com_20,index:7,arr:['3ch','dh']},{name:this.now_lang.Lot_tab.Com_10,index:8,arr:['3ch','2ch']},{name:this.now_lang.Lot_tab.Com_5,index:9,arr:['4ch','dh']}],
+			menu:[{name:this.now_lang.Lot_tab.Com_120,index:4,arr:['120'],format: ["m|n|n|n|n"],datarule:['Rule_3',5]},{name:this.now_lang.Lot_tab.Com_60,index:5,arr:['2ch','dh'],format: ["m|n,n,n"],datarule:['Rule_3',1,3]},{name:this.now_lang.Lot_tab.Com_30,index:6,arr:['2ch','dh'],format: ["m,n|n"],datarule:['Rule_3',2,1]},{name:this.now_lang.Lot_tab.Com_20,index:7,arr:['3ch','dh'],format: ["m|n,n"],datarule:['Rule_3',1,2]},{name:this.now_lang.Lot_tab.Com_10,index:8,arr:['3ch','2ch'],format: ["m|n"],datarule:['Rule_3',1,1]},{name:this.now_lang.Lot_tab.Com_5,index:9,arr:['4ch','dh'],format: ["m|n"],datarule:['Rule_3',1,1]}],
 			active:1
 		},
 		{
 			title:this.now_lang.Lot_tab.ForF_str,
-			menu:[{name:this.now_lang.Lot_tab.ForF_star_eve,index:1,arr:['w','q','b','s']},{name:this.now_lang.Lot_tab.ForF_star_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.ForF_star_com,index:3,arr:['w','q','b','s']}],
+			menu:[{name:this.now_lang.Lot_tab.ForF_star_eve,index:1,arr:['w','q','b','s'],format: ["n|n|n|n"],datarule:['Rule_1',4]},{name:this.now_lang.Lot_tab.ForF_star_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.ForF_star_com,index:3,arr:['w','q','b','s'],format: ["n|n|n|n"],datarule:['Rule_2',4]}],
 			active:2
 		},
 		{
 			title:this.now_lang.Lot_tab.ForF_gro,
-			menu:[{name:this.now_lang.Lot_tab.ForF_star_com24,index:4,arr:['24']},{name:this.now_lang.Lot_tab.ForF_star_com12,index:5,arr:['2ch','dh']},{name:this.now_lang.Lot_tab.ForF_star_com6,index:6,arr:['2ch']},{name:this.now_lang.Lot_tab.ForF_star_com4,index:7,arr:['3ch','dh']}],
+			menu:[{name:this.now_lang.Lot_tab.ForF_star_com24,index:4,arr:['24'],format: ["m|n|n|n"],datarule:['Rule_3',4]},{name:this.now_lang.Lot_tab.ForF_star_com12,index:5,arr:['2ch','dh'],format: ["m|n,n"],datarule:['Rule_3',1,2]},{name:this.now_lang.Lot_tab.ForF_star_com6,index:6,arr:['2ch'],format: ["m|n"],datarule:['Rule_3',2]},{name:this.now_lang.Lot_tab.ForF_star_com4,index:7,arr:['3ch','dh'],format: ["m|n"],datarule:['Rule_3',1,1]}],
 			active:2
 		},
 		{
 			title:this.now_lang.Lot_tab.BackF_str,
-			menu:[{name:this.now_lang.Lot_tab.BackF_star_eve,index:1,arr:['q','b','s','g']},{name:this.now_lang.Lot_tab.BackF_star_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.BackF_star_com,index:3,arr:['q','b','s','g']}],
+			menu:[{name:this.now_lang.Lot_tab.BackF_star_eve,index:1,arr:['q','b','s','g'],format: ["n|n|n|n"],datarule:['Rule_1',4]},{name:this.now_lang.Lot_tab.BackF_star_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.BackF_star_com,index:3,arr:['q','b','s','g'],format: ["n|n|n|n"],datarule:['Rule_2',4]}],
 			active:3
 		},
 		{
 			title:this.now_lang.Lot_tab.BackF_gro,
-			menu:[{name:this.now_lang.Lot_tab.BackF_star_com24,index:4,arr:['24']},{name:this.now_lang.Lot_tab.BackF_star_com12,index:5,arr:['2ch','dh']},{name:this.now_lang.Lot_tab.BackF_star_com6,index:6,arr:['2ch']},{name:this.now_lang.Lot_tab.BackF_star_com4,index:7,arr:['3ch','dh']}],
+			menu:[{name:this.now_lang.Lot_tab.BackF_star_com24,index:4,arr:['24'],format: ["m|n|n|n"],datarule:['Rule_3',4]},{name:this.now_lang.Lot_tab.BackF_star_com12,index:5,arr:['2ch','dh'],format: ["m|n,n"],datarule:['Rule_3',1,2]},{name:this.now_lang.Lot_tab.BackF_star_com6,index:6,arr:['2ch'],format: ["m|n"],datarule:['Rule_3',2]},{name:this.now_lang.Lot_tab.BackF_star_com4,index:7,arr:['3ch','dh'],format: ["m|n"],datarule:['Rule_3',1,1]}],
 			active:3
 		},
 		{
 			title:this.now_lang.Lot_tab.BackT_str,
-			menu:[{name:this.now_lang.Lot_tab.BackT_star_eve,index:1,arr:['b','s','g']},{name:this.now_lang.Lot_tab.BackT_star_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.BackT_str_com,index:3,arr:['hz']}],
+			menu:[{name:this.now_lang.Lot_tab.BackT_star_eve,index:1,arr:['b','s','g'],format: ["n|n|n"],datarule:['Rule_1',3]},{name:this.now_lang.Lot_tab.BackT_star_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.BackT_str_com,index:3,arr:['hz'],format: ["m"],datarule:['Rule_4',1,3]}],
 			active:4
 		},
 		{
 			title:this.now_lang.Lot_tab.BackT_gro,
-			menu:[{name:this.now_lang.Lot_tab.BackT_str_com3,index:4,arr:['zu3']},{name:this.now_lang.Lot_tab.BackT_str_com6,index:5,arr:['zu6']},{name:this.now_lang.Lot_tab.BackT_mix_com,index:6,isupload:true},{name:this.now_lang.Lot_tab.BackT_gro_com,index:7,arr:['hz']}],
+			menu:[{name:this.now_lang.Lot_tab.BackT_str_com3,index:4,arr:['zu3'],format: ["m|n"],datarule:['Rule_5',2]},{name:this.now_lang.Lot_tab.BackT_str_com6,index:5,arr:['zu6'],format: ["m|n|n"],datarule:['Rule_3',3]},{name:this.now_lang.Lot_tab.BackT_mix_com,index:6,isupload:true,arr:[''],format: ["n,n,n"],datarule:['Rule_3',4]},{name:this.now_lang.Lot_tab.BackT_gro_com,index:7,arr:['hz26'],format: ["m"],datarule:['Rule_4',1,3,'Z3']}],
 			active:4
 		},
 		{
 			title:this.now_lang.Lot_tab.ForT_str,
-			menu:[{name:this.now_lang.Lot_tab.ForT_str_eve,index:1,arr:['w','q','b']},{name:this.now_lang.Lot_tab.ForT_str_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.ForT_str_com,index:3,arr:['hz']}],
+			menu:[{name:this.now_lang.Lot_tab.ForT_str_eve,index:1,arr:['w','q','b'],format: ["n|n|n"],datarule:['Rule_1',3]},{name:this.now_lang.Lot_tab.ForT_str_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.ForT_str_com,index:3,arr:['hz'],format: ["m"],datarule:['Rule_4',1,3]}],
 			active:5
 		},
 		{
 			title:this.now_lang.Lot_tab.ForT_gro,
-			menu:[{name:this.now_lang.Lot_tab.ForT_str_com3,index:4,arr:['zu3']},{name:this.now_lang.Lot_tab.ForT_str_com6,index:5,arr:['zu6']},{name:this.now_lang.Lot_tab.ForT_mix_com,index:6,isupload:true},{name:this.now_lang.Lot_tab.ForT_gro_com,index:7,arr:['hz']}],
+			menu:[{name:this.now_lang.Lot_tab.ForT_str_com3,index:4,arr:['zu3'],format: ["m|n"],datarule:['Rule_5',2]},{name:this.now_lang.Lot_tab.ForT_str_com6,index:5,arr:['zu6'],format: ["m|n|n"],datarule:['Rule_3',3]},{name:this.now_lang.Lot_tab.ForT_mix_com,index:6,isupload:true,arr:[''],format: ["n,n,n"],datarule:['Rule_3',4]},{name:this.now_lang.Lot_tab.ForT_gro_com,index:7,arr:['hz26'],format: ["m"],datarule:['Rule_4',1,3,'Z3']}],
 			active:5
 		},
 		{
 			title:this.now_lang.Lot_tab.MidT_str,
-			menu:[{name:this.now_lang.Lot_tab.MidT_str_eve,index:1,arr:['q','b','s']},{name:this.now_lang.Lot_tab.MidT_str_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.MidT_star_com,index:3,arr:['hz']}],
+			menu:[{name:this.now_lang.Lot_tab.MidT_str_eve,index:1,arr:['q','b','s'],format: ["n|n|n"],datarule:['Rule_1',3]},{name:this.now_lang.Lot_tab.MidT_str_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.MidT_star_com,index:3,arr:['hz'],format: ["m"],datarule:['Rule_4',1,3]}],
 			active:6
 		},
 		{
 			title:this.now_lang.Lot_tab.MidT_gro,
-			menu:[{name:this.now_lang.Lot_tab.MidT_gro_3,index:4,arr:['zu3']},{name:this.now_lang.Lot_tab.MidT_gro_6,index:5,arr:['zu6']},{name:this.now_lang.Lot_tab.MidT_mix_gro,index:6,isupload:true},{name:this.now_lang.Lot_tab.MidT_gro_com,index:7,arr:['hz26']}],
+			menu:[{name:this.now_lang.Lot_tab.MidT_gro_3,index:4,arr:['zu3'],format: ["m|n"],datarule:['Rule_5',2]},{name:this.now_lang.Lot_tab.MidT_gro_6,index:5,arr:['zu6'],format: ["m|n|n"],datarule:['Rule_3',3]},{name:this.now_lang.Lot_tab.MidT_mix_gro,index:6,isupload:true,arr:[''],format: ["n,n,n"],datarule:['Rule_3',4]},{name:this.now_lang.Lot_tab.MidT_gro_com,index:7,arr:['hz26'],format: ["m"],datarule:['Rule_4',1,3,'Z3']}],
 			active:6
 		},
 		{
 			title:this.now_lang.Lot_tab.Two_star_str,
-			menu:[{name:this.now_lang.Lot_tab.BackTwo_str_eve,index:1,arr:['s','g']},{name:this.now_lang.Lot_tab.BackTwo_str_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.ForTwo_str_eve,index:3,arr:['w','q']},{name:this.now_lang.Lot_tab.ForTwo_str_odd,index:4,isupload:true},{name:this.now_lang.Lot_tab.BackTwo_str_com,index:5,arr:['hz18']},{name:this.now_lang.Lot_tab.ForTwo_str_com,index:6,arr:['hz18']}],
+			menu:[{name:this.now_lang.Lot_tab.BackTwo_str_eve,index:1,arr:['s','g'],format: ["n|n"],datarule:['Rule_1',2]},{name:this.now_lang.Lot_tab.BackTwo_str_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.ForTwo_str_eve,index:3,arr:['w','q'],format: ["n|n"],datarule:['Rule_1',2]},{name:this.now_lang.Lot_tab.ForTwo_str_odd,index:4,isupload:true},{name:this.now_lang.Lot_tab.BackTwo_str_com,index:5,arr:['hz18'],format: ["m"],datarule:['Rule_4',1,2]},{name:this.now_lang.Lot_tab.ForTwo_str_com,index:6,arr:['hz18'],format: ["m"],datarule:['Rule_4',1,2]}],
 			active:7
 		},
 		{
 			title:this.now_lang.Lot_tab.Two_star_gro,
-			menu:[{name:this.now_lang.Lot_tab.BackTwo_gro_eve,index:7,arr:['zx9']},{name:this.now_lang.Lot_tab.BackTwo_gro_odd,index:8,isupload:true},{name:this.now_lang.Lot_tab.ForTwo_gro_eve,index:9,arr:['zx9']},{name:this.now_lang.Lot_tab.ForTwo_gro_odd,index:10,isupload:true},{name:this.now_lang.Lot_tab.BackTwo_gro_com,index:11,arr:['hz17']},{name:this.now_lang.Lot_tab.ForTwo_gro_com,index:12,arr:['hz17'] }],
+			menu:[{name:this.now_lang.Lot_tab.BackTwo_gro_eve,index:7,arr:['zx9'],format: ["m|n"],datarule:['Rule_3',2]},{name:this.now_lang.Lot_tab.BackTwo_gro_odd,index:8,isupload:true},{name:this.now_lang.Lot_tab.ForTwo_gro_eve,index:9,arr:['zx9'],format: ["m|n"],datarule:['Rule_3',2]},{name:this.now_lang.Lot_tab.ForTwo_gro_odd,index:10,isupload:true},{name:this.now_lang.Lot_tab.BackTwo_gro_com,index:11,arr:['hz17'],format: ["m"],datarule:['Rule_4',1,2,'Z2']},{name:this.now_lang.Lot_tab.ForTwo_gro_com,index:12,arr:['hz17'],format: ["m"],datarule:['Rule_4',1,2,'Z2'] }],
 			active:7
 		},
 		{
 			title:this.now_lang.Lot_tab.Gall,
-			menu:[{name:this.now_lang.Lot_tab.Gall,index:1,arr:['w','q','b','s','g']}],
+			menu:[{name:this.now_lang.Lot_tab.Gall,index:1,arr:['w','q','b','s','g'],format: ["n"],datarule:['Rule_6',5]}],
 			active:8
 		},
 		{
 			title:this.now_lang.Lot_tab.Thr_Inde_gall,
-			menu:[{name:this.now_lang.Lot_tab.BackT_oneInde_gall,index:1,arr:['bdd9']},{name:this.now_lang.Lot_tab.BackT_twoInde_gall,index:2,arr:['bdd9'] },{name:this.now_lang.Lot_tab.ForT_oneInde_gall,index:3,arr:['bdd9']},{name:this.now_lang.Lot_tab.ForT_twoInde_gall,index:4,arr:['bdd9']}],
+			menu:[{name:this.now_lang.Lot_tab.BackT_oneInde_gall,index:1,arr:['bdd9'],format: ["m"],datarule:['Rule_3',1]},{name:this.now_lang.Lot_tab.BackT_twoInde_gall,index:2,arr:['bdd9'],format: ["m|n"],datarule:['Rule_3',2] },{name:this.now_lang.Lot_tab.ForT_oneInde_gall,index:3,arr:['bdd9'],format: ["m"],datarule:['Rule_3',1]},{name:this.now_lang.Lot_tab.ForT_twoInde_gall,index:4,arr:['bdd9'],format: ["m|n"],datarule:['Rule_3',2]}],
 			active:9
 		},
 		{
 			title:this.now_lang.Lot_tab.big_small_odd_eve,
-			menu:[{name:this.now_lang.Lot_tab.ForTwo_danshuang,index:1,arr:['dsw','dsq']},{name:this.now_lang.Lot_tab.BackTwo_danshuang,index:2,arr:['dsw','dsq']}],
+			menu:[{name:this.now_lang.Lot_tab.ForTwo_danshuang,index:1,arr:['dsw','dsq'],format: ["n|n"],datarule:['Rule_1',2]},{name:this.now_lang.Lot_tab.BackTwo_danshuang,index:2,arr:['dss','dsg'],format: ["n|n"],datarule:['Rule_1',2]}],
 			active:10
 		},
 		{
 			title:this.now_lang.Lot_tab.Special,
-			menu:[{name:this.now_lang.Lot_tab.yffs,index:1,arr:['yffs']},{name:this.now_lang.Lot_tab.hscs,index:2,arr:['hscs']},{name:this.now_lang.Lot_tab.sxbx,index:3,arr:['sxbx']},{name:this.now_lang.Lot_tab.sjfc,index:4,arr:['sjfc']}],
+			menu:[{name:this.now_lang.Lot_tab.yffs,index:1,arr:['yffs'],format: ["m"],datarule:['Rule_3',1]},{name:this.now_lang.Lot_tab.hscs,index:2,arr:['hscs'],format: ["m"],datarule:['Rule_3',1]},{name:this.now_lang.Lot_tab.sxbx,index:3,arr:['sxbx'],format: ["m"],datarule:['Rule_3',1]},{name:this.now_lang.Lot_tab.sjfc,index:4,arr:['sjfc'],format: ["m"],datarule:['Rule_3',1]}],
 			active:11
 		},
 		{
 			title:this.now_lang.Lot_tab.choose_two_str,
-			menu:[{name:this.now_lang.Lot_tab.choose_two_str_eve,index:1,arr:['w','q','b','s','g']},{name:this.now_lang.Lot_tab.choose_two_str_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.choose_two_str_com,index:3,arr:['hz18']}],
+			menu:[{name:this.now_lang.Lot_tab.choose_two_str_eve,index:1,arr:['w','q','b','s','g'],format: ["n|n"],datarule:['Rule_7',2]},{name:this.now_lang.Lot_tab.choose_two_str_odd,index:2,isupload:true},{name:this.now_lang.Lot_tab.choose_two_str_com,index:3,arr:['hz18']}],
 			active:12
 		},
 		{
@@ -242,6 +243,8 @@ export class SSCofficialComponent implements OnInit {
 	ball_tab = {
 		1:[this.now_lang.Ball_tab.All,this.now_lang.Ball_tab.Big,this.now_lang.Ball_tab.Small,this.now_lang.Ball_tab.Odd,this.now_lang.Ball_tab.Even,this.now_lang.Ball_tab.Clear],
 		2:[this.now_lang.Ball_tab.All,this.now_lang.Ball_tab.Clear],
+		3:[],
+		4:['全','清'],
 	};
 	now_balllist = []; //当前号码列表
 	
@@ -322,13 +325,13 @@ export class SSCofficialComponent implements OnInit {
 		'hz':{
 			title:'直选和值',
 			ball:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27],
-			tab:this.ball_tab[1],
+			tab:this.ball_tab[3],
 			index:9
 		},
 		'hz26':{
 			title:'组选和值',
-			ball:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],
-			tab:this.ball_tab[1],
+			ball:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],
+			tab:this.ball_tab[3],
 			index:9
 		},
 		'zu3':{
@@ -346,13 +349,13 @@ export class SSCofficialComponent implements OnInit {
 		'hz18':{
 			title:'和值',
 			ball:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],
-			tab:this.ball_tab[1],
+			tab:this.ball_tab[3],
 			index:9
 		},
 		'hz17':{
 			title:'和值',
-			ball:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
-			tab:this.ball_tab[1],
+			ball:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
+			tab:this.ball_tab[3],
 			index:9
 		},
 		'bdd9':{
@@ -364,13 +367,25 @@ export class SSCofficialComponent implements OnInit {
 		'dsw':{
 			title:'万位',
 			ball:['大','小','单','双'],
-			tab:this.ball_tab[1],
+			tab:this.ball_tab[4],
 			index:9
 		},
 		'dsq':{
 			title:'千位',
 			ball:['大','小','单','双'],
-			tab:this.ball_tab[1],
+			tab:this.ball_tab[4],
+			index:9
+		},
+		'dss':{
+			title:'十位',
+			ball:['大','小','单','双'],
+			tab:this.ball_tab[4],
+			index:9
+		},
+		'dsg':{
+			title:'个位',
+			ball:['大','小','单','双'],
+			tab:this.ball_tab[4],
 			index:9
 		},
 		'yffs':{
@@ -403,7 +418,7 @@ export class SSCofficialComponent implements OnInit {
 		0:[],1:[],2:[],3:[],4:[]
 	}
 	// 所有要用到的号码
-	match_tab = {
+	match_tab :any = {
 		0:{0:0,1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9},
 		1:{5:5,6:6,7:7,8:8,9:9},
 		2:{0:0,1:1,2:2,3:3,4:4},
@@ -955,8 +970,6 @@ export class SSCofficialComponent implements OnInit {
 				});
 			}else{
 				$.each($('.tab_li'),function(i,n){
-					console.log(liWidth)
-					console.log(ulMax)
 					liWidth = liWidth + $(n).outerWidth();
 					if (liWidth<ulMax) {
 						$(n).addClass('hide_it')
@@ -985,15 +998,25 @@ export class SSCofficialComponent implements OnInit {
 	}
 	// 滑块左侧递减事件
 	rangevaluelessen() {
-	  if (this.rangepercent > 0) {
-	    this.rangepercent -= 1;
-	  }
+		let that = this;
+	    $('#range_tag').css("left",0);
+		that.rangepercent = 0.1
+		that.rangenum = 180000
+		this.countbet(this.ballcurr.totalbet)
+	}
+	
+	// 自带钩子监听
+	ngDoCheck(){
+		if(this.totalinfo.sum>0 && this.rangenum!=(this.totalinfo.amount+this.totalinfo.sum)/parseFloat(this.multiple_input.value)){
+			this.countbet(this.ballcurr.totalbet)
+		}
 	}
 	// 滑块左侧递加事件
 	rangevalueadd() {
 	  if (this.rangepercent < 30) {
 	    this.rangepercent += 1;
 	  }
+		this.countbet(this.ballcurr.totalbet)
 	}
 	// 时时彩一级导航切换
 	tabmenu(data){
@@ -1070,30 +1093,52 @@ export class SSCofficialComponent implements OnInit {
 	// 选中号码
 	choosetab(index,clickindex,val,that){
 		this.now_matchball = {0:{},1:{},2:{},3:{},4:{},5:{}}
-		this.match_tab = {
-			0:{0:0,1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9},
-			1:{5:5,6:6,7:7,8:8,9:9},
-			2:{0:0,1:1,2:2,3:3,4:4},
-			3:{1:1,3:3,5:5,7:7,9:9},
-			4:{0:0,2:2,4:4,6:6,8:8},
-			5:{}
-		};
+		let carr = ['dsw','dsq','dss','dsg']
+		if(Base._.hasArr(this.tabcurr.arr[0],carr)){
+			this.match_tab = {
+				0:{},
+				1:{}
+			};
+			this.match_tab[0]['大'] = '大'
+			this.match_tab[0]['小'] = '小'
+			this.match_tab[0]['单'] = '单'
+			this.match_tab[0]['双'] = '双'
+		}else{
+			this.match_tab = {
+				0:{0:0,1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9},
+				1:{5:5,6:6,7:7,8:8,9:9},
+				2:{0:0,1:1,2:2,3:3,4:4},
+				3:{1:1,3:3,5:5,7:7,9:9},
+				4:{0:0,2:2,4:4,6:6,8:8},
+				5:{}
+			};
+		}
 		this.now_matchtab[index] = {}
-		
 		this.ballindex = index
 		this.now_matchtab[index] = this.match_tab[clickindex]
 		$(that).parent('.numright').find('li').removeClass('active');
-		if(val == this.ball_tab[1][5]){
-			this.now_matchball[clickindex] = ''
+		if(Base._.hasArr(this.tabcurr.arr[0],carr)){
+			if(val == this.ball_tab[4][1]){
+				this.now_matchball[clickindex] = ''
+			}else{
+				console.log(this.now_matchball[clickindex])
+				this.now_matchball[clickindex] = val
+				$(that).addClass('active')
+			}
 		}else{
-			this.now_matchball[clickindex] = val
-			$(that).addClass('active')
+			if(val == this.ball_tab[1][5]){
+				this.now_matchball[clickindex] = ''
+			}else{
+				this.now_matchball[clickindex] = val
+				$(that).addClass('active')
+			}
 		}
-		
 		let self = this
 		self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](self.now_matchtab,self.tabcurr)
 		if(self.ballcurr.status){
 			self.countbet(self.ballcurr.totalbet)
+		}else{
+			self.totalinfo = {count:0,sum:0,amount:0} 
 		}
 		
 	}
@@ -1120,6 +1165,8 @@ export class SSCofficialComponent implements OnInit {
 		self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](self.now_matchtab,self.tabcurr)
 		if(self.ballcurr.status){
 			self.countbet(self.ballcurr.totalbet)
+		}else{
+			self.totalinfo = {count:0,sum:0,amount:0} 
 		}
 	}
 	
@@ -1128,18 +1175,24 @@ export class SSCofficialComponent implements OnInit {
 	
 	// 计算当前点击投注信息
 	countbet(totalbet){
+		if(!totalbet){
+			return
+		}
 		let sum,amount;
 		sum = (this.multiple_input.value * totalbet * 2)/this.modelarr[this.model];
-		amount = 180000-sum
+		amount = Math.round((((this.rangenum/this.modelarr[this.model]) * this.multiple_input.value) -sum)* 100)/100
 		this.totalinfo = {count:totalbet,sum:sum,amount:amount}
 	}
 	
 	// 改变金额模式
 	modelchange(count){
+		if(this.totalinfo.sum==0){
+			return
+		}
 		let sum;
 		sum = (this.multiple_input.value * count * 2)/this.modelarr[this.model]
 		this.totalinfo.sum = sum;
-		this.totalinfo.amount = 180000-sum;
+		this.totalinfo.amount = (180000/this.modelarr[this.model])-sum;
 	}
 	
 	// 每次点击需要初始化的事件
@@ -1194,15 +1247,19 @@ export class SSCofficialComponent implements OnInit {
 			return
 		}
 		let arr = []
-		let obj:any={}
-		obj.ball = that.ballcurr.ball
-		obj.name = that.currtabname
-		obj.multiple = that.multiple_input.value
-		obj.model = that.model
-		obj.count = that.totalinfo.count
-		obj.sum = that.totalinfo.sum
-		obj.amount = that.totalinfo.amount
-		that.sureballlist.push(obj)
+		for(var i=0;i<that.ballcurr.ball.length;i++){
+			if(that.ballcurr.ball[i]!=''){
+				let obj:any={}
+				obj.ball = that.ballcurr.ball[i]
+				obj.name = that.currtabname
+				obj.multiple = that.multiple_input.value
+				obj.model = that.model
+				obj.count = arrob[0].menu[0].datarule[0]=='Rule_6'?that.ballcurr.allarr[i].length:that.totalinfo.count
+				obj.sum = arrob[0].menu[0].datarule[0]=='Rule_6'?(that.ballcurr.allarr[i].length/that.ballcurr.totalbet)*that.totalinfo.sum:that.totalinfo.sum
+				obj.amount = that.totalinfo.amount
+				that.sureballlist.push(obj)
+			}
+		}
 		that.allbet(that.sureballlist)
 		this.inittab()
 	}
@@ -1214,7 +1271,7 @@ export class SSCofficialComponent implements OnInit {
 		let betcount = 0,sum = 0;
 		for(let i=0;i<data.length;i++){
 			betcount = betcount + data[i].count;
-			sum = sum + data[i].sum;
+			sum = Utils.algorithm.add(sum,parseFloat(data[i].sum));
 		}
 		self.orderinfo.total = data.length;
 		self.orderinfo.betcount = betcount;
@@ -1234,33 +1291,33 @@ export class SSCofficialComponent implements OnInit {
 	// 随机选号号码
 	mathball(arr){
 		let that = this
-		let math:any = []
-		let redata:any = {}
+		let obj:any = {}
+		if(that.radom_input.value==0){
+			that.show_layer({'msg':'随机注数不能小于1','til':'操作提示'},'')
+			return
+		}
 		arr.map(function(res){
 			res.menu.map(function(data){
-				if(data.name == that.currtabname){
-					math = data.arr
+				if(data.index == that.status.menu_2){
+					obj = data
 				}
 			})
 		})
-		math.map(function(res){
-			switch (res){
-				case '120':
-				redata.ball = Math.floor(0 + Math.random() * (9 - 0))+'|';
-				break;
-				default:
-				if(redata.ball){
-					redata.ball = redata.ball + Math.floor(0 + Math.random() * (9 - 0))+'|';
-				}else{
-					redata.ball = Math.floor(0 + Math.random() * (9 - 0))+'|';
-				}
-			}
-		})
-		let arrball = redata.ball.split('|')
-		arrball.pop()
-		redata.ball = arrball.join('|')
-		redata.name=that.currtabname
-		that.sureballlist.push(redata)
+		
+		for(let i=0;i<that.radom_input.value;i++){
+			let redata:any = {}
+			redata.ball = Utils.Randomrule(obj)
+			redata.name=that.currtabname
+			redata.multiple = that.multiple_input.value
+			redata.model = that.model
+			redata.count = 1
+			redata.sum = (2*redata.multiple) /that.modelarr[redata.model]
+			redata.amount = that.totalinfo.amount
+			that.sureballlist.push(redata)
+			that.orderinfo.total = that.sureballlist.length;
+			that.orderinfo.betcount = that.orderinfo.betcount + redata.count;
+			that.orderinfo.money = Utils.algorithm.add(that.orderinfo.money,redata.sum);
+		}
 	}
 	
 	addrem(item){
@@ -1268,6 +1325,7 @@ export class SSCofficialComponent implements OnInit {
 		this.radom_input.value = parseInt(this.radom_input.value);
 		if (item=='multiple') {
 			this.multiple_input.value = this.multiple_input.value+1;
+			this.countbet(this.ballcurr.totalbet)
 		}else if(item=='radom'){
 			this.radom_input.value = this.radom_input.value +1;
 		}
@@ -1279,6 +1337,7 @@ export class SSCofficialComponent implements OnInit {
 		if (item=='multiple') {
 			if (this.multiple_input.value>1) {
 				this.multiple_input.value = this.multiple_input.value-1;
+				this.countbet(this.ballcurr.totalbet)
 			}
 		}else if(item=='radom'){
 			if (this.radom_input.value>1) {
@@ -1289,6 +1348,9 @@ export class SSCofficialComponent implements OnInit {
 	// 下拉框选择input值
 	check_multi(item){
 		this.multiple_input.value = item;
+		if(this.totalinfo.count>0){
+			this.countbet(this.ballcurr.totalbet)
+		}
 	}
 	// 限制input输入格式
 	regUpright(){
@@ -1301,10 +1363,15 @@ export class SSCofficialComponent implements OnInit {
 			}
 		}
 	}
-
+	// 倍数计算
 	changereg () {
+		let self = this
         this.curinpt.value = this.curinpt.value.replace(/\D/g, "");
-        // this.multiple_input.value = this.multiple_input.value.replace(/\D/g, "");
+		this.curinpt.value = this.curinpt.value == ''?'1':this.curinpt.value 
+		
+		if(this.totalinfo.count>0){
+			self.countbet(self.ballcurr.totalbet)
+		}
     }
     inmoneyfocus(item) {
     	if(item === 'multiple'){

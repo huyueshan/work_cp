@@ -35,6 +35,7 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
     };
     public routeid;
     public odds = 7.8; // 赔率
+    public rastep = 7.8; // 滑动条步长
     public rangevalue = 7.8; //绑定滑动条数据
     public delay = true; // 选择金额框判断
     public boxshow = false; // 选择金额框显示判断
@@ -232,24 +233,50 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
         h: 0
     };
     // =弹窗对话框数据
-
+    
     public popup = {
+        // 遮罩层
         shade: {
             show: false,
             w: 0,
             h: 0
         },
+        // 设置快捷金额
         setnumb: {
             show: false,
+            drag:false,
+            dragleft:0,
+            dragtop:0,
             value: "",
+            left:200,
+            top:50,
+            scale:false,
             data: []
         },
+        // 提示信息框
+        note: {
+            show: false,
+            drag:false,
+            dragleft:0,
+            dragtop:0,
+            messsage: "",
+            left:200,
+            top:50,
+            scale:false,
+        },
+        // 提交框
         sub: {
             show: false,
-            top: "10px",
+            drag:false,
+            dragleft:0,
+            dragtop:0,
+            left:10,
+            top: 10,
+            scale:false,
             data: []
         }
     };
+    public notetip = [];
     public subdata = [];
     public submoney = 0;
     public subob = {
@@ -292,17 +319,22 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
     // 禁用快选活动框事件
     setboxvalid() {
         this.boxvalid = !this.boxvalid;
+        let s = this.boxvalid?"快捷金额已开启":"快捷金额已禁用";
+        this.NOTEtip(s);
+        setTimeout(() => {
+            this.popup.note.show = false;
+        }, 2000);
     }
     // 滑块左侧递减事件
     rangevaluelessen() {
         if (this.rangevalue > 0) {
-            this.rangevalue -= 0.1;
+            this.rangevalue -= this.rastep;
         }
     }
     // 滑块左侧递加事件
     rangevalueadd() {
-        if (this.rangevalue < 7.8) {
-            this.rangevalue += 0.1;
+        if (this.rangevalue < this.odds) {
+            this.rangevalue += this.rastep;
         }
     }
     // 切换一般 /快捷 事件
@@ -323,9 +355,7 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
                     value: this.selmoeny[i]
                 };
             }
-            p.setnumb.show = true;
-
-            p.shade.show = true;
+            this.SETM();
         }
     }
 
@@ -338,7 +368,10 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
         }
         Base.Store.set("selmoeny", d, true);
         this.selmoeny = d;
-        this.close();
+        this.NOTEtip("保存成功！");
+        setTimeout(() => {
+          this.close();
+        }, 2000);
     }
     numbdel() {
         this.popup.setnumb.value = "";
@@ -366,13 +399,83 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
             p.setnumb.data[i].value = p.setnumb.data[i].value.replace(/\D/g, "");
         }
     }
+    //====快选金额事件end=============
+    // 提示信息窗口关闭事件
     close() {
         let p = this.popup;
         p.setnumb.show = false;
         p.shade.show = false;
         p.sub.show = false;
+        p.note.show = false;
     }
-    //====快选金额事件end=============
+    // 提示信息窗口触发事件 index为提示信息notetip的index或者直接传字符串
+    NOTEtip(i){
+        let p = this.popup;
+        if (typeof(i)==="string") {
+            p.note.messsage = i;
+        }else{
+            this.notetip[i]?p.note.messsage = this.notetip[i]:i;
+        }
+        this.setfixed(p.note,300,160);
+        p.note.scale = false;
+        p.note.show = true;
+        p.shade.show = true;
+        setTimeout(() => {
+            p.note.scale = true;
+        }, 10);
+    }
+    // 提交窗口触发事件 d为提交数据
+    SUB(d){
+        let p = this.popup;
+        this.subdata = d;
+        this.setfixed(p.sub,800,470);
+        p.sub.scale = false;
+        p.sub.show = true;
+        p.shade.show = true;
+        setTimeout(() => {
+            p.sub.scale = true;
+        }, 10);
+    }
+    // 设置快捷金额窗口
+    SETM(){
+        let p = this.popup;
+        this.setfixed(p.setnumb,260,410);
+        p.setnumb.scale = false;
+        p.setnumb.show = true;
+        p.shade.show = true;
+        setTimeout(() => {
+            p.setnumb.scale = true;
+        }, 10);
+    }
+    setfixed(t,w,h){
+        let WIDTH = document.body.clientWidth;
+        let HEIGHT = document.body.clientHeight;
+        t.left = (WIDTH - w)/2<0?0:(WIDTH - w)/2;
+        t.top = (HEIGHT - h)/2<10?10:(HEIGHT - h)/2;
+    }
+    // 弹窗拖动事件
+    popmousedown(e,p){
+        let _that = this;
+        let t = _that.popup[p];
+        let ev = e || event;
+        t.drag = true;
+        t.dragleft = ev.clientX-t.left;
+        t.dragtop = ev.clientY-t.top;
+    }
+    popmouseup(e,p){
+        let _that = this;
+        let t = _that.popup[p];
+        t.drag = false;
+    }
+    popmousmove(e,p){
+        let _that = this;
+        let t = _that.popup[p];
+        if (t.drag) {
+            let ev = e || event;
+            t.left = ev.clientX-t.dragleft;
+            t.top =ev.clientY-t.dragtop;
+        }
+    }
 
     // curinpt为当前操作输入框 变量
     // i 数组当前index
@@ -467,7 +570,7 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
     // 确认提交按钮事件
     sub() {
         let data = [];
-        this.popup.sub.top = "260px";
+        // this.popup.sub.top = "260px";
         let point = (11.633 + (1.3 / 7.8) * this.rangevalue).toFixed(3);
 
         let _that = this;
@@ -480,17 +583,21 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
                 this.setsubdata(d2, data, _that[str].title, point);
             }
         }
-        // 金额求和===================
-        this.submoney = 0;
-        for (let i = 0; i < data.length; i++) {
-            this.submoney += Number(data[i].money);
+        if(data.length>0){
+            this.submoney = 0;
+            for (let i = 0; i < data.length; i++) {
+                this.submoney += Number(data[i].money);
+            }
+            this.SUB(data);
+            // this.reset();
+            // this.setallmoney.value = '';
+            return false;
+            
+        }else{
+            // ===此处提示完成投注内容提示
+            this.NOTEtip("请完成投注内容！");
+            return false;
         }
-        this.subdata = data;
-        this.popup.sub.show = true;
-        this.popup.shade.show = true;
-        // this.reset();
-        // this.setallmoney.value = '';
-        return false;
     }
 
     setsubdata(d, data, str, point) {
@@ -511,6 +618,14 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
                 }
             }
         }
+    }
+    submit(){
+        this.close();
+        this.reset();
+        this.NOTEtip("提交订单成功！");
+        setTimeout(() => {
+          this.close();
+        }, 2000);
     }
 
     linkrouter(t) {

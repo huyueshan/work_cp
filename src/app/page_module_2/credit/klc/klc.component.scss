@@ -4,6 +4,7 @@
     -ms-user-select: none;
     user-select: none;
     font-size: 12px;
+    box-sizing: border-box;
 }
 
 .flex-r {
@@ -560,10 +561,10 @@
 }
 
 .setbox {
-    position: absolute;
+    position: fixed;
     top: 8px;
     left: 450px;
-    z-index: 999;
+    z-index: 998;
     .content {
         width: 260px;
         min-height: 300px;
@@ -572,6 +573,8 @@
         border-radius: 6px;
         box-shadow: 0 0 0px 5px rgba(50, 50, 50, .6);
         overflow: hidden;
+        transform: scale(.6);
+        transition: transform .1s linear;
         .top {
             width: 100%;
             height: 40px;
@@ -648,21 +651,25 @@
             }
         }
     }
+    .scale{
+        transform: scale(1);
+    }
 }
 
+
 .subpopup {
-    position: absolute;
-    // top: 250px;
+    position: fixed;
     left: 160px;
-    z-index: 999;
+    z-index: 998;
     .content {
         width: 800px;
         background-color: white;
-        padding-bottom: 20px;
         border: none;
         border-radius: 6px;
         box-shadow: 0 0 0px 5px rgba(50, 50, 50, .6);
         overflow: hidden;
+        transform: scale(.6);
+        transition: transform .1s linear;
         .top {
             width: 100%;
             height: 40px;
@@ -677,7 +684,7 @@
                 cursor: pointer;
             }
         }
-        .thead{
+        .thead {
             width: 760px;
             margin-top: 10px;
             border: 1px solid #ccc;
@@ -686,7 +693,7 @@
                 table-layout: fixed;
                 width: 100%;
                 border-collapse: collapse;
-                th{
+                th {
                     text-align: center;
                     height: 40px;
                     font-size: 14px;
@@ -695,20 +702,18 @@
                     border: 1px solid #ccc;
                 }
             }
-
         }
         .tablewrap {
             width: 760px;
-            height: 300px;
+            height: 260px;
             overflow-y: scroll;
             border: 1px solid #ccc;
             border-top: none;
             table {
                 table-layout: fixed;
-                width: 100%;
-                // border: 1px solid #ccc;
+                width: 100%; // border: 1px solid #ccc;
                 border-collapse: collapse;
-                tr:nth-child(even){
+                tr:nth-child(even) {
                     background-color: #eee;
                 }
                 td {
@@ -729,14 +734,73 @@
             }
         }
     }
+    .scale{
+        transform: scale(1);
+    }
 }
-
+// 弹框
+#notebox{
+    position: fixed;
+    z-index: 999;
+    .content{
+        width: 300px;
+        min-height: 160px;
+        background-color: white;
+        border: 2px solid #fe8f00;
+        border-radius: 6px;
+        box-shadow: 0 0 0px 5px rgba(50, 50, 50, .6);
+        justify-content: space-between;
+        transform: scale(.6);
+        transition: transform .1s linear;
+        .top {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            font-size: 12px;
+            color: white;
+            padding: 0 12px 0 20px;
+            justify-content: space-between;
+            background: linear-gradient(to top, #c76401, #fba915);
+            i {
+                font-size: 18px;
+                cursor: pointer;
+            }
+        }
+        .note{
+            width: 100%;
+            padding: 16px;
+            justify-content: center;
+            align-items: center;
+            p{
+                font-size: 12px;
+                line-height: 24px;
+            };
+        }
+        .foot{
+            justify-content: center;
+            padding: 10px;
+            span{
+                padding: 0 8px;
+                line-height: 26px;
+                font-size: 14px;
+                color: white;
+                background-color: #fe8f00;
+                border: 1px solid #c76401;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+        }
+    }
+    .scale{
+        transform: scale(1);
+    }
+}
 //遮罩层
 .shade {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(154, 154, 154, 0.5);
     z-index: 19;
 }
 
@@ -752,6 +816,9 @@ input[type="range"] {
     appearance: none;
     cursor: pointer;
     outline: none;
+}
+input[type="range"]:focus{
+    outline:1px solid #3D3D3D;
 }
 
 // range中心圆点
@@ -809,6 +876,7 @@ input[type="range"]::-webkit-slider-runnable-track {
     background-color: #fe8f00;
     border-radius: 2px;
     cursor: pointer;
+    z-index: 3;
 }
 
 input[type="range"]::-moz-range-track {
@@ -821,7 +889,7 @@ input[type="range"]::-moz-range-track {
 
 input[type="range"]::-ms-track {
     width: 100%;
-    height: 4px;
+    height: 2px;
     border-color: transparent;
     color: #fe8f00;
     border-radius: 2px;

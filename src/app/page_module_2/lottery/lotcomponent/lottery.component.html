@@ -6,8 +6,8 @@
             <div class="toptab">
                 <ul class="flex-r">
                     <li [ngClass]="{active: toptab === 0}" (click)="toptabclick(0)">{{now_lang.LOT_NAV.ALL_LOT}}</li>
-                    <li [ngClass]="{active: toptab === 1 , bodl: toptab === 2 , bodr: toptab === 0}" (click)="toptabclick(1)">{{now_lang.Ball_tab.Credit}}</li>
-                    <li [ngClass]="{active: toptab === 2}" (click)="toptabclick(2)">{{now_lang.Ball_tab.Official}}</li>
+                    <li [ngClass]="{active: toptab === 1 , bodl: toptab === 2 , bodr: toptab === 0}" (click)="toptabclick(1)">{{now_lang.Ball_tab.Official}}</li>
+                    <li [ngClass]="{active: toptab === 2}" (click)="toptabclick(2)">{{now_lang.Ball_tab.Credit}}</li>
                 </ul>
             </div>
             <div class="tab">
@@ -15,7 +15,7 @@
                     <li class="flex-r" *ngFor="let item of tabdata; let i=index"> 
                         <span [ngClass]="{active: tab === i}" (click)="tabclick(i)">{{item.name}}</span>
                         <span class="bdicon">
-                            <i [hidden]="tab === i || tab === (i+1)"></i>
+                            <i [ngClass]="{hide: tab === i || tab === i+1}"></i>
                         </span>
                     </li>
                 </ul>

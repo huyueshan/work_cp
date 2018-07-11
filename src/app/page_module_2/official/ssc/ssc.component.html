@@ -159,7 +159,7 @@
 					<div class="resultarea">
 						<div class="betcheck">
 							<ul class="betarea">
-								<li *ngFor="let val of sureballlist;let i = index"><div class="lot_type">{{val.name}}</div><div class="lot_num" [title]="val.ball">{{val.ball}}</div><div>{{models[val.model]}}</div><div>{{val.count}}注</div><div>1倍</div><div>{{val.sum}}元</div> <a class="lot_close" (click)="delball('del',val)"></a></li>
+								<li *ngFor="let val of sureballlist;let i = index"><div class="lot_type">{{val.name}}</div><div class="lot_num" [title]="val.ball">{{val.ball}}</div><div>{{models[val.model]}}</div><div>{{val.count}}注</div><div>{{val.multiple}}倍</div><div>{{val.sum}}元</div> <a class="lot_close" (click)="delball('del',val)"></a></li>
 							</ul>
 							<p class="info">
 								第<span>20180517021</span>期投注截止时间：<span>00:04:22</span>订单总数：<span>{{orderinfo.total}}</span>个，总注数<span>{{orderinfo.betcount}}</span>注，总金额￥<span>{{orderinfo.money}}</span>元

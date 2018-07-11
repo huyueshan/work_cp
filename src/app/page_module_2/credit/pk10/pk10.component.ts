@@ -32,6 +32,7 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     time: ""
   };
   public odds = 7.8; // 赔率
+  public rastep = 7.8; // 滑动条步长
   public rangevalue = 7.8; //绑定滑动条数据
   public delay = true; // 选择金额框判断
   public boxshow = false; // 选择金额框显示判断
@@ -43,8 +44,8 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
   public btolast = 0; //控制 前中后选择
   public selmoeny = [100, 200, 500, 1000, 5000]; // 活动选择金额框数据
   public routeid ;
-  public BALL = { numb: 0, value: "", };
-  public BALL2 = { name: "", value: "", };
+  public BALL = { numb: 0, value: "",  point:0, step:0, };
+  public BALL2 = { name: "", value: "", point:0,  step:0, };
   public typedata = [
     { id: 1, name: "整合", },
     { id: 2, name: "第1-10名", },
@@ -61,10 +62,10 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     y: ""
   };
   public pkdata1_1 = [
-    { name: "冠亚大", value: "", },
-    { name: "冠亚小", value: "", },
-    { name: "冠亚单", value: "", },
-    { name: "冠亚双", value: "", }
+    { name: "冠亚大", value: "", point:1.8, step:0.156/7.8, },
+    { name: "冠亚小", value: "", point:1.8, step:0.156/7.8, },
+    { name: "冠亚单", value: "", point:1.8, step:0.156/7.8, },
+    { name: "冠亚双", value: "", point:1.8, step:0.156/7.8, }
   ];
 
   public betdatam = [
@@ -80,16 +81,16 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     { title: "第十名", data1: this.setbigorsmall(), },
   ];
   public pkdata1_3 = [
-    { name: "1v10龙:", value: "", },
-    { name: "2v9龙:", value: "", },
-    { name: "3v8龙:", value: "", },
-    { name: "4v7龙:", value: "", },
-    { name: "5v6龙:", value: "", },
-    { name: "1v10虎:", value: "", },
-    { name: "2v9虎:", value: "", },
-    { name: "3v8虎:", value: "", },
-    { name: "4v7虎:", value: "", },
-    { name: "5v6虎:", value: "", },
+    { name: "1v10龙:", value: "", point:1.8, step:0.156/7.8, },
+    { name: "2v9龙:", value: "", point:1.8, step:0.156/7.8, },
+    { name: "3v8龙:", value: "", point:1.8, step:0.156/7.8, },
+    { name: "4v7龙:", value: "", point:1.8, step:0.156/7.8, },
+    { name: "5v6龙:", value: "", point:1.8, step:0.156/7.8, },
+    { name: "1v10虎:", value: "", point:1.8, step:0.156/7.8, },
+    { name: "2v9虎:", value: "", point:1.8, step:0.156/7.8, },
+    { name: "3v8虎:", value: "", point:1.8, step:0.156/7.8, },
+    { name: "4v7虎:", value: "", point:1.8, step:0.156/7.8, },
+    { name: "5v6虎:", value: "", point:1.8, step:0.156/7.8, },
   ];
   public betdata2_1 = [
     { title: "冠军", data: this.setball(), },
@@ -105,36 +106,36 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
   ];
   public betdata3_1 = [
     [
-      { numb: 3, value: "" },
-      { numb: 4, value: "" },
-      { numb: 5, value: "" },
-      { numb: 6, value: "" }
+      { numb: 3, value: "", point:40.5, step:3.51/7.8, },
+      { numb: 4, value: "", point:40.5, step:3.51/7.8, },
+      { numb: 5, value: "", point:22.005, step:1.755/7.8, },
+      { numb: 6, value: "", point:22.005, step:1.755/7.8, }
     ],
     [
-      { numb: 7, value: "" },
-      { numb: 8, value: "" },
-      { numb: 9, value: "" },
-      { numb: 10, value: "" }
+      { numb: 7, value: "", point:13.5, step:1.17/7.8, },
+      { numb: 8, value: "", point:13.5, step:1.17/7.8, },
+      { numb: 9, value: "", point:10.125, step:0.877/7.8, },
+      { numb: 10, value: "", point:10.125, step:0.877/7.8, }
     ],
     [
-      { numb: 11, value: "" },
-      { numb: 12, value: "" },
-      { numb: 13, value: "" },
-      { numb: 14, value: "" }
+      { numb: 11, value: "", point:8.1, step:0.685/7.8, },
+      { numb: 12, value: "", point:10.125, step:0.877/7.8, },
+      { numb: 13, value: "", point:10.125, step:0.877/7.8, },
+      { numb: 14, value: "", point:13.5, step:1.17/7.8, }
     ],
     [
-      { numb: 15, value: "" },
-      { numb: 16, value: "" },
-      { numb: 17, value: "" },
-      { numb: 18, value: "" }
+      { numb: 15, value: "", point:13.5, step:1.17/7.8, },
+      { numb: 16, value: "", point:20.25, step:1.755/7.8, },
+      { numb: 17, value: "", point:20.25, step:1.755/7.8, },
+      { numb: 18, value: "", point:40.5, step:3.51/7.8, }
     ],
-    [{ numb: 19, value: "" }]
+    [{ numb: 19, value: "", point:40.5, step:3.51/7.8, }]
   ];
   public betdata3_2 = [
-    { name: "大", value: "" },
-    { name: "小", value: "" },
-    { name: "单", value: "" },
-    { name: "双", value: "" }
+    { name: "大", value: "", point:1.8, step:0.156/7.8, },
+    { name: "小", value: "", point:1.8, step:0.156/7.8, },
+    { name: "单", value: "", point:1.8, step:0.156/7.8, },
+    { name: "双", value: "", point:1.8, step:0.156/7.8, }
   ];
   public betdata4_1 = this.setvs();
 
@@ -144,24 +145,50 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     h: 0
   };
   // =弹窗对话框数据
-
-  public popup = {
-    shade: {
-      show: false,
-      w: 0,
-      h: 0
-    },
-    setnumb: {
-      show: false,
-      value: "",
-      data: []
-    },
-    sub: {
-      show: false,
-      top: "10px",
-      data: []
-    }
-  };
+    
+    public popup = {
+        // 遮罩层
+        shade: {
+            show: false,
+            w: 0,
+            h: 0
+        },
+        // 设置快捷金额
+        setnumb: {
+            show: false,
+            drag:false,
+            dragleft:0,
+            dragtop:0,
+            value: "",
+            left:200,
+            top:50,
+            scale:false,
+            data: []
+        },
+        // 提示信息框
+        note: {
+            show: false,
+            drag:false,
+            dragleft:0,
+            dragtop:0,
+            messsage: "",
+            left:200,
+            top:50,
+            scale:false,
+        },
+        // 提交框
+        sub: {
+            show: false,
+            drag:false,
+            dragleft:0,
+            dragtop:0,
+            left:10,
+            top: 10,
+            scale:false,
+            data: []
+        }
+    };
+    public notetip = [];
   public subdata = [];
   public submoney = 0;
   public subob = {
@@ -201,49 +228,52 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy() {}
 
   // 禁用快选活动框事件
-  setboxvalid(){
-      this.boxvalid = !this.boxvalid;
-  }
+    setboxvalid() {
+        this.boxvalid = !this.boxvalid;
+        let s = this.boxvalid?"快捷金额已开启":"快捷金额已禁用";
+        this.NOTEtip(s);
+        setTimeout(() => {
+            this.popup.note.show = false;
+        }, 2000);
+    }
   // 滑块左侧递减事件
-  rangevaluelessen() {
-    if (this.rangevalue > 0) {
-      this.rangevalue -= 0.1;
+    rangevaluelessen() {
+        if (this.rangevalue > 0) {
+            this.rangevalue -= this.rastep;
+        }
     }
-  }
-  // 滑块左侧递加事件
-  rangevalueadd() {
-    if (this.rangevalue < 7.8) {
-      this.rangevalue += 0.1;
+    // 滑块左侧递加事件
+    rangevalueadd() {
+        if (this.rangevalue < this.odds) {
+            this.rangevalue += this.rastep;
+        }
     }
-  }
   // 切换玩法事件 /整合/龙虎斗/全五中一
   togtype(i) {
     this.type = i;
     this.setallmoney.value = "";
   }
   // 切换一般 /快捷 事件
-  tabclick(i) {
-    if (i === 0) {
-      this.selectbtnvalue = 0;
-      this.inputshow = true;
-  }
-  if (i === 1) {
-      this.selectbtnvalue = 1;
-    this.inputshow = false;
-  }
-  if (i === 2) {
-    let p = this.popup;
-    let d = this.popup.setnumb.data;
-    for (let i = 0; i < this.selmoeny.length; i++) {
-      d[i] = {
-        value: this.selmoeny[i]
-      };
+    tabclick(i) {
+        if (i === 0) {
+            this.selectbtnvalue = 0;
+            this.inputshow = true;
+        }
+        if (i === 1) {
+            this.selectbtnvalue = 1;
+            this.inputshow = false;
+        }
+        if (i === 2) {
+            let p = this.popup;
+            let d = this.popup.setnumb.data;
+            for (let i = 0; i < this.selmoeny.length; i++) {
+                d[i] = {
+                    value: this.selmoeny[i]
+                };
+            }
+            this.SETM();
+        }
     }
-    p.setnumb.show = true;
-
-    p.shade.show = true;
-  }
-}
 
   //====快选金额事件开始=============
   savenum() {
@@ -254,7 +284,10 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     }
     Base.Store.set("selmoeny", d, true);
     this.selmoeny = d;
-    this.close();
+    this.NOTEtip("保存成功！");
+    setTimeout(() => {
+      this.close();
+    }, 2000);
   }
   numbdel() {
     this.popup.setnumb.value = "";
@@ -282,15 +315,83 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
       p.setnumb.data[i].value = p.setnumb.data[i].value.replace(/\D/g, "");
     }
   }
-  close() {
-    let p = this.popup;
-    p.setnumb.show = false;
-    p.shade.show = false;
-    p.sub.show = false;
-  }
   //====快选金额事件end=============
-
-  // 全五中一 和底部快捷选项输入框 获得焦点事件
+  // 提示信息窗口关闭事件
+  close() {
+      let p = this.popup;
+      p.setnumb.show = false;
+      p.shade.show = false;
+      p.sub.show = false;
+      p.note.show = false;
+  }
+  // 提示信息窗口触发事件 index为提示信息notetip的index或者直接传字符串
+  NOTEtip(i){
+      let p = this.popup;
+      if (typeof(i)==="string") {
+          p.note.messsage = i;
+      }else{
+          this.notetip[i]?p.note.messsage = this.notetip[i]:i;
+      }
+      this.setfixed(p.note,300,160);
+      p.note.scale = false;
+      p.note.show = true;
+      p.shade.show = true;
+      setTimeout(() => {
+          p.note.scale = true;
+      }, 10);
+  }
+  // 提交窗口触发事件 d为提交数据
+  SUB(d){
+      let p = this.popup;
+      this.subdata = d;
+      this.setfixed(p.sub,800,470);
+      p.sub.scale = false;
+      p.sub.show = true;
+      p.shade.show = true;
+      setTimeout(() => {
+          p.sub.scale = true;
+      }, 10);
+  }
+  // 设置快捷金额窗口
+  SETM(){
+      let p = this.popup;
+      this.setfixed(p.setnumb,260,410);
+      p.setnumb.scale = false;
+      p.setnumb.show = true;
+      p.shade.show = true;
+      setTimeout(() => {
+          p.setnumb.scale = true;
+      }, 10);
+  }
+  setfixed(t,w,h){
+      let WIDTH = document.body.clientWidth;
+      let HEIGHT = document.body.clientHeight;
+      t.left = (WIDTH - w)/2<0?0:(WIDTH - w)/2;
+      t.top = (HEIGHT - h)/2<10?10:(HEIGHT - h)/2;
+  }
+  // 弹窗拖动事件
+  popmousedown(e,p){
+      let _that = this;
+      let t = _that.popup[p];
+      let ev = e || event;
+      t.drag = true;
+      t.dragleft = ev.clientX-t.left;
+      t.dragtop = ev.clientY-t.top;
+  }
+  popmouseup(e,p){
+      let _that = this;
+      let t = _that.popup[p];
+      t.drag = false;
+  }
+  popmousmove(e,p){
+      let _that = this;
+      let t = _that.popup[p];
+      if (t.drag) {
+          let ev = e || event;
+          t.left = ev.clientX-t.dragleft;
+          t.top =ev.clientY-t.dragtop;
+      }
+  }
   // curinpt为当前操作输入框 变量
   // i 数组当前index
   inmoneyfocus(e, i) {
@@ -440,69 +541,57 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
   sub() {
     let data = [];
     if (this.type == 4) {
-        this.popup.sub.top = "10px";
-        let point = (2.099 + (0.191 / 7.8) * this.rangevalue).toFixed(3);
         let d = this.betdata4_1;
         let title =this.typedata[this.type - 1 ].name;
-        this.setsubdata(d, data, title, point);
+        this.setsubdata(d, data, title);
       }
     if (this.type == 3) {
-      this.popup.sub.top = "10px";
-      let point1 = (13.6+(1.342/7.8)* this.rangevalue).toFixed(3);
-      let point2 = (21.3+(1.78/7.8) * this.rangevalue).toFixed(3);
       let d = this.betdata3_1;
       let d2 = this.betdata3_2;
       let title =this.typedata[this.type - 1 ].name;
       for (let i = 0; i < d.length; i++) {
-        this.setsubdata(d[i], data, title, point1);
+        this.setsubdata(d[i], data, title);
       }
-      this.setsubdata(d2, data, title, point2);
+      this.setsubdata(d2, data, title);
     }
     if (this.type == 2) {
-      this.popup.sub.top = "500px";
-      let point = (9 + (0.78 / 7.8) * this.rangevalue).toFixed(2);
       let d = this.betdata2_1;
       for (let i = 0; i < d.length; i++) {
-        
         let title =this.typedata[this.type - 1 ].name + " - " + d[i].title;
-        this.setsubdata(d[i].data,data, title, point);
+        this.setsubdata(d[i].data,data, title);
       }
     }
     if (this.type == 1) {
-      this.popup.sub.top = "220px";
-      let point1 = (11.633 + (1.3 / 7.8) * this.rangevalue).toFixed(3);
-      let point2 = (1.8 + (0.156 / 7.8) * this.rangevalue).toFixed(2);
-      let point3 = (2.06 + (0.156 / 7.8) * this.rangevalue).toFixed(3);
       let p = this.pkdata1_1;
       let d = this.betdatam;
       let k = this.pkdata1_3;
       let title =this.typedata[this.type - 1 ].name + " - 冠、亚军和";
-      this.setsubdata(p,data, title,point1);
+      this.setsubdata(p,data, title);
       for (let i = 0; i < d.length; i++) {
         let d1 = d[i].data1;
         let title =this.typedata[this.type - 1 ].name + " - " + d[i].title;
-        this.setsubdata(d1, data, title, point2);
+        this.setsubdata(d1, data, title);
       }
       title =this.typedata[this.type - 1 ].name;
-      this.setsubdata(k, data, title, point3);
+      this.setsubdata(k, data, title);
     }
-
-
-    this.submoney = 0;
-    for (let i = 0; i < data.length; i++) {
-      this.submoney += Number(data[i].money);
+    if(data.length>0){
+        this.submoney = 0;
+        for (let i = 0; i < data.length; i++) {
+            this.submoney += Number(data[i].money);
+        }
+        this.SUB(data);
+        return false;
+        
+    }else{
+        // ===此处提示完成投注内容提示
+        this.NOTEtip("请完成投注内容！");
+        return false;
     }
-
-    this.subdata = data;
-    this.popup.sub.show = true;
-    this.popup.shade.show = true;
-    // this.reset();
-    // this.setallmoney.value = '';
-    return false;
   }
   
   //设置单元数据提交
-  setsubdata(d, data, str, point) {
+  setsubdata(d, data, str) {
     for (let q = 0; q < d.length; q++) {
       if (d[q].numb !== null && d[q].name !== null) {
         if (Number(d[q].value) > 0) {
@@ -515,11 +604,19 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
             data[l].ball = d[q].name;
           }
           data[l].type = str;
-          data[l].point = point;
+          data[l].point = parseFloat((d[q].point+(d[q].step*this.rangevalue)).toFixed(3));
           data[l].money = d[q].value;
         }
       }
     }
+  }
+  submit(){
+      this.close();
+      this.reset();
+      this.NOTEtip("提交订单成功！");
+      setTimeout(() => {
+        this.close();
+      }, 2000);
   }
 
   linkrouter(t) {
@@ -537,6 +634,8 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     for (let q = 1; q <= 10; q++) {
       let o = Object.assign({}, this.BALL);
       o.numb = q;
+      o.point = 9;
+      o.step = 0.78/7.8,
       data.push(o);
     }
     return data;
@@ -547,7 +646,9 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     for (let i = 0; i < d.length; i++) {
       data[i] = {
         name: d[i],
-        value: ""
+        value: "",
+        point:1.8,
+        step:0.156/7.8,
       };
     }
     return data;
@@ -558,6 +659,8 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
       for (let w = q + 1; w <= 10; w++) {
         let o = Object.assign({}, this.BALL2);
         o.name = q + "-" + w;
+        o.point = 40.5;
+        o.step = 3.51/7.8;
         data.push(o);
       }
     }
