@@ -51,8 +51,8 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     blue: false,
     gray: false,
     value: "",
-    point: 9,
-    step: 0.78/7.8,
+    point: 0,
+    step: 0,
   };
   public BALL2 = {
     name: "",
@@ -67,61 +67,81 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     x: "",
     y: ""
   };
-  public point_pcdata1 = [
-    { numb: 0, point:900, step:78/7.8, },
-    { numb: 1, point:300, step:26/7.8, },
-    { numb: 2, point:150, step:13/7.8, },
-    { numb: 3, point:90, step:7.8/7.8, },
-    { numb: 4, point:59.993, step:5.2/7.8, },
-    { numb: 5, point:42.855, step:3.716/7.8, },
-    { numb: 6, point:32.141, step:2.787/7.8, },
-    { numb: 7, point:24.992, step:2.166/7.8, },
-    { numb: 8, point:19.997, step:1.734/7.8, },
-    { numb: 9, point:16.359, step:1.419/7.8, },
-    { numb: 10, point:14.278, step:1.237/7.8, },
-    { numb: 11, point:13.041, step:1.131/7.8, },
-    { numb: 12, point:12.326, step:1.069/7.8, },
-    { numb: 13, point:11.996, step:1.04/7.8, },
-    { numb: 14, point:11.996, step:1.04/7.8, },
-    { numb: 15, point:12.326, step:1.069/7.8, },
-    { numb: 16, point:13.041, step:1.131/7.8, },
-    { numb: 17, point:14.278, step:1.237/7.8, },
-    { numb: 18, point:16.359, step:1.419/7.8, },
-    { numb: 19, point:19.997, step:1.734/7.8, },
-    { numb: 20, point:24.992, step:2.166/7.8, },
-    { numb: 21, point:32.141, step:2.787/7.8, },
-    { numb: 22, point:42.855, step:3.716/7.8, },
-    { numb: 23, point:59.993, step:5.2/7.8, },
-    { numb: 24, point:90, step:7.8/7.8, },
-    { numb: 25, point:150, step:13/7.8, },
-    { numb: 26, point:300, step:26/7.8, },
-    { numb: 27, point:900, step:78/7.8, },
-  ]
+  // 各项目赔率数据
+  public POINt_data = {
+    pcdata1: [
+        { numb: 0, point:900, step:78/7.8, },
+        { numb: 1, point:300, step:26/7.8, },
+        { numb: 2, point:150, step:13/7.8, },
+        { numb: 3, point:90, step:7.8/7.8, },
+        { numb: 4, point:59.993, step:5.2/7.8, },
+        { numb: 5, point:42.855, step:3.716/7.8, },
+        { numb: 6, point:32.141, step:2.787/7.8, },
+        { numb: 7, point:24.992, step:2.166/7.8, },
+        { numb: 8, point:19.997, step:1.734/7.8, },
+        { numb: 9, point:16.359, step:1.419/7.8, },
+        { numb: 10, point:14.278, step:1.237/7.8, },
+        { numb: 11, point:13.041, step:1.131/7.8, },
+        { numb: 12, point:12.326, step:1.069/7.8, },
+        { numb: 13, point:11.996, step:1.04/7.8, },
+        { numb: 14, point:11.996, step:1.04/7.8, },
+        { numb: 15, point:12.326, step:1.069/7.8, },
+        { numb: 16, point:13.041, step:1.131/7.8, },
+        { numb: 17, point:14.278, step:1.237/7.8, },
+        { numb: 18, point:16.359, step:1.419/7.8, },
+        { numb: 19, point:19.997, step:1.734/7.8, },
+        { numb: 20, point:24.992, step:2.166/7.8, },
+        { numb: 21, point:32.141, step:2.787/7.8, },
+        { numb: 22, point:42.855, step:3.716/7.8, },
+        { numb: 23, point:59.993, step:5.2/7.8, },
+        { numb: 24, point:90, step:7.8/7.8, },
+        { numb: 25, point:150, step:13/7.8, },
+        { numb: 26, point:300, step:26/7.8, },
+        { numb: 27, point:900, step:78/7.8, },
+      ],
+    pcdata2: [
+        { name: "大", point:1.8, step:0.156/7.8, },
+        { name: "单", point:1.8, step:0.156/7.8, },
+        { name: "大单", point:3.308, step:0.287/7.8, },
+        { name: "大双", point:3.94, step:0.342/7.8, },
+        { name: "极大", point:16.065, step:1.393/7.8, },
+        { name: "小", point:1.8, step:0.156/7.8, },
+        { name: "双", point:1.8, step:0.156/7.8, },
+        { name: "小单", point:3.94, step:0.342/7.8, },
+        { name: "小双", point:3.308, step:0.287/7.8, },
+        { name: "极小", point:16.065, step:1.393/7.8, },
+        { name: "红波", point:2.29, step:0.199/7.8, },
+        { name: "绿波", point:2.95, step:0.257/7.8, },
+        { name: "蓝波", point:2.95, step:0.257/7.8, },
+        { name: "豹子", point:50, step:0, },
+    ],
+    pcdata3:[{name: "特码包三", point:3.5,  step:0,}, ],
+  }
   public pcdata1 = this.setball();
   public pcdata2 = [
     [
-      { name: "大", value: "", point:1.8, step:0.156/7.8, },
-      { name: "单", value: "", point:1.8, step:0.156/7.8, },
-      { name: "大单", value: "", point:3.308, step:0.287/7.8, },
-      { name: "大双", value: "", point:3.94, step:0.342/7.8, },
-      { name: "极大", value: "", point:16.065, step:1.393/7.8, }
+      { name: "大", value: "", point:0, step:0, },
+      { name: "单", value: "", point:0, step:0, },
+      { name: "大单", value: "", point:0, step:0, },
+      { name: "大双", value: "", point:0, step:0, },
+      { name: "极大", value: "", point:0, step:0, }
     ],
     [
-      { name: "小", value: "", point:1.8, step:0.156/7.8, },
-      { name: "双", value: "", point:1.8, step:0.156/7.8, },
-      { name: "小单", value: "", point:3.94, step:0.342/7.8, },
-      { name: "小双", value: "", point:3.308, step:0.287/7.8, },
-      { name: "极小", value: "", point:16.065, step:1.393/7.8, }
+      { name: "小", value: "", point:0, step:0, },
+      { name: "双", value: "", point:0, step:0, },
+      { name: "小单", value: "", point:0, step:0, },
+      { name: "小双", value: "", point:0, step:0, },
+      { name: "极小", value: "", point:0, step:0, }
     ],
     [
-      { name: "红波", value: "", point:2.29, step:0.199/7.8, },
-      { name: "绿波", value: "", point:2.95, step:0.257/7.8, },
-      { name: "蓝波", value: "", point:2.95, step:0.257/7.8, },
+      { name: "红波", value: "", point:0, step:0, },
+      { name: "绿波", value: "", point:0, step:0, },
+      { name: "蓝波", value: "", point:0, step:0, },
       { name: null, value: "" },
       { name: null, value: "" }
     ],
     [
-      { name: "豹子", value: "", point:50, step:0, },
+      { name: "豹子", value: "", point:0, step:0, },
       { name: null, value: "" },
       { name: null, value: "" },
       { name: null, value: "" },
@@ -142,12 +162,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     show: false
   };
 
-
-  // 遮罩层
-  public shade = {
-    w: 0,
-    h: 0
-  };
   // =弹窗对话框数据
     
     public popup = {
@@ -223,13 +237,44 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     this.popup.shade.w = screen.width;
     this.popup.shade.h = screen.height;
     // 跳转官方路由设置
-    // this.setlink();
     this.route.params.subscribe(data => {
       this.routeid = data.id;
     });
+    // 设置各投注项目赔率
+    this.POINT();
   }
   ngAfterViewInit() {}
   ngOnDestroy() {}
+  // 设置赔率
+  POINT() {
+    let p = this.POINt_data;
+    let d1 = this.pcdata1;
+    let d2 = this.pcdata2;
+    let d3 = this.selballdata;
+    for (let w = 0; w < d1.length; w++) {
+       this.setpoint(p.pcdata1,d1[w],"numb");
+    }
+    for (let w = 0; w < d2.length; w++) {
+      for (let q = 0; q < d2[w].length; q++) {
+       this.setpoint(p.pcdata2,d2[w][q],"name");
+      }
+    }
+    d3.point = p.pcdata3[0].point;
+    d3.step = p.pcdata3[0].step;
+  }
+
+  setpoint(data,d,name){
+      if (d[name] !== null) {
+          for (let t = 0; t < data.length; t++) {
+            if (String(data[t][name]) === String(d[name])) {
+                  d.point = data[t].point;
+                  d.step = data[t].step;
+                  return
+              }
+          }
+      }
+  }
+
 
   // 特码包三选择框事件
   sanbaoclick(i) {
@@ -588,8 +633,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     for (let q = 0; q < 28; q++) {
       let o = Object.assign({}, this.BALL);
       o.numb = q;
-      o.point = this.point_pcdata1[q].point;
-      o.step = this.point_pcdata1[q].step;
       if (q % 3 === 0) {
         o.red = true;
       }

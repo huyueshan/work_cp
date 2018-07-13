@@ -55,7 +55,7 @@
                                             <span class="item1 itembold"  *ngIf="item.numb!==null">
                                                 <i>{{item.numb}}</i> 
                                             </span>
-                                            <span class="item2 color_y"  *ngIf="item.numb!==null">{{(11.633+(1.3/7.8*rangevalue))| number : '1.0-3'}} </span>
+                                            <span class="item2 color_y"  *ngIf="item.numb!==null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
                                             <span class="item3" *ngIf="inputshow">
                                                 <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfocus($event, i)"
                                                     (blur)="inmoneyblur()" (keyup)="changereg()"  *ngIf="item.numb!==null">
@@ -76,11 +76,11 @@
                                         <span class="flex-r item2">
                                             <span class="flex-r item2info" [ngClass]="{togstyle2:!inputshow}">
                                                 <span class="color_r">龙</span>
-                                                <span class="color_y">{{(1.944+(0.224/7.8*rangevalue))| number : '1.0-3'}}</span>
+                                                <span class="color_y">{{(item.value1.point+(item.value1.step*rangevalue))| number : '1.0-3'}}</span>
                                             </span>
                                             <span class="flex-r item2info" [ngClass]="{togstyle2:!inputshow}">
                                                 <span class="color_b">虎</span>
-                                                <span class="color_y">{{(8.98+(0.78/7.8*rangevalue))| number : '1.0-3'}}</span>
+                                                <span class="color_y">{{(item.value2.point+(item.value2.step*rangevalue))| number : '1.0-3'}}</span>
                                             </span>
                                         </span>
                                         <span class="flex-r item3" *ngIf="inputshow">
@@ -118,7 +118,7 @@
                                             <span class="item1 itembold"  *ngIf="item.numb!==null">
                                                 <i>{{item.numb}}</i> 
                                             </span>
-                                            <span class="item2 color_y"  *ngIf="item.numb!==null">{{(11.633+(1.3/7.8*rangevalue))| number : '1.0-3'}} </span>
+                                            <span class="item2 color_y"  *ngIf="item.numb!==null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
                                             <span class="item3" *ngIf="inputshow">
                                                 <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney3focus($event, I,'data1', i)"
                                                     (blur)="inmoneyblur()" (keyup)="changereg()"  *ngIf="item.numb!==null">
@@ -133,7 +133,7 @@
                                             <span class="item1 itembold">
                                                 {{item.name}}
                                             </span>
-                                            <span class="item2 color_y">{{(1.8+(0.13/7.8*rangevalue))| number : '1.0-3'}} </span>
+                                            <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
                                             <span class="item3" *ngIf="inputshow">
                                                 <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney3focus($event, I,'data2', i)"
                                                     (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -167,7 +167,7 @@
                                         <span class="item1 itembold"  *ngIf="item.numb!==null">
                                             <i>{{item.numb}}</i> 
                                         </span>
-                                        <span class="item2 color_y"  *ngIf="item.numb!==null">{{(11.633+(1.3/7.8*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y"  *ngIf="item.numb!==null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney2focus($event, 'data1',i)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()"  *ngIf="item.numb!==null">
@@ -182,7 +182,7 @@
                                         <span class="item1 itembold">
                                             {{item.name}}
                                         </span>
-                                        <span class="item2 color_y">{{(1.8+(0.13/7.8*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney2focus($event, 'data2',i)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -214,7 +214,7 @@
                                         <span class="item1" *ngIf="child.name!==null" >
                                             {{child.name}}
                                         </span>
-                                        <span class="item2 color_y" *ngIf="child.name!==null">{{(1.8+(0.156/7.8*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="child.name!==null">{{(child.point+(child.step*rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="child.value" (focus)="inmoney1focus($event,i,q)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()" *ngIf="child.name!==null">

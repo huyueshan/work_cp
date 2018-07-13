@@ -11,6 +11,7 @@ export class VRcComponent implements OnInit {
   loadpage = false;
     public outnumber = [3,9,5] //开奖号码
     public cpnav = {
+        style: "credit",
         prev:'20180517022',
         prevball:[3,9,5],
         next:'20180517023',

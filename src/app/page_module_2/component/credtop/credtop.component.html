@@ -32,9 +32,13 @@
                         </div>
                     </div>
                     <ng-container *ngIf="currentactive == i">
-                        <div class="item" *ngFor="let child of item.items; let n=index" (click)="itemclick(child)" [ngClass]="{'itemactive': currentitem== child.text}">
-                            {{child.text}}
-                        </div>
+                        <ng-container *ngFor="let child of item.items; let n=index">
+                            <div class="item" (click)="itemclick(child)" [ngClass]="{'itemactive': currentitem== child.text}"
+                            *ngIf="(indata.style === 'official'&& child.official)||(indata.style === 'credit'&& child.credit)" >
+                                {{child.text}}
+                            </div>
+
+                        </ng-container>
                     </ng-container>
                 </li>
             </ul>

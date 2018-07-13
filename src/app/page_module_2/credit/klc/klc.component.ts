@@ -46,7 +46,9 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
   public routeid;
   public BALL = {
     numb: 0,
-    value: ""
+    value: "",
+    point: 0,
+    step: 0
   };
   public typedata = [
     { id: 1, name: "两面盘" },
@@ -70,18 +72,149 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     x: "",
     y: ""
   };
+  // 各项目赔率数据
+  public POINt_data = {
+    betdatab1_1:{
+        data1: [
+            { name: "特单", point: 1.8, step: 0.156/7.8 },
+            { name: "特双", point: 1.8, step: 0.156/7.8 },
+            { name: "特尾大", point: 1.8, step: 0.156/7.8 },
+            { name: "特尾小", point: 1.8, step: 0.156/7.8 },
+            { name: "特大", point: 1.8, step: 0.156/7.8 },
+            { name: "特小", point: 1.8, step: 0.156/7.8 },
+            { name: "合单", point: 1.8, step: 0.156/7.8 },
+            { name: "合双", point: 1.8, step: 0.156/7.8 },
+          ],
+        data2: [
+            { name: "单", point: 1.8, step: 0.156/7.8 },
+            { name: "双", point: 1.8, step: 0.156/7.8 },
+            { name: "尾大", point: 1.8, step: 0.156/7.8 },
+            { name: "尾小", point: 1.8, step: 0.156/7.8 },
+            { name: "大", point: 1.8, step: 0.156/7.8 },
+            { name: "小", point: 1.8, step: 0.156/7.8 },
+            { name: "合单", point: 1.8, step: 0.156/7.8 },
+            { name: "合双", point: 1.8, step: 0.156/7.8 },
+          ],
+        data3: [
+            { name: "总单", point: 1.8, step: 0.156/7.8 },
+            { name: "总双", point: 1.8, step: 0.156/7.8 },
+            { name: "总尾大", point: 1.8, step: 0.156/7.8 },
+            { name: "总尾小", point: 1.8, step: 0.156/7.8 },
+            { name: "总大", point: 1.8, step: 0.156/7.8 },
+            { name: "总小", point: 1.8, step: 0.156/7.8 },
+          ],
+
+    },
+    betdatab2_1:{
+        data1: [
+            { numb: 1, point: 18, step: 1.56/7.8 },
+            { numb: 2, point: 18, step: 1.56/7.8 },
+            { numb: 3, point: 18, step: 1.56/7.8 },
+            { numb: 4, point: 18, step: 1.56/7.8 },
+            { numb: 5, point: 18, step: 1.56/7.8 },
+            { numb: 6, point: 18, step: 1.56/7.8 },
+            { numb: 7, point: 18, step: 1.56/7.8 },
+            { numb: 8, point: 18, step: 1.56/7.8 },
+            { numb: 9, point: 18, step: 1.56/7.8 },
+            { numb: 10, point: 18, step: 1.56/7.8 },
+            { numb: 11, point: 18, step: 1.56/7.8 },
+            { numb: 12, point: 18, step: 1.56/7.8 },
+            { numb: 13, point: 18, step: 1.56/7.8 },
+            { numb: 14, point: 18, step: 1.56/7.8 },
+            { numb: 15, point: 18, step: 1.56/7.8 },
+            { numb: 16, point: 18, step: 1.56/7.8 },
+            { numb: 17, point: 18, step: 1.56/7.8 },
+            { numb: 18, point: 18, step: 1.56/7.8 },
+            { numb: 19, point: 18, step: 1.56/7.8 },
+            { numb: 20, point: 18, step: 1.56/7.8 },
+        ],
+        data2: [
+            { name: "上", point: 2.547, step: 0.24/7.8 },
+            { name: "上下和", point: 2.365, step: 0.223/7.8 },
+            { name: "下", point: 2.547, step: 0.24/7.8 },
+            { name: "特单", point: 1.8, step: 0.156/7.8 },
+            { name: "特大", point: 1.8, step: 0.156/7.8 },
+            { name: "奇", point: 2.547, step: 0.24/7.8 },
+            { name: "奇偶和", point: 2.365, step: 0.223/7.8 },
+            { name: "偶", point: 2.547, step: 0.24/7.8 },
+            { name: "特双", point: 1.8, step: 0.156/7.8 },
+            { name: "特小", point: 1.8, step: 0.156/7.8 },
+            { name: "总单", point: 1.802, step: 0.157/7.8 },
+            { name: "总大", point: 1.794, step: 0.103/7.8 },
+            { name: "总尾大", point: 1.8, step: 0.156/7.8 },
+            { name: "特尾大", point: 1.8, step: 0.156/7.8 },
+            { name: "合单", point: 1.8, step: 0.156/7.8 },
+            { name: "总双", point: 1.796, step: 0.155/7.8 },
+            { name: "总小", point: 1.794, step: 0.103/7.8 },
+            { name: "总尾小", point: 1.8, step: 0.156/7.8 },
+            { name: "特尾小", point: 1.8, step: 0.156/7.8 },
+            { name: "合双", point: 1.8, step: 0.156/7.8 },
+          ]
+
+    },
+    zhengma:{
+        data2: [
+            { name: "上", point: 2.547, step: 0.24/7.8 },
+            { name: "上下和", point: 2.365, step: 0.223/7.8 },
+            { name: "下", point: 2.547, step: 0.24/7.8 },
+            { name: "单", point: 1.8, step: 0.156/7.8 },
+            { name: "大", point: 1.8, step: 0.156/7.8 },
+            { name: "奇", point: 2.547, step: 0.24/7.8 },
+            { name: "奇偶和", point: 2.365, step: 0.223/7.8 },
+            { name: "偶", point: 2.547, step: 0.24/7.8 },
+            { name: "双", point: 1.8, step: 0.156/7.8 },
+            { name: "小", point: 1.8, step: 0.156/7.8 },
+            { name: "总单", point: 1.802, step: 0.157/7.8 },
+            { name: "总大", point: 1.794, step: 0.103/7.8 },
+            { name: "总尾大", point: 1.8, step: 0.156/7.8 },
+            { name: "尾大", point: 1.8, step: 0.156/7.8 },
+            { name: "合单", point: 1.8, step: 0.156/7.8 },
+            { name: "总双", point: 1.796, step: 0.155/7.8 },
+            { name: "总小", point: 1.794, step: 0.103/7.8 },
+            { name: "总尾小", point: 1.8, step: 0.156/7.8 },
+            { name: "尾小", point: 1.8, step: 0.156/7.8 },
+            { name: "合双", point: 1.8, step: 0.156/7.8 },
+          ]
+    },
+    longhu: {
+      long: { name: "龙", point: 1.796, step: 0.156/7.8 },
+      hu: { name: "虎", point: 1.796, step: 0.156/7.8 }
+    },
+    bettatab8_1:[
+        { numb: 1, point: 2.095, step: 0.195 },
+        { numb: 2, point: 2.095, step: 0.195 },
+        { numb: 3, point: 2.095, step: 0.195 },
+        { numb: 4, point: 2.095, step: 0.195 },
+        { numb: 5, point: 2.095, step: 0.195 },
+        { numb: 6, point: 2.095, step: 0.195 },
+        { numb: 7, point: 2.095, step: 0.195 },
+        { numb: 8, point: 2.095, step: 0.195 },
+        { numb: 9, point: 2.095, step: 0.195 },
+        { numb: 10, point: 2.095, step: 0.195 },
+        { numb: 11, point: 2.095, step: 0.195 },
+        { numb: 12, point: 2.095, step: 0.195 },
+        { numb: 13, point: 2.095, step: 0.195 },
+        { numb: 14, point: 2.095, step: 0.195 },
+        { numb: 15, point: 2.095, step: 0.195 },
+        { numb: 16, point: 2.095, step: 0.195 },
+        { numb: 17, point: 2.095, step: 0.195 },
+        { numb: 18, point: 2.095, step: 0.195 },
+        { numb: 19, point: 2.095, step: 0.195 },
+        { numb: 20, point: 2.095, step: 0.195 },
+    ]
+  };
   public betdatab1_1 = [
     {
       title: "特码",
       data1: [
-        { name: "特单", value: "" },
-        { name: "特双", value: "" },
-        { name: "特尾大", value: "" },
-        { name: "特尾小", value: "" },
-        { name: "特大", value: "" },
-        { name: "特小", value: "" },
-        { name: "合单", value: "" },
-        { name: "合双", value: "" }
+        { name: "特单", value: "", point:0, step: 0 },
+        { name: "特双", value: "", point:0, step: 0 },
+        { name: "特尾大", value: "", point:0, step: 0 },
+        { name: "特尾小", value: "", point:0, step: 0 },
+        { name: "特大", value: "", point:0, step: 0 },
+        { name: "特小", value: "", point:0, step: 0 },
+        { name: "合单", value: "", point:0, step: 0 },
+        { name: "合双", value: "", point:0, step: 0 },
       ]
     },
     {
@@ -115,53 +248,53 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     {
       title: "总和",
       data1: [
-        { name: "总单", value: "" },
-        { name: "总双", value: "" },
-        { name: "总尾大", value: "" },
-        { name: "总尾小", value: "" },
-        { name: "总大", value: "" },
-        { name: "总小", value: "" },
-        { name: null, value: "" },
-        { name: null, value: "" }
+        { name: "总单", value: "", point: 0, step: 0 },
+        { name: "总双", value: "", point: 0, step: 0 },
+        { name: "总尾大", value: "", point: 0, step: 0 },
+        { name: "总尾小", value: "", point: 0, step: 0 },
+        { name: "总大", value: "", point: 0, step: 0 },
+        { name: "总小", value: "", point: 0, step: 0 },
+        { name: null, value: "", point: 0, step: 0 },
+        { name: null, value: "", point: 0, step: 0 },
       ]
     },
     {
       title: "",
       data1: [
-        { name: null, value: "" },
-        { name: null, value: "" },
-        { name: null, value: "" },
-        { name: null, value: "" },
-        { name: null, value: "" },
-        { name: null, value: "" },
-        { name: null, value: "" },
-        { name: null, value: "" }
+        { name: null, value: "", point: 0, step: 0 },
+        { name: null, value: "", point: 0, step: 0 },
+        { name: null, value: "", point: 0, step: 0 },
+        { name: null, value: "", point: 0, step: 0 },
+        { name: null, value: "", point: 0, step: 0 },
+        { name: null, value: "", point: 0, step: 0 },
+        { name: null, value: "", point: 0, step: 0 },
+        { name: null, value: "", point: 0, step: 0 },
       ]
     }
   ];
   public betdatab2_1 = {
     data1: this.setball(),
     data2: [
-      { name: "上", value: "" },
-      { name: "上下和", value: "" },
-      { name: "下", value: "" },
-      { name: "特单", value: "" },
-      { name: "特大", value: "" },
-      { name: "奇", value: "" },
-      { name: "奇偶和", value: "" },
-      { name: "偶", value: "" },
-      { name: "特双", value: "" },
-      { name: "特小", value: "" },
-      { name: "总单", value: "" },
-      { name: "总大", value: "" },
-      { name: "总尾大", value: "" },
-      { name: "特尾大", value: "" },
-      { name: "合单", value: "" },
-      { name: "总双", value: "" },
-      { name: "总小", value: "" },
-      { name: "总尾小", value: "" },
-      { name: "特尾小", value: "" },
-      { name: "合双", value: "" }
+      { name: "上", value: "", point: 0, step: 0 },
+      { name: "上下和", value: "", point: 0, step: 0 },
+      { name: "下", value: "", point: 0, step: 0 },
+      { name: "特单", value: "", point: 0, step: 0 },
+      { name: "特大", value: "", point: 0, step: 0 },
+      { name: "奇", value: "", point: 0, step: 0 },
+      { name: "奇偶和", value: "", point: 0, step: 0 },
+      { name: "偶", value: "", point: 0, step: 0 },
+      { name: "特双", value: "", point: 0, step: 0 },
+      { name: "特小", value: "", point: 0, step: 0 },
+      { name: "总单", value: "", point: 0, step: 0 },
+      { name: "总大", value: "", point: 0, step: 0 },
+      { name: "总尾大", value: "", point: 0, step: 0 },
+      { name: "特尾大", value: "", point: 0, step: 0 },
+      { name: "合单", value: "", point: 0, step: 0 },
+      { name: "总双", value: "", point: 0, step: 0 },
+      { name: "总小", value: "", point: 0, step: 0 },
+      { name: "总尾小", value: "", point: 0, step: 0 },
+      { name: "特尾小", value: "", point: 0, step: 0 },
+      { name: "合双", value: "", point: 0, step: 0 },
     ]
   };
   public betdatab2_2 = [, , , , ,];
@@ -176,42 +309,37 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
   ];
 
   public betdatab7_1 = [
-    { numb: 0, title: "正一VS正二", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 1, title: "正一VS正三", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 2, title: "正一VS正四", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 3, title: "正一VS正五", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 4, title: "正一VS正六", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 5, title: "正一VS正七", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 6, title: "正一VS特码", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 7, title: "正二VS正三", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 8, title: "正二VS正四", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 9, title: "正二VS正五", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 10, title: "正二VS正六", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 11, title: "正二VS正七", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 12, title: "正二VS特码", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 13, title: "正三VS正四", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 14, title: "正三VS正五", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 15, title: "正三VS正六", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 16, title: "正三VS正七", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 17, title: "正三VS特码", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 18, title: "正四VS正五", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 19, title: "正四VS正六", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 20, title: "正四VS正七", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 21, title: "正四VS特码", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 22, title: "正五VS正六", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 23, title: "正五VS正七", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 24, title: "正五VS特码", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 25, title: "正六VS正七", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 26, title: "正六VS特码", value1: { value: "", }, value2: { value: "", }, },
-    { numb: 27, title: "正七VS特码", value1: { value: "", }, value2: { value: "", }, }
+    { numb: 0, title: "正一VS正二", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 1, title: "正一VS正三", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 2, title: "正一VS正四", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 3, title: "正一VS正五", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 4, title: "正一VS正六", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 5, title: "正一VS正七", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 6, title: "正一VS特码", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 7, title: "正二VS正三", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 8, title: "正二VS正四", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 9, title: "正二VS正五", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 10, title: "正二VS正六", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 11, title: "正二VS正七", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 12, title: "正二VS特码", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 13, title: "正三VS正四", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 14, title: "正三VS正五", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 15, title: "正三VS正六", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 16, title: "正三VS正七", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 17, title: "正三VS特码", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 18, title: "正四VS正五", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 19, title: "正四VS正六", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 20, title: "正四VS正七", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 21, title: "正四VS特码", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 22, title: "正五VS正六", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 23, title: "正五VS正七", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 24, title: "正五VS特码", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 25, title: "正六VS正七", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 26, title: "正六VS特码", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
+    { numb: 27, title: "正七VS特码", value1: { value: "", point: 0, step: 0 }, value2: { value: "", point: 0, step: 0 }, },
   ];
   public bettatab8_1 = this.setball();
 
-  // 遮罩层
-  public shade = {
-    w: 0,
-    h: 0
-  };
   // =弹窗对话框数据
     
     public popup = {
@@ -287,14 +415,71 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     this.popup.shade.w = screen.width;
     this.popup.shade.h = screen.height;
     // 跳转官方路由设置
-    // this.setlink();
     this.route.params.subscribe(data => {
       this.routeid = data.id;
       this.subob.channel = "快乐彩 - " + this.routeid;
     });
+    // 设置各投注项目赔率
+    this.POINT();
   }
   ngAfterViewInit() {}
   ngOnDestroy() {}
+  // 设置赔率
+  POINT() {
+    let _that = this;
+    let p = _that.POINt_data;
+    for (let q = 0; q < _that.betdatab1_1.length-1; q++) {
+        if (q===0) {
+            for (let j = 0; j < _that.betdatab1_1[q].data1.length; j++) {
+                _that.setpoint(p.betdatab1_1.data1,_that.betdatab1_1[q].data1[j],"name")
+            }
+        }else if (q===_that.betdatab1_1.length-2) {
+            for (let j = 0; j < _that.betdatab1_1[q].data1.length; j++) {
+                _that.setpoint(p.betdatab1_1.data3,_that.betdatab1_1[q].data1[j],"name")
+            }
+        }else{
+                for (let j = 0; j < _that.betdatab1_1[q].data1.length; j++) {
+                    _that.setpoint(p.betdatab1_1.data2,_that.betdatab1_1[q].data1[j],"name")
+                }
+        }
+    }
+    for (let q = 0; q < _that.betdatab2_1.data1.length; q++) {
+        _that.setpoint(p.betdatab2_1.data1,_that.betdatab2_1.data1[q],"numb")
+    }
+    for (let q = 0; q < _that.betdatab2_1.data2.length; q++) {
+        _that.setpoint(p.betdatab2_1.data2,_that.betdatab2_1.data2[q],"name")
+    }
+    for (let i = 0; i < 7; i++) {
+        let d =_that.zhengma[i];
+        for (let q = 0; q < d.data1.length; q++) {
+            _that.setpoint(p.betdatab2_1.data1,d.data1[q],"numb")
+        }
+        for (let q = 0; q < d.data2.length; q++) {
+            _that.setpoint(p.zhengma.data2,d.data2[q],"name")
+        }
+    }
+    for (let q = 0; q < _that.betdatab7_1.length; q++) {
+        _that.betdatab7_1[q].value1.point = p.longhu.long.point;
+        _that.betdatab7_1[q].value1.step = p.longhu.long.step;
+        _that.betdatab7_1[q].value2.point = p.longhu.hu.point;
+        _that.betdatab7_1[q].value2.step = p.longhu.hu.step;
+    }
+    for (let q = 0; q < _that.bettatab8_1.length; q++) {
+        _that.setpoint(p.bettatab8_1,_that.bettatab8_1[q],"numb")
+    }
+  }
+
+  setpoint(data,d,name){
+    if (d[name] !== null) {
+        for (let t = 0; t < data.length; t++) {
+            if (String(data[t][name]) === String(d[name])) {
+                d.point = data[t].point;
+                d.step = data[t].step;
+                return
+            }
+        }
+    }
+  }
 
   // 禁用快选活动框事件
     setboxvalid() {
@@ -319,8 +504,8 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   // 切换玩法事件 /整合/龙虎斗/全五中一
   togtype(i) {
+    this.reset();
     this.type = i;
-    this.setallmoney.value = "";
   }
   // 切换一般 /快捷 事件
     tabclick(i) {
@@ -604,16 +789,11 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
   sub() {
     let data = [];
     if (this.type == 11) {
-    //   this.popup.sub.top = "10px";
-      let point = (11.633 + (1.3 / 7.8) * this.rangevalue).toFixed(3);
       let d = this.bettatab8_1;
       let title =this.typedata[this.type - 1 ].name;
-      this.setsubdata(d,data, title,point);
+      this.setsubdata(d,data, title);
     }
     if (this.type == 10) {
-    //   this.popup.sub.top = "460px";
-      let point1 = (1.944 + (0.224 / 7.8) * this.rangevalue).toFixed(3);
-      let point2 = (8.98 + (0.78 / 7.8) * this.rangevalue).toFixed(2);
       let d = this.betdatab7_1;
       for (let i = 0; i < d.length; i++) {
         if (Number(d[i].value1.value) > 0) {
@@ -622,7 +802,7 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
           data[l].type = this.typedata[this.type - 1].name;
           data[l].ball = d[i].title;
           data[l].number = "龙";
-          data[l].point = point1;
+          data[l].point = parseFloat((d[i].value1.point+(d[i].value1.step*this.rangevalue)).toFixed(3));
           data[l].money = d[i].value1.value;
         }
         if (Number(d[i].value2.value) > 0) {
@@ -631,15 +811,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
           data[l].type = this.typedata[this.type - 1].name;
           data[l].ball = d[i].title;
           data[l].number = "虎";
-          data[l].point = point2;
+          data[l].point = parseFloat((d[i].value2.point+(d[i].value2.step*this.rangevalue)).toFixed(3));
           data[l].money = d[i].value2.value;
         }
       }
     }
     if (this.type > 1 && this.type < 10) {
-    //   this.popup.sub.top = "10px";
-      let point1 = (11.633 + (1.3 / 7.8) * this.rangevalue).toFixed(3);
-      let point2 = (1.8 + (0.13 / 7.8) * this.rangevalue).toFixed(3);
       let d;
       let b;
       if (this.type === 2) {
@@ -650,17 +827,15 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
         b = this.zhengma[this.type - 3].data2;
       }
       let title = this.typedata[this.type - 1 ].name;
-      this.setsubdata(d,data, title,point1);
-      this.setsubdata(b,data, title,point2);
+      this.setsubdata(d,data, title);
+      this.setsubdata(b,data, title);
     }
     if (this.type === 1) {
-    //   this.popup.sub.top = "350px";
-      let point = (1.8 + (0.156 / 7.8) * this.rangevalue).toFixed(3);
       let d = this.betdatab1_1;
       for (let i = 0; i < d.length; i++) {
         let d1 = d[i].data1;
         let title =this.typedata[this.type - 1 ].name +" - "+ d[i].title;
-        this.setsubdata(d1,data, title, point);
+        this.setsubdata(d1,data, title);
       }
     }
     if(data.length>0){
@@ -669,8 +844,6 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             this.submoney += Number(data[i].money);
         }
         this.SUB(data);
-        // this.reset();
-        // this.setallmoney.value = '';
         return false;
         
     }else{
@@ -681,7 +854,7 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   //设置单元数据提交
-  setsubdata(d, data, str, point) {
+  setsubdata(d, data, str) {
     for (let q = 0; q < d.length; q++) {
       if (d[q].numb !== null && d[q].name !== null) {
         if (Number(d[q].value) > 0) {
@@ -694,7 +867,7 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             data[l].ball = d[q].name;
           }
           data[l].type = str;
-          data[l].point = point;
+          data[l].point = parseFloat((d[q].point+(d[q].step*this.rangevalue)).toFixed(3));
           data[l].money = d[q].value;
         }
       }
@@ -744,7 +917,9 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     for (let i = 0; i < d.length; i++) {
       data[i] = {
         name: d[i],
-        value: ""
+        value: "",
+        point: 0,
+        step: 0
       };
     }
     return data;
@@ -754,26 +929,26 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     let d = {
       data1: this.setball(),
       data2: [
-        { name: "上", value: "" },
-        { name: "上下和", value: "" },
-        { name: "下", value: "" },
-        { name: "单", value: "" },
-        { name: "大", value: "" },
-        { name: "奇", value: "" },
-        { name: "奇偶和", value: "" },
-        { name: "偶", value: "" },
-        { name: "双", value: "" },
-        { name: "小", value: "" },
-        { name: "总单", value: "" },
-        { name: "总大", value: "" },
-        { name: "总尾大", value: "" },
-        { name: "尾大", value: "" },
-        { name: "合单", value: "" },
-        { name: "总双", value: "" },
-        { name: "总小", value: "" },
-        { name: "总尾小", value: "" },
-        { name: "尾小", value: "" },
-        { name: "合双", value: "" }
+        { name: "上", value: "", point: 0, step: 0 },
+        { name: "上下和", value: "", point: 0, step: 0 },
+        { name: "下", value: "", point: 0, step: 0 },
+        { name: "单", value: "", point: 0, step: 0 },
+        { name: "大", value: "", point: 0, step: 0 },
+        { name: "奇", value: "", point: 0, step: 0 },
+        { name: "奇偶和", value: "", point: 0, step: 0 },
+        { name: "偶", value: "", point: 0, step: 0 },
+        { name: "双", value: "", point: 0, step: 0 },
+        { name: "小", value: "", point: 0, step: 0 },
+        { name: "总单", value: "", point: 0, step: 0 },
+        { name: "总大", value: "", point: 0, step: 0 },
+        { name: "总尾大", value: "", point: 0, step: 0 },
+        { name: "尾大", value: "", point: 0, step: 0 },
+        { name: "合单", value: "", point: 0, step: 0 },
+        { name: "总双", value: "", point: 0, step: 0 },
+        { name: "总小", value: "", point: 0, step: 0 },
+        { name: "总尾小", value: "", point: 0, step: 0 },
+        { name: "尾小", value: "", point: 0, step: 0 },
+        { name: "合双", value: "", point: 0, step: 0 },
       ]
     };
     let data = Object.assign({}, d);
