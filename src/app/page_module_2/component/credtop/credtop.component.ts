@@ -593,7 +593,6 @@ export class CredtopComponent implements OnInit, OnDestroy {
     this.time = setInterval(() => {
       this.timedate = new Date();
     }, 1000);
-    console.log(this.currentitem);
   }
   ngAfterViewInit() {}
   ngOnDestroy() {

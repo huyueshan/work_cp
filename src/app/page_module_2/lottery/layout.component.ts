@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
 
 import userModel from "../../../status/user.model";
 import { Base } from "../../../factory/base.model";
@@ -643,22 +643,29 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
     this.now_lang_type=userModel.now_lang_type;
     this.loadpage = userModel.platform;
+    this.time = setInterval(() => {
+      this.timedate = new Date();
+      this.barwidth = this.barwidth>260?16:this.barwidth+1;
+    }, 1000);
     // 设置应该显示的logo图片
-    this.route.params.subscribe(data => {
-        this.routreg(data.id);
+    this.routreg();
+    // 路由地址改变后的事件
+    this.router.events
+      .filter(event => event instanceof NavigationEnd)
+      .subscribe((event: NavigationEnd) => {
+        // this.getrouteurl();
+        this.routreg();
       });
-      this.time = setInterval(() => {
-        this.timedate = new Date();
-        this.barwidth = this.barwidth>260?16:this.barwidth+1;
-      }, 1000);
-      console.log(this.currentitem);
+    // this.route.params.subscribe(data => {
+    //   });
+    //   console.log(this.currentitem);
     }
     ngAfterViewInit() {}
     ngOnDestroy() {
       clearInterval(this.time);
     }
     //判断路由地址是否有效
-    routreg(id) {
+    routreg() {
       let rout = this.router.url;
       let d = this.data;
       for (let i = 0; i < d.length; i++) {
@@ -728,8 +735,8 @@ export class LayoutComponent implements OnInit {
     //   this.route.params.subscribe(data => {
     //       this.routreg(data.id);
     //     });
-      this.isrc = O.imgsrc?O.imgsrc:require("../images/cqssc_13.png");
-      this.currentitem = O.text;
+      // this.isrc = O.imgsrc?O.imgsrc:require("../images/cqssc_13.png");
+      // this.currentitem = O.text;
     }
     result(){
         let str = this.indata.style === "official"?`${this.currentitem}[官]`:`${this.currentitem}[信]`
