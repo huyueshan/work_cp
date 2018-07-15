@@ -108,7 +108,6 @@
         align-self: center;
         border-bottom: 1px solid #dadada;
         .mainbox {
-            padding:0;
             justify-content: space-between;
             align-content: flex-start;
             align-items: flex-start;
@@ -151,6 +150,7 @@
                     }
                     .btngroup {
                         button {
+                            position: relative;
                             width: 76px;
                             font-size: 12px;
                             height: 26px;
@@ -163,14 +163,14 @@
                             border-radius: 2px;
                             margin-left: 8px;
                             outline: none;
+                            cursor: pointer;
                         }
                         .lactive {
                             margin-left: 0px;
                         }
                         .btnactive,
                         .resetbtn:hover,
-                        .kuxuan:hover {
-                            position: relative;
+                        button:hover {
                             color: #b61010;
                             border: 1px solid #b61010;
                             outline: none;
@@ -294,9 +294,9 @@
             .item1 {
                 width: 100%;
                 height: 36px;
+                line-height: 36px;
                 font-size: 14px;
                 font-weight: bold;
-                line-height: 36px;
                 text-align: center;
                 color: #333;
                 border-top: 2px solid #666;
@@ -305,10 +305,9 @@
             .item2,
             .item3 {
                 width: 100%;
-                height: 36px;
-                line-height: 36px;
+                height: 30px;
+                line-height: 30px;
                 text-align: center;
-                background-color: #eee;
                 justify-content: space-around;
             }
             .item2 {
@@ -316,12 +315,13 @@
                 .item2info {
                     width: 68px;
                     justify-content: flex-start;
+                    align-content: center;
                     span {
-                        height: 36px;
-                        line-height: 36px;
+                        height: 30px;
+                        line-height: 30px;
                     }
                     span:first-child {
-                        flex: 0 0 30px;
+                        flex: 0 0 26px;
                     }
                 }
                 .togstyle2 {
@@ -331,9 +331,6 @@
                     align-content: center;
                     align-items: center;
                 }
-            }
-            .item3{
-                background-color: white;
             }
         }
     }
@@ -362,8 +359,8 @@
             }
             .itembox {
                 padding-right: 2px;
-                height: 40px;
-                flex: 0 0 40px;
+                height: 36px;
+                flex: 0 0 36px;
                 justify-content: space-between;
                 .item3 {
                     input {
@@ -373,7 +370,7 @@
             }
             .contenttop {
                 .itembox {
-                    height: 40px;
+                    height: 36px;
                     border-right: 1px solid #ddd;
                     .item1 {
                         font-weight: normal;
@@ -385,9 +382,10 @@
                     flex: auto;
                     height: 36px;
                     justify-content: center;
-                    background: linear-gradient(to top, #E3E3E3, #F9F9F9);
-                    font-size: 16px;
+                    font-size: 14px;
+                    font-weight: bold;
                     color: #333;
+                    background: linear-gradient(to top, #E3E3E3, #F9F9F9);
                 }
             }
         }
@@ -396,9 +394,10 @@
                 flex: auto;
                 height: 36px;
                 justify-content: center;
-                background: linear-gradient(to top, #E3E3E3, #F9F9F9);
-                font-size: 16px;
+                font-size: 14px;
+                font-weight: bold;
                 color: #333;
+                background: linear-gradient(to top, #E3E3E3, #F9F9F9);
                 border-top: 2px solid #666;
                 border-right: 1px solid #ddd;
                 cursor: pointer;
@@ -465,6 +464,7 @@
             border: 1px solid #999;
             border-radius: 4px;
             outline: none;
+            cursor: pointer;
         }
         .resetbtn {
             margin-left: 10px;
@@ -659,10 +659,10 @@
                 border-collapse: collapse;
                 th {
                     text-align: center;
-                    height: 40px;
-                    font-size: 14px;
+                    height: 36px;
+                    font-size: 12px;
                     font-weight: bold;
-                    background-color: rgb(195, 221, 230);
+                    background-color: #DFDFDF;
                     border: 1px solid #ccc;
                 }
             }
@@ -678,7 +678,7 @@
                 width: 100%; // border: 1px solid #ccc;
                 border-collapse: collapse;
                 tr:nth-child(even) {
-                    background-color: #eee;
+                    background-color: #F4F4F4;
                 }
                 td {
                     text-align: center;
@@ -688,13 +688,23 @@
             }
         }
         .foot {
+            width: 100%;
             height: 30px;
             line-height: 30px;
             font-size: 18px;
+            padding: 0 30px;
+            justify-content: flex-end;
             strong {
                 font-size: 20px;
                 color: #b61010;
                 padding: 0 8px;
+            }
+            .newpoint{
+                margin-left: 150px;
+                align-items: center;
+                input{
+                    margin-right: 6px;
+                }
             }
         }
     }
@@ -855,29 +865,7 @@ input[type="range"]::-ms-track {
     width: 100%;
     height: 2px;
     border-color: transparent;
-    // color: #C4C4C8;
     border-radius: 2px;
     background: #b61010;
     cursor: pointer;
 }
-// 已达进度
- 
-// input[type=range]::-ms-fill-lower {
-//     background-color: #b61010;
-// }
-// input[type=range]::-moz-fill-lower {
-//     background-color: #C4C4C8;
-// }
- 
-//  //未达进度
- 
-// input[type=range]::-ms-fill-upper {
-//     background-color: #b61010;
-// }
- 
-// input[type=range]::-ms-ticks-before {
-//     // display: none;
-// }
-// input[type=range]::-ms-ticks-after {
-//     // display: none;
-// }
