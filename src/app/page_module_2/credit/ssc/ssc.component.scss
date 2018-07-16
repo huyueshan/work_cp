@@ -50,7 +50,7 @@
 .ssccontain {
     width: 100%;
     align-self: center;
-    background-size: cover;
+    // background-size: cover;
     .tabbox {
         width: 100%;
         padding-right: 20px;
@@ -351,7 +351,7 @@
         width: 100%;
         align-items: flex-start;
         .conmainbox {
-            flex: auto;
+            flex: 1;
             align-content: center;
             align-items: center;
             span {

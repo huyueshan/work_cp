@@ -360,7 +360,6 @@ const language_0 = {
 			'js_exf':'江苏11选5',
 			'shh_exf':'上海11选5',
 			'xj_exf':'新疆11选5',
-			'gd_exf':'广东11选5',
 
 
 
@@ -766,7 +765,6 @@ const language_0 = {
 			'This_station':'本站',
 			'One_day':'一天',
 			'Choose_other_moneygro':'选择其他资金组',
-			'Quota_fund_group':'配额奖金组',
 			'Link_validity_period':'链接有效期',
 			'Reward_gro_set':'奖金组设定',
 			'Set_up_a_bonus':'设置奖金',
@@ -1206,7 +1204,6 @@ const language_0 = {
 			'js_exf':'江苏11选5',
 			'shh_exf':'上海11选5',
 			'xj_exf':'新疆11选5',
-			'gd_exf':'广东11选5',
 
 
 
@@ -1620,7 +1617,6 @@ const language_0 = {
 			'This_station':'本站',
 			'One_day':'一天',
 			'Choose_other_moneygro':'选择其他资金组',
-			'Quota_fund_group':'配额奖金组',
 			'Link_validity_period':'链接有效期',
 			'Reward_gro_set':'奖金组设定',
 			'Set_up_a_bonus':'设置奖金',
