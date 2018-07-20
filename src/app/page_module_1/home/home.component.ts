@@ -18,25 +18,43 @@ export class HomeComponent {
 
     //====================传给分页组件数据 
     public pagination = {
-        totalNum: 100,  //总数据条数 需从后台
+        totalNum: 1000,  //总数据条数 需从后台
         pageSize: 5, // 每页显示数量
         curPage: 1, //当前页
-        segmentSize: 5, //最大显示页码标签数量
+        segmentSize: 6, //最大显示页码标签数量
+        
       };
-
+      // 最大页码数。到时由后台传过来
+      public totalPage = Math.ceil(this.pagination.totalNum/this.pagination.pageSize);
+    
+      public selectdata={
+        pageSize: 5,
+        segmentSize: 6,
+      }
 
 
 	constructor() { 
 	}
 	ngOnInit(){
+        console.log(this.totalPage);
     }
     // 弹窗关闭事件 可以自定义命名
+    public nn =100;
     closePopouot(e){
         let p = this.popoutInfo;
         p.show = false;
         p.scale = false;
         if(p.event){
             if(e ) {
+                this.pagination=null;
+                this.nn +=20;
+                this.pagination = {
+                    totalNum: this.nn,  //总数据条数 需从后台
+                    pageSize: 5, // 每页显示数量
+                    curPage: 1, //当前页
+                    segmentSize: 6, //最大显示页码标签数量
+                  };
+                  this.totalPage = Math.ceil(this.pagination.totalNum/this.pagination.pageSize);
                 alert("您点击了确认按钮！")
             }else{
                 alert("您点击了取消或关闭按钮！")
@@ -73,5 +91,16 @@ export class HomeComponent {
         //  此处请求当前页面数据
         console.log(this.pagination.curPage);
     }
-	
+    
+    pageParamschange(){
+        let o=Object.assign({},this.pagination);
+        this.pagination = null;
+        this.pagination = {
+            totalNum: o.totalNum,  
+            pageSize: this.selectdata.pageSize, 
+            curPage: 1,
+            segmentSize: this.selectdata.segmentSize,
+          };
+          this.totalPage = Math.ceil(this.pagination.totalNum/this.pagination.pageSize);
+    }
 };

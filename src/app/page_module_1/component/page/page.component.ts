@@ -1,68 +1,107 @@
-import { Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output,OnChanges } from '@angular/core';
 
 @Component({
 
-  selector: 'app-page',
-  templateUrl: './page.component.html',
-  styleUrls: ['./page.component.scss']
+    selector: 'app-page',
+    templateUrl: './page.component.html',
+    styleUrls: ['./page.component.scss']
 })
-export class PageComponent implements OnInit {
-    @Input('pageParams') pageParams;
-    
+export class PageComponent implements OnInit,OnChanges {
+    @Input() pageParams;
+    @Input() totalPage;
+
     @Output() changeCurPage: EventEmitter<Number> = new EventEmitter;
 
-    public totalPage=0;
+    // public totalPage = 0;
     public pageList = [];
-    public currange=0;
+    public dianfirst = false;
+    public dianlast = false;
     public oldpage = 0;
+    public OB = { page: 0, show: false, }
 
-  constructor() {}
+    constructor() { }
 
-  ngOnInit() {
-      this.getPageList(this.pageParams)
-  }
-
-  getPageList(p) {
-    let data = [];
-    let n = Math.ceil(p.totalNum/p.pageSize);
-    this.totalPage = n ;
-    for (let i = 1; i <= n; i++) {
-        data.push(i)
+    ngOnInit() {
+        this.pageList = this.getPageList(this.pageParams);
     }
-    return data;
-  }
-  setshowitem(i,p){
-      let n= i+1;
-        if (p.curPage<p.segmentSize/2+1) {
-            if (n<=p.segmentSize) {
-                return true;
-            }else{
-                return false;
+    ngOnChanges(){
+        this.pageList = this.getPageList(this.pageParams);
+
+    }
+
+    getPageList(p) {
+        let data = [];
+        let n = Math.ceil(p.totalNum / p.pageSize);
+        this.totalPage = n;
+        for (let i = 1; i <= n; i++) {
+            let o = Object.assign({}, this.OB);
+            o.page = i;
+            data.push(o)
+        }
+        data = this.setdata(data, p);
+        return data;
+    }
+
+    setdata(d, p) {
+        this.dianfirst = false;
+        this.dianlast = false;
+        let t = this.totalPage;
+        if (p.curPage < p.segmentSize) {
+            for (let i = 0; i < d.length; i++) {
+                d[i].show = false;
             }
-        }
-        if (this.totalPage-(p.segmentSize/2)<=p.curPage) {
-            if (this.totalPage-p.segmentSize < n) {
-                return true;
-            }else{
-                return false;
+            for (let i = 0; i < p.segmentSize; i++) {
+                d[i].show = true;
             }
-        }
-        this.currange = (p.segmentSize/2)-1 ;
-        let pagenumb;
-        if (Math.abs(this.oldpage - p.curPage) >this.currange) {
-            pagenumb=p.curPage
+            this.dianlast = true;
+            return d;
+        }else if (t - p.segmentSize + 1 < p.curPage) {
+                for (let i = 0; i < d.length; i++) {
+                    d[i].show = false;
+                }
+                for (let i = (t - p.segmentSize); i < t; i++) {
+                    d[i].show = true;
+                }
+                this.dianfirst = true;
+                return d;
+            
+
         }else{
-            pagenumb=this.oldpage
+            this.dianfirst = true;
+            this.dianlast = true;
+            if (p.curPage > this.oldpage && !d[p.curPage].show) {
+                for (let i = 0; i < d.length; i++) {
+                    d[i].show = false;
+                }
+                for (let i = p.curPage; i > (p.curPage - p.segmentSize); i--) {
+                    d[i].show = true;
+                }
+                return d;
+            }
+            if (p.curPage < this.oldpage && !d[p.curPage - 2].show) {
+                for (let i = 0; i < d.length; i++) {
+                    d[i].show = false;
+                }
+                for (let i = (p.curPage - 2); i < (p.curPage - 2 + p.segmentSize); i++) {
+                    d[i].show = true;
+                }
+                return d;
+            }
+
         }
-        if(n>(pagenumb-(p.segmentSize/2)) && n<(pagenumb+(p.segmentSize/2))){
-            return true
-        }else{
-            return false;
-        }
-  }
+        
+        
+        return d;
+    }
+
     changePage(pageNo) {
+        if (pageNo ===this.pageParams.curPage) {
+            return
+        }
+        console.log(this.pageList);
         this.oldpage = this.pageParams.curPage;
         this.pageParams.curPage = pageNo;  //当前页码
+        this.pageList = this.setdata(this.pageList,this.pageParams);
         this.changeCurPage.emit(pageNo);
     }
 }
