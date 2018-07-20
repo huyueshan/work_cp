@@ -1,0 +1,11 @@
+
+
+
+.btngroup{
+    width:300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 100px;
+}
+

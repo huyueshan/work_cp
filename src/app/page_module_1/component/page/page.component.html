@@ -1,0 +1,37 @@
+ 
+<div class="flex-r pagebox" *ngIf="pageParams.totalNum>0">
+    <span class="info">总计 {{pageParams.totalNum}} 条，第 {{pageParams.curPage}} / {{totalPage}} 页</span>
+    <ul class="flex-r">
+        <li>
+            <button class="btn btn-primary next" [ngClass]="{disab:pageParams.curPage==1}" (click)="changePage(1)" [disabled]="pageParams.curPage==1">首页</button>
+
+        </li>
+        <li>
+            <button class="btn btn-primary" (click)="changePage(pageParams.curPage-1)" [ngClass]="{disab:pageParams.curPage==1}" [disabled]="pageParams.curPage==1" title="上一页"> &lt; </button>
+
+        </li>
+        <li *ngIf="totalPage > pageParams.segmentSize && pageParams.curPage > (pageParams.segmentSize/2+1)">
+            <span class="flex-r dian">...</span>
+        </li>
+        <ng-container *ngFor="let item of getPageList(pageParams); let i=index">
+            <li *ngIf="setshowitem(i,pageParams) " >
+                    <button class="btn btn-primary" (click)="changePage(item)" [ngClass]="{active:pageParams.curPage==item}">
+                        {{item}}
+                    </button>
+            </li>
+        </ng-container>
+        <li *ngIf="totalPage > pageParams.segmentSize && (totalPage - pageParams.curPage)> (pageParams.segmentSize/2)">
+            <span class="flex-r dian">...</span>
+        </li>
+        <li>
+            <button class="btn btn-primary" (click)="changePage(pageParams.curPage-(-1))"
+                [ngClass]="{disab:pageParams.curPage==totalPage}" [disabled]="pageParams.curPage==totalPage" title="下一页"> &gt; </button>
+        </li>
+        <li>
+            <button class="btn btn-primary next" [ngClass]="{disab:pageParams.curPage==totalPage}" (click)="changePage(totalPage)" [disabled]="pageParams.curPage==totalPage"> 尾页 </button>
+        </li>
+    </ul>
+</div>
+<div class="flex-r nopage" *ngIf="!pageParams.totalNum">
+    <p>暂无数据</p> 
+</div>

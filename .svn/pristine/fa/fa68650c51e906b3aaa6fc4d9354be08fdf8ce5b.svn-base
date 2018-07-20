@@ -1,0 +1,50 @@
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss']
+})
+
+export class HomeComponent {
+    // 传给弹窗组件数据
+    public  popoutInfo={
+        title:'string',
+        message:'string',
+        event:false,
+        show: false,
+        scale: false,
+    }
+	constructor() { 
+	}
+	ngOnInit(){
+    }
+    // 弹窗关闭事件 可以自定义命名
+    closePopouot(e){
+        let p = this.popoutInfo;
+        p.show = false;
+        p.scale = false;
+        if(p.event){
+            if(e ) {
+                alert("您点击了确认按钮！")
+            }else{
+                alert("您点击了取消或关闭按钮！")
+            }
+        } 
+        p.event = false;
+    }
+
+    // 使用事件 b可以不传值 为true时显示取消按钮
+    click(t,m,b=false){
+        let p = this.popoutInfo;
+        p.title = t;
+        p.message= m;
+        p.show = true;
+        p.scale = false;
+        p.event= b ? true : false;
+        setTimeout(() => {
+            p.scale = true;
+        }, 10);
+    }
+	
+};
