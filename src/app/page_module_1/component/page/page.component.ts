@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, EventEmitter, Output,OnChanges } from '@angular/core';
 
 @Component({
-
     selector: 'app-page',
     templateUrl: './page.component.html',
     styleUrls: ['./page.component.scss']
 })
+
 export class PageComponent implements OnInit,OnChanges {
     @Input() pageParams:{
         totalNum: number,  //总数据条数

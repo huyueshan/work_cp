@@ -4,11 +4,11 @@
     <ng-container *ngIf="pageOb.totalPage>1">
         <ul class="flex-r">
             <li>
-                <button class="next" [ngClass]="{disab:pageOb.curPage==1}" (click)="changePage(1)" [disabled]="pageOb.curPage==1">首页</button>
+                <button class="next" [ngClass]="{disab:pageOb.curPage===1}" (click)="changePage(1)" [disabled]="pageOb.curPage===1">首页</button>
     
             </li>
             <li>
-                <button (click)="changePage(pageOb.curPage-1)" [ngClass]="{disab:pageOb.curPage==1}" [disabled]="pageOb.curPage==1" title="上一页"> &lt; </button>
+                <button (click)="changePage(pageOb.curPage-1)" [ngClass]="{disab:pageOb.curPage===1}" [disabled]="pageOb.curPage==1" title="上一页"> &lt; </button>
     
             </li>
             <li *ngIf="pageOb.totalPage > pageOb.segmentSize && dianfirst">
@@ -16,7 +16,7 @@
             </li>
             <ng-container *ngFor="let item of pageList; let i=index">
                 <li *ngIf="item.show" >
-                        <button (click)="changePage(item.page)" [ngClass]="{active:pageOb.curPage==item.page}">
+                        <button (click)="changePage(item.page)" [ngClass]="{active:pageOb.curPage===item.page}">
                             {{item.page}}
                         </button>
                 </li>
@@ -26,10 +26,10 @@
             </li>
             <li>
                 <button (click)="changePage(pageOb.curPage-(-1))"
-                    [ngClass]="{disab:pageOb.curPage==pageOb.totalPage}" [disabled]="pageOb.curPage==pageOb.totalPage" title="下一页"> &gt; </button>
+                    [ngClass]="{disab:pageOb.curPage===pageOb.totalPage}" [disabled]="pageOb.curPage===pageOb.totalPage" title="下一页"> &gt; </button>
             </li>
             <li>
-                <button class="next" [ngClass]="{disab:pageOb.curPage==pageOb.totalPage}" (click)="changePage(pageOb.totalPage)" [disabled]="pageOb.curPage==pageOb.totalPage"> 尾页 </button>
+                <button class="next" [ngClass]="{disab:pageOb.curPage===pageOb.totalPage}" (click)="changePage(pageOb.totalPage)" [disabled]="pageOb.curPage===pageOb.totalPage"> 尾页 </button>
             </li>
         </ul>
     </ng-container>
