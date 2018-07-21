@@ -30,6 +30,7 @@
     }
     ul{
         list-style-type:none;
+        flex-wrap: wrap;
         li{
             padding: 0 4px;
             color: #666;

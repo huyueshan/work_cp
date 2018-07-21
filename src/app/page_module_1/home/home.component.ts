@@ -7,55 +7,55 @@ import { Component } from '@angular/core';
 })
 
 export class HomeComponent {
+
     // 传给弹窗组件数据
     public  popoutInfo={
         title:'string',
         message:'string',
-        event:false,
+        event: false,
         show: false,
         scale: false,
     }
 
     //====================传给分页组件数据 
     public pagination = {
-        totalNum: 1000,  //总数据条数 需从后台
+        totalNum:1000,  //总数据条数 
         pageSize: 5, // 每页显示数量
         curPage: 1, //当前页
         segmentSize: 6, //最大显示页码标签数量
-        
+        totalPage:200,// 最大页码数。
       };
-      // 最大页码数。到时由后台传过来
-      public totalPage = Math.ceil(this.pagination.totalNum/this.pagination.pageSize);
-    
-      public selectdata={
+
+    // 每页显示条数 和 最大显示分页标签数量 设置数据
+    public selectdata={
         pageSize: 5,
         segmentSize: 6,
-      }
+    }
+
+    // 临时测试数据
+    public nn =this.pagination.totalNum;
 
 
 	constructor() { 
-	}
-	ngOnInit(){
-        console.log(this.totalPage);
     }
+    
+	ngOnInit(){
+    }
+    
     // 弹窗关闭事件 可以自定义命名
-    public nn =100;
     closePopouot(e){
         let p = this.popoutInfo;
         p.show = false;
         p.scale = false;
         if(p.event){
             if(e ) {
-                this.pagination=null;
+                // 测试事件
                 this.nn +=20;
-                this.pagination = {
-                    totalNum: this.nn,  //总数据条数 需从后台
-                    pageSize: 5, // 每页显示数量
-                    curPage: 1, //当前页
-                    segmentSize: 6, //最大显示页码标签数量
-                  };
-                  this.totalPage = Math.ceil(this.pagination.totalNum/this.pagination.pageSize);
-                alert("您点击了确认按钮！")
+                this.pagination.totalNum=this.nn;
+                this.pagination.curPage=1;
+                let o = Object.assign({},this.pagination);
+                this.pagination = Object.assign({},o);
+                alert("您点击了确认按钮！改变了分页组件数据总条数。")
             }else{
                 alert("您点击了取消或关闭按钮！")
             }
@@ -71,6 +71,7 @@ export class HomeComponent {
         p.show = true;
         p.scale = false;
         p.event= b ? true : false;
+        // 触发渐大动画
         setTimeout(() => {
             p.scale = true;
         }, 10);
@@ -86,21 +87,18 @@ export class HomeComponent {
 
 
     // ===============分页组件事件
+    // 分页组件点击页码事件，参数i为点击页码数
     getPageData(i) {
         this.pagination.curPage = i;
-        //  此处请求当前页面数据
+        //  此处请求数据
         console.log(this.pagination.curPage);
     }
     
+    // 改变传给分页组件参数事件
+    // !!!!!!!!!!因为传给组件的参数是对象，所以一定要改变对象的引用指针，子组件才会更新传过去的数据！！！！！！！！！！！！！！！！
     pageParamschange(){
-        let o=Object.assign({},this.pagination);
-        this.pagination = null;
-        this.pagination = {
-            totalNum: o.totalNum,  
-            pageSize: this.selectdata.pageSize, 
-            curPage: 1,
-            segmentSize: this.selectdata.segmentSize,
-          };
-          this.totalPage = Math.ceil(this.pagination.totalNum/this.pagination.pageSize);
+        this.pagination.curPage=1;
+        let o=Object.assign({},this.pagination,this.selectdata);
+        this.pagination = Object.assign({},o);  // 这一步改变了对象的引用指针
     }
 };

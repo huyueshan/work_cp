@@ -7,12 +7,16 @@ import { Component, OnInit, Input, EventEmitter, Output,OnChanges } from '@angul
     styleUrls: ['./page.component.scss']
 })
 export class PageComponent implements OnInit,OnChanges {
-    @Input() pageParams;
-    @Input() totalPage;
+    @Input() pageParams:{
+        totalNum: number,  //总数据条数
+        pageSize: number, // 每页显示数量
+        curPage: number, //当前页
+        segmentSize: number, //最大显示页码标签数量
+        totalPage: number, // 最大页码数
+      };
 
     @Output() changeCurPage: EventEmitter<Number> = new EventEmitter;
-
-    // public totalPage = 0;
+    public pageOb;
     public pageList = [];
     public dianfirst = false;
     public dianlast = false;
@@ -26,13 +30,16 @@ export class PageComponent implements OnInit,OnChanges {
     }
     ngOnChanges(){
         this.pageList = this.getPageList(this.pageParams);
-
     }
 
-    getPageList(p) {
+    getPageList(Params) {
+        this.pageOb =Object.assign({},Params);
+        let p = this.pageOb;
         let data = [];
         let n = Math.ceil(p.totalNum / p.pageSize);
-        this.totalPage = n;
+        p.totalPage = n;
+        let s= p.segmentSize?(p.segmentSize>n?n:p.segmentSize):(n<5?n:5);
+        p.segmentSize=Number(s);
         for (let i = 1; i <= n; i++) {
             let o = Object.assign({}, this.OB);
             o.page = i;
@@ -41,11 +48,13 @@ export class PageComponent implements OnInit,OnChanges {
         data = this.setdata(data, p);
         return data;
     }
-
     setdata(d, p) {
         this.dianfirst = false;
         this.dianlast = false;
-        let t = this.totalPage;
+        let t = p.totalPage;
+        if (t<2) {
+            return;
+        }
         if (p.curPage < p.segmentSize) {
             for (let i = 0; i < d.length; i++) {
                 d[i].show = false;
@@ -55,7 +64,7 @@ export class PageComponent implements OnInit,OnChanges {
             }
             this.dianlast = true;
             return d;
-        }else if (t - p.segmentSize + 1 < p.curPage) {
+        }else if (t - p.segmentSize+1 < p.curPage) {
                 for (let i = 0; i < d.length; i++) {
                     d[i].show = false;
                 }
@@ -64,8 +73,6 @@ export class PageComponent implements OnInit,OnChanges {
                 }
                 this.dianfirst = true;
                 return d;
-            
-
         }else{
             this.dianfirst = true;
             this.dianlast = true;
@@ -82,26 +89,20 @@ export class PageComponent implements OnInit,OnChanges {
                 for (let i = 0; i < d.length; i++) {
                     d[i].show = false;
                 }
-                for (let i = (p.curPage - 2); i < (p.curPage - 2 + p.segmentSize); i++) {
+                for (let i = (p.curPage - 2); i < ((p.curPage - 2) + p.segmentSize); i++) {
                     d[i].show = true;
                 }
                 return d;
             }
 
         }
-        
-        
         return d;
     }
 
     changePage(pageNo) {
-        if (pageNo ===this.pageParams.curPage) {
-            return
-        }
-        console.log(this.pageList);
-        this.oldpage = this.pageParams.curPage;
-        this.pageParams.curPage = pageNo;  //当前页码
-        this.pageList = this.setdata(this.pageList,this.pageParams);
+        this.oldpage = this.pageOb.curPage;
+        this.pageOb.curPage = pageNo;  //当前页码
+        this.pageList = this.setdata(this.pageList,this.pageOb);
         this.changeCurPage.emit(pageNo);
     }
 }

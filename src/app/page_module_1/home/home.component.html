@@ -10,7 +10,7 @@
 </div>
 
 <div class="page"> 
-    <app-page [pageParams]="pagination" [totalPage]="totalPage" (changeCurPage)="getPageData($event)"></app-page>
+    <app-page [pageParams]="pagination" (changeCurPage)="getPageData($event)"></app-page>
     <label>每页显示：
         <select name="size" id="size" [(ngModel)]="selectdata.pageSize" (change)="pageParamschange()">
             <option value="5">5</option>
