@@ -113,9 +113,7 @@ const Matchrule = {
 						_arr = allarr[0]
 						_selfs = new Array(len.datarule[1])
 						algorithm.plzh(_selfs, _arr, _indexs, _total, _where);
-						console.log(_total)
 						for(var j = 0;j<_total.length;j++){
-							console.log(_total[j])
 							if(algorithm.hasArr(allarr[0][l],_total[j])){
 								c = c + 1
 							}
@@ -153,7 +151,7 @@ const Matchrule = {
 					}
 				}
 				// 移除选择刚好符合规则时组合中的重复项
-				if((c == 1 || allarr[0].length == 1 || allarr[1].length == 1) && totalbet == 1 && !len.addzero){
+				if((c == 1 || allarr[0].length == 1 || allarr[1].length == 1) && totalbet == 1){
 					allarr[0].map(function(res){
 						if(algorithm.hasArr(res,allarr[1])){
 							if(allarr[1].length == 1 && len.datarule[1]>=len.datarule[2]){

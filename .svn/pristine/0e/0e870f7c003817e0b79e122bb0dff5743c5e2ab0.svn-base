@@ -1,23 +1,27 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SharkModule } from '@ntesmail/shark-angular2';
-import { ReactiveFormsModule } from "@angular/forms";
-import { HttpClient, HttpHeaders } from '@angular/common/http'; 
-import { RouterModule, Routes, Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
+import { RouterModule, Routes, Router } from "@angular/router";
 
 import { Base } from '../../../../factory/base.model';
 import { Api } from '../../../../factory/api.model';
 import { formmod } from '../../../../factory/form';
 import userModel from '../../../../status/user.model';
 import { Utils } from '../../../../factory/utils';
+
 @Component({
-    selector: 'ffcofficial',
-    templateUrl: './ffc.component.html',
-    styleUrls: ['./ffc.component.scss']
+    selector: 'sscofficial',
+    templateUrl: './ssc.component.html',
+    styleUrls: ['./ssc.component.scss']
 })
 
-export class FFCofficialComponent implements OnInit {
-
-	constructor(private route: ActivatedRoute,private httpClient:HttpClient,private router: Router) { }
+export class SSCofficialComponent implements OnInit {
+	constructor(private router: Router) { }
+    public cpnav = {
+        style:"official",
+        prev:'20180517022',
+        prevball:[8,5,2,3,9],
+        next:'20180517023',
+        time:''
+    };
 	loadpage=false;
 	public resultdata = [{'sta':'20180517014','num':'2 9 0 8 7'},{'sta':'20180517014','num':'2 9 0 8 7'} ,{'sta':'20180517014','num':'2 9 0 8 7'} , {'sta':'20180517014','num':'2 9 0 8 7'},{'sta':'20180517014','num':'2 9 0 8 7'} , {'sta':'20180517014','num':'2 9 0 8 7'},{'sta':'20180517014','num':'2 9 0 8 7'} ,{'sta':'20180517014','num':'2 9 0 8 7'}];
 	public rankdata = [{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'},{'name':'王刚','type':'时时彩','money':'9999'}];
@@ -30,145 +34,23 @@ export class FFCofficialComponent implements OnInit {
 	public tips_hidden = true;
 	public riskvalue = -0.2;
 	public rangepercent = 0;
-	public rangenum = 30033.33;
 	public now_tips_menu :any='1_1';
 	public now_description = '';
+	public rangenum = 180200;
 	public hothidden = false;
-	public nowPageId :any='';
-	public nowitems :any={};
 	public userInfo = {
 		name:'赌神',
 		balance:'9999.99',
-		id:'007'
+		id:'007',
+		img:'../../images/cqssc_13.png'
 	};
-	public other_rules = {
-		reward_rule:'<div> 奖金计算说明：<p style="margin-left:1em;">非常规时时彩中奖后，根据中奖号码球号的奖金组，中奖奖金需要乘以球号的奖金组，如：</p><p style="margin-left:1em;line-height: 25px;padding:3px 0;">1、北京时时彩后三直选（1800奖金组）：下注321，开奖号码54321，其中3号球的奖金组为：1.014，2号球的奖金组为：0.984，1号球的奖金组为1.022；那么中奖后的实际奖金=1800*1.014*0.984*1.022=1835.509</p><p style="margin-left:1em;line-height: 25px;padding:3px 0;">2、若北京时时彩后三直选（1800奖金组）：下注246，开奖号码54246，其中2号球的奖金组为：0.984，4号球的奖金组为：0.976，6号球的奖金组为0.98；那么中奖后的实际奖金=1800*0.984*0.976*0.98=1694.117</P></div>'
-	};
-	
-    public typeoption;
-	public cpnav = {
-        style:"official",
-	    prev:'20180517022',
-	    prevball:[2,5,9,0,8],
-	    next:'20180517023',
-	    time:''
-	};
+	public curinpt = {value:''};
+	// public rangevalue = rangevalue;
 	public now_lang :any=userModel.langpackage;
 	public now_lang_type :any='zh';
-
-	//追号数据
-	public lotdata = [
-		{
-			lot_num:'20181719',
-			multiple:0,
-			price:2,
-			take_money:0,
-			expire_time:'2018-06-11 15:19:30',
-			checkon:false
-		},
-		{
-			lot_num:'20181720',
-			multiple:0,
-			price:2,
-			take_money:0,
-			expire_time:'2018-06-11 15:19:30',
-			checkon:false
-		},
-		{
-			lot_num:'20181721',
-			multiple:0,
-			price:2,
-			take_money:0,
-			expire_time:'2018-06-11 15:19:30',
-			checkon:false
-		}
-	]
-	public typeoptiondata :any = [
-      5,
-      10,
-      15,
-      25,
-      'all'
-    ];
-	// 复制追号数据
-	public lotdata_now = $.extend(true, [], this.lotdata);
-	// 追号配置
-	public chase_config_ori :any = {
-		multiple:1,
-		chase_amount:5,
-		select_amount:5,
-		chase_rule:{
-			number:1,
-			multiple:2
-		},
-		multiple_option:1
-	}
-	public chase_number_config :any = $.extend(true, {}, this.chase_config_ori);
-	//目前追号面板
-	public c_now_panel :any = 'one'
-	public chase_money :any = 0;
-	public chase_amount :any = 0;
-	//追号数据结束
-
-	public curinpt = {value:''};
-	//路由id
-	public routid;
-	// public rangevalue = rangevalue;
 	status = {
-		menu_1:4,//一级tab默认项
-		menu_2:4  //二级tab默认项
-	}
-	public items_show = {
-		'tx_ffc':{
-			'tabitem':[this.now_lang.Lot_tab.BackT_star,this.now_lang.Lot_tab.ForT_star,this.now_lang.Lot_tab.MidT_star,this.now_lang.Lot_tab.Two_star,this.now_lang.Lot_tab.Gall,this.now_lang.Lot_tab.Indeterminate_gallbladder,this.now_lang.Lot_tab.Size_Dan_Shuang,this.now_lang.Lot_tab.Interest,this.now_lang.Lot_tab.Choose_two,this.now_lang.Lot_tab.Choose_three,this.now_lang.Lot_tab.Dragon_tiger],
-			'reward_show':true,
-			'name':this.now_lang.lot_type.tx_ffc
-		},
-		'bj_ffc':{
-			'tabitem':[this.now_lang.Lot_tab.BackT_star,this.now_lang.Lot_tab.ForT_star,this.now_lang.Lot_tab.MidT_star,this.now_lang.Lot_tab.Two_star,this.now_lang.Lot_tab.Gall,this.now_lang.Lot_tab.Indeterminate_gallbladder,this.now_lang.Lot_tab.Size_Dan_Shuang,this.now_lang.Lot_tab.Interest,this.now_lang.Lot_tab.Choose_two,this.now_lang.Lot_tab.Choose_three,this.now_lang.Lot_tab.Dragon_tiger],
-			'reward_show':true,
-			'name':this.now_lang.lot_type.bj_ffc
-		},
-		'tw_ffc':{
-			'tabitem':[this.now_lang.Lot_tab.BackT_star,this.now_lang.Lot_tab.ForT_star,this.now_lang.Lot_tab.MidT_star,this.now_lang.Lot_tab.Two_star,this.now_lang.Lot_tab.Gall,this.now_lang.Lot_tab.Indeterminate_gallbladder,this.now_lang.Lot_tab.Size_Dan_Shuang,this.now_lang.Lot_tab.Interest,this.now_lang.Lot_tab.Choose_two,this.now_lang.Lot_tab.Choose_three,this.now_lang.Lot_tab.Dragon_tiger],
-			'reward_show':true,
-			'name':this.now_lang.lot_type.tw_ffc
-		},
-		'qq_ffc':{
-			'tabitem':[this.now_lang.Lot_tab.Two_star,this.now_lang.Lot_tab.Gall,this.now_lang.Lot_tab.Indeterminate_gallbladder,this.now_lang.Lot_tab.Size_Dan_Shuang,this.now_lang.Lot_tab.Interest,this.now_lang.Lot_tab.Choose_two,this.now_lang.Lot_tab.Choose_three,this.now_lang.Lot_tab.Dragon_tiger],
-			'reward_show':true,
-			'name':this.now_lang.lot_type.qq_ffc
-		},
-		'slfk_ffc':{
-			'tabitem':[this.now_lang.Lot_tab.BackT_star,this.now_lang.Lot_tab.ForT_star,this.now_lang.Lot_tab.MidT_star,this.now_lang.Lot_tab.Two_star,this.now_lang.Lot_tab.Gall,this.now_lang.Lot_tab.Indeterminate_gallbladder,this.now_lang.Lot_tab.Size_Dan_Shuang,this.now_lang.Lot_tab.Interest,this.now_lang.Lot_tab.Choose_two,this.now_lang.Lot_tab.Choose_three,this.now_lang.Lot_tab.Dragon_tiger],
-			'reward_show':true,
-			'name':this.now_lang.lot_type.slfk_ffc
-		},
-		'dj_ffc':{
-			'tabitem':[this.now_lang.Lot_tab.BackT_star,this.now_lang.Lot_tab.ForT_star,this.now_lang.Lot_tab.MidT_star,this.now_lang.Lot_tab.Two_star,this.now_lang.Lot_tab.Gall,this.now_lang.Lot_tab.Indeterminate_gallbladder,this.now_lang.Lot_tab.Size_Dan_Shuang,this.now_lang.Lot_tab.Interest,this.now_lang.Lot_tab.Choose_two,this.now_lang.Lot_tab.Choose_three,this.now_lang.Lot_tab.Dragon_tiger],
-			'reward_show':true,
-			'name':this.now_lang.lot_type.dj_ffc
-		},
-		'js_ffc':{
-			'tabitem':[this.now_lang.Lot_tab.BackT_star,this.now_lang.Lot_tab.ForT_star,this.now_lang.Lot_tab.MidT_star,this.now_lang.Lot_tab.Two_star,this.now_lang.Lot_tab.Gall,this.now_lang.Lot_tab.Indeterminate_gallbladder,this.now_lang.Lot_tab.Size_Dan_Shuang,this.now_lang.Lot_tab.Interest,this.now_lang.Lot_tab.Choose_two,this.now_lang.Lot_tab.Choose_three,this.now_lang.Lot_tab.Dragon_tiger],
-			'reward_show':false,
-			'name':this.now_lang.lot_type.js_ffc
-		},
-		'hs_ffc':{
-			'tabitem':[this.now_lang.Lot_tab.BackT_star,this.now_lang.Lot_tab.ForT_star,this.now_lang.Lot_tab.MidT_star,this.now_lang.Lot_tab.Two_star,this.now_lang.Lot_tab.Gall,this.now_lang.Lot_tab.Indeterminate_gallbladder,this.now_lang.Lot_tab.Size_Dan_Shuang,this.now_lang.Lot_tab.Interest,this.now_lang.Lot_tab.Choose_two,this.now_lang.Lot_tab.Choose_three,this.now_lang.Lot_tab.Dragon_tiger],
-			'reward_show':true,
-			'name':this.now_lang.lot_type.hs_ffc
-		},
-		'az_ffc':{
-			'tabitem':[this.now_lang.Lot_tab.BackT_star,this.now_lang.Lot_tab.ForT_star,this.now_lang.Lot_tab.MidT_star,this.now_lang.Lot_tab.Two_star,this.now_lang.Lot_tab.Gall,this.now_lang.Lot_tab.Indeterminate_gallbladder,this.now_lang.Lot_tab.Size_Dan_Shuang,this.now_lang.Lot_tab.Interest,this.now_lang.Lot_tab.Choose_two,this.now_lang.Lot_tab.Choose_three,this.now_lang.Lot_tab.Dragon_tiger],
-			'reward_show':true,
-			'name':this.now_lang.lot_type.az_ffc
-		},
-		'jnd_ffc':{
-			'tabitem':[this.now_lang.Lot_tab.BackT_star,this.now_lang.Lot_tab.ForT_star,this.now_lang.Lot_tab.MidT_star,this.now_lang.Lot_tab.Two_star,this.now_lang.Lot_tab.Gall,this.now_lang.Lot_tab.Indeterminate_gallbladder,this.now_lang.Lot_tab.Size_Dan_Shuang,this.now_lang.Lot_tab.Interest,this.now_lang.Lot_tab.Choose_two,this.now_lang.Lot_tab.Choose_three,this.now_lang.Lot_tab.Dragon_tiger],
-			'reward_show':true,
-			'name':this.now_lang.lot_type.jnd_ffc
-		}
+		menu_1:1,//一级tab默认项
+		menu_2:1  //二级tab默认项
 	}
 	// 一级tab
 	menu_1 = [
@@ -531,117 +413,6 @@ export class FFCofficialComponent implements OnInit {
 			index:9
 		}
 	};
-
-	typeoptchange() {
-		let that = this;
-		if (that.chase_number_config.select_amount == 'all') {
-			that.chase_number_config.chase_amount = that.lotdata_now.length;
-		}else{
-			that.chase_number_config.chase_amount = that.chase_number_config.select_amount;
-		}
-	}
-	check_lot(item){
-		console.log(item.checkon)
-		let that = this;
-		if (item.checkon) {
-			if (item.multiple == 0) {
-				item.multiple = that.chase_number_config.multiple;
-				item.take_money = item.multiple*item.price;
-			}
-
-		}else{
-			item.multiple = 0;
-		}
-		that.repanel_data()
-	}
-	// 生成计划
-	produce_plan(){
-		let that = this;
-		let gap_number,gap_multiple,multiple,chase_amount;
-		if (that.c_now_panel == 'two') {
-			gap_number = that.chase_number_config.chase_rule.number;
-			gap_multiple = that.chase_number_config.chase_rule.multiple;
-			multiple = that.chase_number_config.multiple;
-			chase_amount = that.chase_number_config.chase_amount;
-			if(chase_amount>that.lotdata_now.length){
-				chase_amount = that.lotdata_now.length;
-			}
-			for (var i = 0; i <= chase_amount-1; i++) {
-				console.log((i)%gap_number)
-				that.lotdata_now[i].checkon = true;
-				that.lotdata_now[i].multiple = multiple;
-				that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price;
-				if ((i+1)%gap_number == 0) {
-					multiple = multiple*gap_multiple;
-				}; 
-
-			};			
-		}else{
-			multiple = that.chase_number_config.multiple;
-			chase_amount = that.chase_number_config.chase_amount;
-			if(chase_amount>that.lotdata_now.length){
-				chase_amount = that.lotdata_now.length;
-			}
-			for (var i = 0; i <= chase_amount-1; i++) {
-				that.lotdata_now[i].checkon = true;
-				that.lotdata_now[i].multiple = multiple;
-				that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price;
-			};
-		}
-		that.repanel_data()
-	}
-	//单个金钱计算
-	get_takemon(item){
-		let that = this;
-		item.take_money = item.multiple*item.price;
-		that.repanel_data()
-	}
-	// 总金钱总期数计算
-	repanel_data(){
-		let that = this;
-		let amount = 0;
-		let chase_amount = 0;
-		for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-			amount = that.lotdata_now[i].multiple*that.lotdata_now[i].price+amount;
-			if (that.lotdata_now[i].checkon) {
-				chase_amount = chase_amount+1;
-			};
-		};
-		that.chase_amount = chase_amount;
-		if(that.chase_amount>that.lotdata_now.length){
-			that.chase_amount = that.lotdata_now.length;
-		}
-		that.chase_money = amount;
-	}
-	//清空追号
-	rechase_data(){
-		let that = this;
-		that.lotdata_now = $.extend(true, [], that.lotdata);
-		that.repanel_data()
-	}
-	//清空追号所有数据
-	rechase_dataall(){
-		let that = this;
-		that.lotdata_now = $.extend(true, [], that.lotdata);
-		that.chase_number_config = $.extend(true, {}, that.chase_config_ori);
-		that.repanel_data()
-	}
-	tab_chase(para,item_one,item_two){
-		let that = this;
-		that.rechase_dataall();
-		that.c_now_panel = para;
-		if (para == 'one') {
-			$(item_one).addClass('active');
-			$(item_two).removeClass('active');
-			$('.one').addClass('active')
-			$('.two').removeClass('active')
-		}else if(para == 'two'){
-			$(item_two).addClass('active');
-			$(item_one).removeClass('active');
-			$('.two').addClass('active')
-			$('.one').removeClass('active')
-		}
-	}
 	// 遗漏数据
 	omitarr = {
 		0:[],1:[],2:[],3:[],4:[]
@@ -1098,43 +869,64 @@ export class FFCofficialComponent implements OnInit {
 	up_ball = 1;
 	ngOnInit(){
 		let that = this
-		//获取当前id
-		this.getPageId();
 		this.now_lang_type=userModel.now_lang_type;
 		this.loadpage = userModel.platform;
 		Base.DOM.title('重庆时时彩')
 		that.status = {
-			menu_1:4,
+			menu_1:1,
 			menu_2:1
 		}
-		
 		that.menu_2_data.map(function(res){
 			if(res.active == that.status.menu_1){
 				that.menu_2.push(res)
 			}
 		})
-		this.balllist(['b','s','g']);
+		this.balllist(['w','q','b','s','g']);
 		this.now_description = this.lot_rules[this.now_tips_menu]['description'];
-		this.tabmenu(this.menu_1[3])
-		//路由控制
-        this.route.params.subscribe(data => {
-            this.getPageId();
-        });
+		this.tabmenu(this.menu_1[0])
 		if(this.tabcurr.isupload){
 			this.up_ball=2
 		}
-        // 注册拖拽
+		// 注册拖拽
         this.drag_tag();
 	}
 	ngAfterViewInit(){
 		this.inittab2();
 	}
-	// 通过id获取目前显示的项目配置文件
-	getPageId(){
-		let idarray = this.router.url.split("/");
-		this.nowPageId = idarray[idarray.length-1]+'_ffc';
-		this.nowitems = this.items_show[this.nowPageId];
+	// 拖动条函数
+	drag_tag(){
+		let that = this;
+		$('#range_tag').on('mousedown',function(e) {
+			let distance_X;
+			let orin_x = e.pageX || e.clientX + document.body.scrollLeft;
+			let orin_left = parseInt($('#range_tag').css('left'));
+			let now_left;
+			$('body').on('mousemove',function(e){
+				e = e || window.event;
+				let now_x = e.pageX || e.clientX + document.body.scrollLeft;
+				distance_X = now_x - orin_x;
+				now_left = orin_left+distance_X;
+				if(now_left<0){
+					now_left = 0
+				}else if(now_left>70){
+					now_left = 70
+				}
+				$('#range_tag').css("left",now_left);
+				if (now_left<=26) {
+					that.rangepercent = 0.1
+					that.rangenum = 180000
+				}else{
+					that.rangepercent = 0
+					that.rangenum = 180200
+				}
+			})
+			$('body').on('mouseup',function(){
+				$('body').unbind();
+			})
+		})
+		
 	}
+	//tab切换暂时是写死的
 	inittab2(){
 		let ulMax = $('.typetab').outerWidth();
 		let liWidth = 0;
@@ -1163,7 +955,7 @@ export class FFCofficialComponent implements OnInit {
 			}else if (toolong >= 1){
 				$.each($('.tab_li'),function(i,n){
 					liWidth = liWidth + $(n).outerWidth();
-					if (liWidth>=ulMax&&liWidth<=ulMax*2    ) {
+					if (liWidth>=ulMax&&liWidth<=ulMax*2) {
 						$(n).removeClass('hide_it')
 					}
 					if(liWidth>=ulMax*2){
@@ -1215,8 +1007,6 @@ export class FFCofficialComponent implements OnInit {
 				});
 			}else{
 				$.each($('.tab_li'),function(i,n){
-					console.log(liWidth)
-					console.log(ulMax)
 					liWidth = liWidth + $(n).outerWidth();
 					if (liWidth<ulMax) {
 						$(n).addClass('hide_it')
@@ -1239,48 +1029,10 @@ export class FFCofficialComponent implements OnInit {
 		});
 		liWidth = 0;
 	}
-	// 拖动条函数
-	drag_tag(){
-		let that = this;
-		$('#range_tag').on('mousedown',function(e) {
-			let distance_X;
-			let orin_x = e.pageX || e.clientX + document.body.scrollLeft;
-			let orin_left = parseInt($('#range_tag').css('left'));
-			let now_left;
-			$('body').on('mousemove',function(e){
-				e = e || window.event;
-				let now_x = e.pageX || e.clientX + document.body.scrollLeft;
-				distance_X = now_x - orin_x;
-				now_left = orin_left+distance_X;
-				if(now_left<0){
-					now_left = 0
-				}else if(now_left>70){
-					now_left = 70
-				}
-				$('#range_tag').css("left",now_left);
-				if (now_left<=26) {
-					that.rangepercent = 0.1
-					that.rangenum = 180000
-				}else{
-					that.rangepercent = 0
-					that.rangenum = 180200
-				}
-			})
-			$('body').on('mouseup',function(){
-				$('body').unbind();
-			})
-		})
-		
-	}
 	//路由函数                      
 	linkrouter(t){
 	  this.router.navigate([t]);
-    }
-    routlink(){
-        let str ;
-        this.route.params.subscribe(data=>str=data.id);
-        this.router.navigate(['/lottery/creditffc', str]);
-      }
+	}
 	// 滑块左侧递减事件
 	rangevaluelessen() {
 		let that = this;
@@ -1289,6 +1041,7 @@ export class FFCofficialComponent implements OnInit {
 		that.rangenum = 180000
 		this.countbet(this.ballcurr.totalbet)
 	}
+	
 	// 自带钩子监听
 	ngDoCheck(){
 		if(this.totalinfo.sum>0 && this.rangenum!=(this.totalinfo.amount+this.totalinfo.sum)/parseFloat(this.multiple_input.value)){
@@ -1417,7 +1170,6 @@ export class FFCofficialComponent implements OnInit {
 			if(val == this.ball_tab[4][1]){
 				this.now_matchball[clickindex] = ''
 			}else{
-				console.log(this.now_matchball[clickindex])
 				this.now_matchball[clickindex] = val
 				$(that).addClass('active')
 			}
@@ -1801,7 +1553,6 @@ export class FFCofficialComponent implements OnInit {
 			redata.name=that.currtabname
 			if(that.tabcurr.choose){
 				let ab = Utils.algorithm.RandomArray(['w','q','b','s','g'],that.tabcurr.datarule[1])
-				console.log(ab)
 				let newab = new Array(that.tabcurr.datarule[1])
 				ab.map(function(res){
 					if(res=='w'){
@@ -1886,7 +1637,7 @@ export class FFCofficialComponent implements OnInit {
 	}
 	// 倍数计算
 	changereg () {
-        let self = this
+		let self = this
         this.curinpt.value = this.curinpt.value.replace(/\D/g, "");
 		this.curinpt.value = this.curinpt.value == ''?'1':this.curinpt.value 
 		
@@ -1903,12 +1654,7 @@ export class FFCofficialComponent implements OnInit {
     }
 
 	show_tips(item,em){
-		if(item === 'reward_rule'){
-			this.now_tips = this.other_rules[item];
-		}else{
-			this.now_tips = this.lot_rules[this.now_tips_menu][item];
-		}
-		
+		this.now_tips = this.lot_rules[this.now_tips_menu][item];
 		em.classList.add("tipsshow");
 	}
 	hid_tips(item,em){
@@ -1953,36 +1699,6 @@ export class FFCofficialComponent implements OnInit {
 		}
 	}
 	hid_layer(){
-		console.log('有反应么')
 		document.getElementById("layer").innerHTML = '';
-	}
-
-	show_chasenumber(param,nextrun){
-		let msg = param.msg;
-		let til = param.til;
-		let self = this;
-		let str = '';	
-		let dom = $(this.parseDom(str))
-		dom.find('.close').on('click',function(){
-			self.hid_layer();
-		}) 
-		dom.find('.confirm_box').on('click',function(){
-			nextrun();
-		})
-		$('#layer').append(dom);
-		setTimeout(function(){
-			dom.addClass('tobig')
-		}, 10)
-		window.onresize = function () {
-			console.log('x')
-		}
-	}
-	close_chase(){
-		$('#layer2').find('.chase_container').removeClass('show_this');
-		let that = this;
-		that.rechase_dataall()
-	}
-	chase_number(){
-		$('#layer2').find('.chase_container').addClass('show_this');
 	}
 }

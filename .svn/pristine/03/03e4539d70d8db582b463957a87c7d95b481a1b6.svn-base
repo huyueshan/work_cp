@@ -1,6 +1,6 @@
 
 
-<!-- 弹窗组件可以放在任意位置 -->
+<!-- 组件可以放在任意位置 -->
 <app-pupout [data]='popoutInfo' (close)="closePopouot($event)"></app-pupout>
 
 <!-- 用法 -->
@@ -10,10 +10,7 @@
 </div>
 
 <div class="page"> 
-    <!-- 调用分页组件 -->
     <app-page [pageParams]="pagination" (changeCurPage)="getPageData($event)"></app-page>
-
-    <!-- 分页组件参数设置 -->
     <label>每页显示：
         <select name="size" id="size" [(ngModel)]="selectdata.pageSize" (change)="pageParamschange()">
             <option value="5">5</option>

@@ -248,7 +248,7 @@
                         </span>
                         <ul class="typetab">
                             <ng-container *ngFor="let val of menu_1;let i = index;">
-                                <li class="tab_li" *ngIf='nowitems.tabitem.indexOf(val.name)!=-1' [ngClass]="{active: status.menu_1 === val.active}" (click)="tabmenu(val)">{{val.name}}</li>
+                                <li *ngIf='nowitems.tabitem.indexOf(val.name)!=-1' [ngClass]="{active: status.menu_1 === val.active}" (click)="tabmenu(val)">{{val.name}}</li>
                             </ng-container>
                         </ul>
                         <span class="pointr">
