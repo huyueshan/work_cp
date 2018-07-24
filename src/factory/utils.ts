@@ -24,6 +24,31 @@ const Matchrule = {
 		}
 		return allarr
 	},
+	choose_group(arr, size) {
+            var allResult = [];
+            (function fn(arr, size, result) {
+                var arrLen = arr.length;
+                if (size > arrLen) {
+                    return;
+                }
+                if (size == arrLen) {
+                    allResult.push([].concat(result, arr))
+                } else {
+                    for (var i = 0 ; i < arrLen; i++) {
+                        var newResult = [].concat(result);
+                        newResult.push(arr[i]);
+                        if (size == 1) {
+                            allResult.push(newResult);
+                        } else {
+                            var newArr = [].concat(arr);
+                            newArr.splice(0, i + 1);
+                            fn(newArr, size - 1, newResult);
+                        }
+                    }
+                }
+            })(arr, size, []);
+            return allResult;
+	},
 	Rule_1(nowarr,len){
 		let allarr = [],totalbet = 1
 		let obj :any = {}
@@ -113,7 +138,6 @@ const Matchrule = {
 						_arr = allarr[0]
 						_selfs = new Array(len.datarule[1])
 						algorithm.plzh(_selfs, _arr, _indexs, _total, _where);
-						console.log(_total)
 						for(var j = 0;j<_total.length;j++){
 							console.log(_total[j])
 							if(algorithm.hasArr(allarr[0][l],_total[j])){
@@ -420,8 +444,49 @@ const Matchrule = {
 		}
 		return obj
 	},
+	Rule_11(nowarr,len){
+		let allarr = [],totalbet = 0,narr = [],reparr = []
+		let obj :any = {}
+		allarr = Matchrule.chooseball(nowarr,len)
+		let Isaddball = true
+		for(let i=0;i<allarr.length;i++){
+			if(allarr[i].length==0){
+				Isaddball = false;
+			}
+		}
+		if(Isaddball){
+			narr = algorithm.doExchange(allarr)
+		}
+		for(var i=0;i<narr.length;i++){
+			var ar = narr[i].split('|')
+			if(algorithm.isRepeatarr(ar)){
+				reparr.push(narr[i])
+			}
+		}
+		for(var i=0;i<reparr.length;i++){
+			algorithm.removeArr(reparr[i],narr)
+		}
+		totalbet = narr.length
+		if(totalbet<1){
+			Isaddball = false;
+		}
+		obj = {'status':Isaddball,'allarr':allarr,'totalbet':totalbet,'ball':[]}
+		obj.ball.push(TranBall(obj,len))
+		return obj
+	},
+	Rule_13(nowarr, n){
+		let allarr = [],totalbet = 1,ballarr = []
+        let Isaddball = nowarr.length>=n?true:false;
+        if(Isaddball){
+            allarr = Matchrule.choose_group(nowarr,n)
+            totalbet = allarr.length;
+        }
+        
+		let obj :any = {}
+		obj = {'status':Isaddball,'allarr':allarr,'totalbet':totalbet,'ball':nowarr}
+		return obj
+	},
 	Rule_d1(str,len){
-		console.log(str)
 		let arr = [],count = len.datarule[1],Isaddball = false, ballarr = [],totalbet=0,noball = [];
 		let obj :any = {},rep = [],nary = [],allarr = [],zarr = []
 		for (let i = 0, len = str.length / count; i < len; i++) {
@@ -508,7 +573,74 @@ const Matchrule = {
 			obj.ball.push(TranBall(obj,len))
 		}
 		return obj
-	}
+	},
+	Rule_d3(str,len){
+		let arr = [],count = len.datarule[1]*2,Isaddball = false, ballarr = [],totalbet=0,noball = [],nstr = '',reparr=[];
+		let obj :any = {},rep = [],nary = [],allarr = [],zarr = []
+		for (let i = 0, l = str.length / 2; i < l; i++) {
+			let subStr = str.substr(0, 2);
+			if(subStr.length>=2 && (subStr.split('')[0]==0) || (subStr.split('')[0]==1 && subStr.split('')[1]==0)){
+				nstr = nstr+subStr
+			}
+			str = str.replace(subStr, "");
+		}
+		for (let i = 0, l = nstr.length / 2; i < l; i++) {
+			let subStr = nstr.substr(0, count);
+			if(subStr.length>=count){
+				arr.push(subStr);
+			}else{
+				if(subStr!=''){
+					noball.push(subStr)
+				}
+			}
+			nstr = nstr.replace(subStr, "");
+		}
+		
+		totalbet = arr.length
+		if(totalbet>0){
+			Isaddball = true
+			for(var i=0;i<arr.length;i++){
+				allarr.push(arr[i])
+				nary.push(arr[i])
+			}
+			if(len.datarule[2] && len.datarule[2]=='Z'){
+				allarr = algorithm.disrepeat(allarr)
+				nary=algorithm.disrepeatno(allarr,nary);
+				for(var i=0;i<nary.length;i++){
+					rep.push([nary[i]]);
+				}
+			}else{
+				allarr = Array.from(new Set(allarr))  //es6的去重方法
+				nary=algorithm.disrepeatno(allarr,nary);
+				for(var i=0;i<nary.length;i++){
+					rep.push([nary[i]]);
+				}
+			}
+			for(var i=0;i<allarr.length;i++){
+				var re = new RegExp("\\d{1,2}","g");
+				var ma = allarr[i].match(re);
+				ballarr.push([ma.join(",")])
+			}
+		}
+		for(var i=0;i<ballarr.length;i++){
+			var ar = ballarr[i][0].split(',')
+			if(algorithm.isRepeatarr(ar)){
+				reparr.push(ballarr[i][0])
+				noball.push(ballarr[i][0].split(',').join(''))
+			}
+		}
+		for(var i=0;i<reparr.length;i++){
+			algorithm.removetwoArr(reparr[i],ballarr)
+		} 
+		totalbet = ballarr.length
+		if(totalbet<1){
+			Isaddball = false
+		}
+		obj = {'status':Isaddball,'allarr':ballarr,'totalbet':totalbet,'ball':[],'repball':rep,'noball':noball}
+		len.type = 'file'
+		obj.ball.push(TranBall(obj,len))
+		return obj
+	},
 }
 
 const Randomrule = (obj) =>{
@@ -568,21 +700,61 @@ const Randomrule = (obj) =>{
 	return o
 }
 
+const Randomrule_1 = (obj) =>{
+	var basearr = []
+	var m = [],a = [],o = ''
+	if(obj.datarule[0]=='Rule_4'){
+		if(obj.datarule[2]=='Z'){
+			for(var i=1;i<27;i++){
+				m.push(i)
+			}
+		}else{
+			for(var i=0;i<28;i++){
+				m.push(i)
+			}
+		}
+	}else if(obj.addzero){
+		for(var i=1;i<11;i++){
+			m.push(i)
+		}
+	}else{
+		for(var i=0;i<10;i++){
+			m.push(i)
+		}
+	}
+	var l=obj.arr.length
+	a = algorithm.RandomArray(m,l)
+	a.map(function(res){
+		if(obj.addzero){
+			var n = res<10?obj.format[0].replace('n','0'+res):obj.format[0].replace('n',res)
+			var c = res<10?o.replace('n','0'+res):o.replace('n',res)
+			o = o ==''?n:c
+		}else{
+			o = o ==''?obj.format[0].replace('m',res):o.replace('n',res)
+		}
+	})
+	return o
+}
+
 //-- 改造选号显示
 const TranBall = (data,mat) => {
 	let res = ''
 	for(var i=0;i<data.allarr.length;i++){
 		if(mat.addzero){
 			var g = data.allarr[i],narr = []
-			for(var j=0;j<g.length;j++){
-				var n = ''
-				n  = g[j]<10?'0'+g[j]:g[j]
-				narr.push(n)
-			}
-			if(mat.arr.length<2){
-				res =  res!=''?res+','+narr.join(','):res+narr.join(',')
+			if(mat.type=='file'){
+				res =  res!=''?res+'|'+g.join(','):res+g.join(',')
 			}else{
-				res =  res!=''?res+'|'+narr.join(','):res+narr.join(',')
+				for(var j=0;j<g.length;j++){
+					var n = ''
+					n  = g[j]<10?'0'+g[j]:g[j]
+					narr.push(n)
+				}
+				if(mat.arr.length<2){
+					res =  res!=''?res+','+narr.join(','):res+narr.join(',')
+				}else{
+					res =  res!=''?res+'|'+narr.join(','):res+narr.join(',')
+				}
 			}
 		}else{
 			res = res!=''?res+'|'+data.allarr[i].join(','):res+data.allarr[i].join(',')
@@ -619,6 +791,12 @@ const algorithm = {
 	removeArr(val,array){
 		array.map((value,i) => {
 			value === val && array.splice(i,1)
+		})
+		return array
+	},
+	removetwoArr(val,array){
+		array.map((value,i) => {
+			value[0] === val && array.splice(i,1)
 		})
 		return array
 	},
@@ -902,6 +1080,51 @@ const algorithm = {
 			}
 		}
 		return arr;
+	},
+	// 多个组合中各选一个值的新组合
+	doExchange(arr){
+		var len = arr.length;
+        // 当数组大于等于2个的时候
+        if(len >= 2){
+            // 第一个数组的长度
+            var len1 = arr[0].length;
+            // 第二个数组的长度
+            var len2 = arr[1].length;
+            // 2个数组产生的组合数
+            var lenBoth = len1 * len2;
+            //  申明一个新数组,做数据暂存
+            var items = new Array(lenBoth);
+            // 申明新数组的索引
+            var index = 0;
+            // 2层嵌套循环,将组合放到新数组中
+            for(var i=0; i<len1; i++){
+                for(var j=0; j<len2; j++){
+                    items[index] = arr[0][i] +"|"+ arr[1][j];
+                    index++;
+                }
+            }
+            // 将新组合的数组并到原数组中
+            var newArr = new Array(len -1);
+            for(var i=2;i<arr.length;i++){
+                newArr[i-1] = arr[i];
+            }
+            newArr[0] = items;
+            // 执行回调
+            return this.doExchange(newArr);
+        }else{
+            return arr[0];
+        }
+	},
+	// 判断数组中是否有重复
+	isRepeatarr(arr) {
+		var hash = {};
+		for (var i in arr) {
+			if (hash[arr[i]]){
+				return true; 
+			}
+			hash[arr[i]] = true;
+		}
+		return false;
 	}
 	
 }
@@ -910,6 +1133,7 @@ export const Utils= {
 	Matchrule,
 	TranBall,
 	algorithm,
-	Randomrule
+	Randomrule,
+	Randomrule_1
 };
 

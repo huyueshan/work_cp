@@ -1015,6 +1015,9 @@ input[type="number"]{
 					.btnright{
 						float:right;
 						width:150px;
+						.noactive{
+							background:#666;
+						}
 					}
 				}
 				.resultarea{
