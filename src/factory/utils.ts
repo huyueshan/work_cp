@@ -322,7 +322,12 @@ const Matchrule = {
 		for(var i=0;i<allarr.length;i++){
 			let res = ''
 			for(var j=0;j<allarr[i].length;j++){
-				res = res!=''?res+'|'+allarr[i][j]:res+allarr[i][j]
+				if(len.addzero){
+					var a = allarr[i][j]>10?allarr[i][j]:'0'+allarr[i][j]
+					res = res!=''?res+'|'+a:res+a
+				}else{
+					res = res!=''?res+'|'+allarr[i][j]:res+allarr[i][j]
+				}
 			}
 			obj.ball.push(res)
 		}
@@ -474,16 +479,62 @@ const Matchrule = {
 		obj.ball.push(TranBall(obj,len))
 		return obj
 	},
-	Rule_13(nowarr, n){
+	Rule_12(nowarr,len){
 		let allarr = [],totalbet = 1,ballarr = []
-        let Isaddball = nowarr.length>=n?true:false;
+		let obj :any = {}
+		ballarr = Matchrule.chooseball(nowarr,len)
+		let Isaddball = false 
+		if(len.arr.length === 1){
+			ballarr[0].map(function(res){  
+			   allarr.push([res])
+			});
+			if(allarr.length>=len.datarule[1]){
+				Isaddball = true;
+			}
+			totalbet = allarr.length
+		}
+		obj = {'status':Isaddball,'allarr':allarr,'totalbet':totalbet,'ball':[]}
+		for(var i=0;i<allarr.length;i++){
+			let res = ''
+			for(var j=0;j<allarr[i].length;j++){
+				if(len.addzero){
+					let a = allarr[i][j]>9?allarr[i][j]:'0'+allarr[i][j]
+					res = res!=''?res+'|'+a:res+a
+				}else{
+					res = res!=''?res+'|'+allarr[i][j]:res+allarr[i][j]
+				}
+			}
+			obj.ball.push(res)
+		}
+		return obj
+	},
+	Rule_13(nowarr, len){
+		let allarr = [],totalbet = 1,ballarr = []
+        ballarr[0] = [];
+        for (let key in nowarr) {
+            for (let val in nowarr[key]) {
+                if (nowarr[key][val]!=="") {
+                    ballarr[0].push(nowarr[key][val])
+                }
+            }
+        }
+        let data=[];
+        let n = len.datarule[1]
+        for (let i = 0; i < ballarr.length; i++) {
+            allarr = data.concat(ballarr[i]);
+            ballarr[i]=[];
+        }
+        ballarr[0] = allarr;
+        len.arr=['shangxia'];
+        let Isaddball = allarr.length>=n?true:false;
         if(Isaddball){
-            allarr = Matchrule.choose_group(nowarr,n)
-            totalbet = allarr.length;
+            data = Matchrule.choose_group(allarr,n)
+            totalbet = data.length;
         }
         
 		let obj :any = {}
-		obj = {'status':Isaddball,'allarr':allarr,'totalbet':totalbet,'ball':nowarr}
+        obj = {'status':Isaddball,'allarr':ballarr,'totalbet':totalbet,'ball':[]}
+        obj.ball.push(TranBall(obj,len))
 		return obj
 	},
 	Rule_d1(str,len){
@@ -622,16 +673,21 @@ const Matchrule = {
 				ballarr.push([ma.join(",")])
 			}
 		}
-		for(var i=0;i<ballarr.length;i++){
-			var ar = ballarr[i][0].split(',')
-			if(algorithm.isRepeatarr(ar)){
-				reparr.push(ballarr[i][0])
-				noball.push(ballarr[i][0].split(',').join(''))
+		if(len.datarule[2] && len.datarule[2]=='Z'){
+			
+		}else{
+			for(var i=0;i<ballarr.length;i++){
+				var ar = ballarr[i][0].split(',')
+				if(algorithm.isRepeatarr(ar)){
+					reparr.push(ballarr[i][0])
+					noball.push(ballarr[i][0].split(',').join(''))
+				}
 			}
+			for(var i=0;i<reparr.length;i++){
+				algorithm.removetwoArr(reparr[i],ballarr)
+			} 
 		}
-		for(var i=0;i<reparr.length;i++){
-			algorithm.removetwoArr(reparr[i],ballarr)
-		} 
+		
 		totalbet = ballarr.length
 		if(totalbet<1){
 			Isaddball = false
@@ -722,7 +778,12 @@ const Randomrule_1 = (obj) =>{
 			m.push(i)
 		}
 	}
-	var l=obj.arr.length
+	var l=1
+	if(obj.datarule=='Rule_11'){
+		l=obj.arr.length
+	}else{
+		l=obj.datarule[1]
+	}
 	a = algorithm.RandomArray(m,l)
 	a.map(function(res){
 		if(obj.addzero){

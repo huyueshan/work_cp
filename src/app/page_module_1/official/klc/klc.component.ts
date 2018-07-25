@@ -53,6 +53,8 @@ export class KLCofficialComponent implements OnInit {
     public ballcurr: any = {} // 当前选中的球以及匹配状态
     public tabcurr: any = {} // 当前选中的tab信息
     public choosem_status = false // 当前选中的tab信息
+
+    mathstatus = false // 随机按钮显示隐藏状态
     // 统计当前所有下注数据
     orderinfo: any = {
         "total": 0,
@@ -80,13 +82,7 @@ export class KLCofficialComponent implements OnInit {
             8: 8,
             9: 9
         },
-        1: {
-            5: 5,
-            6: 6,
-            7: 7,
-            8: 8,
-            9: 9
-        },
+        1: {},
         2: {
             0: 0,
             1: 1,
@@ -186,7 +182,7 @@ export class KLCofficialComponent implements OnInit {
     public tips_hidden = true;
     // 拖拽数据
     public rangepercent = 0;
-    public rangenum = 30033.33;
+    public rangenum = 180200;
     // 拖拽数据结束
     public now_tips_menu: any = '1_1';
     public now_description = '';
@@ -390,23 +386,33 @@ export class KLCofficialComponent implements OnInit {
             menu: [{
                 name: this.now_lang.Lot_tab.sum_odd_eve,
                 index: 1,
-                arr: ['hzds']
+                arr: ['hzds'],
+                format: ["n"],
+                datarule: ['Rule_12', 1],
             }, {
                 name: this.now_lang.Lot_tab.sum_big_sma,
                 index: 2,
-                arr: ['hzdx']
+                arr: ['hzdx'],
+                format: ["n"],
+                datarule: ['Rule_12', 1]
             }, {
                 name: this.now_lang.Lot_tab.up_down_pan,
                 index: 3,
-                arr: ['sxp']
+                arr: ['sxp'],
+                format: ["n"],
+                datarule: ['Rule_12', 1]
             }, {
                 name: this.now_lang.Lot_tab.odd_eve_pan,
                 index: 4,
-                arr: ['jop']
+                arr: ['jop'],
+                format: ["n"],
+                datarule: ['Rule_12', 1]
             }, {
                 name: this.now_lang.Lot_tab.sum_bigs_odde,
                 index: 5,
-                arr: ['hzdxds']
+                arr: ['hzdxds'],
+                format: ["n"],
+                datarule: ['Rule_12', 1]
             }],
             active: 2
         },
@@ -415,15 +421,21 @@ export class KLCofficialComponent implements OnInit {
             menu: [{
                 name: this.now_lang.Lot_tab.sum_odd_eve,
                 index: 1,
-                arr: ['hzds']
+                arr: ['hzds'],
+                format: ["n"],
+                datarule: ['Rule_12', 1]
             }, {
                 name: this.now_lang.Lot_tab.sum_big_sma,
                 index: 2,
-                arr: ['hzdx']
+                arr: ['hzdx'],
+                format: ["n"],
+                datarule: ['Rule_12', 1]
             }, {
                 name: this.now_lang.Lot_tab.sum_bigs_odde,
                 index: 3,
-                arr: ['hzdxds']
+                arr: ['hzdxds'],
+                format: ["n"],
+                datarule: ['Rule_12', 1]
             }],
             active: 3
         },
@@ -432,11 +444,15 @@ export class KLCofficialComponent implements OnInit {
             menu: [{
                 name: this.now_lang.Lot_tab.up_down_pan,
                 index: 1,
-                arr: ['sxp']
+                arr: ['sxp'],
+                format: ["n"],
+                datarule: ['Rule_12', 1]
             }, {
                 name: this.now_lang.Lot_tab.odd_eve_pan,
                 index: 2,
-                arr: ['jop']
+                arr: ['jop'],
+                format: ["n"],
+                datarule: ['Rule_12', 1]
             }],
             active: 4
         }
@@ -469,80 +485,105 @@ export class KLCofficialComponent implements OnInit {
         'hzds': {
             title: '和值单双',
             ball: [{
-                value: '单'
+                value: 0
             }, {
-                value: '双'
+                value: 1
             }],
-            tab: this.ball_tab[2],
-            index: 4
+            tab: this.ball_tab[4],
+            index: 4,
+            match: {
+                0: '单',
+                1: '双',
+            },
         },
         'hzdx': {
             title: '和值大小',
             ball: [{
-                value: '大',
+                value: 0,
                 range: '133-145',
                 radix: '0.8976'
             }, {
-                value: '和',
+                value: 1,
                 range: '133-145',
                 radix: '0.8976'
             }, {
-                value: '小',
+                value: 2,
                 range: '133-145',
                 radix: '0.8976'
             }],
-            tab: this.ball_tab[2],
-            index: 4
+            tab: this.ball_tab[4],
+            index: 4,
+            match: {
+                0: '大',
+                1: '和',
+                2: '小',
+            },
         },
         'sxp': {
             title: '上下盘',
             ball: [{
-                value: '上',
+                value: 0,
                 range: '上>下',
                 radix: '0.8976'
             }, {
-                value: '中',
+                value: 1,
                 range: '上=下',
                 radix: '0.8976'
             }, {
-                value: '下',
+                value: 2,
                 range: '上<下',
                 radix: '0.8976'
             }],
-            tab: this.ball_tab[2],
-            index: 4
+            tab: this.ball_tab[4],
+            index: 4,
+            match: {
+                0: '上',
+                1: '中',
+                2: '下',
+            },
         },
         'jop': {
             title: '奇偶盘',
             ball: [{
-                value: '奇',
+                value: 0,
                 range: '奇>偶',
                 radix: '0.8976'
             }, {
-                value: '和',
+                value: 1,
                 range: '奇=偶',
                 radix: '0.8976'
             }, {
-                value: '偶',
+                value: 2,
                 range: '奇<偶',
                 radix: '0.8976'
             }],
-            tab: this.ball_tab[2],
-            index: 4
+            tab: this.ball_tab[4],
+            index: 4,
+            match: {
+                0: '奇',
+                1: '和',
+                2: '偶',
+            },
         },
         'hzdxds': {
             title: '大小单双',
             ball: [{
-                value: '大单'
+                value: 0
             }, {
-                value: '大双'
+                value: 1
             }, {
-                value: '小单'
+                value: 2
             }, {
-                value: '小双'
+                value: 3
             }],
-            tab: this.ball_tab[2],
-            index: 4
+            tab: this.ball_tab[4],
+            index: 4,
+            match: {
+                0: '大单',
+                1: '大双',
+                2: '小单',
+                3: '小双',
+            },
         },
 
 
@@ -557,7 +598,6 @@ export class KLCofficialComponent implements OnInit {
         }
     }
     check_lot(item) {
-        console.log(item.checkon)
         let that = this;
         if (item.checkon) {
             if (item.multiple == 0) {
@@ -583,7 +623,6 @@ export class KLCofficialComponent implements OnInit {
                 chase_amount = that.lotdata_now.length;
             }
             for (var i = 0; i <= chase_amount - 1; i++) {
-                console.log((i) % gap_number)
                 that.lotdata_now[i].checkon = true;
                 that.lotdata_now[i].multiple = multiple;
                 that.lotdata_now[i].take_money = multiple * that.lotdata_now[i].price;
@@ -813,18 +852,26 @@ export class KLCofficialComponent implements OnInit {
         })
         this.balllist(['shang', 'xia']);
         this.now_description = this.lot_rules[this.now_tips_menu]['description'];
+        this.tabmenu(this.menu_1[0])
         //路由控制
-        this.router.events
-            .filter((event) => event instanceof NavigationEnd)
-            .subscribe((event: NavigationEnd) => {
-                this.getPageId();
-            });
+        this.route.params.subscribe(data => {
+            // 切换路由后重置投注内容
+            this.routid = data.id;
+            this.getPageId();
+            this.balllist(['shang', 'xia']);
+            this.now_description = this.lot_rules[this.now_tips_menu]['description'];
+            this.status = {
+                menu_1: 1,
+                menu_2: 1
+            };
+            this.tabmenu(this.menu_1[0]);
+            this.delball('clear', '');
+        });
         // 注册拖拽
         this.drag_tag();
-        this.tabmenu(this.menu_1[0])
     }
     ngAfterViewInit() {
-        this.inittab2();
+        // this.inittab2();
     }
     // 通过id获取目前显示的项目配置文件
     getPageId() {
@@ -939,17 +986,27 @@ export class KLCofficialComponent implements OnInit {
     linkrouter(t) {
         this.router.navigate([t]);
     }
-   // 计算当前点击投注信息
-   countbet(totalbet) {
-    let sum, amount;
-    sum = (this.multiple_input.value * totalbet * 2) / this.modelarr[this.model];
-    amount = Math.round((((this.rangenum / this.modelarr[this.model]) * this.multiple_input.value) - sum) * 100) / 100
-    this.totalinfo = {
-        count: totalbet,
-        sum: sum,
-        amount: amount
+    // 计算当前点击投注信息
+    countbet(totalbet) {
+        if (!totalbet) {
+            return;
+        }
+        let sum, amount;
+        sum =
+            (this.multiple_input.value * totalbet * 2) / this.modelarr[this.model];
+        amount =
+            Math.round(
+                ((this.rangenum / this.modelarr[this.model]) *
+                    this.multiple_input.value -
+                    sum) *
+                100
+            ) / 100;
+        this.totalinfo = {
+            count: totalbet,
+            sum: sum,
+            amount: amount
+        };
     }
-}
 
     //拖拽变数
     // 滑块左侧递减事件
@@ -1011,14 +1068,11 @@ export class KLCofficialComponent implements OnInit {
     tabmenu(data) {
         let that = this;
         // 分离方形与圆形选球板
-        console.log(data)
         if (data.square == true) {
             this.square_show = true;
         } else {
             this.square_show = false;
         }
-        that.now_tab2click_num = that.menu_2_data[data.active - 1]['menu'][0].arr.length;
-
         that.inittab()
         if (data.href) {
             that.router.navigateByUrl(data.href)
@@ -1040,6 +1094,7 @@ export class KLCofficialComponent implements OnInit {
             }
 
             that.currtabname = that.menu_2[0].menu[0].name;
+            console.log(data)
             // 配置规则提示
             that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
             that.now_description = that.lot_rules[that.now_tips_menu]['description'];
@@ -1048,6 +1103,14 @@ export class KLCofficialComponent implements OnInit {
             } else {
                 that.hothidden = false;
             }
+        }
+        if (this.tabcurr.isupload) {
+            this.up_ball = 2;
+        }
+        if (this.tabcurr.datarule[0] == 'Rule_12') {
+            this.mathstatus = true
+        } else {
+            this.mathstatus = false
         }
     }
 
@@ -1072,13 +1135,17 @@ export class KLCofficialComponent implements OnInit {
         }
         that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
         that.now_description = that.lot_rules[that.now_tips_menu]['description'];
+        if (this.tabcurr.datarule[0] == 'Rule_12') {
+            this.mathstatus = true
+        } else {
+            this.mathstatus = false
+        }
     }
     // 时时彩下注区左侧显示列表
     balllist(arr) {
         let that = this
         that.now_balllist = []
         that.now_tab2click_num = arr.length;
-        console.log(that.now_tab2click_num)
         for (var i = 1; i <= that.now_tab2click_num; i++) {
             that.now_matchtab[i - 1] = {}
         };
@@ -1095,9 +1162,19 @@ export class KLCofficialComponent implements OnInit {
 
 
     }
+    setmatch_tab(data, n) {
+        data[0] = {};
+        data[1] = {};
+        for (let i = 0; i < n; i++) {
+            data[0][i] = i;
+        }
+        return data;
+    }
 
     // 选中号码
     choosetab(index, clickindex, val, that) {
+        console.log(index, clickindex, val, that);
+        console.log(this.ball_data[this.tabcurr.arr[0]].ball.length);
         this.now_matchball = {
             0: {},
             1: {},
@@ -1106,73 +1183,57 @@ export class KLCofficialComponent implements OnInit {
             4: {},
             5: {}
         }
-        this.match_tab = {
-            0: {
-                0: 0,
-                1: 1,
-                2: 2,
-                3: 3,
-                4: 4,
-                5: 5,
-                6: 6,
-                7: 7,
-                8: 8,
-                9: 9
-            },
-            1: {
-                5: 5,
-                6: 6,
-                7: 7,
-                8: 8,
-                9: 9
-            },
-            2: {
-                0: 0,
-                1: 1,
-                2: 2,
-                3: 3,
-                4: 4
-            },
-            3: {
-                1: 1,
-                3: 3,
-                5: 5,
-                7: 7,
-                9: 9
-            },
-            4: {
-                0: 0,
-                2: 2,
-                4: 4,
-                6: 6,
-                8: 8
-            },
-            5: {}
-        };
+        let carr = ["hzds", "hzdx", "sxp", "jop", "hzdxds", ];
+        this.match_tab = this.setmatch_tab(this.match_tab, this.ball_data[this.tabcurr.arr[0]].ball.length)
         this.now_matchtab[index] = {}
-
         this.ballindex = index
-        this.now_matchtab[index] = this.match_tab[clickindex]
+        this.now_matchtab[index] = this.match_tab[clickindex];
         $(that).parent('.numright').find('li').removeClass('active');
-        if (val == this.ball_tab[1][5]) {
-            this.now_matchball[clickindex] = ''
+        if (Base._.hasArr(this.tabcurr.arr[0], carr)) {
+            if (val == this.ball_tab[4][1]) {
+                this.now_matchball[clickindex] = "";
+            } else {
+                this.now_matchball[clickindex] = val;
+                $(that).addClass("active");
+            }
         } else {
-            this.now_matchball[clickindex] = val
-            $(that).addClass('active')
+            if (val == this.ball_tab[1][5]) {
+                this.now_matchball[clickindex] = "";
+            } else {
+                this.now_matchball[clickindex] = val;
+                $(that).addClass("active");
+            }
+        }
+        let self = this;
+        if (self.tabcurr.choose) {
+            var arr = new Array();
+            $("#fiveabso input:checkbox:checked").each(function (i) {
+                arr[i] = $(this).val();
+            });
+            self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](
+                self.now_matchtab,
+                self.tabcurr,
+                arr
+            );
+        } else {
+            self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](
+                self.now_matchtab,
+                self.tabcurr
+            );
+        }
+        if (self.ballcurr.status) {
+            self.countbet(self.ballcurr.totalbet);
+        } else {
+            self.totalinfo = {
+                count: 0,
+                sum: 0,
+                amount: 0
+            };
         }
     }
 
     //选中单个号码
-    public curarr=[];
     oneball(index, clickindex, val, id) {
-        console.log(this.status.menu_2);
-        if (this.status.menu_2>1 && this.curarr.length>=8) {
-            this.show_layer({
-                'msg': '最多只能选8个！',
-                'til': '操作提示'
-            }, '')
-            return
-        }
         if (this.now_matchtab[index][val] == 0) {
             if ($(id).hasClass("active")) {
                 $(id).removeClass('active');
@@ -1186,31 +1247,64 @@ export class KLCofficialComponent implements OnInit {
                 this.now_matchtab[index][val] = ''
             } else {
                 this.now_matchtab[index][val] = val;
-                this.curarr.push(val)
             }
         }
-        let self = this
-        self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](self.curarr, self.tabcurr.datarule[1]);
-        console.log(this.ballcurr);
-        if (self.ballcurr.status) {
-            self.countbet(self.ballcurr.totalbet)
+        let self = this;
+        if (this.square_show) {
+            if (self.tabcurr.choose) {
+                var arr = new Array();
+                $("#fiveabso input:checkbox:checked").each(function (i) {
+                    arr[i] = $(this).val();
+                });
+                self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](
+                    self.now_matchtab,
+                    self.tabcurr,
+                    arr
+                );
+            } else {
+                self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](
+                    self.now_matchtab,
+                    self.tabcurr
+                );
+                console.log(self.now_matchtab,  self.tabcurr);
+            }
+            if (self.ballcurr.status) {
+                self.countbet(self.ballcurr.totalbet);
+            } else {
+                self.totalinfo = {
+                    count: 0,
+                    sum: 0,
+                    amount: 0
+                };
+            }
         } else {
-            self.totalinfo = {
-                count: 0,
-                sum: 0,
-                amount: 0
+            if (this.status.menu_2 > 1 && this.ballcurr.allarr && this.ballcurr.allarr[0].length >= 8) {
+                this.show_layer({
+                    'msg': '最多只能选8个！',
+                    'til': '操作提示'
+                }, '')
+                return
+            }
+            self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](self.now_matchtab, self.tabcurr);
+            if (self.ballcurr.status) {
+                self.countbet(self.ballcurr.totalbet);
+            } else {
+                self.totalinfo = {
+                    count: 0,
+                    sum: 0,
+                    amount: 0
+                }
             }
         }
     }
 
-    onesquare(index, clickindex, val, that) {
-        console.log(val)
-        if (this.now_matchtab[index][val]) {
-            this.now_matchtab[index][val] = ''
-        } else {
-            this.now_matchtab[index][val] = val
-        }
-    }
+    // onesquare(index, clickindex, val, that) {
+    //     if (this.now_matchtab[index][val]) {
+    //         this.now_matchtab[index][val] = ''
+    //     } else {
+    //         this.now_matchtab[index][val] = val
+    //     }
+    // }
 
 
     // 改变金额模式
@@ -1263,7 +1357,6 @@ export class KLCofficialComponent implements OnInit {
             amount: 0
         }
         $('#fileReader').val(null);
-        this.curarr=[];
     }
 
     // 遗漏选择
@@ -1307,7 +1400,6 @@ export class KLCofficialComponent implements OnInit {
     // 确认选号arrob
     sureballlist: any = []
     addball(arrob, type) {
-        console.log(arrob);
         let that = this
         if (!type) {
             that.show_layer({
@@ -1316,80 +1408,64 @@ export class KLCofficialComponent implements OnInit {
             }, '')
             return
         }
-        let obj: any = {}
-        if (that.square_show == true) {
-            let arr = []
-            for (let j = 0; j < that.now_tab2click_num; j++) {
-                arr = []
-
-                for (let i in that.now_matchtab[j]) {
-                    console.log(i)
-                    if (i != '') {
-                        arr.push(that.now_matchtab[j][i]); //属性
-                    }
-                }
-
-                if (obj.ball) {
-                    obj.ball = obj.ball + '|' + arr.join(',')
-                } else {
-                    obj.ball = arr.join(',')
-                }
+        if (that.tabcurr.choose) {
+            var _selfs;
+            var _arr = [];
+            var _indexs = [];
+            var _where = 0;
+            var _total = [];
+            var arrc = new Array();
+            $("#fiveabso input:checkbox:checked").each(function (i) {
+                arrc[i] = $(this).val();
+            });
+            for (var i = 0; i < that.tabcurr.datarule[1]; i++) {
+                _indexs.push(i)
             }
-            obj.name = that.currtabname;
-            that.sureballlist.push(obj.ball)
-        } else {
-            if (that.tabcurr.choose) {
-                var _selfs;
-                var _arr = [];
-                var _indexs = [];
-                var _where = 0;
-                var _total = [];
-                var arrc = new Array();
-                $("#fiveabso input:checkbox:checked").each(function (i) {
-                    arrc[i] = $(this).val();
-                });
-                for (var i = 0; i < that.tabcurr.datarule[1]; i++) {
-                    _indexs.push(i)
-                }
-                _arr = arrc
-                _selfs = new Array(that.tabcurr.datarule[1])
-                Utils.algorithm.plzh(_selfs, _arr, _indexs, _total, _where);
-                for (var i = 0; i < that.ballcurr.ball.length; i++) {
-                    if (that.ballcurr.ball[i] != '') {
-                        for (var j = 0; j < _total.length; j++) {
-                            let obj: any = {}
-                            obj.ball = that.ballcurr.ball[i]
-                            obj.name = that.currtabname
-                            for (var k = 0; k < that.tabcurr.datarule[1]; k++) {
-                                obj.name = obj.name + that.abotitle[_total[j][k]]
-                            }
-                            obj.multiple = that.multiple_input.value
-                            obj.model = that.model
-                            obj.count = that.totalinfo.count / _total.length
-                            obj.sum = that.totalinfo.sum / _total.length
-                            obj.amount = that.totalinfo.amount
-                            that.sureballlist.push(obj)
-                        }
-                    }
-                }
-            } else {
-                    if (that.ballcurr.ball[0] != '') {
+            _arr = arrc
+            _selfs = new Array(that.tabcurr.datarule[1])
+            Utils.algorithm.plzh(_selfs, _arr, _indexs, _total, _where);
+            for (var i = 0; i < that.ballcurr.ball.length; i++) {
+                if (that.ballcurr.ball[i] != '') {
+                    for (var j = 0; j < _total.length; j++) {
                         let obj: any = {}
-                        obj.ball = that.ballcurr.ball.join("|");
-                        obj.name = arrob[0].menu[0].datarule[0] == 'Rule_6' ? that.currtabname + that.ball_data[that.tabcurr.arr[i]].title : that.currtabname
+                        obj.ball = that.ballcurr.ball[i]
+                        obj.name = that.currtabname
+                        for (var k = 0; k < that.tabcurr.datarule[1]; k++) {
+                            obj.name = obj.name + that.abotitle[_total[j][k]]
+                        }
                         obj.multiple = that.multiple_input.value
                         obj.model = that.model
-                        obj.count = arrob[0].menu[0].datarule[0] == 'Rule_6' ? that.ballcurr.allarr[i].length : that.totalinfo.count
-                        obj.sum = arrob[0].menu[0].datarule[0] == 'Rule_6' ? (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum : that.totalinfo.sum
+                        obj.count = that.totalinfo.count / _total.length
+                        obj.sum = that.totalinfo.sum / _total.length
                         obj.amount = that.totalinfo.amount
                         that.sureballlist.push(obj)
-                        console.log(obj);
                     }
-                    
                 }
-            that.allbet(that.sureballlist)
-            this.inittab()
+            }
+        } else {
+            console.log(arrob)
+            console.log(that.ballcurr.ball)
+            for (var i = 0; i < that.ballcurr.ball.length; i++) {
+                if (that.ballcurr.ball[i] != '') {
+                    let obj: any = {}
+                    if (that.tabcurr.addzero) {
+                        obj.ball = that.ballcurr.ball[i]
+                    } else {
+                        obj.ball = that.tabcurr.datarule[0] == 'Rule_12' ? that.ball_data[that.tabcurr.arr[0]].match[that.ballcurr.ball[i]] : that.ballcurr.ball[i]
+                    }
+                    obj.name = that.tabcurr.datarule[0] == 'Rule_6' ? that.currtabname + that.ball_data[that.tabcurr.arr[i]].title : that.currtabname
+                    obj.multiple = that.multiple_input.value
+                    obj.model = that.model
+                    obj.count = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_12' ? that.ballcurr.allarr[i].length : that.totalinfo.count
+                    obj.sum = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_12' ? (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum : that.totalinfo.sum
+                    obj.amount = that.totalinfo.amount
+                    that.sureballlist.push(obj)
+                }
+            }
+
         }
+        that.allbet(that.sureballlist)
+        this.inittab()
     }
     allbet(data) {
         let self = this;
@@ -1412,37 +1488,37 @@ export class KLCofficialComponent implements OnInit {
             Base._.removeArr(val, this.sureballlist)
         }
     }
+    // 创建开奖数据  len为开奖球数，min、max为最小球号和最大球号 ，blean为是否可以重号
+    setballdata(len) {
+        let data = [];
+        let s = new Set();
+        for (let q = 0; q < len; q = s.size) {
+            let a = Math.ceil(Math.random() * 80);
+            s.add(a);
+        }
+        data = Array.from(s);
+        for (let i = 0; i < data.length; i++) {
+            data[i] = data[i] < 10 ? '0' + data[i] : '' + data[i];
+        }
+        return data;
+    }
 
     // 随机选号号码
     mathball(arr) {
-        let that = this
-        let math: any = []
-        let redata: any = {}
-        arr.map(function (res) {
-            res.menu.map(function (data) {
-                if (data.name == that.currtabname) {
-                    math = data.arr
-                }
-            })
-        })
-        math.map(function (res) {
-            switch (res) {
-                case '120':
-                    redata.ball = Math.floor(0 + Math.random() * (9 - 0)) + '|';
-                    break;
-                default:
-                    if (redata.ball) {
-                        redata.ball = redata.ball + Math.floor(0 + Math.random() * (9 - 0)) + '|';
-                    } else {
-                        redata.ball = Math.floor(0 + Math.random() * (9 - 0)) + '|';
-                    }
-            }
-        })
-        let arrball = redata.ball.split('|')
-        arrball.pop()
-        redata.ball = arrball.join('|')
-        redata.name = that.currtabname
-        that.sureballlist.push(redata)
+        console.log(this.radom_input.value);
+        let that = this;
+        for (let i = 0; i < this.radom_input.value; i++) {
+            let obj: any = {}
+            obj.ball = this.setballdata(that.status.menu_2).join(",");
+            obj.name = that.currtabname
+            obj.multiple = that.multiple_input.value;
+            obj.model = that.model;
+            obj.count = 1;
+            obj.sum = (2 * that.multiple_input.value) / that.modelarr[that.model];
+            obj.amount = that.totalinfo.amount
+            that.sureballlist.push(obj);
+            that.allbet(that.sureballlist);
+        }
     }
 
     addrem(item) {

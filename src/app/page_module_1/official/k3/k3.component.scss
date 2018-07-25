@@ -869,6 +869,7 @@ input[type="number"]{
 					}
 					
 				}
+
 				.sumBtn_box{
 					height: 350px;
 					/* margin-top: 236px; */
@@ -1052,6 +1053,9 @@ input[type="number"]{
 					.btnright{
 						float:right;
 						width:150px;
+						.noactive{
+							background:#666;
+						}
 					}
 				}
 				.resultarea{
@@ -1087,7 +1091,6 @@ input[type="number"]{
 									overflow:hidden;
 									text-overflow:ellipsis;
 									white-space:nowrap;
-									letter-spacing: 3px;
 								}
 								.lot_close{
 									height: 100%;

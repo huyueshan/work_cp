@@ -811,6 +811,20 @@ input[type="number"]{
 							background-size: 100% 110%;
 							color:#fff;
 						}
+						.btn_squarey{
+							background: url('../../images/sscsprites.png') -103px -0;
+							width:38px;
+							margin: 0 auto;
+						}
+						.btn_squarey:hover{
+							background: url('../../images/sscsprites.png') -103px -38px!important;
+							color:#fff!important;
+						}
+						.btn_squarey.active{
+							width: 38px; 
+							background: url('../../images/sscsprites.png') -103px -38px!important;
+							color:#fff!important;
+						}
 						.active{
 							width: 68px; height: auto;
 							background: url('../../images/square_active.png') top center no-repeat!important;

@@ -336,19 +336,19 @@
                                     <div class="numcon">
                                         <div class="name">{{val.title}}</div>
                                         <ul class="numlist">
-                                            <li #ballid *ngFor="let item of val.ball;let f = index">
-                                                <div class="btn_square" [ngClass]="{active: item==now_matchtab[i][item]}" (click)='onesquare(i,f,item,ballid)'>
-                                                    <div class="ball_item val">
-                                                        {{item.value}}
-                                                    </div>
-                                                    <div class="ball_item range">
-                                                        {{item.range}}
-                                                    </div>
-                                                </div>
+                                            <li *ngFor="let item of val.ball;let f = index">
+                                               <div  #ballid class="btn_square" [ngClass]="{active:item.value==now_matchtab[i][item.value]}" (click)='oneball(i,f,item.value,ballid)'>
+                                                   <div class="ball_item val">
+                                                       {{val.match[item.value]}}
+                                                   </div>
+                                                   <div class="ball_item range">
+                                                       {{item.range}}
+                                                   </div>
+                                               </div>
                                                 <div class="ball_item radix">
-                                                    {{item.radix}}
-                                                </div>
-                                            </li>
+                                                   {{item.radix}}
+                                               </div>
+                                           </li>
 
                                         </ul>
                                     </div>
@@ -468,7 +468,7 @@
                         </div>
                         <div class="btnright">
                             <a class="btnh_w120_h40 mb10 bgyellow" [ngClass]="{noactive: !ballcurr.status}" (click)='addball(menu_2,ballcurr.status)'>{{now_lang.Ball_tab.Add_number}}</a>
-                            <a class="btnh_w120_h40 bgyellow" (click)='mathball(menu_2)'>{{now_lang.Ball_tab.Radom_add}}</a>
+                            <a class="btnh_w120_h40 bgyellow" [hidden]="mathstatus" (click)='mathball(menu_2)'>{{now_lang.Ball_tab.Radom_add}}</a>
                         </div>
                     </div>
                     <div class="resultarea">

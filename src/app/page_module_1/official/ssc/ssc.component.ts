@@ -621,7 +621,7 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['w', 'q', 'b', 's', 'g'],
                 format: ["n"],
-                datarule: ['Rule_6', 5]
+                datarule: ['Rule_6', 1]
             }],
             active: 8
         },
@@ -2297,7 +2297,8 @@ export class SSCofficialComponent implements OnInit {
                 if (that.ballcurr.ball[i] != '') {
                     let obj: any = {}
                     obj.ball = that.ballcurr.ball[i]
-                    obj.name = that.currtabname
+                    // obj.name = that.currtabname
+					obj.name = arrob[0].menu[0].datarule[0]=='Rule_6'?that.currtabname+that.ball_data[that.tabcurr.arr[i]].title:that.currtabname
                     obj.multiple = that.multiple_input.value
                     obj.model = that.model
                     obj.count = arrob[0].menu[0].datarule[0] == 'Rule_6' ? that.ballcurr.allarr[i].length : that.totalinfo.count
@@ -2365,7 +2366,7 @@ export class SSCofficialComponent implements OnInit {
             let redata: any = {}
             redata.ball = Utils.Randomrule(obj)
             redata.name = that.currtabname
-            if (that.tabcurr.choose) {
+            if (that.tabcurr.choose || that.tabcurr.datarule[0]=='Rule_6') {
                 let ab = Utils.algorithm.RandomArray(['w', 'q', 'b', 's', 'g'], that.tabcurr.datarule[1])
                 let newab = new Array(that.tabcurr.datarule[1])
                 ab.map(function (res) {
@@ -2392,7 +2393,7 @@ export class SSCofficialComponent implements OnInit {
                     }
                 }
                 for (var k = 0; k < that.tabcurr.datarule[1]; k++) {
-                    redata.name = redata.name + that.abotitle[newab[k]]
+                    redata.name = that.tabcurr.datarule[0]=='Rule_6'?redata.name + that.abotitle[newab[k]]+'位':redata.name + that.abotitle[newab[k]]
                 }
             }
             redata.multiple = that.multiple_input.value

@@ -229,7 +229,8 @@ export class EXFofficialComponent implements OnInit {
     public now_lang: any = userModel.langpackage;
     public now_lang_type: any = "zh";
     //追号数据
-    public lotdata = [{
+    public lotdata = [
+        {
             lot_num: "20181719",
             multiple: 0,
             price: 2,
@@ -279,7 +280,6 @@ export class EXFofficialComponent implements OnInit {
             tabitem: [
                 this.now_lang.Lot_tab.ForT_str,
                 this.now_lang.Lot_tab.Two_star_str,
-                this.now_lang.Lot_tab.Thr_Inde_gall,
                 this.now_lang.Lot_tab.Gall,
                 this.now_lang.Lot_tab.Interestily,
                 this.now_lang.Lot_tab.Choose_odd,
@@ -293,7 +293,6 @@ export class EXFofficialComponent implements OnInit {
             tabitem: [
                 this.now_lang.Lot_tab.ForT_str,
                 this.now_lang.Lot_tab.Two_star_str,
-                this.now_lang.Lot_tab.Thr_Inde_gall,
                 this.now_lang.Lot_tab.Gall,
                 this.now_lang.Lot_tab.Interestily,
                 this.now_lang.Lot_tab.Choose_odd,
@@ -307,7 +306,6 @@ export class EXFofficialComponent implements OnInit {
             tabitem: [
                 this.now_lang.Lot_tab.ForT_str,
                 this.now_lang.Lot_tab.Two_star_str,
-                this.now_lang.Lot_tab.Thr_Inde_gall,
                 this.now_lang.Lot_tab.Gall,
                 this.now_lang.Lot_tab.Interestily,
                 this.now_lang.Lot_tab.Choose_odd,
@@ -321,7 +319,6 @@ export class EXFofficialComponent implements OnInit {
             tabitem: [
                 this.now_lang.Lot_tab.ForT_str,
                 this.now_lang.Lot_tab.Two_star_str,
-                this.now_lang.Lot_tab.Thr_Inde_gall,
                 this.now_lang.Lot_tab.Gall,
                 this.now_lang.Lot_tab.Interestily,
                 this.now_lang.Lot_tab.Choose_odd,
@@ -335,7 +332,6 @@ export class EXFofficialComponent implements OnInit {
             tabitem: [
                 this.now_lang.Lot_tab.ForT_str,
                 this.now_lang.Lot_tab.Two_star_str,
-                this.now_lang.Lot_tab.Thr_Inde_gall,
                 this.now_lang.Lot_tab.Gall,
                 this.now_lang.Lot_tab.Interestily,
                 this.now_lang.Lot_tab.Choose_odd,
@@ -349,7 +345,6 @@ export class EXFofficialComponent implements OnInit {
             tabitem: [
                 this.now_lang.Lot_tab.ForT_str,
                 this.now_lang.Lot_tab.Two_star_str,
-                this.now_lang.Lot_tab.Thr_Inde_gall,
                 this.now_lang.Lot_tab.Gall,
                 this.now_lang.Lot_tab.Interestily,
                 this.now_lang.Lot_tab.Choose_odd,
@@ -418,7 +413,8 @@ export class EXFofficialComponent implements OnInit {
                     index: 1,
                     arr: ["dyw", "dew", "dsw"],
                     format: ["n|n|n"],
-                    datarule: ["Rule_1", 3]
+                    datarule: ["Rule_11", 1],
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.ForT_str_odd,
@@ -426,14 +422,16 @@ export class EXFofficialComponent implements OnInit {
                     arr: ["dyw", "dew", "dsw"],
                     isupload: true,
                     format: ["n,n,n"],
-                    datarule: ["Rule_d1", 3]
+                    datarule: ["Rule_d3", 3],
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.ForT_gro_eve,
                     index: 3,
                     arr: ["zx"],
-                    format: ["m|n|n"],
-                    datarule: ["Rule_3", 3]
+                    format: ["n|n|n"],
+                    datarule: ["Rule_3", 3],
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.ForT_gro_odd,
@@ -441,7 +439,8 @@ export class EXFofficialComponent implements OnInit {
                     arr: ["dyw", "dew", "dsw"],
                     isupload: true,
                     format: ["n,n,n"],
-                    datarule: ["Rule_d1", 3, "Z"]
+                    datarule: ["Rule_d3", 3, "Z"],
+					addzero:true
                 }
             ],
             active: 1
@@ -453,7 +452,8 @@ export class EXFofficialComponent implements OnInit {
                     index: 1,
                     arr: ["dyw", "dew"],
                     format: ["n|n"],
-                    datarule: ["Rule_1", 2]
+                    datarule: ["Rule_11", 2],
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.ForTwo_str_odd,
@@ -461,14 +461,16 @@ export class EXFofficialComponent implements OnInit {
                     arr: ["dyw", "dew"],
                     isupload: true,
                     format: ["n,n"],
-                    datarule: ["Rule_d1", 2]
+                    datarule: ["Rule_d3", 2],
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.BackTwo_gro_eve,
                     index: 3,
                     arr: ["zx"],
-                    format: ["m|n"],
-                    datarule: ["Rule_3", 2]
+                    format: ["n|n"],
+                    datarule: ["Rule_3", 2],
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.BackTwo_gro_odd,
@@ -476,21 +478,11 @@ export class EXFofficialComponent implements OnInit {
                     arr: ["zx"],
                     isupload: true,
                     format: ["n,n"],
-                    datarule: ["Rule_d1", 2, "Z"]
+                    datarule: ["Rule_d3", 2, "Z"],
+					addzero:true
                 }
             ],
             active: 2
-        },
-        {
-            title: this.now_lang.Lot_tab.Thr_Inde_gall,
-            menu: [{
-                name: this.now_lang.Lot_tab.Thr_Inde_gall,
-                index: 1,
-                arr: ["qsw"],
-                format: ["m"],
-                datarule: ["Rule_3", 1]
-            }],
-            active: 4
         },
         {
             title: this.now_lang.Lot_tab.Gall,
@@ -499,22 +491,27 @@ export class EXFofficialComponent implements OnInit {
                 index: 1,
                 arr: ["dyw", "dew", "dsw", "dsiw", "dww"],
                 format: ["n"],
-                datarule: ["Rule_6", 5]
+                datarule: ["Rule_6", 5],
+				addzero:true
             }],
             active: 3
         },
-
         {
             title: this.now_lang.Lot_tab.Interestily,
             menu: [{
                     name: this.now_lang.Lot_tab.Order_and_double,
                     index: 1,
-                    arr: ["dds"]
+                    arr: ["dds"],
+					format: ["n"],
+					datarule: ['Rule_12', 1]
                 },
                 {
                     name: this.now_lang.Lot_tab.Guess_mid,
                     index: 2,
-                    arr: ["czw"]
+                    arr: ["czw"],
+					format: ["n"],
+					datarule: ['Rule_12', 1],
+					addzero:true
                 }
             ],
             active: 5
@@ -652,7 +649,15 @@ export class EXFofficialComponent implements OnInit {
         4: ["全", "清"]
     };
     now_balllist = []; //当前号码列表
-
+	
+	ddsmatch={
+		0:'5单0双',
+		1:'4单1双',
+		2:'3单2双',
+		3:'2单3双',
+		4:'1单4双',
+		5:'0单5双'
+	};
     // 所有号码的列表数据
     ball_data = {
         dyw: {
@@ -700,32 +705,32 @@ export class EXFofficialComponent implements OnInit {
         dds: {
             title: "定单双",
             ball: [{
-                    value: "5单0双",
+                    value: 0,
                     range: "",
                     radix: "138.754"
                 },
                 {
-                    value: "4单1双",
+                    value: 1,
                     range: "",
                     radix: "138.754"
                 },
                 {
-                    value: "3单2双",
+                    value: 2,
                     range: "",
                     radix: "138.754"
                 },
                 {
-                    value: "2单3双",
+                    value: 3,
                     range: "",
                     radix: "138.754"
                 },
                 {
-                    value: "1单4双",
+                    value: 4,
                     range: "",
                     radix: "138.754"
                 },
                 {
-                    value: "0单5双",
+                    value: 5,
                     range: "",
                     radix: "138.754"
                 }
@@ -737,37 +742,43 @@ export class EXFofficialComponent implements OnInit {
             title: "猜中位",
             ball: [{
                     value: 3,
-                    range: "133-145",
+                    range: "",
                     radix: "0.8976"
                 },
                 {
                     value: 4,
-                    range: "133-145",
+                    range: "",
                     radix: "0.8976"
                 },
                 {
                     value: 5,
-                    range: "133-145",
+                    range: "",
                     radix: "0.8976"
                 },
                 {
                     value: 6,
-                    range: "133-145",
+                    range: "",
                     radix: "0.8976"
                 },
                 {
                     value: 7,
-                    range: "133-145",
+                    range: "",
                     radix: "0.8976"
                 },
                 {
                     value: 8,
-                    range: "133-145",
+                    range: "",
+                    radix: "0.8976"
+                },
+				{
+                    value: 9,
+                    range: "",
                     radix: "0.8976"
                 }
             ],
             tab: this.ball_tab[1],
-            index: 9
+            index: 9,
+			yclass:true
         },
         xyzy: {
             title: "选一中一",
@@ -1319,6 +1330,7 @@ export class EXFofficialComponent implements OnInit {
             this.countbet(this.ballcurr.totalbet);
         }
     }
+	mathstatus = false  // 随机按钮显示隐藏状态
     // 时时彩一级导航切换
     tabmenu(data) {
         let that = this;
@@ -1362,28 +1374,11 @@ export class EXFofficialComponent implements OnInit {
         if (this.tabcurr.isupload) {
             this.up_ball = 2;
         }
-        // 如果选中是趣味型
-        if (this.status.menu_1 === 5) {
-            this.match_tab = [{
-                    active: false
-                },
-                {
-                    active: false
-                },
-                {
-                    active: false
-                },
-                {
-                    active: false
-                },
-                {
-                    active: false
-                },
-                {
-                    active: false
-                }
-            ];
-        }
+		if(this.tabcurr.datarule[0]=='Rule_12'){
+			this.mathstatus = true
+		}else{
+			this.mathstatus = false
+		}
     }
 
     // 时时彩二级导航切换
@@ -1409,6 +1404,11 @@ export class EXFofficialComponent implements OnInit {
                 this.match_tab[i].active = false;
             }
         }
+		if(this.tabcurr.datarule[0]=='Rule_12'){
+			this.mathstatus = true
+		}else{
+			this.mathstatus = false
+		}
     }
     // 时时彩下注区左侧显示列表
     balllist(arr) {
@@ -1429,100 +1429,6 @@ export class EXFofficialComponent implements OnInit {
         }
     }
 
-    //==========================陈振国添加事件 趣味型选择事件
-    public tab_r = -1;
-    cselect(index, clickindex, val, that) {
-        console.log(index, clickindex, val, that, this.status.menu_2);
-        console.log(this.now_matchtab, this.match_tab);
-
-        this.ballcurr.status = true;
-        if (this.status.menu_2 === 1) {
-            for (let i = 0; i < this.match_tab.length; i++) {
-                if (clickindex === 0) {
-                    this.match_tab[i].active = true;
-                    this.tab_r = 0;
-                    this.countbet(6);
-                } else {
-                    this.match_tab[i].active = false;
-                    this.tab_r = -1;
-                    this.ballcurr.status = false;
-                }
-            }
-        } else {
-            for (let i = 0; i < this.match_tab.length; i++) {
-                this.match_tab[i].active = false;
-            }
-            switch (clickindex) {
-                case 0:
-                    this.tab_r = 0;
-                    for (let i = 0; i < this.match_tab.length; i++) {
-                        this.match_tab[i].active = true;
-                    }
-                    this.countbet(6);
-                    break;
-                case 1:
-                    this.tab_r = 1;
-                    for (let i = 3; i < this.match_tab.length; i++) {
-                        this.match_tab[i].active = true;
-                    }
-                    this.countbet(3);
-                    break;
-                case 2:
-                    this.tab_r = 2;
-                    for (let i = 0; i < 3; i++) {
-                        this.match_tab[i].active = true;
-                    }
-                    this.countbet(3);
-                    break;
-                case 3:
-                    this.tab_r = 3;
-                    for (let i = 0; i < this.match_tab.length; i++) {
-                        i % 2 !== 1 && (this.match_tab[i].active = true);
-                    }
-                    this.countbet(3);
-                    break;
-                case 4:
-                    this.tab_r = 4;
-                    for (let i = 0; i < this.match_tab.length; i++) {
-                        i % 2 === 1 && (this.match_tab[i].active = true);
-                    }
-                    this.countbet(3);
-                    break;
-                case 5:
-                    this.tab_r = -1;
-                    this.ballcurr.status = false;
-                    break;
-                default:
-            }
-        }
-    }
-    onesquare(clickindex) {
-        this.match_tab[clickindex].active = !this.match_tab[clickindex].active;
-        let data = [];
-        this.ballcurr.status = false;
-        for (let i = 0; i < this.match_tab.length; i++) {
-            if (this.match_tab[i].active === true) {
-                this.ballcurr.status = true;
-                data.push(this.now_balllist[0].ball[i].value)
-            }
-        }
-        this.countbet(data.length);
-    }
-    // 趣味型确认选号方法
-    addball_quwei(i){
-        let that = this;
-        let curpst =this.status.menu_2===1?true:false;
-        let obj: any = {};
-        obj.name = curpst?"趣味型定单双":"趣味型猜中位";
-        obj.ball = curpst?this.ball_data.dds.ball[i].value:this.ball_data.czw.ball[i].value;
-        obj.multiple = that.multiple_input.value;
-        obj.model = that.model;
-        obj.count = 1;
-        obj.sum = that.totalinfo.sum/that.totalinfo.count;
-        obj.amount = that.totalinfo.amount;
-        that.sureballlist.push(obj);
-    }
-
     // 选中号码
     choosetab(index, clickindex, val, that) {
         this.now_matchball = {
@@ -1533,6 +1439,7 @@ export class EXFofficialComponent implements OnInit {
             4: {},
             5: {}
         };
+		console.log(clickindex)
         let carr = ["dsw", "dsq", "dss", "dsg"];
         if (Base._.hasArr(this.tabcurr.arr[0], carr)) {
             this.match_tab = {
@@ -1544,64 +1451,106 @@ export class EXFofficialComponent implements OnInit {
             this.match_tab[0]["单"] = "单";
             this.match_tab[0]["双"] = "双";
         } else {
-            if (this.status.menu_1 === 5) {
-                this.cselect(index, clickindex, val, that);
-                return;
-            }
-            this.match_tab = {
-                0: {
-                    1: 1,
-                    2: 2,
-                    3: 3,
-                    4: 4,
-                    5: 5,
-                    6: 6,
-                    7: 7,
-                    8: 8,
-                    9: 9,
-                    10: 10,
-                    11: 11
-                },
-                1: {
-                    6: 6,
-                    7: 7,
-                    8: 8,
-                    9: 9,
-                    10: 10,
-                    11: 11
-                },
-                2: {
-                    1: 1,
-                    2: 2,
-                    3: 3,
-                    4: 4,
-                    5: 5
-                },
-                3: {
-                    1: 1,
-                    3: 3,
-                    5: 5,
-                    7: 7,
-                    9: 9,
-                    11: 11
-                },
-                4: {
-                    2: 2,
-                    4: 4,
-                    6: 6,
-                    8: 8,
-                    10: 10
-                },
-                5: {}
-            };
+			if(this.tabcurr.arr[0]=='dds'){
+				this.match_tab = {
+					0: {
+						0: 0,
+						1: 1,
+						2: 2,
+						3: 3,
+						4: 4,
+						5: 5
+					},
+					1:{}
+				}
+			}else if(this.tabcurr.arr[0]=='czw'){
+				this.match_tab = {
+					0: {
+						3: 3,
+						4: 4,
+						5: 5,
+						6: 6,
+						7: 7,
+						8: 8,
+						9: 9
+					},
+					1: {
+						6: 6,
+						7: 7,
+						8: 8,
+						9: 9
+					},
+					2: {
+						3: 3,
+						4: 4,
+						5: 5
+					},
+					3: {
+						3: 3,
+						5: 5,
+						7: 7,
+						9: 9
+					},
+					4: {
+						4: 4,
+						6: 6,
+						8: 8
+					},
+					5: {}
+				};
+			}else{
+				this.match_tab = {
+					0: {
+						1: 1,
+						2: 2,
+						3: 3,
+						4: 4,
+						5: 5,
+						6: 6,
+						7: 7,
+						8: 8,
+						9: 9,
+						10: 10,
+						11: 11
+					},
+					1: {
+						6: 6,
+						7: 7,
+						8: 8,
+						9: 9,
+						10: 10,
+						11: 11
+					},
+					2: {
+						1: 1,
+						2: 2,
+						3: 3,
+						4: 4,
+						5: 5
+					},
+					3: {
+						1: 1,
+						3: 3,
+						5: 5,
+						7: 7,
+						9: 9,
+						11: 11
+					},
+					4: {
+						2: 2,
+						4: 4,
+						6: 6,
+						8: 8,
+						10: 10
+					},
+					5: {}
+				};
+			}
         }
         this.now_matchtab[index] = {};
         this.ballindex = index;
         this.now_matchtab[index] = this.match_tab[clickindex];
-        $(that)
-            .parent(".numright")
-            .find("li")
-            .removeClass("active");
+        $(that).parent(".numright").find("li").removeClass("active");
         if (Base._.hasArr(this.tabcurr.arr[0], carr)) {
             if (val == this.ball_tab[4][1]) {
                 this.now_matchball[clickindex] = "";
@@ -1663,6 +1612,7 @@ export class EXFofficialComponent implements OnInit {
             }
         }
         let self = this;
+		console.log(self.tabcurr.choose)
         if (self.tabcurr.choose) {
             var arr = new Array();
             $("#fiveabso input:checkbox:checked").each(function (i) {
@@ -1674,7 +1624,6 @@ export class EXFofficialComponent implements OnInit {
                 arr
             );
         } else {
-            console.log(self.now_matchtab, self.tabcurr);
             self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](
                 self.now_matchtab,
                 self.tabcurr
@@ -2000,96 +1949,80 @@ export class EXFofficialComponent implements OnInit {
 
     // 确认选号
     sureballlist: any = [];
-    addball(arrob, type) {
-        console.log(arrob, type);
-        let that = this;
-        if (!type) {
-            that.show_layer({
-                    msg: "号码选择不完整，请重新选择",
-                    til: "操作提示"
-                },
-                ""
-            );
-            return;
-        }
-        let arr = [];
-        if (that.tabcurr.isupload) {
-            this.filteresult("fileReader", "");
-        }
-        if (that.square_show == true) {
-            for (let i = 0; i < this.match_tab.length; i++) {
-                if (this.match_tab[i].active) {
-                    this.addball_quwei(i);
-                }
-            }
-            
-        } else if (that.tabcurr.choose) {
-            var _selfs;
-            var _arr = [];
-            var _indexs = [];
-            var _where = 0;
-            var _total = [];
-            var arrc = new Array();
-            $("#fiveabso input:checkbox:checked").each(function (i) {
-                arrc[i] = $(this).val();
-            });
-            for (var i = 0; i < that.tabcurr.datarule[1]; i++) {
-                _indexs.push(i);
-            }
-            _arr = arrc;
-            _selfs = new Array(that.tabcurr.datarule[1]);
-            Utils.algorithm.plzh(_selfs, _arr, _indexs, _total, _where);
-            for (var i = 0; i < that.ballcurr.ball.length; i++) {
-                if (that.ballcurr.ball[i] != "") {
-                    for (var j = 0; j < _total.length; j++) {
-                        let obj: any = {};
-                        obj.ball = that.ballcurr.ball[i];
-                        obj.name = that.currtabname;
-                        for (var k = 0; k < that.tabcurr.datarule[1]; k++) {
-                            obj.name = obj.name + that.abotitle[_total[j][k]];
-                        }
-                        obj.multiple = that.multiple_input.value;
-                        obj.model = that.model;
-                        obj.count = that.totalinfo.count / _total.length;
-                        obj.sum = that.totalinfo.sum / _total.length;
-                        obj.amount = that.totalinfo.amount;
-                        that.sureballlist.push(obj);
-                    }
-                }
-            }
-        } else {
-            for (var i = 0; i < that.ballcurr.ball.length; i++) {
-                if (that.ballcurr.ball[i] != "") {
-                    let obj: any = {};
-                    obj.ball = that.ballcurr.ball[i];
-                    obj.name = that.currtabname;
-                    obj.multiple = that.multiple_input.value;
-                    obj.model = that.model;
-                    obj.count =
-                        arrob[0].menu[0].datarule[0] == "Rule_6" ?
-                        that.ballcurr.allarr[i].length :
-                        that.totalinfo.count;
-                    obj.sum =
-                        arrob[0].menu[0].datarule[0] == "Rule_6" ?
-                        (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) *
-                        that.totalinfo.sum :
-                        that.totalinfo.sum;
-                    obj.amount = that.totalinfo.amount;
-                    that.sureballlist.push(obj);
-                }
-            }
-        }
-
-        that.allbet(that.sureballlist);
-        console.log(that.sureballlist);
-        this.inittab();
-        // 如果一级导航是趣味型
+    addball(arrob,type){
+		let that = this
+		if(!type){
+			that.show_layer({'msg':'号码选择不完整，请重新选择','til':'操作提示'},'')
+			return
+		}
+		let arr = []
+		if(that.tabcurr.isupload){
+			this.filteresult('fileReader','')
+		}
+		if(that.tabcurr.choose){
+			var _selfs;
+			var _arr = [];
+			var _indexs = [];
+			var _where = 0;
+			var _total = [];
+			var arrc = new Array();
+			$("#fiveabso input:checkbox:checked").each(function(i){
+				arrc[i] = $(this).val();
+			});
+			for(var i=0;i<that.tabcurr.datarule[1];i++){
+				_indexs.push(i)
+			}
+			_arr = arrc
+			_selfs = new Array(that.tabcurr.datarule[1])
+			Utils.algorithm.plzh(_selfs, _arr, _indexs, _total, _where);
+			for(var i=0;i<that.ballcurr.ball.length;i++){
+				if(that.ballcurr.ball[i]!=''){
+					for(var j=0;j<_total.length;j++){
+						let obj:any={}
+						obj.ball = that.ballcurr.ball[i]
+						obj.name = that.currtabname
+						for(var k=0;k<that.tabcurr.datarule[1];k++){
+							obj.name = obj.name + that.abotitle[_total[j][k]]
+						}
+						obj.multiple = that.multiple_input.value
+						obj.model = that.model
+						obj.count = that.totalinfo.count/_total.length
+						obj.sum = that.totalinfo.sum/_total.length
+						obj.amount = that.totalinfo.amount
+						that.sureballlist.push(obj)
+					}
+				}
+			}
+		}else{
+			for(var i=0;i<that.ballcurr.ball.length;i++){
+				if(that.ballcurr.ball[i]!=''){
+					console.log(that.tabcurr)
+					let obj:any={}
+					console.log(arrob)
+					if(that.tabcurr.addzero){
+						obj.ball = that.ballcurr.ball[i]
+					}else{
+						obj.ball = that.tabcurr.datarule[0]=='Rule_12'?that.ddsmatch[that.ballcurr.ball[i]]:that.ballcurr.ball[i]
+					}
+					obj.name = that.tabcurr.datarule[0]=='Rule_6'?that.currtabname+that.ball_data[that.tabcurr.arr[i]].title:that.currtabname
+					obj.multiple = that.multiple_input.value
+					obj.model = that.model
+					obj.count = that.tabcurr.datarule[0]=='Rule_6' || that.tabcurr.datarule[0]=='Rule_12'?that.ballcurr.allarr[i].length:that.totalinfo.count
+					obj.sum = that.tabcurr.datarule[0]=='Rule_6' || that.tabcurr.datarule[0]=='Rule_12'?(that.ballcurr.allarr[i].length/that.ballcurr.totalbet)*that.totalinfo.sum:that.totalinfo.sum
+					obj.amount = that.totalinfo.amount
+					that.sureballlist.push(obj)
+				}
+			}
+		} 
+		that.allbet(that.sureballlist)
+		this.inittab()
+		// 如果一级导航是趣味型
         if (this.status.menu_1 === 5) {
             for (let i = 0; i < this.match_tab.length; i++) {
                 this.match_tab[i].active = false;
             }
         }
-    }
+	}
 
     allbet(data) {
         let self = this;
@@ -2134,7 +2067,6 @@ export class EXFofficialComponent implements OnInit {
                 }
             });
         });
-        console.log(obj);
 
         for (let i = 0; i < that.radom_input.value; i++) {
             let redata: any = {};
@@ -2291,7 +2223,11 @@ export class EXFofficialComponent implements OnInit {
             self.hid_layer();
         });
         dom.find(".confirm_box").on("click", function () {
-            nextrun();
+            if(nextrun=='' || !nextrun){
+				self.hid_layer();
+			}else{
+				nextrun();
+			}
         });
         $("#layer").append(dom);
         setTimeout(function () {
