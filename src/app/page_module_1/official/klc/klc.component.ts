@@ -1051,10 +1051,10 @@ export class KLCofficialComponent implements OnInit {
                 $('#range_tag').css("left", now_left);
                 if (now_left <= 26) {
                     that.rangepercent = 0.1
-                    that.rangenum = 30000
+                    that.rangenum = 180000
                 } else {
                     that.rangepercent = 0
-                    that.rangenum = 30033.33
+                    that.rangenum = 180200
                 }
             })
             $('body').on('mouseup', function () {
@@ -1488,7 +1488,7 @@ export class KLCofficialComponent implements OnInit {
             Base._.removeArr(val, this.sureballlist)
         }
     }
-    // 创建开奖数据  len为开奖球数，min、max为最小球号和最大球号 ，blean为是否可以重号
+    // 创建开奖数据  len为开奖球数，
     setballdata(len) {
         let data = [];
         let s = new Set();
@@ -1505,9 +1505,8 @@ export class KLCofficialComponent implements OnInit {
 
     // 随机选号号码
     mathball(arr) {
-        console.log(this.radom_input.value);
         let that = this;
-        for (let i = 0; i < this.radom_input.value; i++) {
+        for (let i = 0; i < that.radom_input.value; i++) {
             let obj: any = {}
             obj.ball = this.setballdata(that.status.menu_2).join(",");
             obj.name = that.currtabname

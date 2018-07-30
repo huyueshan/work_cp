@@ -276,27 +276,6 @@
 						</div>
 					</div>
 					<div *ngIf="up_ball == 1">
-					<!-- <ng-container *ngIf='!square_show' >
-						<div class="chooselist elsebg" [ngClass]="{elsebg: i%2==0}"   *ngFor="let val of now_balllist;let i = index">
-							<div class="leftnum">
-								<div class="numcon">
-									<div class="name">{{val.title}}</div>
-									<ul class="numlist">
-										<li #ballid [ngClass]="{active: item==now_matchtab[i][item]}" *ngFor="let item of val.ball;let f = index" (click)= 'oneball(i,f,item,ballid)'>{{item}}</li>
-									</ul>
-								</div>
-								<div class="choosecheck" [hidden]="!omitarr[val.index] || omitarr[val.index].length<1">
-									<div class="name">{{omitname}}</div>
-									<ul class="numlist">
-										<li class="active" *ngFor="let eldata of omitarr[val.index]">{{eldata}}</li>
-									</ul>
-								</div>
-							</div>
-							<ul class="numright">
-								<li #nowid *ngFor="let valtab of val.tab;let d = index" (click)="choosetab(i,d,valtab,nowid)">{{valtab}}</li>
-							</ul>
-						</div>
-					</ng-container> -->
 					<ng-container>
 						<div class="chooselist elsebg " id="square" [ngClass]="{elsebg: i%2==0}"  *ngFor="let val of now_balllist;let i = index">
 							<div class="leftnum">
@@ -304,7 +283,7 @@
 									<div class="name">{{val.title}}</div>
 									<ul class="numlist">
 										<li #ballid  *ngFor="let item of val.ball;let f = index"  [ngClass]="{square_dot:val.square_dot == true}">
-											<div class="btn_square" [ngClass]="{active:item.value==now_matchtab[i][item.value]}" (click)= 'oneball(i,f,item.value,ballid)'>
+											<div class="btn_square" [ngClass]="{active:item.value===now_matchtab[i][item.value]}" (click)= 'oneball(i,f,item.value,ballid)'>
 												<div class="ball_item val">
 													{{val.match[item.value]}}
 												</div>

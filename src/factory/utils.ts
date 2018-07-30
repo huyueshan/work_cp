@@ -531,10 +531,52 @@ const Matchrule = {
             data = Matchrule.choose_group(allarr,n)
             totalbet = data.length;
         }
-        
 		let obj :any = {}
         obj = {'status':Isaddball,'allarr':ballarr,'totalbet':totalbet,'ball':[]}
         obj.ball.push(TranBall(obj,len))
+		return obj
+	},
+	Rule_14(nowarr,len){
+		let allarr = [],totalbet = 1,ballarr = [],narr = [],reparr = [];
+		let obj :any = {}
+		ballarr = Matchrule.chooseball(nowarr,len)
+		let Isaddball = false;
+        if(len.datarule[1]>1){
+            Isaddball =true;
+            for(let i = 0; i < ballarr.length; i++){
+                totalbet*=ballarr[i].length;
+                if(ballarr[i].length<1){
+                    Isaddball =false;
+                }
+            }
+            // if(Isaddball){
+            //     narr = algorithm.doExchange(allarr)
+            // }
+            // console.log(narr);
+        }else{
+            for (let i = 0; i < ballarr.length; i++) {
+                ballarr[i].map(function(res){  
+                    allarr.push([res]);
+                });
+            }
+            if(allarr.length>=len.datarule[1]){
+                Isaddball = true;
+            }
+            totalbet = allarr.length
+        }
+		obj = {'status':Isaddball,'allarr':allarr,'totalbet':totalbet,'ball':[],}
+		for(var i=0;i<allarr.length;i++){
+			let res = ''
+			for(var j=0;j<allarr[i].length;j++){
+				if(len.addzero){
+					let a = allarr[i][j]>9?allarr[i][j]:'0'+allarr[i][j]
+					res = res!=''?res+'|'+a:res+a
+				}else{
+					res = res!=''?res+'|'+allarr[i][j]:res+allarr[i][j]
+				}
+			}
+			obj.ball.push(res)
+        }
 		return obj
 	},
 	Rule_d1(str,len){
@@ -728,7 +770,7 @@ const Randomrule = (obj) =>{
 				}
 			}
 		}else if(obj.addzero){
-			for(var i=1;i<11;i++){
+			for(var i=1;i<12;i++){
 				m.push(i)
 			}
 		}else{
@@ -770,7 +812,7 @@ const Randomrule_1 = (obj) =>{
 			}
 		}
 	}else if(obj.addzero){
-		for(var i=1;i<11;i++){
+		for(var i=1;i<12;i++){
 			m.push(i)
 		}
 	}else{
@@ -779,7 +821,7 @@ const Randomrule_1 = (obj) =>{
 		}
 	}
 	var l=1
-	if(obj.datarule=='Rule_11'){
+	if(obj.datarule[0]=='Rule_11'){
 		l=obj.arr.length
 	}else{
 		l=obj.datarule[1]
@@ -812,7 +854,11 @@ const TranBall = (data,mat) => {
 					narr.push(n)
 				}
 				if(mat.arr.length<2){
-					res =  res!=''?res+','+narr.join(','):res+narr.join(',')
+					if(mat.addgang){
+						res = res!=''?res+'|'+narr.join(','):res+narr.join(',')
+					}else{
+						res =  res!=''?res+','+narr.join(','):res+narr.join(',')
+					}
 				}else{
 					res =  res!=''?res+'|'+narr.join(','):res+narr.join(',')
 				}

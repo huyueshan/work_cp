@@ -419,7 +419,7 @@ export class EXFofficialComponent implements OnInit {
                 {
                     name: this.now_lang.Lot_tab.ForT_str_odd,
                     index: 2,
-                    arr: ["dyw", "dew", "dsw"],
+                    arr: ["dyw"],
                     isupload: true,
                     format: ["n,n,n"],
                     datarule: ["Rule_d3", 3],
@@ -431,12 +431,13 @@ export class EXFofficialComponent implements OnInit {
                     arr: ["zx"],
                     format: ["n|n|n"],
                     datarule: ["Rule_3", 3],
+					addgang:true,
 					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.ForT_gro_odd,
                     index: 4,
-                    arr: ["dyw", "dew", "dsw"],
+                    arr: ["dyw"],
                     isupload: true,
                     format: ["n,n,n"],
                     datarule: ["Rule_d3", 3, "Z"],
@@ -458,7 +459,7 @@ export class EXFofficialComponent implements OnInit {
                 {
                     name: this.now_lang.Lot_tab.ForTwo_str_odd,
                     index: 2,
-                    arr: ["dyw", "dew"],
+                    arr: ["dyw"],
                     isupload: true,
                     format: ["n,n"],
                     datarule: ["Rule_d3", 2],
@@ -470,6 +471,7 @@ export class EXFofficialComponent implements OnInit {
                     arr: ["zx"],
                     format: ["n|n"],
                     datarule: ["Rule_3", 2],
+					addgang:true,
 					addzero:true
                 },
                 {
@@ -521,42 +523,74 @@ export class EXFofficialComponent implements OnInit {
             menu: [{
                     name: this.now_lang.Lot_tab.One_in_one,
                     index: 1,
-                    isupload: true
+					isupload: true,
+					arr: [""],
+                    format: ["n"],
+                    datarule: ["Rule_d3", 1],
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Two_in_two,
                     index: 2,
-                    isupload: true
+					arr: [""],
+                    isupload: true,
+                    format: ["n,n"],
+                    datarule: ["Rule_d3", 2],
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Three_in_three,
                     index: 3,
-                    isupload: true
+					arr: [""],
+                    isupload: true,
+                    format: ["n,n,n"],
+                    datarule: ["Rule_d3", 3],
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Four_in_four,
                     index: 4,
-                    isupload: true
+                    arr: [""],
+                    isupload: true,
+                    format: ["n,n,n,n"],
+                    datarule: ["Rule_d3", 4],
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Five_in_five,
                     index: 5,
-                    isupload: true
+                    arr: [""],
+                    isupload: true,
+                    format: ["n,n,n,n,n"],
+                    datarule: ["Rule_d3", 5],
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Six_in_five,
                     index: 6,
-                    isupload: true
+                    arr: [""],
+                    isupload: true,
+                    format: ["n,n,n,n,n,n"],
+                    datarule: ["Rule_d3", 6],
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Seven_in_five,
                     index: 7,
-                    isupload: true
+                    arr: [""],
+                    isupload: true,
+                    format: ["n,n,n,n,n,n,n"],
+                    datarule: ["Rule_d3", 7],
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Eight_in_five,
                     index: 8,
-                    isupload: true
+                    arr: [""],
+                    isupload: true,
+                    format: ["n,n,n,n,n,n,n,n"],
+                    datarule: ["Rule_d3", 8],
+					addzero:true
                 }
             ],
             active: 6
@@ -568,42 +602,72 @@ export class EXFofficialComponent implements OnInit {
                     index: 1,
                     arr: ["xyzy"],
                     format: ["n"],
-                    datarule: ["Rule_6", 5]
+					datarule: ['Rule_3', 1],
+					addgang:true,
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Two_in_two,
                     index: 2,
-                    arr: ["xeze"]
+                    arr: ["xeze"],
+                    format: ["n|n"],
+                    datarule: ['Rule_3', 2],
+					addgang:true,
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Three_in_three,
                     index: 3,
-                    arr: ["xszs"]
+                    arr: ["xszs"],
+                    format: ["n|n|n"],
+                    datarule: ["Rule_3", 3],
+					addgang:true,
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Four_in_four,
                     index: 4,
-                    arr: ["xsizsi"]
+                    arr: ["xsizsi"],
+					format: ["n|n|n|n"],
+                    datarule: ["Rule_3", 4],
+					addgang:true,
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Five_in_five,
                     index: 5,
-                    arr: ["xwzw"]
+                    arr: ["xwzw"],
+					format: ["n|n|n|n|n"],
+                    datarule: ["Rule_3", 5],
+					addgang:true,
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Six_in_five,
                     index: 6,
-                    arr: ["xlzw"]
+                    arr: ["xlzw"],
+					format: ["n|n|n|n|n|n"],
+                    datarule: ["Rule_3", 6],
+					addgang:true,
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Seven_in_five,
                     index: 7,
-                    arr: ["xqzw"]
+                    arr: ["xqzw"],
+					format: ["n|n|n|n|n|n|n"],
+                    datarule: ["Rule_3", 7],
+					addgang:true,
+					addzero:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Eight_in_five,
                     index: 8,
-                    arr: ["xbzw"]
+                    arr: ["xbzw"],
+					format: ["n|n|n|n|n|n|n|n"],
+                    datarule: ["Rule_3", 8],
+					addgang:true,
+					addzero:true
                 }
             ],
             active: 7
@@ -1194,7 +1258,9 @@ export class EXFofficialComponent implements OnInit {
     getPageId() {
         let idarray = this.router.url.split("/");
         this.nowPageId = idarray[idarray.length - 1] + "_ffc";
+		console.log(this.nowPageId )
         this.nowitems = this.items_show[this.nowPageId];
+		console.log( this.nowitems)
     }
     inittab2() {
         let ulMax = $(".typetab").outerWidth();
@@ -1612,7 +1678,6 @@ export class EXFofficialComponent implements OnInit {
             }
         }
         let self = this;
-		console.log(self.tabcurr.choose)
         if (self.tabcurr.choose) {
             var arr = new Array();
             $("#fiveabso input:checkbox:checked").each(function (i) {
@@ -1996,15 +2061,13 @@ export class EXFofficialComponent implements OnInit {
 		}else{
 			for(var i=0;i<that.ballcurr.ball.length;i++){
 				if(that.ballcurr.ball[i]!=''){
-					console.log(that.tabcurr)
 					let obj:any={}
-					console.log(arrob)
 					if(that.tabcurr.addzero){
 						obj.ball = that.ballcurr.ball[i]
 					}else{
 						obj.ball = that.tabcurr.datarule[0]=='Rule_12'?that.ddsmatch[that.ballcurr.ball[i]]:that.ballcurr.ball[i]
 					}
-					obj.name = that.tabcurr.datarule[0]=='Rule_6'?that.currtabname+that.ball_data[that.tabcurr.arr[i]].title:that.currtabname
+					obj.name = that.tabcurr.datarule[0]=='Rule_6'?that.currtabname+that.ball_data[that.tabcurr.arr[i]].title:arrob[0].title+that.currtabname
 					obj.multiple = that.multiple_input.value
 					obj.model = that.model
 					obj.count = that.tabcurr.datarule[0]=='Rule_6' || that.tabcurr.datarule[0]=='Rule_12'?that.ballcurr.allarr[i].length:that.totalinfo.count
@@ -2070,41 +2133,8 @@ export class EXFofficialComponent implements OnInit {
 
         for (let i = 0; i < that.radom_input.value; i++) {
             let redata: any = {};
-            redata.ball = Utils.Randomrule(obj);
+            redata.ball = Utils.Randomrule_1(obj);
             redata.name = that.currtabname;
-            if (that.tabcurr.choose) {
-                let ab = Utils.algorithm.RandomArray(
-                    ["w", "q", "b", "s", "g"],
-                    that.tabcurr.datarule[1]
-                );
-                let newab = new Array(that.tabcurr.datarule[1]);
-                ab.map(function (res) {
-                    if (res == "w") {
-                        newab[0] = "w";
-                    }
-                    if (res == "q") {
-                        newab[1] = "q";
-                    }
-                    if (res == "b") {
-                        newab[2] = "b";
-                    }
-                    if (res == "s") {
-                        newab[3] = "s";
-                    }
-                    if (res == "g") {
-                        newab[4] = "g";
-                    }
-                });
-                for (var k = 0; k < newab.length; k++) {
-                    if (newab[k] == "" || typeof newab[k] == "undefined") {
-                        newab.splice(k, 1);
-                        k--;
-                    }
-                }
-                for (var k = 0; k < that.tabcurr.datarule[1]; k++) {
-                    redata.name = redata.name + that.abotitle[newab[k]];
-                }
-            }
             redata.multiple = that.multiple_input.value;
             redata.model = that.model;
             redata.count = 1;

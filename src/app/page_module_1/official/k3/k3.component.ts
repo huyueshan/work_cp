@@ -138,7 +138,7 @@ export class K3officialComponent implements OnInit {
     public tips_hidden = true;
     // 拖拽数据
     public rangepercent = 0;
-    public rangenum = 30033.33;
+    public rangenum = 180200;
     // 拖拽数据结束
     public now_tips_menu: any = '1_1';
     public now_description = '';
@@ -299,7 +299,7 @@ export class K3officialComponent implements OnInit {
                 index: 1,
                 arr: ['th', 'bth'],
                 format: ["n"],
-                datarule: ['Rule_12', 1],
+                datarule: ['Rule_14', 2],
                 square: true
             }, {
                 name: this.now_lang.Lot_tab.Two_number_eve,
@@ -334,9 +334,9 @@ export class K3officialComponent implements OnInit {
             menu: [{
                 name: this.now_lang.Lot_tab.sum,
                 index: 1,
-                arr: ['hz'],
+                arr: ['dxds','hz'],
                 format: ["n"],
-                datarule: ['Rule_12', 1],
+                datarule: ['Rule_14', 1],
             }],
             active: 2
         },
@@ -358,13 +358,13 @@ export class K3officialComponent implements OnInit {
                 index: 1,
                 arr: ['ebth'],
                 format: ["n"],
-                datarule: ['Rule_12', 1],
+                datarule: ['Rule_13', 2],
             }, {
                 name: this.now_lang.Lot_tab.Thr_diff_num,
                 index: 2,
                 arr: ['sbth'],
                 format: ["n"],
-                datarule: ['Rule_12', 1],
+                datarule: ['Rule_13', 3],
             }],
             active: 4
         }
@@ -499,6 +499,32 @@ export class K3officialComponent implements OnInit {
                 0: '三同通选',
             },
             square: true
+        },
+        'dxds': {
+            title: '大小单双',
+            ball: [{
+                value: 0,
+                radix: '3.604'
+            }, {
+                value: 1,
+                radix: '3.604'
+            }, {
+                value: 2,
+                radix: '3.604'
+            }, {
+                value: 3,
+                radix: '3.604'
+            }, ],
+            tab: this.ball_tab[3],
+            index: 0,
+            match: {
+                0: '大',
+                1: '小',
+                2: '单',
+                3: '双',
+            },
+            square: true,
+            square_dot: true
         },
         'hz': {
             title: '和值',
@@ -773,35 +799,53 @@ export class K3officialComponent implements OnInit {
             6: 6,
             7: 7,
             8: 8,
-            9: 9
+            9: 9,
+            10: 10,
+            11: 11,
+            12: 12,
+            13: 13,
+            14: 14,
+            15: 15,
         },
         1: {
-            5: 5,
-            6: 6,
-            7: 7,
             8: 8,
-            9: 9
+            9: 9,
+            10: 10,
+            11: 11,
+            12: 12,
+            13: 13,
+            14: 14,
+            15: 15,
         },
         2: {
             0: 0,
             1: 1,
             2: 2,
             3: 3,
-            4: 4
+            4: 4,
+            5: 5,
+            6: 6,
+            7: 7,
         },
         3: {
-            1: 1,
-            3: 3,
-            5: 5,
-            7: 7,
-            9: 9
-        },
-        4: {
             0: 0,
             2: 2,
             4: 4,
             6: 6,
-            8: 8
+            9: 9,
+            11: 11,
+            13: 13,
+            15: 15,
+        },
+        4: {
+            1: 1,
+            3: 3,
+            5: 5,
+            7: 7,
+            8: 8,
+            10: 10,
+            12: 12,
+            14: 14,
         },
         5: {}
     };
@@ -893,8 +937,7 @@ export class K3officialComponent implements OnInit {
         // 注册拖拽
         this.drag_tag();
     }
-    ngAfterViewInit() {
-    }
+    ngAfterViewInit() {}
 
     // 通过id获取目前显示的项目配置文件
     getPageId() {
@@ -933,7 +976,7 @@ export class K3officialComponent implements OnInit {
         let that = this;
         $('#range_tag').css("left", 0);
         that.rangepercent = 0.1
-        that.rangenum =  180000
+        that.rangenum = 180000
         this.countbet(this.ballcurr.totalbet)
 
     }
@@ -945,12 +988,12 @@ export class K3officialComponent implements OnInit {
         that.rangenum = 180200
         this.countbet(this.ballcurr.totalbet)
     }
-    // 自带钩子监听
-    ngDoCheck() {
-        if (this.totalinfo.sum > 0 && this.rangenum != (this.totalinfo.amount + this.totalinfo.sum) / parseFloat(this.multiple_input.value)) {
-            this.countbet(this.ballcurr.totalbet)
-        }
+   // 自带钩子监听
+   ngDoCheck() {
+    if (this.totalinfo.sum > 0 && this.rangenum != (this.totalinfo.amount + this.totalinfo.sum) / parseFloat(this.multiple_input.value)) {
+        this.countbet(this.ballcurr.totalbet)
     }
+}
     drag_tag() {
         let that = this;
         $('#range_tag').on('mousedown', function (e) {
@@ -971,10 +1014,10 @@ export class K3officialComponent implements OnInit {
                 $('#range_tag').css("left", now_left);
                 if (now_left <= 26) {
                     that.rangepercent = 0.1
-                    that.rangenum = 30000
+                    that.rangenum = 180000
                 } else {
                     that.rangepercent = 0
-                    that.rangenum = 30033.33
+                    that.rangenum = 180200
                 }
             })
             $('body').on('mouseup', function () {
@@ -1029,12 +1072,18 @@ export class K3officialComponent implements OnInit {
         if (this.tabcurr.isupload) {
             this.up_ball = 2;
         }
+        if ((that.status.menu_1===1&&that.status.menu_2!==4)||that.status.menu_1===4) {
+            this.mathstatus = false
+        } else {
+            this.mathstatus = true
+        }
     }
 
     // 时时彩二级导航切换
     currtabname = ''
     tabmenu2(data) {
         let that = this;
+        console.log(that.status);
         if (!data.isupload) {
             that.now_tab2click_num = data.arr.length;
         } else {
@@ -1052,6 +1101,11 @@ export class K3officialComponent implements OnInit {
         }
         that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
         that.now_description = that.lot_rules[that.now_tips_menu]['description'];
+        if ((that.status.menu_1===1&&that.status.menu_2!==4)||that.status.menu_1===4) {
+            this.mathstatus = false
+        } else {
+            this.mathstatus = true
+        }
     }
     // 时时彩下注区左侧显示列表
     balllist(arr) {
@@ -1073,17 +1127,9 @@ export class K3officialComponent implements OnInit {
         })
 
     }
-    setmatch_tab(data, n) {
-        data[0] = {};
-        data[1] = {};
-        for (let i = 0; i < n; i++) {
-            data[0][i] = i;
-        }
-        return data;
-    }
-
     // 选中号码
     choosetab(index, clickindex, val, that) {
+        console.log(index, clickindex, val, that);
         this.now_matchball = {
             0: {},
             1: {},
@@ -1092,51 +1138,68 @@ export class K3officialComponent implements OnInit {
             4: {},
             5: {}
         }
-        // this.match_tab = {
-        //     0: {
-        //         0: 0,
-        //         1: 1,
-        //         2: 2,
-        //         3: 3,
-        //         4: 4,
-        //         5: 5,
-        //         6: 6,
-        //         7: 7,
-        //         8: 8,
-        //         9: 9
-        //     },
-        //     1: {
-        //         5: 5,
-        //         6: 6,
-        //         7: 7,
-        //         8: 8,
-        //         9: 9
-        //     },
-        //     2: {
-        //         0: 0,
-        //         1: 1,
-        //         2: 2,
-        //         3: 3,
-        //         4: 4
-        //     },
-        //     3: {
-        //         1: 1,
-        //         3: 3,
-        //         5: 5,
-        //         7: 7,
-        //         9: 9
-        //     },
-        //     4: {
-        //         0: 0,
-        //         2: 2,
-        //         4: 4,
-        //         6: 6,
-        //         8: 8
-        //     },
-        //     5: {}
-        // };
+        this.match_tab = {
+            0: {
+                0: 0,
+                1: 1,
+                2: 2,
+                3: 3,
+                4: 4,
+                5: 5,
+                6: 6,
+                7: 7,
+                8: 8,
+                9: 9,
+                10: 10,
+                11: 11,
+                12: 12,
+                13: 13,
+                14: 14,
+                15: 15,
+            },
+            1: {
+                8: 8,
+                9: 9,
+                10: 10,
+                11: 11,
+                12: 12,
+                13: 13,
+                14: 14,
+                15: 15,
+            },
+            2: {
+                0: 0,
+                1: 1,
+                2: 2,
+                3: 3,
+                4: 4,
+                5: 5,
+                6: 6,
+                7: 7,
+            },
+            3: {
+                0: 0,
+                2: 2,
+                4: 4,
+                6: 6,
+                9: 9,
+                11: 11,
+                13: 13,
+                15: 15,
+            },
+            4: {
+                1: 1,
+                3: 3,
+                5: 5,
+                7: 7,
+                8: 8,
+                10: 10,
+                12: 12,
+                14: 14,
+            },
+            5: {}
+        };
         let carr = ['hz', ];
-        this.match_tab = this.setmatch_tab(this.match_tab, this.ball_data[this.tabcurr.arr[0]].ball.length)
         this.now_matchtab[index] = {}
 
         this.ballindex = index
@@ -1187,21 +1250,21 @@ export class K3officialComponent implements OnInit {
 
     //选中单个号码
     oneball(index, clickindex, val, id) {
-        if (this.now_matchtab[index][val] == 0) {
-            if ($(id).hasClass("active")) {
-                $(id).removeClass('active');
-                this.now_matchtab[index][val] = ''
-            } else {
-                this.now_matchtab[index][val] = val
-                $(id).addClass('active');
-            }
-        } else {
-            if (this.now_matchtab[index][val]) {
-                this.now_matchtab[index][val] = ''
-            } else {
-                this.now_matchtab[index][val] = val;
-            }
+
+        if (this.now_matchtab[index][val]===undefined) {
+            this.now_matchtab[index][val] = '';
         }
+        if (this.now_matchtab[index][val]!=='') {
+            this.now_matchtab[index][val] = ''
+        } else {
+            this.now_matchtab[index][val] = val;
+            if (this.status.menu_1===1 && this.status.menu_2===1) {
+                let nn = index===0?1:0;
+                this.now_matchtab[nn][val] = '';
+            }
+            
+        }
+            
         let self = this;
         if (self.tabcurr.choose) {
             var arr = new Array();
@@ -1214,10 +1277,8 @@ export class K3officialComponent implements OnInit {
                 arr
             );
         } else {
-            let O = Object.assign({},self.tabcurr);
-            O.arr=["k3"];
-            self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]]( self.now_matchtab, O );
-            console.log(self.now_matchtab,  self.tabcurr);
+            let O = Object.assign({}, self.tabcurr);
+            self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](self.now_matchtab, O);
         }
         if (self.ballcurr.status) {
             self.countbet(self.ballcurr.totalbet);
@@ -1230,13 +1291,6 @@ export class K3officialComponent implements OnInit {
         }
     }
 
-    // onesquare(index, clickindex, val, that) {
-    //     if (this.now_matchtab[index][val]) {
-    //         this.now_matchtab[index][val] = ''
-    //     } else {
-    //         this.now_matchtab[index][val] = val
-    //     }
-    // }
 
     // 改变金额模式
     modelchange(count) {
@@ -1270,7 +1324,13 @@ export class K3officialComponent implements OnInit {
             6: {},
             7: {},
             8: {},
-            9: {}
+            9: {},
+            10: {},
+            11: {},
+            12: {},
+            13: {},
+            14: {},
+            15: {},
         };
         this.omitarr = {
             0: [],
@@ -1279,7 +1339,8 @@ export class K3officialComponent implements OnInit {
             3: [],
             4: []
         }
-        this.omitname = ''
+        this.omitname = '';
+        this.ballcurr.status = false;
         $('.numright').find('li').removeClass('active');
 
     }
@@ -1334,22 +1395,40 @@ export class K3officialComponent implements OnInit {
             return
         }
         console.log(arrob)
-        console.log(that.ballcurr.ball)
-        for (var i = 0; i < that.ballcurr.ball.length; i++) {
-            if (that.ballcurr.ball[i] != '') {
-                let obj: any = {}
-                if (that.tabcurr.addzero) {
-                    obj.ball = that.ballcurr.ball[i]
-                } else {
-                    obj.ball = that.tabcurr.datarule[0] == 'Rule_12' ? that.ball_data[that.tabcurr.arr[0]].match[that.ballcurr.ball[i]] : that.ballcurr.ball[i]
+        if (that.tabcurr.datarule[0] == 'Rule_14'||that.tabcurr.datarule[0] == 'Rule_11') {
+            
+                for (var i = 0; i < that.ballcurr.ball.length; i++) {
+                    if (that.ballcurr.ball[i] != '') {
+                        let obj: any = {}
+                            console.log('dfe',that.ballcurr.ball);
+                            obj.ball = that.ball_data[that.tabcurr.arr[that.ballcurr.titleindex[i]]].match[that.ballcurr.ball[i]];
+                        obj.name = that.currtabname;
+                        // obj.name = that.currtabname + that.ball_data[that.tabcurr.arr[that.ballcurr.titleindex[i]]].title;
+                        obj.multiple = that.multiple_input.value;
+                        obj.model = that.model;
+                        obj.count =that.ballcurr.allarr[i].length;
+                        obj.sum = (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum ;
+                        obj.amount = that.totalinfo.amount
+                        that.sureballlist.push(obj)
+                    }
                 }
-                obj.name = that.tabcurr.datarule[0] == 'Rule_6' ? that.currtabname + that.ball_data[that.tabcurr.arr[i]].title : that.currtabname
-                obj.multiple = that.multiple_input.value
-                obj.model = that.model
-                obj.count = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_12' ? that.ballcurr.allarr[i].length : that.totalinfo.count
-                obj.sum = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_12' ? (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum : that.totalinfo.sum
-                obj.amount = that.totalinfo.amount
-                that.sureballlist.push(obj)
+        }else{
+            for (var i = 0; i < that.ballcurr.ball.length; i++) {
+                if (that.ballcurr.ball[i] != '') {
+                    let obj: any = {}
+                    if (that.tabcurr.addzero) {
+                        obj.ball = that.ballcurr.ball[i]
+                    } else {
+                        obj.ball = that.tabcurr.datarule[0] == 'Rule_12' ? that.ball_data[that.tabcurr.arr[0]].match[that.ballcurr.ball[i]] : that.ballcurr.ball[i]
+                    }
+                    obj.name = that.tabcurr.datarule[0] == 'Rule_6' ? that.currtabname + that.ball_data[that.tabcurr.arr[i]].title : that.currtabname
+                    obj.multiple = that.multiple_input.value
+                    obj.model = that.model
+                    obj.count = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_12' ? that.ballcurr.allarr[i].length : that.totalinfo.count
+                    obj.sum = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_12' ? (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum : that.totalinfo.sum
+                    obj.amount = that.totalinfo.amount
+                    that.sureballlist.push(obj)
+                }
             }
         }
 
@@ -1378,37 +1457,71 @@ export class K3officialComponent implements OnInit {
             Base._.removeArr(val, this.sureballlist)
         }
     }
+    // 创建开奖数据  len为开奖球数，
+    setballdata(len) {
+        let data = [];
+        let s = new Set();
+        for (let q = 0; q < len; q = s.size) {
+            let a = Math.ceil(Math.random() * 6);
+            s.add(a);
+        }
+        data = Array.from(s);
+        // for (let i = 0; i < data.length; i++) {
+        //     data[i] = data[i] < 10 ? '0' + data[i] : '' + data[i];
+        // }
+        return data;
+    }
 
     // 随机选号号码
     mathball(arr) {
-        let that = this
-        let math: any = []
-        let redata: any = {}
-        arr.map(function (res) {
-            res.menu.map(function (data) {
-                if (data.name == that.currtabname) {
-                    math = data.arr
+        let that = this;
+        let obj: any = {}
+        if (that.radom_input.value == 0) {
+            that.show_layer({
+                'msg': '随机注数不能小于1',
+                'til': '操作提示'
+            }, '')
+            return
+        }
+        console.log(arr);
+        
+        
+        for (let i = 0; i < that.radom_input.value; i++) {
+            let b=this.setballdata(3) ;
+            let ball = '';
+            if (that.status.menu_1===1) {
+                if (that.status.menu_2===1) {
+                    ball = ''+b[0]+b[0]+'|'+b[1];
                 }
-            })
-        })
-        math.map(function (res) {
-            switch (res) {
-                case '120':
-                    redata.ball = Math.floor(0 + Math.random() * (9 - 0)) + '|';
-                    break;
-                default:
-                    if (redata.ball) {
-                        redata.ball = redata.ball + Math.floor(0 + Math.random() * (9 - 0)) + '|';
-                    } else {
-                        redata.ball = Math.floor(0 + Math.random() * (9 - 0)) + '|';
-                    }
+                if (that.status.menu_2===2) {
+                    ball = ''+b[0]+b[0];
+                }
+                if (that.status.menu_2===3) {
+                    ball = ''+b[0]+b[0]+b[0];
+                }
+                
             }
-        })
-        let arrball = redata.ball.split('|')
-        arrball.pop()
-        redata.ball = arrball.join('|')
-        redata.name = that.currtabname
-        that.sureballlist.push(redata)
+            if (that.status.menu_1===4) {
+                if (that.status.menu_2===1) {
+                    ball = ''+b[0]+'|'+b[1];
+                }
+                if (that.status.menu_2===2) {
+                    ball = ''+b[0]+'|'+b[1]+'|'+b[2];
+                }
+            }
+            console.log(ball);
+            let obj: any = {}
+            obj.ball = ball;
+            // obj.ball = this.setballdata(that.status.menu_2).join(",");
+            obj.name = that.currtabname
+            obj.multiple = that.multiple_input.value;
+            obj.model = that.model;
+            obj.count = 1;
+            obj.sum = (2 * that.multiple_input.value) / that.modelarr[that.model];
+            obj.amount = that.totalinfo.amount
+            that.sureballlist.push(obj);
+            that.allbet(that.sureballlist);
+        }
     }
 
     addrem(item) {
