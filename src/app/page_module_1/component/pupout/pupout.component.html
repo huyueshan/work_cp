@@ -3,7 +3,7 @@
  <ng-container *ngIf="data.show">
    <!-- 提示信息窗口 -->
      <div id="notebox" [style.left.px]= "popup.note.left" [style.top.px]= "popup.note.top">
-      <div class="flex-c content" [ngClass]="{scale:data.scale}" >
+      <div class="flex-c content" [ngClass]="{scale:scale}" >
           <div class="flex-r top"
           (mousedown)="popmousedown($event)"
           (mouseleave)="popmouseup($event)"
@@ -13,7 +13,7 @@
               <i (click)="click()"> &times; </i>
           </div>
           <div class="flex-r note">
-              <p>{{data.message}}</p>
+              <p>{{data.msg}}</p>
           </div>
           <div class="flex-r foot">
               <span class="affirm" (click)="click(true)">确定</span>

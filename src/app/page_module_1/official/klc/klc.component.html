@@ -254,14 +254,14 @@
                         <span class="pointr">
                             <i></i>
                         </span>
-                        <ul class="totaltype">
+                        <!-- <ul class="totaltype">
                             <li class="active">
                                 <a>{{now_lang.Ball_tab.Official}}</a>
                             </li>
-                            <li (click)="linkrouter()">
+                            <li (click)="routlink()">
                                 <a>{{now_lang.Ball_tab.Credit}}</a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                     <div class="tabcon">
                         <div class="tabshow">
@@ -393,7 +393,7 @@
                                 <textarea name="" id=""></textarea>
                             </div>
                             <div class="btn_box">
-                                <div class="rt_btn btnh_w120_h40" (click)="show_layer({'msg':'这就是我想说的话','til':'操作提示'})">删除重复号</div>
+                                <div class="rt_btn btnh_w120_h40" (click)="POPNOTE({'msg':'这就是我想说的话'})">删除重复号</div>
                                 <div class="rt_btn btnh_w120_h40">导入文件</div>
                                 <div class="rt_btn btnh_w120_h40">清空</div>
                             </div>
@@ -562,3 +562,5 @@
         </div>
         <div>
         </div>
+        
+        <app-pupout [data]='popoutInfo' (close)="closePopouot($event)" (notarize)="NOTARIZE()"></app-pupout>

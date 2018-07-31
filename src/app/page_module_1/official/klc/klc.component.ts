@@ -113,6 +113,14 @@ export class KLCofficialComponent implements OnInit {
     } //当前下注信息
     modelarr = [1, 10, 100, 1000] // 下注模式对应的要除以的金额
 
+    // 传给弹窗组件数据
+    public  popoutInfo={
+        title:'string',
+        msg:'string',
+        event: false,
+        show: false,
+    }
+
     constructor(private route: ActivatedRoute, private httpClient: HttpClient, private router: Router) {}
     loadpage = false;
     public resultdata = [{
@@ -986,6 +994,11 @@ export class KLCofficialComponent implements OnInit {
     linkrouter(t) {
         this.router.navigate([t]);
     }
+    routlink(){
+        let str ;
+        this.route.params.subscribe(data=>str=data.id);
+        this.router.navigate(['/lottery/creditklc', str]);
+      }
     // 计算当前点击投注信息
     countbet(totalbet) {
         if (!totalbet) {
@@ -1279,10 +1292,9 @@ export class KLCofficialComponent implements OnInit {
             }
         } else {
             if (this.status.menu_2 > 1 && this.ballcurr.allarr && this.ballcurr.allarr[0].length >= 8) {
-                this.show_layer({
-                    'msg': '最多只能选8个！',
-                    'til': '操作提示'
-                }, '')
+                this.POPNOTE({msg:'最多只能选8个！'});
+                $(id).removeClass('active');
+                this.now_matchtab[index][val] = '';
                 return
             }
             self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](self.now_matchtab, self.tabcurr);
@@ -1402,10 +1414,7 @@ export class KLCofficialComponent implements OnInit {
     addball(arrob, type) {
         let that = this
         if (!type) {
-            that.show_layer({
-                'msg': '号码选择不完整，请重新选择',
-                'til': '操作提示'
-            }, '')
+            that.POPNOTE({msg:'号码选择不完整，请重新选择'});
             return
         }
         if (that.tabcurr.choose) {
@@ -1601,32 +1610,54 @@ export class KLCofficialComponent implements OnInit {
         }, 200)
     }
     // 弹层1
-    parseDom(arg) {　　
-        var objE = document.createElement("div");　　
-        objE.innerHTML = arg;　　
-        return objE.childNodes;
-    };
-    show_layer(param, nextrun) {
-        let msg = param.msg;
-        let til = param.til;
-        let self = this;
-        let str = '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">' + til + '</div><div class="close">x</div></div><div class="content_box">' + msg + '</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';
-        let dom = $(this.parseDom(str))
-        dom.find('.close').on('click', function () {
-            self.hid_layer();
-        })
-        dom.find('.confirm_box').on('click', function () {
-            nextrun();
-        })
-        $('#layer').append(dom);
-        setTimeout(function () {
-            dom.addClass('tobig')
-        }, 10)
-        window.onresize = function () {
-            console.log('x')
-        }
+    // parseDom(arg) {　　
+    //     var objE = document.createElement("div");　　
+    //     objE.innerHTML = arg;　　
+    //     return objE.childNodes;
+    // };
+    // show_layer(param, nextrun) {
+    //     let msg = param.msg;
+    //     let til = param.til;
+    //     let self = this;
+    //     let str = '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">' + til + '</div><div class="close">x</div></div><div class="content_box">' + msg + '</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';
+    //     let dom = $(this.parseDom(str))
+    //     dom.find('.close').on('click', function () {
+    //         self.hid_layer();
+    //     })
+    //     dom.find('.confirm_box').on('click', function () {
+    //         nextrun();
+    //     })
+    //     $('#layer').append(dom);
+    //     setTimeout(function () {
+    //         dom.addClass('tobig')
+    //     }, 10)
+    //     window.onresize = function () {
+    //         console.log('x')
+    //     }
+    // }
+    // hid_layer() {
+    //     document.getElementById("layer").innerHTML = '';
+    // }    
+    // 绑定给弹窗组件的事件；
+    NOTARIZE(){
+        return
     }
-    hid_layer() {
-        document.getElementById("layer").innerHTML = '';
+    // 弹窗关闭事件 可以自定义命名
+    closePopouot(e){
+        let p = this.popoutInfo;
+        p.show = false;
+        p.event = false;
+    }
+
+    // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
+    POPNOTE(data,fn=null){
+        let o = {
+            title:'操作提示',   //title不传值默认为 ‘操作提示’
+            msg:' ',
+            event: fn === null?false:true,
+            show: true,
+        }
+        this.NOTARIZE = (typeof fn === 'function')?fn:this.NOTARIZE;
+        this.popoutInfo = Object.assign({},o,data);
     }
 }

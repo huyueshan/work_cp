@@ -68,6 +68,13 @@ export class K3officialComponent implements OnInit {
         amount: 0
     } //当前下注信息
     modelarr = [1, 10, 100, 1000] // 下注模式对应的要除以的金额
+    // 传给弹窗组件数据
+    public  popoutInfo={
+        title:'string',
+        msg:'string',
+        event: false,
+        show: false,
+    }
 
     constructor(private route: ActivatedRoute, private httpClient: HttpClient, private router: Router) {}
     loadpage = false;
@@ -932,7 +939,16 @@ export class K3officialComponent implements OnInit {
         this.tabmenu(this.menu_1[0]);
         //路由控制
         this.route.params.subscribe(data => {
+            this.routid = data.id;
             this.getPageId();
+            this.balllist(['th', 'bth']);
+            this.now_description = this.lot_rules[this.now_tips_menu]['description'];
+            that.status = {
+                menu_1: 1,
+                menu_2: 1
+            }
+            this.tabmenu(this.menu_1[0]);
+            this.delball('clear', '');
         });
         // 注册拖拽
         this.drag_tag();
@@ -949,6 +965,11 @@ export class K3officialComponent implements OnInit {
     linkrouter(t) {
         this.router.navigate([t]);
     }
+    routlink(){
+        // let str ;
+        // this.route.params.subscribe(data=>str=data.id);
+        this.router.navigate(['/lottery/creditk3', this.routid]);
+      }
     // 计算当前点击投注信息
     countbet(totalbet) {
         if (!totalbet) {
@@ -1342,6 +1363,11 @@ export class K3officialComponent implements OnInit {
         this.omitname = '';
         this.ballcurr.status = false;
         $('.numright').find('li').removeClass('active');
+        this.totalinfo = {
+            count: 0,
+            sum: 0,
+            amount: 0
+        }
 
     }
 
@@ -1383,27 +1409,40 @@ export class K3officialComponent implements OnInit {
         }
     }
 
+    Csetball(data){
+        let d = [];
+        for (let i = 0; i < data.length; i++) {
+            d[i]=[];
+            for (let q = 0; q < data[i].length; q++) {
+                let v = this.ball_data[this.tabcurr.arr[i]].match[this.ballcurr.allarr[i][q]]
+                d[i].push(v);
+            }
+        }
+        let ball = d.join("|")
+        return ball;
+    }
+
     // 确认选号
     sureballlist: any = []
     addball(arrob, type) {
         let that = this
         if (!type) {
-            that.show_layer({
-                'msg': '号码选择不完整，请重新选择',
-                'til': '操作提示'
-            }, '')
+            that.POPNOTE({msg:'号码选择不完整，请重新选择'});
             return
         }
-        console.log(arrob)
-        if (that.tabcurr.datarule[0] == 'Rule_14'||that.tabcurr.datarule[0] == 'Rule_11') {
+        console.log('dfe',that.ballcurr);
+        if (that.tabcurr.datarule[0] == 'Rule_14') {
             
-                for (var i = 0; i < that.ballcurr.ball.length; i++) {
+            for (var i = 0; i < that.ballcurr.ball.length; i++) {
                     if (that.ballcurr.ball[i] != '') {
                         let obj: any = {}
-                            console.log('dfe',that.ballcurr.ball);
+                        if (that.tabcurr.datarule[1]>1) {
+                            obj.ball = this.Csetball(that.ballcurr.allarr);
+                        }else{
+                            console.log('dfef',that.tabcurr);
                             obj.ball = that.ball_data[that.tabcurr.arr[that.ballcurr.titleindex[i]]].match[that.ballcurr.ball[i]];
+                        }
                         obj.name = that.currtabname;
-                        // obj.name = that.currtabname + that.ball_data[that.tabcurr.arr[that.ballcurr.titleindex[i]]].title;
                         obj.multiple = that.multiple_input.value;
                         obj.model = that.model;
                         obj.count =that.ballcurr.allarr[i].length;
@@ -1477,10 +1516,7 @@ export class K3officialComponent implements OnInit {
         let that = this;
         let obj: any = {}
         if (that.radom_input.value == 0) {
-            that.show_layer({
-                'msg': '随机注数不能小于1',
-                'til': '操作提示'
-            }, '')
+            that.POPNOTE({msg:'随机注数不能小于1'});
             return
         }
         console.log(arr);
@@ -1605,32 +1641,54 @@ export class K3officialComponent implements OnInit {
         }, 200)
     }
     // 弹层1
-    parseDom(arg) {　　
-        var objE = document.createElement("div");　　
-        objE.innerHTML = arg;　　
-        return objE.childNodes;
-    };
-    show_layer(param, nextrun) {
-        let msg = param.msg;
-        let til = param.til;
-        let self = this;
-        let str = '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">' + til + '</div><div class="close">x</div></div><div class="content_box">' + msg + '</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';
-        let dom = $(this.parseDom(str))
-        dom.find('.close').on('click', function () {
-            self.hid_layer();
-        })
-        dom.find('.confirm_box').on('click', function () {
-            nextrun();
-        })
-        $('#layer').append(dom);
-        setTimeout(function () {
-            dom.addClass('tobig')
-        }, 10)
-        window.onresize = function () {
-            console.log('x')
-        }
+    // parseDom(arg) {　　
+    //     var objE = document.createElement("div");　　
+    //     objE.innerHTML = arg;　　
+    //     return objE.childNodes;
+    // };
+    // show_layer(param, nextrun) {
+    //     let msg = param.msg;
+    //     let til = param.til;
+    //     let self = this;
+    //     let str = '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">' + til + '</div><div class="close">x</div></div><div class="content_box">' + msg + '</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';
+    //     let dom = $(this.parseDom(str))
+    //     dom.find('.close').on('click', function () {
+    //         self.hid_layer();
+    //     })
+    //     dom.find('.confirm_box').on('click', function () {
+    //         nextrun();
+    //     })
+    //     $('#layer').append(dom);
+    //     setTimeout(function () {
+    //         dom.addClass('tobig')
+    //     }, 10)
+    //     window.onresize = function () {
+    //         console.log('x')
+    //     }
+    // }
+    // hid_layer() {
+    //     document.getElementById("layer").innerHTML = '';
+    // }    
+    // 绑定给弹窗组件的事件；
+    NOTARIZE(){
+        return
     }
-    hid_layer() {
-        document.getElementById("layer").innerHTML = '';
+    // 弹窗关闭事件 可以自定义命名
+    closePopouot(e){
+        let p = this.popoutInfo;
+        p.show = false;
+        p.event = false;
+    }
+
+    // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
+    POPNOTE(data,fn=null){
+        let o = {
+            title:'操作提示',   //title不传值默认为 ‘操作提示’
+            msg:' ',
+            event: fn === null?false:true,
+            show: true,
+        }
+        this.NOTARIZE = (typeof fn === 'function')?fn:this.NOTARIZE;
+        this.popoutInfo = Object.assign({},o,data);
     }
 }

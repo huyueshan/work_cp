@@ -12,10 +12,22 @@ export class WithdrawdepositComponent implements OnInit {
   public addbanck = false;
   public status = 0;
   public currentab = -1;
-  public shade = {
-    w: 0,
-    h: 0
-  };
+  public popup = {
+    // 遮罩层
+    shade: {
+        w: 0,
+        h: 0
+    },
+    // 提示信息框
+    note: {
+        drag: false,
+        dragleft: 0,
+        dragtop: 0,
+        left: 0,
+        top: 0,
+        scale: false,
+    },
+};
   public querydata = {
     starttime: "",
     endtime: "",
@@ -105,12 +117,52 @@ export class WithdrawdepositComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-  addbank() {
-    this.shade.w = screen.width;
-    this.shade.h = screen.height;
+  addbank(){
+    let p = this.popup;
+    p.shade.w = screen.width;
+    p.shade.h = screen.height;
+    this.setfixed(p.note, 500, 520);
     this.addbanck = true;
+    p.note.scale = false;
+    setTimeout(() => {
+        p.note.scale = true;
+    }, 10);
   }
-  deladd() {
+  deladd(){
     this.addbanck = false;
+    this.popup.note.scale = false;
   }
+  addsub(){
+      alert('提交数据！');
+      this.deladd();
+  }
+
+
+      // 设置显示位置
+      setfixed(t, w, h) {
+        let WIDTH = document.body.clientWidth;
+        let HEIGHT = document.body.clientHeight;
+        t.left = (WIDTH - w) / 2 < 0 ? 0 : (WIDTH - w) / 2;
+        t.top = (HEIGHT - h) / 2 < 10 ? 10 : (HEIGHT - h) / 2;
+    }
+    // 弹窗拖动事件
+    popmousedown(e) {
+        let t = this.popup.note;
+        let ev = e || event;
+        t.drag = true;
+        t.dragleft = ev.clientX - t.left;
+        t.dragtop = ev.clientY - t.top;
+    }
+    popmouseup(e) {
+        let t = this.popup.note;
+        t.drag = false;
+    }
+    popmousmove(e) {
+        let t = this.popup.note;
+        if (t.drag) {
+            let ev = e || event;
+            t.left = ev.clientX - t.dragleft;
+            t.top = ev.clientY - t.dragtop;
+        }
+    }
 }

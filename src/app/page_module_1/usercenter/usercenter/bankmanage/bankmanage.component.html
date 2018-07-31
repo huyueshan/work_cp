@@ -49,8 +49,14 @@
         <span>{{now_lang.User_center_c.Add_bankcard}}</span>
       </div>
     </div>
-    <div id="addcontent" *ngIf="addbanck" class="flex-c">
-      <div class="flex-r addgead">
+
+    <!-- 添加银行卡弹窗 -->
+    <div id="addcontent" *ngIf="addbanck" class="flex-c" [ngClass]="{scale: popup.note.scale}" [style.left.px]= "popup.note.left" [style.top.px]= "popup.note.top">
+      <div class="flex-r addgead"
+        (mousedown)="popmousedown($event)"
+        (mouseleave)="popmouseup($event)"
+        (mouseup)="popmouseup($event)"
+        (mousemove)="popmousmove($event)">
         <span>{{now_lang.User_center_c.Add_bankcard}}</span>
         <i (click)="deladd()"> &times; </i>
       </div>
@@ -87,13 +93,13 @@
           <div class="flex-r check">
             <input type="checkbox" id="check" name="check" [(ngModel)]="formdata.checkvalue" />
             <p>{{now_lang.User_center_c.I_read_and_agree}}
-              <span class="color_y">《{{Tips8}}》</span>
+              <span class="color_y">《{{now_lang.User_center_c.Tips8}}》</span>
             </p>
           </div>
         </div>
         <div class="flex-r formitem btngroup">
-          <span>{{now_lang.User_center_c.Comfirm}}</span> 
-          <span>{{now_lang.User_center_c.Cancel}}</span>
+          <span (click)="addsub()">{{now_lang.User_center_c.Comfirm}}</span> 
+          <span (click)="deladd()">{{now_lang.User_center_c.Cancel}}</span>
         </div>
 
       </form>
@@ -101,4 +107,4 @@
     </div>
   </div>
 </div>
-<div class="shade" [style.width.px]="shade.w" [style.height.px]="shade.h" *ngIf="addbanck"></div>
+<div class="shade" [style.width.px]="popup.shade.w" [style.height.px]="popup.shade.h" *ngIf="addbanck"></div>

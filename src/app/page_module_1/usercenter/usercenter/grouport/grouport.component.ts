@@ -437,19 +437,11 @@ export class GrouportComponent implements OnInit {
 
   ];
   public pagination = {
-    pagenumber: 10, // 每页显示数量
-    page: 1, //当前页
-    totalPage: 5, //最大页数
-    gopage: false, //是否可以选页跳转
-    segmentSize: 3, //最大显示页码标签数量
-    startFrom: 1 //开始页从1计算
-  };
-  public hl = {
-    firstpage: this.now_lang.User_center_c.Index,
-    prevpage: this.now_lang.User_center_c.Prepage,
-    nextpage: this.now_lang.User_center_c.Nextpage,
-    lastpage: this.now_lang.User_center_c.Tail_page,
-    gopage: this.now_lang.User_center_c.Jump
+    totalNum:20,  //总数据条数 
+    pageSize: 5, // 每页显示数量
+    curPage: 1, //当前页
+    segmentSize: 5, //最大显示页码标签数量
+    totalPage:4,// 最大页码数。
   };
 
   constructor() {}
@@ -492,7 +484,9 @@ export class GrouportComponent implements OnInit {
     }
     return n
   }
-  onPageChanged(e) {
-    console.log(e.data.page);
-  }
+  // 分页组件点击页码事件，参数i为点击页码数
+  getPageData(i) {
+    //  此处请求数据
+    console.log(i);
+}
 }

@@ -17,7 +17,7 @@ import { Utils } from '../../../../factory/utils';
 
 export class DPCofficialComponent implements OnInit {
 
-    public countabo :any = {count:5,plan:10}
+    public countabo :any = {count:5,plan:5}
 	//模式
 	public models:string[]=['元','角','分','厘'];
 	public model:string='0';
@@ -36,7 +36,13 @@ export class DPCofficialComponent implements OnInit {
 		4:{0:0,2:2,4:4,6:6,8:8},
 		5:{}
 	};
-
+    // 传给弹窗组件数据
+    public  popoutInfo={
+        title:'string',
+        msg:'string',
+        event: false,
+        show: false,
+    }
 
 	constructor(private route: ActivatedRoute,private httpClient:HttpClient,private router: Router) { }
 	loadpage=false;
@@ -548,7 +554,6 @@ export class DPCofficialComponent implements OnInit {
 		}
 	}
 	check_lot(item){
-		console.log(item.checkon)
 		let that = this;
 		if (item.checkon) {
 			if (item.multiple == 0) {
@@ -574,7 +579,6 @@ export class DPCofficialComponent implements OnInit {
 				chase_amount = that.lotdata_now.length;
 			}
 			for (var i = 0; i <= chase_amount-1; i++) {
-				console.log((i)%gap_number)
 				that.lotdata_now[i].checkon = true;
 				that.lotdata_now[i].multiple = multiple;
 				that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price;
@@ -1177,7 +1181,6 @@ export class DPCofficialComponent implements OnInit {
                 this.tabmenu(this.menu_1[6]);
             }
             this.delball('clear','');
-            // console.log(this.routid);
         });
         // 注册拖拽
         this.drag_tag();
@@ -1382,7 +1385,6 @@ export class DPCofficialComponent implements OnInit {
 			
 			// 配置规则提示
             that.now_tips_menu = that.status.menu_1+'_'+that.status.menu_2;
-            console.log(that.now_tips_menu);
 			that.now_description = that.lot_rules[that.now_tips_menu]['description'];
 			if(that.status.menu_1>8){
 				that.hothidden = true;
@@ -1404,7 +1406,6 @@ export class DPCofficialComponent implements OnInit {
 		that.currtabname = data.name
 		that.tabcurr = data
 		that.status.menu_2 = data.index
-        console.log(data.arr);
 		if(data.isupload){
 			that.up_ball = 2
 			this.balllist(data.arr)
@@ -1529,15 +1530,6 @@ export class DPCofficialComponent implements OnInit {
 			self.totalinfo = {count:0,sum:0,amount:0} 
 		}
 	}
-	// onesquare(index,clickindex,val,that){
-	// 	console.log(val)
-	// 	if(this.now_matchtab[index][val]){
-	// 		this.now_matchtab[index][val]=''
-	// 	}else{
-	// 		this.now_matchtab[index][val] = val
-	// 	}
-    // }
-    // ==========================================1111111===========================================================================
 
     //选中的位置
     checkabo(){
@@ -1633,7 +1625,7 @@ export class DPCofficialComponent implements OnInit {
 	// 处理过滤结果
 	filteresult(id,type){
 		if($('#'+id).val() == ''){
-			this.show_layer({'msg':'您还没有输入号码','til':'操作提示'},'')
+            this.POPNOTE({msg:'您还没有输入号码'});
 			return
 		}
 		let self=this,rep=0,nob=0,ball ='',con = '',val='';
@@ -1657,16 +1649,16 @@ export class DPCofficialComponent implements OnInit {
 		if(type == 'del'){
 			$('#'+id).val(val)
 			if(rep==0 && nob==0){
-				self.show_layer({'msg':'没有重复号码','til':'操作提示'},'')
+                self.POPNOTE({msg:'没有重复号码'});
 			}else{
 				con = '已经为您过滤了'+rep+'个重复号，'+nob+'个无效号，过滤内容为：'+ball
-				self.show_layer({'msg':con,'til':'操作提示'},'')
+                self.POPNOTE({msg:con});
 			}
 		}else{
 			if(rep!=0 || nob!=0){
 				$('#'+id).val(null)
 				con = '将要自动过滤'+rep+'个重复号，'+nob+'个无效号，过滤内容为：'+ball
-				self.show_layer({'msg':con,'til':'操作提示'},'')
+                self.POPNOTE({msg:con});
 			}else{
 				$('#'+id).val(null)
 			}
@@ -1747,7 +1739,7 @@ export class DPCofficialComponent implements OnInit {
 	addball(arrob,type){
 		let that = this
 		if(!type){
-			that.show_layer({'msg':'号码选择不完整，请重新选择','til':'操作提示'},'')
+            this.POPNOTE({msg:'号码选择不完整，请重新选择'});
 			return
 		}
 		let arr = []
@@ -1835,7 +1827,7 @@ export class DPCofficialComponent implements OnInit {
 		let that = this
 		let obj:any = {}
 		if(that.radom_input.value==0){
-			that.show_layer({'msg':'随机注数不能小于1','til':'操作提示'},'')
+            this.POPNOTE({msg:'随机注数不能小于1'});
 			return
 		}
 		arr.map(function(res){
@@ -1965,32 +1957,55 @@ export class DPCofficialComponent implements OnInit {
 		}, 200)
 	}
 	// 弹层1
-	parseDom(arg) {
-	　　 var objE = document.createElement("div");
-	　　 objE.innerHTML = arg;
-	　　 return objE.childNodes;
-	};
-	show_layer(param,nextrun){
-		let msg = param.msg;
-		let til = param.til;
-		let self = this;
-		let str = '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">'+til+'</div><div class="close">x</div></div><div class="content_box">'+msg+'</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';	
-		let dom = $(this.parseDom(str))
-		dom.find('.close').on('click',function(){
-			self.hid_layer();
-		}) 
-		dom.find('.confirm_box').on('click',function(){
-			nextrun();
-		})
-		$('#layer').append(dom);
-		setTimeout(function(){
-			dom.addClass('tobig')
-		}, 10)
-		window.onresize = function () {
-			console.log('x')
-		}
-	}
-	hid_layer(){
-		document.getElementById("layer").innerHTML = '';
-	}
+	// parseDom(arg) {
+	// 　　 var objE = document.createElement("div");
+	// 　　 objE.innerHTML = arg;
+	// 　　 return objE.childNodes;
+	// };
+	// show_layer(param,nextrun){
+	// 	let msg = param.msg;
+	// 	let til = param.til;
+	// 	let self = this;
+	// 	let str = '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">'+til+'</div><div class="close">x</div></div><div class="content_box">'+msg+'</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';	
+	// 	let dom = $(this.parseDom(str))
+	// 	dom.find('.close').on('click',function(){
+	// 		self.hid_layer();
+	// 	}) 
+	// 	dom.find('.confirm_box').on('click',function(){
+	// 		nextrun();
+	// 	})
+	// 	$('#layer').append(dom);
+	// 	setTimeout(function(){
+	// 		dom.addClass('tobig')
+	// 	}, 10)
+	// 	window.onresize = function () {
+	// 		console.log('x')
+	// 	}
+	// }
+	// hid_layer(){
+	// 	document.getElementById("layer").innerHTML = '';
+    // }
+    
+    // 绑定给弹窗组件的事件；
+    NOTARIZE(){
+        return
+    }
+    // 弹窗关闭事件 可以自定义命名
+    closePopouot(e){
+        let p = this.popoutInfo;
+        p.show = false;
+        p.event = false;
+    }
+
+    // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
+    POPNOTE(data,fn=null){
+        let o = {
+            title:'操作提示',   //title不传值默认为 ‘操作提示’
+            msg:' ',
+            event: fn === null?false:true,
+            show: true,
+        }
+        this.NOTARIZE = (typeof fn === 'function')?fn:this.NOTARIZE;
+        this.popoutInfo = Object.assign({},o,data);
+    }
 }

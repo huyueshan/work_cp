@@ -537,7 +537,7 @@ const Matchrule = {
 		return obj
 	},
 	Rule_14(nowarr,len){
-		let allarr = [],totalbet = 1,ballarr = [],narr = [],reparr = [];
+		let allarr = [],totalbet = 1,ballarr = [],titleindex = [];
 		let obj :any = {}
 		ballarr = Matchrule.chooseball(nowarr,len)
 		let Isaddball = false;
@@ -548,15 +548,13 @@ const Matchrule = {
                 if(ballarr[i].length<1){
                     Isaddball =false;
                 }
+                allarr.push(ballarr[i])
             }
-            // if(Isaddball){
-            //     narr = algorithm.doExchange(allarr)
-            // }
-            // console.log(narr);
         }else{
             for (let i = 0; i < ballarr.length; i++) {
                 ballarr[i].map(function(res){  
                     allarr.push([res]);
+                    titleindex.push(i);
                 });
             }
             if(allarr.length>=len.datarule[1]){
@@ -564,18 +562,22 @@ const Matchrule = {
             }
             totalbet = allarr.length
         }
-		obj = {'status':Isaddball,'allarr':allarr,'totalbet':totalbet,'ball':[],}
-		for(var i=0;i<allarr.length;i++){
-			let res = ''
-			for(var j=0;j<allarr[i].length;j++){
-				if(len.addzero){
-					let a = allarr[i][j]>9?allarr[i][j]:'0'+allarr[i][j]
-					res = res!=''?res+'|'+a:res+a
-				}else{
-					res = res!=''?res+'|'+allarr[i][j]:res+allarr[i][j]
-				}
-			}
-			obj.ball.push(res)
+        obj = {'status':Isaddball,'allarr':allarr,'totalbet':totalbet,'ball':[],'titleindex':titleindex}
+        if(len.datarule[1]>1){
+            obj.ball.length = 1;
+        }else{
+            for(var i=0;i<allarr.length;i++){
+                let res = ''
+                for(var j=0;j<allarr[i].length;j++){
+                    if(len.addzero){
+                        let a = allarr[i][j]>9?allarr[i][j]:'0'+allarr[i][j]
+                        res = res!=''?res+'|'+a:res+a
+                    }else{
+                        res = res!=''?res+'|'+allarr[i][j]:res+allarr[i][j]
+                    }
+                }
+                obj.ball.push(res)
+            }
         }
 		return obj
 	},

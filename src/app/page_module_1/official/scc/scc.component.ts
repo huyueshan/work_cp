@@ -43,6 +43,14 @@ import {
 
 export class SCCofficialComponent implements OnInit {
 
+    // 传给弹窗组件数据
+    public  popoutInfo={
+        title:'string',
+        msg:'string',
+        event: false,
+        show: false,
+    }
+
     constructor(private route: ActivatedRoute, private httpClient: HttpClient, private router: Router) {}
     loadpage = false;
     public resultdata = [{
@@ -846,6 +854,12 @@ export class SCCofficialComponent implements OnInit {
     linkrouter(t) {
         this.router.navigate([t]);
     }
+    
+    routlink(){
+        let str ;
+        this.route.params.subscribe(data=>str=data.id);
+        this.router.navigate(['/lottery/creditpk10', str]);
+      }
     //拖拽变数
     // 滑块左侧递减事件
     rangevaluelessen() {
@@ -1169,10 +1183,7 @@ export class SCCofficialComponent implements OnInit {
     // 处理过滤结果
     filteresult(id, type) {
         if ($('#' + id).val() == '') {
-            this.show_layer({
-                'msg': '您还没有输入号码',
-                'til': '操作提示'
-            }, '')
+            this.POPNOTE({msg:'您还没有输入号码'});
             return
         }
         let self = this,
@@ -1206,25 +1217,16 @@ export class SCCofficialComponent implements OnInit {
         if (type == 'del') {
             $('#' + id).val(val)
             if (rep == 0 && nob == 0) {
-                self.show_layer({
-                    'msg': '没有重复号码',
-                    'til': '操作提示'
-                }, '')
+                self.POPNOTE({msg:'没有重复号码'});
             } else {
                 con = '已经为您过滤了' + rep + '个重复号，' + nob + '个无效号，过滤内容为：' + ball
-                self.show_layer({
-                    'msg': con,
-                    'til': '操作提示'
-                }, '')
+                self.POPNOTE({msg:con});
             }
         } else {
             if (rep != 0 || nob != 0) {
                 $('#' + id).val(null)
                 con = '将要自动过滤' + rep + '个重复号，' + nob + '个无效号，过滤内容为：' + ball
-                self.show_layer({
-                    'msg': con,
-                    'til': '操作提示'
-                }, '')
+                self.POPNOTE({msg:con});
             } else {
                 $('#' + id).val(null)
             }
@@ -1344,10 +1346,7 @@ export class SCCofficialComponent implements OnInit {
     addball(arrob, type) {
         let that = this
         if (!type) {
-            that.show_layer({
-                'msg': '号码选择不完整，请重新选择',
-                'til': '操作提示'
-            }, '')
+            that.POPNOTE({msg:'号码选择不完整，请重新选择'});
             return
         }
         let arr = []
@@ -1443,10 +1442,7 @@ export class SCCofficialComponent implements OnInit {
         let that = this
         let obj: any = {}
         if (that.radom_input.value == 0) {
-            that.show_layer({
-                'msg': '随机注数不能小于1',
-                'til': '操作提示'
-            }, '')
+            that.POPNOTE({msg:'随机注数不能小于1'});
             return
         }
         arr.map(function (res) {
@@ -1554,36 +1550,58 @@ export class SCCofficialComponent implements OnInit {
         }, 200)
     }
     // 弹层1
-    parseDom(arg) {　　
-        var objE = document.createElement("div");　　
-        objE.innerHTML = arg;　　
-        return objE.childNodes;
-    };
-    show_layer(param, nextrun) {
-        let msg = param.msg;
-        let til = param.til;
-        let self = this;
-        let str = '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">' + til + '</div><div class="close">x</div></div><div class="content_box">' + msg + '</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';
-        let dom = $(this.parseDom(str))
-        dom.find('.close').on('click', function () {
-            self.hid_layer();
-        })
-        dom.find('.confirm_box').on('click', function () {
-            if (nextrun == '' || !nextrun) {
-                self.hid_layer();
-            } else {
-                nextrun();
-            }
-        })
-        $('#layer').append(dom);
-        setTimeout(function () {
-            dom.addClass('tobig')
-        }, 10)
-        window.onresize = function () {
-            console.log('x')
-        }
+    // parseDom(arg) {　　
+    //     var objE = document.createElement("div");　　
+    //     objE.innerHTML = arg;　　
+    //     return objE.childNodes;
+    // };
+    // show_layer(param, nextrun) {
+    //     let msg = param.msg;
+    //     let til = param.til;
+    //     let self = this;
+    //     let str = '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">' + til + '</div><div class="close">x</div></div><div class="content_box">' + msg + '</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';
+    //     let dom = $(this.parseDom(str))
+    //     dom.find('.close').on('click', function () {
+    //         self.hid_layer();
+    //     })
+    //     dom.find('.confirm_box').on('click', function () {
+    //         if (nextrun == '' || !nextrun) {
+    //             self.hid_layer();
+    //         } else {
+    //             nextrun();
+    //         }
+    //     })
+    //     $('#layer').append(dom);
+    //     setTimeout(function () {
+    //         dom.addClass('tobig')
+    //     }, 10)
+    //     window.onresize = function () {
+    //         console.log('x')
+    //     }
+    // }
+    // hid_layer() {
+    //     document.getElementById("layer").innerHTML = '';
+    // }    
+    // 绑定给弹窗组件的事件；
+    NOTARIZE(){
+        return
     }
-    hid_layer() {
-        document.getElementById("layer").innerHTML = '';
+    // 弹窗关闭事件 可以自定义命名
+    closePopouot(e){
+        let p = this.popoutInfo;
+        p.show = false;
+        p.event = false;
+    }
+
+    // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
+    POPNOTE(data,fn=null){
+        let o = {
+            title:'操作提示',   //title不传值默认为 ‘操作提示’
+            msg:' ',
+            event: fn === null?false:true,
+            show: true,
+        }
+        this.NOTARIZE = (typeof fn === 'function')?fn:this.NOTARIZE;
+        this.popoutInfo = Object.assign({},o,data);
     }
 }

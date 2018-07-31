@@ -78,9 +78,7 @@
       <p>{{now_lang.User_center_c.Remarks}}：{{now_lang.User_center_c.Tips1}}</p>
     </div>
     
-    <div class="page" shark-pager [currentPage]="pagination.page" [totalPage]="pagination.totalPage" [gopage]="pagination.gopage"
-      [hl]="hl" [segmentSize]="pagination.segmentSize" [startFrom]="pagination.startFrom" (onPageChanged)="onPageChanged($event);">
-    </div>
+    <app-page [pageParams]="pagination" (changeCurPage)="getPageData($event)"></app-page>
 
   </div>
 </div>

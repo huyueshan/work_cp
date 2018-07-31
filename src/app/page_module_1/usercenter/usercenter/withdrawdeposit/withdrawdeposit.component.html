@@ -107,14 +107,18 @@
     </div>
   </div>
   <!-- 弹窗添加银行卡 -->
-  <div id="addcontent" *ngIf="addbanck" class="flex-c">
-    <div class="flex-r addgead">
+  <div id="addcontent" *ngIf="addbanck" class="flex-c" [ngClass]="{scale: popup.note.scale}" [style.left.px]= "popup.note.left" [style.top.px]= "popup.note.top">
+    <div class="flex-r addgead"
+      (mousedown)="popmousedown($event)"
+      (mouseleave)="popmouseup($event)"
+      (mouseup)="popmouseup($event)"
+      (mousemove)="popmousmove($event)">
       <span>{{now_lang.User_center_c.Add_bankcard}}</span>
       <i (click)="deladd()"> &times; </i>
     </div>
     <form class="flex-c addform">
       <div class="flex-r formitem">
-        <label for="name">{{now_lang.User_center_c.Banker_owner}}：</label>
+        <label for="name">{{now_lang.User_center_c.Banker_owner}}</label>
         <input type="text" id="name" name="name" placeholder="输入持卡人姓名" [(ngModel)]="formdata.username" />
       </div>
       <div class="flex-r formitem">
@@ -126,38 +130,39 @@
         <input type="text" id="bankbranch" name="bankbranch" placeholder="输入银行支行" [(ngModel)]="formdata.bankbranch" />
       </div>
       <div class="flex-r formitem">
-        <label for="name">{{now_lang.User_center_c.Bankcard_number}}：</label>
+        <label for="name">{{now_lang.User_center_c.Branch_bank}}：</label>
         <input type="text" id="cardnmb" name="cardnmb" placeholder="输入银行卡号" [(ngModel)]="formdata.cardnmb" />
       </div>
       <div class="flex-r formitem">
-          <label for="name">{{now_lang.User_center_c.Bankcard_phone}}：</label>
-          <input type="text" id="phone" name="phone" placeholder="输入办卡时预留手机号码" [(ngModel)]="formdata.phone" />
+        <label for="name">{{now_lang.User_center_c.Bankcard_phone}}：</label>
+        <input type="text" id="phone" name="phone" placeholder="输入办卡时预留手机号码" [(ngModel)]="formdata.phone" />
+      </div>
+      <div class="flex-r formitem">
+        <label for="name">{{now_lang.User_center_c.Message_sms}}：</label>
+        <span class="flex-r note">
+          <input type="text" id="note" name="note" placeholder="" [(ngModel)]="formdata.note" />
+          <span class="getnote">{{now_lang.User_center_c.Get_sms}}</span>
+        </span>
+      </div>
+      <div class="flex-r formitem ">
+        <label for="check"></label>
+        <div class="flex-r check">
+          <input type="checkbox" id="check" name="check" [(ngModel)]="formdata.checkvalue" />
+          <p>{{now_lang.User_center_c.I_read_and_agree}}
+            <span class="color_y">《{{now_lang.User_center_c.Tips8}}》</span>
+          </p>
         </div>
-        <div class="flex-r formitem">
-          <label for="name">{{now_lang.User_center_c.Message_sms}}：</label>
-          <span class="flex-r note">
-            <input type="text" id="note" name="note" placeholder="" [(ngModel)]="formdata.note" />
-            <span class="getnote">{{now_lang.User_center_c.Get_sms}}</span>
-          </span>
-        </div>
-        <div class="flex-r formitem ">
-          <label for="check"></label>
-          <div class="flex-r check">
-            <input type="checkbox" id="check" name="check" [(ngModel)]="formdata.checkvalue" />
-            <p>{{now_lang.User_center_c.I_read_and_agree}}
-              <span class="color_y">《{{now_lang.User_center_c.Tips8}}》</span>
-            </p>
-          </div>
-        </div>
-        <div class="flex-r formitem btngroup">
-          <span>{{now_lang.User_center_c.Comfirm}}</span> 
-          <span>{{now_lang.User_center_c.Cancel}}</span>
-        </div>
+      </div>
+      <div class="flex-r formitem btngroup">
+        <span (click)="addsub()">{{now_lang.User_center_c.Comfirm}}</span> 
+        <span (click)="deladd()">{{now_lang.User_center_c.Cancel}}</span>
+      </div>
 
-      </form>
+    </form>
+
   </div>
   <!-- 遮罩层 -->
-  <div class="shade" [style.width.px]="shade.w" [style.height.px]="shade.h" *ngIf="addbanck"></div>
+  <div class="shade" [style.width.px]="popup.shade.w" [style.height.px]="popup.shade.h" *ngIf="addbanck"></div>
 </div>
 <!-- 查看流水内容 -->
 <div class="flex-c flowbox" *ngIf="status == 1">

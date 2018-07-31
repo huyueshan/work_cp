@@ -258,7 +258,7 @@
                             <li class="active">
                                 <a>{{now_lang.Ball_tab.Official}}</a>
                             </li>
-                            <li (click)="linkrouter()">
+                            <li (click)="routlink()">
                                 <a>{{now_lang.Ball_tab.Credit}}</a>
                             </li>
                         </ul>
@@ -546,3 +546,4 @@
         </div>
         <div>
         </div>
+        <app-pupout [data]='popoutInfo' (close)="closePopouot($event)" (notarize)="NOTARIZE()"></app-pupout>

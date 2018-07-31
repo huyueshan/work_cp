@@ -177,8 +177,9 @@ table td.alignl {
 }
 
 // 添加银行卡弹窗样式
+
 #addcontent {
-    position: absolute;
+    position: fixed;
     top: -96px;
     left: 180px;
     width: 500px;
@@ -186,122 +187,125 @@ table td.alignl {
     font-size: 14px;
     color: #333;
     background-color: white;
-    box-shadow: 0 0 6px 2px #fe8f00;
-    z-index: 99;
-}
-
-#addcontent,
-.addform {
+    border: 2px solid #fe8f00;
+    border-radius: 6px;
+    box-shadow: 0 0 0px 5px rgba(50, 50, 50, .6);
     justify-content: flex-start;
     align-items: flex-start;
+    transform: scale(.6);
+    transition: transform .1s linear;
+    z-index: 99;
+    .addgead {
+        width: 100%;
+        height: 50px;
+        line-height: 48px;
+        text-align: center;
+        padding: 20px;
+        color: white;
+        border-bottom: 1px solid #ccc;
+        background: linear-gradient(to top, #c76401, #fba915);
+        span {
+            width: 450px;
+            font-size: 18px;
+            text-align: center;
+        }
+        i {
+            height: 50px;
+            font-size: 36px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+    }
+    .addform {
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        padding: 10px 0;
+        .formitem {
+            height: 50px;
+            justify-content: flex-start;
+            label {
+                width: 160px;
+                text-align: right;
+                padding-right: 5px;
+            }
+            input {
+                width: 240px;
+                height: 32px;
+                line-height: 30px;
+                padding-left: 8px;
+            }
+            input[name="check"] {
+                width: 16px;
+                height: 16px;
+            }
+            input#note {
+                width: 130px;
+            }
+            .note{
+                width: 240px;
+            }
+            .check {
+                width: 240px;
+                font-size: 12px;
+                justify-content: flex-start;
+                p {
+                    padding-left: 5px;
+                }
+            }
+            .getnote{
+                width: 90px;
+                height: 30px;
+                line-height: 28px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                text-align: center;
+                cursor: pointer;
+            }
+            .getnote:hover {
+                color: white;
+                background-color: #fe8f00;
+            }
+        }
+        .btngroup {
+            width: 100%;
+            padding-top: 30px;
+            justify-content: center;
+            span {
+                width: 90px;
+                height: 30px;
+                line-height: 28px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                text-align: center;
+                cursor: pointer;
+            }
+            span:hover {
+                color: white;
+                background-color: #fe8f00;
+            }
+            span:last-child {
+                margin-left: 10px;
+            }
+        }
+    }
 }
-
-.addform {
-    width: 100%;
-    padding: 10px 0;
-}
-
-.addgead {
-    width: 100%;
-    height: 50px;
-    line-height: 48px;
-    padding: 20px;
-    border-bottom: 1px solid #ccc;
-    text-align: center;
-}
-
-.addgead span {
-    width: 450px;
-    text-align: center;
-}
-
-.addgead i {
-    height: 50px;
-    font-size: 36px;
-    font-weight: bold;
-    color: #999;
-    cursor: pointer;
-}
-
-.formitem {
-    height: 50px;
-    justify-content: flex-start;
-}
-
-.formitem label {
-    width: 160px;
-    text-align: right;
-    padding-right: 5px;
-}
-
-.formitem input {
-    width: 240px;
-    height: 32px;
-    line-height: 30px;
-    padding-left: 8px;
-}
-
-.formitem input[name="check"] {
-    width: 16px;
-    height: 16px;
-}
-
-.formitem input#note {
-    width: 130px;
-}
-
-.note,
-.check {
-    width: 240px;
-}
-
-.check {
-    font-size: 12px;
-    justify-content: flex-start;
-}
-
-.check p {
-    padding-left: 5px;
-}
-
-.getnote,
-.btngroup span {
-    width: 90px;
-    height: 30px;
-    line-height: 28px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    text-align: center;
-    cursor: pointer;
-}
-
-.getnote:hover,
-.btngroup span:hover {
-    color: white;
-    background-color: #fe8f00;
-}
-
-.btngroup span:last-child {
-    margin-left: 8px;
-}
-
-.btngroup {
-    width: 100%;
-    padding-top: 30px;
-    justify-content: center;
-}
-
-.color_y {
-    color: #fe8f00;
+#addcontent.scale{
+    transform: scale(1);
 }
 
 .shade {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(154, 154, 154, 0.5);
     z-index: 19;
 }
+.color_y {
+    color: #fe8f00;
+}
+
 
 // ======查看流水样式=========
 .flowbox {

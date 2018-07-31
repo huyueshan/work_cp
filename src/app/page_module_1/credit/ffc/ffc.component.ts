@@ -632,17 +632,6 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
             scale: false,
             data: []
         },
-        // 提示信息框
-        note: {
-            show: false,
-            drag: false,
-            dragleft: 0,
-            dragtop: 0,
-            messsage: "",
-            left: 200,
-            top: 50,
-            scale: false,
-        },
         // 提交框
         sub: {
             show: false,
@@ -655,7 +644,6 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
             data: []
         }
     };
-    public notetip = [];
     public subdata = [];
     public submoney = 0;
     public subob = {
@@ -667,6 +655,13 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
         point: "-",
         money: "-"
     };
+    // 传给弹窗组件数据
+    public  popoutInfo={
+        title:'string',
+        msg:'string',
+        event: false,
+        show: false,
+    }
     constructor(private el: ElementRef, private router: Router, private route: ActivatedRoute) {}
 
     ngOnInit() {
@@ -747,10 +742,10 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     setboxvalid() {
         this.boxvalid = !this.boxvalid;
         let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
-        this.NOTEtip(s);
-        setTimeout(() => {
-            this.popup.note.show = false;
-        }, 2000);
+        this.POPNOTE({msg:s});
+        // setTimeout(() => {
+        //     this.popup.note.show = false;
+        // }, 2000);
     }
     // 滑块左侧递减事件
     rangevaluelessen() {
@@ -804,7 +799,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
         }
         Base.Store.set("selmoeny", d, true);
         this.selmoeny = d;
-        this.NOTEtip("保存成功！");
+        this.POPNOTE({msg:'保存成功！'});
         setTimeout(() => {
             this.close();
         }, 2000);
@@ -842,24 +837,24 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
         p.setnumb.show = false;
         p.shade.show = false;
         p.sub.show = false;
-        p.note.show = false;
+        // p.note.show = false;
     }
     // 提示信息窗口触发事件 index为提示信息notetip的index或者直接传字符串
-    NOTEtip(i) {
-        let p = this.popup;
-        if (typeof (i) === "string") {
-            p.note.messsage = i;
-        } else {
-            this.notetip[i] ? p.note.messsage = this.notetip[i] : i;
-        }
-        this.setfixed(p.note, 300, 160);
-        p.note.scale = false;
-        p.note.show = true;
-        p.shade.show = true;
-        setTimeout(() => {
-            p.note.scale = true;
-        }, 10);
-    }
+    // NOTEtip(i) {
+    //     let p = this.popup;
+    //     if (typeof (i) === "string") {
+    //         p.note.messsage = i;
+    //     } else {
+    //         this.notetip[i] ? p.note.messsage = this.notetip[i] : i;
+    //     }
+    //     this.setfixed(p.note, 300, 160);
+    //     p.note.scale = false;
+    //     p.note.show = true;
+    //     p.shade.show = true;
+    //     setTimeout(() => {
+    //         p.note.scale = true;
+    //     }, 10);
+    // }
     // 提交窗口触发事件 d为提交数据
     SUB(d) {
         let p = this.popup;
@@ -1099,7 +1094,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
 
         } else {
             // ===此处提示完成投注内容提示
-            this.NOTEtip("请完成投注内容！");
+            this.POPNOTE({msg:'请完成投注内容！'});
             return false;
         }
     }
@@ -1126,7 +1121,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     submit() {
         this.close();
         this.reset();
-        this.NOTEtip("提交订单成功！");
+        this.POPNOTE({msg:'提交订单成功！'});
         setTimeout(() => {
             this.close();
         }, 2000);
@@ -1163,5 +1158,27 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
             };
         }
         return data;
+    }    
+    // 绑定给弹窗组件的事件；
+    NOTARIZE(){
+        return
+    }
+    // 弹窗关闭事件 可以自定义命名
+    closePopouot(e){
+        let p = this.popoutInfo;
+        p.show = false;
+        p.event = false;
+    }
+
+    // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
+    POPNOTE(data,fn=null){
+        let o = {
+            title:'操作提示',   //title不传值默认为 ‘操作提示’
+            msg:' ',
+            event: fn === null?false:true,
+            show: true,
+        }
+        this.NOTARIZE = (typeof fn === 'function')?fn:this.NOTARIZE;
+        this.popoutInfo = Object.assign({},o,data);
     }
 }

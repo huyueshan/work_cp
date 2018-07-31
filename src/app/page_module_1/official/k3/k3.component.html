@@ -233,7 +233,7 @@
 						<span class="pointr"><i></i></span>
 						<ul class="totaltype">
 							<li class="active"><a>{{now_lang.Ball_tab.Official}}</a></li>
-							<li (click)="linkrouter()"><a>{{now_lang.Ball_tab.Credit}}</a></li>
+							<li (click)="routlink()"><a>{{now_lang.Ball_tab.Credit}}</a></li>
 						</ul>
 					</div>   
 					<div class="tabcon">
@@ -311,7 +311,7 @@
 						</div>
 					</ng-container>
 					</div>
-					<div *ngIf="up_ball==2">
+					<!-- <div *ngIf="up_ball==2">
 						<div class="check_ballplace">	
 							<div class="til">
 								{{now_lang.Ball_tab.Choose_place}}：
@@ -332,7 +332,7 @@
 								<textarea name="" id="" ></textarea>
 							</div>
 							<div class="btn_box">
-								<div class="rt_btn btnh_w120_h40" (click)="show_layer({'msg':'这就是我想说的话','til':'操作提示'})">删除重复号</div>
+								<div class="rt_btn btnh_w120_h40" (click)="POPNOTE({'msg':'这就是我想说的话'})">删除重复号</div>
 								<div class="rt_btn btnh_w120_h40">导入文件</div>
 								<div class="rt_btn btnh_w120_h40">清空</div>
 							</div>
@@ -340,7 +340,7 @@
 									{{now_lang.Ball_tab.Tips11}}  <span class="gray_font">{{now_lang.Ball_tab.Tips12}}</span> {{now_lang.Ball_tab.Tips13}}
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<div class="addchoose">
                         <div class="funleft">
                             <div class="topcz">
@@ -497,3 +497,4 @@
 		</div>
 	<div>
 </div>
+<app-pupout [data]='popoutInfo' (close)="closePopouot($event)" (notarize)="NOTARIZE()"></app-pupout>

@@ -9,15 +9,17 @@ import { Component, OnInit,Input, Output, EventEmitter, HostListener} from '@ang
 export class PupoutComponent implements OnInit{
   @Input() data: {
       title:string,
-      message:string,
+      msg:string,
       event:boolean,
       show: boolean,
-      scale: boolean,
   };
   @Output() private close=new EventEmitter();
+  @Output() private notarize=new EventEmitter();
   @HostListener('window:resize',['$event']) onResize(e){
     this.setfixed(this.popup.note, 300, 160);
   }
+
+  public scale = false;
 
   public popup = {
     // 遮罩层
@@ -41,11 +43,26 @@ export class PupoutComponent implements OnInit{
       p.shade.w = screen.width;
       p.shade.h = screen.height;
       this.setfixed(p.note, 300, 160);
+      this.scale = false;
+      setTimeout(() => {
+          this.scale = true;
+      }, 10);
+  }
+  ngOnChanges(){
+    let p = this.popup;
+    this.setfixed(p.note, 300, 160);
+    this.scale = false;
+    setTimeout(() => {
+        this.scale = true;
+    }, 10);
   }
 
       // 提示信息窗口关闭事件
-      click(b=false) {
-        this.close.emit(b);
+    click(e=false) {
+        if (e && this.data.event) {
+            this.notarize.emit();
+        }
+        this.close.emit();
     }
     // 设置显示位置
     setfixed(t, w, h) {

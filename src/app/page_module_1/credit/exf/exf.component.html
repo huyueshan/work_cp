@@ -277,23 +277,6 @@
                                 </div>
                             </div>
     
-                            <!-- 提示信息窗口 -->
-                            <div id="notebox" *ngIf="popup.note.show" [style.left.px]= "popup.note.left" [style.top.px]= "popup.note.top">
-                                <div class="flex-c content" [ngClass]="{scale:popup.note.scale}" >
-                                    <div class="flex-r top" (mousedown)="popmousedown($event,'note')" (mouseleave)="popmouseup($event,'note')" (mouseup)="popmouseup($event,'note')" (mousemove)="popmousmove($event,'note')">
-                                        <span>操作信息</span>
-                                        <i (click)="close()"> &times; </i>
-                                    </div>
-                                    <div class="flex-r note">
-                                        <p>{{popup.note.messsage}}</p>
-    
-                                    </div>
-    
-                                    <div class="flex-r foot">
-                                        <span (click)="close()">确定</span>
-                                    </div>
-                                </div>
-                            </div>
                             <!-- 提交窗口 -->
                             <div class="subpopup" *ngIf="popup.sub.show" [style.left.px]= "popup.sub.left" [style.top.px]= "popup.sub.top">
                                 <div class="flex-c content" [ngClass]="{scale:popup.sub.scale}">
@@ -358,3 +341,5 @@
                 </div>
             </div>
         </div>
+
+        <app-pupout [data]='popoutInfo' (close)="closePopouot($event)" (notarize)="NOTARIZE()"></app-pupout>

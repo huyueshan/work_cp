@@ -29,19 +29,11 @@ export class RegisgeneralizeComponent implements OnInit {
     h:0,
   };
   public pagination = {
-    pagenumber: 10, // 每页显示数量
-    page: 1, //当前页
-    totalPage: 5, //最大页数
-    gopage: false, //是否可以选页跳转
-    segmentSize: 3, //最大显示页码标签数量
-    startFrom: 1 //开始页从1计算
-  };
-  public hl = {
-    firstpage: "首页",
-    prevpage: "上一页",
-    nextpage: "下一页",
-    lastpage: "尾页",
-    gopage: "跳转"
+    totalNum:20,  //总数据条数 
+    pageSize: 5, // 每页显示数量
+    curPage: 1, //当前页
+    segmentSize: 5, //最大显示页码标签数量
+    totalPage:4,// 最大页码数。
   };
   
   public regisdatalist = [
@@ -85,9 +77,13 @@ export class RegisgeneralizeComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-  onPageChanged(e) {
-    console.log(e.data.page);
-  }
+
+    // 分页组件点击页码事件，参数i为点击页码数
+    getPageData(i) {
+        //  此处请求数据
+        console.log(i);
+    }
+
   show(data, t){
     this.viewdata = data;
     this.shade.w = document.body.clientWidth;

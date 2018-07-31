@@ -508,7 +508,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         point: 0,
         step: 0
     };
-    public typedata = [{
+    public typedata = [
+        {
             id: 1,
             name: "特码"
         },
@@ -1627,7 +1628,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         dantuo: 0,
         dantuodata: [],
         data1: this.setball(),
-        data2: [{
+        data2: [
+            {
                 name: "鼠",
                 value: "",
                 checked: false,
@@ -2084,7 +2086,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             }
         ]
     };
-    public data10_1 = [{
+    public data10_1 = [
+        {
             title: "合肖一肖",
             value1: "合肖一肖 - 中",
             value2: "合肖一肖 - 不中",
@@ -2629,17 +2632,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             scale: false,
             data: []
         },
-        // 提示信息框
-        note: {
-            show: false,
-            drag: false,
-            dragleft: 0,
-            dragtop: 0,
-            messsage: "",
-            left: 200,
-            top: 50,
-            scale: false
-        },
         // 提交框
         sub: {
             show: false,
@@ -2671,6 +2663,13 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         point: "-",
         money: "-"
     };
+    // 传给弹窗组件数据
+    public  popoutInfo={
+        title:'string',
+        msg:'string',
+        event: false,
+        show: false,
+    }
     constructor(
         private el: ElementRef,
         private router: Router,
@@ -2793,10 +2792,10 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     setboxvalid() {
         this.boxvalid = !this.boxvalid;
         let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
-        this.NOTEtip(s);
-        setTimeout(() => {
-            this.popup.note.show = false;
-        }, 2000);
+        this.POPNOTE({msg:s});
+        // setTimeout(() => {
+        //     this.popup.note.show = false;
+        // }, 2000);
     }
     // 滑块左侧递减事件
     rangevaluelessen() {
@@ -2850,7 +2849,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         }
         Base.Store.set("selmoeny", d, true);
         this.selmoeny = d;
-        this.NOTEtip("保存成功！");
+        this.POPNOTE({msg:"保存成功！"});
         setTimeout(() => {
             this.close();
         }, 2000);
@@ -2888,23 +2887,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         p.setnumb.show = false;
         p.shade.show = false;
         p.sub.show = false;
-        p.note.show = false;
-    }
-    // 提示信息窗口触发事件 index为提示信息notetip的index或者直接传字符串
-    NOTEtip(i) {
-        let p = this.popup;
-        if (typeof i === "string") {
-            p.note.messsage = i;
-        } else {
-            this.notetip[i] ? (p.note.messsage = this.notetip[i]) : i;
-        }
-        this.setfixed(p.note, 300, 160);
-        p.note.scale = false;
-        p.note.show = true;
-        p.shade.show = true;
-        setTimeout(() => {
-            p.note.scale = true;
-        }, 10);
+        // p.note.show = false;
     }
     // 提交窗口触发事件 d为提交数据
     SUB(d) {
@@ -3037,7 +3020,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                 d7.dantuo = o.lianmastactive < 2 ? 2 : 1;
             }
             if (i > 1 && o.lianmastactive < 2) {
-                this.NOTEtip(0);
+                this.POPNOTE({msg:this.notetip[0]});
                 return;
             }
             if (i > 1) {
@@ -3086,7 +3069,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         ) {
             if (n === 2) {
                 let t = 2 + i;
-                this.NOTEtip(t);
+                this.POPNOTE({msg:this.notetip[t]});
             } else {
                 d10.checkarr = [];
                 let d = d10.data1;
@@ -3115,7 +3098,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                 }
             }
         } else {
-            this.NOTEtip(1);
+            this.POPNOTE({msg:this.notetip[1]});
         }
     }
     zixuanclick(i) {
@@ -3373,11 +3356,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         _that[str].ballarr = [];
         _that[str].dantuodata = [];
         if (t === 7 || t === 11 || t === 12) {
-            let d = _that[str].data1;
-            for (let i = 0; i < d.length; i++) {
-                d[i].checked = false;
-                d[i].disabled = false;
-            }
+            let d1 = _that[str].data1;
+            let d2 = _that[str].data2;
+            let d3 = _that[str].data3;
+            this.setchecked(d1);
+            this.setchecked(d2);
+            this.setchecked(d3);
         }
         if (t === 10) {
             this.radvalue = "";
@@ -3389,6 +3373,15 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             }
         }
         this.setallmoney.value = "";
+    }
+    setchecked(d){
+        if(d){
+            for (let i = 0; i < d.length; i++) {
+                d[i].checked = false;
+                d[i].disabled =false;
+            }
+
+        }
     }
     // 快捷选项下的输入框值改变后的方法，
     allchange() {
@@ -3704,7 +3697,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             return false;
         } else {
             // ===此处提示完成投注内容提示
-            this.NOTEtip("请完成投注内容！");
+            this.POPNOTE({msg:'请完成投注内容'});
             return false;
         }
     }
@@ -3764,12 +3757,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             if (Number(this.kuaitoudata.value) > 0) {
                 this.SUB(data);
             } else {
-                this.NOTEtip("请填写快速投注金额！");
+                this.POPNOTE({msg:'请填写快速投注金额！'});
             }
             return false;
         } else {
             // ===此处提示完成投注内容提示
-            this.NOTEtip("请选择快速投注内容！");
+            this.POPNOTE({msg:'请选择快速投注内容！'});
             return false;
         }
     }
@@ -3782,12 +3775,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             if (a.length===2) {
                 let o ={numb:Number(a[0]), value:Number(a[a.length-1]), }
                 if (String(o.numb) === 'NaN' || String(o.value)=== 'NaN' ||!String(o.numb)|| !String(o.value)) {
-                    this.NOTEtip("输入内容的格式有误");
+                    this.POPNOTE({msg:'输入内容的格式有误'});
                     return;
                 }
                 d.push(o);
             }else{
-                this.NOTEtip("输入内容的格式有误");
+                this.POPNOTE({msg:'输入内容的格式有误'});
                 return;
             }
         }
@@ -3811,7 +3804,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     submit() {
         this.close();
         this.reset();
-        this.NOTEtip("提交订单成功！");
+        this.POPNOTE({msg:'提交订单成功！'});
         setTimeout(() => {
             this.close();
         }, 2000);
@@ -4205,5 +4198,27 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             }
         ];
         return data;
+    }    
+    // 绑定给弹窗组件的事件；
+    NOTARIZE(){
+        return
+    }
+    // 弹窗关闭事件 可以自定义命名
+    closePopouot(e){
+        let p = this.popoutInfo;
+        p.show = false;
+        p.event = false;
+    }
+
+    // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
+    POPNOTE(data,fn=null){
+        let o = {
+            title:'操作提示',   //title不传值默认为 ‘操作提示’
+            msg:' ',
+            event: fn === null?false:true,
+            show: true,
+        }
+        this.NOTARIZE = (typeof fn === 'function')?fn:this.NOTARIZE;
+        this.popoutInfo = Object.assign({},o,data);
     }
 }

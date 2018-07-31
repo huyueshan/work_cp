@@ -254,14 +254,14 @@
                         <span class="pointr">
                             <i></i>
                         </span>
-                        <ul class="totaltype">
+                        <!-- <ul class="totaltype">
                             <li class="active">
                                 <a>{{now_lang.Ball_tab.Official}}</a>
                             </li>
                             <li (click)="linkrouter()">
                                 <a>{{now_lang.Ball_tab.Credit}}</a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                     <div class="tabcon">
                         <div class="tabshow">
@@ -500,3 +500,4 @@
         </div>
         <div>
         </div>
+        <app-pupout [data]='popoutInfo' (close)="closePopouot($event)" (notarize)="NOTARIZE()"></app-pupout>
