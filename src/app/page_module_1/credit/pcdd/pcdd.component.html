@@ -46,13 +46,13 @@
                             </div>
                             <div class="flex-c conmain" style="height: 280px;">
                                 <div class="flex-c conmainbox" *ngFor="let item of pcdata1; let i=index">
-                                    <span class="flex-r itembox">
+                                    <span class="flex-r itembox" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                         <span class="flex-r item1 ">
                                             <i [ngClass]="{bgred: item.red , bggreen: item.green , bgblue: item.blue, bggray: item.gray}">{{item.numb}}</i>
                                         </span>
                                         <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
-                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney1focus($event, i,null,null)"
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
                                         </span>
                                     </span>
@@ -61,7 +61,7 @@
                             <!-- =================================== -->
                             <div class="flex-r conmain2">
                                 <div class="flex-r" >
-                                    <div class="flex-r itembox sanbao">
+                                    <div class="flex-r itembox sanbao" [ngClass]="{checkbg:selectbtnvalue===1&&selballdata.checked}" (click)="rapid(selballdata)">
                                         <span class="flex-r item1 "> {{selballdata.name}}</span>
                                         <span class="item2 color_y">{{(selballdata.point+(selballdata.step*rangevalue))| number : '1.0-3'}} </span>
                                         <span class="flex-r item4" (click)="sanbaoclick(1)">
@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="flex-r itembox">
                                         <span class="item3" *ngIf="inputshow">
-                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="selballdata.value" (focus)="inmoneyfocus($event)"
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="selballdata.value" (focus)="inmoneyfoc($event, selballdata)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
                                         </span>
                                     </div>
@@ -113,7 +113,7 @@
                                 <div class="flex-r btngroup">
                                     <span *ngIf="!inputshow">
                                         <input type="text" maxlength="9" class="inmoney" id="allinmoney" name="allinmoney" [(ngModel)]="setallmoney.value" value=""
-                                            (focus)="inmoneyfocus($event,'all')" (blur)="inmoneyblur()" (change)="allchange()"
+                                            (focus)="inmoneyfoc($event, setallmoney)" (blur)="inmoneyblur()" (change)="allchange()"
                                             (keyup)="changereg()">
                                     </span>
                                     <button class="btnactive" (click)="sub()">确定</button>
@@ -134,13 +134,13 @@
                                         </span>
 
                                     </div>
-                                    <span class="flex-r itembox" *ngFor="let child of item; let q=index">
+                                    <span class="flex-r itembox" *ngFor="let child of item; let q=index" [ngClass]="{checkbg:selectbtnvalue===1&&child.checked}" (click)="rapid(child)">
                                         <span class="item1">
                                             {{child.name}}
                                         </span>
                                         <span class="item2 color_y" *ngIf="child.name!==null">{{(child.point+(child.step*rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
-                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="child.value" (focus)="inmoney2focus($event, i, q)"
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="child.value" (focus)="inmoneyfoc($event, child)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()" *ngIf="child.name!==null">
                                         </span>
                                     </span>
@@ -176,7 +176,7 @@
                                             <input type="text" name="setinput" maxlength="9" [(ngModel)]="popup.setnumb.data[i].value" (keyup)="changeregset(i)">
                                             <span (click)="setnumbdel(i)">删除</span>
                                         </span>
-                                        <span class="flex-r item">
+                                        <span class="flex-r item" *ngIf="popup.setnumb.data.length<5">
                                             <input type="text" name="setinput" maxlength="9" [(ngModel)]="popup.setnumb.value" (keyup)="changeregset(-1)">
                                             <span (click)="addnumb()">增加</span>
                                             <span (click)="numbdel()">删除</span>
@@ -191,23 +191,6 @@
                             </div>
                         </div>
 
-                        <!-- 提示信息窗口 -->
-                        <div id="notebox" *ngIf="popup.note.show" [style.left.px]= "popup.note.left" [style.top.px]= "popup.note.top">
-                            <div class="flex-c content" [ngClass]="{scale:popup.note.scale}" >
-                                <div class="flex-r top" (mousedown)="popmousedown($event,'note')" (mouseleave)="popmouseup($event,'note')" (mouseup)="popmouseup($event,'note')" (mousemove)="popmousmove($event,'note')">
-                                    <span>操作信息</span>
-                                    <i (click)="close()"> &times; </i>
-                                </div>
-                                <div class="flex-r note">
-                                    <p>{{popup.note.messsage}}</p>
-
-                                </div>
-
-                                <div class="flex-r foot">
-                                    <span (click)="close()">确定</span>
-                                </div>
-                            </div>
-                        </div>
                         <!-- 提交窗口 -->
                         <div class="subpopup" *ngIf="popup.sub.show" [style.left.px]= "popup.sub.left" [style.top.px]= "popup.sub.top">
                             <div class="flex-c content" [ngClass]="{scale:popup.sub.scale}">
@@ -272,3 +255,5 @@
             </div>
         </div>
     </div>
+
+    <app-pupout [data]='popoutInfo' (close)="closePopouot($event)" (notarize)="NOTARIZE()"></app-pupout>

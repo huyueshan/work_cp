@@ -39,6 +39,10 @@
 .color_b {
     color: #002eff;
 }
+.checkbg{
+    background-color: #FFF8B6;
+}
+
 .bgred {
     background: url('../../images/ball26.png') -10px -10px;
 }
@@ -343,6 +347,7 @@
             align-items: flex-start;
             .itembox {
                 flex: 0 0 250px;
+                border-right: none;
             }
             .item4box {
                 flex: 1;

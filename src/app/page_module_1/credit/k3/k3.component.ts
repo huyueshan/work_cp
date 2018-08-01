@@ -51,13 +51,13 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
         numb: [],
         value: "",
         point: 0,
-        step: 0
+        step: 0,checked:false,
     };
     public BALL2 = {
         name: "",
         value: "",
         point: 0,
-        step: 0
+        step: 0,checked:false,
     };
     public contenttoptitle = [, , , , , ];
     public setallmoney = {
@@ -365,62 +365,62 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
                 numb: 1,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: 2,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: 3,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: 4,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: 5,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: 6,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             }
         ],
         data2: [{
                 name: "大",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "小",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: null,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: null,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             }
         ]
     };
@@ -430,61 +430,61 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
             name: "全骰",
             value: "",
             point: 0,
-            step: 0
+            step: 0,checked:false,
         }],
         data2: [{
                 numb: 1,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: 2,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: 3,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: 4,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: 5,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: 6,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: null,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: null,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: null,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             }
         ]
     };
@@ -494,61 +494,61 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
                 numb: [1, 1],
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: [2, 2],
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: [3, 3],
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: [4, 4],
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: [5, 5],
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: [6, 6],
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: null,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: null,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: null,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 numb: null,
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             }
         ]
     };
@@ -582,17 +582,6 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
             scale: false,
             data: []
         },
-        // 提示信息框
-        note: {
-            show: false,
-            drag: false,
-            dragleft: 0,
-            dragtop: 0,
-            messsage: "",
-            left: 200,
-            top: 50,
-            scale: false
-        },
         // 提交框
         sub: {
             show: false,
@@ -617,6 +606,13 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
         point: "-",
         money: "-"
     };
+    // 传给弹窗组件数据
+    public  popoutInfo={
+        title:'string',
+        msg:'string',
+        event: false,
+        show: false,
+    }
     constructor(
         private el: ElementRef,
         private router: Router,
@@ -686,10 +682,10 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
     setboxvalid() {
         this.boxvalid = !this.boxvalid;
         let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
-        this.NOTEtip(s);
-        setTimeout(() => {
-            this.popup.note.show = false;
-        }, 2000);
+        this.POPNOTE({msg:s});
+        // setTimeout(() => {
+        //     this.popup.note.show = false;
+        // }, 2000);
     }
     // 滑块左侧递减事件
     rangevaluelessen() {
@@ -708,10 +704,12 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
         if (i === 0) {
             this.selectbtnvalue = 0;
             this.inputshow = true;
+            this.reset();
         }
         if (i === 1) {
             this.selectbtnvalue = 1;
             this.inputshow = false;
+            this.reset();
         }
         if (i === 2) {
             let p = this.popup;
@@ -734,10 +732,10 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
         }
         Base.Store.set("selmoeny", d, true);
         this.selmoeny = d;
-        this.NOTEtip("保存成功！");
-        setTimeout(() => {
-            this.close();
-        }, 2000);
+        this.POPNOTE({msg:'保存成功！'});
+        // setTimeout(() => {
+        //     this.close();
+        // }, 2000);
     }
     numbdel() {
         this.popup.setnumb.value = "";
@@ -772,23 +770,7 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
         p.setnumb.show = false;
         p.shade.show = false;
         p.sub.show = false;
-        p.note.show = false;
-    }
-    // 提示信息窗口触发事件 index为提示信息notetip的index或者直接传字符串
-    NOTEtip(i) {
-        let p = this.popup;
-        if (typeof i === "string") {
-            p.note.messsage = i;
-        } else {
-            this.notetip[i] ? (p.note.messsage = this.notetip[i]) : i;
-        }
-        this.setfixed(p.note, 300, 160);
-        p.note.scale = false;
-        p.note.show = true;
-        p.shade.show = true;
-        setTimeout(() => {
-            p.note.scale = true;
-        }, 10);
+        // p.note.show = false;
     }
     // 提交窗口触发事件 d为提交数据
     SUB(d) {
@@ -843,6 +825,12 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
         }
     }
 
+    // 输入框获取焦点事件
+    inmoneyfoc(e, i) {
+        this.curinpt = i;
+        this.setposition(e);
+    }
+
     // curinpt为当前操作输入框 变量
     // i 数组当前index
     inmoneyfocus(e, i) {
@@ -886,7 +874,7 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
     // 选择框点击选项方法，赋值给当前操作的输入框
     optinclick(i) {
         if (this.curinpt === this.setallmoney) {
-            this.amend(i);
+            this.amend(i,true);
         }
         this.curinpt.value = i;
         this.boxshow = false;
@@ -899,9 +887,9 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
     // 快捷选项下的输入框值改变后的方法，
     allchange() {
         let v = this.setallmoney.value;
-        this.amend(v);
+        this.amend(v,true);
     }
-    amend(v) {
+    amend(v, bol=false) {
         let _that = this;
         for (let i = 1; i <= 5; i++) {
             let str = "k3data" + i;
@@ -909,16 +897,28 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
             let d2 = _that[str].data2;
             for (let q = 0; q < d1.length; q++) {
                 if (d1[q].numb !== null && d1[q].name !== null) {
-                    d1[q].value = v;
+                    d1[q].value =  this.selectbtnvalue===1?(d1[q].checked?v:""):v;
+                    d1[q].checked = bol?d1[q].checked:false;
                 }
             }
             if (d2) {
                 for (let q = 0; q < d2.length; q++) {
                     if (d2[q].numb !== null && d2[q].name !== null) {
-                        d2[q].value = v;
+                        d2[q].value =  this.selectbtnvalue===1?(d2[q].checked?v:""):v;
+                        d2[q].checked = bol?d2[q].checked:false;
                     }
                 }
             }
+        }
+    }
+    
+    rapid(item){
+        if(item.numb===null||item.name===null){
+            return;
+        }
+        if(this.selectbtnvalue===1){
+            item.checked = !item.checked
+            item.value = item.checked?this.setallmoney.value:"";
         }
     }
     // 限制输入框只能输入数字
@@ -955,7 +955,15 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
             return false;
         } else {
             // ===此处提示完成投注内容提示
-            this.NOTEtip("请完成投注内容！");
+            if (this.selectbtnvalue === 1) {
+                if (this.setallmoney.value==="") {
+                    this.POPNOTE({msg:'请填写下注金额！'});
+                }else{
+                    this.POPNOTE({msg:'请选择号码！'});
+                }
+            }else{
+                this.POPNOTE({msg:'请完成投注内容！'});
+            }
             return false;
         }
     }
@@ -982,7 +990,7 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
     submit() {
         this.close();
         this.reset();
-        this.NOTEtip("提交订单成功！");
+        this.POPNOTE({msg:'提交订单成功！'});
         setTimeout(() => {
             this.close();
         }, 2000);
@@ -1017,5 +1025,27 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
             }
         }
         return data;
+    }    
+    // 绑定给弹窗组件的事件；
+    NOTARIZE(){
+        return
+    }
+    // 弹窗关闭事件 可以自定义命名
+    closePopouot(e){
+        let p = this.popoutInfo;
+        p.show = false;
+        p.event = false;
+    }
+
+    // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
+    POPNOTE(data,fn=null){
+        let o = {
+            title:'操作提示',   //title不传值默认为 ‘操作提示’
+            msg:' ',
+            event: fn === null?false:true,
+            show: true,
+        }
+        this.NOTARIZE = (typeof fn === 'function')?fn:this.NOTARIZE;
+        this.popoutInfo = Object.assign({},o,data);
     }
 }

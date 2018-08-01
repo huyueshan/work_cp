@@ -38,6 +38,9 @@
 .color_b {
     color: #002eff;
 }
+.checkbg{
+    background-color: #FFF8B6;
+}
 
 .sscbox {
     width: 100%;
@@ -289,13 +292,15 @@
             .item2 {
                 height: auto;
                 .item2info {
-                    width: 73px;
-                    justify-content: flex-start;
+                    width: 50%;
+                    flex:1;
+                    justify-content: center;
                     span {
                         height: 40px;
                         line-height: 40px;
                     }
                     span:first-child {
+                        margin-left:-10px;
                         flex: 0 0 30px;
                     }
                 }

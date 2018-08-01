@@ -41,6 +41,9 @@
 .color_b {
     color: #002eff;
 }
+.checkbg{
+    background-color: #FFF8B6;
+}
 .bgred{
     background: url('../../images/ball26.png') -10px -10px;
 }
@@ -353,7 +356,7 @@
         justify-content: space-between;
         align-content: center;
         align-items: center;
-        padding: 0 30px;
+        padding: 0 30px 0 10px;
         .itembox{
             .item3{
                 margin-left: 10px;
@@ -368,6 +371,8 @@
 
         .sanbao{
             position: relative;
+            height: 50px;
+            padding: 0 10px;
             .item1{
                 width: 90px;
                 height: 32px;
