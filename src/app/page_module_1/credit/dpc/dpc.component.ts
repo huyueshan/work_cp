@@ -1994,10 +1994,10 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         ]
     };
     public dpcdata10 = {
-        title: "合肖",
+        title: "",
         checkarr: [],
         ballarr: [],
-        dantuo: 0,
+        dantuo: 1,
         dantuodata: [],
         point: 0,
         step: 0,
@@ -2692,8 +2692,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         // 跳转官方路由设置
         // this.setlink();
         this.route.params.subscribe(data => {
-            this.reset();
             this.type = 1;
+            this.tabclick(0);
             this.routeid = data.id;
             this.subob.channel = "低频彩 - " + this.routeid;
         });
@@ -2890,7 +2890,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         p.setnumb.show = false;
         p.shade.show = false;
         p.sub.show = false;
-        // p.note.show = false;
     }
     // 提交窗口触发事件 d为提交数据
     SUB(d) {
@@ -3036,8 +3035,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     hexiaoclick(i, n) {
         let o = this.optionsdata;
         let d10 = this.dpcdata10;
-        // o.hexiaoactive = i;
-        // this.dpcdata10.title = this.radvalue + " - " + o.hexiao[o.hexiaoactive];
         let tianxiao = ["兔", "马", "猴", "猪", "牛", "龙"];
         let dixiao = ["蛇", "羊", "鸡", "狗", "鼠", "虎"];
         if (
@@ -3449,7 +3446,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     sub() {
         let data = [];
         let differ = 0;
-        // if (this.type === 1) {}
         if (this.type == 13) {
             let d = this.dpcdata13;
             for (let i = 0; i < d.length; i++) {
@@ -3698,8 +3694,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.submoney += Number(data[i].money);
             }
             this.SUB(data);
-            // this.reset();
-            // this.setallmoney.value = '';
             return false;
         } else {
             // ===此处提示完成投注内容提示
@@ -3714,7 +3708,11 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             }
             if (this.allinput) {
                 if (differ>0) {
-                    this.POPNOTE({msg:'您至少还需要勾选' + differ + '项！'});
+                    if (this.type === 10 && this.dpcdata10.title==="") {
+                        this.POPNOTE({msg:'请勾选合肖选项！'});
+                    }else{
+                        this.POPNOTE({msg:'您至少还需要勾选' + differ + '项！'});
+                    }
                 }else{
                     if (this.setallmoney.value==="") {
                         this.POPNOTE({msg:'请填写下注金额！'});
@@ -3750,7 +3748,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     // 快速投注提交事件
     ktsub() {
         if (Number(this.kuaitoudata.value) <= 0) {
-            // alert('请设置下注金额')
         }
         let data = [];
         let d = this.kuaitoudata.data1;
@@ -3761,7 +3758,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         }else{
             point = parseFloat((this.POINt_data.dpcdata1.data1[0].point + (this.POINt_data.dpcdata1.data1[0].step * this.rangevalue)).toFixed(3));
         }
-        // let str = "dpcdata - 快速投注" ;
         for (let i = 0; i < d.length; i++) {
             if (d[i].checked) {
                 let l = data.length;
@@ -3837,9 +3833,9 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         }, 2000);
     }
 
-    linkrouter(t) {
-        this.router.navigate([t]);
-    }
+    // linkrouter(t) {
+    //     this.router.navigate([t]);
+    // }
     // 快速投注点击和提交事件
     ktclick(t, n) {
         let d = this.kuaitoudata;

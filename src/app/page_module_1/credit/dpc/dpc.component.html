@@ -760,9 +760,9 @@
                             </div>
                         </div>
                         <!-- 底部问路-->
-                        <!-- <div *ngIf="type!==3">
+                        <div *ngIf="type===13">
                             <app-wenlu></app-wenlu>
-                        </div> -->
+                        </div>
                         <!-- 快选金额 -->
                         <div class="setbox" *ngIf="popup.setnumb.show" [style.left.px]= "popup.setnumb.left" [style.top.px]= "popup.setnumb.top">
                             <div class="flex-c content" [ngClass]="{scale:popup.setnumb.scale}">
@@ -779,7 +779,7 @@
                                             <input type="text" name="setinput" maxlength="9" [(ngModel)]="popup.setnumb.data[i].value" (keyup)="changeregset(i)">
                                             <span (click)="setnumbdel(i)">删除</span>
                                         </span>
-                                        <span class="flex-r item">
+                                        <span class="flex-r item" *ngIf="popup.setnumb.data.length<5" >
                                             <input type="text" name="setinput" maxlength="9" [(ngModel)]="popup.setnumb.value" (keyup)="changeregset(-1)">
                                             <span (click)="addnumb()">增加</span>
                                             <span (click)="numbdel()">删除</span>

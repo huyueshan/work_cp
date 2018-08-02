@@ -69,31 +69,31 @@
         
                                             </div>
                                             <span class="flex-r itembox" *ngFor="let child of item; let q=index" [ngClass]="{checkbg:selectbtnvalue===1&&child.checked}" (click)="rapid(child)">
-                                                <span class=" item1">
+                                                <span class=" item1" *ngIf="child.numb!==null">
                                                     <i>{{child.numb}}</i>
                                                 </span>
-                                                <span class="item2 color_y">{{(child.point+(child.step*rangevalue))| number : '1.0-3'}} </span>
+                                                <span class="item2 color_m" *ngIf="child.numb!==null">{{(child.point+(child.step*rangevalue))| number : '1.0-3'}} </span>
                                                 <span class=" item3" *ngIf="inputshow">
                                                     <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="child.value" (focus)="inmoneyfoc($event, child)"
-                                                        (blur)="inmoneyblur()" (keyup)="changereg()">
+                                                        (blur)="inmoneyblur()" (keyup)="changereg()" *ngIf="child.numb!==null">
                                                 </span>
                                             </span>
                                         </div>
                                     </div>
                                 <div class="flex-r conmain">
-                                        <div class="flex-c conmainbox ballbox" *ngFor="let item of betdata3_2;let i=index">
-                                            <span class="flex-r itembox" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
-                                                <span class=" item1">
-                                                    {{item.name}}
-                                                </span>
-                                                <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
-                                                <span class=" item3" *ngIf="inputshow">
-                                                    <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
-                                                        (blur)="inmoneyblur()" (keyup)="changereg()">
-                                                </span>
+                                    <div class="flex-c conmainbox ballbox" *ngFor="let item of betdata3_2;let i=index">
+                                        <span class="flex-r itembox" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
+                                            <span class=" item1" *ngIf="item.name!==null">
+                                                {{item.name}}
                                             </span>
-                                        </div>
+                                            <span class="item2 color_m" *ngIf="item.name!==null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                            <span class=" item3" *ngIf="inputshow">
+                                                <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
+                                                    (blur)="inmoneyblur()" (keyup)="changereg()" *ngIf="item.name!==null">
+                                            </span>
+                                        </span>
                                     </div>
+                                </div>
                         </div>
                         <!-- // 第1 - 10名 -->
                         <div class="flex-c content content1" *ngIf="type === 2">

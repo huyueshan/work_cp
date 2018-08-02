@@ -26,6 +26,9 @@
 .color_m {
     color: #b61010;
 }
+.checkbg{
+    background-color: #FFF8B6;
+}
 
 .sscbox {
     width: 1000px;
@@ -305,13 +308,15 @@
             .item2 {
                 height: auto;
                 .item2info {
-                    width: 60px;
-                    justify-content: flex-start;
+                    width: 50%;
+                    flex:1;
+                    justify-content: center;
                     span {
                         height: 30px;
                         line-height: 30px;
                     }
                     span:first-child {
+                        margin-left:-10px;
                         flex: 0 0 22px;
                     }
                 }
@@ -328,7 +333,7 @@
                     width: 50px;
                     font-size: 12px;
                     height: 22px;
-                    // padding-left: 5px;
+                    text-align: center;
                     border: 1px solid #ccc;
                 }
             }
@@ -481,6 +486,7 @@
         .inmoney{
             width: 70px;
             height: 28px;
+            text-align: center;
             border: 1px solid #999;
             border-radius: 2px;
         }
@@ -520,7 +526,8 @@
     width: 60px;
     font-size: 12px;
     height: 22px;
-    padding-left: 5px;
+    text-align: center;
+    // padding-left: 5px;
     border: 1px solid #ccc;
 }
 .bd_r{
@@ -559,6 +566,7 @@
         .inmoney {
             width: 80px;
             height: 36px;
+            text-align: center;
             margin-right: 10px;
         }
     }

@@ -192,6 +192,7 @@ export class IndexComponent implements OnInit {
       link: "/lottery/officialssc"
     },
   ];
+
   public board = [
       { 
         index:0,
@@ -224,6 +225,496 @@ export class IndexComponent implements OnInit {
     //   link: "/lottery/creditpk10"
       link: "/lottery/vrc"
     }
+  ];
+  public cpdata = [
+    
+      {
+        name: this.now_lang.lot_type.cq_ssc,
+        src: require("../images/caip/SSCZQ.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditssc/cq",
+        linko: "/lottery/officialssc/cq",
+        bcolor: "#fed1d1"
+      },
+      {
+        name: this.now_lang.lot_type.tj_ssc,
+        src: require("../images/caip/SSCTJ.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditssc/tj",
+        linko: "/lottery/officialssc/tj",
+        bcolor: "#fed1d1"
+      },
+      {
+        name: this.now_lang.lot_type.xq_ssc,
+        src: require("../images/caip/SSCXJ.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditssc/xj",
+        linko: "/lottery/officialssc/xj",
+        bcolor: "#fed1d1"
+      },
+      {
+        name: this.now_lang.lot_type.bj_ssc,
+        src: require("../images/caip/SSCBJ.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditssc/bj",
+        linko: "/lottery/officialssc/bj",
+        bcolor: "#fed1d1"
+      },
+      {
+        name: this.now_lang.lot_type.lhc_ffc,
+        src: require("../images/caip/FFC6HC.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditffc/lhc",
+        linko: "/lottery/officialffc/lhc",
+        bcolor: "#fcc0e5"
+      },
+      {
+        name: this.now_lang.lot_type.az_ffc,
+        src: require("../images/caip/FFCAZ3.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditffc/az",
+        linko: "/lottery/officialffc/az",
+        bcolor: "#fcc0e5"
+      },
+      {
+        name: this.now_lang.lot_type.dj_ffc,
+        src: require("../images/caip/FFCDJ1.5.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditffc/dj",
+        linko: "/lottery/officialffc/dj",
+        bcolor: "#fcc0e5"
+      },
+      {
+        name: this.now_lang.lot_type.hs_ffc,
+        src: require("../images/caip/FFCHGKLC.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditffc/hs",
+        linko: "/lottery/officialffc/hs",
+        bcolor: "#fcc0e5"
+      },
+      {
+        name: this.now_lang.lot_type.jnd_ffc,
+        src: require("../images/caip/FFCJNDKLC.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditffc/jnd",
+        linko: "/lottery/officialffc/jnd",
+        bcolor: "#fcc0e5"
+      },
+      {
+        name: this.now_lang.lot_type.qq_ffc,
+        src: require("../images/caip/FFCQQ.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditffc/qq",
+        linko: "/lottery/officialffc/qq",
+        bcolor: "#fcc0e5"
+      },
+      {
+        name: this.now_lang.lot_type.slfk_ffc,
+        src: require("../images/caip/FFCSLFK5.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditffc/slfk",
+        linko: "/lottery/officialffc/slfk",
+        bcolor: "#fcc0e5"
+      },
+      {
+        name: this.now_lang.lot_type.tw_ffc,
+        src: require("../images/caip/FFCTW5.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditffc/tw",
+        linko: "/lottery/officialffc/tw",
+        bcolor: "#fcc0e5"
+      },
+      {
+        name: this.now_lang.lot_type.tx_ffc,
+        src: require("../images/caip/FFCTX.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditffc/tx",
+        linko: "/lottery/officialffc/tx",
+        bcolor: "#fcc0e5"
+      },
+      {
+        name: this.now_lang.lot_type.xyft_pk10,
+        src: require("../images/caip/PKSXYFT.png"),
+        credit: true,
+        official: true,
+        linko: "/lottery/officialpk10/xyft",
+        linkc: "/lottery/creditpk10/xyft",
+        bcolor: "#d2c6f6"
+      },
+      {
+        name: this.now_lang.lot_type.bj_pk10,
+        src: require("../images/caip/PKSBJ.png"),
+        credit: true,
+        official: true,
+        linko: "/lottery/officialpk10/bjpk",
+        linkc: "/lottery/creditpk10/bjpk",
+        bcolor: "#d2c6f6"
+      },
+      {
+        name: this.now_lang.lot_type.hlj_exf,
+        src: require("../images/caip/11X5HLJ.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditexf/hljexf",
+        linko: "/lottery/officialexf/hljexf",
+        bcolor: "#b5c0df"
+      },
+      {
+        name: this.now_lang.lot_type.js_exf,
+        src: require("../images/caip/11X5JS.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditexf/jsexf",
+        linko: "/lottery/officialexf/jsexf",
+        bcolor: "#b5c0df"
+      },
+      {
+        name: this.now_lang.lot_type.jx_exf,
+        src: require("../images/caip/11X5JX.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditexf/jxexf",
+        linko: "/lottery/officialexf/jxexf",
+        bcolor: "#b5c0df"
+      },
+      {
+        name: this.now_lang.lot_type.sd_exf,
+        src: require("../images/caip/11X5SD.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditexf/sdexf",
+        linko: "/lottery/officialexf/sdexf",
+        bcolor: "#b5c0df"
+      },
+      {
+        name: this.now_lang.lot_type.shh_exf,
+        src: require("../images/caip/11X5SH.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditexf/shhexf",
+        linko: "/lottery/officialexf/shhexf",
+        bcolor: "#b5c0df"
+      },
+      {
+        name: this.now_lang.lot_type.xj_exf,
+        src: require("../images/caip/11X5XJ.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditexf/xjexf",
+        linko: "/lottery/officialexf/xjexf",
+        bcolor: "#b5c0df"
+      },
+      {
+        name: this.now_lang.lot_type.bjkl8_klc,
+        src: require("../images/caip/KLBJ.png"),
+        credit: false,
+        official: true,
+        linkc: "/lottery/creditklc/bjkl8",
+        linko: "/lottery/officialklc/bjkl8",
+          bcolor: "#b7e1f9"
+      },
+      {
+          name: this.now_lang.lot_type.jndkl8_klc,
+          src: require("../images/caip/KLJND.png"),
+          credit: false,
+        official: true,
+        linkc: "/lottery/creditklc/jndkl8",
+        linko: "/lottery/officialklc/jndkl8",
+        bcolor: "#b7e1f9"
+      },
+      {
+        name: this.now_lang.lot_type.azkl8_klc,
+        src: require("../images/caip/KLAZ.png"),
+        credit: false,
+        official: true,
+        linkc: "/lottery/creditklc/azkl8",
+        linko: "/lottery/officialklc/azkl8",
+        bcolor: "#b7e1f9"
+      },
+      {
+        name: this.now_lang.lot_type.slfk_klc,
+        src: require("../images/caip/KLSLF.png"),
+        credit: false,
+        official: true,
+        linkc: "/lottery/creditklc/slfk",
+        linko: "/lottery/officialklc/slfk",
+        bcolor: "#b7e1f9"
+      },
+      {
+        name: this.now_lang.lot_type.twbg_klc,
+        src: require("../images/caip/KLTWBG.png"),
+        credit: false,
+        official: true,
+        linkc: "/lottery/creditklc/twbg",
+        linko: "/lottery/officialklc/twbg",
+        bcolor: "#b7e1f9"
+      },
+      {
+          name: this.now_lang.lot_type.gdk10_klc,
+          src: require("../images/caip/KLGD.png"),
+          credit: true,
+          official: false,
+          linkc: "/lottery/creditklc/gdk10",
+          linko: "/lottery/officialklc/gdk10",
+          bcolor: "#b7e1f9"
+      },
+      {
+        name: this.now_lang.lot_type.gxk10_klc,
+        src: require("../images/caip/KLGX.png"),
+        credit: true,
+        official: false,
+        linkc: "/lottery/creditklc/gxk10",
+        linko: "/lottery/officialklc/gxk10",
+        bcolor: "#b7e1f9"
+      },
+      {
+        name: this.now_lang.lot_type.cqk10_klc,
+        src: require("../images/caip/KLZQ.png"),
+        credit: true,
+        official: false,
+        linkc: "/lottery/creditklc/cqk10",
+        linko: "/lottery/officialklc/cqk10",
+        bcolor: "#b7e1f9"
+      },
+      {
+        name: this.now_lang.lot_type.fc3d_dpc,
+        src: require("../images/caip/DFC.png"),
+        credit: false,
+        official: true,
+        linkc: "/lottery/creditdpc/fc3d",
+        linko: "/lottery/officialdpc/fc3d",
+        bcolor: "#bff6cf"
+      },
+      {
+        name: this.now_lang.lot_type.pl35_dpc,
+        src: require("../images/caip/DPLSW.png"),
+        credit: false,
+        official: true,
+        linkc: "/lottery/creditdpc/pl35",
+        linko: "/lottery/officialdpc/pl35",
+        bcolor: "#bff6cf"
+      },
+      {
+        name: this.now_lang.lot_type.shssl_dpc,
+        src: require("../images/caip/DSHSSL.png"),
+        credit: false,
+        official: true,
+        linkc: "/lottery/creditdpc/shssl",
+        linko: "/lottery/officialdpc/shssl",
+        bcolor: "#bff6cf"
+      },
+      {
+        name: "香港⑥合彩",
+        src: require("../images/caip/VRLHC.png"),
+        credit: true,
+        official: false,
+        linkc: "/lottery/creditdpc/liuhec",
+        linko: "",
+        bcolor: "#bff6cf"
+      },
+      {
+        name: this.now_lang.lot_type.az_28,
+        src: require("../images/caip/PDAZ28.png"),
+        credit: true,
+        official: false,
+        linko: "",
+        linkc: "/lottery/creditpcdd/az28",
+        bcolor: "#cde6a1"
+      },
+      {
+        name: this.now_lang.lot_type.dj_28,
+        src: require("../images/caip/PDDJ28.png"),
+        credit: true,
+        official: false,
+        linko: "",
+        linkc: "/lottery/creditpcdd/dj28",
+        bcolor: "#cde6a1"
+      },
+      {
+        name: this.now_lang.lot_type.hs_28,
+        src: require("../images/caip/PDHS28.png"),
+        credit: true,
+        official: false,
+        linko: "",
+        linkc: "/lottery/creditpcdd/hs28",
+        bcolor: "#cde6a1"
+      },
+      {
+        name: this.now_lang.lot_type.jnd_28,
+        src: require("../images/caip/PDJND28.png"),
+        credit: true,
+        official: false,
+        linko: "",
+        linkc: "/lottery/creditpcdd/jnd28",
+        bcolor: "#cde6a1"
+      },
+      {
+        name: this.now_lang.lot_type.slfk_28,
+        src: require("../images/caip/PDSLFK28.png"),
+        credit: true,
+        official: false,
+        linko: "",
+        linkc: "/lottery/creditpcdd/xy28",
+        bcolor: "#cde6a1"
+      },
+      {
+        name: this.now_lang.lot_type.tw_28,
+        src: require("../images/caip/PDTW28.png"),
+        credit: true,
+        official: false,
+        linko: "",
+        linkc: "/lottery/creditpcdd/slfk28",
+        bcolor: "#cde6a1"
+      },
+      {
+        name: this.now_lang.lot_type.xy_28,
+        src: require("../images/caip/PDXY28.png"),
+        credit: true,
+        official: false,
+        linko: "",
+        linkc: "/lottery/creditpcdd/xy28",
+        bcolor: "#cde6a1"
+      },
+      {
+        name: this.now_lang.lot_type.ahk3_ffc,
+        src: require("../images/caip/K3AH.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditk3/ahk3",
+        linko: "/lottery/officialk3/ahk3",
+        bcolor: "#eec391"
+      },
+      {
+        name: this.now_lang.lot_type.bjk3_ffc,
+        src: require("../images/caip/K3BJ.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditk3/bjk3",
+        linko: "/lottery/officialk3/bjk3",
+        bcolor: "#eec391"
+      },
+      {
+        name: this.now_lang.lot_type.gxk3_ffc,
+        src: require("../images/caip/K3GX.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditk3/gxk3",
+        linko: "/lottery/officialk3/gxk3",
+        bcolor: "#eec391"
+      },
+      {
+        name: this.now_lang.lot_type.hbk3_ffc,
+        src: require("../images/caip/K3HEBE.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditk3/hbk3",
+        linko: "/lottery/officialk3/hbk3",
+        bcolor: "#eec391"
+      },
+      {
+        name: this.now_lang.lot_type.hnk3_ffc,
+        src: require("../images/caip/K3HN.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditk3/hnk3",
+        linko: "/lottery/officialk3/hnk3",
+        bcolor: "#eec391"
+      },
+      {
+        name: this.now_lang.lot_type.hubk3_ffc,
+        src: require("../images/caip/K3HUBEI.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditk3/hubk3",
+        linko: "/lottery/officialk3/hubk3",
+        bcolor: "#eec391"
+      },
+      {
+        name: this.now_lang.lot_type.jsk3_ffc,
+        src: require("../images/caip/K3JS.png"),
+        credit: true,
+        official: true,
+        linkc: "/lottery/creditk3/jsk3",
+        linko: "/lottery/officialk3/jsk3",
+        bcolor: "#eec391"
+      },
+      {
+        name: this.now_lang.lot_type.shks_ffc,
+        src: require("../images/caip/K3SH.png"),
+        credit: true,
+        official: true,
+        linkc: "lottery/creditssc/shk3",
+        linko: "lottery/officialssc/shk3",
+        bcolor: "#eec391"
+      },
+      {
+        name: this.now_lang.lot_type.tfencai_vr,
+        src: require("../images/caip/VR3FC.png"),
+        credit: true,
+        official: true,
+        linko: "/lottery/vrc/3fc",
+        linkc: "/lottery/vrc/3fc",
+        bcolor: "#ffa18e"
+      },
+      {
+        name: this.now_lang.lot_type.cpbjl_vr,
+        src: require("../images/caip/VRCPBJL.png"),
+        credit: true,
+        official: true,
+        linko: "/lottery/vrc/bjl",
+        linkc: "/lottery/vrc/bjl",
+        bcolor: "#ffa18e"
+      },
+      {
+        name: this.now_lang.lot_type.jx15_vr,
+        src: require("../images/caip/VRJX1.5FC.png"),
+        credit: true,
+        official: true,
+        linko: "/lottery/vrc/jx",
+        linkc: "/lottery/vrc/jx",
+        bcolor: "#ffa18e"
+      },
+      {
+        name: this.now_lang.lot_type.kt_vr,
+        src: require("../images/caip/VRKT.png"),
+        credit: false,
+        official: true,
+        linko: "/lottery/vrc/kt",
+        linkc: "/lottery/vrc/kt",
+        bcolor: "#ffa18e"
+      },
+      {
+        name: this.now_lang.lot_type.lhc_vr,
+        src: require("../images/caip/VRLHC.png"),
+        credit: true,
+        official: true,
+        linko: "/lottery/vrc/lhc",
+        linkc: "/lottery/vrc/lhc",
+        bcolor: "#ffa18e"
+      },
+      {
+        name: this.now_lang.lot_type.sc_vr,
+        src: require("../images/caip/VRSC.png"),
+        credit: true,
+        official: false,
+        linko: "/lottery/vrc/sc",
+        linkc: "/lottery/vrc/sc",
+        bcolor: "#ffa18e"
+      }
+    
   ];
   // 投注排行和中奖排行数据
   public touzhu_list = [, , , , , ];
@@ -261,9 +752,23 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
     this.now_lang_type = userModel.now_lang_type;
     this.now_board = this.board[0];
+
+
+  }
+  drop_down(){
+    $('.production_li').on('mouseover',function  (argument) {
+      $('.hid_top').addClass('active');
+    })
+    $('.hid_top').on('mouseover',function  (argument) {
+      $('.hid_top').addClass('active');
+    })
+    $('.hid_top').on('mouseout',function  (argument) {
+      $('.hid_top').removeClass('active');
+    })
   }
   ngAfterViewInit(){
     this.register_banner()
+    this.drop_down();
   }
   // 中间内容区tab切换事件
   mdtabclick(i) {
@@ -309,6 +814,7 @@ export class IndexComponent implements OnInit {
       console.log(t);
     this.router.navigate([t]);
   }
+  
   // 登陆表单输入框获取焦点事件
   focus(t) {
     this.logindata[t].err = false;

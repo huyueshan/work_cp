@@ -55,7 +55,7 @@
                 </div>
                 <div class="head_mid">
                     <div class="flex-r topnav head_mid_right fl-r">
-                        <span *ngFor="let item of navdatal; let i=index"  class='top_nav_item' [ngClass]="{'navhover': item.isover}"
+                        <span *ngFor="let item of navdatal; let i=index"  class='top_nav_item' [ngClass]="{'navhover': item.isover,'production_li':i == 1}"
 
                         (mouseenter)="navmouseenter(i,'left')" (mouseleave)="navmouseleave(i,'left')" (click)="linkrouter(item.link)">{{item.text}}</span>
                         <span *ngFor="let item of navdatar; let i=index"  class='top_nav_item' [ngClass]="{'navhover': item.isover}"
@@ -64,6 +64,65 @@
                 </div>
 
             </div>
+        <div class="hid_top">
+            <div class="hid_box flex-r">
+                <div class="child_box flex-r">
+                    <div class="child_col">
+                        <div class="top_til">
+                            官方玩法
+                        </div>
+
+                        <div class="cont_box">
+                            <ul class="flex-r-l-w czbox">
+                                <li   class="" *ngFor="let child of cpdata; let i=index" >
+                                    <ng-container *ngIf="i<=29">
+                                        <span  (click)="linkrouter(child.linko)" class="flex-c item">
+                                            <span class="flex-r imgbox" >
+                                                    <img src="{{child.src}}" alt="child.name"
+                                                    >
+                                            </span>
+                                            <span class="info flex-r">{{child.name}}</span>
+
+                                        </span>
+                                    </ng-container>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+
+                </div>
+                <div class="child_box flex-r">
+                    <div class="child_col">
+                        <div class="top_til">
+                            信用玩法
+                        </div>
+
+                        <div class="cont_box">
+                            <ul class="flex-r-l-w czbox">
+                                <li   class="" *ngFor="let child of cpdata; let i=index" >
+                                    <ng-container *ngIf="i<=29">
+                                        <span   (click)="linkrouter(child.linkc)" class="flex-c item">
+                                            <span class="flex-r imgbox" >
+                                                    <img src="{{child.src}}" alt="child.name"
+                                                   >
+                                            </span>
+                                            <span class="info flex-r">{{child.name}}</span>
+
+                                        </span>
+                                    </ng-container>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+        
+        </div>
             <div class="top_banner">
                 <div class="lunBo" id="LunBo">
 
@@ -173,7 +232,7 @@
         <div class="mid_contain">
             <div class="hot_box">
                 <div class="lot_hot" *ngFor="let item of ball_list; let i=index"  (click)="linkrouter(item.link)">
-                    <img class='img' [src]="item.imgsrc" alt="">
+                    <!-- <img class='img' [src]="item.imgsrc" alt=""> -->
                     <div class="bot_til">
                         <div class="til_cont">
                             <div class="lot_ico">

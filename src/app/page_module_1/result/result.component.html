@@ -113,18 +113,18 @@
                 </div>
             </div>
         </div>
-        <div class="loadinginfo" *ngIf="loadinfo">
+        <!-- <div class="loadinginfo" *ngIf="loadinfo">
                 <p>正在获取数据中...</p>
-        </div>
+        </div> -->
         <!-- 11选5 -->
         <ng-container *ngIf="curgametype==='exf'" >
-            <div class="flex-r tab" *ngIf="!loadinfo">
+            <div class="flex-r tab" >
                 <span *ngFor="let item of xintab.list; let i=index"
                 [ngClass]="{active: xintab.active === i}" 
                 (click)="xintab.active = i" >{{item}}</span>
             </div>
             <div class="flex-c main">
-                <div class="flex-r mainbox" *ngIf="!loadinfo">
+                <div class="flex-r mainbox">
                     <div class="flex-r result-main">
                             <div class="flex-c tablebox">
                                 <ng-container *ngIf="xintab.active === 0" >
@@ -231,13 +231,13 @@
         </ng-container>
         <!-- 时时彩 -->
         <ng-container *ngIf="curgametype==='ssc'" >
-            <div class="flex-r tab" *ngIf="!loadinfo">
+            <div class="flex-r tab" >
                 <span *ngFor="let item of xintab.list; let i=index"
                 [ngClass]="{active: xintab.active === i}" 
                 (click)="xintab.active = i" >{{item}}</span>
             </div>
             <div class="flex-c main">
-                <div class="flex-r mainbox" *ngIf="!loadinfo">
+                <div class="flex-r mainbox"  >
                     <div class="flex-r result-main">
                             <div class="flex-c tablebox">
                                 <ng-container *ngIf="xintab.active === 0" >
@@ -342,13 +342,13 @@
         </ng-container>
         <!-- 广东快10 -->
         <ng-container *ngIf="curgametype==='gdk10'" >
-            <div class="flex-r tab" *ngIf="!loadinfo">
+            <div class="flex-r tab" >
                 <span [ngClass]="{active: xintab.active === 0}" (click)="xintab.active = 0">特码</span>
                 <span [ngClass]="{active: xintab.active === 1}" (click)="xintab.active = 1">正码1-7</span>
                 <span [ngClass]="{active: xintab.active === 2}" (click)="xintab.active = 2">龙虎斗</span>
             </div>
             <div class="flex-c main">
-                <div class="flex-r mainbox" *ngIf="!loadinfo">
+                <div class="flex-r mainbox">
                     <div class="flex-r result-main">
                             <div class="flex-c tablebox">
                                 <ng-container *ngIf="xintab.active === 0" >
@@ -494,13 +494,13 @@
         </ng-container>
         <!-- 广西快10 -->
         <ng-container *ngIf="curgametype==='gxk10'" >
-            <div class="flex-r tab" *ngIf="!loadinfo">
+            <div class="flex-r tab">
                 <span [ngClass]="{active: xintab.active === 0}" (click)="xintab.active = 0">特码</span>
                 <span [ngClass]="{active: xintab.active === 1}" (click)="xintab.active = 1">正码1-4</span>
                 <span [ngClass]="{active: xintab.active === 2}" (click)="xintab.active = 2">龙虎斗</span>
             </div>
             <div class="flex-c main">
-                <div class="flex-r mainbox" *ngIf="!loadinfo">
+                <div class="flex-r mainbox">
                     <div class="flex-r result-main">
                             <div class="flex-c tablebox">
                                 <ng-container *ngIf="xintab.active === 0">
@@ -629,7 +629,7 @@
         <!-- 快三 -->
         <ng-container *ngIf="curgametype==='k3'" >
             <div class="flex-c main">
-                <div class="flex-r mainbox" *ngIf="!loadinfo">
+                <div class="flex-r mainbox">
                     <div class="flex-r result-main">
                             <div class="flex-c tablebox">
                                 <ng-container>
@@ -671,12 +671,12 @@
         </ng-container>
         <!-- PK10 -->
         <ng-container *ngIf="curgametype==='pk10'" >
-            <div class="flex-r tab" *ngIf="!loadinfo">
+            <div class="flex-r tab">
                 <span [ngClass]="{active: xintab.active === 0}" (click)="xintab.active = 0">排名</span>
                 <span [ngClass]="{active: xintab.active === 1}" (click)="xintab.active = 1">大小单双龙虎</span>
             </div>
             <div class="flex-c main">
-                <div class="flex-r mainbox" *ngIf="!loadinfo">
+                <div class="flex-r mainbox">
                     <div class="flex-r result-main">
                             <div class="flex-c tablebox">
                                 <ng-container *ngIf="xintab.active === 0">
@@ -768,7 +768,7 @@
         <!-- pcdd -->
         <ng-container *ngIf="curgametype==='pcdd'" >
                 <div class="flex-c main">
-                    <div class="flex-r mainbox" *ngIf="!loadinfo">
+                    <div class="flex-r mainbox">
                         <div class="flex-r result-main">
                                 <div class="flex-c tablebox">
                                     <ng-container>
@@ -802,13 +802,13 @@
         </ng-container>
         <!-- 六合彩 -->
         <ng-container *ngIf="curgametype==='lhc'" >
-            <div class="flex-r tab" *ngIf="!loadinfo">
+            <div class="flex-r tab">
                 <span *ngFor="let item of xintab.list; let i=index"
                 [ngClass]="{active: xintab.active === i}" 
                 (click)="xintab.active = i" >{{item}}</span>
             </div>
             <div class="flex-c main">
-                <div class="flex-r mainbox" *ngIf="!loadinfo">
+                <div class="flex-r mainbox">
                     <div class="flex-r result-main">
                             <div class="flex-c tablebox">
                                 <ng-container *ngIf="xintab.active === 0" >
@@ -923,6 +923,11 @@
                 </div>
             </div>
         </ng-container>
+
+        <!-- 调用分页组件 -->
+        <div class="flex-r pagebox">
+            <app-page [pageParams]="pagination" (changeCurPage)="getPageData($event)"></app-page>
+        </div>
 
     </div>
 

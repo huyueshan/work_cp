@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  OnChanges,
   AfterViewChecked,
   AfterViewInit,
   ElementRef,
@@ -13,7 +14,8 @@ import {
   styleUrls: ["./canvas.component.scss"]
 })
 export class CanvasComponent
-  implements OnInit, AfterViewChecked, AfterViewInit {
+  implements OnInit, AfterViewChecked, AfterViewInit,
+  OnChanges {
   @Input() viewdata; // 控制数据
   @Input() resultdata; // 开奖结果数据
   @Input() omdata; // 开奖结果第一期遗漏数据
@@ -75,6 +77,15 @@ export class CanvasComponent
   }
   ngAfterViewInit() {}
   ngAfterViewChecked() {}
+  ngOnChanges() {
+      // 画线
+    setTimeout(() => {
+        this.linedata = this.getcanvasdata();
+        setTimeout(() => {
+          this.drawline();
+        }, 300);
+      }, 300);
+  }
   
   pageinit(){
     this.game = this.gamelist[this.type];

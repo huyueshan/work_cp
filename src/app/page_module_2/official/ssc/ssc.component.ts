@@ -38,6 +38,11 @@ export class SSCofficialComponent implements OnInit {
 	public now_description = '';
 	public rangenum = 180200;
 	public hothidden = false;
+	public nowPageId :any='';
+	public nowitems :any={};
+	public now_tab1 :any='';
+	public lock_multible :any=false;
+
 	public userInfo = {
 		name:'赌神',
 		balance:'9999.99',
@@ -48,9 +53,33 @@ export class SSCofficialComponent implements OnInit {
 	// public rangevalue = rangevalue;
 	public now_lang :any=userModel.langpackage;
 	public now_lang_type :any='zh';
+
+	public  now_tab2 = this.now_lang.Lot_tab.Five_star_str
 	status = {
 		menu_1:1,//一级tab默认项
 		menu_2:1  //二级tab默认项
+	}
+	public items_show = {
+		'cq_ssc':{
+			'tabitem':[this.now_lang.Lot_tab.BackT_star,this.now_lang.Lot_tab.ForT_star,this.now_lang.Lot_tab.MidT_star,this.now_lang.Lot_tab.Two_star,this.now_lang.Lot_tab.Gall,this.now_lang.Lot_tab.Indeterminate_gallbladder,this.now_lang.Lot_tab.Size_Dan_Shuang,this.now_lang.Lot_tab.Interest,this.now_lang.Lot_tab.Choose_two,this.now_lang.Lot_tab.Choose_three,this.now_lang.Lot_tab.Dragon_tiger],
+			'reward_show':true,
+			'name':this.now_lang.lot_type.cq_ssc
+		},
+		'tj_ssc':{
+			'tabitem':[this.now_lang.Lot_tab.BackT_star,this.now_lang.Lot_tab.ForT_star,this.now_lang.Lot_tab.MidT_star,this.now_lang.Lot_tab.Two_star,this.now_lang.Lot_tab.Gall,this.now_lang.Lot_tab.Indeterminate_gallbladder,this.now_lang.Lot_tab.Size_Dan_Shuang,this.now_lang.Lot_tab.Interest,this.now_lang.Lot_tab.Choose_two,this.now_lang.Lot_tab.Choose_three,this.now_lang.Lot_tab.Dragon_tiger],
+			'reward_show':true,
+			'name':this.now_lang.lot_type.tj_ssc
+		},
+		'xj_ssc':{
+			'tabitem':[this.now_lang.Lot_tab.BackT_star,this.now_lang.Lot_tab.ForT_star,this.now_lang.Lot_tab.MidT_star,this.now_lang.Lot_tab.Two_star,this.now_lang.Lot_tab.Gall,this.now_lang.Lot_tab.Indeterminate_gallbladder,this.now_lang.Lot_tab.Size_Dan_Shuang,this.now_lang.Lot_tab.Interest,this.now_lang.Lot_tab.Choose_two,this.now_lang.Lot_tab.Choose_three,this.now_lang.Lot_tab.Dragon_tiger],
+			'reward_show':true,
+			'name':this.now_lang.lot_type.xj_ssc
+		},
+		'bj_ssc':{
+			'tabitem':[this.now_lang.Lot_tab.Two_star,this.now_lang.Lot_tab.Gall,this.now_lang.Lot_tab.Indeterminate_gallbladder,this.now_lang.Lot_tab.Size_Dan_Shuang,this.now_lang.Lot_tab.Interest,this.now_lang.Lot_tab.Choose_two,this.now_lang.Lot_tab.Choose_three,this.now_lang.Lot_tab.Dragon_tiger],
+			'reward_show':true,
+			'name':this.now_lang.lot_type.bj_ssc
+		}
 	}
 	// 一级tab
 	menu_1 = [
@@ -869,6 +898,7 @@ export class SSCofficialComponent implements OnInit {
 	up_ball = 1;
 	ngOnInit(){
 		let that = this
+		this.getPageId();;
 		this.now_lang_type=userModel.now_lang_type;
 		this.loadpage = userModel.platform;
 		Base.DOM.title('重庆时时彩')
@@ -887,8 +917,29 @@ export class SSCofficialComponent implements OnInit {
 		this.drag_tag();
 
 	}
+	getPageId(){
+		let idarray = this.router.url.split("/");
+		this.nowPageId = idarray[idarray.length-1]+'_ssc';
+		this.nowitems = this.items_show[this.nowPageId];
+		console.log('+1')
+	}
 	ngAfterViewInit(){
 		this.inittab2();
+	}
+	lock_multiple(item){
+		let now_btn = $(item.target);
+		console.log($(item.target).hasClass('switch_btn'));
+		if (!$(item.target).hasClass('switch_btn')) {
+			now_btn = $(item.target).parent();
+		}
+		if(now_btn.hasClass('on')){
+			this.lock_multible = false;
+			$('#testinput').removeAttr('disabled');
+		}else{
+			this.lock_multible = true;
+			$('#testinput').attr({disabled: 'disabled'});
+		}
+
 	}
 	//tab切换暂时是写死的
 	inittab2(){
@@ -1009,11 +1060,11 @@ export class SSCofficialComponent implements OnInit {
 				now_left = orin_left+distance_X;
 				if(now_left<0){
 					now_left = 0
-				}else if(now_left>70){
-					now_left = 70
+				}else if(now_left>75){
+					now_left = 75
 				}
 				$('#range_tag').css("left",now_left);
-				if (now_left<=26) {
+				if (now_left<=36) {
 					that.rangepercent = 0.1
 					that.rangenum = 180000
 				}else{
@@ -1042,7 +1093,7 @@ export class SSCofficialComponent implements OnInit {
 	// 滑块左侧递加事件
 	rangevalueadd() {
 		let that = this;
-	    $('#range_tag').css("left",70);
+	    $('#range_tag').css("left",75);
 		that.rangepercent = 0
 		that.rangenum = 180000
 	}
@@ -1061,6 +1112,16 @@ export class SSCofficialComponent implements OnInit {
 		if(data.href){
 			that.router.navigateByUrl(data.href)
 		}else{
+			console.log(data.active)
+			console.log(data.active)
+			console.log(data.active)
+			console.log(data.active)
+			console.log(data.active)
+
+			// 加提示
+			that.now_tab1 = that.menu_1[data.active-1].name;
+			// that.now_tab2 = that.menu_1[data.active-1]
+
 			that.status.menu_1 = data.active
 			that.status.menu_2 = 1
 			that.menu_2 = []
@@ -1093,9 +1154,10 @@ export class SSCofficialComponent implements OnInit {
 	tabmenu2(data){
 		let that = this
 		that.inittab()
-		that.currtabname = data.name
-		that.tabcurr = data
-		that.status.menu_2 = data.index
+		that.currtabname = data.name;
+		that.tabcurr = data;
+		that.status.menu_2 = data.index;
+		that.now_tab2 = data.name;
 		if(data.isupload){
 			that.up_ball = 2
 		}else{
@@ -1357,6 +1419,10 @@ export class SSCofficialComponent implements OnInit {
 	}
 	
 	addrem(item){
+		//倍数锁
+		if (this.lock_multible) {
+			return false
+		};
 		this.multiple_input.value = parseInt(this.multiple_input.value);
 		this.radom_input.value = parseInt(this.radom_input.value);
 		if (item=='multiple') {
@@ -1368,6 +1434,9 @@ export class SSCofficialComponent implements OnInit {
 		
 	}
 	minusrem(item){
+		if (this.lock_multible) {
+			return false
+		};
 		this.multiple_input.value = parseInt(this.multiple_input.value);
 		this.radom_input.value = parseInt(this.radom_input.value);
 		if (item=='multiple') {

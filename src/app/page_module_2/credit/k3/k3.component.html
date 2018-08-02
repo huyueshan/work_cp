@@ -44,26 +44,26 @@
                             </div>
                             <div class="flex-r contitle">三军</div>
                             <div class="flex-r conmain">
-                                <div class="flex-r conmainbox" *ngFor="let item of k3data1.data1; let i=index">
+                                <div class="flex-r conmainbox" *ngFor="let item of k3data1.data1; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                     <span class="flex-r itembox">
                                         <span class="flex-r item1 ">
                                             <i [ngStyle]="{'background-position-y': imgtop[item.numb].top}"></i>
                                         </span>
                                         <span class="item2 color_m">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
-                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney1focus($event,1,'data1', i)"
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
                                         </span>
                                     </span>
                                 </div>
-                                <div class="flex-r conmainbox" *ngFor="let item of k3data1.data2; let i=index">
+                                <div class="flex-r conmainbox" *ngFor="let item of k3data1.data2; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                     <span class="flex-r itembox">
                                         <span class="flex-r item1" *ngIf="item.name !== null">
                                             {{item.name}}
                                         </span>
                                         <span class="item2 color_m" *ngIf="item.name !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow && item.name !== null">
-                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney1focus($event,1,'data2', i)"
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
                                         </span>
                                     </span>
@@ -71,27 +71,27 @@
                             </div>
                             <div class="flex-r contitle">全骰、围骰</div>
                             <div class="flex-r conmain">
-                                    <div class="flex-r conmainbox" *ngFor="let item of k3data2.data1; let i=index">
+                                    <div class="flex-r conmainbox" *ngFor="let item of k3data2.data1; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                             <span class="flex-r itembox">
                                                 <span class="flex-r item1 ">
                                                     {{item.name}}
                                                 </span>
                                                 <span class="item2 color_m">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
                                                 <span class="item3" *ngIf="inputshow">
-                                                    <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney1focus($event,2,'data1', i)"
+                                                    <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                         (blur)="inmoneyblur()" (keyup)="changereg()">
                                                 </span>
                                             </span>
                                         </div>
         
-                                <div class="flex-r conmainbox" *ngFor="let item of k3data2.data2; let i=index">
+                                <div class="flex-r conmainbox" *ngFor="let item of k3data2.data2; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                     <span class="flex-r itembox">
                                         <span class="flex-r item1 " *ngIf="item.numb !== null">
                                             <i [ngStyle]="{'background-position-y': imgtop[item.numb].top}"></i>
                                         </span>
                                         <span class="item2 color_m" *ngIf="item.numb !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow && item.numb !== null">
-                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney1focus($event,2,'data2', i)"
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
                                         </span>
                                     </span>
@@ -99,7 +99,7 @@
                             </div>
                             <div class="flex-r contitle">短牌</div>
                             <div class="flex-r conmain">        
-                                <div class="flex-r conmainbox" *ngFor="let item of k3data3.data1; let i=index">
+                                <div class="flex-r conmainbox" *ngFor="let item of k3data3.data1; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                     <span class="flex-r itembox">
                                         <span class="flex-r item1 doubicon " *ngIf="item.numb !== null">
                                             <i [ngStyle]="{'background-position-y': imgtop[item.numb[0]].top}"></i>
@@ -107,7 +107,7 @@
                                         </span>
                                         <span class="item2 color_m" *ngIf="item.numb !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow && item.numb !== null">
-                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney1focus($event,3,'data1', i)"
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
                                         </span>
                                     </span>
@@ -115,14 +115,14 @@
                             </div>
                             <div class="flex-r contitle">点数</div>
                             <div class="flex-r conmain">        
-                                <div class="flex-r conmainbox" *ngFor="let item of k3data4.data1; let i=index">
+                                <div class="flex-r conmainbox" *ngFor="let item of k3data4.data1; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                     <span class="flex-r itembox">
                                         <span class="flex-r item1 doubicon ">
                                             {{item.name}}
                                         </span>
                                         <span class="item2 color_m">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
-                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney1focus($event,4,'data1', i)"
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
                                         </span>
                                     </span>
@@ -130,7 +130,7 @@
                             </div>
                             <div class="flex-r contitle">长牌</div>
                             <div class="flex-r conmain">        
-                                <div class="flex-r conmainbox" *ngFor="let item of k3data5.data1; let i=index">
+                                <div class="flex-r conmainbox" *ngFor="let item of k3data5.data1; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                     <span class="flex-r itembox">
                                         <span class="flex-r item1 doubicon ">
                                                 <i [ngStyle]="{'background-position-y': imgtop[item.numb[0]].top}"></i>
@@ -138,14 +138,12 @@
                                         </span>
                                         <span class="item2 color_m">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
-                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoney1focus($event,5,'data1', i)"
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
                                         </span>
                                     </span>
                                 </div>
                             </div>
-                            <!-- =================================== -->
-                            <!-- =================================== -->
 
                         </div>
                         <!-- 按钮 -->
@@ -153,7 +151,7 @@
                             <span class="flex-r btngroup">
                                 <span *ngIf="!inputshow">
                                     <input type="text" maxlength="9" class="inmoney" id="allinmoney" name="allinmoney" [(ngModel)]="setallmoney.value" value=""
-                                        (focus)="inmoneyfocus($event,'all')" (blur)="inmoneyblur()" (change)="allchange()" (keyup)="changereg()">
+                                        (focus)="inmoneyfoc($event, setallmoney)" (blur)="inmoneyblur()" (change)="allchange()" (keyup)="changereg()">
                                 </span>
                                 <button class="btnactive" (click)="sub()">确定</button>
                                 <button class="resetbtn" (click)="reset()">取消</button>
@@ -184,7 +182,7 @@
                                             <input type="text" name="setinput" maxlength="9" [(ngModel)]="popup.setnumb.data[i].value" (keyup)="changeregset(i)">
                                             <span (click)="setnumbdel(i)">删除</span>
                                         </span>
-                                        <span class="flex-r item">
+                                        <span class="flex-r item" *ngIf="popup.setnumb.data.length<5">
                                             <input type="text" name="setinput" maxlength="9" [(ngModel)]="popup.setnumb.value" (keyup)="changeregset(-1)">
                                             <span (click)="addnumb()">增加</span>
                                             <span (click)="numbdel()">删除</span>
@@ -199,23 +197,6 @@
                             </div>
                         </div>
 
-                        <!-- 提示信息窗口 -->
-                        <div id="notebox" *ngIf="popup.note.show" [style.left.px]= "popup.note.left" [style.top.px]= "popup.note.top">
-                            <div class="flex-c content" [ngClass]="{scale:popup.note.scale}" >
-                                <div class="flex-r top" (mousedown)="popmousedown($event,'note')" (mouseleave)="popmouseup($event,'note')" (mouseup)="popmouseup($event,'note')" (mousemove)="popmousmove($event,'note')">
-                                    <span>操作信息</span>
-                                    <i (click)="close()"> &times; </i>
-                                </div>
-                                <div class="flex-r note">
-                                    <p>{{popup.note.messsage}}</p>
-
-                                </div>
-
-                                <div class="flex-r foot">
-                                    <span (click)="close()">确定</span>
-                                </div>
-                            </div>
-                        </div>
                         <!-- 提交窗口 -->
                         <div class="subpopup" *ngIf="popup.sub.show" [style.left.px]= "popup.sub.left" [style.top.px]= "popup.sub.top">
                                 <div class="flex-c content" [ngClass]="{scale:popup.sub.scale}">
@@ -287,3 +268,5 @@
             <app-wenlu></app-wenlu>
         </div>
     </div>
+
+    <app-pupout [data]='popoutInfo' (close)="closePopouot($event)" (notarize)="NOTARIZE()"></app-pupout>

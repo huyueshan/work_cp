@@ -634,8 +634,8 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
         // 跳转官方路由设置
         // this.setlink();
         this.route.params.subscribe(data => {
-            this.reset();
             this.type = 1;
+            this.tabclick(0);
             this.routeid = data.id;
             this.subob.channel = "快三 - " + this.routeid;
         });
@@ -770,7 +770,6 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
         p.setnumb.show = false;
         p.shade.show = false;
         p.sub.show = false;
-        // p.note.show = false;
     }
     // 提交窗口触发事件 d为提交数据
     SUB(d) {
@@ -831,20 +830,6 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
         this.setposition(e);
     }
 
-    // curinpt为当前操作输入框 变量
-    // i 数组当前index
-    inmoneyfocus(e, i) {
-        this.curinpt = this.setallmoney;
-        this.setposition(e);
-    }
-    // 金额框获得焦点事件 /curinpt为当前操作输入框 变量
-    // t、i 、n 为对应数据的key值或者index
-    inmoney1focus(e, n, t, i) {
-        let _that = this;
-        let str = "k3data" + n;
-        this.curinpt = _that[str][t][i];
-        this.setposition(e);
-    }
 
     //页面输入框焦点离开后隐藏金额选择框方法
     inmoneyblur() {

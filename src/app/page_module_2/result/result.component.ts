@@ -157,6 +157,14 @@ public imgtop = {
 public OBJX = {sum:0, sumBigSmall:'', balls:'', lastBigSmall:'', specialOddEven:'', specialBigSmall:'', specialCombOddEven:'', specialCombBigSmall:'', specialLastNum:'', specialAnimal:'', specialColor:'', upDown:'', oddEven:'', OneBigSmall:function(n){}, OneOddEven:function(n){}, sumOddEven:'',before:'', middle:'',  behind:'', pklh:function(l,h){},}
 
 
+//====================传给分页组件数据 
+public pagination = {
+    totalNum:200,  //总数据条数 
+    pageSize: 20, // 每页显示数量
+    curPage: 1, //当前页
+    segmentSize: 5, //最大显示页码标签数量
+    totalPage:10,// 最大页码数。
+    };
 
 // ==========临时设置开奖数据参数
 
@@ -185,6 +193,11 @@ public OBJX = {sum:0, sumBigSmall:'', balls:'', lastBigSmall:'', specialOddEven:
   // 彩种选择框事件
   selechange() {
     this.xintab.active = 0 ;
+    this.numbdatactve = 0 ;
+    Base.Store.set('HistoryID',this.curgameID,false);
+    this.pageinit();
+  }
+  selechange2() {
     Base.Store.set('HistoryID',this.curgameID,false);
     this.pageinit();
   }
@@ -280,7 +293,7 @@ public OBJX = {sum:0, sumBigSmall:'', balls:'', lastBigSmall:'', specialOddEven:
     }
     setTimeout(() => {
         this.loadinfo = false;
-    }, 500);
+    }, 100);
   }
 
   // 选择多期开奖事件
@@ -774,6 +787,13 @@ public OBJX = {sum:0, sumBigSmall:'', balls:'', lastBigSmall:'', specialOddEven:
         }
     }
 
+    
+    // 分页组件点击页码事件，参数i为点击页码数
+    getPageData(i) {
+        //  此处请求数据
+        this.pageinit();
+        console.log(i);
+    }
 
   // ================临时数据开始
   // 创建开奖数据  n 为开奖数据期数

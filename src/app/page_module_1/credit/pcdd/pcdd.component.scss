@@ -387,6 +387,8 @@
             }
             .item2{
                 width:60px;
+                height: 50px;
+                line-height: 50px;
                 text-align: center;
             }
             .item4{
@@ -422,7 +424,7 @@
             }
             .selball{
                 position: absolute;
-                top:32px;
+                top:40px;
                 left: 0;
                 width:80px;
                 height: 200px;
@@ -460,7 +462,7 @@
     width: 60px;
     font-size: 12px;
     height: 22px;
-    padding-left: 5px;
+    text-align: center;
     border: 1px solid #ccc;
 }
 
@@ -493,6 +495,7 @@
         .inmoney {
             width: 80px;
             height: 32px;
+            text-align: center;
             margin-right: 10px;
         }
     }

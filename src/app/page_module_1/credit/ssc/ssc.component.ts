@@ -726,8 +726,9 @@ export class SscComponent implements OnInit, OnDestroy, AfterViewInit {
         // 跳转官方路由设置
         // this.setlink();
         this.route.params.subscribe(data => {
-            this.reset();
             this.type = 1;
+            this.tabclick(0);
+            this.btolastclick(0);
             this.routeid = data.id;
             this.subob.channel = "时时彩 - " + this.routeid;
         });

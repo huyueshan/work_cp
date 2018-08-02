@@ -289,7 +289,7 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
             point: 3.5,
             step: 0,
         }, ],
-    }
+    };
     public pcdata1 = this.setball();
     public pcdata2 = [
         [{
@@ -500,8 +500,8 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         this.popup.shade.h = screen.height;
         // 跳转官方路由设置
         this.route.params.subscribe(data => {
-            this.reset();
             this.type = 1;
+            this.tabclick(0);
             this.routeid = data.id;
             this.subob.channel = "PC蛋蛋 - " + this.routeid;
         });
@@ -546,7 +546,7 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         let d = this.selballdata;
         d.number = i;
         d.show = true;
-        let n = 170 + 80 * (i - 1);
+        let n = 178 + 80 * (i - 1);
         d.left = n + "px";
     }
     selectball(i) {

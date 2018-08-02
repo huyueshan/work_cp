@@ -691,6 +691,14 @@ export class ResultComponent implements OnInit {
     }
 
 
+    //====================传给分页组件数据 
+    public pagination = {
+        totalNum:200,  //总数据条数 
+        pageSize: 20, // 每页显示数量
+        curPage: 1, //当前页
+        segmentSize: 5, //最大显示页码标签数量
+        totalPage:10,// 最大页码数。
+      };
 
     // ==========临时设置开奖数据参数
 
@@ -1438,6 +1446,13 @@ export class ResultComponent implements OnInit {
         }
     }
 
+    
+    // 分页组件点击页码事件，参数i为点击页码数
+    getPageData(i) {
+        //  此处请求数据
+        this.pageinit();
+        console.log(i);
+    }
 
     // ================临时数据开始
     // 创建开奖数据  n 为开奖数据期数

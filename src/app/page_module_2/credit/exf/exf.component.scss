@@ -38,6 +38,9 @@
 .color_b {
     color: #002eff;
 }
+.checkbg{
+    background-color: #FFF8B6;
+}
 
 .sscbox {
     width: 1000px;
@@ -47,8 +50,6 @@
 .ssccontain {
     width: 1000px;
     align-self: center;
-    // background: #111 url(../../images/bg_02.jpg) center no-repeat;
-    // background-size: cover;
     .tabbox {
         width: 100%;
         padding-right: 20px;
@@ -311,14 +312,15 @@
             .item2 {
                 height: auto;
                 .item2info {
-                    width: 68px;
-                    justify-content: flex-start;
-                    align-content: center;
+                    width: 50%;
+                    flex:1;
+                    justify-content: center;
                     span {
                         height: 30px;
                         line-height: 30px;
                     }
                     span:first-child {
+                        margin-left:-10px;
                         flex: 0 0 26px;
                     }
                 }
@@ -476,7 +478,7 @@
     width: 60px;
     font-size: 12px;
     height: 22px;
-    padding-left: 5px;
+    text-align: center;
     border: 1px solid #ccc;
 }
 
@@ -513,6 +515,7 @@
         .inmoney {
             width: 80px;
             height: 36px;
+            text-align: center;
             margin-right: 10px;
         }
     }
@@ -739,64 +742,6 @@
                 input{
                     margin-right: 6px;
                 }
-            }
-        }
-    }
-    .scale{
-        transform: scale(1);
-    }
-}
-// 弹框
-#notebox{
-    position: fixed;
-    z-index: 999;
-    .content{
-        width: 300px;
-        min-height: 160px;
-        background-color: white;
-        border: 2px solid #b61010;
-        border-radius: 6px;
-        box-shadow: 0 0 0px 5px rgba(50, 50, 50, .6);
-        justify-content: space-between;
-        transform: scale(.6);
-        transition: transform .1s linear;
-        overflow: hidden;
-        .top {
-            width: 100%;
-            height: 30px;
-            line-height: 30px;
-            font-size: 12px;
-            color: white;
-            padding: 0 12px 0 20px;
-            justify-content: space-between;
-            background: linear-gradient(to top, #cf364c, #ec5c5c);
-            i {
-                font-size: 18px;
-                cursor: pointer;
-            }
-        }
-        .note{
-            width: 100%;
-            padding: 16px;
-            justify-content: center;
-            align-items: center;
-            p{
-                font-size: 12px;
-                line-height: 24px;
-            };
-        }
-        .foot{
-            justify-content: center;
-            padding: 10px;
-            span{
-                padding: 0 8px;
-                line-height: 26px;
-                font-size: 14px;
-                color: white;
-                background: linear-gradient(to top, #b42237, #d93d3d);
-                border:1px solid #781113;
-                border-radius: 4px;
-                cursor: pointer;
             }
         }
     }

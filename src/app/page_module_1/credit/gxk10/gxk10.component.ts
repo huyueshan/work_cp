@@ -17,7 +17,7 @@ import userModel from "../../../../status/user.model";
 import {
     Base
 } from "../../../../factory/base.model";
-import "rxjs/add/operator/filter";
+// import "rxjs/add/operator/filter";
 
 @Component({
     selector: "app-gxk10",
@@ -57,7 +57,8 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
         point: 0,
         step: 0,
     };
-    public typedata = [{
+    public typedata = [
+        {
             id: 1,
             name: "两面盘"
         },
@@ -1524,8 +1525,8 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
         this.popup.shade.h = screen.height;
         // 跳转官方路由设置
         this.route.params.subscribe(data => {
-            this.reset();
             this.type = 1;
+            this.tabclick(0);
             this.routeid = data.id;
             this.subob.channel = "快乐彩 - " + this.routeid;
         });
@@ -2003,14 +2004,6 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
         }, 2000);
     }
 
-    linkrouter(t) {
-        this.router.navigate([t]);
-    }
-    routlink() {
-        let str;
-        this.route.params.subscribe(data => (str = data.id));
-        this.router.navigate(["/lottery/officialklc", str]);
-    }
     // 快速投注点击和提交事件
     ktclick(t, n) {
         if (this.type < 2 || this.type > 6) {
@@ -2060,7 +2053,7 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
             this.POPNOTE({msg:'请填写投注金额！'});
             return;
         }
-        let data;
+        let data,n=0;
         if (this.type === 2) {
             data = this.betdatab2_1.data1;
         } else {
@@ -2068,7 +2061,21 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
         }
         for (let i = 0; i < data.length; i++) {
             if (data[i].checked) {
+                n++;
                 data[i].value = this.kuaitoudata.value;
+            }
+        }
+        if (n===0) {
+            this.POPNOTE({msg:'请选择选项！'})
+        }else{
+            for (let i = 0; i < data.length; i++) {
+                data[i].checked = false;
+            }
+            for (let i = 1; i < 4; i++) {
+                let str = 'data'+i;
+                for (let q = 0; q < this.kuaitoudata[str].length; q++) {
+                    this.kuaitoudata[str][q].checked= false;
+                }
             }
         }
     }

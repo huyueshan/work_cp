@@ -13,9 +13,9 @@ import { SideComponent } from "./side/side.component";
 import { CredtopComponent } from "./credtop/credtop.component";
 import { CSiderComponent } from './sider/sider.component';
 import { WenluComponent } from './wenlu/wenlu.component';
-import { LanguageComponent } from "./language/language.component";
 import { PupoutComponent } from './pupout/pupout.component';
 import { PageComponent } from './page/page.component';
+import { LanguageComponent } from "./language/language.component";
 
 @NgModule({
   imports: [SharkModule, CommonModule, FormsModule],

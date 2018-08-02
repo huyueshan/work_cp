@@ -26,6 +26,7 @@
 }
 .loadinginfo {
     width: 100%;
+    min-height: 600px;
     padding-top: 40px;
     text-align: center;
     p {
@@ -139,6 +140,7 @@
     width: 100%;
     min-height: 940px;
     background-color: #EEECE1;
+    padding-bottom: 30px;
     .result-head {
         width: 100%;
         min-width: 1360px;
@@ -251,7 +253,7 @@
             justify-content: flex-start;
             .result-main {
                 min-width: 1360px;
-                padding: 5px 0 20px 0;
+                padding-top: 5px;
                 align-items: center;
                 
                 .tablebox {
@@ -380,5 +382,9 @@
                 }
             }
         }
+    }
+    .pagebox{
+        width: 100%;
+        justify-content: center;
     }
 }

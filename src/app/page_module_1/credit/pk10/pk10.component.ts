@@ -17,7 +17,7 @@ import userModel from "../../../../status/user.model";
 import {
     Base
 } from "../../../../factory/base.model";
-import "rxjs/add/operator/filter";
+// import "rxjs/add/operator/filter";
 
 @Component({
     selector: "app-pk10",
@@ -573,7 +573,8 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
             ]
         }
     };
-    public pkdata1_1 = [{
+    public pkdata1_1 = [
+        {
             name: "冠亚大",
             value: "",
             point: 0,
@@ -599,7 +600,8 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         }
     ];
 
-    public betdatam = [{
+    public betdatam = [
+        {
             title: "冠军",
             data1: this.setbigorsmall()
         },
@@ -701,7 +703,8 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
             step: 0,checked:false,
         }
     ];
-    public betdata2_1 = [{
+    public betdata2_1 = [
+        {
             title: "冠军",
             data: this.setball()
         },
@@ -843,12 +846,32 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
                 step: 0,checked:false,
             }
         ],
-        [{
-            numb: 19,
-            value: "",
-            point: 0,
-            step: 0,checked:false,
-        }]
+        [
+            {
+                numb: 19,
+                value: "",
+                point: 0,
+                step: 0,checked:false,
+            },
+            {
+                numb: null,
+                value: "",
+                point: 0,
+                step: 0,checked:false,
+            },
+            {
+                numb: null,
+                value: "",
+                point: 0,
+                step: 0,checked:false,
+            },
+            {
+                numb: null,
+                value: "",
+                point: 0,
+                step: 0,checked:false,
+            },
+        ]
     ];
     public betdata3_2 = [{
             name: "大",
@@ -870,6 +893,12 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         },
         {
             name: "双",
+            value: "",
+            point: 0,
+            step: 0,checked:false,
+        },
+        {
+            name: null,
             value: "",
             point: 0,
             step: 0,checked:false,
@@ -898,17 +927,7 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
             scale: false,
             data: []
         },
-        // 提示信息框
-        // note: {
-        //     show: false,
-        //     drag: false,
-        //     dragleft: 0,
-        //     dragtop: 0,
-        //     messsage: "",
-        //     left: 200,
-        //     top: 50,
-        //     scale: false
-        // },
+
         // 提交框
         sub: {
             show: false,
@@ -960,8 +979,8 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         this.popup.shade.h = screen.height;
 
         this.route.params.subscribe(data => {
-            this.reset();
             this.type = 1;
+            this.tabclick(0);
             this.routeid = data.id;
             this.subob.channel = "PK10 - " + this.routeid;
         });
@@ -1177,47 +1196,6 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     // 输入框获取焦点事件
     inmoneyfoc(e, i) {
         this.curinpt = i;
-        this.setposition(e);
-    }
-    // curinpt为当前操作输入框 变量
-    // i 数组当前index
-    inmoneyfocus(e, i) {
-        if (i == "all") {
-            this.curinpt = this.setallmoney;
-        } else {
-            //   this.curinpt = this.betdata3[i];
-        }
-        this.setposition(e);
-    }
-    // 整合 金额框获得焦点事件 /curinpt为当前操作输入框 变量
-    // t、i 、q 为对应数据的key值或者index
-    inmoney1focus(e, i, t, q) {
-        if (q !== null) {
-            this.curinpt = this.betdatam[i][t][q];
-        } else if (t === "vs") {
-            this.curinpt = this.pkdata1_3[i];
-        } else {
-            this.curinpt = this.pkdata1_1[i];
-        }
-        this.setposition(e);
-    }
-    // 龙虎斗 金额框获得焦点事件 /curinpt为当前操作输入框 变量
-    // t、i 、q 为对应数据的key值或者index
-    inmoney2focus(e, i, t) {
-        this.curinpt = this.betdata2_1[i].data[t];
-        this.setposition(e);
-    }
-
-    inmoney3focus(e, i, q) {
-        if (q !== null) {
-            this.curinpt = this.betdata3_1[i][q];
-        } else {
-            this.curinpt = this.betdata3_2[i];
-        }
-        this.setposition(e);
-    }
-    inmoney4focus(e, i) {
-        this.curinpt = this.betdata4_1[i];
         this.setposition(e);
     }
 

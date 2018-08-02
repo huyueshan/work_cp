@@ -13,6 +13,8 @@ import { SideComponent } from "./side/side.component";
 import { CredtopComponent } from "./credtop/credtop.component";
 import { CSiderComponent } from './sider/sider.component';
 import { WenluComponent } from './wenlu/wenlu.component';
+import { PupoutComponent } from './pupout/pupout.component';
+import { PageComponent } from './page/page.component';
 import { LanguageComponent } from "./language/language.component";
 
 @NgModule({
@@ -25,6 +27,8 @@ import { LanguageComponent } from "./language/language.component";
     CredtopComponent,
     CSiderComponent,
     WenluComponent,
+    PupoutComponent,
+    PageComponent,
     LanguageComponent,
   ],
   exports: [
@@ -35,6 +39,8 @@ import { LanguageComponent } from "./language/language.component";
     CredtopComponent,
     CSiderComponent,
     WenluComponent,
+    PupoutComponent,
+    PageComponent,
     LanguageComponent,
   ]
 })

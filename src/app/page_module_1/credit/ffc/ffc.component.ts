@@ -269,7 +269,8 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
             ]
         }
     };
-    public betdatam = [{
+    public betdatam = [
+        {
             title: "第一球",
             data1: this.setbigorsmall(),
             data2: this.setball()
@@ -663,7 +664,6 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     ];
     // =弹窗对话框数据
 
-
     public popup = {
         // 遮罩层
         shade: {
@@ -730,8 +730,9 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
         // 跳转官方路由设置
         // this.setlink();
         this.route.params.subscribe(data => {
-            this.reset();
             this.type = 1;
+            this.tabclick(0);
+            this.btolastclick(0);
             this.routeid = data.id;
             this.subob.channel = "分分彩 - " + this.routeid;
         });

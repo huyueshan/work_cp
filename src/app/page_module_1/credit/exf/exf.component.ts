@@ -950,8 +950,8 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
     this.popup.shade.h = screen.height;
 
     this.route.params.subscribe(data => {
-      this.reset();
-      this.type = 1;
+        this.type = 1;
+        this.tabclick(0);
       this.routeid = data.id;
       this.subob.channel = "11选5 - " + this.routeid;
     });

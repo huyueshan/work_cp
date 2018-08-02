@@ -1192,6 +1192,7 @@ const language_0 = {
 			'hs_ffc':'韩式1.5分彩',
 			'az_ffc':'澳洲3分彩',
 			'jnd_ffc':'加拿大3.5分彩',
+			'lhc_ffc':'六合彩分分彩',
 
 			'pk_10':'PK10',
 			'bj_pk10':'北京PK10',
@@ -1213,6 +1214,9 @@ const language_0 = {
 			'jndkl8_klc':'加拿大快乐8',
 			'azkl8_klc':'澳洲快乐8',
 			'slfk_klc':'斯洛伐克',
+			'gdk10_klc':'广东快10',
+			'gxk10_klc':'广西快10',
+			'cqk10_klc':'重庆快10',
 
 
 			'Dpc':'低频彩',

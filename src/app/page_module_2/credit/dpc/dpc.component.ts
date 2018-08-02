@@ -29,13 +29,6 @@ import {
 })
 export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     loadpage = false;
-    public cpnav = {
-        style: "credit",
-        prev: "20180517022",
-        prevball: [2, 5, 9, 0, 8],
-        next: "20180517023",
-        time: ""
-    };
     public routeid;
     public rastep = 7.8; // 滑动条步长
     public odds = 7.8; // 赔率
@@ -1198,215 +1191,215 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                     name: "特大",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "特小",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "家禽",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "野兽",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "大单",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "奇",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "上",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 }
             ],
             [{
                     name: "特单",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "特双",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "总大",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "总小",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "大双",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "奇偶和",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "上下和",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 }
             ],
             [{
                     name: "合大",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "合小",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "总单",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "总双",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "小单",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "偶",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "下",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 }
             ],
             [{
                     name: "合单",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "合双",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "合尾大",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "合尾小",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "小双",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: null,
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: null,
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 }
             ],
             [{
                     name: "尾大",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "尾小",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "红波",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "蓝波",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: "绿波",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: null,
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 },
                 {
                     name: null,
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked: false,
                 }
             ]
         ]
@@ -1418,84 +1411,84 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 data: this.setball2("red", 1),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "红双",
                 value: "",
                 data: this.setball2("red", 0),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "红大",
                 value: "",
                 data: this.setball2("red", 25),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "红小",
                 value: "",
                 data: this.setball2("red", 24),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "蓝单",
                 value: "",
                 data: this.setball2("blue", 1),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "蓝双",
                 value: "",
                 data: this.setball2("blue", 0),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "蓝大",
                 value: "",
                 data: this.setball2("blue", 25),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "蓝小",
                 value: "",
                 data: this.setball2("blue", 24),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "绿单",
                 value: "",
                 data: this.setball2("green", 1),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "绿双",
                 value: "",
                 data: this.setball2("green", 0),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "绿大",
                 value: "",
                 data: this.setball2("green", 25),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "绿小",
                 value: "",
                 data: this.setball2("green", 24),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             }
         ]
     };
@@ -1506,84 +1499,84 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 data: this.setball3(0),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "牛",
                 value: "",
                 data: this.setball3(1),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "虎",
                 value: "",
                 data: this.setball3(2),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "兔",
                 value: "",
                 data: this.setball3(3),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "龙",
                 value: "",
                 data: this.setball3(4),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "蛇",
                 value: "",
                 data: this.setball3(5),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "马",
                 value: "",
                 data: this.setball3(6),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "羊",
                 value: "",
                 data: this.setball3(7),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "猴",
                 value: "",
                 data: this.setball3(8),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "鸡",
                 value: "",
                 data: this.setball3(9),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "狗",
                 value: "",
                 data: this.setball3(10),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             },
             {
                 name: "猪",
                 value: "",
                 data: this.setball3(11),
                 point: 0,
-                step: 0
+                step: 0,checked: false,
             }
         ]
     };
@@ -1628,7 +1621,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         dantuo: 0,
         dantuodata: [],
         data1: this.setball(),
-        data2: [{
+        data2: [
+            {
                 name: "鼠",
                 value: "",
                 checked: false,
@@ -1836,84 +1830,84 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 data: this.setball3(0),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "牛",
                 value: "",
                 data: this.setball3(1),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "虎",
                 value: "",
                 data: this.setball3(2),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "兔",
                 value: "",
                 data: this.setball3(3),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "龙",
                 value: "",
                 data: this.setball3(4),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "蛇",
                 value: "",
                 data: this.setball3(5),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "马",
                 value: "",
                 data: this.setball3(6),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "羊",
                 value: "",
                 data: this.setball3(7),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "猴",
                 value: "",
                 data: this.setball3(8),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "鸡",
                 value: "",
                 data: this.setball3(9),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "狗",
                 value: "",
                 data: this.setball3(10),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "猪",
                 value: "",
                 data: this.setball3(11),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         ]
     };
@@ -1924,78 +1918,78 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 data: this.setweiball(1),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "2尾",
                 value: "",
                 data: this.setweiball(2),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "3尾",
                 value: "",
                 data: this.setweiball(3),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "4尾",
                 value: "",
                 data: this.setweiball(4),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "5尾",
                 value: "",
                 data: this.setweiball(5),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "6尾",
                 value: "",
                 data: this.setweiball(6),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "7尾",
                 value: "",
                 data: this.setweiball(7),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "8尾",
                 value: "",
                 data: this.setweiball(8),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "9尾",
                 value: "",
                 data: this.setweiball(9),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             {
                 name: "0尾",
                 value: "",
                 data: this.setweiball(0),
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         ]
     };
     public dpcdata10 = {
-        title: "合肖",
+        title: "",
         checkarr: [],
         ballarr: [],
-        dantuo: 0,
+        dantuo: 1,
         dantuodata: [],
         point: 0,
         step: 0,
@@ -2203,7 +2197,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         dantuodata: [],
         point: 0,
         step: 0,
-        data1: [{
+        data1: [
+            {
                 name: "鼠",
                 value: "",
                 checked: false,
@@ -2319,12 +2314,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2333,12 +2328,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2347,12 +2342,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2361,12 +2356,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2375,12 +2370,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2389,12 +2384,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2403,12 +2398,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2417,12 +2412,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2431,12 +2426,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2445,12 +2440,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2459,12 +2454,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2473,12 +2468,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2487,12 +2482,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2501,12 +2496,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2515,12 +2510,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2529,12 +2524,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2543,12 +2538,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2557,12 +2552,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2571,12 +2566,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2585,12 +2580,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         },
         {
@@ -2599,12 +2594,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0, checked: false,
             }
         }
     ];
@@ -2629,17 +2624,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             top: 50,
             scale: false,
             data: []
-        },
-        // 提示信息框
-        note: {
-            show: false,
-            drag: false,
-            dragleft: 0,
-            dragtop: 0,
-            messsage: "",
-            left: 200,
-            top: 50,
-            scale: false
         },
         // 提交框
         sub: {
@@ -2672,6 +2656,13 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         point: "-",
         money: "-"
     };
+    // 传给弹窗组件数据
+    public  popoutInfo={
+        title:'string',
+        msg:'string',
+        event: false,
+        show: false,
+    }
     constructor(
         private el: ElementRef,
         private router: Router,
@@ -2693,8 +2684,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         // 跳转官方路由设置
         // this.setlink();
         this.route.params.subscribe(data => {
-            this.reset();
             this.type = 1;
+            this.tabclick(0);
             this.routeid = data.id;
             this.subob.channel = "低频彩 - " + this.routeid;
         });
@@ -2794,10 +2785,10 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     setboxvalid() {
         this.boxvalid = !this.boxvalid;
         let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
-        this.NOTEtip(s);
-        setTimeout(() => {
-            this.popup.note.show = false;
-        }, 2000);
+        this.POPNOTE({msg:s});
+        // setTimeout(() => {
+        //     this.popup.note.show = false;
+        // }, 2000);
     }
     // 滑块左侧递减事件
     rangevaluelessen() {
@@ -2811,7 +2802,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             this.rangevalue += this.rastep;
         }
     }
-    // 切换玩法事件 /整合/龙虎斗/全五中一
+    // 切换玩法事件 
     togtype(i) {
         this.reset();
         this.type = i;
@@ -2826,10 +2817,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         if (i === 0) {
             this.selectbtnvalue = 0;
             this.inputshow = true;
+            this.reset();
         }
         if (i === 1) {
             this.selectbtnvalue = 1;
             this.inputshow = false;
+            this.reset();
         }
         if (i === 2) {
             let p = this.popup;
@@ -2851,7 +2844,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         }
         Base.Store.set("selmoeny", d, true);
         this.selmoeny = d;
-        this.NOTEtip("保存成功！");
+        this.POPNOTE({msg:"保存成功！"});
         setTimeout(() => {
             this.close();
         }, 2000);
@@ -2889,23 +2882,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         p.setnumb.show = false;
         p.shade.show = false;
         p.sub.show = false;
-        p.note.show = false;
-    }
-    // 提示信息窗口触发事件 index为提示信息notetip的index或者直接传字符串
-    NOTEtip(i) {
-        let p = this.popup;
-        if (typeof i === "string") {
-            p.note.messsage = i;
-        } else {
-            this.notetip[i] ? (p.note.messsage = this.notetip[i]) : i;
-        }
-        this.setfixed(p.note, 300, 160);
-        p.note.scale = false;
-        p.note.show = true;
-        p.shade.show = true;
-        setTimeout(() => {
-            p.note.scale = true;
-        }, 10);
     }
     // 提交窗口触发事件 d为提交数据
     SUB(d) {
@@ -2959,36 +2935,9 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             t.top = ev.clientY - t.dragtop;
         }
     }
-
-    // curinpt为当前操作输入框 变量
-    // i 数组当前index
-    inmoneyfocus(e, i) {
-        if (i == "all") {
-            this.curinpt = this.setallmoney;
-        } else {
-            this.curinpt = this.kuaitoudata; //  快速投注
-        }
-        this.setposition(e);
-    }
-    // 整合 金额框获得焦点事件 /curinpt为当前操作输入框 变量
-    // t、i 、q 为对应数据的key值或者index
-    inmoney1focus(e, n, t, i, z) {
-        let _that = this;
-        let str = "dpcdata" + n;
-        // ===============
-        if (_that[str] instanceof Array) {
-            this.curinpt = _that[str][i][t][z];
-        } else if (z === null) {
-            this.curinpt = _that[str][t][i];
-        } else {
-            this.curinpt = _that[str][t][i][z];
-        }
-        this.setposition(e);
-    }
-    //   龙虎斗 金额框获得焦点事件 /curinpt为当前操作输入框 变量
-    //   t、i 、q 为对应数据的key值或者index
-    inmoney2focus(e, i, q) {
-        this.curinpt = this.dpcdata13[i][q];
+    // 输入框获取焦点事件
+    inmoneyfoc(e, i) {
+        this.curinpt = i;
         this.setposition(e);
     }
 
@@ -3025,6 +2974,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         let o = this.optionsdata;
         o.zhengteactive = i;
         this.dpcdata5.title = "正特 - " + o.zhengte[o.zhengteactive];
+        this.reset();
     }
     lianmaclick(i, n) {
         let o = this.optionsdata;
@@ -3037,7 +2987,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                 d7.dantuo = o.lianmastactive < 2 ? 2 : 1;
             }
             if (i > 1 && o.lianmastactive < 2) {
-                this.NOTEtip(0);
+                this.POPNOTE({msg:this.notetip[0]});
                 return;
             }
             if (i > 1) {
@@ -3076,8 +3026,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     hexiaoclick(i, n) {
         let o = this.optionsdata;
         let d10 = this.dpcdata10;
-        // o.hexiaoactive = i;
-        // this.dpcdata10.title = this.radvalue + " - " + o.hexiao[o.hexiaoactive];
         let tianxiao = ["兔", "马", "猴", "猪", "牛", "龙"];
         let dixiao = ["蛇", "羊", "鸡", "狗", "鼠", "虎"];
         if (
@@ -3086,7 +3034,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         ) {
             if (n === 2) {
                 let t = 2 + i;
-                this.NOTEtip(t);
+                this.POPNOTE({msg:this.notetip[t]});
             } else {
                 o.hexiaoactive1 = i;
                 d10.checkarr = [];
@@ -3116,7 +3064,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                 }
             }
         } else {
-            this.NOTEtip(1);
+            this.POPNOTE({msg:this.notetip[1]});
         }
     }
     zixuanclick(i) {
@@ -3358,7 +3306,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     // 选择框点击选项方法，赋值给当前操作的输入框
     optinclick(i) {
         if (this.curinpt === this.setallmoney) {
-            this.amend(i);
+            this.amend(i,true);
         }
         this.curinpt.value = i;
         this.boxshow = false;
@@ -3375,11 +3323,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         _that[str].ballarr = [];
         _that[str].dantuodata = [];
         if (t === 7 || t === 11 || t === 12) {
-            let d = _that[str].data1;
-            for (let i = 0; i < d.length; i++) {
-                d[i].checked = false;
-                d[i].disabled = false;
-            }
+            let d1 = _that[str].data1;
+            let d2 = _that[str].data2;
+            let d3 = _that[str].data3;
+            this.setchecked(d1);
+            this.setchecked(d2);
+            this.setchecked(d3);
         }
         if (t === 10) {
             this.radvalue = "";
@@ -3392,17 +3341,28 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         }
         this.setallmoney.value = "";
     }
+    setchecked(d){
+        if(d){
+            for (let i = 0; i < d.length; i++) {
+                d[i].checked = false;
+                d[i].disabled =false;
+            }
+
+        }
+    }
     // 快捷选项下的输入框值改变后的方法，
     allchange() {
         let v = this.setallmoney.value;
-        this.amend(v);
+        this.amend(v,true);
     }
-    amend(v) {
+    amend(v, bol=false) {
         if (this.type === 13) {
             let d = this.dpcdata13;
             for (let q = 0; q < d.length; q++) {
-                d[q].value1.value = v;
-                d[q].value2.value = v;
+                d[q].value1.value = this.selectbtnvalue===1?(d[q].value1.checked?v:""):v;
+                d[q].value2.value = this.selectbtnvalue===1?(d[q].value2.checked?v:""):v;
+                d[q].value1.checked = bol?d[q].value1.checked:false;
+                d[q].value2.checked = bol?d[q].value2.checked:false;
             }
         } else {
             let str = "dpcdata" + this.type;
@@ -3411,26 +3371,27 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                 for (let q = 0; q < _that[str].length; q++) {
                     let d1 = _that[str][q].data1;
                     let d2 = _that[str][q].data2;
-                    this.setvalue(d1, v);
-                    this.setvalue(d2, v);
+                    this.setvalue(d1, v, bol);
+                    this.setvalue(d2, v, bol);
                 }
             } else {
                 let d1 = _that[str].data1;
                 let d2 = _that[str].data2;
                 let d3 = _that[str].data3;
-                this.setvalue(d1, v);
-                this.setvalue(d2, v);
-                this.setvalue(d3, v);
+                this.setvalue(d1, v, bol);
+                this.setvalue(d2, v, bol);
+                this.setvalue(d3, v, bol);
             }
         }
     }
-    setvalue(d, v) {
+    setvalue(d, v, bol) {
         if (d) {
             for (let q = 0; q < d.length; q++) {
                 if (d[q] instanceof Array) {
                     for (let w = 0; w < d[q].length; w++) {
                         if (d[q][w].numb !== null && d[q][w].name !== null) {
-                            d[q][w].value = v;
+                            d[q][w].value = this.selectbtnvalue===1?(d[q][w].checked?v:""):v;
+                            d[q][w].checked = bol?d[q][w].checked:false;
                         }
                     }
                 } else {
@@ -3444,11 +3405,22 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                         ) {
                             return;
                         } else {
-                            d[q].value = v;
+                            d[q].value = this.selectbtnvalue===1?(d[q].checked?v:""):v;
+                            d[q].checked = bol?d[q].checked:false;
                         }
                     }
                 }
             }
+        }
+    }
+    
+    rapid(item){
+        if(item.numb===null||item.name===null){
+            return;
+        }
+        if(this.selectbtnvalue===1){
+            item.checked = !item.checked
+            item.value = item.checked?this.setallmoney.value:"";
         }
     }
     // 限制输入框只能输入数字
@@ -3466,7 +3438,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     // 确认提交按钮事件
     sub() {
         let data = [];
-        if (this.type === 1) {}
+        let differ = 0;
         if (this.type == 13) {
             let d = this.dpcdata13;
             for (let i = 0; i < d.length; i++) {
@@ -3476,7 +3448,9 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                     data[l].type = this.typedata[this.type - 1].name;
                     data[l].ball = d[i].title;
                     data[l].number = "龙";
-                    data[l].point = parseFloat((d[i].value1.point + (d[i].value1.step * this.rangevalue)).toFixed(3));
+                    data[l].point = parseFloat(
+                        (d[i].value1.point + d[i].value1.step * this.rangevalue).toFixed(3)
+                    );
                     data[l].money = d[i].value1.value;
                 }
                 if (Number(d[i].value2.value) > 0) {
@@ -3485,7 +3459,9 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                     data[l].type = this.typedata[this.type - 1].name;
                     data[l].ball = d[i].title;
                     data[l].number = "虎";
-                    data[l].point = parseFloat((d[i].value2.point + (d[i].value2.step * this.rangevalue)).toFixed(3));
+                    data[l].point = parseFloat(
+                        (d[i].value2.point + d[i].value2.step * this.rangevalue).toFixed(3)
+                    );
                     data[l].money = d[i].value2.value;
                 }
             }
@@ -3534,6 +3510,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                         if (op.lianmaactive === 0) {
                             if (rearr.length >= n) {
                                 resutdata = _that.choose_group(rearr, n);
+                            }else{
+                                differ = n - rearr.length;
                             }
                         }
                         if (op.lianmaactive === 1) {
@@ -3542,6 +3520,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                                     let a = _that[str].dantuodata.concat(_that[str].checkarr[q]);
                                     resutdata.push(a);
                                 }
+                            }else{
+                                differ = n - rearr.length - _that[str].dantuodata.length;
                             }
                         }
                         if (
@@ -3552,6 +3532,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                             rearr = _that[str].ballarr;
                             if (rearr.length === n) {
                                 resutdata = _that.count_group(rearr, n);
+                            }else{
+                                differ = n - rearr.length;
                             }
                             resutdata = resutdata.filter(x => {
                                 x.sort((a, b) => {
@@ -3570,7 +3552,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                                 data[l] = Object.assign({}, this.subob);
                                 data[l].ball = resutdata[q].join(", ");
                                 data[l].type = _that[str].title;
-                                data[l].point = parseFloat((_that[str].data1[0].point + (_that[str].data1[0].step * this.rangevalue)).toFixed(3));
+                                data[l].point = parseFloat(
+                                    (
+                                        _that[str].data1[0].point +
+                                        _that[str].data1[0].step * this.rangevalue
+                                    ).toFixed(3)
+                                );
                                 data[l].money = _that.setallmoney.value;
                             }
                         }
@@ -3585,9 +3572,16 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                                 data[l] = Object.assign({}, this.subob);
                                 data[l].ball = resutdata.join(", ");
                                 data[l].type = _that[str].title;
-                                data[l].point = parseFloat((_that[str].point + (_that[str].step * this.rangevalue)).toFixed(3));
+                                data[l].point = parseFloat(
+                                    (
+                                        _that[str].point +
+                                        _that[str].step * this.rangevalue
+                                    ).toFixed(3)
+                                );
                                 data[l].money = _that.setallmoney.value;
                             }
+                        }else{
+                            differ = _that[str].dantuo - _that[str].checkarr.length;
                         }
                     }
                     if (_that.type === 11) {
@@ -3602,9 +3596,16 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                                 data[l] = Object.assign({}, this.subob);
                                 data[l].ball = resutdata.join(", ");
                                 data[l].type = _that[str].title;
-                                data[l].point = parseFloat((_that[str].data1[0].point + (_that[str].data1[0].step * this.rangevalue)).toFixed(3));
+                                data[l].point = parseFloat(
+                                    (
+                                        _that[str].data1[0].point +
+                                        _that[str].data1[0].step * this.rangevalue
+                                    ).toFixed(3)
+                                );
                                 data[l].money = _that.setallmoney.value;
                             }
+                        }else{
+                            differ = _that[str].dantuo + 1 - _that[str].checkarr.length;
                         }
                     }
                     if (_that.type === 12) {
@@ -3616,6 +3617,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                         if (op.lianxiaoactive === 0) {
                             if (rearr.length >= n) {
                                 resutdata = _that.choose_group(rearr, n);
+                            }else{
+                                differ = n - rearr.length;
                             }
                         }
                         if (op.lianxiaoactive === 1) {
@@ -3624,6 +3627,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                                     let a = _that[str].dantuodata.concat(_that[str].checkarr[q]);
                                     resutdata.push(a);
                                 }
+                            }else{
+                                differ = n - rearr.length - _that[str].dantuodata.length;
                             }
                         }
                         let index1 = 0;
@@ -3631,19 +3636,25 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                         for (let j = 0; j < _that.dpcdata12.data1.length; j++) {
                             if (_that.dpcdata12.data1[j].name === _that.year) {
                                 index1 = j;
-                                index2 = j === _that.dpcdata12.data1.length - 1 ? j - 1 : j + 1
+                                index2 = j === _that.dpcdata12.data1.length - 1 ? j - 1 : j + 1;
                             }
                         }
                         // =====================================================
                         if (Number(_that.setallmoney.value) > 0) {
                             for (let q = 0; q < resutdata.length; q++) {
-                                let nnn = resutdata[q].indexOf(_that.year) > -1 ? index1 : index2;
+                                let nnn =
+                                    resutdata[q].indexOf(_that.year) > -1 ? index1 : index2;
 
                                 let l = data.length;
                                 data[l] = Object.assign({}, this.subob);
                                 data[l].ball = resutdata[q].join(", ");
                                 data[l].type = _that[str].title;
-                                data[l].point = parseFloat((_that.dpcdata12.data1[nnn].point + (_that.dpcdata12.data1[nnn].step * this.rangevalue)).toFixed(3));
+                                data[l].point = parseFloat(
+                                    (
+                                        _that.dpcdata12.data1[nnn].point +
+                                        _that.dpcdata12.data1[nnn].step * this.rangevalue
+                                    ).toFixed(3)
+                                );
                                 data[l].money = _that.setallmoney.value;
                             }
                         }
@@ -3676,12 +3687,31 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.submoney += Number(data[i].money);
             }
             this.SUB(data);
-            // this.reset();
-            // this.setallmoney.value = '';
             return false;
         } else {
             // ===此处提示完成投注内容提示
-            this.NOTEtip("请完成投注内容！");
+            if (this.selectbtnvalue === 1) {
+                if (this.setallmoney.value==="") {
+                    this.POPNOTE({msg:'请填写下注金额！'});
+                }else{
+                    this.POPNOTE({msg:'请选择号码！'});
+                }
+            }else{
+                this.POPNOTE({msg:'请完成投注内容！'});
+            }
+            if (this.allinput) {
+                if (differ>0) {
+                    if (this.type === 10 && this.dpcdata10.title==="") {
+                        this.POPNOTE({msg:'请勾选合肖选项！'});
+                    }else{
+                        this.POPNOTE({msg:'您至少还需要勾选' + differ + '项！'});
+                    }
+                }else{
+                    if (this.setallmoney.value==="") {
+                        this.POPNOTE({msg:'请填写下注金额！'});
+                    }
+                }
+            } 
             return false;
         }
     }
@@ -3720,7 +3750,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         }else{
             point = parseFloat((this.POINt_data.dpcdata1.data1[0].point + (this.POINt_data.dpcdata1.data1[0].step * this.rangevalue)).toFixed(3));
         }
-        // let str = "dpcdata - 快速投注" ;
         for (let i = 0; i < d.length; i++) {
             if (d[i].checked) {
                 let l = data.length;
@@ -3739,12 +3768,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             if (Number(this.kuaitoudata.value) > 0) {
                 this.SUB(data);
             } else {
-                this.NOTEtip("请填写快速投注金额！");
+                this.POPNOTE({msg:'请填写快速投注金额！'});
             }
             return false;
         } else {
             // ===此处提示完成投注内容提示
-            this.NOTEtip("请选择快速投注内容！");
+            this.POPNOTE({msg:'请选择快速投注内容！'});
             return false;
         }
     }
@@ -3757,12 +3786,12 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             if (a.length===2) {
                 let o ={numb:Number(a[0]), value:Number(a[a.length-1]), }
                 if (String(o.numb) === 'NaN' || String(o.value)=== 'NaN' ||!String(o.numb)|| !String(o.value)) {
-                    this.NOTEtip("输入内容的格式有误");
+                    this.POPNOTE({msg:'输入内容的格式有误'});
                     return;
                 }
                 d.push(o);
             }else{
-                this.NOTEtip("输入内容的格式有误");
+                this.POPNOTE({msg:'输入内容的格式有误'});
                 return;
             }
         }
@@ -3781,20 +3810,24 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             data[l].point = point;
             data[l].money = d[i].value;
         }
+        this.submoney = 0;
+        for (let i = 0; i < data.length; i++) {
+            this.submoney += Number(data[i].money);
+        }
         this.SUB(data);
     }
     submit() {
         this.close();
         this.reset();
-        this.NOTEtip("提交订单成功！");
+        this.POPNOTE({msg:'提交订单成功！'});
         setTimeout(() => {
             this.close();
         }, 2000);
     }
 
-    linkrouter(t) {
-        this.router.navigate([t]);
-    }
+    // linkrouter(t) {
+    //     this.router.navigate([t]);
+    // }
     // 快速投注点击和提交事件
     ktclick(t, n) {
         let d = this.kuaitoudata;
@@ -4180,5 +4213,27 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             }
         ];
         return data;
+    }   
+    // 绑定给弹窗组件的事件；
+    NOTARIZE(){
+        return
+    }
+    // 弹窗关闭事件 可以自定义命名
+    closePopouot(e){
+        let p = this.popoutInfo;
+        p.show = false;
+        p.event = false;
+    }
+
+    // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
+    POPNOTE(data,fn=null){
+        let o = {
+            title:'操作提示',   //title不传值默认为 ‘操作提示’
+            msg:' ',
+            event: fn === null?false:true,
+            show: true,
+        }
+        this.NOTARIZE = (typeof fn === 'function')?fn:this.NOTARIZE;
+        this.popoutInfo = Object.assign({},o,data);
     }
 }

@@ -61,9 +61,9 @@
                             <!-- =================================== -->
                             <div class="flex-r conmain2">
                                 <div class="flex-r" >
-                                    <div class="flex-r itembox sanbao" [ngClass]="{checkbg:selectbtnvalue===1&&selballdata.checked}" (click)="rapid(selballdata)">
-                                        <span class="flex-r item1 "> {{selballdata.name}}</span>
-                                        <span class="item2 color_y">{{(selballdata.point+(selballdata.step*rangevalue))| number : '1.0-3'}} </span>
+                                    <div class="flex-r itembox sanbao" [ngClass]="{checkbg:selectbtnvalue===1&&selballdata.checked}">
+                                        <span class="flex-r item1 " (click)="rapid(selballdata)"> {{selballdata.name}}</span>
+                                        <span class="item2 color_y" (click)="rapid(selballdata)">{{(selballdata.point+(selballdata.step*rangevalue))| number : '1.0-3'}} </span>
                                         <span class="flex-r item4" (click)="sanbaoclick(1)">
                                             <span class="flex-r">
                                                 <i [ngClass]="{bgred: selballdata.value1.styn === 'red',

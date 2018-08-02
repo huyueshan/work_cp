@@ -26,13 +26,6 @@ import "rxjs/add/operator/filter";
 })
 export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     loadpage = false;
-    public cpnav = {
-        style: "credit",
-        prev: "20180517022",
-        prevball: [2, 5, 9, 0, 8],
-        next: "20180517023",
-        time: ""
-    };
     public routeid;
     public odds = 7.8; // 赔率
     public rastep = 7.8; // 滑动条步长
@@ -55,7 +48,7 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         gray: false,
         value: "",
         point: 0,
-        step: 0,
+        step: 0,checked:false,
     };
     public BALL2 = {
         name: "",
@@ -289,88 +282,88 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
             point: 3.5,
             step: 0,
         }, ],
-    }
+    };
     public pcdata1 = this.setball();
     public pcdata2 = [
         [{
                 name: "大",
                 value: "",
                 point: 0,
-                step: 0,
+                step: 0,checked:false,
             },
             {
                 name: "单",
                 value: "",
                 point: 0,
-                step: 0,
+                step: 0,checked:false,
             },
             {
                 name: "大单",
                 value: "",
                 point: 0,
-                step: 0,
+                step: 0,checked:false,
             },
             {
                 name: "大双",
                 value: "",
                 point: 0,
-                step: 0,
+                step: 0,checked:false,
             },
             {
                 name: "极大",
                 value: "",
                 point: 0,
-                step: 0,
+                step: 0,checked:false,
             }
         ],
         [{
                 name: "小",
                 value: "",
                 point: 0,
-                step: 0,
+                step: 0,checked:false,
             },
             {
                 name: "双",
                 value: "",
                 point: 0,
-                step: 0,
+                step: 0,checked:false,
             },
             {
                 name: "小单",
                 value: "",
                 point: 0,
-                step: 0,
+                step: 0,checked:false,
             },
             {
                 name: "小双",
                 value: "",
                 point: 0,
-                step: 0,
+                step: 0,checked:false,
             },
             {
                 name: "极小",
                 value: "",
                 point: 0,
-                step: 0,
+                step: 0,checked:false,
             }
         ],
         [{
                 name: "红波",
                 value: "",
                 point: 0,
-                step: 0,
+                step: 0,checked:false,
             },
             {
                 name: "绿波",
                 value: "",
                 point: 0,
-                step: 0,
+                step: 0,checked:false,
             },
             {
                 name: "蓝波",
                 value: "",
                 point: 0,
-                step: 0,
+                step: 0,checked:false,
             },
             {
                 name: null,
@@ -385,7 +378,7 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
                 name: "豹子",
                 value: "",
                 point: 0,
-                step: 0,
+                step: 0,checked:false,
             },
             {
                 name: null,
@@ -410,7 +403,7 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         name: "特码包三",
         value: "",
         point: 3.5,
-        step: 0,
+        step: 0,checked:false,
         number: 1,
         left: "0px",
         value1: {
@@ -449,17 +442,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
             scale: false,
             data: []
         },
-        // 提示信息框
-        note: {
-            show: false,
-            drag: false,
-            dragleft: 0,
-            dragtop: 0,
-            messsage: "",
-            left: 200,
-            top: 50,
-            scale: false,
-        },
         // 提交框
         sub: {
             show: false,
@@ -484,6 +466,13 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         point: "-",
         money: "-"
     };
+    // 传给弹窗组件数据
+    public  popoutInfo={
+        title:'string',
+        msg:'string',
+        event: false,
+        show: false,
+    }
     constructor(
         private el: ElementRef,
         private router: Router,
@@ -504,8 +493,8 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         this.popup.shade.h = screen.height;
         // 跳转官方路由设置
         this.route.params.subscribe(data => {
-            this.reset();
             this.type = 1;
+            this.tabclick(0);
             this.routeid = data.id;
             this.subob.channel = "PC蛋蛋 - " + this.routeid;
         });
@@ -550,7 +539,7 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         let d = this.selballdata;
         d.number = i;
         d.show = true;
-        let n = 170 + 80 * (i - 1);
+        let n = 146 + 80 * (i - 1);
         d.left = n + "px";
     }
     selectball(i) {
@@ -575,10 +564,10 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     setboxvalid() {
         this.boxvalid = !this.boxvalid;
         let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
-        this.NOTEtip(s);
-        setTimeout(() => {
-            this.popup.note.show = false;
-        }, 2000);
+        this.POPNOTE({msg:s});
+        // setTimeout(() => {
+        //     this.popup.note.show = false;
+        // }, 2000);
     }
     // 滑块左侧递减事件
     rangevaluelessen() {
@@ -597,10 +586,12 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         if (i === 0) {
             this.selectbtnvalue = 0;
             this.inputshow = true;
+            this.reset();
         }
         if (i === 1) {
             this.selectbtnvalue = 1;
             this.inputshow = false;
+            this.reset();
         }
         if (i === 2) {
             let p = this.popup;
@@ -622,10 +613,10 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         }
         Base.Store.set("selmoeny", d, true);
         this.selmoeny = d;
-        this.NOTEtip("保存成功！");
-        setTimeout(() => {
-            this.close();
-        }, 2000);
+        this.POPNOTE({msg:'保存成功！'});
+        // setTimeout(() => {
+        //     this.close();
+        // }, 2000);
     }
     numbdel() {
         this.popup.setnumb.value = "";
@@ -660,23 +651,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         p.setnumb.show = false;
         p.shade.show = false;
         p.sub.show = false;
-        p.note.show = false;
-    }
-    // 提示信息窗口触发事件 index为提示信息notetip的index或者直接传字符串
-    NOTEtip(i) {
-        let p = this.popup;
-        if (typeof (i) === "string") {
-            p.note.messsage = i;
-        } else {
-            this.notetip[i] ? p.note.messsage = this.notetip[i] : i;
-        }
-        this.setfixed(p.note, 300, 160);
-        p.note.scale = false;
-        p.note.show = true;
-        p.shade.show = true;
-        setTimeout(() => {
-            p.note.scale = true;
-        }, 10);
     }
     // 提交窗口触发事件 d为提交数据
     SUB(d) {
@@ -729,6 +703,12 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
             t.left = ev.clientX - t.dragleft;
             t.top = ev.clientY - t.dragtop;
         }
+    }
+
+    // 输入框获取焦点事件
+    inmoneyfoc(e, i) {
+        this.curinpt = i;
+        this.setposition(e);
     }
 
     // curinpt为当前操作输入框 变量
@@ -785,7 +765,7 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     // 选择框点击选项方法，赋值给当前操作的输入框
     optinclick(i) {
         if (this.curinpt === this.setallmoney) {
-            this.amend(i);
+            this.amend(i,true);
         }
         this.curinpt.value = i;
         this.boxshow = false;
@@ -798,20 +778,37 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     // 快捷选项下的输入框值改变后的方法，
     allchange() {
         let v = this.setallmoney.value;
-        this.amend(v);
+        this.amend(v,true);
     }
-    amend(v) {
+    amend(v, bol=false) {
         let d1 = this.pcdata1;
         let d2 = this.pcdata2;
         for (let w = 0; w < d1.length; w++) {
-            d1[w].value = v;
+            if (d1[w].numb !== null && d1[w].name !== null) {
+                d1[w].value = this.selectbtnvalue===1?(d1[w].checked?v:""):v;
+                d1[w].checked = bol?d1[w].checked:false;
+            }
         }
         for (let w = 0; w < d2.length; w++) {
             for (let q = 0; q < d2[w].length; q++) {
-                d2[w][q].value = v;
+                if (d2[w][q].name !== null) {
+                    d2[w][q].value = this.selectbtnvalue===1?(d2[w][q].checked?v:""):v;
+                    d2[w][q].checked = bol?d2[w][q].checked:false;
+                }
             }
         }
-        this.selballdata.value = v;
+        this.selballdata.value = this.selectbtnvalue===1?(this.selballdata.checked?v:""):v;
+        this.selballdata.checked = bol?this.selballdata.checked:false;
+    }
+    
+    rapid(item){
+        if(item.numb===null||item.name===null){
+            return;
+        }
+        if(this.selectbtnvalue===1){
+            item.checked = !item.checked
+            item.value = item.checked?this.setallmoney.value:"";
+        }
     }
     // 限制输入框只能输入数字
     changereg() {
@@ -874,14 +871,22 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
 
         } else {
             // ===此处提示完成投注内容提示
-            this.NOTEtip("请完成投注内容！");
+            if (this.selectbtnvalue === 1) {
+                if (this.setallmoney.value==="") {
+                    this.POPNOTE({msg:'请填写下注金额！'});
+                }else{
+                    this.POPNOTE({msg:'请选择号码！'});
+                }
+            }else{
+                this.POPNOTE({msg:'请完成投注内容！'});
+            }
             return false;
         }
     }
     submit() {
         this.close();
         this.reset();
-        this.NOTEtip("提交订单成功！");
+        this.POPNOTE({msg:'提交订单成功！'});
         setTimeout(() => {
             this.close();
         }, 2000);
@@ -921,5 +926,27 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
             data[i] = i;
         }
         return data;
+    }    
+    // 绑定给弹窗组件的事件；
+    NOTARIZE(){
+        return
+    }
+    // 弹窗关闭事件 可以自定义命名
+    closePopouot(e){
+        let p = this.popoutInfo;
+        p.show = false;
+        p.event = false;
+    }
+
+    // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
+    POPNOTE(data,fn=null){
+        let o = {
+            title:'操作提示',   //title不传值默认为 ‘操作提示’
+            msg:' ',
+            event: fn === null?false:true,
+            show: true,
+        }
+        this.NOTARIZE = (typeof fn === 'function')?fn:this.NOTARIZE;
+        this.popoutInfo = Object.assign({},o,data);
     }
 }

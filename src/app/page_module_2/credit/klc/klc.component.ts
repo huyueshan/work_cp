@@ -26,13 +26,6 @@ import "rxjs/add/operator/filter";
 })
 export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     loadpage = false;
-    public cpnav = {
-        style: "credit",
-        prev: "20180517022",
-        prevball: [2, 5, 9, 0, 8],
-        next: "20180517023",
-        time: ""
-    };
     public odds = 7.8; // 赔率
     public rastep = 7.8; // 滑动条步长
     public rangevalue = 7.8; //绑定滑动条数据
@@ -51,7 +44,8 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
         numb: 0,
         value: "",
         point: 0,
-        step: 0
+        step: 0,
+        checked:false,
     };
     public typedata = [{
             id: 1,
@@ -653,49 +647,49 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
                     name: "特单",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false, 
                 },
                 {
                     name: "特双",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "特尾大",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "特尾小",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "特大",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "特小",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "合单",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "合双",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
             ]
         },
@@ -733,49 +727,49 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
                     name: "总单",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "总双",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "总尾大",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "总尾小",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "总大",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "总小",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: null,
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: null,
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
             ]
         },
@@ -785,49 +779,49 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
                     name: null,
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: null,
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: null,
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: null,
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: null,
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: null,
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: null,
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: null,
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
             ]
         }
@@ -838,121 +832,121 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
                 name: "上",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "上下和",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "下",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "特单",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "特大",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "奇",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "奇偶和",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "偶",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "特双",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "特小",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "总单",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "总大",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "总尾大",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "特尾大",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "合单",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "总双",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "总小",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "总尾小",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "特尾小",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             {
                 name: "合双",
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         ]
     };
@@ -967,18 +961,19 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
         this.setzhengma()
     ];
 
-    public betdatab7_1 = [{
+    public betdatab7_1 = [
+        {
             numb: 0,
             title: "正一VS正二",
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -987,12 +982,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1001,12 +996,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1015,12 +1010,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1029,12 +1024,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1043,12 +1038,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1057,12 +1052,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1071,12 +1066,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1085,12 +1080,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1099,12 +1094,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1113,12 +1108,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1127,12 +1122,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1141,12 +1136,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1155,12 +1150,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1169,12 +1164,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1183,12 +1178,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1197,12 +1192,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1211,12 +1206,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1225,12 +1220,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1239,12 +1234,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1253,12 +1248,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1267,12 +1262,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1281,12 +1276,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1295,12 +1290,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1309,12 +1304,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1323,12 +1318,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1337,12 +1332,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
         {
@@ -1351,12 +1346,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             value1: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
             value2: {
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             },
         },
     ];
@@ -1383,17 +1378,6 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             scale: false,
             data: []
         },
-        // 提示信息框
-        note: {
-            show: false,
-            drag: false,
-            dragleft: 0,
-            dragtop: 0,
-            messsage: "",
-            left: 200,
-            top: 50,
-            scale: false,
-        },
         // 提交框
         sub: {
             show: false,
@@ -1418,6 +1402,13 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
         point: "-",
         money: "-"
     };
+    // 传给弹窗组件数据
+    public  popoutInfo={
+        title:'string',
+        msg:'string',
+        event: false,
+        show: false,
+    }
     constructor(
         private el: ElementRef,
         private router: Router,
@@ -1438,8 +1429,8 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
         this.popup.shade.h = screen.height;
         // 跳转官方路由设置
         this.route.params.subscribe(data => {
-            this.reset();
             this.type = 1;
+            this.tabclick(0);
             this.routeid = data.id;
             this.subob.channel = "快乐彩 - " + this.routeid;
         });
@@ -1509,10 +1500,10 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     setboxvalid() {
         this.boxvalid = !this.boxvalid;
         let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
-        this.NOTEtip(s);
-        setTimeout(() => {
-            this.popup.note.show = false;
-        }, 2000);
+        this.POPNOTE({msg:s});
+        // setTimeout(() => {
+        //     this.popup.note.show = false;
+        // }, 2000);
     }
     // 滑块左侧递减事件
     rangevaluelessen() {
@@ -1536,10 +1527,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
         if (i === 0) {
             this.selectbtnvalue = 0;
             this.inputshow = true;
+            this.reset();
         }
         if (i === 1) {
             this.selectbtnvalue = 1;
             this.inputshow = false;
+            this.reset();
         }
         if (i === 2) {
             let p = this.popup;
@@ -1561,10 +1554,10 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
         }
         Base.Store.set("selmoeny", d, true);
         this.selmoeny = d;
-        this.NOTEtip("保存成功！");
-        setTimeout(() => {
-            this.close();
-        }, 2000);
+        this.POPNOTE({msg:'保存成功！'});
+        // setTimeout(() => {
+        //     this.close();
+        // }, 2000);
     }
     numbdel() {
         this.popup.setnumb.value = "";
@@ -1599,23 +1592,6 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
         p.setnumb.show = false;
         p.shade.show = false;
         p.sub.show = false;
-        p.note.show = false;
-    }
-    // 提示信息窗口触发事件 index为提示信息notetip的index或者直接传字符串
-    NOTEtip(i) {
-        let p = this.popup;
-        if (typeof (i) === "string") {
-            p.note.messsage = i;
-        } else {
-            this.notetip[i] ? p.note.messsage = this.notetip[i] : i;
-        }
-        this.setfixed(p.note, 300, 160);
-        p.note.scale = false;
-        p.note.show = true;
-        p.shade.show = true;
-        setTimeout(() => {
-            p.note.scale = true;
-        }, 10);
     }
     // 提交窗口触发事件 d为提交数据
     SUB(d) {
@@ -1670,37 +1646,12 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
         }
     }
 
-    // 全五中一 和底部快捷选项输入框 获得焦点事件
-    // curinpt为当前操作输入框 变量
-    // i 数组当前index
-    inmoneyfocus(e, i) {
-        if (i == "all") {
-            this.curinpt = this.setallmoney;
-        } else {
-            this.curinpt = this.bettatab8_1[i];
-        }
+    // 输入框获取焦点事件
+    inmoneyfoc(e, i) {
+        this.curinpt = i;
         this.setposition(e);
     }
-    // 整合 金额框获得焦点事件 /curinpt为当前操作输入框 变量
-    // i 、q 为对应数据的key值或者index
-    inmoney1focus(e, i, q) {
-        this.curinpt = this.betdatab1_1[i].data1[q];
-        this.setposition(e);
-    }
-    // 龙虎斗 金额框获得焦点事件 /curinpt为当前操作输入框 变量
-    // t、i 、q 为对应数据的key值或者index
-    inmoney2focus(e, t, i) {
-        this.curinpt = this.betdatab2_1[t][i];
-        this.setposition(e);
-    }
-    inmoney3focus(e, i, t, q) {
-        this.curinpt = this.zhengma[i][t][q];
-        this.setposition(e);
-    }
-    inmoney4focus(e, i, t) {
-        this.curinpt = this.betdatab7_1[i][t];
-        this.setposition(e);
-    }
+
     //页面输入框焦点离开后隐藏金额选择框方法
     inmoneyblur() {
         // 必须延迟，不然点击不到选择框
@@ -1730,7 +1681,7 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     optinclick(i) {
         if (this.curinpt === this.setallmoney) {
             let v = i;
-            this.amend(v);
+            this.amend(v,true);
         }
         this.curinpt.value = i;
         this.boxshow = false;
@@ -1744,56 +1695,70 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     // 快捷选项下的输入框值改变后的方法，
     allchange() {
         let v = this.setallmoney.value;
-        this.amend(v);
+        this.amend(v,true);
     }
-    amend(v) {
+    amend(v, bol=false) {
         if (this.type === 11) {
             let d = this.bettatab8_1;
-            this.setvalue(d, v);
+            this.setvalue(d, v, bol);
         }
         if (this.type === 10) {
             let d = this.betdatab7_1;
             for (let q = 0; q < d.length; q++) {
-                d[q].value1.value = v;
-                d[q].value2.value = v;
+                d[q].value1.value = this.selectbtnvalue===1?(d[q].value1.checked?v:""):v;
+                d[q].value2.value = this.selectbtnvalue===1?(d[q].value2.checked?v:""):v;
+                d[q].value1.checked = bol?d[q].value1.checked:false;
+                d[q].value2.checked = bol?d[q].value2.checked:false;
             }
         }
         if (this.type > 2 && this.type < 10) {
             let n = this.type - 3;
             let d = this.zhengma[n].data1;
             let b = this.zhengma[n].data2;
-            this.setvalue(d, v);
-            this.setvalue(b, v);
+            this.setvalue(d, v, bol);
+            this.setvalue(b, v, bol);
         }
         if (this.type === 2) {
             let d = this.betdatab2_1;
-            this.setvalue(d.data1, v);
-            this.setvalue(d.data2, v);
+            this.setvalue(d.data1, v, bol);
+            this.setvalue(d.data2, v, bol);
         }
         if (this.type == 1) {
             let d = this.betdatab1_1;
             for (let w = 0; w < d.length; w++) {
-                this.setvalue(d[w].data1, v);
+                this.setvalue(d[w].data1, v, bol);
             }
         }
     }
 
     // 设置单元数据金额
-    setvalue(d, v) {
+    setvalue(d, v,bol) {
         if (d) {
             for (let q = 0; q < d.length; q++) {
                 if (d[q] instanceof Array) {
                     for (let w = 0; w < d[q].length; w++) {
                         if (d[q][w].numb !== null && d[q][w].name !== null) {
-                            d[q][w].value = v;
+                            d[q][w].value = this.selectbtnvalue===1?(d[q][w].checked?v:""):v;
+                            d[q][w].checked = bol?d[q][w].checked:false;
                         }
                     }
                 } else {
                     if (d[q].numb !== null && d[q].name !== null) {
-                        d[q].value = v;
+                        d[q].value = this.selectbtnvalue===1?(d[q].checked?v:""):v;
+                        d[q].checked = bol?d[q].checked:false;
                     }
                 }
             }
+        }
+    }
+    
+    rapid(item){
+        if(item.numb===null||item.name===null){
+            return;
+        }
+        if(this.selectbtnvalue===1){
+            item.checked = !item.checked
+            item.value = item.checked?this.setallmoney.value:"";
         }
     }
 
@@ -1872,7 +1837,15 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
 
         } else {
             // ===此处提示完成投注内容提示
-            this.NOTEtip("请完成投注内容！");
+            if (this.selectbtnvalue === 1) {
+                if (this.setallmoney.value==="") {
+                    this.POPNOTE({msg:'请填写下注金额！'});
+                }else{
+                    this.POPNOTE({msg:'请选择号码！'});
+                }
+            }else{
+                this.POPNOTE({msg:'请完成投注内容！'});
+            }
             return false;
         }
     }
@@ -1900,7 +1873,7 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     submit() {
         this.close();
         this.reset();
-        this.NOTEtip("提交订单成功！");
+        this.POPNOTE({msg:'提交订单成功！'});
         setTimeout(() => {
             this.close();
         }, 2000);
@@ -1943,7 +1916,7 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
                 name: d[i],
                 value: "",
                 point: 0,
-                step: 0
+                step: 0,checked:false,
             };
         }
         return data;
@@ -1956,125 +1929,147 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
                     name: "上",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "上下和",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "下",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "单",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "大",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "奇",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "奇偶和",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "偶",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "双",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "小",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "总单",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "总大",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "总尾大",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "尾大",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "合单",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "总双",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "总小",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "总尾小",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "尾小",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
                 {
                     name: "合双",
                     value: "",
                     point: 0,
-                    step: 0
+                    step: 0,checked:false,
                 },
             ]
         };
         let data = Object.assign({}, d);
         return data;
+    }    
+    // 绑定给弹窗组件的事件；
+    NOTARIZE(){
+        return
+    }
+    // 弹窗关闭事件 可以自定义命名
+    closePopouot(e){
+        let p = this.popoutInfo;
+        p.show = false;
+        p.event = false;
+    }
+
+    // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
+    POPNOTE(data,fn=null){
+        let o = {
+            title:'操作提示',   //title不传值默认为 ‘操作提示’
+            msg:' ',
+            event: fn === null?false:true,
+            show: true,
+        }
+        this.NOTARIZE = (typeof fn === 'function')?fn:this.NOTARIZE;
+        this.popoutInfo = Object.assign({},o,data);
     }
 }

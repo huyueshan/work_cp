@@ -23,6 +23,7 @@
             display: table;
             table-layout: fixed;
             border-collapse: collapse;
+            border: 1px solid rgba(55, 55, 55, 0.3);
             width: auto;
             tr {
                 td {
@@ -94,9 +95,13 @@
                     }
                 }
                 
-                tr:nth-child(5n).trborder {
-                    border-bottom: 2px solid rgba(46, 45, 45, 0.5);
+                tr:nth-child(5n).trborder td {
+                    border-bottom: 1px solid rgba(150, 45, 45, 0.8);
                 }
+                
+                // tr:nth-child(5n).trborder {
+                //     border-bottom: 2px solid rgba(46, 45, 45, 0.5);
+                // }
                 tr:nth-child(odd) .resultbg {
                     span {
                         background-color: #2B9FF8;
