@@ -1675,9 +1675,7 @@ export class K3officialComponent implements OnInit {
     }
     // 弹窗关闭事件 可以自定义命名
     closePopouot(e){
-        let p = this.popoutInfo;
-        p.show = false;
-        p.event = false;
+        this.popoutInfo.show = false;
     }
 
     // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
@@ -1685,10 +1683,15 @@ export class K3officialComponent implements OnInit {
         let o = {
             title:'操作提示',   //title不传值默认为 ‘操作提示’
             msg:' ',
-            event: fn === null?false:true,
+            event: false,
             show: true,
         }
-        this.NOTARIZE = (typeof fn === 'function')?fn:this.NOTARIZE;
+        if (typeof fn === 'function') {
+            this.NOTARIZE = fn;
+            o.event = true;
+        }else{
+            this.NOTARIZE = ()=>{return};
+        }
         this.popoutInfo = Object.assign({},o,data);
     }
 }

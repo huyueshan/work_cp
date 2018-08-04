@@ -29,7 +29,7 @@ export class HomeComponent {
     // 每页显示条数 和 最大显示分页标签数量 设置数据
     public selectdata={
         pageSize: 5,
-        segmentSize: 6,
+        segmentSize: 5,
     }
 
 	constructor() { 
@@ -53,9 +53,7 @@ export class HomeComponent {
     }
     // 弹窗关闭事件 可以自定义命名
     closePopouot(e){
-        let p = this.popoutInfo;
-        p.show = false;
-        p.event = false;
+        this.popoutInfo.show = false;
     }
 
     // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
@@ -63,10 +61,15 @@ export class HomeComponent {
         let o = {
             title:'操作提示',   //title不传值默认为 ‘操作提示’
             msg:' ',
-            event: fn === null?false:true,
+            event: false,
             show: true,
         }
-        this.NOTARIZE = (typeof fn === 'function')?fn:this.NOTARIZE;
+        if (typeof fn === 'function') {
+            this.NOTARIZE = fn;
+            o.event = true;
+        }else{
+            this.NOTARIZE = ()=>{return};
+        }
         this.popoutInfo = Object.assign({},o,data);
     }
 
