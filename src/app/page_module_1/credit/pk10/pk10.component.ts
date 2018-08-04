@@ -1069,6 +1069,9 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     }
     // 切换一般 /快捷 事件
     tabclick(i) {
+        if (this.selectbtnvalue===i) {
+            return;
+        }
         if (i === 0) {
             this.selectbtnvalue = 0;
             this.inputshow = true;
