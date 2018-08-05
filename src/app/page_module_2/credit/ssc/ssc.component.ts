@@ -288,38 +288,42 @@ export class SscComponent implements OnInit, OnDestroy {
             title: "总和",
             data1: [{
                     name: "总大",
+                    title:"大小",
                     value: "",
                     point: 0,
                     step: 0,
-                    checked:false,
+                    checked: false,
                 },
                 {
                     name: "总小",
+                    title:"大小",
                     value: "",
                     point: 0,
                     step: 0,
-                    checked:false,
+                    checked: false,
                 },
                 {
                     name: "总单",
+                    title:"单双",
                     value: "",
                     point: 0,
                     step: 0,
-                    checked:false,
+                    checked: false,
                 },
                 {
                     name: "总双",
+                    title:"单双",
                     value: "",
                     point: 0,
-                    step: 0 ,
-                    checked:false,
+                    step: 0,
+                    checked: false,
                 }
             ],
             data2: []
         }
     ];
     public betdatab = {
-        title: "整合 - 前三",
+        title: "整合-前三",
         data1: [{
                 name: "豹子",
                 value: "",
@@ -803,7 +807,7 @@ export class SscComponent implements OnInit, OnDestroy {
     //前中后三切换事件
     btolastclick(i) {
         this.btolast = i;
-        this.betdatab.title = i === 0 ? '整合 - 前三' : i === 1 ? '整合 - 中三' : '整合 - 后三';
+        this.betdatab.title = i === 0 ? '整合-前三' : i === 1 ? '整合-中三' : '整合-后三';
     }
     // 切换玩法事件 /整合/龙虎斗/全五中一
     togtype(i) {
@@ -1063,11 +1067,11 @@ export class SscComponent implements OnInit, OnDestroy {
     // 确认提交按钮事件
     sub() {
         let data = [];
-        if (this.type == 3) {
+        if (this.type === 3) {
             let d = this.betdata3;
             this.setsubdata(d, data, '全5中1');
         }
-        if (this.type == 2) {
+        if (this.type === 2) {
             let d = this.betdata2;
             for (let i = 0; i < d.length; i++) {
                 if (Number(d[i].value1.value) > 0) {
@@ -1099,7 +1103,7 @@ export class SscComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        if (this.type == 1) {
+        if (this.type === 1) {
             let d = this.betdatam;
             let p = this.betdatab;
             for (let i = 0; i < d.length; i++) {
@@ -1185,16 +1189,19 @@ export class SscComponent implements OnInit, OnDestroy {
     setbigorsmall() {
         let data = [];
         let d = ["大", "小", "单", "双"];
+        let t = ["大小","大小","单双","单双"]
         for (let i = 0; i < d.length; i++) {
             data[i] = {
                 name: d[i],
+                title: t[i],
                 value: "",
                 point: 0,
-                step: 0,checked:false,
+                step: 0,
+                checked: false,
             };
         }
         return data;
-    }    
+    }   
     // 绑定给弹窗组件的事件；
     NOTARIZE(){
         return

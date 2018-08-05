@@ -641,39 +641,46 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             },
         ]
     };
-    public betdatab1_1 = [{
+    public betdatab1_1 = [
+        {
             title: "特码",
             data1: [{
                     name: "特单",
+                    title:"特码单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false, 
                 },
                 {
                     name: "特双",
+                    title:"特码单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "特尾大",
+                    title:"特码尾大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "特尾小",
+                    title:"特码尾大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "特大",
+                    title:"特码大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
+                    title:"特码大小",
                     name: "特小",
                     value: "",
                     point: 0,
@@ -681,12 +688,14 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
                 },
                 {
                     name: "合单",
+                    title:"特码合数单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "合双",
+                    title:"特码合数单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
@@ -695,78 +704,86 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
             title: "正码一",
-            data1: this.setbigorsmall()
+            data1: this.setbigorsmall('一')
         },
         {
             title: "正码二",
-            data1: this.setbigorsmall()
+            data1: this.setbigorsmall('二')
         },
         {
             title: "正码三",
-            data1: this.setbigorsmall()
+            data1: this.setbigorsmall('三')
         },
         {
             title: "正码四",
-            data1: this.setbigorsmall()
+            data1: this.setbigorsmall('四')
         },
         {
             title: "正码五",
-            data1: this.setbigorsmall()
+            data1: this.setbigorsmall('五')
         },
         {
             title: "正码六",
-            data1: this.setbigorsmall()
+            data1: this.setbigorsmall('六')
         },
         {
             title: "正码七",
-            data1: this.setbigorsmall()
+            data1: this.setbigorsmall('七')
         },
         {
             title: "总和",
             data1: [{
                     name: "总单",
+                    title:"总和单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总双",
+                    title:"总和单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总尾大",
+                    title:"总尾大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总尾小",
+                    title:"总尾大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总大",
+                    title:"总和大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总小",
+                    title:"总和大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
@@ -777,48 +794,56 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
             title: "",
             data1: [{
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
@@ -830,120 +855,140 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
         data1: this.setball(),
         data2: [{
                 name: "上",
+                title:"上下",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "上下和",
+                title:"上下",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "下",
+                title:"上下",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "特单",
+                title:"特码单双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "特大",
+                title:"特码大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "奇",
+                title:"奇偶",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "奇偶和",
+                title:"奇偶",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "偶",
+                title:"奇偶",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "特双",
+                title:"特码单双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "特小",
+                title:"特码大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "总单",
+                title:"总和单双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "总大",
+                title:"总和大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "总尾大",
+                title:"总尾大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "特尾大",
+                title:"特码尾大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "合单",
+                title:"合数单双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "总双",
+                title:"总和单双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "总小",
+                title:"总和大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "总尾小",
+                title:"总尾大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "特尾小",
+                title:"特码尾大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "合双",
+                title:"合数单双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
@@ -952,13 +997,13 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     };
     public betdatab2_2 = [, , , , , ];
     public zhengma = [
-        this.setzhengma(),
-        this.setzhengma(),
-        this.setzhengma(),
-        this.setzhengma(),
-        this.setzhengma(),
-        this.setzhengma(),
-        this.setzhengma()
+        this.setzhengma('一'),
+        this.setzhengma('二'),
+        this.setzhengma('三'),
+        this.setzhengma('四'),
+        this.setzhengma('五'),
+        this.setzhengma('六'),
+        this.setzhengma('七')
     ];
 
     public betdatab7_1 = [
@@ -1911,12 +1956,13 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
         }
         return data;
     }
-    setbigorsmall() {
+    setbigorsmall(n) {
         let data = [];
         let d = ["单", "双", "尾大", "尾小", "大", "小", "合单", "合双"];
         for (let i = 0; i < d.length; i++) {
             data[i] = {
                 name: d[i],
+                title: i<2?`正码${n}单双`:(i<4?`正码${n}尾大小`:(i<6?`正码${n}大小`:`正码${n}合数单双`)),
                 value: "",
                 point: 0,
                 step: 0,checked:false,
@@ -1925,125 +1971,145 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
         return data;
     }
     // 设置正码数据
-    setzhengma() {
+    setzhengma(n) {
         let d = {
             data1: this.setball(),
             data2: [{
                     name: "上",
+                    title:"上下",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "上下和",
+                    title:"上下",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "下",
+                    title:"上下",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "单",
+                    title: `正码${n}单双`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "大",
+                    title: `正码${n}大小`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "奇",
+                    title:"奇偶",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "奇偶和",
+                    title:"奇偶",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "偶",
+                    title:"奇偶",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "双",
+                    title: `正码${n}单双`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "小",
+                    title: `正码${n}大小`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总单",
+                    title:"总和单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总大",
+                    title:"总和大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总尾大",
+                    title:"总尾大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "尾大",
+                    title: `正码${n}尾大小`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "合单",
+                    title: `正码${n}合数单双`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总双",
+                    title:"总和单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总小",
+                    title:"总和大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总尾小",
+                    title:"总尾大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "尾小",
+                    title: `正码${n}尾大小`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "合双",
+                    title: `正码${n}合数单双`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
@@ -2052,7 +2118,7 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
         };
         let data = Object.assign({}, d);
         return data;
-    }    
+    }     
     // 绑定给弹窗组件的事件；
     NOTARIZE(){
         return

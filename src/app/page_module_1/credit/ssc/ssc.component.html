@@ -44,7 +44,7 @@
                             </div>
                             <div class="flex-c conmain" style="width:100%; height:80px;">
                                 <span class="flex-r itembox itemcol" *ngFor="let item of betdata3;let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)" >
-                                    <span class="item1">
+                                    <span class="item1" [title]="'全5中一：'+ item.numb">
                                         <i>{{item.numb}}</i>
                                     </span>
                                     <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
@@ -108,7 +108,7 @@
 
                                     </div>
                                     <span class="flex-r itembox" *ngFor="let child of item.data1; let q=index" [ngClass]="{checkbg:selectbtnvalue===1&&child.checked}" (click)="rapid(child)">
-                                        <span class="item1">
+                                        <span class="item1" [title]="item.title+child.title+'：'+child.name">
                                             {{child.name}}
                                         </span>
                                         <span class="item2 color_y">{{(child.point+(child.step*rangevalue))| number : '1.0-3'}} </span>
@@ -118,7 +118,7 @@
                                         </span>
                                     </span>
                                     <span class="flex-r itembox" *ngFor="let child of item.data2; let q=index" [ngClass]="{checkbg:selectbtnvalue===1&&child.checked}" (click)="rapid(child)">
-                                        <span class=" item1">
+                                        <span class=" item1" [title]="item.title+'：'+child.numb">
                                             <i>{{child.numb}}</i>
                                         </span>
                                         <span class="item2 color_y">{{(child.point+(child.step*rangevalue))| number : '1.0-3'}} </span>
@@ -150,7 +150,7 @@
 
                                     </div>
                                     <span class="flex-r itembox" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
-                                        <span class="item1 itembold">
+                                        <span class="item1 itembold" [title]="betdatab.title+'：'+item.name">
                                             {{item.name}}
                                         </span>
                                         <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>

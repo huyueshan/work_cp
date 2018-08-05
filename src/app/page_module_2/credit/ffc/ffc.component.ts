@@ -292,6 +292,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
             title: "总和",
             data1: [{
                     name: "总大",
+                    title:"大小",
                     value: "",
                     point: 0,
                     step: 0,
@@ -299,6 +300,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
                 },
                 {
                     name: "总小",
+                    title:"大小",
                     value: "",
                     point: 0,
                     step: 0,
@@ -306,6 +308,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
                 },
                 {
                     name: "总单",
+                    title:"单双",
                     value: "",
                     point: 0,
                     step: 0,
@@ -313,6 +316,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
                 },
                 {
                     name: "总双",
+                    title:"单双",
                     value: "",
                     point: 0,
                     step: 0 ,
@@ -323,7 +327,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
         }
     ];
     public betdatab = {
-        title: "整合 - 前三",
+        title: "整合-前三",
         data1: [{
                 name: "豹子",
                 value: "",
@@ -807,7 +811,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     //前中后三切换事件
     btolastclick(i) {
         this.btolast = i;
-        this.betdatab.title = i === 0 ? '整合 - 前三' : i === 1 ? '整合 - 中三' : '整合 - 后三';
+        this.betdatab.title = i === 0 ? '整合-前三' : i === 1 ? '整合-中三' : '整合-后三';
     }
     // 切换玩法事件 /整合/龙虎斗/全五中一
     togtype(i) {
@@ -1189,12 +1193,15 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     setbigorsmall() {
         let data = [];
         let d = ["大", "小", "单", "双"];
+        let t = ["大小","大小","单双","单双"]
         for (let i = 0; i < d.length; i++) {
             data[i] = {
                 name: d[i],
+                title: t[i],
                 value: "",
                 point: 0,
-                step: 0,checked:false,
+                step: 0,
+                checked: false,
             };
         }
         return data;

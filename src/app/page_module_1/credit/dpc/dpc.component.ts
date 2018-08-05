@@ -503,6 +503,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     };
     public BALL2 = {
         name: "",
+        title:'',
         checked: false,
         value: "",
         point: 0,
@@ -602,18 +603,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         lianxiaostyle: ["连肖二肖", "连肖三肖", "连肖四肖", "连肖五肖"],
         lianxiaostactive: 0
     };
-    public zhengma = [
-        "单",
-        "双",
-        "大",
-        "小",
-        "合单",
-        "合双",
-        "红波",
-        "蓝波",
-        "绿波"
-    ];
-
+    
     public POINt_data = {
         dpcdata1: {
             data1: this.setBallPoint(44.482, 3.822 / 7.8),
@@ -1196,42 +1186,49 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         data2: [
             [{
                     name: "特大",
+                    title:"特大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "特小",
+                    title:"特大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "家禽",
+                    title:"家禽野兽",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "野兽",
+                    title:"家禽野兽",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "大单",
+                    title:"特大单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "奇",
+                    title:"奇偶",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "上",
+                    title:"上下",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
@@ -1239,42 +1236,49 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             ],
             [{
                     name: "特单",
+                    title:"特单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "特双",
+                    title:"特单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总大",
+                    title:"总和大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总小",
+                    title:"总和大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "大双",
+                    title:"特大单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "奇偶和",
+                    title:"奇偶",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "上下和",
+                    title:"上下",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
@@ -1282,42 +1286,49 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             ],
             [{
                     name: "合大",
+                    title:"特合大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "合小",
+                    title:"特合大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总单",
+                    title:"总和单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总双",
+                    title:"总和单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "小单",
+                    title:"特小单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "偶",
+                    title:"奇偶",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "下",
+                    title:"上下",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
@@ -1325,42 +1336,49 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             ],
             [{
                     name: "合单",
+                    title:"特合单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "合双",
+                    title:"特合单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "合尾大",
+                    title:"特合尾大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "合尾小",
+                    title:"特合尾大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "小双",
+                    title:"特小单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
@@ -1368,42 +1386,49 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             ],
             [{
                     name: "尾大",
+                    title:"特大小尾",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "尾小",
+                    title:"特大小尾",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "红波",
+                    title:"特色波",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "蓝波",
+                    title:"特色波",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "绿波",
+                    title:"特色波",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
@@ -1501,7 +1526,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     };
     public dpcdata3 = {
         title: "特肖",
-        data1: [{
+        data1: [
+            {
                 name: "鼠",
                 value: "",
                 data: this.setball3(0),
@@ -1592,10 +1618,11 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         data1: this.setball()
     };
     public dpcdata5 = {
-        title: "正特 - 正码特一",
+        title: "正码特一",
         data1: this.setball()
     };
-    public dpcdata6 = [{
+    public dpcdata6 = [
+        {
             title: "正码一",
             data1: this.setzhengma()
         },
@@ -2985,7 +3012,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     zhengteclick(i) {
         let o = this.optionsdata;
         o.zhengteactive = i;
-        this.dpcdata5.title = "正特 - " + o.zhengte[o.zhengteactive];
+        this.dpcdata5.title = o.zhengte[o.zhengteactive];
         this.reset();
     }
     lianmaclick(i, n) {
@@ -4071,10 +4098,21 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     // 设置正码球数据
     setzhengma() {
         let data = [];
-        let d = this.zhengma;
+        let d = [
+            "单",
+            "双",
+            "大",
+            "小",
+            "合单",
+            "合双",
+            "红波",
+            "蓝波",
+            "绿波"
+        ];
         for (let i = 0; i < d.length; i++) {
             let o = Object.assign({}, this.BALL2);
             o.name = d[i];
+            o.title = i<2?'单双':(i<4?'大小':(i<6?'合数单双':'色波'));
             data.push(o);
         }
         return data;

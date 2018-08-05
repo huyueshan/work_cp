@@ -47,7 +47,7 @@
                             <div class="flex-c conmain" style="height: 280px;">
                                 <div class="flex-c conmainbox" *ngFor="let item of pcdata1; let i=index">
                                     <span class="flex-r itembox" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
-                                        <span class="flex-r item1 ">
+                                        <span class="flex-r item1" [title]="'球号：'+item.numb">
                                             <i [ngClass]="{bgred: item.red , bggreen: item.green , bgblue: item.blue, bggray: item.gray}">{{item.numb}}</i>
                                         </span>
                                         <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
@@ -135,7 +135,7 @@
 
                                     </div>
                                     <span class="flex-r itembox" *ngFor="let child of item; let q=index" [ngClass]="{checkbg:selectbtnvalue===1&&child.checked}" (click)="rapid(child)">
-                                        <span class="item1">
+                                        <span class="item1" [title]="child.title+'：'+child.name">
                                             {{child.name}}
                                         </span>
                                         <span class="item2 color_y" *ngIf="child.name!==null">{{(child.point+(child.step*rangevalue))| number : '1.0-3'}} </span>
@@ -155,10 +155,6 @@
                                 <i></i>
                                 <span class="option" *ngFor="let item of selmoeny" (mousedown)="optinclick(item)">{{item}}元</span>
                             </div>
-                        </div>
-                        <!-- 底部问路-->
-                        <div *ngIf="type!==3">
-                            <app-wenlu></app-wenlu>
                         </div>
                         <!-- 快选金额 -->
                         <div class="setbox" *ngIf="popup.setnumb.show" [style.left.px]= "popup.setnumb.left" [style.top.px]= "popup.setnumb.top">

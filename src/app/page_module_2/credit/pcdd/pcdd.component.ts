@@ -287,30 +287,35 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     public pcdata2 = [
         [{
                 name: "大",
+                title: "大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "单",
+                title: "单双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "大单",
+                title: "大单小单",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "大双",
+                title: "大双小双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "极大",
+                title: "极值",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
@@ -318,30 +323,35 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         ],
         [{
                 name: "小",
+                title: "大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "双",
+                title: "单双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "小单",
+                title: "大单小单",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "小双",
+                title: "大双小双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "极小",
+                title: "极值",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
@@ -349,33 +359,43 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         ],
         [{
                 name: "红波",
+                title: "波色",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "绿波",
+                title: "波色",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "蓝波",
+                title: "波色",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: null,
-                value: ""
+                title: "",
+                value: "",
+                point: 0,
+                step: 0,checked:false,
             },
             {
                 name: null,
-                value: ""
+                title: "",
+                value: "",
+                point: 0,
+                step: 0,checked:false,
             }
         ],
         [{
                 name: "豹子",
+                title: "豹子",
                 value: "",
                 point: 0,
                 step: 0,checked:false,

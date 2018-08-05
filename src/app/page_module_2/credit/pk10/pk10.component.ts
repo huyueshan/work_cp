@@ -569,24 +569,28 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     public pkdata1_1 = [
         {
             name: "冠亚大",
+            title: "冠亚和值大小",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "冠亚小",
+            title: "冠亚和值大小",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "冠亚单",
+            title: "冠亚和值单双",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "冠亚双",
+            title: "冠亚和值单双",
             value: "",
             point: 0,
             step: 0,checked:false,
@@ -635,63 +639,72 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
             data1: this.setbigorsmall()
         }
     ];
-    public pkdata1_3 = [
-        {
+    public pkdata1_3 = [{
             name: "1v10龙:",
+            title: "冠军VS第十名：龙",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "2v9龙:",
+            title: "亚军VS第九名：龙",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "3v8龙:",
+            title: "第三名VS第八名：龙",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "4v7龙:",
+            title: "第四名VS第七名：龙",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "5v6龙:",
+            title: "第五名VS第六名：龙",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "1v10虎:",
+            title: "冠军VS第十名：虎",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "2v9虎:",
+            title: "亚军VS第九名：虎",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "3v8虎:",
+            title: "第三名VS第八名：虎",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "4v7虎:",
+            title: "第四名VS第七名：虎",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "5v6虎:",
+            title: "第五名VS第六名：虎",
             value: "",
             point: 0,
             step: 0,checked:false,
@@ -869,30 +882,35 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     ];
     public betdata3_2 = [{
             name: "大",
+            title: "大小",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "小",
+            title: "大小",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "单",
+            title: "单双",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: "双",
+            title: "单双",
             value: "",
             point: 0,
             step: 0,checked:false,
         },
         {
             name: null,
+            title: "",
             value: "",
             point: 0,
             step: 0,checked:false,
@@ -1427,6 +1445,7 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         for (let i = 0; i < d.length; i++) {
             data[i] = {
                 name: d[i],
+                title: i<2?'大小':'单双',
                 value: "",
                 point: 0,
                 step: 0,checked:false,

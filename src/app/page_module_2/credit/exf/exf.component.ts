@@ -76,7 +76,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
             id: 8,
-            name: "全五中1"
+            name: "全5中1"
         }
     ];
     public contenttoptitle3 = [, , , , , ];
@@ -473,6 +473,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         data1: [
           {
             name: "特大",
+            title:"大小",
             value: "",
             point: 0,
             step: 0,
@@ -480,6 +481,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "特小",
+            title:"大小",
             value: "",
             point: 0,
             step: 0,
@@ -487,6 +489,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "特单",
+            title:"单双",
             value: "",
             point: 0,
             step: 0,
@@ -494,6 +497,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "特双",
+            title:"单双",
             value: "",
             point: 0,
             step: 0,
@@ -536,6 +540,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         data1: [
           {
             name: "总大",
+            title:"大小",
             value: "",
             point: 0,
             step: 0,
@@ -543,6 +548,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "总小",
+            title:"大小",
             value: "",
             point: 0,
             step: 0,
@@ -550,6 +556,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "总单",
+            title:"单双",
             value: "",
             point: 0,
             step: 0,
@@ -557,6 +564,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "总双",
+            title:"单双",
             value: "",
             point: 0,
             step: 0,
@@ -564,6 +572,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "总尾大",
+            title:"尾大小",
             value: "",
             point: 0,
             step: 0,
@@ -571,6 +580,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "总尾小",
+            title:"尾大小",
             value: "",
             point: 0,
             step: 0,
@@ -584,6 +594,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
       data2: [
         {
           name: "上",
+          title:"上下",
           value: "",
           point: 0,
           step: 0,
@@ -591,6 +602,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "上下和",
+          title:"上下",
           value: "",
           point: 0,
           step: 0,
@@ -598,6 +610,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "下",
+          title:"上下",
           value: "",
           point: 0,
           step: 0,
@@ -605,6 +618,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "总单",
+          title:"总和单双",
           value: "",
           point: 0,
           step: 0,
@@ -612,6 +626,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "奇",
+          title:"奇偶",
           value: "",
           point: 0,
           step: 0,
@@ -619,6 +634,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "奇偶和",
+          title:"奇偶",
           value: "",
           point: 0,
           step: 0,
@@ -626,6 +642,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "偶",
+          title:"奇偶",
           value: "",
           point: 0,
           step: 0,
@@ -633,6 +650,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "总双",
+          title:"总和单双",
           value: "",
           point: 0,
           step: 0,
@@ -640,6 +658,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "特大",
+          title:"特码大小",
           value: "",
           point: 0,
           step: 0,
@@ -647,6 +666,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "特单",
+          title:"特码单双",
           value: "",
           point: 0,
           step: 0,
@@ -654,6 +674,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "总大",
+          title:"总和大小",
           value: "",
           point: 0,
           step: 0,
@@ -661,6 +682,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "总尾大",
+          title:"总尾大小",
           value: "",
           point: 0,
           step: 0,
@@ -668,6 +690,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "特小",
+          title:"特码大小",
           value: "",
           point: 0,
           step: 0,
@@ -675,6 +698,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "特双",
+          title:"特码单双",
           value: "",
           point: 0,
           step: 0,
@@ -682,6 +706,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "总小",
+          title:"总和大小",
           value: "",
           point: 0,
           step: 0,
@@ -689,6 +714,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         {
           name: "总尾小",
+          title:"总尾大小",
           value: "",
           point: 0,
           step: 0,
@@ -698,10 +724,10 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
     };
     public betdatab2_2 = [, , , ,];
     public zhengma = [
-      this.setzhengma(),
-      this.setzhengma(),
-      this.setzhengma(),
-      this.setzhengma()
+        this.setzhengma('一'),
+        this.setzhengma('二'),
+        this.setzhengma('三'),
+        this.setzhengma('四')
     ];
   
     public betdatab7_1 = [
@@ -1453,6 +1479,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
       for (let i = 0; i < d.length; i++) {
         data[i] = {
           name: d[i],
+          title:i<2?'大小':(i<4?'单双':''),
           value: "",
           point: 0,
           step: 0,
@@ -1462,12 +1489,13 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
       return data;
     }
     // 设置正码数据
-    setzhengma() {
+    setzhengma(n) {
       let data = {
         data1: this.setball(),
         data2: [
           {
             name: "上",
+            title:"上下",
             value: "",
             point: 0,
             step: 0,
@@ -1475,6 +1503,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "上下和",
+            title:"上下",
             value: "",
             point: 0,
             step: 0,
@@ -1482,6 +1511,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "下",
+            title:"上下",
             value: "",
             point: 0,
             step: 0,
@@ -1489,6 +1519,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "总单",
+            title:"总和单双",
             value: "",
             point: 0,
             step: 0,
@@ -1496,6 +1527,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "奇",
+            title:"奇偶",
             value: "",
             point: 0,
             step: 0,
@@ -1503,6 +1535,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "奇偶和",
+            title:"奇偶",
             value: "",
             point: 0,
             step: 0,
@@ -1510,6 +1543,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "偶",
+            title:"奇偶",
             value: "",
             point: 0,
             step: 0,
@@ -1517,6 +1551,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "总双",
+            title:"总和单双",
             value: "",
             point: 0,
             step: 0,
@@ -1524,6 +1559,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "大",
+            title:`正码${n}大小`,
             value: "",
             point: 0,
             step: 0,
@@ -1531,6 +1567,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "单",
+            title:`正码${n}单双`,
             value: "",
             point: 0,
             step: 0,
@@ -1538,6 +1575,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "总大",
+            title:"总和大小",
             value: "",
             point: 0,
             step: 0,
@@ -1545,6 +1583,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "总尾大",
+            title:"总尾大小",
             value: "",
             point: 0,
             step: 0,
@@ -1552,6 +1591,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "小",
+            title:`正码${n}大小`,
             value: "",
             point: 0,
             step: 0,
@@ -1559,6 +1599,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "双",
+            title:`正码${n}单双`,
             value: "",
             point: 0,
             step: 0,
@@ -1566,6 +1607,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "总小",
+            title:"总和大小",
             value: "",
             point: 0,
             step: 0,
@@ -1573,6 +1615,7 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
           },
           {
             name: "总尾小",
+            title:"总尾大小",
             value: "",
             point: 0,
             step: 0,

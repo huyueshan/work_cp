@@ -44,11 +44,11 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="flex-r contitle">三军</div>
+                            <div class="flex-r contitle">{{k3data1.title}}</div>
                             <div class="flex-r conmain">
                                 <div class="flex-r conmainbox" *ngFor="let item of k3data1.data1; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                     <span class="flex-r itembox">
-                                        <span class="flex-r item1 ">
+                                        <span class="flex-r item1" [title]="k3data1.title+'：'+item.numb">
                                             <i [ngStyle]="{'background-position-y': imgtop[item.numb].top}"></i>
                                         </span>
                                         <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="flex-r conmainbox" *ngFor="let item of k3data1.data2; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                     <span class="flex-r itembox">
-                                        <span class="flex-r item1" *ngIf="item.name !== null">
+                                        <span class="flex-r item1" *ngIf="item.name !== null" [title]="'大小：'+item.name">
                                             {{item.name}}
                                         </span>
                                         <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
@@ -71,11 +71,11 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="flex-r contitle">全骰、围骰</div>
+                            <div class="flex-r contitle">{{k3data2.title}}</div>
                             <div class="flex-r conmain">
                                     <div class="flex-r conmainbox" *ngFor="let item of k3data2.data1; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                             <span class="flex-r itembox">
-                                                <span class="flex-r item1 ">
+                                                <span class="flex-r item1" [title]="'全骰：'+item.name">
                                                     {{item.name}}
                                                 </span>
                                                 <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
@@ -88,7 +88,7 @@
         
                                 <div class="flex-r conmainbox" *ngFor="let item of k3data2.data2; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                     <span class="flex-r itembox">
-                                        <span class="flex-r item1 " *ngIf="item.numb !== null">
+                                        <span class="flex-r item1 " *ngIf="item.numb !== null" [title]="'围骰：'+item.numb">
                                             <i [ngStyle]="{'background-position-y': imgtop[item.numb].top}"></i>
                                         </span>
                                         <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
@@ -99,11 +99,11 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="flex-r contitle">短牌</div>
+                            <div class="flex-r contitle">{{k3data3.title}}</div>
                             <div class="flex-r conmain">        
                                 <div class="flex-r conmainbox" *ngFor="let item of k3data3.data1; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                     <span class="flex-r itembox">
-                                        <span class="flex-r item1 doubicon " *ngIf="item.numb !== null">
+                                        <span class="flex-r item1 doubicon " *ngIf="item.numb !== null" [title]="k3data3.title+'：'+item.numb[0]+item.numb[1]">
                                             <i [ngStyle]="{'background-position-y': imgtop[item.numb[0]].top}"></i>
                                             <i [ngStyle]="{'background-position-y': imgtop[item.numb[1]].top}"></i>
                                         </span>
@@ -115,11 +115,11 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="flex-r contitle">点数</div>
+                            <div class="flex-r contitle">{{k3data4.title}}</div>
                             <div class="flex-r conmain">        
                                 <div class="flex-r conmainbox" *ngFor="let item of k3data4.data1; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                     <span class="flex-r itembox">
-                                        <span class="flex-r item1 doubicon ">
+                                        <span class="flex-r item1 doubicon" [title]="k3data4.title+'：'+item.name">
                                             {{item.name}}
                                         </span>
                                         <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
@@ -130,11 +130,11 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="flex-r contitle">长牌</div>
+                            <div class="flex-r contitle">{{k3data5.title}}</div>
                             <div class="flex-r conmain">        
                                 <div class="flex-r conmainbox" *ngFor="let item of k3data5.data1; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                     <span class="flex-r itembox">
-                                        <span class="flex-r item1 doubicon ">
+                                        <span class="flex-r item1 doubicon" [title]="k3data5.title+'：'+item.numb[0]+item.numb[1]">
                                                 <i [ngStyle]="{'background-position-y': imgtop[item.numb[0]].top}"></i>
                                                 <i [ngStyle]="{'background-position-y': imgtop[item.numb[1]].top}"></i>
                                         </span>
@@ -167,10 +167,6 @@
                                 <i></i>
                                 <span class="option" *ngFor="let item of selmoeny" (mousedown)="optinclick(item)">{{item}}元</span>
                             </div>
-                        </div>
-                        <!-- 底部问路-->
-                        <div *ngIf="type!==3">
-                            <app-wenlu></app-wenlu>
                         </div>
                         <!-- 快选金额 -->
                         <div class="setbox" *ngIf="popup.setnumb.show" [style.left.px]= "popup.setnumb.left" [style.top.px]= "popup.setnumb.top">

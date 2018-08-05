@@ -992,48 +992,56 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
             title: "特码",
             data1: [{
                     name: "特单",
+                    title:"特码Y单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "特双",
+                    title:"特码Y单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "特尾大",
+                    title:"特码Y尾大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "特尾小",
+                    title:"特码Y尾大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "特大",
+                    title:"特码Y大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "特小",
+                    title:"特码Y大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "合单",
+                    title:"特码Y合数单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "合双",
+                    title:"特码Y合数单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
@@ -1042,66 +1050,74 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
         },
         {
             title: "正码一",
-            data1: this.setbigorsmall()
+            data1: this.setbigorsmall('一')
         },
         {
             title: "正码二",
-            data1: this.setbigorsmall()
+            data1: this.setbigorsmall('二')
         },
         {
             title: "正码三",
-            data1: this.setbigorsmall()
+            data1: this.setbigorsmall('三')
         },
         {
             title: "正码四",
-            data1: this.setbigorsmall()
+            data1: this.setbigorsmall('四')
         },
         {
             title: "总和",
             data1: [{
                     name: "总单",
+                    title:"Y总和单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总双",
+                    title:"Y总和单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总尾大",
+                    title:"Y总尾大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总尾小",
+                    title:"Y总尾大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总大",
+                    title:"Y总和大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总小",
+                    title:"Y总和大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title:"",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
@@ -1111,74 +1127,87 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
     ];
     public betdatab2_1 = {
         data1: this.setball(),
-        data2: [{
+        data2: [
+            {
                 name: "红波",
+                title: "特码色波",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "蓝波",
+                title: "特码色波",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "绿波",
+                title: "特码色波",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: null,
+                title:"",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: null,
+                title:"",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: null,
+                title:"",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "上",
+                title:"上下",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "上下和",
+                title:"上下",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "下",
+                title:"上下",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "奇",
+                title:"奇偶",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "奇偶和",
+                title:"奇偶",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "偶",
+                title:"奇偶",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
@@ -1186,108 +1215,126 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
         ],
         data3: [{
                 name: "特单",
+                title:"特码Y单双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "特双",
+                title:"特码Y单双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "特大",
+                title:"特码Y大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "特小",
+                title:"特码Y大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "特尾大",
+                title:"特码Y尾大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "特尾小",
+                title:"特码Y尾大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "总单",
+                title:"Y总和单双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "总双",
+                title:"Y总和单双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "总大",
+                title:"Y总和大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "总小",
+                title:"Y总和大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "总尾大",
+                title:"Y总尾大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "总尾小",
+                title:"Y总尾大小",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "福",
+                title:"特码Y四喜",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "禄",
+                title:"特码Y四喜",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "寿",
+                title:"特码Y四喜",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "喜",
+                title:"特码Y四喜",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "合单",
+                title:"特码Y合数单双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
             },
             {
                 name: "合双",
+                title:"特码Y合数单双",
                 value: "",
                 point: 0,
                 step: 0,checked:false,
@@ -1296,10 +1343,10 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
     };
     public betdatab2_2 = [, , , , , , ];
     public zhengma = [
-        this.setzhengma(),
-        this.setzhengma(),
-        this.setzhengma(),
-        this.setzhengma()
+        this.setzhengma('一'),
+        this.setzhengma('二'),
+        this.setzhengma('三'),
+        this.setzhengma('四')
     ];
 
     public betdatab7_1 = [{
@@ -2094,12 +2141,13 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
         }
         return data;
     }
-    setbigorsmall() {
+    setbigorsmall(n) {
         let data = [];
         let d = ["单", "双", "尾大", "尾小", "大", "小", "合单", "合双"];
         for (let i = 0; i < d.length; i++) {
             data[i] = {
                 name: d[i],
+                title: i<2?`正码${n}Y单双`:(i<4?`正码${n}Y尾大小`:(i<6?`正码${n}Y大小`:`正码${n}Y合数单双`)),
                 value: "",
                 point: 0,
                 step: 0,checked:false,
@@ -2108,77 +2156,89 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
         return data;
     }
     // 设置正码数据
-    setzhengma() {
+    setzhengma(n) {
         let d = {
             data1: this.setball(),
             data2: [{
                     name: "红波",
+                    title: `正码${n}色波`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "蓝波",
+                    title: `正码${n}色波`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "绿波",
+                    title: `正码${n}色波`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title: '',
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title: '',
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: null,
+                    title: '',
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "上",
+                    title:"上下",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "上下和",
+                    title:"上下",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "下",
+                    title:"上下",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "奇",
+                    title:"奇偶",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "奇偶和",
+                    title:"奇偶",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "偶",
+                    title:"奇偶",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
@@ -2186,108 +2246,126 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
             ],
             data3: [{
                     name: "单",
+                    title: `正码${n}Y单双`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "双",
+                    title: `正码${n}Y单双`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "大",
+                    title: `正码${n}Y大小`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "小",
+                    title: `正码${n}Y大小`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "尾大",
+                    title: `正码${n}Y尾大小`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "尾小",
+                    title: `正码${n}Y尾大小`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总单",
+                    title:"Y总和单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总双",
+                    title:"Y总和单双",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总大",
+                    title:"Y总和大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总小",
+                    title:"Y总和大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总尾大",
+                    title:"Y总尾大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "总尾小",
+                    title:"Y总尾大小",
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "福",
+                    title: `正码${n}Y四喜`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "禄",
+                    title: `正码${n}Y四喜`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "寿",
+                    title: `正码${n}Y四喜`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "喜",
+                    title: `正码${n}Y四喜`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "合单",
+                    title: `正码${n}Y合数单双`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
                 },
                 {
                     name: "合双",
+                    title: `正码${n}Y合数单双`,
                     value: "",
                     point: 0,
                     step: 0,checked:false,
