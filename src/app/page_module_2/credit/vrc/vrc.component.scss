@@ -22,8 +22,8 @@
     align-items: flex-start;
 }
 
-.color_y {
-    color: #fe8f00;
+.color_m {
+    color: #b61010;
 }
 
 .sscbox {
@@ -34,8 +34,6 @@
 .ssccontain {
     width: 100%;
     align-self: center;
-    background: #111 url(../../images/bg_02.jpg) center no-repeat;
-    background-size: cover;
 }
 
 .contaner {
@@ -50,96 +48,46 @@
     .contentbox {
         width: 1000px;
         border-radius: 5px;
-        background-color: #3d3d3d;
-        .tabbox {
-            width: 100%;
-            height: 50px;
-            padding: 0 20px;
-            color: white;
-            justify-content: space-between;
-            background-color: #333;
-            .topl {
-                i {
-                    width: 30px;
-                    height: 28px;
-                    background: url("../../images/vrc01.png") -10px -282px;
-                    background-repeat: no-repeat;
-                }
-                strong {
-                    font-size: 18px;
-                    padding-left: 10px;
-                }
-            }
-            .topr {
-                font-size: 14px;
-                .play {
-                    i {
-                        width: 8px;
-                        height: 17px;
-                        background: url("../../images/vrc01.png") -10px -45px;
-                        background-repeat: no-repeat;
-                    }
-                    span {
-                        padding-left: 10px;
-                        padding-top: 4px;
-                        cursor: pointer;
-                    }
-                }
-                .operate {
-                    padding-left: 20px;
-                    i {
-                        width: 13px;
-                        height: 17px;
-                        background: url("../../images/vrc01.png") -10px -82px;
-                        background-repeat: no-repeat;
-                    }
-                    span {
-                        padding-left: 10px;
-                        padding-top: 4px;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
         .media {
             width: 100%;
-            padding: 20px;
-            border-bottom: 1px solid #111;
+            height: 240px;
+            padding: 5px;
+            border-top: 1px solid #DADADA;
+            border-bottom: 1px solid #DADADA;
+            background-color: #F8F8F8;
             justify-content: space-between;
-            .mediabox {
-                width: 425px;
-                height: 360px;
-                background-color: white;
-                border-radius: 6px;
-                overflow: hidden;
-            }
+            align-items: center;
+            overflow: hidden;
             .videobox {
+                position: relative;
+                width: 400px;
+                height: 230px;
                 .head {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
                     width: 100%;
-                    height: 40px;
-                    padding: 0 15px;
                     font-size: 14px;
                     justify-content: space-between;
+                    .zhubo{
+                        // justify-content: center;
+                        padding-left: 6px;
+                        width: 85px; height: 27px;
+                        color: white;
+                        background: url('../../images/mod2/vrbjl_01.png') -10px -152px;
+
+                    }
                     .onoff {
-                        width: 98px;
+                        width: 50px;
                         height: 20px;
-                        padding: 1px;
-                        border-radius: 2px;
-                        background-color: #fe8f00;
-                        height: 20px;
-                        span {
-                            width: 48px;
-                            height: 18px;
-                            line-height: 18px;
-                            text-align: center;
-                            p {
-                                display: inline-block;
-                                width: 100%;
-                                height: 100%;
-                                background-color: white;
-                                cursor: pointer;
-                            }
-                        }
+                        text-align: center;
+                        border: none;
+                        border-radius: 10px;
+                        margin-right: 5px;
+                        color: white;
+                        background-color: rgba(255, 255, 255, .3);
+                        justify-content: center;
+                        cursor: pointer;
                     }
                 }
                 .vcontent {
@@ -156,211 +104,299 @@
                 }
             }
             .chatbox{
+                width: 580px;
+                height: 220px;
+                padding-right: 5px;
+                padding-left: 10px;
                 justify-content: space-between;
-                .head {
-                    width: 100%;
-                    height: 40px;
+                align-items: center;
+                .side_l{
+                    width: 40px;
+                    height: 100%;
                     font-size: 14px;
-                    justify-content: space-between;
-                    align-content: flex-start;
-                    background-color: #eee;
-                    span{
-                        flex: 1;
-                        height: 40px;
-                        line-height: 40px;
+                    justify-content: center;
+                    align-content: center;
+                    align-items: center;
+                    .tabs{
+                        width:30px;
+                        height: 70px;
                         font-size: 14px;
-                        font-weight: bold;
-                        padding: 0 15px;
+                        margin: 8px 0;
+                        border: none;
+                        border-radius: 15px;
+                        background-color: white;
+                        justify-content: center;
                         cursor: pointer;
+                        span{
+                            width: 14px;
+                            line-height: 18px;
+                            text-align: center;
+                        }
                     }
                     .active{
-                        background-color: white;
-                        color: #fe8f00;
-                        border-bottom: 2px solid #fe8f00;
+                        background-color: #B61010;
+                        color: white;
                     }
                 }
-                .foot{
-                    width: 100%;
-                    height: 50px;
-                    font-size: 12px;
+                .contentbox{
+                    width: 520px;
+                    height: 100%;
                     justify-content: space-between;
-                    background-color: #eee;
-                    .face{
-                        width: 20px;
-                        height: 20px;;
-                        background: url("../../images/vrc01.png") -10px -156px;
-                        margin: 0 12px;
-                        cursor: pointer;
-                    }
-                    .chat{
-                        width:26px;
-                        height: 26px;
-                        background: url("../../images/vrc01.png") -10px -236px;
-                        margin: 0 14px;
-                        cursor: pointer;
-                    }
-                    #chatput{
-                        flex:1;
-                        height: 26px;
-                        line-height: 26px;
-                        font-size: 12px;
-                        padding: 0 12px;
-                        border: none;
-                        border-radius: 13px;
+
+                    .chatcontent{
+                        width: 100%;
+                        flex: 1;
                         background-color: white;
-                        box-shadow: 0 1px 1px 1px #ccc inset;
+                        padding: 5px;
+                    }
+                    .foot{
+                        position: relative;
+                        width: 100%;
+                        height: 50px;
+                        font-size: 12px;
+                        padding-right: 10px;
+                        justify-content: space-between;
+                        background-color: #eee;
+                        .face{
+                            width: 16px;
+                            height: 16px;
+                            background: url('../../images/mod2/vrbjl_01.png') -10px -78px;
+                            margin: 0 10px;
+                            cursor: pointer;
+                        }
+                        .chat{
+                            position: absolute;
+                            right: 12px;
+                            top:14px;
+                            width:50px;
+                            height: 22px;
+                            line-height: 20px;
+                            text-align: center;
+                            color: white;
+                            background-color: #B61010;
+                            border:none;
+                            border-radius: 13px;
+                            cursor: pointer;
+                        }
+                        #chatput{
+                            flex:1;
+                            height: 26px;
+                            line-height: 26px;
+                            font-size: 12px;
+                            padding: 0 12px;
+                            border: none;
+                            border-radius: 13px;
+                            background-color: white;
+                            box-shadow: 0 1px 1px 1px #ccc inset;
+                        }
                     }
                 }
             }
         }
         .playbox {
             width: 100%;
-            padding: 30px 0 20px; // align-content: center;
+            padding: 30px 0 20px;
             align-items: center;
             .desk {
-                position: relative;
-                width: 860px;
-                height: 400px;
-                background: url("../../images/vrc/bjl_10.png");
-                justify-content: flex-end;
-                align-content: center;
-                align-items: center;
-                .add {
-                    width: 220px;
-                    height: 144px;
-                    padding-top: 10px;
-                    font-size: 14px;
-                    text-align: center;
-                    font-weight: bold;
-                    strong {
-                        font-size: 16px;
-                    }
-                }
-                .deskbg {
-                    position: absolute;
-                    top: 50px;
-                    left: 60px;
-                    width: 740px;
-                    height: 286px;
-                    justify-content: space-between;
-                    align-items: flex-start;
-                    flex-wrap: wrap; // background-color: red;
-                    border-radius: 143px;
-                    overflow: hidden;
-                    z-index: 222;
-                    .deskplay {
-                        justify-content: center;
-                        .betball {
-                            padding: 10px;
-                            justify-content: center;
-                            align-self: flex-end;
-                            .betval {
-                                width: 68px;
-                                height: 68px;
-                                font-size: 14px;
-                                font-weight: bold;
-                                color: #fe8f00;
-                                background: url('../../images/vac02.png') -10px -890px;
-                                justify-content: center;
-                            }
-                        }
-                        .betinfo {
-                            width: 70px;
-                            height: 84px;
-                            align-self: flex-start;
-                            align-items: center;
-                            justify-content: center;
-                            span {
-                                line-height: 38px;
-                                font-size: 24px;
-                            }
-                        }
-                        .acinfo {
-                            height: 140PX;
-                        }
-                    }
-                    .play0 {
-                        width: 220px;
-                        height: 142PX;
-                        cursor: pointer;
-                    }
-                    .play0_bg,
-                    .play0:hover {
-                        background: url("../../images/vrc/bjl_11.png");
-                    }
-                    .play1 {
-                        width: 298px;
-                        height: 84PX;
-                        cursor: pointer;
-                    }
-                    .play1_bg,
-                    .play1:hover {
-                        background: url("../../images/vrc/bjl_12.png");
-                    }
-                    .play2 {
-                        width: 222px;
-                        height: 142PX;
-                        cursor: pointer;
-                    }
-                    .play2_bg,
-                    .play2:hover {
-                        background: url("../../images/vrc/bjl_13.png");
-                    }
-                    .play3 {
-                        width: 245px;
-                        height: 144PX;
-                        cursor: pointer;
-                    }
-                    .play3_bg,
-                    .play3:hover {
-                        background: url("../../images/vrc/bjl_14.png");
-                    }
-                    .play4 {
-                        width: 247px;
-                        height: 144PX;
-                        cursor: pointer;
-                    }
-                    .play4_bg,
-                    .play4:hover {
-                        background: url("../../images/vrc/bjl_15.png");
-                    }
-                }
-                .deskball {
-                    position: absolute;
-                    top: 135px;
-                    left: 200px;
-                    width: 458px;
-                    height: 120px;
-                    border-radius: 60px;
+                width: 970px;
+                height: 272px;
+                padding-bottom: 12px;
+                background: url("../../images/mod2/desk_vr.png");
+                justify-content: center;
+                .contain_vr{
+                    position: relative;
+                    background-color: #0F3245;
+                    border: none;
+                    border-radius: 4px;
+                    margin: 4px;
                     justify-content: center;
-                    z-index: 333;
-                    .ballbox {
-                        padding: 5px;
-                        .ball {
-                            width: 68px;
-                            height: 68px;
-                            background: url('../../images/vac02.png') -10px -10px;
-                            cursor: pointer;
+                    align-items: center;
+                    align-content: center;
+                    cursor: pointer;
+                    header{
+                        font-size: 20px;
+                        line-height: 30px;
+                    }
+                    .color_b{
+                        color: #4CAFED;
+                    }
+                    .color_g{
+                        color: #4AB12E;
+                    }
+                    .color_r{
+                        color: #EB3442;
+                    }
+                    footer{
+                        font-size: 20px;
+                        line-height: 30px;
+                        color: #EB3442;
+
+                    }
+                    .betball {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        padding: 10px;
+                        justify-content: center;
+                        align-self: flex-end;
+                        .betval {
+                            width: 56px;
+                            height: 56px;
+                            font-size: 14px;
+                            font-weight: bold;
+                            background: url('../../images/mod2/vrball_01.png') -10px -770px;
+                            justify-content: center;
                         }
                     }
                 }
+                .contain_vr:hover,.active{
+                    background-color: #153D53;
+                }
+                .con_side{
+                    width: 188px;
+                    height: 188px;
+
+                }
+                .con_he{
+                    width: 500px;
+                    height: 90px;
+
+                }
+                .con_dui{
+                    width: 246px;
+                    height: 90px;
+
+                }
+                
+            }
+            .deskball {
+                width: 100%;
+                height: 90px;
+                padding: 0 20px;
+                border-bottom: 1px solid #DADADA;
+                justify-content: space-between;
+                .play{
+                    position: relative;
+                    display: inline-block;
+                    width: 70px;
+                    height: 20px;
+                    line-height: 18px;
+                    font-size: 12px;
+                    text-align: center;
+                    margin: 0 5px;
+                    border: none;
+                    border-radius: 4px;
+                    color: white;
+                    background-color: #ABAFC0;
+                    cursor: pointer;
+                    .tipbox{
+                        position: absolute;
+                        bottom: 20px;
+                        left: -5px;
+                        padding-bottom: 6px;
+                        .tip{
+                            position: relative;
+                            width: 280px;
+                            padding: 5px;
+                            font-size: 14px;
+                            color: #333;
+                            background-color: white;
+                            border: 1px solid #b52525;
+                            border-radius: 4px;
+                            p{
+                                line-height: 18px;
+                            }
+                            .br{
+                                line-height: 30px;
+                                height: 30px;
+                            }
+                        }
+                        
+                        .tip::before{
+                            content: '';
+                            position: absolute;
+                            bottom: -4px;
+                            left: 34px;
+                            width: 6px;
+                            height: 6px;
+                            border-left: 1px solid #b52525;
+                            border-bottom: 1px solid #b52525;
+                            background-color: white;
+                            transform: rotate(-45deg);
+                        }
+                    }
+                }
+                .ballbox {
+                    padding: 5px;
+                    .ball {
+                        width: 56px;
+                        height: 56px;
+                        background: url('../../images/mod2/vrball_01.png') -10px -10px;
+                        cursor: pointer;
+                    }
+                }
+                .custom{
+                    .ball{
+                        justify-content: center;
+                        align-items: center;
+                        input{
+                            width: 36px;
+                            height: 12px;
+                            line-height: 12px;
+                            font-size: 12px;
+                            font-weight: 600;
+                            text-align: center;
+                            border: none;
+                            background-color: transparent;
+                        }
+
+                    }
+                }
+                .del{
+                    align-self: flex-start;
+                    margin: 10px;
+                    width:38px;
+                    height: 38px;
+                    justify-content: center;
+                    align-items: center;
+                    border: 2px solid #DADADA;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    i{
+                        width: 19px; height: 18px;
+                        background: url('../../images/mod2/vrbjl_01.png') -10px -114px;
+                    }
+
+                }                
             }
             .butgroup {
                 width: 100%;
                 padding: 20px;
                 justify-content: center;
+                .add{
+                    min-width: 150px;
+                    font-size: 14px;
+                    text-align: center;
+                }
                 span {
-                    width: 130px;
+                    width: 180px;
                     height: 40px;
                     line-height: 40px;
-                    text-align: center;
                     color: white;
                     font-size: 18px;
-                    margin: 0 120px;
+                    margin: 0 10px;
+                    background: linear-gradient(to top, #b42237, #d93d3d);
                     border-radius: 4px;
-                    background-color: #fe8f00;
                     box-shadow: 0 1px 2px 1px rgba(30, 30, 30, .5);
+                    justify-content: center;
                     cursor: pointer;
+                    i{
+                        display: inline-block;
+                        width: 26px;
+                        height: 26px;
+                        margin-right: 8px;
+                        background: url('../../images/mod2/2_check.png')
+                    }
                 }
             }
         }
@@ -368,25 +404,34 @@
             position: relative;
             width: 100%;
             min-height: 200px;
-            padding: 0 20px 30px 20px;
+            padding-bottom:30px;
             background-color: white;
             align-items: center;
             .qcontent {
                 width: 100%;
-                height: 50px;
+                height: 40px;
+                padding: 0 20px;
+                background-color: #F1F1F1;
                 justify-content: space-between;
                 .lquery {
                     span {
                         font-size: 14px;
+                        margin-right: 14px;
+                        cursor: pointer;
                         span {
-                            cursor: pointer;
+                            margin-right: 0;
                         }
                         i {
-                            width: 20px;
-                            height: 20px;
-                            margin: 0 16px 0 6px;
-                            background: url("../../images/vrc01.png") -10px -196px;
-                            cursor: pointer;
+                            width: 14px;
+                            height: 14px;
+                            margin-left:4px;
+                            background: url('../../images/mod2/vrbjl_01.png') -10px -10px;
+                        }
+                    }
+                    .active{
+                        color: #B61010;
+                        i{
+                            background-position-y: -44px;
                         }
                     }
                 }
@@ -396,32 +441,34 @@
                         padding-right: 20px;
                         .datebtn {
                             display: inline-block;
-                            width: 60px;
-                            height: 30px;
-                            line-height: 28px;
+                            width: 48px;
+                            height: 22px;
+                            line-height: 20px;
                             text-align: center;
-                            background-color: white;
+                            background-color: #EDEDED;
                             border: 1px solid #ccc;
                             border-radius: 2px;
                             cursor: pointer;
                         }
                         .bd_y {
-                            border: 1px solid #fe8f00;
+                            // border: 1px solid #fe8f00;
+                            color: white;
+                            background: linear-gradient(to top, #b42237, #d93d3d);
+                            border:1px solid #781113;
                         }
                     }
                 }
             }
             .tablewrap {
                 width: 100%;
-                border: 1px solid #ccc;
-                border-radius: 4px;
+                border-bottom: 1px solid #DADADA;
                 #table {
                     table-layout: fixed;
                     border-collapse: collapse;
                     border: none;
                     width: 100%;
                     .bg_1 {
-                        background-color: #eee;
+                        border-bottom: 1px solid #DADADA;
                     }
                     tr {
                         th {
@@ -441,7 +488,7 @@
                             line-height: 20px;
                             text-align: center;
                             color: white;
-                            background-color: #fe8f00;
+                            background-color: #b61010;
                             border: none;
                             border-radius: 10px;
                             cursor: pointer;

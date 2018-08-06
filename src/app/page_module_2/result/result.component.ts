@@ -157,7 +157,7 @@ public imgtop = {
 public OBJX = {sum:0, sumBigSmall:'', balls:'', lastBigSmall:'', specialOddEven:'', specialBigSmall:'', specialCombOddEven:'', specialCombBigSmall:'', specialLastNum:'', specialAnimal:'', specialColor:'', upDown:'', oddEven:'', OneBigSmall:function(n){}, OneOddEven:function(n){}, sumOddEven:'',before:'', middle:'',  behind:'', pklh:function(l,h){},}
 
 
-//====================传给分页组件数据 
+//传给分页组件数据 
 public pagination = {
     totalNum:200,  //总数据条数 
     pageSize: 20, // 每页显示数量

@@ -5,7 +5,7 @@
         <div class="contaner">
             <div class="flex-r mainbox">
                 <div class="flex-c contentbox">
-                    <div class="flex-r tabbox">
+                    <!-- <div class="flex-r tabbox">
                         <div class="flex-r topl">
                             <i></i>
                             <strong>彩票百家乐</strong>
@@ -20,22 +20,15 @@
                                 <span>操作说明</span>
                             </span>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="flex-r media ">
-                        <div class="flex-c mediabox videobox">
+                        <div class="flex-c videobox">
                             <div class="flex-r head">
-                                <p>
-                                    <span class="color_y">主播：</span>
-                                    <span>Lana</span>
-                                </p>
-                                <span class="flex-r onoff">
-
-                                    <span (click)="vidon = false">
-                                        <p *ngIf="vidon">关闭</p>
-                                    </span>
-                                    <span (click)="vidon = true">
-                                        <p *ngIf="!vidon">开启</p>
-                                    </span>
+                                <span class="flex-r zhubo">
+                                    主播：Lana
+                                </span>
+                                <span class="flex-r onoff" (click)="vidon = !vidon">
+                                    {{vidon?"关闭":"播放"}}
                                 </span>
                             </div>
                             <div class="flex-r vcontent">
@@ -44,18 +37,28 @@
                             </div>
 
                         </div>
-                        <div class="flex-c mediabox chatbox">
-                            <div class="flex-r head">
-                                <span [ngClass]="{active:chattab === 0}" (click)="chattab = 0" > 聊天室 Chat</span>
-                                <span [ngClass]="{active:chattab === 1}" (click)="chattab = 1">路单 Trend</span>
+                        <div class="flex-r chatbox">
+                            <div class="flex-c side_l">
+                                <span class="flex-r tabs" [ngClass]="{active:chattab === 0}" (click)="chattab = 0" >
+                                    <span>聊天室</span> 
+                                </span>
+                                <span class="flex-r tabs" [ngClass]="{active:chattab === 1}" (click)="chattab = 1">
+                                     <span>路单</span> 
+                                </span>
 
                             </div>
-                            <div class="flex-r foot">
-                                <i class="face"></i>
-                                <input type="text" id="chatput"
-                                name="chatput" placeholder="请输入文字....." [(ngModel)]="chatput">
-                                <i class="chat"></i>
+                            <div class="flex-c contentbox">
+                                <div class="flex-c chatcontent">
+                                    聊天内容；
+                                </div>
 
+                                <div class="flex-r foot">
+                                    <i class="face"></i>
+                                    <input type="text" id="chatput"
+                                    name="chatput" placeholder="请输入文字....." [(ngModel)]="chatput">
+                                    <i class="chat">发送</i>
+    
+                                </div>
                             </div>
 
                         </div>
@@ -64,69 +67,106 @@
 
                     <!-- 投注区域 -->
                     <div class="flex-c playbox">
-                        <div class="flex-c desk">
-                            <div class="add">
-                                共计金额：
-                                <strong class="color_y">{{addmoney}}</strong> 元
-                            </div>
+                        <div class="flex-r desk">
 
-                            <div class="flex-r deskbg">
-                                <div class="flex-r deskplay play0" [ngClass]="{play0_bg: actiondata[0].active}" (click)="palyclick(0)">
-                                    <div class="flex-r betball" *ngIf="actiondata[0].active">
-                                        <span class="flex-r betval">{{actiondata[0].value}}</span>
-                                    </div>
-                                    <div class="flex-c betinfo" [ngClass]="{acinfo:!actiondata[0].active}">
-                                        <span>{{actiondata[0].name}}</span>
-                                        <span class="color_y">{{actiondata[0].odds}}</span>
-                                    </div>
+                            <div class="flex-c contain_vr con_side" [ngClass]="{active: actiondata[0].active}" (click)="palyclick(0)">
+                                <div class="flex-r betball" *ngIf="actiondata[0].active">
+                                    <span class="flex-r betval">{{actiondata[0].value}}</span>
                                 </div>
-                                <div class="flex-r deskplay play1" [ngClass]="{play1_bg: actiondata[1].active}" (click)="palyclick(1)">
-                                    <div class="flex-r betball" *ngIf="actiondata[1].active">
-                                        <span class="flex-r betval">{{actiondata[1].value}}</span>
-                                    </div>
-                                    <div class="flex-c betinfo">
-                                        <span>{{actiondata[1].name}}</span>
-                                        <span class="color_y">{{actiondata[1].odds}}</span>
-                                    </div>
+                                <header class="color_b">{{actiondata[0].name}}</header>
+                                <footer>{{actiondata[0].odds}}</footer>
+
+                            </div>
+                            <div class="flex-c">
+                                <div class="flex-c contain_vr con_he" [ngClass]="{active: actiondata[1].active}" (click)="palyclick(1)">
+                                        <div class="flex-r betball" *ngIf="actiondata[1].active">
+                                            <span class="flex-r betval">{{actiondata[1].value}}</span>
+                                        </div>
+                                        <header class="color_g">{{actiondata[1].name}}</header>
+                                        <footer>{{actiondata[1].odds}}</footer>
+    
                                 </div>
-                                <div class="flex-r deskplay play2" [ngClass]="{play2_bg: actiondata[2].active}" (click)="palyclick(2)">
-                                    <div class="flex-c betinfo" [ngClass]="{acinfo:!actiondata[2].active}">
-                                        <span>{{actiondata[2].name}}</span>
-                                        <span class="color_y">{{actiondata[2].odds}}</span>
+                                <div class="flex-r">
+                                    <div class="flex-c contain_vr con_dui" [ngClass]="{active: actiondata[3].active}" (click)="palyclick(3)">
+                                            <div class="flex-r betball" *ngIf="actiondata[3].active">
+                                                <span class="flex-r betval">{{actiondata[3].value}}</span>
+                                            </div>
+                                            <header class="color_b">{{actiondata[3].name}}</header>
+                                            <footer>{{actiondata[3].odds}}</footer>
+        
                                     </div>
+                                    <div class="flex-c contain_vr con_dui" [ngClass]="{active: actiondata[4].active}" (click)="palyclick(4)">
+                                            <div class="flex-r betball" *ngIf="actiondata[4].active">
+                                                <span class="flex-r betval">{{actiondata[4].value}}</span>
+                                            </div>
+                                            <header class="color_r">{{actiondata[4].name}}</header>
+                                            <footer>{{actiondata[4].odds}}</footer>
+        
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="flex-c contain_vr con_side" [ngClass]="{active: actiondata[2].active}" (click)="palyclick(2)">
                                     <div class="flex-r betball" *ngIf="actiondata[2].active">
                                         <span class="flex-r betval">{{actiondata[2].value}}</span>
                                     </div>
-                                </div>
-                                <div class="flex-r deskplay play3" [ngClass]="{play3_bg: actiondata[3].active}" (click)="palyclick(3)">
-                                    <div class="flex-c betinfo acinfo">
-                                        <span>{{actiondata[3].name}}</span>
-                                        <span class="color_y">{{actiondata[3].odds}}</span>
-                                    </div>
-                                    <div class="flex-r betball" *ngIf="actiondata[3].active">
-                                        <span class="flex-r betval">{{actiondata[3].value}}</span>
-                                    </div>
-                                </div>
-                                <div class="flex-r deskplay play4" [ngClass]="{play4_bg: actiondata[4].active}" (click)="palyclick(4)">
-                                    <div class="flex-r betball" *ngIf="actiondata[4].active">
-                                        <span class="flex-r betval">{{actiondata[4].value}}</span>
-                                    </div>
-                                    <div class="flex-c betinfo acinfo">
-                                        <span>{{actiondata[4].name}}</span>
-                                        <span class="color_y">{{actiondata[4].odds}}</span>
-                                    </div>
-                                </div>
+                                    <header class="color_r">{{actiondata[2].name}}</header>
+                                    <footer>{{actiondata[2].odds}}</footer>
 
                             </div>
-                            <div class="flex-r deskball">
+
+
+                        </div>
+                        <div class="flex-r deskball">
+                            <div class="flex-r">
+                                <span class="play" (mouseenter)="tipsactive = 1" (mouseleave)="tipsactive = 0">
+                                    玩法说明
+                                    <div class="tipbox" *ngIf="tipsactive===1" (mouseenter)="tipsactive = 1" (mouseleave)="tipsactive = 0" >
+                                        <div class="flex-c tip">
+                                            <p class="br">百家乐</p>
+                                            <p>闲家及庄家两位数字相加后的个位数字，若</p>
+                                            <p>1、闲家大于庄家: 闲赢</p>
+                                            <p>2、闲家小于庄家: 庄赢</p>
+                                            <p>3、闲家等于庄家: 和</p>
+                                            <p>若闲家的两位数字为对子: 闲对</p>
+                                            <p>若庄家的两位数字为对子: 庄对</p>
+                                            <p>若下注闲赢或庄赢，开奖结果为和时返还一半本金</p>
+                                        </div>
+                                    </div>
+                                </span>
+                                <span class="play" (mouseenter)="tipsactive = 2" (mouseleave)="tipsactive = 0">
+                                    操作说明
+                                    <div class="tipbox" *ngIf="tipsactive===2" (mouseenter)="tipsactive = 2" (mouseleave)="tipsactive = 0" >
+                                        <div class="flex-c tip">
+                                            <p class="br">1. 点击鼠标 【左键】 进行筹码下注</p>
+                                            <p class="br">2. 点击鼠标 【右键】 进行筹码删除</p>
+                                            <p class="br">3. 确认后点击右下方 【确认投注】 </p>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="flex-r" style="margin-left: -100px">
                                 <div class="ballbox" *ngFor="let item of balldata; let i=index">
                                     <div class="ball" [ngStyle]="{'background-position-y': item.y}" (click)="ballclick(i)"></div>
                                 </div>
+                                <div class="ballbox custom">
+                                    <div class="flex-c ball" [ngStyle]="{'background-position-y': custom.y}" (click)="ballclick(-1)">
+                                            <input type="text" maxlength="5" name="custom" [(ngModel)]="custom.value" placeholder="自定义"[ngStyle]="{ 'color':custom.color}"(keyup)="changereg()" (blur)="changereg()" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-c del" (click)="clear()">
+                                <i></i>
                             </div>
                         </div>
                         <div class="flex-r butgroup">
-                            <span (click)="clear()">清空</span>
-                            <span (click)="sub()">确认投注</span>
+                            <div class="add">
+                                共计金额：
+                                <strong class="color_m">{{addmoney}}</strong> 元
+                            </div>
+                            <span class="flex-r" (click)="sub()">
+                                <i></i> 确认投注</span>
                         </div>
                     </div>
 
@@ -134,11 +174,11 @@
                     <div class="flex-c tablebox">
                         <div class="flex-r qcontent">
                             <span class="flex-r lquery">
-                                <span class="flex-r" [ngClass]="{color_y:querystyle == 0}" (click)="querystyle = 0">
+                                <span class="flex-r" [ngClass]="{active:querystyle == 0}" (click)="querystyle = 0">
                                     <span>我的投注</span>
                                     <i></i>
                                 </span>
-                                <span class="flex-r" [ngClass]="{color_y:querystyle == 1}" (click)="querystyle = 1">
+                                <span class="flex-r" [ngClass]="{active:querystyle == 1}" (click)="querystyle = 1">
                                     <span>我的追号</span>
                                     <i></i>
                                 </span>
@@ -181,8 +221,10 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="page" shark-pager [currentPage]="pagination.page" [totalPage]="pagination.totalPage" [gopage]="pagination.gopage"
-                            [hl]="hl" [segmentSize]="pagination.segmentSize" [startFrom]="pagination.startFrom" (onPageChanged)="onPageChanged($event);">
+
+                        <!-- 调用分页组件 -->
+                        <div class="flex-r pagebox" style="align-self: flex-end">
+                            <app-page [pageParams]="pagination" (changeCurPage)="getPageData($event)"></app-page>
                         </div>
                         <!-- 弹窗 -->
                         <div class="flex-c infobox" *ngIf="shade.show">

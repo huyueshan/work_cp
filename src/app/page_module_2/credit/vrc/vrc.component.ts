@@ -31,7 +31,7 @@ export class VRcComponent implements OnInit {
     },
     {
       name: "和",
-      odds: "1 : 1",
+      odds: "1 : 8",
       value: 0,
       active: false
     },
@@ -57,35 +57,46 @@ export class VRcComponent implements OnInit {
   public balldata = [
     {
       value: 10,
-      y: "-450px",
+      y: "-86px",
       defy: "-10px",
-      hovery: "-450px"
+      hovery: "-86px"
     },
     {
       value: 50,
-      y: "-98px",
-      defy: "-98px",
-      hovery: "-538px"
+      y: "-162px",
+      defy: "-162px",
+      hovery: "-238px"
     },
     {
       value: 100,
-      y: "-186px",
-      defy: "-186px",
-      hovery: "-626px"
+      y: "-314px",
+      defy: "-314px",
+      hovery: "-390px"
     },
     {
       value: 500,
-      y: "-274px",
-      defy: "-274px",
-      hovery: "-714px"
+      y: "-466px",
+      defy: "-466px",
+      hovery: "-542px"
     },
     {
       value: 1000,
-      y: "-362px",
-      defy: "-362px",
-      hovery: "-802px"
-    }
+      y: "-618px",
+      defy: "-618px",
+      hovery: "-694px"
+    },
   ];
+  // 自定义筹码数据
+  public custom={
+    value: '',
+    y: "-922px",
+    defy: "-922px",
+    hovery: "-998px",
+    color: "black",
+
+  };
+  // 说明提示数据
+  public tipsactive = 0;
   public querydatelistindex = 0;
   public querydatelist = [
     {
@@ -154,22 +165,15 @@ export class VRcComponent implements OnInit {
     h: 0
   };
   public shadedata;
-
+  //传给分页组件数据 
   public pagination = {
-    pagenumber: 10, // 每页显示数量
-    page: 1, //当前页
-    totalPage: 5, //最大页数
-    gopage: false, //是否可以选页跳转
-    segmentSize: 3, //最大显示页码标签数量
-    startFrom: 1 //开始页从1计算
-  };
-  public hl = {
-    firstpage: "首页",
-    prevpage: "上一页",
-    nextpage: "下一页",
-    lastpage: "尾页",
-    gopage: "跳转"
-  };
+      totalNum:40,  //总数据条数 
+      pageSize: 4, // 每页显示数量
+      curPage: 1, //当前页
+      segmentSize: 5, //最大显示页码标签数量
+      totalPage:10,// 最大页码数。
+      };
+
 
   constructor(private router: Router) {}
 
@@ -179,6 +183,7 @@ export class VRcComponent implements OnInit {
     
     
 }
+
 // 显示弹窗
 shadec(i){
     this.shadedata = this.tabledata[i];
@@ -225,18 +230,37 @@ chedan(){
   }
   // 中间筹码 球点击事件
   ballclick(i) {
-    let b = this.balldata;
-    for (let j = 0; j < b.length; j++) {
-      b[j].y = b[j].defy;
-    }
-    b[i].y = b[i].hovery;
-    this.oddsmoney = b[i].value;
+      let b = this.balldata;
+      for (let j = 0; j < b.length; j++) {
+        b[j].y = b[j].defy;
+      }
+      this.custom.y= this.custom.defy;
+      this.custom.color= 'black';
+      if (i===-1) {
+        this.custom.y= this.custom.hovery;
+        this.custom.color= 'white';
+        this.oddsmoney = Number(this.custom.value);
+      }else{
+
+          b[i].y = b[i].hovery;
+          this.oddsmoney = Number(b[i].value);
+      }
   }
+  changereg() {
+    let v = this.custom;
+    v.value = v.value.replace(/\D/g, "");
+    if (Number(v.value) === 0 || v.value === "") {
+        v.value = "1";
+    }
+    this.oddsmoney = Number(this.custom.value);
+}
   linkrouter(L) {
     // 跳转路由
     this.router.navigate([L]);
-  }
-  onPageChanged(e) {
-    console.log(e.data.page);
+  } 
+  
+  // 分页组件点击页码事件，参数i为点击页码数
+  getPageData(i) {
+      console.log(i);
   }
 }
