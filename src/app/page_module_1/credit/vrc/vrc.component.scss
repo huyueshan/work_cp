@@ -78,6 +78,7 @@
             .topr {
                 font-size: 14px;
                 .play {
+                    position: relative;
                     i {
                         width: 8px;
                         height: 17px;
@@ -91,6 +92,7 @@
                     }
                 }
                 .operate {
+                    position: relative;
                     padding-left: 20px;
                     i {
                         width: 13px;
@@ -102,6 +104,42 @@
                         padding-left: 10px;
                         padding-top: 4px;
                         cursor: pointer;
+                    }
+                }
+                .operate .tipbox,.play .tipbox{
+                    position: absolute;
+                    top: 20px;
+                    right: -5px;
+                    padding-top: 6px;
+                    .tip{
+                        position: relative;
+                        width: 280px;
+                        padding: 5px;
+                        font-size: 14px;
+                        color: #333;
+                        background-color: white;
+                        border: 1px solid #fe8f00;
+                        border-radius: 4px;
+                        p{
+                            line-height: 18px;
+                        }
+                        .br{
+                            line-height: 30px;
+                            height: 30px;
+                        }
+                    }
+                    
+                    .tip::before{
+                        content: '';
+                        position: absolute;
+                        top: -4px;
+                        right: 34px;
+                        width: 6px;
+                        height: 6px;
+                        border-left: 1px solid #fe8f00;
+                        border-top: 1px solid #fe8f00;
+                        background-color: white;
+                        transform: rotate(45deg);
                     }
                 }
             }

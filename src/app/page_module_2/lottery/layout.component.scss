@@ -452,9 +452,13 @@ a{
                         line-height: 46px;
                         font-size: 28px;
                         text-align: center;
-                        // margin:5px;
                         color: white;
                         background: url('../images/mod2/ball.png') -10px -348px;
+                        transform: rotatey(0deg);
+                        transition: transform 1000ms ease;
+                    }
+                    .rotates{
+                        transform:rotatey(360deg);
                     }
                     .bg_r52{
                         background: url('../images/mod2/ball.png') -10px -348px;
@@ -488,6 +492,16 @@ a{
                     }
                     .bg_gray24{
                         background: url('../images/mod2/ball.png') -10px -142px;
+                    }
+                    .xian{
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: #467CB3;
+                    }
+                    .zhuang{
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: #b61010
                     }
                 }
                 .resultball2{

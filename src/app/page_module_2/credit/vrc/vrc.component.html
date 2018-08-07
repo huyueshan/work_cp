@@ -5,22 +5,6 @@
         <div class="contaner">
             <div class="flex-r mainbox">
                 <div class="flex-c contentbox">
-                    <!-- <div class="flex-r tabbox">
-                        <div class="flex-r topl">
-                            <i></i>
-                            <strong>彩票百家乐</strong>
-                        </div>
-                        <div class="flex-r topr">
-                            <span class="flex-r play">
-                                <i></i>
-                                <span>玩法说明</span>
-                            </span>
-                            <span class="flex-r operate">
-                                <i></i>
-                                <span>操作说明</span>
-                            </span>
-                        </div>
-                    </div> -->
                     <div class="flex-r media ">
                         <div class="flex-c videobox">
                             <div class="flex-r head">
@@ -67,11 +51,10 @@
 
                     <!-- 投注区域 -->
                     <div class="flex-c playbox">
-                        <div class="flex-r desk">
-
+                        <div class="flex-r desk" (contextmenu)="$event.preventDefault()">
                             <div class="flex-c contain_vr con_side" [ngClass]="{active: actiondata[0].active}" (click)="palyclick(0)">
                                 <div class="flex-r betball" *ngIf="actiondata[0].active">
-                                    <span class="flex-r betval">{{actiondata[0].value}}</span>
+                                    <span class="flex-r betval" (mousedown)="mouse_r_click($event,0)">{{actiondata[0].value}}</span>
                                 </div>
                                 <header class="color_b">{{actiondata[0].name}}</header>
                                 <footer>{{actiondata[0].odds}}</footer>
@@ -80,7 +63,7 @@
                             <div class="flex-c">
                                 <div class="flex-c contain_vr con_he" [ngClass]="{active: actiondata[1].active}" (click)="palyclick(1)">
                                         <div class="flex-r betball" *ngIf="actiondata[1].active">
-                                            <span class="flex-r betval">{{actiondata[1].value}}</span>
+                                            <span class="flex-r betval" (mousedown)="mouse_r_click($event,1)">{{actiondata[1].value}}</span>
                                         </div>
                                         <header class="color_g">{{actiondata[1].name}}</header>
                                         <footer>{{actiondata[1].odds}}</footer>
@@ -89,7 +72,7 @@
                                 <div class="flex-r">
                                     <div class="flex-c contain_vr con_dui" [ngClass]="{active: actiondata[3].active}" (click)="palyclick(3)">
                                             <div class="flex-r betball" *ngIf="actiondata[3].active">
-                                                <span class="flex-r betval">{{actiondata[3].value}}</span>
+                                                <span class="flex-r betval" (mousedown)="mouse_r_click($event,3)">{{actiondata[3].value}}</span>
                                             </div>
                                             <header class="color_b">{{actiondata[3].name}}</header>
                                             <footer>{{actiondata[3].odds}}</footer>
@@ -97,7 +80,7 @@
                                     </div>
                                     <div class="flex-c contain_vr con_dui" [ngClass]="{active: actiondata[4].active}" (click)="palyclick(4)">
                                             <div class="flex-r betball" *ngIf="actiondata[4].active">
-                                                <span class="flex-r betval">{{actiondata[4].value}}</span>
+                                                <span class="flex-r betval" (mousedown)="mouse_r_click($event,4)">{{actiondata[4].value}}</span>
                                             </div>
                                             <header class="color_r">{{actiondata[4].name}}</header>
                                             <footer>{{actiondata[4].odds}}</footer>
@@ -109,7 +92,7 @@
                             </div>
                             <div class="flex-c contain_vr con_side" [ngClass]="{active: actiondata[2].active}" (click)="palyclick(2)">
                                     <div class="flex-r betball" *ngIf="actiondata[2].active">
-                                        <span class="flex-r betval">{{actiondata[2].value}}</span>
+                                        <span class="flex-r betval" (mousedown)="mouse_r_click($event,2)">{{actiondata[2].value}}</span>
                                     </div>
                                     <header class="color_r">{{actiondata[2].name}}</header>
                                     <footer>{{actiondata[2].odds}}</footer>
@@ -156,7 +139,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex-c del" (click)="clear()">
+                            <div class="flex-c del" (click)="clear()" title="清空">
                                 <i></i>
                             </div>
                         </div>
@@ -316,3 +299,5 @@
         </div>
     </div>
 </div>
+
+<app-pupout [data]='popoutInfo' (close)="closePopouot($event)" (notarize)="NOTARIZE()"></app-pupout>

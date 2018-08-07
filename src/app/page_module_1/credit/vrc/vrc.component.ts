@@ -86,6 +86,8 @@ export class VRcComponent implements OnInit {
       hovery: "-802px"
     }
   ];
+  // 说明提示数据
+  public tipsactive = 0;
   public querydatelistindex = 0;
   public querydatelist = [
     {
@@ -105,44 +107,17 @@ export class VRcComponent implements OnInit {
       active: false
     }
   ];
-  public tabledata = [
-    {
-      channel: "VR彩票百家乐",
-      play: "百家乐",
-      issue: "20180613121",
-      numb: "和",
-      money1: "10",
-      money2: "0",
-      status: 0
-    },
-    {
-      channel: "VR彩票百家乐",
-      play: "百家乐",
-      issue: "20180613121",
-      numb: "和",
-      money1: "10",
-      money2: "0",
-      status: 1
-    },
-    {
-      channel: "VR彩票百家乐",
-      play: "百家乐",
-      issue: "20180613121",
-      numb: "和",
-      money1: "10",
-      money2: "0",
-      status: 2
-    },
-    {
-      channel: "VR彩票百家乐",
-      play: "百家乐",
-      issue: "20180613121",
-      numb: "和",
-      money1: "10",
-      money2: "0",
-      status: 3
-    }
-  ];
+  public SUB_OB={
+    channel: "VR彩票百家乐",
+    play: "百家乐",
+    issue: "20180613121",
+    numb: "",
+    money1: "0",
+    money2: "0",
+    status: 0
+  };
+  public toudata = []; // 投注数据
+  public tabledata = []; // 当前表单显示数据
 
   public querystyle = 0;
   //   public tablestatus = 0; // 绑定表单状态 未开奖/撤单/中奖/未中奖
@@ -154,29 +129,34 @@ export class VRcComponent implements OnInit {
     h: 0
   };
   public shadedata;
-
+  //传给分页组件数据
+  public PAGOB = {
+    totalNum:0, 
+    pageSize: 4, 
+    curPage: 1, 
+    segmentSize: 5, 
+    totalPage:10,
+}; 
   public pagination = {
-    pagenumber: 10, // 每页显示数量
-    page: 1, //当前页
-    totalPage: 5, //最大页数
-    gopage: false, //是否可以选页跳转
-    segmentSize: 3, //最大显示页码标签数量
-    startFrom: 1 //开始页从1计算
+      totalNum:0,  //总数据条数 
+      pageSize: 4, // 每页显示数量
+      curPage: 1, //当前页
+      segmentSize: 5, //最大显示页码标签数量
+      totalPage:0,// 最大页码数。
   };
-  public hl = {
-    firstpage: "首页",
-    prevpage: "上一页",
-    nextpage: "下一页",
-    lastpage: "尾页",
-    gopage: "跳转"
-  };
+  // 传给弹窗组件数据
+  public  popoutInfo={
+      title:'string',
+      msg:'string',
+      event: false,
+      show: false,
+  }
 
   constructor(private router: Router) {}
 
   ngOnInit() {
     this.loadpage = userModel.platform;
     this.setshade();
-    
     
 }
 // 显示弹窗
@@ -191,21 +171,46 @@ closec(){
 // 撤单
 chedan(){
     this.shadedata.status = 1;
+    this.POPNOTE({msg:'撤单成功！'});
 }
 
 // 弹窗
   setshade(){
-    // this.shade.w = document.body.clientWidth;
     this.shade.w = screen.width;
     this.shade.h = screen.height;
   }
   //表单删除事件
   del(i) {
     this.tabledata.splice(i, 1);
+    // let n = this.pagination.pageSize * (this.pagination.curPage - 1) + i
+    // this.toudata.splice(n, 1)
   }
   // 提交按钮事件
   sub() {
-    console.log(this.actiondata);
+    let d = this.actiondata;
+    let toud = this.toudata;
+    // let tabd = this.tabledata;
+    let n = 0;
+    for (let i = 0; i < d.length; i++) {
+        if (Number(d[i].value)>0) {
+            let o = Object.assign({},this.SUB_OB);
+            o.numb = d[i].name;
+            o.money1 = d[i].value+'';
+            toud.unshift(o);
+            n++;
+        }
+    }
+    if (n>0) {
+        this.POPNOTE({msg:'提交成功！'});
+    }else{
+        this.POPNOTE({msg:'请完成下注内容！'});
+    }
+    //此处应提交数据 同时请求更新的投注数据 分页数据一定要改变对象指针
+    let po= Object.assign({},this.PAGOB);
+    po.totalNum = toud.length;
+    this.pagination = Object.assign({},po);
+    this.tabledata = toud.slice(0,this.pagination.pageSize)
+    this.clear();
   }
   // 清空按钮事件，清空所有投注数据
   clear() {
@@ -232,11 +237,48 @@ chedan(){
     b[i].y = b[i].hovery;
     this.oddsmoney = b[i].value;
   }
+  // 右键点击下注球事件
+  mouse_r_click(e,n){
+      if(e.button ==2){
+          this.actiondata[n].active = false;
+          this.addmoney -= this.actiondata[n].value;
+          this.actiondata[n].value = 0;
+      }
+  }
   linkrouter(L) {
     // 跳转路由
     this.router.navigate([L]);
   }
-  onPageChanged(e) {
-    console.log(e.data.page);
+  
+  // 分页组件点击页码事件，参数i为点击页码数
+  getPageData(i) {
+      console.log(i);
+      let start = this.pagination.pageSize * (i-1);
+      this.tabledata = this.toudata.slice(start,start+this.pagination.pageSize)
+  }
+  // 绑定给弹窗组件的事件；
+  NOTARIZE(){
+      return
+  }
+  // 弹窗关闭事件 可以自定义命名
+  closePopouot(e){
+      this.popoutInfo.show = false;
+  }
+
+  // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
+  POPNOTE(data,fn=null){
+      let o = {
+          title:'操作提示',   //title不传值默认为 ‘操作提示’
+          msg:' ',
+          event: false,
+          show: true,
+      }
+      if (typeof fn === 'function') {
+          this.NOTARIZE = fn;
+          o.event = true;
+      }else{
+          this.NOTARIZE = ()=>{return};
+      }
+      this.popoutInfo = Object.assign({},o,data);
   }
 }

@@ -1173,7 +1173,7 @@ export class SscComponent implements OnInit, OnDestroy {
     routlink() {
         let str;
         this.route.params.subscribe(data => str = data.id);
-        this.router.navigate(['/lottery/officialffc', str]);
+        this.router.navigate(['/lottery/officialssc', str]);
     }
 
     // 设置整合 球的数据

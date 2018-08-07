@@ -10,13 +10,32 @@
                             <strong>彩票百家乐</strong>
                         </div>
                         <div class="flex-r topr">
-                            <span class="flex-r play">
+                            <span class="flex-r play" (mouseenter)="tipsactive = 1" (mouseleave)="tipsactive = 0">
                                 <i></i>
                                 <span>玩法说明</span>
+                                <div class="tipbox" *ngIf="tipsactive===1" (mouseenter)="tipsactive = 1" (mouseleave)="tipsactive = 0" >
+                                    <div class="flex-c tip">
+                                        <p class="br">百家乐</p>
+                                        <p>闲家及庄家两位数字相加后的个位数字，若</p>
+                                        <p>1、闲家大于庄家: 闲赢</p>
+                                        <p>2、闲家小于庄家: 庄赢</p>
+                                        <p>3、闲家等于庄家: 和</p>
+                                        <p>若闲家的两位数字为对子: 闲对</p>
+                                        <p>若庄家的两位数字为对子: 庄对</p>
+                                        <p>若下注闲赢或庄赢，开奖结果为和时返还一半本金</p>
+                                    </div>
+                                </div>
                             </span>
-                            <span class="flex-r operate">
+                            <span class="flex-r operate" (mouseenter)="tipsactive = 2" (mouseleave)="tipsactive = 0">
                                 <i></i>
                                 <span>操作说明</span>
+                                <div class="tipbox" *ngIf="tipsactive===2" (mouseenter)="tipsactive = 2" (mouseleave)="tipsactive = 0" >
+                                    <div class="flex-c tip">
+                                        <p class="br">1. 点击鼠标 【左键】 进行筹码下注</p>
+                                        <p class="br">2. 点击鼠标 【右键】 进行筹码删除</p>
+                                        <p class="br">3. 确认后点击右下方 【确认投注】 </p>
+                                    </div>
+                                </div>
                             </span>
                         </div>
                     </div>
@@ -63,7 +82,7 @@
 
                     <!-- 投注区域 -->
                     <div class="flex-c playbox">
-                        <div class="flex-c desk">
+                        <div class="flex-c desk" (contextmenu)="$event.preventDefault()">
                             <div class="add">
                                 共计金额：
                                 <strong class="color_y">{{addmoney}}</strong> 元
@@ -72,7 +91,7 @@
                             <div class="flex-r deskbg">
                                 <div class="flex-r deskplay play0" [ngClass]="{play0_bg: actiondata[0].active}" (click)="palyclick(0)">
                                     <div class="flex-r betball" *ngIf="actiondata[0].active">
-                                        <span class="flex-r betval">{{actiondata[0].value}}</span>
+                                        <span class="flex-r betval" (mousedown)="mouse_r_click($event,0)">{{actiondata[0].value}}</span>
                                     </div>
                                     <div class="flex-c betinfo" [ngClass]="{acinfo:!actiondata[0].active}">
                                         <span>{{actiondata[0].name}}</span>
@@ -81,7 +100,7 @@
                                 </div>
                                 <div class="flex-r deskplay play1" [ngClass]="{play1_bg: actiondata[1].active}" (click)="palyclick(1)">
                                     <div class="flex-r betball" *ngIf="actiondata[1].active">
-                                        <span class="flex-r betval">{{actiondata[1].value}}</span>
+                                        <span class="flex-r betval" (mousedown)="mouse_r_click($event,1)">{{actiondata[1].value}}</span>
                                     </div>
                                     <div class="flex-c betinfo">
                                         <span>{{actiondata[1].name}}</span>
@@ -93,7 +112,7 @@
                                         <span>{{actiondata[2].name}}</span>
                                         <span class="color_y">{{actiondata[2].odds}}</span>
                                     </div>
-                                    <div class="flex-r betball" *ngIf="actiondata[2].active">
+                                    <div class="flex-r betball" *ngIf="actiondata[2].active" (mousedown)="mouse_r_click($event,2)">
                                         <span class="flex-r betval">{{actiondata[2].value}}</span>
                                     </div>
                                 </div>
@@ -103,12 +122,12 @@
                                         <span class="color_y">{{actiondata[3].odds}}</span>
                                     </div>
                                     <div class="flex-r betball" *ngIf="actiondata[3].active">
-                                        <span class="flex-r betval">{{actiondata[3].value}}</span>
+                                        <span class="flex-r betval" (mousedown)="mouse_r_click($event,3)">{{actiondata[3].value}}</span>
                                     </div>
                                 </div>
                                 <div class="flex-r deskplay play4" [ngClass]="{play4_bg: actiondata[4].active}" (click)="palyclick(4)">
                                     <div class="flex-r betball" *ngIf="actiondata[4].active">
-                                        <span class="flex-r betval">{{actiondata[4].value}}</span>
+                                        <span class="flex-r betval" (mousedown)="mouse_r_click($event,4)">{{actiondata[4].value}}</span>
                                     </div>
                                     <div class="flex-c betinfo acinfo">
                                         <span>{{actiondata[4].name}}</span>
@@ -180,8 +199,10 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="page" shark-pager [currentPage]="pagination.page" [totalPage]="pagination.totalPage" [gopage]="pagination.gopage"
-                            [hl]="hl" [segmentSize]="pagination.segmentSize" [startFrom]="pagination.startFrom" (onPageChanged)="onPageChanged($event);">
+
+                        <!-- 调用分页组件 -->
+                        <div class="flex-r pagebox" style="align-self: flex-end">
+                            <app-page [pageParams]="pagination" (changeCurPage)="getPageData($event)"></app-page>
                         </div>
                         <!-- 弹窗 -->
                         <div class="flex-c infobox" *ngIf="shade.show">
@@ -274,3 +295,5 @@
             </div>
         </div>
     </div>
+
+    <app-pupout [data]='popoutInfo' (close)="closePopouot($event)" (notarize)="NOTARIZE()"></app-pupout>

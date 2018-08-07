@@ -46,6 +46,7 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
     color: "",
     shengxiao: ""
   };
+  public rotate = false; // 开奖结果球动画
   public resultdata = [];
   public pcddsum;
   public lhcte;
@@ -473,7 +474,7 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
         },
         {
           text: this.now_lang.lot_type.pl35_dpc,
-          type: "dpc",
+          type: "pl35",
           imgsrc: require("../../images/caip/icon/PLSW.png"),
           credit: false,
           official: true,
@@ -547,7 +548,7 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
           official: false,
           ido: '0',
           idc: '263',
-          linko: "/",
+          linko: "",
           linkc: "/lottery/creditpcdd/az28"
         },
         {
@@ -558,7 +559,7 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
           official: false,
           ido: '0',
           idc: '264',
-          linko: "/",
+          linko: "",
           linkc: "/lottery/creditpcdd/jnd28"
         },
         {
@@ -569,7 +570,7 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
           official: false,
           ido: '0',
           idc: '265',
-          linko: "/",
+          linko: "",
           linkc: "/lottery/creditpcdd/hs28"
         },
         {
@@ -711,7 +712,7 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
       items: [
         {
           text: this.now_lang.lot_type.cpbjl_vr,
-          type: "vrc",
+          type: "vrcbjl",
           imgsrc: require("../../images/caip/icon/CPBJL.png"),
           credit: false,
           official: true,
@@ -722,7 +723,7 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
         },
         {
           text: this.now_lang.lot_type.tfencai_vr,
-          type: "vrc",
+          type: "ssc",
           imgsrc: require("../../images/caip/icon/WMFFC.png"),
           credit: false,
           official: true,
@@ -733,7 +734,7 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
         },
         {
           text: this.now_lang.lot_type.jx15_vr,
-          type: "vrc",
+          type: "ssc",
           imgsrc: require("../../images/caip/icon/JX1.5FC.png"),
           credit: false,
           official: true,
@@ -744,7 +745,7 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
         },
         {
           text: this.now_lang.lot_type.kt_vr,
-          type: "vrc",
+          type: "pk10",
           imgsrc: require("../../images/caip/icon/KT.png"),
           credit: false,
           official: true,
@@ -766,7 +767,7 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
         },
         {
           text: this.now_lang.lot_type.sc_vr,
-          type: "vrc",
+          type: "pk10",
           imgsrc: require("../../images/caip/icon/SC.png"),
           credit: false,
           official: true,
@@ -787,12 +788,13 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
     fc3d: { min: 0, max: 9, len: 10, length: 3, blean: true },
     k3: { min: 1, max: 6, len: 6, length: 3, blean: true },
     dpc: { min: 0, max: 9, len: 10, length: 3, blean: true },
+    pl35: { min: 0, max: 9, len: 10, length: 5, blean: true },
     lhc: { min: 1, max: 49, len: 49, length: 7, blean: false },
     gdk10: { min: 1, max: 20, len: 20, length: 8, blean: true },
     gxk10: { min: 1, max: 20, len: 20, length: 5, blean: true },
     kl8: { min: 1, max: 80, len: 80, length: 20, blean: false },
-    vrc: { min: 1, max: 10, len: 10, length: 3, blean: true },
-    pcdd: { min: 0, max: 9, len: 10, length: 3, blean: true }
+    pcdd: { min: 0, max: 9, len: 10, length: 3, blean: true },
+    vrcbjl: { min: 0, max: 9, len: 10, length: 4, blean: true },
     };
     // 临时数据end
   constructor(private route: ActivatedRoute, private router: Router) {}
@@ -801,6 +803,7 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
     // 设置应该显示的logo图片
     this.route.params.subscribe(data => {
       this.routreg(data.id);
+      this.Rotates(); // 此处动画事件需要在请求到数据后异步执行
     });
     // this.setresultdata();
 
@@ -809,9 +812,18 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
       this.timedate = new Date();
     }, 1000);
   }
-  ngAfterViewInit() {}
+  ngAfterViewInit() {
+  }
   ngOnDestroy() {
     clearInterval(this.time);
+  }
+  // 开奖结果球动画控制
+  Rotates(){
+      let _that = this;
+      // 延迟的目的是等待第一次页面样式渲染完成，不然动画出不来
+      setTimeout(function(){
+            _that.rotate = !_that.rotate;
+      }, 100)
   }
   //判断路由地址是否有效
   routreg(id) {
@@ -897,7 +909,7 @@ export class CredtopComponent implements OnInit, OnDestroy, OnChanges {
       o.numb = d[i];
       o.color = this.color(d[i], t);
       if (t === "lhc") {
-        o.shengxiao = this.getZodiac(2018, d[i]);
+        o.shengxiao = this.getZodiac(2018, d[i]); //2018为开奖年份，需要根据开奖时间年份获取
       }
       data.push(o);
       if (t === "pcdd") {

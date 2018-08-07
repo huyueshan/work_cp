@@ -181,6 +181,11 @@
                 text-align: center;
                 color: white;
                 background: url('../../images/resultball.png') -10px -64px;
+                transform: rotatey(0deg);
+                transition: transform 1000ms ease;
+            }
+            .rotates{
+                transform:rotatey(360deg);
             }
             .bg_r50{
                 background: url('../../images/resultball.png') -10px -204px;
@@ -193,6 +198,16 @@
             }
             .bg_gray50{
                 background: url('../../images/resultball.png') -10px -134px;
+            }
+            .xian{
+                font-size: 20px;
+                font-weight: bold;
+                color: #4291DB;
+            }
+            .zhuang{
+                font-size: 20px;
+                font-weight: bold;
+                color: #fe8f00;
             }
         }
         .resultball1{

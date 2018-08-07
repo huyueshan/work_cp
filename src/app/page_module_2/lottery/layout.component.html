@@ -82,7 +82,7 @@
             <div class="flex-r top">
                 <div class="flex-r topl">
                     <div class="flex-r logoicon">
-                        <img [src]="isrc" alt="彩种信息" width="100px" height="auto">
+                        <img [src]="isrc" alt="{{currentitem}}" width="100px" height="auto">
                     </div>
                     <div class="flex-c timeinfo">
                         <span class="flex-r title1">
@@ -120,32 +120,38 @@
 
                     </span>
                     <!-- 不同彩种开奖球布局 -->
-                    <span class="flex-r resultball" *ngIf="type==='ssc'||type==='exf'||type==='dpc'||type==='vrc'||type==='gxk10'||type==='k3'">
-                        <i *ngFor="let item of resultdata" [ngClass]="{bg_b52:item.color==='blue',bg_g52:item.color==='green'}">{{item.numb}}</i>
+                    <span class="flex-r resultball" *ngIf="type==='ssc'||type==='exf'||type==='dpc'||type==='gxk10'||type==='k3'||type==='pl35'">
+                        <i *ngFor="let item of resultdata" [ngClass]="{bg_b52:item.color==='blue',bg_g52:item.color==='green',rotates:rotate}">{{item.numb}}</i>
                     </span>
                     <span class="flex-r resultball resultball2" *ngIf="type==='pk10'||type==='gdk10'||type==='kl8'">
-                        <i *ngFor="let item of resultdata">{{item.numb}}</i>
+                        <i *ngFor="let item of resultdata" [ngClass]="{rotates:rotate}">{{item.numb}}</i>
                     </span>
                     <span class="flex-r resultball resultball3" *ngIf="type==='pcdd'">
-                        <i [ngClass]="{bg_b52:resultdata[0].color==='blue',bg_g52:resultdata[0].color==='green',bg_gray52:resultdata[0].color==='gray'}">{{resultdata[0].numb}}</i>
+                        <i [ngClass]="{bg_b52:resultdata[0].color==='blue',bg_g52:resultdata[0].color==='green',bg_gray52:resultdata[0].color==='gray',rotates:rotate}">{{resultdata[0].numb}}</i>
                         <span>+</span>
-                        <i [ngClass]="{bg_b52:resultdata[1].color==='blue',bg_g52:resultdata[1].color==='green',bg_gray52:resultdata[1].color==='gray'}">{{resultdata[1].numb}}</i>
+                        <i [ngClass]="{bg_b52:resultdata[1].color==='blue',bg_g52:resultdata[1].color==='green',bg_gray52:resultdata[1].color==='gray',rotates:rotate}">{{resultdata[1].numb}}</i>
                         <span>+</span>
-                        <i [ngClass]="{bg_b52:resultdata[2].color==='blue',bg_g52:resultdata[2].color==='green',bg_gray52:resultdata[2].color==='gray'}">{{resultdata[2].numb}}</i>
+                        <i [ngClass]="{bg_b52:resultdata[2].color==='blue',bg_g52:resultdata[2].color==='green',bg_gray52:resultdata[2].color==='gray',rotates:rotate}">{{resultdata[2].numb}}</i>
                         <span>=</span>
-                        <i [ngClass]="{bg_b52:pcddsum.color==='blue',bg_g52:pcddsum.color==='green',bg_gray52:pcddsum.color==='gray'}">{{pcddsum.numb}}</i>
+                        <i [ngClass]="{bg_b52:pcddsum.color==='blue',bg_g52:pcddsum.color==='green',bg_gray52:pcddsum.color==='gray',rotates:rotate}">{{pcddsum.numb}}</i>
                     </span>
                     <span class="flex-r resultball resultball4" *ngIf="type==='lhc'">
                         <span class="flex-c" *ngFor="let item of resultdata">
-                            <i [ngClass]="{bg_b42:item.color==='blue',bg_g42:item.color==='green'}">{{item.numb}}</i>
+                            <i [ngClass]="{bg_b42:item.color==='blue',bg_g42:item.color==='green',rotates:rotate}">{{item.numb}}</i>
                             <span>{{item.shengxiao}}</span>
                         </span>
                         <span class="jia">+</span>
                         <span class="flex-c">
-                            <i [ngClass]="{bg_b42:lhcte.color==='blue',bg_g42:lhcte.color==='green'}">{{lhcte.numb}}</i>
+                            <i [ngClass]="{bg_b42:lhcte.color==='blue',bg_g42:lhcte.color==='green',rotates:rotate}">{{lhcte.numb}}</i>
                             <span>{{lhcte.shengxiao}}</span>
                         </span>
                     </span>
+                    <span class="flex-r resultball" *ngIf="type==='vrcbjl'">
+                        <span class ="xian">闲</span>
+                        <i *ngFor="let item of resultdata let i= index" [ngClass]="{bg_b52:i<2,rotates:rotate}">{{item.numb}}</i>
+                        <span class ="zhuang">庄</span>
+                    </span>
+
                     <!-- 不同彩种开奖球布局end -->
                 </div>
                 <div class="flex-c topr">

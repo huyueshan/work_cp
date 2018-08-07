@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit,AfterViewInit} from "@angular/core";
 import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
 
 import userModel from "../../../status/user.model";
@@ -15,7 +15,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   templateUrl: "./layout.component.html",
   styleUrls: ["./layout.component.scss"]
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent implements OnInit,AfterViewInit {
   public now_lang: any = userModel.langpackage;
   public now_lang_type: any = "zh";
   loadpage = false;
@@ -52,6 +52,7 @@ export class LayoutComponent implements OnInit {
     color: "",
     shengxiao: ""
   };
+  public rotate = false; // 开奖结果球动画
   public resultdata = [];
   public pcddsum;
   public lhcte;
@@ -483,7 +484,7 @@ export class LayoutComponent implements OnInit {
         },
         {
           text: this.now_lang.lot_type.pl35_dpc,
-          type: "dpc",
+          type: "pl35",
           imgsrc: require("../images/caip/icon/PLSW.png"),
           credit: false,
           official: true,
@@ -557,7 +558,7 @@ export class LayoutComponent implements OnInit {
           official: false,
           ido: '0',
           idc: '263',
-          linko: "/",
+          linko: "",
           linkc: "/lottery/creditpcdd/az28"
         },
         {
@@ -568,7 +569,7 @@ export class LayoutComponent implements OnInit {
           official: false,
           ido: '0',
           idc: '264',
-          linko: "/",
+          linko: "",
           linkc: "/lottery/creditpcdd/jnd28"
         },
         {
@@ -579,7 +580,7 @@ export class LayoutComponent implements OnInit {
           official: false,
           ido: '0',
           idc: '265',
-          linko: "/",
+          linko: "",
           linkc: "/lottery/creditpcdd/hs28"
         },
         {
@@ -721,7 +722,7 @@ export class LayoutComponent implements OnInit {
       items: [
         {
           text: this.now_lang.lot_type.cpbjl_vr,
-          type: "vrc",
+          type: "vrcbjl",
           imgsrc: require("../images/caip/icon/CPBJL.png"),
           credit: false,
           official: true,
@@ -732,7 +733,7 @@ export class LayoutComponent implements OnInit {
         },
         {
           text: this.now_lang.lot_type.tfencai_vr,
-          type: "vrc",
+          type: "ssc",
           imgsrc: require("../images/caip/icon/WMFFC.png"),
           credit: false,
           official: true,
@@ -743,7 +744,7 @@ export class LayoutComponent implements OnInit {
         },
         {
           text: this.now_lang.lot_type.jx15_vr,
-          type: "vrc",
+          type: "ssc",
           imgsrc: require("../images/caip/icon/JX1.5FC.png"),
           credit: false,
           official: true,
@@ -754,7 +755,7 @@ export class LayoutComponent implements OnInit {
         },
         {
           text: this.now_lang.lot_type.kt_vr,
-          type: "vrc",
+          type: "pk10",
           imgsrc: require("../images/caip/icon/KT.png"),
           credit: false,
           official: true,
@@ -776,7 +777,7 @@ export class LayoutComponent implements OnInit {
         },
         {
           text: this.now_lang.lot_type.sc_vr,
-          type: "vrc",
+          type: "pk10",
           imgsrc: require("../images/caip/icon/SC.png"),
           credit: false,
           official: true,
@@ -798,19 +799,20 @@ export class LayoutComponent implements OnInit {
     fc3d: { min: 0, max: 9, len: 10, length: 3, blean: true },
     k3: { min: 1, max: 6, len: 6, length: 3, blean: true },
     dpc: { min: 0, max: 9, len: 10, length: 3, blean: true },
+    pl35: { min: 0, max: 9, len: 10, length: 5, blean: true },
     lhc: { min: 1, max: 49, len: 49, length: 7, blean: false },
     gdk10: { min: 1, max: 20, len: 20, length: 8, blean: true },
     gxk10: { min: 1, max: 20, len: 20, length: 5, blean: true },
     kl8: { min: 1, max: 80, len: 80, length: 20, blean: false },
-    vrc: { min: 1, max: 10, len: 10, length: 3, blean: true },
-    pcdd: { min: 0, max: 9, len: 10, length: 3, blean: true }
+    pcdd: { min: 0, max: 9, len: 10, length: 3, blean: true },
+    vrcbjl: { min: 0, max: 9, len: 10, length: 4, blean: true },
   };
   // 临时数据end
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private hserve: HttpInterceptorService,
-    private http: HttpClient
+    private http: HttpClient,
   ) {}
 
   ngOnInit() {
@@ -827,12 +829,24 @@ export class LayoutComponent implements OnInit {
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
         this.routreg();
+        this.Rotates(); // 此处动画事件需要在请求到数据后异步执行
       });
-    this.setresultdata();
+    this.setresultdata();    
   }
-  ngAfterViewInit() {}
+  
+  ngAfterViewInit() {
+      this.Rotates();
+  }
   ngOnDestroy() {
     clearInterval(this.time);
+  }
+  // 开奖结果球动画控制
+  Rotates(){
+      let _that = this;
+      // 延迟的目的是等待第一次页面样式渲染完成，不然动画出不来
+      setTimeout(function(){
+            _that.rotate = !_that.rotate;
+      }, 100)
   }
   //判断路由地址是否有效
   routreg() {
@@ -925,7 +939,7 @@ export class LayoutComponent implements OnInit {
       o.numb = d[i];
       o.color = this.color(d[i], t);
       if (t === "lhc") {
-        o.shengxiao = this.getZodiac(2018, d[i]);
+        o.shengxiao = this.getZodiac(2018, d[i]); //2018为开奖年份，需要根据开奖时间年份获取
       }
       data.push(o);
       if (t === "pcdd") {
