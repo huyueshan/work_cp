@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from '../../../component/components.module';
 import { ProinfoComponent } from './proinfo.component';
 
+
+import { CPInfoService } from '../../../../cp-info.service';
+
 /***********components***************/
 
 const routes = [
@@ -16,6 +19,7 @@ const routes = [
     imports: [
         SharkModule,FormsModule,CommonModule,ComponentsModule, RouterModule.forChild(routes)
     ],
-    declarations: [ ProinfoComponent ]
+    declarations: [ ProinfoComponent ],
+    providers:[CPInfoService],
 })
 export class ProinfoModule { }
