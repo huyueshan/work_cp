@@ -48,7 +48,7 @@ export class RouteguardService implements CanActivate{
 		        
 		    }
 		    check_language();
-			Base.Store.set('isTemplet','1',false)
+			Base.Store.set('isTemplet','2',false)
 
 
 			if(!Base.Store.get('isTemplet')){

@@ -6,6 +6,7 @@ import { CommonModule } from "@angular/common";
 import { ComponentsModule } from "../component/components.module";
 /***********components***************/
 import { LayoutComponent } from "./layout.component";
+import { RuleComponent } from './components/rule/rule.component';
 import { HttpInterceptorService } from '../../Http.Service';
 
 const routes:Routes = [
@@ -100,6 +101,7 @@ const routes:Routes = [
   ],
   declarations: [
       LayoutComponent,
+      RuleComponent,
     ],
   providers:[HttpInterceptorService],
 })

@@ -738,6 +738,9 @@ export class SscComponent implements OnInit, OnDestroy, AfterViewInit {
         });
         // 设置各投注项目赔率
         this.POINT();
+
+
+        console.log(JSON.stringify(this.POINt_data));
     }
     ngAfterViewInit() {}
     ngOnDestroy() {}

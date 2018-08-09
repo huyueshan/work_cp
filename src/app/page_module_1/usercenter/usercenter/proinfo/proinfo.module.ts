@@ -7,8 +7,6 @@ import { ComponentsModule } from '../../../component/components.module';
 import { ProinfoComponent } from './proinfo.component';
 
 
-import { CPInfoService } from '../../../../cp-info.service';
-
 /***********components***************/
 
 const routes = [
@@ -20,6 +18,5 @@ const routes = [
         SharkModule,FormsModule,CommonModule,ComponentsModule, RouterModule.forChild(routes)
     ],
     declarations: [ ProinfoComponent ],
-    providers:[CPInfoService],
 })
 export class ProinfoModule { }

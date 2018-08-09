@@ -1,0 +1,106 @@
+
+
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+.flex-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+}
+
+.flex-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+//遮罩层
+.shade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(154, 154, 154, 0.5);
+    z-index: 888;
+}
+// 弹框
+#notebox{
+    position: fixed;
+    z-index: 999;
+    .content{
+        width: 850px;
+        height: 640px;
+        background-color: white;
+        border-radius: 6px;
+        box-shadow: 0 0 0px 5px rgba(50, 50, 50, .6);
+        align-items: center;
+        transform: scale(.6);
+        transition: transform .1s linear;
+        overflow: hidden;
+        .top {
+            width: 100%;
+            height: 32px;
+            flex: 0 0 40px;
+            line-height: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            padding: 0 16px;
+            justify-content: space-between;
+            background: linear-gradient(to top, #cf364c, #ec5c5c);
+            i {
+                font-size: 20px;
+                margin-top: -8px;
+                // align-self: flex-start;
+                cursor: pointer;
+            }
+        }
+        .navbox{
+            padding: 4px;
+            width: 100%;
+            background-color: #EEEEEE;
+            .navs{
+                width: 100%;
+                flex-wrap: wrap;
+                li{
+                    height: 20px;
+                    line-height: 20px;
+                    font-size: 12px;
+                    padding: 0 6px;
+                    cursor: pointer;
+                }
+                li:hover{
+                    color:#b61010;
+                }
+                .active{
+                    color:#b61010;
+                    background-color: white;
+                }
+            }
+        }
+        .rule{
+            width: 100%;
+            padding: 10px;
+            padding-bottom: 20px;
+            overflow-y: auto;
+            .main-tit {
+                text-align: center;
+                font-size: 20px;
+                padding-top:10px;
+                color: Black;
+            }
+        }
+    }
+    .scale{
+        transform: scale(1);
+    }
+}

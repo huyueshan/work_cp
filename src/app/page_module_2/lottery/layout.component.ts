@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewInit} from "@angular/core";
+import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
 
 import userModel from "../../../status/user.model";
@@ -15,7 +15,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   templateUrl: "./layout.component.html",
   styleUrls: ["./layout.component.scss"]
 })
-export class LayoutComponent implements OnInit,AfterViewInit {
+export class LayoutComponent implements OnInit, AfterViewInit {
   public now_lang: any = userModel.langpackage;
   public now_lang_type: any = "zh";
   loadpage = false;
@@ -39,13 +39,15 @@ export class LayoutComponent implements OnInit,AfterViewInit {
   };
 
   public routid; //路由ID
-  public currentgameid = '0'; // 当前彩种id
-  public textnumber = 1;
+  public currentgameid = "0"; // 当前彩种id
+  //   public textnumber = 1;
   public currentparent: string; //一级导航
   public currentitem: string; // 二级导航
   public currentactive: number; // 当前展开的子导航
-  public isrc;
+  public isrc; // 彩种logo图片src
   public navshow = false; // 顶部下拉导航显示隐藏
+  public rule_show = false; // 规则说明显示隐藏
+  public ruletab = []; // 规则导航数据
   // 开奖球属性设置
   public BALL = {
     numb: 0,
@@ -53,9 +55,9 @@ export class LayoutComponent implements OnInit,AfterViewInit {
     shengxiao: ""
   };
   public rotate = false; // 开奖结果球动画
-  public resultdata = [];
-  public pcddsum;
-  public lhcte;
+  public resultdata = []; // 开奖结果数据
+  public pcddsum; // pcdd彩种开奖结果和值
+  public lhcte; // 六合彩彩种开奖结果特码
   public navdata = [
     { title: "充值", top: "-10px", link: "/usercenter/recharge" },
     { title: "提现", top: "-98px", link: "/usercenter/withdrawdeposit" },
@@ -82,8 +84,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/ZQSSC.png"),
           credit: true,
           official: true,
-          ido: '101',
-          idc: '201',
+          ido: "101",
+          idc: "201",
           linko: "/lottery/officialssc/cq",
           linkc: "/lottery/creditssc/cq"
         },
@@ -93,8 +95,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/TJSSC.png"),
           credit: true,
           official: true,
-          ido:'102',
-          idc: '202',
+          ido: "102",
+          idc: "202",
           linko: "/lottery/officialssc/tj",
           linkc: "/lottery/creditssc/tj"
         },
@@ -104,8 +106,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/XJSSC.png"),
           credit: true,
           official: true,
-          ido: '103',
-          idc: '203',
+          ido: "103",
+          idc: "203",
           linko: "/lottery/officialssc/xq",
           linkc: "/lottery/creditssc/xq"
         },
@@ -115,8 +117,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/BJSSC.png"),
           credit: true,
           official: true,
-          ido: '104',
-          idc: '204',
+          ido: "104",
+          idc: "204",
           linko: "/lottery/officialssc/bj",
           linkc: "/lottery/creditssc/bj"
         }
@@ -139,30 +141,30 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/HGKLC.png"),
           credit: true,
           official: true,
-          ido: '105',
-          idc: '205',
+          ido: "105",
+          idc: "205",
           linko: "/lottery/officialffc/hs",
           linkc: "/lottery/creditffc/hs"
         },
-        {
-          text: this.now_lang.lot_type.bj_ffc,
-          type: "ssc",
-          imgsrc: require("../images/caip/icon/BJSSC.png"),
-          credit: true,
-          official: true,
-          ido: '114',
-          idc: '214',
-          linko: "/lottery/officialffc/bj",
-          linkc: "/lottery/creditffc/bj"
-        },
+        // {
+        //   text: this.now_lang.lot_type.bj_ffc,
+        //   type: "ssc",
+        //   imgsrc: require("../images/caip/icon/BJSSC.png"),
+        //   credit: true,
+        //   official: true,
+        //   ido: "114",
+        //   idc: "214",
+        //   linko: "/lottery/officialffc/bj",
+        //   linkc: "/lottery/creditffc/bj"
+        // },
         {
           text: this.now_lang.lot_type.tw_ffc,
           type: "ssc",
           imgsrc: require("../images/caip/icon/TW5FC.png"),
           credit: true,
           official: true,
-          ido: '106',
-          idc: '206',
+          ido: "106",
+          idc: "206",
           linko: "/lottery/officialffc/tw",
           linkc: "/lottery/creditffc/tw"
         },
@@ -172,8 +174,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/JNDKLC.png"),
           credit: true,
           official: true,
-          ido: '107',
-          idc: '207',
+          ido: "107",
+          idc: "207",
           linko: "/lottery/officialffc/jnd",
           linkc: "/lottery/creditffc/jnd"
         },
@@ -183,8 +185,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/AZ3FC.png"),
           credit: true,
           official: true,
-          ido: '108',
-          idc: '208',
+          ido: "108",
+          idc: "208",
           linko: "/lottery/officialffc/az",
           linkc: "/lottery/creditffc/az"
         },
@@ -194,8 +196,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/SLFK5F.png"),
           credit: true,
           official: true,
-          ido: '109',
-          idc: '209',
+          ido: "109",
+          idc: "209",
           linko: "/lottery/officialffc/slfk",
           linkc: "/lottery/creditffc/slfk"
         },
@@ -205,8 +207,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/TXFFC.png"),
           credit: true,
           official: true,
-          ido: '110',
-          idc: '210',
+          ido: "110",
+          idc: "210",
           linko: "/lottery/officialffc/tx",
           linkc: "/lottery/creditffc/tx"
         },
@@ -216,8 +218,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/QQFFC.png"),
           credit: true,
           official: true,
-          ido: '111',
-          idc: '211',
+          ido: "111",
+          idc: "211",
           linko: "/lottery/officialffc/qq",
           linkc: "/lottery/creditffc/qq"
         },
@@ -227,8 +229,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/DJ1.5FC.png"),
           credit: true,
           official: true,
-          ido: '112',
-          idc: '212',
+          ido: "112",
+          idc: "212",
           linko: "/lottery/officialffc/dj",
           linkc: "/lottery/creditffc/dj"
         },
@@ -238,8 +240,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: "",
           credit: true,
           official: true,
-          ido: '113',
-          idc: '213',
+          ido: "113",
+          idc: "213",
           linko: "/lottery/officialffc/js",
           linkc: "/lottery/creditffc/js"
         }
@@ -262,8 +264,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/BJPKS.png"),
           credit: true,
           official: true,
-          ido: '121',
-          idc: '221',
+          ido: "121",
+          idc: "221",
           linko: "/lottery/officialpk10/bjpk",
           linkc: "/lottery/creditpk10/bjpk"
         },
@@ -273,8 +275,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/XYFT.png"),
           credit: true,
           official: true,
-          ido: '122',
-          idc: '222',
+          ido: "122",
+          idc: "222",
           linko: "/lottery/officialpk10/xyft",
           linkc: "/lottery/creditpk10/xyft"
         }
@@ -297,8 +299,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/SD11X5.png"),
           credit: true,
           official: true,
-          ido: '131',
-          idc: '231',
+          ido: "131",
+          idc: "231",
           linko: "/lottery/officialexf/sdexf",
           linkc: "/lottery/creditexf/sdexf"
         },
@@ -308,8 +310,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/JX11X5.png"),
           credit: true,
           official: true,
-          ido: '132',
-          idc: '232',
+          ido: "132",
+          idc: "232",
           linko: "/lottery/officialexf/jxexf",
           linkc: "/lottery/creditexf/jxexf"
         },
@@ -319,8 +321,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/HLJ11X5.png"),
           credit: true,
           official: true,
-          ido: '133',
-          idc: '233',
+          ido: "133",
+          idc: "233",
           linko: "/lottery/officialexf/hljexf",
           linkc: "/lottery/creditexf/hljexf"
         },
@@ -330,8 +332,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/JS11X5.png"),
           credit: true,
           official: true,
-          ido: '134',
-          idc: '234',
+          ido: "134",
+          idc: "234",
           linko: "/lottery/officialexf/jsexf",
           linkc: "/lottery/creditexf/jsexf"
         },
@@ -341,8 +343,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/SH11X5.png"),
           credit: true,
           official: true,
-          ido: '135',
-          idc: '235',
+          ido: "135",
+          idc: "235",
           linko: "/lottery/officialexf/shexf",
           linkc: "/lottery/creditexf/shexf"
         },
@@ -352,8 +354,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/XJ11X5.png"),
           credit: true,
           official: true,
-          ido: '136',
-          idc: '236',
+          ido: "136",
+          idc: "236",
           linko: "/lottery/officialexf/xjexf",
           linkc: "/lottery/creditexf/xjexf"
         }
@@ -376,8 +378,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/BJKL8.png"),
           credit: false,
           official: true,
-          ido: '141',
-          idc: '0',
+          ido: "141",
+          idc: "0",
           linko: "/lottery/officialklc/bjkl8",
           linkc: "/lottery/creditklc/bjkl8"
         },
@@ -387,8 +389,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/JNDKLC.png"),
           credit: false,
           official: true,
-          ido: '142',
-          idc: '0',
+          ido: "142",
+          idc: "0",
           linko: "/lottery/officialklc/jndkl8",
           linkc: "/lottery/creditklc/jndkl8"
         },
@@ -398,8 +400,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/AZ3FC.png"),
           credit: false,
           official: true,
-          ido: '143',
-          idc: '0',
+          ido: "143",
+          idc: "0",
           linko: "/lottery/officialklc/azkl8",
           linkc: "/lottery/creditklc/azkl8"
         },
@@ -409,8 +411,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/SLFK5F.png"),
           credit: false,
           official: true,
-          ido:'144',
-          idc: '0',
+          ido: "144",
+          idc: "0",
           linko: "/lottery/officialklc/slfk",
           linkc: "/lottery/creditklc/slfk"
         },
@@ -420,8 +422,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/TWBG.png"),
           credit: false,
           official: true,
-          ido: '145',
-          idc: '0',
+          ido: "145",
+          idc: "0",
           linko: "/lottery/officialklc/twbg",
           linkc: "/lottery/creditklc/twbg"
         },
@@ -431,8 +433,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/GDKS.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '241',
+          ido: "0",
+          idc: "241",
           linko: "",
           linkc: "/lottery/creditklc/gdk10"
         },
@@ -442,8 +444,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/GXKS.png"),
           credit: true,
           official: false,
-          ido:' 0',
-          idc: '242',
+          ido: " 0",
+          idc: "242",
           linko: "",
           linkc: "/lottery/creditkl/gxk10"
         },
@@ -453,8 +455,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/ZQKS.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '243',
+          ido: "0",
+          idc: "243",
           linko: "",
           linkc: "/lottery/creditklc/cqk10"
         }
@@ -477,8 +479,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/FC3D.png"),
           credit: false,
           official: true,
-          ido: '151',
-          idc: '0',
+          ido: "151",
+          idc: "0",
           linko: "/lottery/officialdpc/fc3d",
           linkc: "/lottery/creditdpc/fc3d"
         },
@@ -488,8 +490,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/PLSW.png"),
           credit: false,
           official: true,
-          ido: '152',
-          idc: '0',
+          ido: "152",
+          idc: "0",
           linko: "/lottery/officialdpc/pl35",
           linkc: "/lottery/creditdpc/pl35"
         },
@@ -499,8 +501,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/SHSSL.png"),
           credit: false,
           official: true,
-          ido: '153',
-          idc: '0',
+          ido: "153",
+          idc: "0",
           linko: "/lottery/officialdpc/shssl",
           linkc: "/lottery/creditdpc/shssl"
         },
@@ -510,8 +512,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/LHCD.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '251',
+          ido: "0",
+          idc: "251",
           linko: "",
           linkc: "/lottery/creditdpc/liuhec"
         }
@@ -534,8 +536,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/XY28.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '261',
+          ido: "0",
+          idc: "261",
           linko: "",
           linkc: "/lottery/creditpcdd/xy28"
         },
@@ -545,8 +547,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/SLFK28.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '262',
+          ido: "0",
+          idc: "262",
           linko: "",
           linkc: "/lottery/creditpcdd/snfk28"
         },
@@ -556,8 +558,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/AZ28.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '263',
+          ido: "0",
+          idc: "263",
           linko: "",
           linkc: "/lottery/creditpcdd/az28"
         },
@@ -567,8 +569,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/JND28.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '264',
+          ido: "0",
+          idc: "264",
           linko: "",
           linkc: "/lottery/creditpcdd/jnd28"
         },
@@ -578,8 +580,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/HS28.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '265',
+          ido: "0",
+          idc: "265",
           linko: "",
           linkc: "/lottery/creditpcdd/hs28"
         },
@@ -589,8 +591,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/TW28.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '266',
+          ido: "0",
+          idc: "266",
           linko: "",
           linkc: "/lottery/creditpcdd/tw28"
         },
@@ -600,8 +602,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/DJ28.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '267',
+          ido: "0",
+          idc: "267",
           linko: "",
           linkc: "/lottery/creditpcdd/dj28"
         }
@@ -625,8 +627,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/AHK3.png"),
           credit: true,
           official: true,
-          ido: '171',
-          idc: '271',
+          ido: "171",
+          idc: "271",
           linko: "/lottery/officialk3/ahk3",
           linkc: "/lottery/creditk3/ahk3"
         },
@@ -636,8 +638,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/HEBEIKUAI3.png"),
           credit: true,
           official: true,
-          ido: '172',
-          idc: '272',
+          ido: "172",
+          idc: "272",
           linko: "/lottery/officialk3/hbk3",
           linkc: "/lottery/creditk3/hbk3"
         },
@@ -647,8 +649,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/HNK3.png"),
           credit: true,
           official: true,
-          ido: '173',
-          idc: '273',
+          ido: "173",
+          idc: "273",
           linko: "/lottery/officialk3/hnk3",
           linkc: "/lottery/creditk3/hnk3"
         },
@@ -658,8 +660,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/HUBEIKUAI3.png"),
           credit: true,
           official: true,
-          ido: '174',
-          idc: '274',
+          ido: "174",
+          idc: "274",
           linko: "/lottery/officialk3/hubk3",
           linkc: "/lottery/creditk3/hubk3"
         },
@@ -669,8 +671,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/SHK3.png"),
           credit: true,
           official: true,
-          ido: '175',
-          idc: '275',
+          ido: "175",
+          idc: "275",
           linko: "/lottery/officialk3/shks",
           linkc: "/lottery/creditk3/shks"
         },
@@ -680,8 +682,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/BJK3.png"),
           credit: true,
           official: true,
-          ido: '176',
-          idc: '276',
+          ido: "176",
+          idc: "276",
           linko: "/lottery/officialk3/bjk3",
           linkc: "/lottery/creditk3/bjk3"
         },
@@ -691,8 +693,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/GXK3.png"),
           credit: true,
           official: true,
-          ido: '177',
-          idc: '277',
+          ido: "177",
+          idc: "277",
           linko: "/lottery/officialk3/gxk3",
           linkc: "/lottery/creditk3/gxk3"
         },
@@ -702,11 +704,11 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/JSKS.png"),
           credit: true,
           official: true,
-          ido: '178',
-          idc: '278',
+          ido: "178",
+          idc: "278",
           linko: "/lottery/officialk3/jsk3",
           linkc: "/lottery/creditk3/jsk3"
-        },
+        }
       ]
     },
     {
@@ -726,8 +728,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/CPBJL.png"),
           credit: false,
           official: true,
-          ido: '0',
-          idc: '0',
+          ido: "0",
+          idc: "0",
           linko: "/lottery/vrc/bjl",
           linkc: ""
         },
@@ -737,8 +739,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/WMFFC.png"),
           credit: false,
           official: true,
-          ido: '0',
-          idc: '0',
+          ido: "0",
+          idc: "0",
           linko: "/lottery/vrc/3fc",
           linkc: ""
         },
@@ -748,8 +750,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/JX1.5FC.png"),
           credit: false,
           official: true,
-          ido: '0',
-          idc: '0',
+          ido: "0",
+          idc: "0",
           linko: "/lottery/vrc/jx",
           linkc: ""
         },
@@ -759,8 +761,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/KT.png"),
           credit: false,
           official: true,
-          ido: '0',
-          idc: '0',
+          ido: "0",
+          idc: "0",
           linko: "/lottery/vrc/kt",
           linkc: ""
         },
@@ -770,8 +772,8 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/WMLHC.png"),
           credit: false,
           official: true,
-          ido: '0',
-          idc: '0',
+          ido: "0",
+          idc: "0",
           linko: "/lottery/vrc/lhc",
           linkc: ""
         },
@@ -781,15 +783,14 @@ export class LayoutComponent implements OnInit,AfterViewInit {
           imgsrc: require("../images/caip/icon/SC.png"),
           credit: false,
           official: true,
-          ido: '0',
-          idc: '0',
+          ido: "0",
+          idc: "0",
           linko: "/lottery/vrc/sc",
           linkc: ""
         }
       ]
     }
   ];
-
 
   //  临时数据
   public gamepam = {
@@ -805,19 +806,20 @@ export class LayoutComponent implements OnInit,AfterViewInit {
     gxk10: { min: 1, max: 20, len: 20, length: 5, blean: true },
     kl8: { min: 1, max: 80, len: 80, length: 20, blean: false },
     pcdd: { min: 0, max: 9, len: 10, length: 3, blean: true },
-    vrcbjl: { min: 0, max: 9, len: 10, length: 4, blean: true },
+    vrcbjl: { min: 0, max: 9, len: 10, length: 4, blean: true }
   };
   // 临时数据end
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private hserve: HttpInterceptorService,
-    private http: HttpClient,
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
     this.now_lang_type = userModel.now_lang_type;
     this.loadpage = userModel.platform;
+    // 剩余时间定时器 和进度条事件
     this.time = setInterval(() => {
       this.timedate = new Date();
       this.barwidth = this.barwidth > 260 ? 16 : this.barwidth + 1;
@@ -831,22 +833,22 @@ export class LayoutComponent implements OnInit,AfterViewInit {
         this.routreg();
         this.Rotates(); // 此处动画事件需要在请求到数据后异步执行
       });
-    this.setresultdata();    
+    this.setresultdata();
   }
-  
+
   ngAfterViewInit() {
-      this.Rotates();
+    this.Rotates();
   }
   ngOnDestroy() {
     clearInterval(this.time);
   }
   // 开奖结果球动画控制
-  Rotates(){
-      let _that = this;
-      // 延迟的目的是等待第一次页面样式渲染完成，不然动画出不来
-      setTimeout(function(){
-            _that.rotate = !_that.rotate;
-      }, 100)
+  Rotates() {
+    let _that = this;
+    // 延迟的目的是等待第一次页面样式渲染完成，不然动画出不来
+    setTimeout(function() {
+      _that.rotate = !_that.rotate;
+    }, 100);
   }
   //判断路由地址是否有效
   routreg() {
@@ -1009,6 +1011,33 @@ export class LayoutComponent implements OnInit,AfterViewInit {
     let b = zodiac.slice(index + 1).reverse();
     let sortZodiac = a.concat(b);
     return sortZodiac[(num - 1) % 12];
+  }
+
+  // 规则说明关闭事件
+  ruleclose() {
+    this.rule_show = false;
+  }
+  // 规则说明显示事件
+  ruleopen() {
+    this.rulenav();
+    this.rule_show = true;
+  }
+  //
+  rulenav() {
+    this.ruletab=[];
+    let d = this.data;
+    for (let i = 0; i < d.length; i++) {
+      for (let q = 0; q < d[i].items.length; q++) {
+        let di = d[i].items[q];
+        let o = {
+            text: di.text,
+            type: di.type,
+            credit: di.credit,
+            official: di.official,
+        };
+        this.ruletab.push(o);
+      }
+    }
   }
 
   // ================临时数据开始
