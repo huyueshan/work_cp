@@ -3,15 +3,11 @@ import {
     OnInit,
     OnDestroy,
     AfterViewInit,
-    ViewChild,
     ElementRef
 } from "@angular/core";
 import {
     Router,
-    Route,
     ActivatedRoute,
-    Params,
-    NavigationEnd
 } from "@angular/router";
 import userModel from "../../../../status/user.model";
 import {

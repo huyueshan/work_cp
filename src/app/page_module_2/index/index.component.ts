@@ -863,7 +863,7 @@ export class IndexComponent implements OnInit {
 
         var oPoint :any= oDiv.getElementsByTagName('span');
 
-        var time = 0;
+        var time:any = 0;
 
         var speed = -oLi[0].offsetWidth;  //这是每次移动的距离为li的宽度，也就是图片的宽度
 

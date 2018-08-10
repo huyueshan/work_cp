@@ -31,8 +31,7 @@
                         <td bgcolor="#333" class="line"></td>
                         <td *ngFor="let child2 of child1.data" class="{{child1.clname}}" [ngClass]="{
             'omissionbg':child2.isomission && viewdata.isomission,
-            'bgred':child2.ischecked,
-            'omissionbg':child2.isomission && viewdata.isomission
+            'bgred':child2.ischecked
           }">
                             <span class="span" *ngIf="viewdata.isomissionshow && !child2.ischecked">{{child2.omisvalue}}</span>
                             <span class="span"
@@ -44,8 +43,7 @@
                         <td bgcolor="#333" class="line"></td>
                         <td *ngFor="let child3 of item.disdata" [ngClass]="{
             'omissionbg':child3.isomission && viewdata.isomission,
-            'bgred':child3.ischecked,
-            'omissionbg':child3.isomission && viewdata.isomission
+            'bgred':child3.ischecked
           }">
                             <span class="span" *ngIf="viewdata.isomissionshow && !child3.ischecked">{{child3.omisvalue}}</span>
                             <span class="span span2" [ngClass]="{'doubbg':child3.isdouble && viewdata.isdouble}" *ngIf="child3.ischecked">{{child3.value}}</span>

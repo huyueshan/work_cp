@@ -12,12 +12,13 @@ import { HttpClient } from "@angular/common/http";
 import userModel from "../status/user.model";
 import { Base } from "../factory/base.model";
 import { Api } from "../factory/api.model";
+import { HttpInterceptorService } from '../app/Http.Service';
 
 import languagepackage from "../status/language";
 @Injectable()
 
 export class RouteguardService implements CanActivate{
-	constructor(private router: Router, private httpClient : HttpClient) { }
+	constructor(private router: Router, private httpClient : HttpClient ,private hserve:HttpInterceptorService) { }
 	private isLoaded = false;
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean>{
 		return new Promise(resolve => {
@@ -48,8 +49,23 @@ export class RouteguardService implements CanActivate{
 		        
 		    }
 		    check_language();
+			Base.Store.set('isTemplet','1',false)
+			// this.hserve.get(Api.gettemple,'query text')
+			// .then(result => {  
+			  // console.log("登录接口返回的信息是：" , result);//打印返回的数据  
+			  // if (result.status == 200 && result.data) {
+				// console.log('qingqiu neirong:',result.data);
+				// console.log('qingqiu code',result.statusText);
+			  // } else { // 失败  
+				// alert(result.message);  
+			  // }  
+			// });
 			Base.Store.set('isTemplet','2',false)
 
+			this.hserve.post(Api.gettemple,{},)
+			.then(result => {  
+			  console.log("登录接口返回的信息是：" , result);//打印返回的数据  
+			});
 
 			if(!Base.Store.get('isTemplet')){
 				// 根据域名配置不通路由模块

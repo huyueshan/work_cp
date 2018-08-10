@@ -6,7 +6,7 @@ import {
 import {
     RouterModule,
     Routes,
-    Router
+    Router, ActivatedRoute,
 } from "@angular/router";
 
 import {
@@ -38,7 +38,7 @@ export class SSCofficialComponent implements OnInit {
         event: false,
         show: false,
     }
-    constructor(private router: Router) {}
+    constructor(private route: ActivatedRoute, private router: Router) {}
     public cpnav = {
         style: "official",
         prev: '20180517022',
@@ -1577,8 +1577,24 @@ export class SSCofficialComponent implements OnInit {
         if (this.tabcurr.isupload) {
             this.up_ball = 2
         }
+        //路由控制
+        this.route.params.subscribe(data => {
+            that.status = {
+                menu_1: 1,
+                menu_2: 1
+            }
+            this.balllist(['w', 'q', 'b', 's', 'g']);
+            this.now_description = this.lot_rules[this.now_tips_menu]['description'];
+            $('.tab_li').removeClass('hide_it');
+            this.tabmenu(this.menu_1[0])
+            this.delball('clear','');
+            if(this.tabcurr.isupload){
+                this.up_ball=2
+            }
+        });
         // 注册拖拽
         this.drag_tag();
+
     }
     ngAfterViewInit() {
         this.inittab2();

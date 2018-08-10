@@ -33,6 +33,9 @@ export class InterceptorService implements HttpInterceptor{
           case 403:
             console.log('业务错误');
             break;
+			case 200:
+            console.log('业务错误');
+            break;
         }
         return ErrorObservable.create(event);
       }));

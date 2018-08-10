@@ -1170,6 +1170,7 @@ export class DPCofficialComponent implements OnInit {
             this.getPageId();
             this.balllist(['s','g']);
             this.now_description = this.lot_rules[this.now_tips_menu]['description'];
+            $('.tab_li').removeClass('hide_it');
             if (this.routid === "pl35"){
                 this.status.menu_1 = 1;            
                 this.status.menu_2 = 1; 
@@ -1180,6 +1181,7 @@ export class DPCofficialComponent implements OnInit {
                 this.status.menu_2 = 7; 
                 this.tabmenu(this.menu_1[6]);
             }
+            // this.inittab2();
             this.delball('clear','');
         });
         // 注册拖拽

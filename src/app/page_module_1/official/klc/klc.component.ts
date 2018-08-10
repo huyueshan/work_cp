@@ -866,12 +866,11 @@ export class KLCofficialComponent implements OnInit {
             // 切换路由后重置投注内容
             this.routid = data.id;
             this.getPageId();
-            this.balllist(['shang', 'xia']);
-            this.now_description = this.lot_rules[this.now_tips_menu]['description'];
             this.status = {
                 menu_1: 1,
                 menu_2: 1
             };
+            this.now_description = this.lot_rules[this.now_tips_menu]['description'];
             this.tabmenu(this.menu_1[0]);
             this.delball('clear', '');
         });
@@ -879,7 +878,6 @@ export class KLCofficialComponent implements OnInit {
         this.drag_tag();
     }
     ngAfterViewInit() {
-        // this.inittab2();
     }
     // 通过id获取目前显示的项目配置文件
     getPageId() {
@@ -1107,7 +1105,6 @@ export class KLCofficialComponent implements OnInit {
             }
 
             that.currtabname = that.menu_2[0].menu[0].name;
-            console.log(data)
             // 配置规则提示
             that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
             that.now_description = that.lot_rules[that.now_tips_menu]['description'];
@@ -1186,8 +1183,6 @@ export class KLCofficialComponent implements OnInit {
 
     // 选中号码
     choosetab(index, clickindex, val, that) {
-        console.log(index, clickindex, val, that);
-        console.log(this.ball_data[this.tabcurr.arr[0]].ball.length);
         this.now_matchball = {
             0: {},
             1: {},
@@ -1279,7 +1274,6 @@ export class KLCofficialComponent implements OnInit {
                     self.now_matchtab,
                     self.tabcurr
                 );
-                console.log(self.now_matchtab,  self.tabcurr);
             }
             if (self.ballcurr.status) {
                 self.countbet(self.ballcurr.totalbet);
@@ -1307,16 +1301,9 @@ export class KLCofficialComponent implements OnInit {
                     amount: 0
                 }
             }
+            this.status.menu_1 === 1 && (this.menu_2[0].menu[this.status.menu_2-1].arr = ['shang', 'xia']); 
         }
     }
-
-    // onesquare(index, clickindex, val, that) {
-    //     if (this.now_matchtab[index][val]) {
-    //         this.now_matchtab[index][val] = ''
-    //     } else {
-    //         this.now_matchtab[index][val] = val
-    //     }
-    // }
 
 
     // 改变金额模式
@@ -1452,8 +1439,6 @@ export class KLCofficialComponent implements OnInit {
                 }
             }
         } else {
-            console.log(arrob)
-            console.log(that.ballcurr.ball)
             for (var i = 0; i < that.ballcurr.ball.length; i++) {
                 if (that.ballcurr.ball[i] != '') {
                     let obj: any = {}
@@ -1609,35 +1594,6 @@ export class KLCofficialComponent implements OnInit {
             self.ul_hidden = !self.ul_hidden;
         }, 200)
     }
-    // 弹层1
-    // parseDom(arg) {　　
-    //     var objE = document.createElement("div");　　
-    //     objE.innerHTML = arg;　　
-    //     return objE.childNodes;
-    // };
-    // show_layer(param, nextrun) {
-    //     let msg = param.msg;
-    //     let til = param.til;
-    //     let self = this;
-    //     let str = '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">' + til + '</div><div class="close">x</div></div><div class="content_box">' + msg + '</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';
-    //     let dom = $(this.parseDom(str))
-    //     dom.find('.close').on('click', function () {
-    //         self.hid_layer();
-    //     })
-    //     dom.find('.confirm_box').on('click', function () {
-    //         nextrun();
-    //     })
-    //     $('#layer').append(dom);
-    //     setTimeout(function () {
-    //         dom.addClass('tobig')
-    //     }, 10)
-    //     window.onresize = function () {
-    //         console.log('x')
-    //     }
-    // }
-    // hid_layer() {
-    //     document.getElementById("layer").innerHTML = '';
-    // }    
     // 绑定给弹窗组件的事件；
     NOTARIZE(){
         return

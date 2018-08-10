@@ -723,6 +723,15 @@ export class SCCofficialComponent implements OnInit {
         this.route.params.subscribe(data => {
             this.getPageId();
             this.check_have_credit();
+            that.status = {
+                menu_1: 1,
+                menu_2: 1
+            };
+            this.balllist(['cgj']);
+            this.now_description = this.lot_rules[this.now_tips_menu]['description'];
+            this.tabmenu(this.menu_1[0]);
+            this.delball('clear', '');
+ 
         });
         // 注册拖拽
         this.drag_tag();

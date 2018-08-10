@@ -1123,13 +1123,28 @@ export class FFCofficialComponent implements OnInit {
 		this.balllist(['b','s','g']);
 		this.now_description = this.lot_rules[this.now_tips_menu]['description'];
 		this.tabmenu(this.menu_1[3])
-		//路由控制
+		if(this.tabcurr.isupload){
+            this.up_ball=2
+		}
+        //路由控制
         this.route.params.subscribe(data => {
             this.getPageId();
+            this.balllist(['b','s','g']);
+            this.now_description = this.lot_rules[this.now_tips_menu]['description'];
+            this.status = {
+                menu_1:4,
+                menu_2:1
+            };
+            if (this.nowPageId === 'qq_ffc') {
+                this.tabmenu(this.menu_1[6])
+            }else{
+                this.tabmenu(this.menu_1[3])
+            }
+            this.delball('clear','');
+            if(this.tabcurr.isupload){
+                this.up_ball=2
+            }
         });
-		if(this.tabcurr.isupload){
-			this.up_ball=2
-		}
         // 注册拖拽
         this.drag_tag();
 	}

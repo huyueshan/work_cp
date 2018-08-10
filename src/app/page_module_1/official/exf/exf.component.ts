@@ -1222,6 +1222,14 @@ export class EXFofficialComponent implements OnInit {
         this.drag_tag();
         this.route.params.subscribe(data => {
             this.getPageId();
+            that.status = {
+                menu_1: 1,
+                menu_2: 1
+            };
+            this.balllist(["dyw", "dew", "dsw"]);
+            this.now_description = this.lot_rules[this.now_tips_menu]["description"];
+            this.tabmenu(this.menu_1[0]);
+            this.delball('clear', '');
         });
     }
     ngAfterViewInit() {
