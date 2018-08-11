@@ -525,7 +525,8 @@ const Matchrule = {
             ballarr[i]=[];
         }
         ballarr[0] = allarr;
-        len.arr=['shangxia'];
+		let leno = Object.assign({},len);
+		leno.arr=['shangxia'];
         let Isaddball = allarr.length>=n?true:false;
         if(Isaddball){
             data = Matchrule.choose_group(allarr,n)
@@ -533,7 +534,7 @@ const Matchrule = {
         }
 		let obj :any = {}
         obj = {'status':Isaddball,'allarr':ballarr,'totalbet':totalbet,'ball':[]}
-        obj.ball.push(TranBall(obj,len))
+        obj.ball.push(TranBall(obj,leno))
 		return obj
 	},
 	Rule_14(nowarr,len){

@@ -1301,7 +1301,6 @@ export class KLCofficialComponent implements OnInit {
                     amount: 0
                 }
             }
-            this.status.menu_1 === 1 && (this.menu_2[0].menu[this.status.menu_2-1].arr = ['shang', 'xia']); 
         }
     }
 
