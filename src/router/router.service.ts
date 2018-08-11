@@ -49,7 +49,6 @@ export class RouteguardService implements CanActivate{
 		        
 		    }
 		    check_language();
-			// Base.Store.set('isTemplet','1',false)
 
 			this.hserve.post(Api.gettemple,{},)
 			.then(result => {  
@@ -57,6 +56,12 @@ export class RouteguardService implements CanActivate{
 			});
 
 			if(!Base.Store.get('isTemplet')){
+			
+				// 临时切换模块 --陈
+				Base.Store.set('isTemplet','1',false);
+				history.go(0);
+
+
 				// 根据域名配置不通路由模块
 				this.httpClient.get(Api.gettemple)
 				.subscribe(menuGroups => {
