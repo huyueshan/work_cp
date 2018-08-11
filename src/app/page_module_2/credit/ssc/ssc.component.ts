@@ -724,6 +724,9 @@ export class SscComponent implements OnInit, OnDestroy {
         // this.setlink();
         this.route.params.subscribe(data => {
             this.type = 1;
+            if (this.selectbtnvalue===0) {
+                this.reset();
+            }
             this.tabclick(0);
             this.btolastclick(0);
             this.routeid = data.id;
@@ -811,8 +814,10 @@ export class SscComponent implements OnInit, OnDestroy {
     }
     // 切换玩法事件 /整合/龙虎斗/全五中一
     togtype(i) {
-        this.reset();
-        this.type = i;
+        if (this.type!==i) {
+            this.reset();
+            this.type = i;
+        }
     }
     // 切换一般 /快捷 事件
     tabclick(i) {

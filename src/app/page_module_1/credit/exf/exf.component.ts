@@ -977,6 +977,9 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.route.params.subscribe(data => {
         this.type = 1;
+        if (this.selectbtnvalue===0) {
+            this.reset();
+        }
         this.tabclick(0);
       this.routeid = data.id;
       this.subob.channel = "11选5 - " + this.routeid;
@@ -1078,8 +1081,10 @@ export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   // 切换玩法事件 /整合/龙虎斗/全五中一
   togtype(i) {
-    this.reset();
-    this.type = i;
+    if (this.type!==i) {
+        this.reset();
+        this.type = i;
+    }
   }
   // 切换一般 /快捷 事件
   tabclick(i) {

@@ -635,6 +635,9 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
         // this.setlink();
         this.route.params.subscribe(data => {
             this.type = 1;
+            if (this.selectbtnvalue===0) {
+                this.reset();
+            }
             this.tabclick(0);
             this.routeid = data.id;
             this.subob.channel = "快三 - " + this.routeid;

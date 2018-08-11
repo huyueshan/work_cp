@@ -514,6 +514,9 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         // 跳转官方路由设置
         this.route.params.subscribe(data => {
             this.type = 1;
+            if (this.selectbtnvalue===0) {
+                this.reset();
+            }
             this.tabclick(0);
             this.routeid = data.id;
             this.subob.channel = "PC蛋蛋 - " + this.routeid;

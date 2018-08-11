@@ -1573,6 +1573,9 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
         // 跳转官方路由设置
         this.route.params.subscribe(data => {
             this.type = 1;
+            if (this.selectbtnvalue===0) {
+                this.reset();
+            }
             this.tabclick(0);
             this.routeid = data.id;
             this.subob.channel = "快乐彩 - " + this.routeid;
@@ -1668,9 +1671,11 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
     }
     // 切换玩法事件 /整合/龙虎斗/全五中一
     togtype(i) {
-        this.reset();
-        this.ktclick('rest', 0);
-        this.type = i;
+        if (this.type!==i) {
+            this.reset();
+            this.ktclick('rest', 0);
+            this.type = i;
+        }
     }
     // 切换一般 /快捷 事件
     tabclick(i) {

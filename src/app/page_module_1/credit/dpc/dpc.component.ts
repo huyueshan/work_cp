@@ -2720,6 +2720,9 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         // this.setlink();
         this.route.params.subscribe(data => {
             this.type = 1;
+            if (this.selectbtnvalue===0) {
+                this.reset();
+            }
             this.tabclick(0);
             this.routeid = data.id;
             this.subob.channel = "低频彩 - " + this.routeid;
@@ -2839,13 +2842,15 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     // 切换玩法事件 /整合/龙虎斗/全五中一
     togtype(i) {
-        this.reset();
-        this.type = i;
-        this.allinput = false;
-        if (i === 7 || i === 10 || i === 11 || i === 12) {
-            this.allinput = true;
+        if (this.type!==i) {
+            this.reset();
+            this.type = i;
+            this.allinput = false;
+            if (i === 7 || i === 10 || i === 11 || i === 12) {
+                this.allinput = true;
+            }
+            this.ktclick("rest", 0); //清空快速投注数据
         }
-        this.ktclick("rest", 0); //清空快速投注数据
     }
     // 切换一般 /快捷 事件
     tabclick(i) {

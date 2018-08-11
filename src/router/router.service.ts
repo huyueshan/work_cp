@@ -49,18 +49,7 @@ export class RouteguardService implements CanActivate{
 		        
 		    }
 		    check_language();
-			Base.Store.set('isTemplet','1',false)
-			// this.hserve.get(Api.gettemple,'query text')
-			// .then(result => {  
-			  // console.log("登录接口返回的信息是：" , result);//打印返回的数据  
-			  // if (result.status == 200 && result.data) {
-				// console.log('qingqiu neirong:',result.data);
-				// console.log('qingqiu code',result.statusText);
-			  // } else { // 失败  
-				// alert(result.message);  
-			  // }  
-			// });
-			Base.Store.set('isTemplet','2',false)
+			// Base.Store.set('isTemplet','1',false)
 
 			this.hserve.post(Api.gettemple,{},)
 			.then(result => {  
