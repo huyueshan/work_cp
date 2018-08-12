@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import userModel from '../../../status/user.model';
+import { Base } from "../../../factory/base.model";
 
 @Component({
   selector: "app-index",
@@ -36,7 +37,7 @@ export class IndexComponent implements OnInit {
       text: this.now_lang.index.Discount,
       bgpositiony: -322,
       isover: false,
-      link: ""
+      link: "/usercenter/discount"
     }
   ];
   // 头部右边导航数据
@@ -45,19 +46,19 @@ export class IndexComponent implements OnInit {
       text: this.now_lang.index.Notice,
       bgpositiony: -10,
       isover: false,
-      link: ""
+      link: "/usercenter/webnote"
     },
     {
       text: this.now_lang.index.Lot_info,
       bgpositiony: -114,
       isover: false,
-      link: ""
+      link: "/usercenter/proinfo"
     },
     {
       text: this.now_lang.index.Pho_bet,
       bgpositiony: -218,
       isover: false,
-      link: ""
+      link: "game2"
     },
     {
       text:  this.now_lang.index.Client_service,
@@ -222,6 +223,12 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.now_lang_type=userModel.now_lang_type;
+    if (Base.Store.get('indexitem')) {
+        this.tabactive = Number(Base.Store.get('indexitem'));
+        Base.Store.set('indexitem',0,false);
+        window.scrollTo(0,520);
+    }
+
   }
 
   // 中间内容区tab切换事件
@@ -265,6 +272,11 @@ export class IndexComponent implements OnInit {
     }
   }
   linkrouter(t) {
+      if (t === "game2") {
+        window.location.hash = "#game";
+        this.tabactive = 1;
+        return;
+      }
     this.router.navigate([t]);
   }
   // 登陆表单输入框获取焦点事件

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SharkModule } from '@ntesmail/shark-angular2';
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClient, HttpHeaders } from '@angular/common/http'; 
 

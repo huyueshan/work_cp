@@ -1496,6 +1496,15 @@ export class K3officialComponent implements OnInit {
             Base._.removeArr(val, this.sureballlist)
         }
     }
+	// 确认投注
+	affirm(){
+        if (this.sureballlist.length<1) {
+            this.POPNOTE({msg:'没有投注内容！'});
+        }else{
+            this.POPNOTE({msg:'投注成功！'});
+            this.delball('clear','');
+        }
+    }
     // 创建开奖数据  len为开奖球数，
     setballdata(len) {
         let data = [];
@@ -1505,9 +1514,6 @@ export class K3officialComponent implements OnInit {
             s.add(a);
         }
         data = Array.from(s);
-        // for (let i = 0; i < data.length; i++) {
-        //     data[i] = data[i] < 10 ? '0' + data[i] : '' + data[i];
-        // }
         return data;
     }
 

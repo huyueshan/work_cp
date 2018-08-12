@@ -1823,6 +1823,15 @@ export class DPCofficialComponent implements OnInit {
 			Base._.removeArr(val,this.sureballlist)
 		}
 	}
+	// 确认投注
+	affirm(){
+        if (this.sureballlist.length<1) {
+            this.POPNOTE({msg:'没有投注内容！'});
+        }else{
+            this.POPNOTE({msg:'投注成功！'});
+            this.delball('clear','');
+        }
+    }
 	
 	// 随机选号号码
 	mathball(arr){

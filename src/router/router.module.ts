@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { RouteguardService } from './router.service';
-import { ResolveService } from './resole.service';
-
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes, Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { RouteguardService } from "./router.service";
+import { ResolveService } from "./resole.service";
 
 // ！！！注意：定义默认 路由 打包是根据这里进行分路由打包的，所以每一个模板的路由必须放进去
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: 'lottery',
+        redirectTo: 'index',
         pathMatch: 'full'
     },
 	
@@ -17,6 +16,11 @@ const appRoutes: Routes = [
 	{
         path: 'login',
         loadChildren: '../app/page_module_1/login/login.module#LoginModule',
+		canActivate: [RouteguardService]
+    }, 
+	{
+        path: 'forgetpass',
+        loadChildren: '../app/page_module_1/forgetpass/forgetpass.module#ForgetpassModule',
 		canActivate: [RouteguardService]
     }, 
     {
@@ -46,7 +50,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'vrc',
-        loadChildren: '../app/page_module_1/credit/vrc/vrc.module#VRCModule',
+        loadChildren: '../app/page_module_1/credit/vrc/vrc.module#VRCcreditModule',
         canActivate: [RouteguardService]
     },
     {
@@ -75,7 +79,7 @@ const appRoutes: Routes = [
         canActivate: [RouteguardService]
     },
 	//模板2的路由
-    {
+    /* {
         path: 'login',
         loadChildren: '../app/page_module_2/login/login.module#LoginModule',
         canActivate: [RouteguardService]
@@ -107,7 +111,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'vrc',
-        loadChildren: '../app/page_module_2/credit/vrc/vrc.module#VRCModule',
+        loadChildren: '../app/page_module_2/credit/vrc/vrc.module#VRCcreditModule',
         canActivate: [RouteguardService]
     },
     {
@@ -154,7 +158,7 @@ const appRoutes: Routes = [
         path: 'result',
         loadChildren: '../app/page_module_2/result/result.module#ResultModule',
         canActivate: [RouteguardService]
-    }, 
+    },  */
     {
 		path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
 		redirectTo: 'home',
@@ -162,16 +166,10 @@ const appRoutes: Routes = [
 	}
 ];
 @NgModule({
-  imports: [
-    RouterModule.forRoot(appRoutes, { useHash: true })
-  ],
-  exports: [
-    RouterModule
-  ],
-  providers: [RouteguardService,ResolveService]
+  imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
+  exports: [RouterModule],
+  providers: [RouteguardService, ResolveService]
 })
-
 export class AppRoutingModule {
-	constructor(private router:Router,private httpClient : HttpClient) { 
-	}
+  constructor(private router: Router, private httpClient: HttpClient) {}
 }

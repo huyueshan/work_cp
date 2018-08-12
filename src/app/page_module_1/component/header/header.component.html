@@ -25,14 +25,20 @@
           <li>
             <a href="#/usercenter/withdrawdeposit">{{now_lang.HEADER.OUTMONEY}}</a>
           </li>
-          <li>
-            <a>{{now_lang.HEADER.MONEY_TRANSFORM}}</a>
-          </li>
-          <li>
-            <a>{{now_lang.HEADER.CUSTOMER_SERVICE}}</a>
-          </li>
-          <li>
-            <a>{{now_lang.HEADER.SET_VOICE}}</a>
+          <li class="voice">
+            <a (click)="voiceonoff(1)">{{now_lang.HEADER.SET_VOICE}}</a>
+            <div class="voicebox" *ngIf ="voiceshow">
+                <ul>
+                    <li *ngFor="let item of voice; let i = index" > 
+                        <span class="title">{{item.name}}</span> 
+                        <span class="togbtn" (click)="voiceclick(i)"><i [ngClass]="{checked:item.checked}" ></i></span>
+                    </li>
+                </ul>
+                <div class="voicebtn">
+                    <span class="active" (click)="voiceonoff(0)">确定</span>
+                    <span (click)="voiceonoff(0)">取消</span>
+                </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -65,25 +71,25 @@
             </a>
           </li>
           <li>
-            <a href="javascript:;" [ngClass]="{color_y:curpath === pathdata[3]}">
+            <a href="#/usercenter/discount" [ngClass]="{color_y:curpath === pathdata[3]}">
               <p class="pc">{{now_lang.NAV.ACTIVITY}}</p>
               <p class="pe">Activity</p>
             </a>
           </li>
           <li>
-            <a href="javascript:;" [ngClass]="{color_y:curpath === pathdata[4]}">
+            <a href="#/usercenter/webnote" [ngClass]="{color_y:curpath === pathdata[4]}">
               <p class="pc">{{now_lang.NAV.ANNOUNCEMENT}}</p>
               <p class="pe">Announncement</p>
             </a>
           </li>
           <li>
-            <a href="javascript:;" [ngClass]="{color_y:curpath === pathdata[5]}">
+            <a href="#/usercenter/proinfo" [ngClass]="{color_y:curpath === pathdata[5]}">
               <p class="pc">{{now_lang.NAV.GAMEINFOMATION}}</p>
               <p class="pe">GameInformation</p>
             </a>
           </li>
           <li>
-            <a href="javascript:;" [ngClass]="{color_y:curpath === pathdata[6]}">
+            <a (click)="linkclick(1)" href="javascript:;" [ngClass]="{color_y:curpath === pathdata[6]}">
               <p class="pc">{{now_lang.NAV.MOBIE}}</p>
               <p class="pe">Mobile</p>
             </a>

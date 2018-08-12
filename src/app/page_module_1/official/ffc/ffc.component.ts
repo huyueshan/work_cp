@@ -90,6 +90,9 @@ export class FFCofficialComponent implements OnInit {
 			checkon:false
 		}
 	]
+	//追号提交数据
+	public lotdata_submit :any = [];
+
 	public typeoptiondata :any = [
       5,
       10,
@@ -553,17 +556,20 @@ export class FFCofficialComponent implements OnInit {
 		if (item.checkon) {
 			if (item.multiple == 0) {
 				item.multiple = that.chase_number_config.multiple;
-				item.take_money = item.multiple*item.price;
+				item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
 			}
 
 		}else{
 			item.multiple = 0;
+			item.take_money = 0;
 		}
 		that.repanel_data()
+		console.log(that.lotdata_now)
 	}
 	// 生成计划
 	produce_plan(){
 		let that = this;
+		that.lotdata_now = $.extend(true, [], that.lotdata);
 		let gap_number,gap_multiple,multiple,chase_amount;
 		if (that.c_now_panel == 'two') {
 			gap_number = that.chase_number_config.chase_rule.number;
@@ -577,7 +583,7 @@ export class FFCofficialComponent implements OnInit {
 				console.log((i)%gap_number)
 				that.lotdata_now[i].checkon = true;
 				that.lotdata_now[i].multiple = multiple;
-				that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price;
+				that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
 				if ((i+1)%gap_number == 0) {
 					multiple = multiple*gap_multiple;
 				}; 
@@ -590,26 +596,47 @@ export class FFCofficialComponent implements OnInit {
 				chase_amount = that.lotdata_now.length;
 			}
 			for (var i = 0; i <= chase_amount-1; i++) {
+				
 				that.lotdata_now[i].checkon = true;
 				that.lotdata_now[i].multiple = multiple;
-				that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price;
+				that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
 			};
 		}
 		that.repanel_data()
 	}
 	//单个金钱计算
-	get_takemon(item){
+	get_takemon(item,e){
 		let that = this;
-		item.take_money = item.multiple*item.price;
+		if (item.multiple == 0) {
+			item.checkon = false;
+		}else{
+			item.checkon = true;
+		}
+		// for (var k = 0; k <= that.sureballlist.length-1; k++) {
+
+		// }
+		item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
 		that.repanel_data()
 	}
+    changeregnum(e) {
+        let v = e.target;
+        v.value = v.value.replace(/\D/g, "");
+        if (Number(v.value) === 0 && v.value !== "") {
+            v.value = 0;
+        }
+        if (Number(v.value) > 0) {
+            v.value = Number(v.value);
+        }
+    }
 	// 总金钱总期数计算
 	repanel_data(){
 		let that = this;
 		let amount = 0;
 		let chase_amount = 0;
 		for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-			amount = that.lotdata_now[i].multiple*that.lotdata_now[i].price+amount;
+			for (var k = 0; k <= that.sureballlist.length-1; k++) {
+				amount = that.lotdata_now[i].multiple*that.lotdata_now[i].price/that.modelarr[that.model]+amount;
+			}
 			if (that.lotdata_now[i].checkon) {
 				chase_amount = chase_amount+1;
 			};
@@ -649,6 +676,44 @@ export class FFCofficialComponent implements OnInit {
 			$('.one').removeClass('active')
 		}
 	}
+	//提交追号
+	submit_chase(){
+		let that = this;
+		//清空
+		that.lotdata_submit = [];
+		for (var i = 0; i <= that.lotdata_now.length-1; i++) {
+			console.log(that.lotdata_now[i].checkon != false)
+			if (that.lotdata_now[i].checkon != false) {
+				for (var k = 0; k <= that.sureballlist.length-1; k++) {
+						let rechase :any= {};
+						rechase.multiple = that.lotdata_now[i].multiple;
+						rechase.model = that.model;
+						rechase.count = 1;
+						rechase.sum = (2*rechase.multiple) /that.modelarr[rechase.model]
+						rechase.amount = that.totalinfo.amount;
+						rechase.ball = that.sureballlist[k].ball;
+						rechase.name = that.sureballlist[k].name;
+						rechase.issue = that.lotdata_now[i].lot_num;
+						that.lotdata_submit.push(rechase)
+				}
+			};
+		}
+		console.log(that.lotdata_submit)
+		if(!that.lotdata_submit[0]){
+            that.POPNOTE({msg:'请选择追号期数'});
+			return
+		}else{
+			that.POPNOTE({msg:`您确定追号${that.lotdata_now.length}期么? 总投入${that.chase_money}元。`},that.betnow);
+			return
+		}
+		
+		
+	}
+	betnow(){
+		// 在此处提交追号所有号码
+	}
+
+
 	// 遗漏数据
 	omitarr = {
 		0:[],1:[],2:[],3:[],4:[]
@@ -1800,6 +1865,15 @@ export class FFCofficialComponent implements OnInit {
 		}
 		this.allbet(this.sureballlist)
 	}
+	// 确认投注
+	affirm(){
+        if (this.sureballlist.length<1) {
+            this.POPNOTE({msg:'没有投注内容！'});
+        }else{
+            this.POPNOTE({msg:'投注成功！'});
+            this.delball('clear','');
+        }
+    }
 	
 	// 随机选号号码
 	mathball(arr){
@@ -1861,6 +1935,7 @@ export class FFCofficialComponent implements OnInit {
 			that.orderinfo.total = that.sureballlist.length;
 			that.orderinfo.betcount = that.orderinfo.betcount + redata.count;
 			that.orderinfo.money = Utils.algorithm.add(that.orderinfo.money.toFixed(2),redata.sum);
+			console.log(that.sureballlist)
 		}
 	}
 	
@@ -2005,9 +2080,21 @@ export class FFCofficialComponent implements OnInit {
 		that.rechase_dataall()
 	}
 	chase_number(){
-		$('#layer2').find('.chase_container').addClass('show_this');
+		let that = this;
+		if (!that.sureballlist[0]) {
+			that.POPNOTE({msg:'注单列表为空，请先下注！或者随机1注',btn:'随机一注'},that.radomshowchase);
+			return false
+		};
+		that.showchase();
+		
     }    
-    
+    radomshowchase(){
+    	this.mathball(this.menu_2);
+    	$('#layer2').find('.chase_container').addClass('show_this');
+    }
+    showchase(){
+    	$('#layer2').find('.chase_container').addClass('show_this');
+    }
     
     // 绑定给弹窗组件的事件；
     NOTARIZE(){

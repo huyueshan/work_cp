@@ -58,7 +58,7 @@ html,body {height:100%;}
 }
 .logincon{
 	margin-top:70px;
-	padding: 0px 25px;
+	padding: 0px;
 }
 .form .form-group{
 	width:100%;
@@ -89,19 +89,19 @@ html,body {height:100%;}
 }
 .bg-user {
 	left:60px;
-	top:9px;
+	top:13px;
     width: 20px; height: 20px;
     background: url('../images/log-reg.png') -100px -10px;
 }
 .bg-password{
 	left:60px;
-	top:9px;
+	top:13px;
 	width: 20px; height: 20px;
     background: url('../images/log-reg.png') -10px -55px;
 }
 .bg-code {
 	left:60px;
-	top:9px;
+	top:13px;
     width: 20px; height: 20px;
     background: url('../images/log-reg.png') -50px -55px;
 }
@@ -120,7 +120,7 @@ input::-ms-input-placeholder {
 .form .form-group .input .form-control{
 	display: block;
     width: 330px;
-    height: 40px;
+    height: 30px;
     padding: 6px 12px 6px 35px;
     line-height: 50px;
     color: #FAFFFA;
@@ -213,7 +213,7 @@ input::-ms-input-placeholder {
     background: url('../images/log-reg.png') -100px -10px;
 }
 .form .errtip .alltip{
-	width:330px;
+	width:100%;
     font-size: 12px;
     text-align: left;
 	word-break: break-word ; 
@@ -240,7 +240,7 @@ input::-ms-input-placeholder {
 	margin-top:10px;
 }
 .btnsubmit .btntitle{
-	width:330px;
+	width:100%;
 	height:40px;
 	line-height:40px;
 	text-align:center;
@@ -310,7 +310,7 @@ input::-ms-input-placeholder {
 .form-group .input .tx_code{
 	display: block;
     width: 140px;
-    height: 40px;
+    height: 45px;
     line-height: 50px;
     color: #8c8c8c;
     border: 2px solid #7C7E91;
@@ -324,12 +324,12 @@ input::-ms-input-placeholder {
 }
 .form-group .input .tx_code .yzmcode{
 	width:70px;
-	height:25px;
+	height:30px;
 	float:left;
 }
 .form-group .input .tx_code .getimg{
 	font-size:12px;
-	line-height:25px;
+	line-height:30px;
 	float:right;
 	color:#ccc;
 }

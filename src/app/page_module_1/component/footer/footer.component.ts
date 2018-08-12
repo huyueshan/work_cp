@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import userModel from '../../../../status/user.model';
+import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
+import { Base } from "../../../../factory/base.model";
 
 @Component({
   selector: 'app-footer',
@@ -55,11 +57,16 @@ export class FooterComponent implements OnInit {
       link: ""
     }
   ];
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.now_lang_type=userModel.now_lang_type;
   }
+  
+  linkclick(i){
+    Base.Store.set('indexitem',i,false);
+    this.router.navigate(["/index"]);
+}
    // 底部大图标链接处鼠标经过事件
   //  footmouseenter(i) {
   //   this.foottopitem_list[i].isover = true;

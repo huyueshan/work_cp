@@ -12,6 +12,7 @@ export class PupoutComponent implements OnInit{
       msg:string,
       event:boolean,
       show: boolean,
+      btn?:string ,
   };
   @Output() private close=new EventEmitter();
   @Output() private notarize=new EventEmitter();

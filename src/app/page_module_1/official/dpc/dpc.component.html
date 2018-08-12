@@ -254,14 +254,6 @@
                         <span class="pointr">
                             <i></i>
                         </span>
-                        <!-- <ul class="totaltype">
-                            <li class="active">
-                                <a>{{now_lang.Ball_tab.Official}}</a>
-                            </li>
-                            <li (click)="linkrouter()">
-                                <a>{{now_lang.Ball_tab.Credit}}</a>
-                            </li>
-                        </ul> -->
                     </div>
                     <div class="tabcon">
                         <div class="tabshow">
@@ -285,7 +277,6 @@
                                 {{now_description}}
                                 <div class="tips" #tips2 [ngClass]="{tipshidden:tips_hidden}">
                                     <span>{{now_tips}}</span>
-                                    <!-- 111 -->
                                 </div>
                             </div>
                             <div class="example" style="padding-left:19px;">
@@ -293,7 +284,6 @@
                                 {{now_lang.Ball_tab.Choose_examp}}
                                 <div class="tips" #tips1 [ngClass]="{tipshidden:tips_hidden}">
                                     <span [innerHtml]='now_tips'></span>
-                                    <!-- 111 -->
                                 </div>
 
                             </div>
@@ -302,7 +292,6 @@
                                 {{now_lang.Ball_tab.Play_examp}}
                                 <div class="tips" #tips [ngClass]="{tipshidden:tips_hidden}">
                                     <span [innerHtml]='now_tips'></span>
-                                    <!-- 111 -->
                                 </div>
                             </div>
                         </div>
@@ -441,7 +430,7 @@
                     </div>
                     <div class="surearea">
                         <a class="btnh_w120_h40 bgyellowcenter" (click)="delball('clear','')">{{now_lang.Ball_tab.Clear_number}}</a>
-                        <a class="btnh_w120_h40 bgyellowcenter">{{now_lang.Ball_tab.confirm_bet}}</a>
+                        <a class="btnh_w120_h40 bgyellowcenter" (click)="affirm()">{{now_lang.Ball_tab.confirm_bet}}</a>
                     </div>
                 </div>
                 <!-- 右边信息区内容 -->

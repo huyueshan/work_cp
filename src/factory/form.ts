@@ -26,17 +26,14 @@ const CANCLEWARN = (name,str) => {
 };
 const WARNPOST = (type,title) => {	
 	if(type=='success'){
-		$.fn.sharkToastr({
-			type: 'success',
-			content: title?title:'保存成功！',
-			duration: 2000
-		});
+		// $.fn.sharkToastr({
+			// type: 'success',
+			// content: title?title:'保存成功！',
+			// duration: 2000
+		// });
+		// showMessage('这是提示消息哈！',3000,true,'bounceInUp-hastrans','bounceOutDown-hastrans');
 	}else{
-		$.fn.sharkToastr({
-			type: 'success',
-			content: title?title:'保存失败！',
-			duration: 2000
-		});
+		// showMessage('这是提示消息哈！',3000,true,'bounceInUp-hastrans','bounceOutDown-hastrans');
 	}
 	
 };

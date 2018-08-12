@@ -406,7 +406,7 @@ $browser: null;
     height: 100%;
     background-color: #000;
     opacity: 0.2;
-    z-index: 999;
+    z-index: 886;
     
 }
 #layer2 .cover_bg{
@@ -416,7 +416,7 @@ $browser: null;
     height: 100%;
     background-color: #000;
     opacity: 0.2;
-    z-index: 999;
+    z-index: 886;
     visibility: hidden;
     transition:0.3s ease;
     opacity: 0;
@@ -442,7 +442,7 @@ $browser: null;
     border-radius: 5px;
     box-shadow: 0 0 10px 0 #aaa;
     overflow: hidden;
-    z-index: 1000;
+    z-index: 887;
 
     /* visibility: hidden; */
     .top_til{
@@ -503,7 +503,7 @@ $browser: null;
     .chase_container{
         visibility: hidden;
     }
-    z-index: 999;
+    z-index: 887;
     .config_input{
         height: 30px;
         width: 50px;

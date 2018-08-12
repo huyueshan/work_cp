@@ -16,7 +16,7 @@
               <p>{{data.msg}}</p>
           </div>
           <div class="flex-r foot">
-              <span class="affirm" (click)="click(true)">确定</span>
+              <span class="affirm" (click)="click(true)">{{data.btn?data.btn:'确定'}}</span>
               <span class="cancel" (click)="click()" *ngIf="data.event" >取消</span>
           </div>
       </div>

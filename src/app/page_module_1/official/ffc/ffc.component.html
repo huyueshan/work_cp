@@ -7,17 +7,17 @@
         	<div class="cover_bg" #cover_bg></div>
         	<div id="layer_box" #layer>
             	<div class="top_til">
-                	<div class="til">某某彩  追号</div><div class="close" (click)='close_chase()'>x</div>
+                	<div class="til">{{nowitems.name}}  {{now_lang.Chase_num.Chase_num}}</div><div class="close" (click)='close_chase()'>x</div>
             	</div>
             	<div class="content_box">
 	            	<div>
 		            	<div class="top_tab">
 		            		<div class="tab_box">
 		            			<div class="tab_item one active" (click)='tab_chase("one",one_chase,two_chase)' >
-		            				同倍追号
+		            				{{now_lang.Chase_num.Chase_multiple}}
 		            			</div>
 		            			<div class="tab_item two" (click)='tab_chase("two",one_chase,two_chase)'>
-		            				翻倍追号
+		            				{{now_lang.Chase_num.Chase_double}}
 		            			</div>
 		            		</div>
 		            	</div>
@@ -26,41 +26,41 @@
 			            		<div class="config_col">
 			            			
 			            			<div class="config_item">
-			            				追号期数<input  class="config_input" maxlength="3"   [(ngModel)]='chase_number_config.chase_amount' type="number" >
+			            				{{now_lang.Chase_num.Chase_issues}}<input  class="config_input" maxlength="3"   [(ngModel)]='chase_number_config.chase_amount' type="number" (keyup) = 'changeregnum($event)'>
 			            			</div>
 			            			<div class="config_item">
-			            				起始倍数<input  class="config_input" [(ngModel)]='chase_number_config.multiple' maxlength="3"  type="number" >
+			            				{{now_lang.Chase_num.Ori_multiple}}<input  class="config_input" [(ngModel)]='chase_number_config.multiple' maxlength="3"  type="number" (keyup) = 'changeregnum($event)' >
 			            			</div>
 			            			<div class="config_item checkbox_box">
-			            				<label><input type="checkbox" />官方跳开即停</label>
-										<label><input type="checkbox" />中奖后停止追号</label>
+			            				<label><input type="checkbox" />{{now_lang.Ball_tab.Open_stop}}</label>
+										<label><input type="checkbox" />{{now_lang.Ball_tab.Win_stop}}</label>
 			            			</div>
 			            		</div>
 			            		<div class="config_col">
 			            			<div class="config_item ">
-			            				追号期数:
+			            				{{now_lang.Chase_num.Chase_issues}}:
 			            				<select id="select_amount" name="select_amount" [(ngModel)]="chase_number_config.select_amount" (change)="typeoptchange()">
-							                <option *ngFor="let item of typeoptiondata"   value="{{item}}">{{item=='all'?'所有':item+'期'}}</option>
+							                <option *ngFor="let item of typeoptiondata"   value="{{item}}">{{item=='all'?now_lang.Chase_num.Chase_all:item+now_lang.Chase_num.issues}}</option>
 							            </select>
 
 			            			</div>
 			            			<div class="config_item ">
-			            				追号期数:
+			            				{{now_lang.Chase_num.Chase_issues}}:
 			            				<div>
 			            					{{chase_amount}}
 			            				</div>
 							            
 			            			</div>
 			            			<div class="config_item ">
-			            				追号总金额:
+			            				{{now_lang.Chase_num.Chase_amount}}:
 			            				<div>
-			            					{{chase_money}}元
+			            					{{chase_money}}{{now_lang.Chase_num.yuan}}
 			            				</div>
 							            
 			            			</div>
 			            			<div class="config_item flr">
 				            			<div class="preduce_btn btnh_w120_h40" (click)="produce_plan()">
-				            				生成追号计划
+				            				{{now_lang.Chase_num.Produce_plan}}
 				            			</div>
 			            				
 			            			</div>
@@ -69,25 +69,25 @@
 			            	<div class="number_list">
 				            	<div class="itembox">
 					            	<div class="til_top">
-					            		期号
+					            		{{now_lang.Chase_num.issues_number}}
 					            	</div>
 					            	<div class="divid"></div>
 				            	</div>
 				            	<div class="itembox">
 				            		<div class="til_top">
-				            			倍数
+				            			{{now_lang.Chase_num.Multiple}}
 				            		</div>
 				            		<div class="divid"></div>
 				            	</div>
 				            	<div class="itembox">
 				            		<div class="til_top">
-				            			当前投入
+				            			{{now_lang.Chase_num.Now_cost}}
 				            		</div>
 				            		<div class="divid"></div>
 				            	</div>
 				            	<div class="itembox">
 				            		<div class="til_top">
-				            			截止时间
+				            			{{now_lang.Chase_num.Expire_time}}
 				            		</div>
 				            	</div>
 				            	<div class="item_content">
@@ -98,7 +98,8 @@
 				            				</div>
 				            				<div class="item_child">
 				            					<div>
-				            						<input  class="config_input" (input)='get_takemon(item)' [(ngModel)]="item.multiple" maxlength="10"  type="number" >倍
+				            						<input  class="config_input" (input)='get_takemon(item)' [(ngModel)]="item.multiple" maxlength="10"  (keyup) = 'changeregnum($event)'
+                                              type="number">{{now_lang.Chase_num.Mult}}
 				            					</div>
 				            				</div>
 				            				<div class="item_child">
@@ -116,33 +117,33 @@
 		            		<div class="top_config">
 			            		<div class="config_col">
 			            			<div class="config_item">
-			            				追号计划:
+			            				{{now_lang.Chase_num.Chase_plan}}:
 			            			</div>
 			            			<div class="config_item">
-			            				每隔<input  class="config_input" maxlength="3" [(ngModel)]='chase_number_config.chase_rule.number' type="number" >期X
-			            				<input  class="config_input" [(ngModel)]='chase_number_config.chase_rule.multiple'   maxlength="3"  type="number" >倍
+			            				{{now_lang.Chase_num.Every_divi}}<input  class="config_input" maxlength="3" [(ngModel)]='chase_number_config.chase_rule.number' type="number" (keyup) = 'changeregnum($event)'>{{now_lang.Chase_num.issues}}X
+			            				<input  class="config_input" [(ngModel)]='chase_number_config.chase_rule.multiple'   maxlength="3"  type="number" (keyup) = 'changeregnum($event)'>{{now_lang.Chase_num.Mult}}
 			            			</div>
 			            			<div class="config_item">
-			            				追号期数<input  class="config_input" maxlength="3"   [(ngModel)]='chase_number_config.chase_amount' type="number" >
+			            				{{now_lang.Chase_num.Chase_issues}}<input  class="config_input" maxlength="3"   [(ngModel)]='chase_number_config.chase_amount' type="number" (keyup) = 'changeregnum($event)'>
 			            			</div>
 			            			<div class="config_item">
-			            				起始倍数<input  class="config_input" [(ngModel)]='chase_number_config.multiple' maxlength="3"  type="number" >
+			            				{{now_lang.Chase_num.Ori_multiple}}<input  class="config_input" [(ngModel)]='chase_number_config.multiple' maxlength="3"  type="number" (keyup) = 'changeregnum($event)'>
 			            			</div>
 			            			<div class="config_item checkbox_box">
-			            				<label><input type="checkbox" />官方跳开即停</label>
-										<label><input type="checkbox" />中奖后停止追号</label>
+			            				<label><input type="checkbox" />{{now_lang.Ball_tab.Open_stop}}</label>
+										<label><input type="checkbox" />{{now_lang.Ball_tab.Win_stop}}</label>
 			            			</div>
 			            		</div>
 			            		<div class="config_col">
 			            			<div class="config_item ">
-			            				追号期数:
+			            				{{now_lang.Chase_num.Chase_issues}}:
 			            				<select id="select_amount" name="select_amount" [(ngModel)]="chase_number_config.select_amount" (change)="typeoptchange()">
-							                <option *ngFor="let item of typeoptiondata"   value="{{item}}">{{item=='all'?'所有':item+'期'}}</option>
+							                <option *ngFor="let item of typeoptiondata"   value="{{item}}">{{item=='all'?now_lang.Chase_num.Chase_all:item+now_lang.Chase_num.issues}}</option>
 							            </select>
 
 			            			</div>
 			            			<div class="config_item ">
-			            				追号期数:
+			            				{{now_lang.Chase_num.Chase_issues}}:
 			            				<div>
 			            					{{chase_amount}}
 
@@ -150,15 +151,15 @@
 							            
 			            			</div>
 			            			<div class="config_item ">
-			            				追号总金额:
+			            				{{now_lang.Chase_num.Chase_amount}}:
 			            				<div>
-			            					{{chase_money}}元
+			            					{{chase_money}}{{now_lang.Chase_num.yuan}}
 			            				</div>
 							            
 			            			</div>
 			            			<div class="config_item flr">
 				            			<div class="preduce_btn btnh_w120_h40" (click)="produce_plan()">
-				            				生成追号计划
+				            				{{now_lang.Chase_num.Produce_plan}}
 				            			</div>
 			            				
 			            			</div>
@@ -167,25 +168,25 @@
 			            	<div class="number_list">
 				            	<div class="itembox">
 					            	<div class="til_top">
-					            		期号
+					            		{{now_lang.Chase_num.issues_number}}
 					            	</div>
 					            	<div class="divid"></div>
 				            	</div>
 				            	<div class="itembox">
 				            		<div class="til_top">
-				            			倍数
+				            			{{now_lang.Chase_num.Multiple}}
 				            		</div>
 				            		<div class="divid"></div>
 				            	</div>
 				            	<div class="itembox">
 				            		<div class="til_top">
-				            			当前投入
+				            			{{now_lang.Chase_num.Now_cost}}
 				            		</div>
 				            		<div class="divid"></div>
 				            	</div>
 				            	<div class="itembox">
 				            		<div class="til_top">
-				            			截止时间
+				            			{{now_lang.Chase_num.Expire_time}}
 				            		</div>
 				            	</div>
 				            	<div class="item_content">
@@ -196,7 +197,7 @@
 				            				</div>
 				            				<div class="item_child">
 				            					<div>
-				            						<input  class="config_input" (input)='get_takemon(item)' [(ngModel)]="item.multiple" maxlength="10"  type="number" >倍
+				            						<input  class="config_input" (input)='get_takemon(item)' [(ngModel)]="item.multiple" maxlength="10"  type="number" >{{now_lang.Chase_num.Mult}}
 				            					</div>
 				            				</div>
 				            				<div class="item_child">
@@ -213,9 +214,9 @@
 	            	</div>
             	</div>
             	<div class="confirm_box">
-	            	<div class="confirm_btn" (click)="rechase_data()">清空追号</div>
-	            	<div class="confirm_btn">直接投注</div>
-	            	<div class="confirm_btn" (click)="close_chase()">取消</div>
+	            	<div class="confirm_btn" (click)="rechase_data()">{{now_lang.Chase_num.Clear_chase}}</div>
+	            	<div class="confirm_btn" (click)="submit_chase()" >{{now_lang.Chase_num.Chase_bet}}</div>
+	            	<div class="confirm_btn" (click)="close_chase()">{{now_lang.Chase_num.Cancel}}</div>
             	</div>
         	</div>
         </div>
@@ -396,7 +397,7 @@
 							</p>
 						</div>
 						<div class="btnright">
-							<a class="btnh_w120_h40 bgfff mb10">{{now_lang.Ball_tab.Order_history}}</a>
+							<a class="btnh_w120_h40 bgfff mb10" >{{now_lang.Ball_tab.Order_history}}</a>
 							<a class="btnh_w120_h40 bgfff mb10" (click)='chase_number()'>{{now_lang.Ball_tab.Chasing}}</a>
 							<label><input type="checkbox" />{{now_lang.Ball_tab.Open_stop}}</label>
 							<label><input type="checkbox" />{{now_lang.Ball_tab.Win_stop}}</label>

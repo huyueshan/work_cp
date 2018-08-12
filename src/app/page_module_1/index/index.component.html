@@ -23,7 +23,7 @@
             <div class="flex-r">
                 <div class="sidenavr">
                     <span *ngFor="let item of navdatar; let i=index" [style.background-position-y.px]="item.bgpositiony" [ngClass]="{'navhover': item.isover}"
-                        (mouseenter)="navmouseenter(i,'right')" (mouseleave)="navmouseleave(i,'right')">{{item.text}}</span>
+                        (mouseenter)="navmouseenter(i,'right')" (mouseleave)="navmouseleave(i,'right')" (click)="linkrouter(item.link)">{{item.text}}</span>
                 </div>
             </div>
         </div>
@@ -81,7 +81,7 @@
     </div>
     <div id="contain">
 
-        <div class="flex-c cont">
+        <div class="flex-c cont" id="game">
             <div class="md-top">
                 <div class="flex-r md-tab">
                     <span *ngFor="let item of mdtabdata; let i=index" [ngClass]="{'tableactive': tabactive === i}" (click)="mdtabclick(i)">{{item.text}}</span>

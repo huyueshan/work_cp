@@ -48,7 +48,7 @@ export const CPLAY = {
         credit: ``,
     },
 };
-export const CPTYPE = {
+export const OFFTYPE = {
     'ssc': {
         official: `<div class="table-list"><table><thead><tr><th>玩法类型</th><th>玩法分类</th><th>最高奖金</th><th  >返点</th></tr></thead><tbody><tr><td>五星直选</td><td></td><td>180200</td><td>0.1%</td></tr><tr><td>后三直选</td><td></td><td>1802</td><td>0.1%</td></tr><tr><td>前三直选</td><td></td><td>1802</td><td>0.1%</td></tr><tr><td>中三直选</td><td></td><td>1802</td><td>0.1%</td></tr><tr><td>二星直选</td><td></td><td>180.2</td><td>0.1%</td></tr><tr><td>二星组选</td><td></td><td>90.1</td><td>0.1%</td></tr><tr><td>定位胆</td><td></td><td>18.02</td><td>0.1%</td></tr><tr><td>三星一码不定胆</td><td></td><td>6.58</td><td>0.1%</td></tr><tr><td>三星二码不定胆</td><td></td><td>32.88</td><td>0.1%</td></tr><tr><td>大小单双</td><td></td><td>7.2</td><td>0.1%</td></tr><tr><td>任二直选</td><td></td><td>180.2</td><td>0.1%</td></tr><tr><td>任二组选</td><td></td><td>90.1</td><td>0.1%</td></tr><tr><td>任三直选</td><td></td><td>1802</td><td>0.1%</td></tr><tr><td>四星直选</td><td>单式</td><td>18020</td><td>0.1%</td></tr><tr><td rowspan="4">四星组合</td><td>二等奖_三星</td><td>1802</td><td>0.1%</td></tr><tr><td>三等奖_二星</td><td>180.2</td><td>0.1%</td></tr><tr><td>四等奖_一星</td><td>18.02</td><td>0.1%</td></tr><tr><td>一等奖_四星</td><td>18020</td><td>0.1%</td></tr><tr><td rowspan="5">五星组合</td><td>二等奖_四星</td><td>18020</td><td>0.1%</td></tr><tr><td>三等奖_三星</td><td>1802</td><td>0.1%</td></tr><tr><td>四等奖_二星</td><td>180.2</td><td>0.1%</td></tr><tr><td>五等奖_一星</td><td>18.02</td><td>0.1%</td></tr><tr><td>一等奖_五星</td><td>180200</td><td>0.1%</td></tr><tr><td rowspan="4">特殊</td><td>好事成双</td><td>21.93</td><td>0.1%</td></tr><tr><td>三星报喜</td><td>209.29</td><td>0.1%</td></tr><tr><td>四季发财</td><td>3886.95</td><td>0.1%</td></tr><tr><td>一帆风顺</td><td>4.29</td><td>0.1%</td></tr><tr><td rowspan="2">后三组选</td><td>组六</td><td>300.33</td><td>0.1%</td></tr><tr><td>组三</td><td>600.66</td><td>0.1%</td></tr><tr><td rowspan="2">前三组选</td><td>组六</td><td>300.33</td><td>0.1%</td></tr><tr><td>组三</td><td>600.66</td><td>0.1%</td></tr><tr><td rowspan="2">中三组选</td><td>组六</td><td>300.33</td><td>0.1%</td></tr><tr><td>组三</td><td>600.66</td><td>0.1%</td></tr><tr><td rowspan="2">任三组选</td><td>组六</td><td>300.33</td><td>0.1%</td></tr><tr><td>组三</td><td>600.66</td><td>0.1%</td></tr><tr><td rowspan="6">五星组选</td><td>组选10</td><td>18020</td><td>0.1%</td></tr><tr><td>组选120</td><td>1501.66</td><td>0.1%</td></tr><tr><td>组选20</td><td>9010</td><td>0.1%</td></tr><tr><td>组选30</td><td>6006.66</td><td>0.1%</td></tr><tr><td>组选5</td><td>36040</td><td>0.1%</td></tr><tr><td>组选60</td><td>3003.33</td><td>0.1%</td></tr><tr><td rowspan="4">四星组选</td><td>组选12</td><td>1501.66</td><td>0.1%</td></tr><tr><td>组选24</td><td>750.83</td><td>0.1%</td></tr><tr><td>组选4</td><td>4505</td><td>0.1%</td></tr><tr><td>组选6</td><td>3003.33</td><td>0.1%</td></tr></tbody></table></div>`,
     },
@@ -87,7 +87,7 @@ export const CPTYPE = {
     },
 };
 
-const step = 0.0001;
+const step = 0.001;
 export const CREDITTYPE = {
     ssc:[
         {title: '第一球', point: 9.01,step: step,data: [{numb: 0,point: 9.01,step: step,},{numb: 1,point: 9.01,step: step,},{numb: 2,point: 9.01,step: step,},{numb: 3,point: 9.01,step: step,},{numb: 4,point: 9.01,step: step,},{numb: 5,point: 9.01,step: step,},{numb: 6,point: 9.01,step: step,},{numb: 7,point: 9.01,step: step,},{numb: 8,point: 9.01,step: step,},{numb: 9,point: 9.01,step: step,},]},
@@ -469,13 +469,24 @@ export const CREDITTYPE = {
     pcdd:[
         
         {title: '球号', point: 901,step: step,data: [{numb: 0,point: 901,step: step,},{numb: 1,point: 300.3333,step: step,},{numb: 2,point: 150.1667,step: step,},{numb: 3,point: 90.1,step: step,},{numb: 4,point: 60.06,step: step,},{numb: 5,point: 42.9048,step: step,},{numb: 6,point: 32.1786,step: step,},{numb: 7,point: 25.0194,step: step,},{numb: 8,point: 20.02,step: step,},{numb: 9,point: 16.3782,step: step,},{numb: 10,point: 14.2937,step: step,},{numb: 11,point: 13.0565,step: step,},{numb: 12,point: 12.3411,step: step,},{numb: 13,point: 12.0093,step: step,},{numb: 14,point: 12.0093,step: step,},{numb: 15,point: 12.3411,step: step,},{numb: 16,point: 14.2937,step: step,},{numb: 17,point: 16.3782,step: step,},{numb: 18,point: 16.3782,step: step,},{numb: 19,point: 20.02,step: step,},{numb: 20,point: 25.0194,step: step,},{numb: 21,point: 32.1786,step: step,},{numb: 22,point: 42.9048,step: step,},{numb: 23,point: 60.06,step: step,},{numb: 24,point: 90.1,step: step,},{numb: 25,point: 150.1667,step: step,},{numb: 26,point: 300.3333,step: step,},{numb: 27,point: 901,step: step,},]},
+        {title: '豹子', point: 50,step: 0,data: [{name: '豹子',point: 50,step: 0,},]},
+        {title: '大小', point: 1.802,step: step,data: [{name: '大',point: 1.802,step: step,},{name: '小',point: 1.802,step: step,},]},
+        {title: '大单小单', point: 3.3121,step: step,data: [{name: '大单',point: 3.3121,step: step,},{name: '小单',point: 3.3121,step: step,},]},
+        {title: '大双小双', point: 3.9451,step: step,data: [{name: '大双',point: 3.9451,step: step,},{name: '小双',point: 3.9451,step: step,},]},
+        {title: '单双', point: 1.802,step: step,data: [{name: '单',point: 1.802,step: step,},{name: '双',point: 1.802,step: step,},]},
+        {title: '波色', point: 2.9539,step: step,data: [{name: '红波',point: 2.9539,step: step,},{name: '蓝波',point: 2.9539,step: step,},{name: '绿波',point: 2.9539,step: step,},]},
+        {title: '极值', point: 16.0839,step: step,data: [{name: '极大',point: 16.0839,step: step,},{name: '极小',point: 16.0839,step: step,},]},
+        {title: '特码三包', point: 3.5,step: 0,data: [{name: '特码三包',point: 3.5,step: 0,},]},
     ],
-
-
     k3:[
-
+        {title: '三军', point: 1.7467,step: step,data: [{numb: 1,point: 1.7467,step: step,},{numb: 2,point: 1.7467,step: step,},{numb: 3,point: 1.7467,step: step,},{numb: 4,point: 1.7467,step: step,},{numb: 5,point: 1.7467,step: step,},{numb: 6,point: 1.7467,step: step,},]},
+        {title: '围骰', point: 162.4968,step: step,data: [{numb: 1,point: 162.4968,step: step,},{numb: 2,point: 162.4968,step: step,},{numb: 3,point: 162.4968,step: step,},{numb: 4,point: 162.4968,step: step,},{numb: 5,point: 162.4968,step: step,},{numb: 6,point: 162.4968,step: step,},]},
+        {title: '点数', point: 44.1648,step: step,data: [{numb: '4点',point: 44.1648,step: step,},{numb: '5点',point: 17.0856,step: step,},{numb: '6点',point: 13.2494,step: step,},{numb: '7点',point: 11.8339,step: step,},{numb: '8点',point: 8.1669,step: step,},{numb: '9点',point: 6.3003,step: step,},{numb: '10点',point: 6.352,step: step,},{numb: '11点',point: 6.352,step: step,},{numb: '12点',point: 6.3003,step: step,},{numb: '13点',point: 8.1669,step: step,},{numb: '14点',point: 11.8339,step: step,},{numb: '15点',point: 13.2494,step: step,},{numb: '16点',point: 17.0856,step: step,},{numb: '17点',point: 44.1648,step: step,},]},
+        {title: '短牌', point: 7.907,step: step,data: [{numb: 11,point: 7.907,step: step,},{numb: 22,point: 7.907,step: step,},{numb: 33,point: 7.907,step: step,},{numb: 44,point: 7.907,step: step,},{numb: 55,point: 7.907,step: step,},{numb: 66,point: 7.907,step: step,},]},
+        {title: '长牌', point: 5.4166,step: step,data: [{numb: 12,point: 5.4166,step: step,},{numb: 13,point: 5.4166,step: step,},{numb: 14,point: 5.4166,step: step,},{numb: 15,point: 5.4166,step: step,},{numb: 16,point: 5.4166,step: step,},{numb: 23,point: 5.4166,step: step,},{numb: 24,point: 5.4166,step: step,},{numb: 25,point: 5.4166,step: step,},{numb: 26,point: 5.4166,step: step,},{numb: 34,point: 5.4166,step: step,},{numb: 35,point: 5.4166,step: step,},{numb: 36,point: 5.4166,step: step,},{numb: 45,point: 5.4166,step: step,},{numb: 46,point: 5.4166,step: step,},{numb: 56,point: 5.4166,step: step,},]},
+        {title: '大小', point: 1.802,step: step,data: [{name: '大',point: 1.802,step: step,},{name: '小',point: 1.802,step:step,},]},
+        {title: '全骰', point: 27.0828,step: step,data: [{name: '全骰',point: 27.0828,step: step,},]},
     ],
-        
 
 }
 

@@ -1022,7 +1022,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     this.rulenav();
     this.rule_show = true;
   }
-  //
+  // 规则导航数据设置
   rulenav() {
     this.ruletab=[];
     let d = this.data;
