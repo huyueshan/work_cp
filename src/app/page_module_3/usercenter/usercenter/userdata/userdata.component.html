@@ -1,0 +1,29 @@
+<div class="userbox">
+  <div class="usertitle">
+    <h2>{{now_lang.User_center_c.User_data}}</h2>
+  </div>
+  <div class="usercontent">
+    <div class="usseritem" *ngFor="let item of info; let i=index;" >
+      <span>
+        <span class="lable">
+          {{item.lable}}：
+        </span>
+        <span>{{item.text}}</span>
+        <span class="flex-r userup"
+        [style.top.px]="item.top"
+        *ngIf="showindex == i" >
+          <input type="text" 
+          name="{{item.name}}" id="{{item.name}}" 
+          [(ngModel)]="item.userup.text"
+          (blur)="inputblur(i)" />
+          <i *ngIf="item.userup.succee" ></i>
+        </span>
+      </span>
+      <span class="xiugai" *ngIf="showindex !== i"
+      (click)="upclick(i)">{{now_lang.User_center_c.Change_it}}</span>
+    </div>
+    <button class="userbtn">{{now_lang.User_center_c.Submit}}</button>
+
+  </div>
+
+</div>

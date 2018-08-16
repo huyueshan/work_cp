@@ -1,0 +1,24 @@
+<ng-container *ngIf="ruleshow">
+    <!-- 提示信息窗口 -->
+    <div id="notebox" [style.left.px]="popup.note.left" [style.top.px]="popup.note.top">
+        <div class="flex-c content" [ngClass]="{scale:scale}">
+            <div class="flex-r top" (mousedown)="popmousedown($event)" (mouseleave)="popmouseup($event)" (mouseup)="popmouseup($event)"
+                (mousemove)="popmousmove($event)">
+                <span>规则说明</span>
+                <i (click)="click()"> &times; </i>
+            </div>
+            <div class="navbox">
+                <ul class="flex-r navs">
+                    <li *ngFor="let item of navdata" [ngClass]="{active: gamename===item.text}" (click)="navchange(item)">{{item.text}}</li>
+                </ul>
+            </div>
+            <div class="rule">
+                <div class="main-tit">{{gamename}}玩法说明</div>
+                <div [innerHTML]="rule_data"></div>
+            </div>
+        </div>
+    </div>
+    <!-- 遮罩层 -->
+    <div class="shade" [style.width.px]="popup.shade.w" [style.height.px]="popup.shade.h">
+    </div>
+</ng-container>

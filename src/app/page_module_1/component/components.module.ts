@@ -15,6 +15,7 @@ import { WenluComponent } from './wenlu/wenlu.component';
 import { PupoutComponent } from './pupout/pupout.component';
 import { PageComponent } from './page/page.component';
 import { LanguageComponent } from "./language/language.component";
+import { RuleComponent } from './credtop/rule/rule.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule],
@@ -29,6 +30,7 @@ import { LanguageComponent } from "./language/language.component";
     PupoutComponent,
     PageComponent,
     LanguageComponent,
+    RuleComponent,
   ],
   exports: [
     HeaderComponent,

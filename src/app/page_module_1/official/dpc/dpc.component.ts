@@ -84,57 +84,62 @@ export class DPCofficialComponent implements OnInit {
 	public now_lang :any=userModel.langpackage;
 	public now_lang_type :any='zh';
 //追号数据
-	public lotdata = [
-		{
-			lot_num:'20181719',
-			multiple:0,
-			price:2,
-			take_money:0,
-			expire_time:'2018-06-11 15:19:30',
-			checkon:false
-		},
-		{
-			lot_num:'20181720',
-			multiple:0,
-			price:2,
-			take_money:0,
-			expire_time:'2018-06-11 15:19:30',
-			checkon:false
-		},
-		{
-			lot_num:'20181721',
-			multiple:0,
-			price:2,
-			take_money:0,
-			expire_time:'2018-06-11 15:19:30',
-			checkon:false
-		}
-	]
-	public typeoptiondata :any = [
+    public lotdata = [
+        {
+            lot_num:'20181719',
+            multiple:0,
+            price:2,
+            take_money:0,
+            expire_time:'2018-06-11 15:19:30',
+            checkon:false
+        },
+        {
+            lot_num:'20181720',
+            multiple:0,
+            price:2,
+            take_money:0,
+            expire_time:'2018-06-11 15:19:30',
+            checkon:false
+        },
+        {
+            lot_num:'20181721',
+            multiple:0,
+            price:2,
+            take_money:0,
+            expire_time:'2018-06-11 15:19:30',
+            checkon:false
+        }
+    ]
+    //追号提交数据
+    public lotdata_submit :any = [];
+
+    public typeoptiondata :any = [
       5,
       10,
       15,
       25,
       'all'
     ];
-	// 复制追号数据
-	public lotdata_now = $.extend(true, [], this.lotdata);
-	// 追号配置
-	public chase_config_ori :any = {
-		multiple:1,
-		chase_amount:5,
-		select_amount:5,
-		chase_rule:{
-			number:1,
-			multiple:2
-		},
-		multiple_option:1
-	}
-	public chase_number_config :any = $.extend(true, {}, this.chase_config_ori);
-	//目前追号面板
-	public c_now_panel :any = 'one'
-	public chase_money :any = 0;
-	public chase_amount :any = 0;
+    // 复制追号数据
+    public lotdata_now = $.extend(true, [], this.lotdata);
+    // 追号配置
+    public chase_config_ori :any = {
+        multiple:1,
+        chase_amount:5,
+        select_amount:5,
+        chase_rule:{
+            number:1,
+            multiple:2
+        },
+        multiple_option:1
+    }
+    public Open_stop :any = false
+    public Win_stop :any = false
+    public chase_number_config :any = $.extend(true, {}, this.chase_config_ori);
+    //目前追号面板
+    public c_now_panel :any = 'one'
+    public chase_money :any = 0;
+    public chase_amount :any = 0;
 //追号数据结束
 	public items_show = {
 		'fc3d_ffc':{
@@ -544,123 +549,232 @@ export class DPCofficialComponent implements OnInit {
 			index:9
 		}
 	};
-//追号函数
-	typeoptchange() {
-		let that = this;
-		if (that.chase_number_config.select_amount == 'all') {
-			that.chase_number_config.chase_amount = that.lotdata_now.length;
-		}else{
-			that.chase_number_config.chase_amount = that.chase_number_config.select_amount;
-		}
-	}
-	check_lot(item){
-		let that = this;
-		if (item.checkon) {
-			if (item.multiple == 0) {
-				item.multiple = that.chase_number_config.multiple;
-				item.take_money = item.multiple*item.price;
-			}
+// 追号函数
+    typeoptchange() {
+        let that = this;
+        if (that.chase_number_config.select_amount == 'all') {
+            that.chase_number_config.chase_amount = that.lotdata_now.length;
+        }else{
+            that.chase_number_config.chase_amount = that.chase_number_config.select_amount;
+        }
+    }
+    check_lot(item){
+        console.log(item.checkon)
+        let that = this;
+        if (item.checkon) {
+            if (item.multiple == 0) {
+                item.multiple = that.chase_number_config.multiple;
+                item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
+            }
 
-		}else{
-			item.multiple = 0;
-		}
-		that.repanel_data()
-	}
-	// 生成计划
-	produce_plan(){
-		let that = this;
-		let gap_number,gap_multiple,multiple,chase_amount;
-		if (that.c_now_panel == 'two') {
-			gap_number = that.chase_number_config.chase_rule.number;
-			gap_multiple = that.chase_number_config.chase_rule.multiple;
-			multiple = that.chase_number_config.multiple;
-			chase_amount = that.chase_number_config.chase_amount;
-			if(chase_amount>that.lotdata_now.length){
-				chase_amount = that.lotdata_now.length;
-			}
-			for (var i = 0; i <= chase_amount-1; i++) {
-				that.lotdata_now[i].checkon = true;
-				that.lotdata_now[i].multiple = multiple;
-				that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price;
-				if ((i+1)%gap_number == 0) {
-					multiple = multiple*gap_multiple;
-				}; 
+        }else{
+            item.multiple = 0;
+            item.take_money = 0;
+        }
+        that.repanel_data()
+        console.log(that.lotdata_now)
+    }
+    // 生成计划
+    produce_plan(){
+        let that = this;
+        that.lotdata_now = $.extend(true, [], that.lotdata);
+        let gap_number,gap_multiple,multiple,chase_amount;
+        if (that.c_now_panel == 'two') {
+            gap_number = that.chase_number_config.chase_rule.number;
+            gap_multiple = that.chase_number_config.chase_rule.multiple;
+            multiple = that.chase_number_config.multiple;
+            chase_amount = that.chase_number_config.chase_amount;
+            if(chase_amount>that.lotdata_now.length){
+                chase_amount = that.lotdata_now.length;
+            }
+            for (var i = 0; i <= chase_amount-1; i++) {
+                console.log((i)%gap_number)
+                that.lotdata_now[i].checkon = true;
+                that.lotdata_now[i].multiple = multiple;
+                that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
+                if ((i+1)%gap_number == 0) {
+                    multiple = multiple*gap_multiple;
+                }; 
 
-			};			
-		}else{
-			multiple = that.chase_number_config.multiple;
-			chase_amount = that.chase_number_config.chase_amount;
-			if(chase_amount>that.lotdata_now.length){
-				chase_amount = that.lotdata_now.length;
-			}
-			for (var i = 0; i <= chase_amount-1; i++) {
-				that.lotdata_now[i].checkon = true;
-				that.lotdata_now[i].multiple = multiple;
-				that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price;
-			};
-		}
-		that.repanel_data()
-	}
-	//单个金钱计算
-	get_takemon(item){
-		let that = this;
-		item.take_money = item.multiple*item.price;
-		that.repanel_data()
-	}
-	// 总金钱总期数计算
-	repanel_data(){
-		let that = this;
-		let amount = 0;
-		let chase_amount = 0;
-		for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-			amount = that.lotdata_now[i].multiple*that.lotdata_now[i].price+amount;
-			if (that.lotdata_now[i].checkon) {
-				chase_amount = chase_amount+1;
-			};
-		};
-		that.chase_amount = chase_amount;
-		if(that.chase_amount>that.lotdata_now.length){
-			that.chase_amount = that.lotdata_now.length;
-		}
-		that.chase_money = amount;
-	}
-	//清空追号
-	rechase_data(){
-		let that = this;
-		that.lotdata_now = $.extend(true, [], that.lotdata);
-		that.repanel_data()
-	}
-	//清空追号所有数据
-	rechase_dataall(){
-		let that = this;
-		that.lotdata_now = $.extend(true, [], that.lotdata);
-		that.chase_number_config = $.extend(true, {}, that.chase_config_ori);
-		that.repanel_data()
-	}
-	tab_chase(para,item_one,item_two){
-		let that = this;
-		that.rechase_dataall();
-		that.c_now_panel = para;
-		if (para == 'one') {
-			$(item_one).addClass('active');
-			$(item_two).removeClass('active');
-			$('.one').addClass('active')
-			$('.two').removeClass('active')
-		}else if(para == 'two'){
-			$(item_two).addClass('active');
-			$(item_one).removeClass('active');
-			$('.two').addClass('active')
-			$('.one').removeClass('active')
-		}
-	}
-	close_chase(){
-		$('#layer2').find('.chase_container').removeClass('show_this');
-		let that = this;
-		that.rechase_dataall()
-	}
-	chase_number(){
-		$('#layer2').find('.chase_container').addClass('show_this');
-	}
+            };          
+        }else{
+            multiple = that.chase_number_config.multiple;
+            chase_amount = that.chase_number_config.chase_amount;
+            if(chase_amount>that.lotdata_now.length){
+                chase_amount = that.lotdata_now.length;
+            }
+            for (var i = 0; i <= chase_amount-1; i++) {
+
+                that.lotdata_now[i].checkon = true;
+                that.lotdata_now[i].multiple = multiple;
+                that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
+            };
+        }
+        that.repanel_data()
+    }
+    //单个金钱计算
+    get_takemon(item,e){
+        let that = this;
+        if (item.multiple == 0) {
+            item.checkon = false;
+        }else{
+            item.checkon = true;
+        }
+        // for (var k = 0; k <= that.sureballlist.length-1; k++) {
+
+        // }
+        item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
+        that.repanel_data()
+    }
+    changeregnum(e) {
+        let v = e.target;
+        v.value = v.value.replace(/\D/g, "");
+        if (Number(v.value) === 0 && v.value !== "") {
+            v.value = 0;
+        }
+        if (Number(v.value) > 0) {
+            v.value = Number(v.value);
+        }
+    }
+    // 总金钱总期数计算
+    repanel_data(){
+        let that = this;
+        let amount = 0;
+        let chase_amount = 0;
+        for (var i = 0; i <= that.lotdata_now.length-1; i++) {
+            for (var k = 0; k <= that.sureballlist.length-1; k++) {
+                amount = that.lotdata_now[i].multiple*that.lotdata_now[i].price/that.modelarr[that.model]+amount;
+            }
+            if (that.lotdata_now[i].checkon) {
+                chase_amount = chase_amount+1;
+            };
+        };
+        that.chase_amount = chase_amount;
+        if(that.chase_amount>that.lotdata_now.length){
+            that.chase_amount = that.lotdata_now.length;
+        }
+        that.chase_money = amount;
+    }
+    //清空追号
+    rechase_data(){
+        let that = this;
+        that.lotdata_now = $.extend(true, [], that.lotdata);
+        that.repanel_data()
+    }
+    //清空追号所有数据
+    rechase_dataall(){
+        let that = this;
+        that.lotdata_now = $.extend(true, [], that.lotdata);
+        that.chase_number_config = $.extend(true, {}, that.chase_config_ori);
+        that.repanel_data()
+    }
+    tab_chase(para,item_one,item_two){
+        let that = this;
+        that.rechase_dataall();
+        that.c_now_panel = para;
+        if (para == 'one') {
+            $(item_one).addClass('active');
+            $(item_two).removeClass('active');
+            $('.one').addClass('active')
+            $('.two').removeClass('active')
+        }else if(para == 'two'){
+            $(item_two).addClass('active');
+            $(item_one).removeClass('active');
+            $('.two').addClass('active')
+            $('.one').removeClass('active')
+        }
+    }
+    //提交追号
+    submit_chase(){
+        let that = this;
+        //清空
+        that.lotdata_submit = [];
+        for (var i = 0; i <= that.lotdata_now.length-1; i++) {
+            console.log(that.lotdata_now[i].checkon != false)
+            if (that.lotdata_now[i].checkon != false) {
+                for (var k = 0; k <= that.sureballlist.length-1; k++) {
+                        let rechase :any= {};
+                        rechase.Open_stop = that.Open_stop;
+                        rechase.Win_stop = that.Win_stop;
+                        rechase.multiple = that.lotdata_now[i].multiple;
+                        rechase.model = that.model;
+                        rechase.count = 1;
+                        rechase.sum = (2*rechase.multiple) /that.modelarr[rechase.model]
+                        rechase.amount = that.totalinfo.amount;
+                        rechase.ball = that.sureballlist[k].ball;
+                        rechase.name = that.sureballlist[k].name;
+                        rechase.issue = that.lotdata_now[i].lot_num;
+                        that.lotdata_submit.push(rechase)
+                }
+            };
+        }
+        console.log(that.lotdata_submit)
+        if(!that.lotdata_submit[0]){
+            that.POPNOTE({msg:'请选择追号期数'});
+            return
+        }else{
+            that.POPNOTE({msg:`您确定追号${that.lotdata_now.length}期么? 总投入${that.chase_money}元。`},that.betnow);
+            return
+        }
+        
+        
+    }
+    betnow(){
+        let that = this;
+        console.log(that.lotdata_submit)
+        // 在此处提交追号所有号码
+    }
+    close_chase(){
+        $('#layer2').find('.chase_container').removeClass('show_this');
+        let that = this;
+        that.rechase_dataall()
+    }
+    chase_number(){
+        let that = this;
+        if (!that.sureballlist[0]) {
+            that.POPNOTE({msg:'注单列表为空，请先下注！或者随机1注',btn:'随机一注'},that.radomshowchase);
+            return false
+        };
+        that.showchase();
+        
+    }  
+    show_chasenumber(param,nextrun){
+        let msg = param.msg;
+        let til = param.til;
+        let self = this;
+        let str = '';   
+        let dom = $(this.parseDom(str))
+        dom.find('.close').on('click',function(){
+            self.hid_layer();
+        }) 
+        dom.find('.confirm_box').on('click',function(){
+            nextrun();
+        })
+        $('#layer').append(dom);
+        setTimeout(function(){
+            dom.addClass('tobig')
+        }, 10)
+        window.onresize = function () {
+            console.log('x')
+        }
+    }
+  
+    radomshowchase(){
+        this.mathball(this.menu_2);
+        $('#layer2').find('.chase_container').addClass('show_this');
+    }
+    showchase(){
+        $('#layer2').find('.chase_container').addClass('show_this');
+    }
+    hid_layer(){
+        document.getElementById("layer").innerHTML = '';
+    }
+    // 弹层1
+    parseDom(arg) {
+    　　 var objE = document.createElement("div");
+    　　 objE.innerHTML = arg;
+    　　 return objE.childNodes;
+    };
 //追号函数结束
 	// 遗漏数据
 	omitarr = {

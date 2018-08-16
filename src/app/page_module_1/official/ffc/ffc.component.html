@@ -32,8 +32,8 @@
 			            				{{now_lang.Chase_num.Ori_multiple}}<input  class="config_input" [(ngModel)]='chase_number_config.multiple' maxlength="3"  type="number" (keyup) = 'changeregnum($event)' >
 			            			</div>
 			            			<div class="config_item checkbox_box">
-			            				<label><input type="checkbox" />{{now_lang.Ball_tab.Open_stop}}</label>
-										<label><input type="checkbox" />{{now_lang.Ball_tab.Win_stop}}</label>
+			            				<label><input type="checkbox" [(ngModel)]="Open_stop"/>{{now_lang.Ball_tab.Open_stop}}</label>
+										<label><input type="checkbox" [(ngModel)]="Win_stop"/>{{now_lang.Ball_tab.Win_stop}}</label>
 			            			</div>
 			            		</div>
 			            		<div class="config_col">
@@ -130,8 +130,8 @@
 			            				{{now_lang.Chase_num.Ori_multiple}}<input  class="config_input" [(ngModel)]='chase_number_config.multiple' maxlength="3"  type="number" (keyup) = 'changeregnum($event)'>
 			            			</div>
 			            			<div class="config_item checkbox_box">
-			            				<label><input type="checkbox" />{{now_lang.Ball_tab.Open_stop}}</label>
-										<label><input type="checkbox" />{{now_lang.Ball_tab.Win_stop}}</label>
+			            				<label><input type="checkbox" [(ngModel)]="Open_stop"/>{{now_lang.Ball_tab.Open_stop}}</label>
+										<label><input type="checkbox" [(ngModel)]="Win_stop"/>{{now_lang.Ball_tab.Win_stop}}</label>
 			            			</div>
 			            		</div>
 			            		<div class="config_col">
@@ -399,8 +399,8 @@
 						<div class="btnright">
 							<a class="btnh_w120_h40 bgfff mb10" >{{now_lang.Ball_tab.Order_history}}</a>
 							<a class="btnh_w120_h40 bgfff mb10" (click)='chase_number()'>{{now_lang.Ball_tab.Chasing}}</a>
-							<label><input type="checkbox" />{{now_lang.Ball_tab.Open_stop}}</label>
-							<label><input type="checkbox" />{{now_lang.Ball_tab.Win_stop}}</label>
+							<label><input type="checkbox" [(ngModel)]="Open_stop"/>{{now_lang.Ball_tab.Open_stop}}</label>
+							<label><input type="checkbox" [(ngModel)]="Win_stop"/>{{now_lang.Ball_tab.Win_stop}}</label>
 						</div>
 					</div>
 					<div class="surearea">

@@ -113,6 +113,8 @@ export class FFCofficialComponent implements OnInit {
 		},
 		multiple_option:1
 	}
+	public Open_stop :any = false
+	public Win_stop :any = false
 	public chase_number_config :any = $.extend(true, {}, this.chase_config_ori);
 	//目前追号面板
 	public c_now_panel :any = 'one'
@@ -541,7 +543,7 @@ export class FFCofficialComponent implements OnInit {
 			index:9
 		}
 	};
-
+// 追号函数
 	typeoptchange() {
 		let that = this;
 		if (that.chase_number_config.select_amount == 'all') {
@@ -596,7 +598,7 @@ export class FFCofficialComponent implements OnInit {
 				chase_amount = that.lotdata_now.length;
 			}
 			for (var i = 0; i <= chase_amount-1; i++) {
-				
+
 				that.lotdata_now[i].checkon = true;
 				that.lotdata_now[i].multiple = multiple;
 				that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
@@ -686,6 +688,8 @@ export class FFCofficialComponent implements OnInit {
 			if (that.lotdata_now[i].checkon != false) {
 				for (var k = 0; k <= that.sureballlist.length-1; k++) {
 						let rechase :any= {};
+						rechase.Open_stop = that.Open_stop;
+						rechase.Win_stop = that.Win_stop;
 						rechase.multiple = that.lotdata_now[i].multiple;
 						rechase.model = that.model;
 						rechase.count = 1;
@@ -712,8 +716,52 @@ export class FFCofficialComponent implements OnInit {
 	betnow(){
 		// 在此处提交追号所有号码
 	}
-
-
+	close_chase(){
+		$('#layer2').find('.chase_container').removeClass('show_this');
+		let that = this;
+		that.rechase_dataall()
+	}
+	chase_number(){
+		let that = this;
+		if (!that.sureballlist[0]) {
+			that.POPNOTE({msg:'注单列表为空，请先下注！或者随机1注',btn:'随机一注'},that.radomshowchase);
+			return false
+		};
+		that.showchase();
+		
+    }  
+	show_chasenumber(param,nextrun){
+		let msg = param.msg;
+		let til = param.til;
+		let self = this;
+		let str = '';	
+		let dom = $(this.parseDom(str))
+		dom.find('.close').on('click',function(){
+			self.hid_layer();
+		}) 
+		dom.find('.confirm_box').on('click',function(){
+			nextrun();
+		})
+		$('#layer').append(dom);
+		setTimeout(function(){
+			dom.addClass('tobig')
+		}, 10)
+		window.onresize = function () {
+			console.log('x')
+		}
+	}
+  
+    radomshowchase(){
+    	this.mathball(this.menu_2);
+    	$('#layer2').find('.chase_container').addClass('show_this');
+    }
+    showchase(){
+    	$('#layer2').find('.chase_container').addClass('show_this');
+    }
+	hid_layer(){
+		document.getElementById("layer").innerHTML = '';
+	}
+//追号函数结束
 	// 遗漏数据
 	omitarr = {
 		0:[],1:[],2:[],3:[],4:[]
@@ -2049,52 +2097,9 @@ export class FFCofficialComponent implements OnInit {
 	// 	window.onresize = function () {
 	// 	}
 	// }
-	hid_layer(){
-		console.log('有反应么')
-		document.getElementById("layer").innerHTML = '';
-	}
 
-	show_chasenumber(param,nextrun){
-		let msg = param.msg;
-		let til = param.til;
-		let self = this;
-		let str = '';	
-		let dom = $(this.parseDom(str))
-		dom.find('.close').on('click',function(){
-			self.hid_layer();
-		}) 
-		dom.find('.confirm_box').on('click',function(){
-			nextrun();
-		})
-		$('#layer').append(dom);
-		setTimeout(function(){
-			dom.addClass('tobig')
-		}, 10)
-		window.onresize = function () {
-			console.log('x')
-		}
-	}
-	close_chase(){
-		$('#layer2').find('.chase_container').removeClass('show_this');
-		let that = this;
-		that.rechase_dataall()
-	}
-	chase_number(){
-		let that = this;
-		if (!that.sureballlist[0]) {
-			that.POPNOTE({msg:'注单列表为空，请先下注！或者随机1注',btn:'随机一注'},that.radomshowchase);
-			return false
-		};
-		that.showchase();
-		
-    }    
-    radomshowchase(){
-    	this.mathball(this.menu_2);
-    	$('#layer2').find('.chase_container').addClass('show_this');
-    }
-    showchase(){
-    	$('#layer2').find('.chase_container').addClass('show_this');
-    }
+
+
     
     // 绑定给弹窗组件的事件；
     NOTARIZE(){

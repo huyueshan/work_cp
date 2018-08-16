@@ -1,5 +1,5 @@
-import { UsercenterComponent } from '../usercenter/usercenter.component';
-import { userdef } from '../../../factory/usercent';
+
+
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { SharkModule } from "@ntesmail/shark-angular2";

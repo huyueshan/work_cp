@@ -208,55 +208,67 @@ export class RouteguardService implements CanActivate{
 							redirectTo: 'index',
 							pathMatch: 'full'  // 必须要设置
 						}
-						// {
-						// 	path: '',
-						// 	redirectTo: 'home',
-						// 	pathMatch: 'full'
-						// },
-						// {
-						// 	path: 'home',
-						// 	loadChildren: '../app/page_module_2/home/home.module#HomeModule'
-						// }, 
-						// {
-						// 	path: 'detail',
-						// 	loadChildren: '../app/page_module_2/detail/detail.module#DetailModule'
-						// },
-						// {
-						// 	path: 'test',
-						// 	loadChildren: '../app/page_module_2/test/detail.module#DetailModule'
-						// },
-						// {
-						// 	path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
-						// 	redirectTo: 'home',
-						// 	pathMatch: 'full'  // 必须要设置
-						// }
 					];
 					this.router.resetConfig(appnewRoutes);
 					this.isLoaded = true;
 					resolve(true);
 					this.router.navigateByUrl(userModel.currenturl);
-				}else{
+				}else if(Base.Store.get('isTemplet')==='3'){
 					const appnewRoutes: Routes =[
 						{
 							path: '',
-							redirectTo: 'home',
+							redirectTo: 'index',
 							pathMatch: 'full'
 						},
 						{
-							path: 'home',
-							loadChildren: '../app/page_module_3/home/home.module#HomeModule'
+							path: 'login',
+							loadChildren: '../app/page_module_3/login/login.module#LoginModule',
+							canActivate: [RouteguardService]
+						},
+						{
+							path: 'forgetpass',
+							loadChildren: '../app/page_module_3/forgetpass/forgetpass.module#ForgetpassModule',
+							canActivate: [RouteguardService]
 						}, 
 						{
-							path: 'detail',
-							loadChildren: '../app/page_module_3/detail/detail.module#DetailModule'
+							path: 'register',
+							loadChildren: '../app/page_module_3/register/register.module#RegisterModule',
+                            canActivate: [RouteguardService]
 						},
 						{
-							path: 'test',
-							loadChildren: '../app/page_module_3/test/detail.module#DetailModule'
+							path: 'index',
+							loadChildren: '../app/page_module_3/index/index.module#IndexModule',
+                            canActivate: [RouteguardService]
 						},
+                        {
+							path: 'result',
+							loadChildren: '../app/page_module_3/result/result.module#ResultModule',
+							canActivate: [RouteguardService]
+						},  
+						{
+							path: 'lottery',
+							loadChildren: '../app/page_module_3/lottery/layout.module#LayoutModule',
+							canActivate: [RouteguardService]
+						},  
+						{
+							path: 'register',
+							loadChildren: '../app/page_module_3/register/register.module#RegisterModule',
+                            canActivate: [RouteguardService]
+						},
+						{
+							path: 'usercenter',
+							loadChildren: '../app/page_module_3/usercenter/usercenter.module#UsercenterModule',
+                            canActivate: [RouteguardService]
+							
+                        },
+                        {
+                            path: 'result',
+                            loadChildren: '../app/page_module_3/result/result.module#ResultModule',
+                            canActivate: [RouteguardService]
+                        },
 						{
 							path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
-							redirectTo: 'home',
+							redirectTo: 'index',
 							pathMatch: 'full'  // 必须要设置
 						}
 					];
@@ -264,7 +276,10 @@ export class RouteguardService implements CanActivate{
 					this.isLoaded = true;
 					resolve(true);
 					this.router.navigateByUrl(userModel.currenturl);
-				}
+				}else{
+                    Base.Store.set('isTemplet','1',false);
+                    history.go(0);
+                }
 				
 				
 				userModel.platform = true

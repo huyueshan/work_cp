@@ -1,0 +1,54 @@
+<div class="flex-c container">
+    <div class="flex-r querycontent">
+        <span>
+            <label for="protype">{{now_lang.User_center_c.Lot_type}}：</label>
+            <select id="protype" name="protype" [(ngModel)]="game" (change)="selchange()">
+                <option *ngFor="let item of gamelist" value="{{item.gamename}}">{{item.gamename}}</option>
+            </select>
+        </span>
+    </div>
+    <div class=" flex-c tablebox">
+        <ng-container *ngIf="curgamestyle === 'guan'">
+            <div class="tablewrap" [innerHTML]="offdata">
+
+            </div>
+
+        </ng-container>
+        <ng-container *ngIf="curgamestyle === 'xin'">
+            <div class="table-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="33%">玩法类型</th>
+                            <th width="33%">最高奖金</th>
+                            <th width="33%">返点</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let item of creditdata; let i = index" >
+                            <tr>
+                                <td class="credtitle" (click)="trclick(i)">{{item.title}}</td>
+                                <td>{{item.point}}</td>
+                                <td>{{item.step*100}}%</td>
+                            </tr>
+                            <ng-container *ngIf="item.active" >
+                                <tr>
+                                    <td colspan="3">
+                                        <table class="table-list" border="0" cellspacing="0" cellpadding="0" width="100%">
+                                            <tr *ngFor="let child of item.data">
+                                                <td width="33%">{{child.name?child.name:child.numb}}</td>
+                                                <td width="33%">{{child.point}}</td>
+                                                <td width="33%">{{child.step*100}}%</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+
+        </ng-container>
+    </div>
+</div>
