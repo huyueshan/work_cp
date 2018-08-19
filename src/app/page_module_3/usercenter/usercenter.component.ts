@@ -24,6 +24,9 @@ export class UsercenterComponent
   // TODO: 如果使用不同的背景图标；必须先在父组件中线require 这张图片
   public bgurlinit = require("../images/sidebg1.png");
   public bgurl = 'url("../../images/sidebg1.png")';
+  public currentparent:string; //一级导航
+  public currentitem:string; // 二级导航
+  public currentactive:number; // 当前展开的子导航
   public usersidedata = [
     {
       title: this.now_lang.User_center.Bet_history, 
@@ -207,4 +210,65 @@ export class UsercenterComponent
   }
   ngAfterContentChecked() {}
   ngAfterViewInit() {}
+
+  
+
+  // 导航栏一级菜单点击事件
+  itemboxclick(i) {
+    this.itemiconinit(i);
+    if (this.currentactive == i) {
+      this.currentactive = -1;
+    } else {
+      this.currentactive = i;
+    }
+  }
+  getrouteurl() {
+    let t = this.router.url;
+    let d = this.usersidedata;
+    for (let i = 0; i < d.length; i++) {
+      for (let q = 0; q < d[i].items.length; q++) {
+        if (t == d[i].items[q].link) {
+          this.currentparent = d[i].title;
+          this.currentitem = d[i].items[q].text;
+          this.currentactive = i;
+        }
+      }
+    }
+    this.itemiconinit(this.currentactive);
+  }
+  // 初始当前有效导航目录样式
+  itemiconinit(i) {
+    //    清除其他导航点击样式
+    for (let q = 0; q < this.usersidedata.length; q++) {
+      let d = this.usersidedata[q];
+      d.isover = false;
+      d.bg.x = d.bg.defx;
+      d.bg.y = d.bg.defy;
+    }
+    this.itemboxenter(i);
+  }
+  // 鼠标经过目录事件
+  itemboxenter(i) {
+    let d = this.usersidedata[i];
+    d.isover = true;
+    d.bg.x = d.bg.hovx;
+    d.bg.y = d.bg.hovy;
+  }
+  // 鼠标离开目录事件
+  itemboxleave(i) {
+    let d = this.usersidedata[i];
+    if (this.currentactive == i) {
+      d.bg.x = d.bg.hovx;
+      d.bg.y = d.bg.hovy;
+      return;
+    }
+    d.isover = false;
+    d.bg.x = d.bg.defx;
+    d.bg.y = d.bg.defy;
+  }
+  // 导航栏二级菜单点击事件
+  itemclick(L) {
+    // 跳转路由
+    this.router.navigate([L]);
+  }
 }

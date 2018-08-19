@@ -213,7 +213,7 @@ export class RouteguardService implements CanActivate{
 					this.isLoaded = true;
 					resolve(true);
 					this.router.navigateByUrl(userModel.currenturl);
-				}else if(Base.Store.get('isTemplet')==='3'){
+				}else if(Base.Store.get('isTemplet')=='3'){
 					const appnewRoutes: Routes =[
 						{
 							path: '',
@@ -277,8 +277,8 @@ export class RouteguardService implements CanActivate{
 					resolve(true);
 					this.router.navigateByUrl(userModel.currenturl);
 				}else{
-                    Base.Store.set('isTemplet','1',false);
-                    history.go(0);
+                    // Base.Store.set('isTemplet','1',false);
+                    // history.go(0);
                 }
 				
 				

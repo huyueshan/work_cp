@@ -1,5 +1,224 @@
 <div class="flex-c body" [hidden]="!loadpage">
     <div id="layer"></div>
+    <div id="layer2" #layer2>
+        <div class="chase_container ">
+            <div class="cover_bg" #cover_bg></div>
+            <div id="layer_box" #layer>
+                <div class="top_til">
+                    <div class="til">{{nowitems.name}}  {{now_lang.Chase_num.Chase_num}}</div><div class="close" (click)='close_chase()'>x</div>
+                </div>
+                <div class="content_box">
+                    <div>
+                        <div class="top_tab">
+                            <div class="tab_box">
+                                <div class="tab_item one active" (click)='tab_chase("one",one_chase,two_chase)' >
+                                    {{now_lang.Chase_num.Chase_multiple}}
+                                </div>
+                                <div class="tab_item two" (click)='tab_chase("two",one_chase,two_chase)'>
+                                    {{now_lang.Chase_num.Chase_double}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="one_chase active" #one_chase>
+                            <div class="top_config">
+                                <div class="config_col">
+                                    
+                                    <div class="config_item">
+                                        {{now_lang.Chase_num.Chase_issues}}<input  class="config_input" maxlength="3"   [(ngModel)]='chase_number_config.chase_amount' type="number" (keyup) = 'changeregnum($event)'>
+                                    </div>
+                                    <div class="config_item">
+                                        {{now_lang.Chase_num.Ori_multiple}}<input  class="config_input" [(ngModel)]='chase_number_config.multiple' maxlength="3"  type="number" (keyup) = 'changeregnum($event)' >
+                                    </div>
+                                    <div class="config_item checkbox_box">
+                                        <label><input type="checkbox" [(ngModel)]="Open_stop"/>{{now_lang.Ball_tab.Open_stop}}</label>
+                                        <label><input type="checkbox" [(ngModel)]="Win_stop"/>{{now_lang.Ball_tab.Win_stop}}</label>
+                                    </div>
+                                </div>
+                                <div class="config_col">
+                                    <div class="config_item ">
+                                        {{now_lang.Chase_num.Chase_issues}}:
+                                        <select id="select_amount" name="select_amount" [(ngModel)]="chase_number_config.select_amount" (change)="typeoptchange()">
+                                            <option *ngFor="let item of typeoptiondata"   value="{{item}}">{{item=='all'?now_lang.Chase_num.Chase_all:item+now_lang.Chase_num.issues}}</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="config_item ">
+                                        {{now_lang.Chase_num.Chase_issues}}:
+                                        <div>
+                                            {{chase_amount}}
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="config_item ">
+                                        {{now_lang.Chase_num.Chase_amount}}:
+                                        <div>
+                                            {{chase_money}}{{now_lang.Chase_num.yuan}}
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="config_item flr">
+                                        <div class="preduce_btn btnh_w120_h40" (click)="produce_plan()">
+                                            {{now_lang.Chase_num.Produce_plan}}
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="number_list">
+                                <div class="itembox">
+                                    <div class="til_top">
+                                        {{now_lang.Chase_num.issues_number}}
+                                    </div>
+                                    <div class="divid"></div>
+                                </div>
+                                <div class="itembox">
+                                    <div class="til_top">
+                                        {{now_lang.Chase_num.Multiple}}
+                                    </div>
+                                    <div class="divid"></div>
+                                </div>
+                                <div class="itembox">
+                                    <div class="til_top">
+                                        {{now_lang.Chase_num.Now_cost}}
+                                    </div>
+                                    <div class="divid"></div>
+                                </div>
+                                <div class="itembox">
+                                    <div class="til_top">
+                                        {{now_lang.Chase_num.Expire_time}}
+                                    </div>
+                                </div>
+                                <div class="item_content">
+                                    <ul>
+                                        <li *ngFor='let item of lotdata_now'>
+                                            <div class="item_child">
+                                                <label><input type="checkbox" (change)='check_lot(item)' [(ngModel)]="item.checkon"  />{{item.lot_num}}</label>
+                                            </div>
+                                            <div class="item_child">
+                                                <div>
+                                                    <input  class="config_input" (input)='get_takemon(item)' [(ngModel)]="item.multiple" maxlength="10"  (keyup) = 'changeregnum($event)'
+                                              type="number">{{now_lang.Chase_num.Mult}}
+                                                </div>
+                                            </div>
+                                            <div class="item_child">
+                                                ￥{{item.take_money}}
+                                            </div>
+                                            <div class="item_child">
+                                                {{item.expire_time}}
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>  
+                        </div>
+                        <div class="two_chase" #two_chase>
+                            <div class="top_config">
+                                <div class="config_col">
+                                    <div class="config_item">
+                                        {{now_lang.Chase_num.Chase_plan}}:
+                                    </div>
+                                    <div class="config_item">
+                                        {{now_lang.Chase_num.Every_divi}}<input  class="config_input" maxlength="3" [(ngModel)]='chase_number_config.chase_rule.number' type="number" (keyup) = 'changeregnum($event)'>{{now_lang.Chase_num.issues}}X
+                                        <input  class="config_input" [(ngModel)]='chase_number_config.chase_rule.multiple'   maxlength="3"  type="number" (keyup) = 'changeregnum($event)'>{{now_lang.Chase_num.Mult}}
+                                    </div>
+                                    <div class="config_item">
+                                        {{now_lang.Chase_num.Chase_issues}}<input  class="config_input" maxlength="3"   [(ngModel)]='chase_number_config.chase_amount' type="number" (keyup) = 'changeregnum($event)'>
+                                    </div>
+                                    <div class="config_item">
+                                        {{now_lang.Chase_num.Ori_multiple}}<input  class="config_input" [(ngModel)]='chase_number_config.multiple' maxlength="3"  type="number" (keyup) = 'changeregnum($event)'>
+                                    </div>
+                                    <div class="config_item checkbox_box">
+                                        <label><input type="checkbox" [(ngModel)]="Open_stop"/>{{now_lang.Ball_tab.Open_stop}}</label>
+                                        <label><input type="checkbox" [(ngModel)]="Win_stop"/>{{now_lang.Ball_tab.Win_stop}}</label>
+                                    </div>
+                                </div>
+                                <div class="config_col">
+                                    <div class="config_item ">
+                                        {{now_lang.Chase_num.Chase_issues}}:
+                                        <select id="select_amount" name="select_amount" [(ngModel)]="chase_number_config.select_amount" (change)="typeoptchange()">
+                                            <option *ngFor="let item of typeoptiondata"   value="{{item}}">{{item=='all'?now_lang.Chase_num.Chase_all:item+now_lang.Chase_num.issues}}</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="config_item ">
+                                        {{now_lang.Chase_num.Chase_issues}}:
+                                        <div>
+                                            {{chase_amount}}
+
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="config_item ">
+                                        {{now_lang.Chase_num.Chase_amount}}:
+                                        <div>
+                                            {{chase_money}}{{now_lang.Chase_num.yuan}}
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="config_item flr">
+                                        <div class="preduce_btn btnh_w120_h40" (click)="produce_plan()">
+                                            {{now_lang.Chase_num.Produce_plan}}
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="number_list">
+                                <div class="itembox">
+                                    <div class="til_top">
+                                        {{now_lang.Chase_num.issues_number}}
+                                    </div>
+                                    <div class="divid"></div>
+                                </div>
+                                <div class="itembox">
+                                    <div class="til_top">
+                                        {{now_lang.Chase_num.Multiple}}
+                                    </div>
+                                    <div class="divid"></div>
+                                </div>
+                                <div class="itembox">
+                                    <div class="til_top">
+                                        {{now_lang.Chase_num.Now_cost}}
+                                    </div>
+                                    <div class="divid"></div>
+                                </div>
+                                <div class="itembox">
+                                    <div class="til_top">
+                                        {{now_lang.Chase_num.Expire_time}}
+                                    </div>
+                                </div>
+                                <div class="item_content">
+                                    <ul>
+                                        <li *ngFor='let item of lotdata_now'>
+                                            <div class="item_child">
+                                                <label><input type="checkbox" (change)='check_lot(item)' [(ngModel)]="item.checkon"  />{{item.lot_num}}</label>
+                                            </div>
+                                            <div class="item_child">
+                                                <div>
+                                                    <input  class="config_input" (input)='get_takemon(item)' [(ngModel)]="item.multiple" maxlength="10"  type="number" >{{now_lang.Chase_num.Mult}}
+                                                </div>
+                                            </div>
+                                            <div class="item_child">
+                                                ￥{{item.take_money}}
+                                            </div>
+                                            <div class="item_child">
+                                                {{item.expire_time}}
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="confirm_box">
+                    <div class="confirm_btn" (click)="rechase_data()">{{now_lang.Chase_num.Clear_chase}}</div>
+                    <div class="confirm_btn" (click)="submit_chase()" >{{now_lang.Chase_num.Chase_bet}}</div>
+                    <div class="confirm_btn" (click)="close_chase()">{{now_lang.Chase_num.Cancel}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="conbox">
         <div class="content" style="margin-top:30px;">
             <app-credtop [type]="'ssc'" [indata]="cpnav"></app-credtop>
@@ -216,11 +435,9 @@
                         </div>
                         <div class="btnright">
                             <a class="btnh_w120_h40 bgfff mb10">订单记录</a>
-                            <a class="btnh_w120_h40 bgfff mb10">我要追号</a>
-                            <label>
-                                <input type="checkbox" />官方跳开即停</label>
-                            <label>
-                                <input type="checkbox" />中奖后停止追号</label>
+                            <a class="btnh_w120_h40 bgfff mb10" (click)='chase_number()'>我要追号</a>
+                                <label><input type="checkbox" [(ngModel)]="Open_stop"/>{{now_lang.Ball_tab.Open_stop}}</label>
+                                <label><input type="checkbox" [(ngModel)]="Win_stop"/>{{now_lang.Ball_tab.Win_stop}}</label>
                         </div>
                     </div>
                     <div class="surearea">

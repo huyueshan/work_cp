@@ -34,293 +34,40 @@ export class SCCofficialComponent implements OnInit {
     private httpClient: HttpClient,
     private router: Router
   ) {}
-    loadpage = false;
-    public resultdata = [{
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }];
-    public rankdata = [{
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }];
-    multiple_input: any = {
-        value: 1
-    };
-    // public multiple_input = 1;
-    public radom_input: any = {
-        value: 1
-    };
-    public multi_select = [10, 50, 100, 500, 1000, 2000, 5000, 10000];
-    public ul_hidden = true;
-    public now_tips = '这是一个比较短的提示!';
-    public tips_hidden = true;
-    // public riskvalue = -0.2;
-    // 拖拽数据
-    public rangepercent = 0;
-    public rangenum = 180200;
-    // 拖拽数据结束
-    public now_tips_menu: any = '1_1';
-    public now_description = '';
-    public hothidden = false;
-    public nowPageId: any = '';
-    public nowitems: any = {};
-    public userInfo = {
-        name: '赌神',
-        balance: '9999.99',
-        id: '007'
-
-    };
-    public other_rules = {
-        reward_rule: '<div> 奖金计算说明：<p style="margin-left:1em;">非常规时时彩中奖后，根据中奖号码球号的奖金组，中奖奖金需要乘以球号的奖金组，如：</p><p style="margin-left:1em;line-height: 25px;padding:3px 0;">1、北京时时彩后三直选（1800奖金组）：下注321，开奖号码54321，其中3号球的奖金组为：1.014，2号球的奖金组为：0.984，1号球的奖金组为1.022；那么中奖后的实际奖金=1800*1.014*0.984*1.022=1835.509</p><p style="margin-left:1em;line-height: 25px;padding:3px 0;">2、若北京时时彩后三直选（1800奖金组）：下注246，开奖号码54246，其中2号球的奖金组为：0.984，4号球的奖金组为：0.976，6号球的奖金组为0.98；那么中奖后的实际奖金=1800*0.984*0.976*0.98=1694.117</P></div>'
-    };
-    public cpnav = {
-        style: "official",
-        prev: '20180517022',
-        prevball: [2, 5, 9, 0, 8],
-        next: '20180517023',
-        time: ''
-    };
-    public now_lang: any = userModel.langpackage;
-    public now_lang_type: any = 'zh';
-
-//追号数据
-    public lotdata = [
-        {
-            lot_num:'20181719',
-            multiple:0,
-            price:2,
-            take_money:0,
-            expire_time:'2018-06-11 15:19:30',
-            checkon:false
-        },
-        {
-            lot_num:'20181720',
-            multiple:0,
-            price:2,
-            take_money:0,
-            expire_time:'2018-06-11 15:19:30',
-            checkon:false
-        },
-        {
-            lot_num:'20181721',
-            multiple:0,
-            price:2,
-            take_money:0,
-            expire_time:'2018-06-11 15:19:30',
-            checkon:false
-        }
-    ]
-    //追号提交数据
-    public lotdata_submit :any = [];
-
-    public typeoptiondata :any = [
-      5,
-      10,
-      15,
-      25,
-      'all'
-    ];
-    // 复制追号数据
-    public lotdata_now = $.extend(true, [], this.lotdata);
-    // 追号配置
-    public chase_config_ori :any = {
-        multiple:1,
-        chase_amount:5,
-        select_amount:5,
-        chase_rule:{
-            number:1,
-            multiple:2
-        },
-        multiple_option:1
-||||||| .r223
-
-    constructor(private route: ActivatedRoute, private httpClient: HttpClient, private router: Router) {}
-    loadpage = false;
-    public resultdata = [{
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }];
-    public rankdata = [{
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }];
-    multiple_input: any = {
-        value: 1
-    };
-    // public multiple_input = 1;
-    public radom_input: any = {
-        value: 1
-    };
-    public multi_select = [10, 50, 100, 500, 1000, 2000, 5000, 10000];
-    public ul_hidden = true;
-    public now_tips = '这是一个比较短的提示!';
-    public tips_hidden = true;
-    // public riskvalue = -0.2;
-    // 拖拽数据
-    public rangepercent = 0;
-    public rangenum = 180200;
-    // 拖拽数据结束
-    public now_tips_menu: any = '1_1';
-    public now_description = '';
-    public hothidden = false;
-    public nowPageId: any = '';
-    public nowitems: any = {};
-    public userInfo = {
-        name: '赌神',
-        balance: '9999.99',
-        id: '007'
-
-    };
-    public other_rules = {
-        reward_rule: '<div> 奖金计算说明：<p style="margin-left:1em;">非常规时时彩中奖后，根据中奖号码球号的奖金组，中奖奖金需要乘以球号的奖金组，如：</p><p style="margin-left:1em;line-height: 25px;padding:3px 0;">1、北京时时彩后三直选（1800奖金组）：下注321，开奖号码54321，其中3号球的奖金组为：1.014，2号球的奖金组为：0.984，1号球的奖金组为1.022；那么中奖后的实际奖金=1800*1.014*0.984*1.022=1835.509</p><p style="margin-left:1em;line-height: 25px;padding:3px 0;">2、若北京时时彩后三直选（1800奖金组）：下注246，开奖号码54246，其中2号球的奖金组为：0.984，4号球的奖金组为：0.976，6号球的奖金组为0.98；那么中奖后的实际奖金=1800*0.984*0.976*0.98=1694.117</P></div>'
-    };
-    public cpnav = {
-        style: "official",
-        prev: '20180517022',
-        prevball: [2, 5, 9, 0, 8],
-        next: '20180517023',
-        time: ''
-    };
-    public now_lang: any = userModel.langpackage;
-    public now_lang_type: any = 'zh';
-    //追号数据
-    public lotdata = [{
-            lot_num: '20181719',
-            multiple: 0,
-            price: 2,
-            take_money: 0,
-            expire_time: '2018-06-11 15:19:30',
-            checkon: false
-        },
-        {
-            lot_num: '20181720',
-            multiple: 0,
-            price: 2,
-            take_money: 0,
-            expire_time: '2018-06-11 15:19:30',
-            checkon: false
-        },
-        {
-            lot_num: '20181721',
-            multiple: 0,
-            price: 2,
-            take_money: 0,
-            expire_time: '2018-06-11 15:19:30',
-            checkon: false
-        }
-    ]
-    public typeoptiondata: any = [
-        5,
-        10,
-        15,
-        25,
-        'all'
-    ];
-    // 复制追号数据
-    public lotdata_now = $.extend(true, [], this.lotdata);
-    // 追号配置
-    public chase_config_ori: any = {
-        multiple: 1,
-        chase_amount: 5,
-        select_amount: 5,
-        chase_rule: {
-            number: 1,
-            multiple: 2
-        },
-        multiple_option: 1
-=======
+  loadpage = false;
+  public resultdata = [
+    {
+      sta: "20180517014",
+      num: "2 9 0 8 7"
+    },
+    {
+      sta: "20180517014",
+      num: "2 9 0 8 7"
+    },
+    {
+      sta: "20180517014",
+      num: "2 9 0 8 7"
+    },
+    {
+      sta: "20180517014",
+      num: "2 9 0 8 7"
+    },
+    {
+      sta: "20180517014",
+      num: "2 9 0 8 7"
+    },
+    {
+      sta: "20180517014",
+      num: "2 9 0 8 7"
+    },
+    {
+      sta: "20180517014",
+      num: "2 9 0 8 7"
+    },
+    {
+      sta: "20180517014",
+      num: "2 9 0 8 7"
+    }
   ];
   public rankdata = [
     {
@@ -357,37 +104,7 @@ export class SCCofficialComponent implements OnInit {
       name: "王刚",
       type: "时时彩",
       money: "9999"
->>>>>>> .r227
     }
-<<<<<<< .mine
-    public Open_stop :any = false
-    public Win_stop :any = false
-    public chase_number_config :any = $.extend(true, {}, this.chase_config_ori);
-    //目前追号面板
-    public c_now_panel :any = 'one'
-    public chase_money :any = 0;
-    public chase_amount :any = 0;
-//追号数据结束
-    //此彩种细分彩种配置
-    public items_show = {
-        'bjpk_ffc': {
-            'tabitem': [this.now_lang.Lot_tab.guess_cha, this.now_lang.Lot_tab.guess_12, this.now_lang.Lot_tab.guess_123, this.now_lang.Lot_tab.guess_1234, this.now_lang.Lot_tab.guess_12345, this.now_lang.Lot_tab.Gall, this.now_lang.Lot_tab.Dragon_tiger],
-            'reward_show': false,
-            'name': this.now_lang.lot_type.bj_pk10
-||||||| .r223
-    public chase_number_config: any = $.extend(true, {}, this.chase_config_ori);
-    //目前追号面板
-    public c_now_panel: any = 'one'
-    public chase_money: any = 0;
-    public chase_amount: any = 0;
-    //追号数据结束
-    //此彩种细分彩种配置
-    public items_show = {
-        'bjpk_ffc': {
-            'tabitem': [this.now_lang.Lot_tab.guess_cha, this.now_lang.Lot_tab.guess_12, this.now_lang.Lot_tab.guess_123, this.now_lang.Lot_tab.guess_1234, this.now_lang.Lot_tab.guess_12345, this.now_lang.Lot_tab.Gall, this.now_lang.Lot_tab.Dragon_tiger],
-            'reward_show': false,
-            'name': this.now_lang.lot_type.bj_pk10
-=======
   ];
   multiple_input: any = {
     value: 1
@@ -513,8 +230,6 @@ export class SCCofficialComponent implements OnInit {
   public now_tab2click_num;
   public hid_tab;
   // public rangevalue = rangevalue;
->>>>>>> .r227
-
   status = {
     menu_1: 1, //一级tab默认项
     menu_2: 1 //二级tab默认项
@@ -670,236 +385,9 @@ export class SCCofficialComponent implements OnInit {
           datarule: ["Rule_6", 10],
           addzero: true
         }
-<<<<<<< .mine
-
-
-    ]
-    menu_2 = []; //存储当前一级导航对应的耳机导航
-    ball_tab = {
-        1: [this.now_lang.Ball_tab.All, this.now_lang.Ball_tab.Big, this.now_lang.Ball_tab.Small, this.now_lang.Ball_tab.Odd, this.now_lang.Ball_tab.Even, this.now_lang.Ball_tab.Clear],
-        2: [this.now_lang.Ball_tab.All, this.now_lang.Ball_tab.Clear],
-        3: [],
-        4: ['全', '清'],
-    };
-    now_balllist = []; //当前号码列表
-
-    // 所有号码的列表数据
-    ball_data = {
-        'cgj': {
-            title: '猜冠军',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'cyj': {
-            title: '猜亚军',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'cjj': {
-            title: '猜季军',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'dy': {
-            title: '第一',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'de': {
-            title: '第二',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'ds': {
-            title: '第三',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'dsi': {
-            title: '第四',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'dw': {
-            title: '第五',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'dl': {
-            title: '第六',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'dq': {
-            title: '第七',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'db': {
-            title: '第八',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'dj': {
-            title: '第九',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'dshi': {
-            title: '第十',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        }
-
-    };
-// 追号函数
-    typeoptchange() {
-        let that = this;
-        if (that.chase_number_config.select_amount == 'all') {
-            that.chase_number_config.chase_amount = that.lotdata_now.length;
-        }else{
-            that.chase_number_config.chase_amount = that.chase_number_config.select_amount;
-        }
-||||||| .r223
-
-
-    ]
-    menu_2 = []; //存储当前一级导航对应的耳机导航
-    ball_tab = {
-        1: [this.now_lang.Ball_tab.All, this.now_lang.Ball_tab.Big, this.now_lang.Ball_tab.Small, this.now_lang.Ball_tab.Odd, this.now_lang.Ball_tab.Even, this.now_lang.Ball_tab.Clear],
-        2: [this.now_lang.Ball_tab.All, this.now_lang.Ball_tab.Clear],
-        3: [],
-        4: ['全', '清'],
-    };
-    now_balllist = []; //当前号码列表
-
-    // 所有号码的列表数据
-    ball_data = {
-        'cgj': {
-            title: '猜冠军',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'cyj': {
-            title: '猜亚军',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'cjj': {
-            title: '猜季军',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'dy': {
-            title: '第一',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'de': {
-            title: '第二',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'ds': {
-            title: '第三',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'dsi': {
-            title: '第四',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'dw': {
-            title: '第五',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'dl': {
-            title: '第六',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'dq': {
-            title: '第七',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'db': {
-            title: '第八',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'dj': {
-            title: '第九',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        },
-        'dshi': {
-            title: '第十',
-            ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            tab: this.ball_tab[1],
-            index: 4
-        }
-
-    };
-    //追号函数
-    typeoptchange() {
-        let that = this;
-        if (that.chase_number_config.select_amount == 'all') {
-            that.chase_number_config.chase_amount = that.lotdata_now.length;
-        } else {
-            that.chase_number_config.chase_amount = that.chase_number_config.select_amount;
-        }
-=======
       ],
       active: 6
->>>>>>> .r227
     }
-<<<<<<< .mine
-    check_lot(item){
-        console.log(item.checkon)
-        let that = this;
-        if (item.checkon) {
-            if (item.multiple == 0) {
-                item.multiple = that.chase_number_config.multiple;
-                item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
-            }
-||||||| .r223
-    check_lot(item) {
-        console.log(item.checkon)
-        let that = this;
-        if (item.checkon) {
-            if (item.multiple == 0) {
-                item.multiple = that.chase_number_config.multiple;
-                item.take_money = item.multiple * item.price;
-            }
-=======
   ];
   menu_2 = []; //存储当前一级导航对应的耳机导航
   ball_tab = {
@@ -916,20 +404,6 @@ export class SCCofficialComponent implements OnInit {
     4: ["全", "清"]
   };
   now_balllist = []; //当前号码列表
->>>>>>> .r227
-
-<<<<<<< .mine
-        }else{
-            item.multiple = 0;
-            item.take_money = 0;
-        }
-        that.repanel_data()
-||||||| .r223
-        } else {
-            item.multiple = 0;
-        }
-        that.repanel_data()
-=======
   // 所有号码的列表数据
   ball_data = {
     cgj: {
@@ -1009,84 +483,7 @@ export class SCCofficialComponent implements OnInit {
       ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       tab: this.ball_tab[1],
       index: 4
->>>>>>> .r227
-        console.log(that.lotdata_now)
     }
-<<<<<<< .mine
-    // 生成计划
-    produce_plan(){
-        let that = this;
-        that.lotdata_now = $.extend(true, [], that.lotdata);
-        let gap_number,gap_multiple,multiple,chase_amount;
-        if (that.c_now_panel == 'two') {
-            gap_number = that.chase_number_config.chase_rule.number;
-            gap_multiple = that.chase_number_config.chase_rule.multiple;
-            multiple = that.chase_number_config.multiple;
-            chase_amount = that.chase_number_config.chase_amount;
-            if(chase_amount>that.lotdata_now.length){
-                chase_amount = that.lotdata_now.length;
-            }
-            for (var i = 0; i <= chase_amount-1; i++) {
-                console.log((i)%gap_number)
-                that.lotdata_now[i].checkon = true;
-                that.lotdata_now[i].multiple = multiple;
-                that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
-                if ((i+1)%gap_number == 0) {
-                    multiple = multiple*gap_multiple;
-                }; 
-
-            };          
-        }else{
-            multiple = that.chase_number_config.multiple;
-            chase_amount = that.chase_number_config.chase_amount;
-            if(chase_amount>that.lotdata_now.length){
-                chase_amount = that.lotdata_now.length;
-            }
-            for (var i = 0; i <= chase_amount-1; i++) {
-
-                that.lotdata_now[i].checkon = true;
-                that.lotdata_now[i].multiple = multiple;
-                that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
-            };
-        }
-        that.repanel_data()
-||||||| .r223
-    // 生成计划
-    produce_plan() {
-        let that = this;
-        let gap_number, gap_multiple, multiple, chase_amount;
-        if (that.c_now_panel == 'two') {
-            gap_number = that.chase_number_config.chase_rule.number;
-            gap_multiple = that.chase_number_config.chase_rule.multiple;
-            multiple = that.chase_number_config.multiple;
-            chase_amount = that.chase_number_config.chase_amount;
-            if (chase_amount > that.lotdata_now.length) {
-                chase_amount = that.lotdata_now.length;
-            }
-            for (var i = 0; i <= chase_amount - 1; i++) {
-                console.log((i) % gap_number)
-                that.lotdata_now[i].checkon = true;
-                that.lotdata_now[i].multiple = multiple;
-                that.lotdata_now[i].take_money = multiple * that.lotdata_now[i].price;
-                if ((i + 1) % gap_number == 0) {
-                    multiple = multiple * gap_multiple;
-                };
-
-            };
-        } else {
-            multiple = that.chase_number_config.multiple;
-            chase_amount = that.chase_number_config.chase_amount;
-            if (chase_amount > that.lotdata_now.length) {
-                chase_amount = that.lotdata_now.length;
-            }
-            for (var i = 0; i <= chase_amount - 1; i++) {
-                that.lotdata_now[i].checkon = true;
-                that.lotdata_now[i].multiple = multiple;
-                that.lotdata_now[i].take_money = multiple * that.lotdata_now[i].price;
-            };
-        }
-        that.repanel_data()
-=======
   };
   //追号函数
   typeoptchange() {
@@ -1096,17 +493,7 @@ export class SCCofficialComponent implements OnInit {
     } else {
       that.chase_number_config.chase_amount =
         that.chase_number_config.select_amount;
->>>>>>> .r227
     }
-<<<<<<< .mine
-    //单个金钱计算
-    get_takemon(item,e){
-        let that = this;
-||||||| .r223
-    //单个金钱计算
-    get_takemon(item) {
-        let that = this;
-=======
   }
   check_lot(item) {
     console.log(item.checkon);
@@ -1114,63 +501,11 @@ export class SCCofficialComponent implements OnInit {
     if (item.checkon) {
       if (item.multiple == 0) {
         item.multiple = that.chase_number_config.multiple;
->>>>>>> .r227
-        if (item.multiple == 0) {
-            item.checkon = false;
-        }else{
-            item.checkon = true;
-        }
-        // for (var k = 0; k <= that.sureballlist.length-1; k++) {
-
-        // }
-        item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
+        item.take_money = item.multiple * item.price;
       }
     } else {
       item.multiple = 0;
     }
-<<<<<<< .mine
-    changeregnum(e) {
-        let v = e.target;
-        v.value = v.value.replace(/\D/g, "");
-        if (Number(v.value) === 0 && v.value !== "") {
-            v.value = 0;
-        }
-        if (Number(v.value) > 0) {
-            v.value = Number(v.value);
-        }
-    }
-    // 总金钱总期数计算
-    repanel_data(){
-        let that = this;
-        let amount = 0;
-        let chase_amount = 0;
-        for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-            for (var k = 0; k <= that.sureballlist.length-1; k++) {
-                amount = that.lotdata_now[i].multiple*that.lotdata_now[i].price/that.modelarr[that.model]+amount;
-            }
-            if (that.lotdata_now[i].checkon) {
-                chase_amount = chase_amount+1;
-            };
-        };
-        that.chase_amount = chase_amount;
-        if(that.chase_amount>that.lotdata_now.length){
-            that.chase_amount = that.lotdata_now.length;
-||||||| .r223
-    // 总金钱总期数计算
-    repanel_data() {
-        let that = this;
-        let amount = 0;
-        let chase_amount = 0;
-        for (var i = 0; i <= that.lotdata_now.length - 1; i++) {
-            amount = that.lotdata_now[i].multiple * that.lotdata_now[i].price + amount;
-            if (that.lotdata_now[i].checkon) {
-                chase_amount = chase_amount + 1;
-            };
-        };
-        that.chase_amount = chase_amount;
-        if (that.chase_amount > that.lotdata_now.length) {
-            that.chase_amount = that.lotdata_now.length;
-=======
     that.repanel_data();
   }
   // 生成计划
@@ -1192,7 +527,6 @@ export class SCCofficialComponent implements OnInit {
         that.lotdata_now[i].take_money = multiple * that.lotdata_now[i].price;
         if ((i + 1) % gap_number == 0) {
           multiple = multiple * gap_multiple;
->>>>>>> .r227
         }
       }
     } else {
@@ -1207,19 +541,6 @@ export class SCCofficialComponent implements OnInit {
         that.lotdata_now[i].take_money = multiple * that.lotdata_now[i].price;
       }
     }
-<<<<<<< .mine
-    //清空追号
-    rechase_data(){
-        let that = this;
-        that.lotdata_now = $.extend(true, [], that.lotdata);
-        that.repanel_data()
-||||||| .r223
-    //清空追号
-    rechase_data() {
-        let that = this;
-        that.lotdata_now = $.extend(true, [], that.lotdata);
-        that.repanel_data()
-=======
     that.repanel_data();
   }
   //单个金钱计算
@@ -1239,61 +560,11 @@ export class SCCofficialComponent implements OnInit {
       if (that.lotdata_now[i].checkon) {
         chase_amount = chase_amount + 1;
       }
->>>>>>> .r227
     }
-<<<<<<< .mine
-    //清空追号所有数据
-    rechase_dataall(){
-        let that = this;
-        that.lotdata_now = $.extend(true, [], that.lotdata);
-        that.chase_number_config = $.extend(true, {}, that.chase_config_ori);
-        that.repanel_data()
-||||||| .r223
-    //清空追号所有数据
-    rechase_dataall() {
-        let that = this;
-        that.lotdata_now = $.extend(true, [], that.lotdata);
-        that.chase_number_config = $.extend(true, {}, that.chase_config_ori);
-        that.repanel_data()
-=======
     that.chase_amount = chase_amount;
     if (that.chase_amount > that.lotdata_now.length) {
       that.chase_amount = that.lotdata_now.length;
->>>>>>> .r227
     }
-<<<<<<< .mine
-    tab_chase(para,item_one,item_two){
-        let that = this;
-        that.rechase_dataall();
-        that.c_now_panel = para;
-        if (para == 'one') {
-            $(item_one).addClass('active');
-            $(item_two).removeClass('active');
-            $('.one').addClass('active')
-            $('.two').removeClass('active')
-        }else if(para == 'two'){
-            $(item_two).addClass('active');
-            $(item_one).removeClass('active');
-            $('.two').addClass('active')
-            $('.one').removeClass('active')
-        }
-||||||| .r223
-    tab_chase(para, item_one, item_two) {
-        let that = this;
-        that.rechase_dataall();
-        that.c_now_panel = para;
-        if (para == 'one') {
-            $(item_one).addClass('active');
-            $(item_two).removeClass('active');
-            $('.one').addClass('active')
-            $('.two').removeClass('active')
-        } else if (para == 'two') {
-            $(item_two).addClass('active');
-            $(item_one).removeClass('active');
-            $('.two').addClass('active')
-            $('.one').removeClass('active')
-        }
-=======
     that.chase_money = amount;
   }
   //清空追号
@@ -1323,59 +594,7 @@ export class SCCofficialComponent implements OnInit {
       $(item_one).removeClass("active");
       $(".two").addClass("active");
       $(".one").removeClass("active");
->>>>>>> .r227
     }
-<<<<<<< .mine
-    //提交追号
-    submit_chase(){
-        let that = this;
-        //清空
-        that.lotdata_submit = [];
-        for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-            console.log(that.lotdata_now[i].checkon != false)
-            if (that.lotdata_now[i].checkon != false) {
-                for (var k = 0; k <= that.sureballlist.length-1; k++) {
-                        let rechase :any= {};
-                        rechase.Open_stop = that.Open_stop;
-                        rechase.Win_stop = that.Win_stop;
-                        rechase.multiple = that.lotdata_now[i].multiple;
-                        rechase.model = that.model;
-                        rechase.count = 1;
-                        rechase.sum = (2*rechase.multiple) /that.modelarr[rechase.model]
-                        rechase.amount = that.totalinfo.amount;
-                        rechase.ball = that.sureballlist[k].ball;
-                        rechase.name = that.sureballlist[k].name;
-                        rechase.issue = that.lotdata_now[i].lot_num;
-                        that.lotdata_submit.push(rechase)
-                }
-            };
-        }
-        console.log(that.lotdata_submit)
-        if(!that.lotdata_submit[0]){
-            that.POPNOTE({msg:'请选择追号期数'});
-            return
-        }else{
-            that.POPNOTE({msg:`您确定追号${that.lotdata_now.length}期么? 总投入${that.chase_money}元。`},that.betnow);
-            return
-        }
-        
-        
-    }
-    betnow(){
-        let that = this;
-        console.log(that.lotdata_submit)
-        // 在此处提交追号所有号码
-    }
-    close_chase(){
-        $('#layer2').find('.chase_container').removeClass('show_this');
-        let that = this;
-        that.rechase_dataall()
-||||||| .r223
-    close_chase() {
-        $('#layer2').find('.chase_container').removeClass('show_this');
-        let that = this;
-        that.rechase_dataall()
-=======
   }
   close_chase() {
     $("#layer2")
@@ -1506,46 +725,7 @@ export class SCCofficialComponent implements OnInit {
       example: "投注方案：第一名 1<br/>开奖号码：第一名 1，即中奖定位胆第一。",
       rule:
         "从第一到第十名任意位置上至少选择1个以上号码，所选号码与相同位置上的开奖号码一致，即为中奖。"
->>>>>>> .r227
     }
-<<<<<<< .mine
-    chase_number(){
-        let that = this;
-        if (!that.sureballlist[0]) {
-            that.POPNOTE({msg:'注单列表为空，请先下注！或者随机1注',btn:'随机一注'},that.radomshowchase);
-            return false
-        };
-        that.showchase();
-        
-    }  
-    show_chasenumber(param,nextrun){
-        let msg = param.msg;
-        let til = param.til;
-        let self = this;
-        let str = '';   
-        let dom = $(this.parseDom(str))
-        dom.find('.close').on('click',function(){
-            self.hid_layer();
-        }) 
-        dom.find('.confirm_box').on('click',function(){
-            nextrun();
-        })
-        $('#layer').append(dom);
-        setTimeout(function(){
-            dom.addClass('tobig')
-        }, 10)
-        window.onresize = function () {
-            console.log('x')
-        }
-    }
-  
-    radomshowchase(){
-        this.mathball(this.menu_2);
-        $('#layer2').find('.chase_container').addClass('show_this');
-||||||| .r223
-    chase_number() {
-        $('#layer2').find('.chase_container').addClass('show_this');
-=======
   };
   now_matchtab = {}; //用来存储选中的号
   now_matchball = {
@@ -1603,191 +783,7 @@ export class SCCofficialComponent implements OnInit {
       this.hid_tab = true;
     } else {
       this.hid_tab = false;
->>>>>>> .r227
     }
-<<<<<<< .mine
-    showchase(){
-        $('#layer2').find('.chase_container').addClass('show_this');
-    }
-    hid_layer(){
-        document.getElementById("layer").innerHTML = '';
-    }
-    // 弹层1
-    parseDom(arg) {
-    　　 var objE = document.createElement("div");
-    　　 objE.innerHTML = arg;
-    　　 return objE.childNodes;
-    };
-//追号函数结束
-    // 遗漏数据
-    omitarr = {
-        0: [],
-        1: [],
-        2: [],
-        3: [],
-        4: []
-    }
-    // 所有要用到的号码
-    match_tab = {
-        0: {
-            1: 1,
-            2: 2,
-            3: 3,
-            4: 4,
-            5: 5,
-            6: 6,
-            7: 7,
-            8: 8,
-            9: 9,
-            10: 10
-        },
-        1: {
-            6: 6,
-            7: 7,
-            8: 8,
-            9: 9,
-            10: 10
-        },
-        2: {
-            1: 1,
-            2: 2,
-            3: 3,
-            4: 4,
-            5: 5
-        },
-        3: {
-            1: 1,
-            3: 3,
-            5: 5,
-            7: 7,
-            9: 9
-        },
-        4: {
-            2: 2,
-            4: 4,
-            6: 6,
-            8: 8,
-            10: 10
-        },
-        5: {}
-    };
-    //所有的规则
-    lot_rules = {
-        '1_1': {
-            description: "从01-10中任意选择1个或1个以上号码",
-            example: "投注方案：01<br>开奖号码第一位：01<br>即中猜冠军",
-            rule: "开奖号码的首位出现在所选号码中，即为中奖",
-        },
-        '2_1': {
-            description: "从01-10中选择两个号码组成一注号码",
-            example: "投注方案：01 02<br>开奖号码：01 02 03 04 05 06 07 08 09 10<br>即中猜前二。",
-            rule: "如果开奖号码的前两位和所选号码一致，并位置正确，即为中奖",
-        },
-        '2_2': {
-            description: "手动输入号码，并由2个号码组成一注。",
-            example: "投注方案：0102； 开奖号码：01,02,03,04,05,06,07,08,09,10，即中猜前二",
-            rule: "手动输入01-10中的2个不重复的号码组成一注，所填号码与当期顺序摇出的10个号码中的前2个号码相同，且顺序一致，即中奖。",
-        },
-        '3_1': {
-            description: "从01-10中选择三个号码组成一注号码",
-            example: "投注方案：01 02 03<br>开奖号码：01 02 03 04 05 06 07 08 09 10<br>即中猜前三。",
-            rule: "如果开奖号码的前三位和所选号码一致，并位置正确，即为中奖",
-        },
-        '3_2': {
-            description: "手动输入号码，并由3个号码组成一注。",
-            example: "投注方案：010203； 开奖号码：01,02,03,04,05,06,07,08,09,10，即中猜前三",
-            rule: "手动输入01-10中的3个不重复的号码组成一注，所填号码与当期顺序摇出的10个号码中的前3个号码相同，且顺序一致，即中奖。",
-        },
-        '4_1': {
-            description: "从01-10中选择四个号码组成一注号码",
-            example: "投注方案：01 02 03 04<br>开奖号码：01 02 03 04 05 06 07 08 09 10<br>即中猜前四。",
-            rule: "如果开奖号码的前四位和所选号码一致，并位置正确，即为中奖",
-||||||| .r223
-    //追号函数结束
-    // 遗漏数据
-    omitarr = {
-        0: [],
-        1: [],
-        2: [],
-        3: [],
-        4: []
-    }
-    // 所有要用到的号码
-    match_tab = {
-        0: {
-            1: 1,
-            2: 2,
-            3: 3,
-            4: 4,
-            5: 5,
-            6: 6,
-            7: 7,
-            8: 8,
-            9: 9,
-            10: 10
-        },
-        1: {
-            6: 6,
-            7: 7,
-            8: 8,
-            9: 9,
-            10: 10
-        },
-        2: {
-            1: 1,
-            2: 2,
-            3: 3,
-            4: 4,
-            5: 5
-        },
-        3: {
-            1: 1,
-            3: 3,
-            5: 5,
-            7: 7,
-            9: 9
-        },
-        4: {
-            2: 2,
-            4: 4,
-            6: 6,
-            8: 8,
-            10: 10
-        },
-        5: {}
-    };
-    //所有的规则
-    lot_rules = {
-        '1_1': {
-            description: "从01-10中任意选择1个或1个以上号码",
-            example: "投注方案：01<br>开奖号码第一位：01<br>即中猜冠军",
-            rule: "开奖号码的首位出现在所选号码中，即为中奖",
-        },
-        '2_1': {
-            description: "从01-10中选择两个号码组成一注号码",
-            example: "投注方案：01 02<br>开奖号码：01 02 03 04 05 06 07 08 09 10<br>即中猜前二。",
-            rule: "如果开奖号码的前两位和所选号码一致，并位置正确，即为中奖",
-        },
-        '2_2': {
-            description: "手动输入号码，并由2个号码组成一注。",
-            example: "投注方案：0102； 开奖号码：01,02,03,04,05,06,07,08,09,10，即中猜前二",
-            rule: "手动输入01-10中的2个不重复的号码组成一注，所填号码与当期顺序摇出的10个号码中的前2个号码相同，且顺序一致，即中奖。",
-        },
-        '3_1': {
-            description: "从01-10中选择三个号码组成一注号码",
-            example: "投注方案：01 02 03<br>开奖号码：01 02 03 04 05 06 07 08 09 10<br>即中猜前三。",
-            rule: "如果开奖号码的前三位和所选号码一致，并位置正确，即为中奖",
-        },
-        '3_2': {
-            description: "手动输入号码，并由3个号码组成一注。",
-            example: "投注方案：010203； 开奖号码：01,02,03,04,05,06,07,08,09,10，即中猜前三",
-            rule: "手动输入01-10中的3个不重复的号码组成一注，所填号码与当期顺序摇出的10个号码中的前3个号码相同，且顺序一致，即中奖。",
-        },
-        '4_1': {
-            description: "从01-10中选择四个号码组成一注号码",
-            example: "投注方案：01 02 03 04<br>开奖号码：01 02 03 04 05 06 07 08 09 10<br>即中猜前四。",
-            rule: "如果开奖号码的前四位和所选号码一致，并位置正确，即为中奖",
-=======
   }
   // 通过id获取目前显示的项目配置文件
   getPageId() {
@@ -1883,7 +879,6 @@ export class SCCofficialComponent implements OnInit {
           }
         });
       }
->>>>>>> .r227
 
       if (liWidth < ulMax) {
         $(".tab_li").removeClass("hide_it");
@@ -2057,7 +1052,6 @@ export class SCCofficialComponent implements OnInit {
   public ballcurr: any = {}; // 当前选中的球以及匹配状态
   public tabcurr: any = {}; // 当前选中的tab信息
   public choosem_status = false; // 当前选中的tab信息
-
   // 选中号码
   choosetab(index, clickindex, val, that) {
     this.now_matchball = {
@@ -2182,7 +1176,6 @@ export class SCCofficialComponent implements OnInit {
     amount: 0
   }; //当前下注信息
   modelarr = [1, 10, 100, 1000]; // 下注模式对应的要除以的金额
-
   // 导入txt
   filestatus = true;
   @ViewChild("uploadFile")

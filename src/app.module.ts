@@ -1,7 +1,6 @@
 import { enableProdMode } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Router } from "@angular/router";
-import { SharkModule } from '@ntesmail/shark-angular2';
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'; 
@@ -24,7 +23,7 @@ if (ENV === 'prod') {
 }
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, SharkModule, AppRoutingModule,HttpModule ,HttpClientModule,],
+    imports: [BrowserModule, FormsModule, AppRoutingModule,HttpModule ,HttpClientModule,],
     declarations: [AppComponent],
 	providers: [
 		{provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true},HttpInterceptorService

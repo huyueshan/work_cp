@@ -1,76 +1,76 @@
-<div class="flex-c" [hidden]="!loadpage">
-  <div>
-    <app-header [username]="'test08'" [curpath]="'usercenter'"></app-header>
-  </div>
-  <div class="usercontent flex-r">
-    <div class="sidebox">
-        <app-side [navtitle]="'用户中心'"
-        [data]="usersidedata" [bgurl]="bgurl" #side></app-side>
+<div class="flex-c container">
+    <header>
+        <app-header></app-header>
+    </header>
+    <div class="usercontent flex-r">
+        <div class="flex-c sidebox">
+
+
+            <div class="flex-c userinfobox">
+                <span class="userinfo">
+                    <i></i>
+                </span>
+                <dl class="flex-r">
+                    <td>用户名称：</td><dd><strong class="color_m">test02</strong></dd>
+                </dl>
+                <dl class="flex-r">
+                    <td>账户余额：</td><dd><strong class="color_m">9999.99</strong> 元</dd>
+                </dl>
+                <span class="flex-r btngroup">
+                    <span>立即提现</span>
+                    <span class="active">立即充值</span>
+                </span>
+                <span class="flex-r infofoot">
+                        当前账户安全等级:中等
+                        <span>
+                            <span class="color_m">提升</span>
+                            <i></i>
+                        </span>
+                </span>
+            </div>
+            
+        <!-- <div class="sidebox"> -->
+                <ul class="flex-sc sidel">
+                    <li class="flex-sc" *ngFor="let item of usersidedata; let i=index" onselectstart="return false;" style="-moz-user-select:none;">
+                            <div class="flex-sr itembox" (click)="itemboxclick(i)" (mouseenter)="itemboxenter(i)" (mouseleave)="itemboxleave(i)" [ngClass]="{'boxactive': currentactive == i}">
+                                <div class="flex-sr borderb">
+                                    <div class="flex-sr">
+                                        <i class="sideicon" [ngStyle]="{'background-position-y.px':item.bg.y}" [ngClass]="{sideiconhoverbg: item.isover || currentactive == i}"></i>
+                                        <span style="padding-left: 10px;">{{item.title}}</span>
+                                    </div>
+                                    <div>
+                                        <i class="itemboxiconr" [ngClass]="{'iconactive': currentactive == i}"></i>
+                                    </div>
+    
+                                </div>
+                            </div>
+                                <ng-container *ngFor="let child of item.items; let n=index">
+                                    <div class="flex-sr item" (click)="itemclick(child)" [ngClass]="{'itemactive': currentitem== child.text}">
+                                        {{child.text}}
+    
+                                    </div>
+                                </ng-container>
+                    </li>
+                </ul>
+            <!-- </div> -->
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="flex-c content">
+            <!-- 右边内容区头部 -->
+           <!-- 表格内容 -->
+            <div class="tablecontent">
+                <router-outlet></router-outlet>
+            </div>
+
+        </div>
 
     </div>
-    <div class="flex-c content">
-      <!-- 右边内容区头部 -->
-      <div class="flex-r contop">
-        <div class="flex-r contopl">
-          <i></i>
-          <div>
-            <strong>{{now_lang.User_center.Hello}},</strong>
-            <span>test02</span>
-          </div>
-        </div>
-        <div class="flex-c contopr">
-
-          <span class="cottitle">
-            <strong>{{now_lang.User_center.Balance}}</strong>
-            <span>{{now_lang.User_center.Frozen_balance}}：0.00{{now_lang.User_center.Yuan}}</span>
-          </span>
-          <div class="flex-r cotmid">
-            <span>
-              <strong>9999.00</strong>
-              <small>{{now_lang.User_center.Yuan}}</small> &nbsp;
-            </span>
-            <span>
-              <a routerLink="/usercenter/recharge">
-                <span class="btn chongzhi btnb">{{now_lang.User_center.Inmoney}} </span>
-              </a>
-            </span>
-            <span>
-                <a routerLink="/usercenter/withdrawdeposit">
-                  <span class="btn tixian btnb">{{now_lang.User_center.Outmoney}} </span>
-                </a>
-            </span>
-          </div>
-          <span class="cotinfo">
-            {{now_lang.User_center.Last_login}}： 2018-05-22 10：07：10
-          </span>
-        </div>
-      </div>
-      <!-- 面包屑 -->
-      <div class="flex-r crumbs">
-        <p>
-          <a>{{side.navtitle}}</a>>
-          <a>{{side.currentparent}}</a>>
-          <span>{{side.currentitem}}</span>
-        </p>
-        <div *ngIf="side.currentitem==='充值记录'">
-            <span class="btn chongzhi">{{now_lang.User_center.Inmoney_history}}</span>
-            <span class="btn tixian">{{now_lang.User_center.Out_money_history}}</span>
-        </div>
-        <div *ngIf="side.currentitem==='站内短信'">
-          <span class="btn chongzhi">{{now_lang.User_center.Message_box}}</span>
-          <span class="btn tixian">{{now_lang.User_center.Outmessage_box}}</span>
-        </div>
-      </div>
-      <!-- 表格内容 -->
-      <div class="tablecontent">
-        <router-outlet></router-outlet>
-      </div>
-
-    </div>
-
-  </div>
-  <div class="footer">
-    <app-footer></app-footer>
-  </div>
-
 </div>
