@@ -33,7 +33,7 @@
                     <img src="../../images/mod3/logo_m3_01.png" alt="豪彩网">
                 </span>
                 <span class="flex-r headr">
-                    <ul class="flex-r">
+                    <ul class="flex-r" id="nav">
                         <li class="flex-r" *ngFor="let item of navdata; let i = index" (click)="navclick($event,i)">
                             <a attr.href="{{item.link}}">{{item.text}}</a>
                         </li>

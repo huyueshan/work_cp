@@ -1,72 +1,69 @@
 <div class="flex-c container">
     <header>
-        <app-header></app-header>
+        <app-header [username]="'test08'" [curpath]="'usercenter'"></app-header>
     </header>
     <div class="usercontent flex-r">
         <div class="flex-c sidebox">
-
-
             <div class="flex-c userinfobox">
                 <span class="userinfo">
                     <i></i>
                 </span>
                 <dl class="flex-r">
-                    <td>用户名称：</td><dd><strong class="color_m">test02</strong></dd>
+                    <td>用户名称：</td>
+                    <dd>
+                        <strong class="color_m">test02</strong>
+                    </dd>
                 </dl>
                 <dl class="flex-r">
-                    <td>账户余额：</td><dd><strong class="color_m">9999.99</strong> 元</dd>
+                    <td>账户余额：</td>
+                    <dd>
+                        <strong class="color_m">9999.99</strong> 元</dd>
                 </dl>
                 <span class="flex-r btngroup">
-                    <span>立即提现</span>
-                    <span class="active">立即充值</span>
+                    <span (click)="itemclick('/usercenter/withdrawdeposit')">立即提现</span>
+                    <span class="active" (click)="itemclick('/usercenter/recharge')">立即充值</span>
                 </span>
                 <span class="flex-r infofoot">
-                        当前账户安全等级:中等
-                        <span>
-                            <span class="color_m">提升</span>
-                            <i></i>
-                        </span>
+                    当前账户安全等级:中等
+                    <span>
+                        <span class="color_m">提升</span>
+                        <i></i>
+                    </span>
                 </span>
             </div>
-            
-        <!-- <div class="sidebox"> -->
-                <ul class="flex-sc sidel">
-                    <li class="flex-sc" *ngFor="let item of usersidedata; let i=index" onselectstart="return false;" style="-moz-user-select:none;">
-                            <div class="flex-sr itembox" (click)="itemboxclick(i)" (mouseenter)="itemboxenter(i)" (mouseleave)="itemboxleave(i)" [ngClass]="{'boxactive': currentactive == i}">
-                                <div class="flex-sr borderb">
-                                    <div class="flex-sr">
-                                        <i class="sideicon" [ngStyle]="{'background-position-y.px':item.bg.y}" [ngClass]="{sideiconhoverbg: item.isover || currentactive == i}"></i>
-                                        <span style="padding-left: 10px;">{{item.title}}</span>
-                                    </div>
-                                    <div>
-                                        <i class="itemboxiconr" [ngClass]="{'iconactive': currentactive == i}"></i>
-                                    </div>
-    
-                                </div>
+            <ul class="flex-sc sidel">
+                <li class="flex-sc" *ngFor="let item of usersidedata; let i=index" onselectstart="return false;" style="-moz-user-select:none;">
+                    <div class="flex-sr itembox" (click)="itemboxclick(i)" (mouseenter)="itemboxenter(i)" (mouseleave)="itemboxleave(i)" [ngClass]="{'boxactive': currentactive == i}">
+                        <div class="flex-sr borderb">
+                            <div class="flex-sr">
+                                <span class="flex-sc liconbox">
+                                    <i class="sideicon" [ngStyle]="{'background-position-y.px':item.bgy,'width':item.width,'height':item.height}" [ngClass]="{sideiconhoverbg: item.isover || currentactive == i}"></i>
+                                </span>
+                                <span>{{item.title}}</span>
                             </div>
-                                <ng-container *ngFor="let child of item.items; let n=index">
-                                    <div class="flex-sr item" (click)="itemclick(child)" [ngClass]="{'itemactive': currentitem== child.text}">
-                                        {{child.text}}
-    
-                                    </div>
-                                </ng-container>
-                    </li>
-                </ul>
-            <!-- </div> -->
-
-
+                            <div>
+                                <i class="itemboxiconr" [ngClass]="{'iconactive': currentactive == i}"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="currentactive == i">
+                        <ng-container *ngFor="let child of item.items; let n=index">
+                            <div class="flex-sr item" (click)="itemclick(child.link)" [ngClass]="{'itemactive': currentitem== child.text}">
+                                {{child.text}}
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </li>
+            </ul>
         </div>
 
 
-
-
-
-
-
         <div class="flex-c content">
-            <!-- 右边内容区头部 -->
-           <!-- 表格内容 -->
-            <div class="tablecontent">
+            <div class="flex-r crumbs">
+                <span class="curitem">{{currentitem}}</span>
+            </div>
+            <!-- 表格内容 -->
+            <div class="tablecontent" style="margin-top: 20px">
                 <router-outlet></router-outlet>
             </div>
 

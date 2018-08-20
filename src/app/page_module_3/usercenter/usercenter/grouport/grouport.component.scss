@@ -17,21 +17,19 @@
 }
 
 .bg_1 {
-    background-color: #f5f5f5;
+    background-color: #ECECF4;
 }
 
 .mycontainer {
-    width: 950px;
+    width: 100%;
     padding: 0;
     align-content: flex-start;
     align-items: flex-start;
-    color: #333;
 }
 
 .itemr_box {
+    width: 100%;
     height: 50px;
-    border-bottom: 1px solid #ccc;
-    border-right: 1px solid #ccc;
     padding: 0 10px;
 }
 
@@ -49,9 +47,7 @@
     width: 100%;
     height: 50px;
     padding: 0 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    background-color: #f5f5f5;
+    background-color: #F0F0F0;
 }
 
 .query_item {
@@ -60,11 +56,12 @@
 }
 
 input {
-    width: 132px;
+    width: 160px;
     height: 30px;
     line-height: 20px;
     padding: 5px 0 4px 5px;
     border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 input[type="checkbox"] {
@@ -83,45 +80,42 @@ label {
     font-weight: normal;
 }
 
-.datebtn {
-    display: inline-block;
-    width: 60px;
+
+.querybtn {
     height: 30px;
     line-height: 28px;
     text-align: center;
-    background-color: white;
-    border: 1px solid #999;
-    border-radius: 2px;
-    cursor: pointer;
-}
-
-.bd_y,
-.datebtn:hover {
-    border: 1px solid #fe8f00;
-}
-
-.querybtn,
-.querybtn2:hover {
-    display: inline-block;
-    width: 70px;
-    height: 30px;
-    line-height: 28px;
-    padding: 0;
-    text-align: center;
-    background-color: #fe8f00;
-    border: 1px solid #d17702;
-    border-radius: 2px;
+    padding: 0 14px;
+    margin: 5px 10px;
     color: white;
-    outline: none;
-    box-shadow: none;
+    border-radius: 4px;
+    background: linear-gradient(to top, #941927, #e22137);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
 
-.querybtn2 {
-    margin-left: 10px;
-    background-color: #ccc;
-    color: #333;
-    border: 1px solid #999;
+.btngroup {
+    width: 100%;
+    padding: 10px;
+    justify-content: flex-end;
+    span {
+        height: 30px;
+        line-height: 28px;
+        text-align: center;
+        padding: 0 14px;
+        margin: 0 5px;
+        color: black;
+        border: none;
+        border-radius: 4px;
+        background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+    }
+    .active,
+    span:hover {
+        color: white;
+        background: linear-gradient(to top, #941927, #e22137);
+    }
 }
 
 .checkitems {
@@ -187,7 +181,14 @@ label {
 #table td {
     text-align: center;
     height: 40px;
-    border: 1px solid #ccc;
+}
+
+#table td {
+    border-bottom: 1px solid #ccc;
+}
+
+#table tr:nth-child(even) {
+    background-color: #FBFBFB;
 }
 
 .weight td {
@@ -195,7 +196,7 @@ label {
 }
 
 .color_y {
-    color: #fe8f00;
+    color: #C42136;
 }
 
 .page {

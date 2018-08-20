@@ -1,79 +1,81 @@
 <div class="flex-c container">
-  <div class="flex-r querycontent">
-    <span><label for="starttime">{{now_lang.User_center_c.Time}}： </label>
-      <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime"/>
-      <label for="endtime">{{now_lang.User_center_c.Go}} </label>
-      <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime"/>
-    </span>
-    <span>
-      <label for="caizhong">{{now_lang.User_center_c.Lot_type}}：</label>
-      <select id="caizhong" name="caizhong" [(ngModel)]="querydata.caizhong">
-        <option value="全部" selected>{{now_lang.User_center_c.All}}</option>
-        <option value="option1">option1</option>
-        <option value="option2">option2</option>
-        <option value="option3">option3</option>
-      </select>
-    </span>
-    <span>
-      <label for="playtype">{{now_lang.User_center_c.Play_type}}：</label>
-      <select id="playtype" name="playtype" [(ngModel)]="querydata.playtype">
-        <option value="全部" selected>{{now_lang.User_center_c.All}}</option>
-        <option value="option1">option1</option>
-        <option value="option2">option2</option>
-        <option value="option3">option3</option>
-      </select>
-    </span>
-    <span>
-      <label for="status">{{now_lang.User_center_c.State}}：</label>
-      <select id="status" name="status" [(ngModel)]="querydata.status">
-        <option value="全部" selected>{{now_lang.User_center_c.All}}</option>
-        <option value="option1">option1</option>
-        <option value="option2">option2</option>
-        <option value="option3">option3</option>
-      </select>
-    </span>
-    <span class="flex-r">
+    <div class="flex-r querycontent">
+        <span>
+            <label for="starttime">{{now_lang.User_center_c.Time}}： </label>
+            <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
+            <label for="endtime"><strong>-</strong> </label>
+            <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
+        </span>
+        <span>
+            <label for="caizhong">{{now_lang.User_center_c.Lot_type}}：</label>
+            <select id="caizhong" name="caizhong" [(ngModel)]="querydata.caizhong">
+                <option value="全部" selected>{{now_lang.User_center_c.All}}</option>
+                <option value="option1">option1</option>
+                <option value="option2">option2</option>
+                <option value="option3">option3</option>
+            </select>
+        </span>
+        <span>
+            <label for="playtype">{{now_lang.User_center_c.Play_type}}：</label>
+            <select id="playtype" name="playtype" [(ngModel)]="querydata.playtype">
+                <option value="全部" selected>{{now_lang.User_center_c.All}}</option>
+                <option value="option1">option1</option>
+                <option value="option2">option2</option>
+                <option value="option3">option3</option>
+            </select>
+        </span>
+        <span>
+            <label for="status">{{now_lang.User_center_c.State}}：</label>
+            <select id="status" name="status" [(ngModel)]="querydata.status">
+                <option value="全部" selected>{{now_lang.User_center_c.All}}</option>
+                <option value="option1">option1</option>
+                <option value="option2">option2</option>
+                <option value="option3">option3</option>
+            </select>
+        </span>
+    </div>
+    <div class="flex-r btnbox">
+        <span class="flex-r">
+            <input type="checkbox" id="wrap" name="wrap" [(ngModel)]="querydata.iswrap" />{{now_lang.User_center_c.Include_lower}}
+        </span>
+        <span class="querybtn">{{now_lang.User_center_c.Search}}</span>
+    </div>
+    <div class=" flex-c tablebox">
+        <div class="tablewrap">
+            <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4" align="center">
+                <tr class="bg_1">
+                    <th width="170px">{{now_lang.User_center_c.Search}}</th>
+                    <th width="150px">{{now_lang.User_center_c.Bet_time}}</th>
+                    <th width="100px">{{now_lang.User_center_c.User}}</th>
+                    <th>{{now_lang.User_center_c.Lot_type}}</th>
+                    <th>{{now_lang.User_center_c.Play_type}}</th>
+                    <th>{{now_lang.User_center_c.Bet_cont}}</th>
+                    <th>{{now_lang.User_center_c.Bet_term}}</th>
+                    <th>{{now_lang.User_center_c.Bet_money}}</th>
+                    <th>{{now_lang.User_center_c.Bet_back}}</th>
+                    <th>{{now_lang.User_center_c.Bonus}}</th>
+                    <th>{{now_lang.User_center_c.Open_number}}</th>
+                    <th>{{now_lang.User_center_c.State}}</th>
+                </tr>
+                <tr *ngFor="let item of goucaidata">
+                    <td>{{item.id?item.id:''}}</td>
+                    <td>{{item.time}}</td>
+                    <td>{{item.user}}</td>
+                    <td>{{item.style}}</td>
+                    <td>{{item.playtype}}</td>
+                    <td>{{item.content}}</td>
+                    <td>{{item.issue}}</td>
+                    <td>{{item.money}}</td>
+                    <td>{{item.rebates}}</td>
+                    <td>{{item.bonus}}</td>
+                    <td>{{item.currentnumber}}</td>
+                    <td>{{item.state?'中奖':item.id?'未中奖':''}}</td>
+                </tr>
+            </table>
 
-      <input type="checkbox" id="wrap" name="wrap" [(ngModel)]="querydata.iswrap" />{{now_lang.User_center_c.Include_lower}} 
-    </span>
-    <span class="querybtn">{{now_lang.User_center_c.Search}}</span>
-  </div>
-  <div class=" flex-c tablebox">
-    <div class="tablewrap">
-      <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
-        <tr class="bg_1">
-          <th width="170px">{{now_lang.User_center_c.Search}}</th>
-          <th width="150px">{{now_lang.User_center_c.Bet_time}}</th>
-          <th width="100px">{{now_lang.User_center_c.User}}</th>
-          <th>{{now_lang.User_center_c.Lot_type}}</th>
-          <th>{{now_lang.User_center_c.Play_type}}</th>
-          <th>{{now_lang.User_center_c.Bet_cont}}</th>
-          <th>{{now_lang.User_center_c.Bet_term}}</th> 
-          <th>{{now_lang.User_center_c.Bet_money}}</th>
-          <th>{{now_lang.User_center_c.Bet_back}}</th>
-          <th>{{now_lang.User_center_c.Bonus}}</th>
-          <th>{{now_lang.User_center_c.Open_number}}</th>
-          <th>{{now_lang.User_center_c.State}}</th>
-        </tr>
-        <tr *ngFor="let item of goucaidata">
-          <td>{{item.id?item.id:''}}</td>
-          <td>{{item.time}}</td>
-          <td>{{item.user}}</td>
-          <td>{{item.style}}</td>
-          <td>{{item.playtype}}</td>
-          <td>{{item.content}}</td>
-          <td>{{item.issue}}</td>
-          <td>{{item.money}}</td>
-          <td>{{item.rebates}}</td>
-          <td>{{item.bonus}}</td>
-          <td>{{item.currentnumber}}</td>
-          <td>{{item.state?'中奖':item.id?'未中奖':''}}</td>
-        </tr>
-      </table>
+        </div>
+
+        <app-page [pageParams]="pagination" (changeCurPage)="getPageData($event)"></app-page>
 
     </div>
-
-    <app-page [pageParams]="pagination" (changeCurPage)="getPageData($event)"></app-page>
-
-  </div>
 </div>

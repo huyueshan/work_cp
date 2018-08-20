@@ -30,16 +30,9 @@ export class UsercenterComponent
   public usersidedata = [
     {
       title: this.now_lang.User_center.Bet_history, 
-      icon_x: -10,
-      bg:{
-        url:'url("../../images/sidebg1.png")',
-        x:-332,
-        y:-10,
-        defx:-332,
-        defy:-10,
-        hovx:-102,
-        hovy:-10,
-      },
+      bgy:-314,
+      width: '15px',
+      height: '17px',
       isover: false,
       isactive: false,
       items: [
@@ -55,16 +48,9 @@ export class UsercenterComponent
     },
     {
       title: this.now_lang.User_center.Report_manage,
-      icon_x: -56,
-      bg:{
-        url:'url("../../images/sidebg1.png")',
-        x:-378,
-        y:-10,
-        defx:-378,
-        defy:-10,
-        hovx:-148,
-        hovy:-10,
-      },
+      bgy:-172,
+      width: '15px',
+      height: '15px',
       isover: false,
       isactive: false,
       items: [
@@ -92,16 +78,9 @@ export class UsercenterComponent
     },
     {
       title: this.now_lang.User_center.Account_manage,
-      icon_x: -102,
-      bg:{
-        url:'url("../../images/sidebg1.png")',
-        x:-424,
-        y:-6,
-        defx:-424,
-        defy:-6,
-        hovx:-194,
-        hovy:-6,
-      },
+      bgy:-70,
+      width: '14px',
+      height: '14px',
       isover: false,
       isactive: false,
       items: [
@@ -141,16 +120,9 @@ export class UsercenterComponent
     },
     {
       title: this.now_lang.User_center.Agent_manage,
-      icon_x: -148,
-      bg:{
-        url:'url("../../images/sidebg1.png")',
-        x:-10,
-        y:-10,
-        defx:-10,
-        defy:-10,
-        hovx:-240,
-        hovy:-10,
-      },
+      bgy:-37,
+      width: '13px',
+      height: '13px',
       isover: false,
       isactive: false,
       items: [
@@ -178,16 +150,9 @@ export class UsercenterComponent
     },
     {
       title: this.now_lang.User_center.Messege_board,
-      icon_x: -194,
-      bg:{
-        url:'url("../../images/sidebg1.png")',
-        x:-56,
-        y:-10,
-        defx:-56,
-        defy:-10,
-        hovx:-286,
-        hovy:-10,
-      },
+      bgy:-242,
+      width: '14px',
+      height: '16px',
       isover: false,
       isactive: false,
       items: [
@@ -207,6 +172,13 @@ export class UsercenterComponent
   ngOnInit() {
     this.now_lang_type=userModel.now_lang_type;
     this.loadpage = userModel.platform;
+    this.getrouteurl();
+    // 路由地址改变后的事件
+    this.router.events
+      .filter(event => event instanceof NavigationEnd)
+      .subscribe((event: NavigationEnd) => {
+        this.getrouteurl();
+      });
   }
   ngAfterContentChecked() {}
   ngAfterViewInit() {}
@@ -242,8 +214,6 @@ export class UsercenterComponent
     for (let q = 0; q < this.usersidedata.length; q++) {
       let d = this.usersidedata[q];
       d.isover = false;
-      d.bg.x = d.bg.defx;
-      d.bg.y = d.bg.defy;
     }
     this.itemboxenter(i);
   }
@@ -251,24 +221,19 @@ export class UsercenterComponent
   itemboxenter(i) {
     let d = this.usersidedata[i];
     d.isover = true;
-    d.bg.x = d.bg.hovx;
-    d.bg.y = d.bg.hovy;
   }
   // 鼠标离开目录事件
   itemboxleave(i) {
     let d = this.usersidedata[i];
     if (this.currentactive == i) {
-      d.bg.x = d.bg.hovx;
-      d.bg.y = d.bg.hovy;
       return;
     }
     d.isover = false;
-    d.bg.x = d.bg.defx;
-    d.bg.y = d.bg.defy;
   }
   // 导航栏二级菜单点击事件
   itemclick(L) {
     // 跳转路由
+    console.log(L);
     this.router.navigate([L]);
   }
 }

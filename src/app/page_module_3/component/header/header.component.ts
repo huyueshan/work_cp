@@ -1,4 +1,4 @@
-import { Component, OnInit,Input,OnDestroy} from "@angular/core";
+import { Component, OnInit,Input,OnDestroy,AfterViewInit, ElementRef,} from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
 
@@ -11,9 +11,10 @@ import languagepackage from '../../../../status/language';
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.scss"]
 })
-export class HeaderComponent implements OnInit,OnDestroy {
+export class HeaderComponent implements OnInit,OnDestroy,AfterViewInit {
     @Input() username? :  {Type:any, default:'chen' }; // 用户名
-    @Input() curpath? :  ''; // 当前路由位置
+    @Input() curpath? :string ='index'; // 当前路由位置
+    public pathdata = ['index','lottery','usercenter','Activity','Announncement','GameInformation','cpinfo','Mobile']
     public now_lang :any=userModel.langpackage;
     public now_lang_type :any='zh';
     public navdata = [
@@ -70,11 +71,27 @@ export class HeaderComponent implements OnInit,OnDestroy {
           curlang:'中文',
       }
     
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private httpClient: HttpClient, private router: Router,private el: ElementRef) {}
 	ngOnInit(){
 		this.now_lang=userModel.langpackage;
-		this.now_lang_type=userModel.now_lang_type;
+        this.now_lang_type=userModel.now_lang_type;
+        
 	}
+    ngAfterViewInit() {
+
+        setTimeout(() => {
+            let n = this.pathdata.indexOf(this.curpath);
+            const ele = this.el.nativeElement.querySelectorAll("#nav li");
+            let w = ele[n].offsetWidth + 'px';
+            let l = ele[n].offsetLeft + 'px';
+            let o = {
+                width:w,
+                left:l,
+            };
+            this.lineinfo = Object.assign({},o);
+        }, 50);
+        
+    }
     ngOnDestroy() {
     }
     

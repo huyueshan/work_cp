@@ -18,15 +18,13 @@
 }
 
 .color_y {
-    color: #fe8f00;
+    color: #C42136;
 }
 
 .bankbox {
     width: 100%;
     height: 554px;
     padding: 10px 30px;
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
     justify-content: flex-start;
 }
 
@@ -34,15 +32,28 @@
     width: 100%;
     height: 44px;
     padding: 5px 0;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 500;
-    justify-content: flex-start;
-    align-items: baseline;
+    border-bottom: 1px solid #ccc;
 }
 
 .bankhead p {
-    padding-left: 20px;
+    padding-left: 16px;
+    font-size: 10px;
+}
+.addbtn{
+    height: 30px;
+    line-height: 28px;
     font-size: 14px;
+    text-align: center;
+    padding: 0 14px;
+    margin: 5px 30px;
+    color: white;
+    border-radius: 4px;
+    background: linear-gradient(to top, #941927, #e22137);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+
 }
 
 .bankcontent {
@@ -52,72 +63,56 @@
     flex-wrap: wrap;
 }
 
-.bankitembox {
-    padding: 8px;
+.itmdel {
+    font-size: 20px;
+    cursor: pointer;
 }
 
-.bankitem {
-    width: 280px;
-    height: 136px;
-    font-size: 12px;
-    padding: 18px 10px 18px 20px;
-    background-color: white;
+.itmdel:hover {
+    color: #C42136;
 }
 
-.bankitem i {
-    width: 96px;
-    height: 22px;
-    background: url("../../../images/user01.png") -10px -10px no-repeat;
+
+
+.tablebox {
+    width: 100%;
+    padding: 10px 0 0;
 }
 
-.bold {
+.tablewrap {
+    width: 100%;
+}
+
+#table {
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+#table th {
+    font-size: 14px;
     font-weight: bold;
-    color: black;
 }
 
-.cardtype {
-    padding: 3px;
-    background-color: #fe8f00;
-    color: white;
-    margin-left: 5px;
-}
-
-.bankinfo {
-    color: #999;
-    align-items: flex-end;
-}
-
-.bankinfo {
-    line-height: 22px;
-}
-
-.del {
-    width: 40px;
-    height: 20px;
-    line-height: 18px;
+#table th,
+#table td {
     text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 9px;
-    cursor: pointer;
+    height: 40px;
 }
 
-.del:hover {
-    color: #fe8f00;
-    border-color: #fe8f00;
+#table td {
+    border-bottom: 1px solid #ccc;
 }
 
-.add {
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    color: #999;
-    cursor: pointer;
+#table tr:nth-child(even) {
+    background-color: #FBFBFB;
 }
 
-.add strong {
-    font-size: 60px;
-    line-height: 70px;
+.bg_1 {
+    background-color: #ECECF4;
 }
+
+
+
 
 #addcontent {
     position: fixed;
@@ -128,8 +123,6 @@
     font-size: 14px;
     color: #333;
     background-color: white;
-    border: 2px solid #fe8f00;
-    border-radius: 6px;
     box-shadow: 0 0 0px 5px rgba(50, 50, 50, .6);
     justify-content: flex-start;
     align-items: flex-start;
@@ -142,9 +135,8 @@
         line-height: 48px;
         text-align: center;
         padding: 20px;
-        color: white;
+        color: black;
         border-bottom: 1px solid #ccc;
-        background: linear-gradient(to top, #c76401, #fba915);
         span {
             width: 450px;
             font-size: 18px;
@@ -152,9 +144,9 @@
         }
         i {
             height: 50px;
-            font-size: 36px;
+            color: black;
+            font-size: 24px;
             font-weight: bold;
-            color: white;
             cursor: pointer;
         }
     }
@@ -206,28 +198,31 @@
             }
             .getnote:hover {
                 color: white;
-                background-color: #fe8f00;
+                background-color: #C42136;
             }
         }
+        
         .btngroup {
             width: 100%;
-            padding-top: 30px;
+            padding: 10px;
             justify-content: center;
             span {
-                width: 90px;
                 height: 30px;
                 line-height: 28px;
-                border: 1px solid #ccc;
-                border-radius: 3px;
                 text-align: center;
+                padding: 0 20px;
+                margin: 0 10px;
+                color: black;
+                border: none;
+                border-radius: 4px;
+                background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
                 cursor: pointer;
             }
+            .active,
             span:hover {
                 color: white;
-                background-color: #fe8f00;
-            }
-            span:last-child {
-                margin-left: 10px;
+                background: linear-gradient(to top, #941927, #e22137);
             }
         }
     }

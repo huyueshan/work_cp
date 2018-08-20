@@ -3,7 +3,7 @@
     <span>
       <label for="starttime">{{now_lang.User_center_c.Time}}： </label>
       <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
-      <label for="endtime">{{now_lang.User_center_c.Go}} </label>
+      <label for="endtime"> - </label>
       <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
     </span>
     <span>
@@ -33,15 +33,16 @@
         <option value="option3">option3</option>
       </select>
     </span>
-    <span class="flex-r">
-
-      <input type="checkbox" id="wrap" name="wrap" [(ngModel)]="querydata.iswrap" />{{now_lang.User_center_c.Include_lower}} 
-    </span>
-    <span class="querybtn">{{now_lang.User_center_c.Search}}</span>
+  </div>
+  <div class="flex-r btnbox">
+      <span class="flex-r">
+          <input type="checkbox" id="wrap" name="wrap" [(ngModel)]="querydata.iswrap" />{{now_lang.User_center_c.Include_lower}}
+      </span>
+      <span class="querybtn">{{now_lang.User_center_c.Search}}</span>
   </div>
   <div class=" flex-c tablebox">
     <div class="tablewrap">
-      <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4"   align="center">
+      <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
         <tr class="bg_1">
           <th width="160px">{{now_lang.User_center_c.Chase_number}}</th>
           <th width="140px">{{now_lang.User_center_c.Chase_Time}}</th>

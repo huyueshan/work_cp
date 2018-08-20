@@ -1,54 +1,42 @@
 <div class="flex-c bankbox">
-  <div class="flex-r bankhead">
-    <span>{{now_lang.User_center_c.My_bankcard}}</span>
-    <p>{{now_lang.User_center_c.Added}}
-      <i class="color_y">2</i>
-      {{now_lang.User_center_c.Bankcard}}</p>
-  </div>
+        <div class="flex-r bankhead">
+            <div class="flex-r" style="align-items: baseline;">
+                <span>{{now_lang.User_center_c.My_bankcard}}</span>
+                <p>{{now_lang.User_center_c.Added}}
+                  <i class="color_y">{{bankdata.length}}</i>
+                  {{now_lang.User_center_c.Bankcard}}</p>
+            </div>
+            <span class="addbtn" (click)="addbank()">添加</span>
+        </div>
+        
+
   <div class="flex-r bankcontent">
-    <div class="bankitembox">
-      <div class="flex-c bankitem">
-        <div class="flex-r">
-          <i></i>
-          <span class="bold">{{now_lang.User_center_c.Til_number}}8888
-            <span class="cardtype">{{now_lang.User_center_c.Bankcard1}}</span>
-          </span>
-        </div>
-        <div class="flex-r bankinfo">
-          <span>
-            <p>{{now_lang.User_center_c.Banker_owner}}*赌神</p>
-            <p>{{now_lang.User_center_c.Phone_number}}：188****3333</p>
-          </span>
-          <span class="del">{{now_lang.User_center_c.Delet}}</span>
-        </div>
-      </div>
 
-    </div>
-    <div class="bankitembox">
-      <div class="flex-c bankitem">
-        <div class="flex-r">
-          <i></i>
-          <span class="bold">{{now_lang.User_center_c.Til_number}}8888
-            <span class="cardtype">{{now_lang.User_center_c.Bankcard1}}</span>
-          </span>
-        </div>
-        <div class="flex-r bankinfo">
-          <span>
-            <p>{{now_lang.User_center_c.Banker_owner}}：*赌神</p>
-            <p>{{now_lang.User_center_c.Phone_number}}：188****3333</p>
-          </span>
-          <span class="del">{{now_lang.User_center_c.Delet}}</span>
-        </div>
-      </div>
-
-    </div>
-    <div class="bankitembox">
-
-      <div class="flex-c bankitem add" (click)="addbank()">
-        <strong>+</strong>
-        <span>{{now_lang.User_center_c.Add_bankcard}}</span>
-      </div>
-    </div>
+    <!-- table -->
+    <div class=" flex-c tablebox">
+            <div class="tablewrap">
+              <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
+                <tr class="bg_1">
+                  <th>开户名</th>
+                  <th style="width:180px">开户行</th>
+                  <th style="width:180px">卡号</th>
+                  <th>状态</th>
+                  <th style="width: 180px">绑定时间</th>
+                  <th>删除</th>
+                </tr>
+                <tr *ngFor="let item of bankdata; let i = index" >
+                  <td>{{item.username}}</td>
+                  <td>{{item.bankname}}</td>
+                  <td>{{item.cardnmb}}</td>
+                  <td>{{item.status}}</td>
+                  <td>{{item.time}}</td>
+                  <td class="itmdel" (click)="delbankitem(i)"> &times; </td>
+                </tr>
+              </table>
+            </div>
+            <app-page [pageParams]="pagination" (changeCurPage)="getPageData($event)"></app-page>
+        
+          </div>
 
     <!-- 添加银行卡弹窗 -->
     <div id="addcontent" *ngIf="addbanck" class="flex-c" [ngClass]="{scale: popup.note.scale}" [style.left.px]= "popup.note.left" [style.top.px]= "popup.note.top">
@@ -98,7 +86,7 @@
           </div>
         </div>
         <div class="flex-r formitem btngroup">
-          <span (click)="addsub()">{{now_lang.User_center_c.Comfirm}}</span> 
+          <span class="active" (click)="addsub()">{{now_lang.User_center_c.Comfirm}}</span> 
           <span (click)="deladd()">{{now_lang.User_center_c.Cancel}}</span>
         </div>
 
