@@ -11,11 +11,10 @@ export class RechargeComponent implements OnInit {
   public rechargemoney = 0;
   public rechitemindex = 0;
   public rechitemindex2 = 0;
-  public rechitemindex3 = 0;
-  public rechitemindex4 = 0;
-  public rechitemindex5 = 0;
-  public rechitemindex6 = 0;
-  public rechitemindex7 = 0;
+  public rechitemindex3 = -1;
+  public moneyitemindex = 0;
+  public nameinputactive = false;
+  public customoney = ''; //自定义金额
   public activeinfo = {
     inaccount: false
   };
@@ -26,205 +25,137 @@ export class RechargeComponent implements OnInit {
     money: "",
     name: ""
   };
+  public moneyitem = ['100','500','1000','1500'];
   public rechdata = [
     {
-      bgtop: -110,
-      hover: false,
+      bgtop: -212,
       active: false,
       text: this.now_lang.User_center_c.Bank_transfer,
-      height: 23
+      height: 19,
+      width:23,
     },
     {
-      bgtop: -153,
-      hover: false,
+      bgtop: -251,
       active: false,
       text: this.now_lang.User_center_c.Online_pay,
-      height: 27
+      height: 19,
+      width:19,
     },
     {
-      bgtop: -542,
-      hover: false,
+      bgtop: -290,
       active: false,
       text: this.now_lang.User_center_c.Zhifubao,
-      height: 31
+      height: 20,
+      width:20,
     },
     {
-      bgtop: -392,
-      hover: false,
+      bgtop: -174,
       active: false,
       text: this.now_lang.User_center_c.Weixin,
-      height: 30
+      height: 18,
+      width:18,
     },
     {
-      bgtop: -442,
-      hover: false,
+      bgtop: -370,
       active: false,
       text: this.now_lang.User_center_c.Jindong,
-      height: 30
+      height: 20,
+      width:20,
     }
   ];
   public rechdata2 = [
     {
-      bgtop: -200,
-      hover: false,
+      bgtop: -452,
       active: false,
-      text: this.now_lang.User_center_c.Bank_transfer,
-      height: 27
+      text: '网银转账',
+      height: 23,
+      width:26,
     },
     {
-      bgtop: -247,
-      hover: false,
+      bgtop: -106,
       active: false,
-      text: this.now_lang.User_center_c.Online_pay,
-      height: 28
+      text: 'ATM入款',
+      height: 13,
+      width:24,
     },
     {
-      bgtop: -295,
-      hover: false,
+      bgtop: -139,
       active: false,
-      text: this.now_lang.User_center_c.Zhifubao,
-      height: 28
+      text: '银行柜台',
+      height: 15,
+      width:15,
     },
     {
-      bgtop: -392,
-      hover: false,
+      bgtop: -410,
       active: false,
-      text: this.now_lang.User_center_c.Weixin,
-      height: 31
+      text: '手机转账',
+      height: 22,
+      width:14,
     },
     {
-      bgtop: -542,
-      hover: false,
+      bgtop: -290,
       active: false,
-      text: this.now_lang.User_center_c.Jindong,
-      height: 29
+      text: '支付宝',
+      height: 22,
+      width:20,
+    },
+    {
+      bgtop: -174,
+      active: false,
+      text: '微信',
+      height: 18,
+      width:18,
     }
   ];
   public rechdata3 = [
     {
-      bgtop: -200,
-      hover: false,
-      active: false,
-      text: "支付1",
-      height: 27
+      bgtop: -74,
+      text: "中国工商银行",
+      carnumb:'*********8888',
+      height: 12,
+      width:12,
     },
     {
-      bgtop: -153,
-      hover: false,
-      active: false,
-      text: "支付2",
-      height: 27
-    }
-  ];
-  public rechdata4 = [
-    {
-      bgtop: -106,
-      hover: false,
-      active: false
+      bgtop: -10,
+      text: "中国银行",
+      carnumb:'*********8888',
+      height: 12,
+      width:12,
     },
     {
-      bgtop: -156,
-      hover: false,
-      active: false
-    },
-    {
-      bgtop: -206,
-      hover: false,
-      active: false
-    },
-    {
-      bgtop: -256,
-      hover: false,
-      active: false
-    },
-    {
-      bgtop: -306,
-      hover: false,
-      active: false
-    },
-    {
-      bgtop: -356,
-      hover: false,
-      active: false
-    },
-    {
-      bgtop: -407,
-      hover: false,
-      active: false
-    },
-    {
-      bgtop: -156,
-      hover: false,
-      active: false
-    }
-  ];
-  public rechdata5 = [
-    {
-      bgtop: -542,
-      hover: false,
-      active: false,
-      text: "支付宝1",
-      height: 31
-    },
-    {
-      bgtop: -542,
-      hover: false,
-      active: false,
-      text: "支付宝2",
-      height: 31
-    }
-  ];
-  public rechdata6 = [
-    {
-      bgtop: -343,
-      hover: false,
-      active: false,
-      text: "微信支付1",
-      height: 29
-    },
-    {
-      bgtop: -343,
-      hover: false,
-      active: false,
-      text: "微信支付2",
-      height: 29
-    }
-  ];
-  public rechdata7 = [
-    {
-      bgtop: -442,
-      hover: false,
-      active: false,
-      text: "京东支付",
-      height: 30
+      bgtop: -42,
+      text: "中国建设银行",
+      carnumb:'*********8888',
+      height: 12,
+      width:12,
     },
   ];
 
   constructor() {}
 
   ngOnInit() {}
-  rechitem(i) {
-    this.rechitemindex = i;
+
+
+
+  changereg() {
+      console.log('object');
+    let v = this.customoney;
+    v= v.replace(/\D/g, "");
+    if (Number(v) === 0 || v === "") {
+        this.customoney = '1';
+    }
+    if (Number(v) > 0) {
+        this.customoney = v;
+        this.moneydata.money = v;
+    }
+}
+
+  rechitem(i, d) {
+      let _that = this;
+        _that[d] = i;
+        if (d === 'moneyitemindex') {
+            this.moneydata.money = this.moneyitem[i];
+        }
   }
-  rechitem2(i) {
-    this.rechitemindex2 = i;
-  }
-  rechitem3(i) {
-    this.rechitemindex3 = i;
-  }
-  rechitem4(i) {
-    this.rechitemindex4 = i;
-  }
-  rechitem5(i) {
-    this.rechitemindex5 = i;
-  }
-  rechitem6(i) {
-    this.rechitemindex6 = i;
-  }
-  rechitem7(i) {
-    this.rechitemindex6 = i;
-  }
-  set_status(i) {
-    this.status.bank = i;
-  }
+
 }

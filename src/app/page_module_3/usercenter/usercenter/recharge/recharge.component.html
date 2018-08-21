@@ -1,351 +1,82 @@
-<div id="rechargebox" class="flex-c bg_1">
-  <div class="flex-r rechbox">
-    <div class="rechitem" *ngFor="let item of rechdata; let i=index">
-      <span class="flex-r item" [ngClass]="{bd_y:item.hover||rechitemindex == i}" (mouseenter)="item.hover=true" (mouseleave)="item.hover=false"
-        (click)="rechitem(i)">
-        <i [style.background-position-y.px]="item.bgtop" [style.height.px]="item.height"></i>
-        <span>{{item.text}}</span>
-        <span class="triangle" *ngIf="rechitemindex == i"></span>
-      </span>
-    </div>
-  </div>
-  <!-- 银行卡转账 -->
-    <div class="rechcontent" [hidden]="!(rechitemindex === 0)">
-      <div class="flex-c">
-        <!-- 状态1显示 -->
-        <div class="flex-c" *ngIf=" status.bank ==1">
-          <span class="flex-r tip">
-            <i class="bgicon">1</i>
-            <p>{{now_lang.User_center_c.Choose_in_banknum}}：</p>
-          </span>
-          <span class="setpadding">
-            <span class="flex-r card bd_1" [ngClass]="{bd_y:activeinfo.inaccount}" (click)="activeinfo.inaccount=!activeinfo.inaccount">
-              <i></i>
-              <span class="flex-c">
-                <p>{{now_lang.User_center_c.Opening_bank}}：中国农业银行</p>
-                <p>{{now_lang.User_center_c.Opening_point}}：深圳罗湖支行</p>
-                <p>{{now_lang.User_center_c.In_money_account}}：1635892462015561</p>
-                <p>{{now_lang.User_center_c.Get_man}}：深圳人才技术有限公司</p>
+<div id="rechargebox" class="flex-c">
+    <div class="flex-r rechbox">
+        <span class="boption">支付方式：</span>
+        <div class="flex-r itembox">
+            <div class="rechitem" *ngFor="let item of rechdata; let i=index">
 
-              </span>
-              <span class="card_triangle" *ngIf="activeinfo.inaccount"></span>
+                <span class="flex-r item" [ngClass]="{bd_m:rechitemindex === i}" (click)="rechitem(i,'rechitemindex')">
+                    <span class="flex-r iconbox">
+                        <i [style.background-position-y.px]="item.bgtop" [style.height.px]="item.height" [style.width.px]="item.width"></i>
 
-            </span>
-          </span>
-          <span class="setpadding">
-            <button class="btn" (click)="set_status(2)">{{now_lang.User_center_c.Next}}</button>
-          </span>
-        </div>
-        <!-- 状态2显示 -->
-        <div class="flex-c" *ngIf=" status.bank ==2">
-          <span>
-            <span class="color-red">*</span>{{now_lang.User_center_c.You_choosed}}
-            <span class="color-y">
-              中国农业银行
-            </span>{{now_lang.User_center_c.Inmoney_service}}
-          </span>
-          <span class="flex-r setpad  tip" style="padding-top:10px;">
-            <i class="bgicon">2</i>
-            <p>{{now_lang.User_center_c.Write_transfer_info}}：</p>
-          </span>
-          <span class="flex-r">
-            <table class="table" width="270px" border="1" cellspacing="0" cellpadding="4"   align="center">
-              <tr>
-                <td style="width: 90px;">{{now_lang.User_center_c.Inmoney_amount}}</td>
-                <td>
-                  <input type="text" name="money" id="money" [(ngModel)]="moneydata.money">
-                </td>
-              </tr>
-              <tr>
-                <td>{{now_lang.User_center_c.Inmoney_username}}</td>
-                <td>
-                  <input type="text" name="money" id="money" [(ngModel)]="moneydata.name">
-                </td>
-              </tr>
-
-            </table>
-            <span class="flex-c rightinfo">
-              <P>
-                <i class="warnicon"></i>
-                <span class="color-red padl">*</span>{{now_lang.User_center_c.tips9}}
-              </P>
-              <P>
-                <i class="warnicon"></i>
-                <span class="color-red padl">*</span>{{now_lang.User_center_c.tips9}}
-              </P>
-            </span>
-          </span>
-          <span class="flex-r tip" style=" padding-top:10px;">
-            <i class="bgicon">3</i>
-            <p>{{now_lang.User_center_c.Choose_transfer_type}}：</p>
-          </span>
-          <!-- =============下面的选择转账类型 -->
-          <div class="flex-r rechbox setpad">
-            <div class="rechitem" *ngFor="let item of rechdata2; let i=index">
-              <span class="flex-r item item2" [ngClass]="{bd_y:item.hover||rechitemindex2 == i}" (mouseenter)="item.hover=true" (mouseleave)="item.hover=false"
-                (click)="rechitem2(i)">
-                <i [style.background-position-y.px]="item.bgtop" [style.height.px]="item.height"></i>
-                <span>{{item.text}}</span>
-                <span class="triangle" *ngIf="rechitemindex2 == i"></span>
-              </span>
+                    </span>
+                    <span>{{item.text}}</span>
+                    <span class="triangle" *ngIf="rechitemindex == i"></span>
+                </span>
             </div>
-          </div>
-          <span class="flex-r setpad">
-            <button class="btn" (click)="set_status(1)">{{now_lang.User_center_c.Prestep}}</button>
-            <button class="btn" (click)="set_status(3)">{{now_lang.User_center_c.Confirm}}</button>
-          </span>
         </div>
-        <!-- 状态3显示 -->
-        <div class="flex-c" *ngIf="status.bank ==3">
-          <span>
-            {{now_lang.User_center_c.Please_confirm_order_info}}：
-          </span>
-          <div class="setpad" style="width:700px">
-            <span class="notarize">
-              {{now_lang.User_center_c.tips10}}
-              <span class="color-red">29:10</span>
-            </span>
-
-          </div>
-          <span>
-            <span class="color-red">*</span>{{now_lang.User_center_c.You_choosed}}
-            <span class="color-y">
-              中国农业银行
-            </span>{{now_lang.User_center_c.Inmoney_service}}
-          </span>
-
-          <span class="flex-r" style="padding-top: 15px;">
-            <table class="table" width="430px" border="1" cellspacing="0" cellpadding="4"   align="center">
-              <tr>
-                <td style="width: 100px">{{now_lang.User_center_c.In_money_nume}}</td>
-                <td style="width: 230px">深圳市安徽福建有限公司</td>
-                <td style="width: 100px">
-                  <span class="btn copy">{{now_lang.User_center_c.Copy}}</span>
-                </td>
-              </tr>
-              <tr>
-                <td>{{now_lang.User_center_c.Bankcard_number}}</td>
-                <td>12121212121212121</td>
-                <td>
-                  <span class="btn copy">{{now_lang.User_center_c.Copy}}</span>
-                </td>
-              </tr>
-              <tr>
-                <td>{{now_lang.User_center_c.Opening_city}}</td>
-                <td>深圳罗湖支行</td>
-                <td>
-                  <span class="btn copy">{{now_lang.User_center_c.Copy}}</span>
-                </td>
-              </tr>
-              <tr>
-                <td>{{now_lang.User_center_c.Order_money}}</td>
-                <td>￥ 10元</td>
-                <td>
-                  <span class="btn copy">{{now_lang.User_center_c.Copy}}</span>
-                </td>
-              </tr>
-              <tr>
-                <td>{{now_lang.User_center_c.Order_number}}</td>
-                <td>1546154651321654654616</td>
-                <td>
-                  <span class="btn copy">{{now_lang.User_center_c.Copy}}</span>
-                </td>
-              </tr>
-            </table>
-          </span>
-
-          <span class="info">
-            <p>
-              <i class="warnicon"></i>
-              <span class="color-red padl">*</span>{{now_lang.User_center_c.tips11}}
-              <p>
-                <i class="warnicon"></i>
-                <span class="color-red padl">*</span>{{now_lang.User_center_c.tips9}}
-              </p>
-              <p>
-                <i class="warnicon"></i>
-                <span class="color-red padl">*</span>{{now_lang.User_center_c.tips12}}
-              </p>
-              <p>
-                <i class="warnicon"></i>
-                <span class="color-red padl">*</span>
-                {{now_lang.User_center_c.tips13}}
-              </p>
-
-          </span>
-          <span class="flex-r setpad">
-            <button class="btn" (click)="set_status(2)">{{now_lang.User_center_c.Prestep}}</button>
-            <button class="btn">{{now_lang.User_center_c.Submit}}</button>
-          </span>
-        </div>
-
-
-
-
-
-        <!-- 底部提示信息，在提交页面隐藏！ -->
-        <span class="setpadding info" *ngIf="status.bank !==3">
-          <p>
-            <i class="warnicon"></i>
-            {{now_lang.User_center_c.Transfer_before_you_must_know}}：
-          </p>
-          <P>
-            <span class="color-red">*</span>{{now_lang.User_center_c.You_choose_now}}</P>
-          <P>
-            <span class="color-red">*</span>{{now_lang.User_center_c.tips14}}0{{now_lang.User_center_c.Yuan}}</P>
-          <P>
-            <span class="color-red">*</span>{{now_lang.User_center_c.tips15}}</P>
-        </span>
-      </div>
     </div>
-    <!-- =============================== -->
-    <!-- 在线支付 -->
-    <div class="rechcontent"   [hidden]="!(rechitemindex == 1)">
-      <div class="flex-c">
-        <span class="flex-r tip">
-          <i class="bgicon">1</i>
-          <p>{{now_lang.User_center_c.Please_choose_online_way}}：</p>
-        </span>
-        <div class="flex-r rechbox setpad" style="padding-left: 30px;">
-          <div class="rechitem" *ngFor="let item of rechdata3; let i=index">
-            <span class="flex-r item" [ngClass]="{bd_y:item.hover||rechitemindex3 == i}" (mouseenter)="item.hover=true" (mouseleave)="item.hover=false"
-              (click)="rechitem3(i)">
-              <i [style.background-position-y.px]="item.bgtop" [style.height.px]="item.height"></i>
-              <span>{{item.text}}</span>
-              <span class="triangle" *ngIf="rechitemindex3 == i"></span>
-            </span>
-          </div>
+    <div class="flex-r rechbox rechbox2">
+        <span class="boption">存入金额：</span>
+        <div class="flex-r itembox">
+            <div class="rechitem" *ngFor="let item of moneyitem; let i=index">
+
+                <span class="flex-r item" [ngClass]="{bd_m:moneyitemindex === i}" (click)="rechitem(i,'moneyitemindex')">
+                    <span>{{item}}</span>
+                    <span class="triangle" *ngIf="moneyitemindex === i"></span>
+                </span>
+            </div>
+            <div class="rechitem">
+
+                <span class="flex-r item" [ngClass]="{bd_m:moneyitemindex === 5}" (click)="rechitem(5,'moneyitemindex')">
+                    <input type="text" placeholder="其他" [(ngModel)]="customoney" (blur)="changereg()">
+                    <span class="triangle" *ngIf="moneyitemindex === 5"></span>
+                </span>
+            </div>
         </div>
-        <span class="flex-r tip">
-          <i class="bgicon">2</i>
-          <p>{{now_lang.User_center_c.Please_choose_bank}}：</p>
-        </span>
-        <div class="flex-r rechbox setpadding" style="width: 890px; height: 140px;align-content: space-between; flex-wrap: wrap;">
-          <div class="rechitem" *ngFor="let item of rechdata4; let i=index">
-            <span class="flex-r item item2 item4" [ngClass]="{bd_y:item.hover||rechitemindex4 == i}" (mouseenter)="item.hover=true" (mouseleave)="item.hover=false"
-              (click)="rechitem4(i)">
-              <span class="bankicon" [style.background-position-y.px]="item.bgtop"></span>
-              <span class="triangle" *ngIf="rechitemindex4 == i"></span>
-            </span>
-          </div>
-        </div>
-        <span class="flex-r tip">
-          <i class="bgicon">3</i>
-          <p>{{now_lang.User_center_c.Inmoney_amount}}：
-            <span style="font-size: 12px;color: #999;">{{now_lang.User_center_c.tips14}}:
-              <span class="color-y">10</span>{{now_lang.User_center_c.Yuan}}{{now_lang.User_center_c.Above}}；
-              <span class="color-y">100000</span>{{now_lang.User_center_c.Yuan}}{{now_lang.User_center_c.Following}}</span>
-          </p>
-        </span>
-        <span class="setpadding">
-          <input type="text" id="rechargemoney" name="rechargemoney" [(ngModel)]="rechargemoney">
-        </span>
-        <span class="setpadding">
-          <button class="btn">{{now_lang.User_center_c.Inmoney_now}}</button>
-        </span>
-      </div>
     </div>
-    <!-- ================================= -->
-    <!-- 支付宝支付 -->
-    <div class="rechcontent"   [hidden]="!(rechitemindex == 2)">
-      <div class="flex-c">
-        <span class="flex-r tip">
-          <i class="bgicon">1</i>
-          <p>{{now_lang.User_center_c.Please_choose_online_way}}：</p>
-        </span>
-        <div class="flex-r rechbox setpad" style="padding-left: 30px;">
-          <div class="rechitem" *ngFor="let item of rechdata5; let i=index">
-            <span class="flex-r item" [ngClass]="{bd_y:item.hover||rechitemindex5 == i}" (mouseenter)="item.hover=true" (mouseleave)="item.hover=false"
-              (click)="rechitem5(i)">
-              <i [style.background-position-y.px]="item.bgtop" [style.height.px]="item.height"></i>
-              <span>{{item.text}}</span>
-              <span class="triangle" *ngIf="rechitemindex5 == i"></span>
-            </span>
-          </div>
+    <div class="flex-r rechbox rechbox3">
+        <span class="boption">存款人姓名：</span>
+        <div class="flex-r itembox">
+            <div class="flex-r rechitem">
+                <span class="flex-r item" [ngClass]="{bd_m:nameinputactive}">
+                    <input type="text" name='name' placeholder="请输入姓名" [(ngModel)]="moneydata.name" (focus)="nameinputactive = true" (blur)="nameinputactive = false">
+                </span>
+                <p>*此处所填写姓名必须与您付款卡姓名一致，若不一致，将无法自动到账。</p>
+            </div>
         </div>
-        <span class="flex-r tip">
-          <i class="bgicon">2</i>
-          <p>{{now_lang.User_center_c.Inmoney_amount}}：
-            <span style="font-size: 12px;color: #999;">{{now_lang.User_center_c.tips14}}:
-              <span class="color-y">10</span>{{now_lang.User_center_c.Yuan}}{{now_lang.User_center_c.Above}}；
-              <span class="color-y">100000</span>{{now_lang.User_center_c.Yuan}}{{now_lang.User_center_c.Following}}</span>
-          </p>
-        </span>
-        <span class="setpadding">
-          <input type="text" id="rechargemoney" name="rechargemoney" [(ngModel)]="rechargemoney">
-        </span>
-        <span class="setpadding">
-          <button class="btn">{{now_lang.User_center_c.Inmoney_now}}</button>
-        </span>
-      </div>
     </div>
-    <!-- ================================= -->
-    <!-- 微信支付 -->
-    <div class="rechcontent"   [hidden]="!(rechitemindex == 3)">
-      <div class="flex-c">
-        <span class="flex-r tip">
-          <i class="bgicon">1</i>
-          <p>{{now_lang.User_center_c.Please_choose_online_way}}：</p>
-        </span>
-        <div class="flex-r rechbox setpad" style="padding-left: 30px;">
-          <div class="rechitem" *ngFor="let item of rechdata6; let i=index">
-            <span class="flex-r item" [ngClass]="{bd_y:item.hover||rechitemindex6 == i}" (mouseenter)="item.hover=true" (mouseleave)="item.hover=false"
-              (click)="rechitem6(i)">
-              <i [style.background-position-y.px]="item.bgtop" [style.height.px]="item.height"></i>
-              <span>{{item.text}}</span>
-              <span class="triangle" *ngIf="rechitemindex6 == i"></span>
-            </span>
-          </div>
+
+    <div class="flex-c rechbox rechbox5 ">
+        <span class="boption">请选择支付银行卡：</span>
+        <ul class="flex-c itembox">
+            <li class="flex-r item" *ngFor="let item of rechdata3; let i=index" [ngClass]="{bd_m:rechitemindex3==i}">
+                <input type="radio" name="bank" value="{{i}}" [(ngModel)]="rechitemindex3">
+                <span class="flex-r iconbox">
+                    <i [style.background-position-y.px]="item.bgtop" [style.height.px]="item.height" [style.width.px]="item.width"></i>
+                </span>
+                <span class="width200">{{item.text}}</span>
+                <span>{{item.carnumb}}</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="flex-r rechbox rechbox4 ">
+        <span class="boption">转账类型：</span>
+        <div class="flex-r itembox">
+            <div class="rechitem" *ngFor="let item of rechdata2; let i=index">
+
+                <span class="flex-r item" [ngClass]="{bd_m:rechitemindex2 === i}" (click)="rechitem(i,'rechitemindex2')">
+                    <span class="flex-r iconbox">
+                        <i [style.background-position-y.px]="item.bgtop" [style.height.px]="item.height" [style.width.px]="item.width"></i>
+                    </span>
+                    <span>{{item.text}}</span>
+                    <span class="triangle" *ngIf="rechitemindex2 == i"></span>
+                </span>
+            </div>
         </div>
-        <span class="flex-r tip">
-          <i class="bgicon">2</i>
-          <p>{{now_lang.User_center_c.Inmoney_amount}}：
-            <span style="font-size: 12px;color: #999;">{{now_lang.User_center_c.tips14}}:
-              <span class="color-y">10</span>{{now_lang.User_center_c.Yuan}}{{now_lang.User_center_c.Above}}；
-              <span class="color-y">100000</span>{{now_lang.User_center_c.Yuan}}{{now_lang.User_center_c.Following}}</span>
-          </p>
-        </span>
-        <span class="setpadding">
-          <input type="text" id="rechargemoney" name="rechargemoney" [(ngModel)]="rechargemoney">
-        </span>
-        <span class="setpadding">
-          <button class="btn">{{now_lang.User_center_c.Inmoney_now}}</button>
-        </span>
-      </div>
     </div>
-    <!-- ================================= -->
-    <!-- 京东支付 -->
-    <div class="rechcontent"   [hidden]="!(rechitemindex == 4)">
-      <div class="flex-c">
-        <span class="flex-r tip">
-          <i class="bgicon">1</i>
-          <p>{{now_lang.User_center_c.Please_choose_online_way}}：</p>
-        </span>
-        <div class="flex-r rechbox setpad" style="padding-left: 30px;">
-          <div class="rechitem" *ngFor="let item of rechdata7; let i=index">
-            <span class="flex-r item" [ngClass]="{bd_y:item.hover||rechitemindex7 == i}" (mouseenter)="item.hover=true" (mouseleave)="item.hover=false"
-              (click)="rechitem7(i)">
-              <i [style.background-position-y.px]="item.bgtop" [style.height.px]="item.height"></i>
-              <span>{{item.text}}</span>
-              <span class="triangle" *ngIf="rechitemindex7 == i"></span>
-            </span>
-          </div>
-        </div>
-        <span class="flex-r tip">
-          <i class="bgicon">2</i>
-          <p>{{now_lang.User_center_c.Inmoney_amount}}：
-            <span style="font-size: 12px;color: #999;">{{now_lang.User_center_c.tips14}}:
-              <span class="color-y">10</span>{{now_lang.User_center_c.Yuan}}{{now_lang.User_center_c.Above}}；
-              <span class="color-y">100000</span>{{now_lang.User_center_c.Yuan}}{{now_lang.User_center_c.Following}}</span>
-          </p>
-        </span>
-        <span class="setpadding">
-          <input type="text" id="rechargemoney" name="rechargemoney" [(ngModel)]="rechargemoney">
-        </span>
-        <span class="setpadding">
-          <button class="btn">{{now_lang.User_center_c.Inmoney_now}}</button>
-        </span>
-      </div>
+    <div class="flex-r">
+        <span class="sbtn">确认</span>
     </div>
-    <!-- ================================= -->
+
 </div>

@@ -16,33 +16,30 @@
 }
 
 .container {
-  width: 950px;
-  font-size: 14px;
-  padding: 0;
-  align-content: flex-start;
-  align-items: flex-start;
+    width: 100%;
+    padding: 0;
+    align-content: flex-start;
+    align-items: flex-start;
 }
 .querycontent {
   width: 100%;
-  border: 1px solid #ccc;
 }
 .witem {
   width: 100%;
   padding: 14px 20px;
-  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 .whead {
   height: 50px;
   line-height: 48px;
   padding-top: 0;
   font-weight: bold;
-  background-color: #f5f5f5;
-  border-top: none;
+  background-color: #ECECF4;
 }
 .witem i {
   width: 20px;
   height: 20px;
-  line-height: 20px;
+  line-height: 18px;
   color: white;
   text-align: center;
   margin-right: 5px;
@@ -50,7 +47,7 @@
   background-color: #333;
 }
 .witem i.bg_y {
-  background-color: #fe8f00;
+  background-color: #C42136;
 }
 .linkitem{
     color: #999;
@@ -58,7 +55,8 @@
 }
 
 .color_y {
-  color: #fe8f00;
+  color: #C42136;
+  cursor: pointer;
 }
 .tablebox {
   width: 100%;

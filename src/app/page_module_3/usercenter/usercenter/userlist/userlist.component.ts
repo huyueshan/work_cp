@@ -11,7 +11,7 @@ export class UserlistComponent implements OnInit {
   public now_lang_type :any='zh';
   public querydatelistindex = 0;
   public querydata = {
-    username: "tt",
+    username: "",
     min: "0",
     max: "0",
     starttime: "",
@@ -24,32 +24,6 @@ export class UserlistComponent implements OnInit {
     segmentSize: 5, //最大显示页码标签数量
     totalPage:4,// 最大页码数。
   };
-  public querydatelist = [
-    {
-      text: "昨天",
-      active: false
-    },
-    {
-      text: "今天",
-      active: false
-    },
-    {
-      text: "上周",
-      active: false
-    },
-    {
-      text: "本周",
-      active: false
-    },
-    {
-      text: "上月",
-      active: false
-    },
-    {
-      text: "本月                                 ",
-      active: false
-    }
-  ];
   public userlistdata: USERLIST[];
 
   public takedata = [

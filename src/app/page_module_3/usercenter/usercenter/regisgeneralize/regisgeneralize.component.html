@@ -1,7 +1,7 @@
 <div class="flex-c container">
-  <div class="flex-r subbox bg_1">
-    <span class="btn1" [ngClass]="{bg_y:btninfo=='推广链接'}" (click)="btninfo='推广链接'">{{now_lang.User_center_c.Extension_link}}</span>
-    <span class="btn1" [ngClass]="{bg_y:btninfo=='推广管理'}" (click)="btninfo='推广管理'">{{now_lang.User_center_c.Extension_manage}}</span>
+  <div class="flex-r btngroup">
+    <span [ngClass]="{active:btninfo=='推广链接'}" (click)="btninfo='推广链接'">{{now_lang.User_center_c.Extension_link}}</span>
+    <span [ngClass]="{active:btninfo=='推广管理'}" (click)="btninfo='推广管理'">{{now_lang.User_center_c.Extension_manage}}</span>
   </div>
 
   <!-- ==推广链接-->
@@ -50,8 +50,8 @@
     </span>
 
     <span class="flex-r formitem">
-      <span class="flex-r linkbtn">
-        <button class="btn1 bg_y">{{now_lang.User_center_c.Generating_link}}</button>
+      <span class="btngroup">
+        <span class="active btnlag">{{now_lang.User_center_c.Generating_link}}</span>
       </span>
     </span>
   </div>
@@ -59,10 +59,10 @@
   <div class="flex-c tablebox" *ngIf="btninfo =='推广管理'">
     <div class=" flex-c">
       <div class="tablewrap">
-        <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4"   align="center">
+        <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
           <tr class="bg_1">
-            <th style="width: 250px">{{now_lang.User_center_c.Promotion_channel_link}}</th>
-            <th>{{now_lang.User_center_c.Promotion_channel_link}}</th>
+            <th style="width: 220px">{{now_lang.User_center_c.Promotion_channel_link}}</th>
+            <th style="width: 120px">{{now_lang.User_center_c.Promotion_channel_link}}</th>
             <th>{{now_lang.User_center_c.Regist_number}}</th>
             <th>{{now_lang.User_center_c.Opening_type}}</th>
             <th>{{now_lang.User_center_c.State}}</th>

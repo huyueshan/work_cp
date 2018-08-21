@@ -54,7 +54,8 @@ export class UserdataComponent implements OnInit {
     },
     {
       name: "email",
-      lable: this.now_lang.User_center_c.Real_name.Email,
+      lable: '电子邮箱',
+    //   lable: this.now_lang.User_center_c.Real_name.Email,
       text: "9999999@qq.com",
       top: 176,
       userup: {
@@ -65,7 +66,8 @@ export class UserdataComponent implements OnInit {
     },
     {
       name: "qqaccount",
-      lable: this.now_lang.User_center_c.Real_name.User_qq,
+      lable: 'QQ号',
+    //   lable: this.now_lang.User_center_c.Real_name.User_qq,
       text: "999999999",
       top: 226,
       userup: {
@@ -76,7 +78,8 @@ export class UserdataComponent implements OnInit {
     },
     {
       name: "weixin",
-      lable: this.now_lang.User_center_c.Real_name.User_weixin,
+      lable: '微信号',
+    //   lable: this.now_lang.User_center_c.Real_name.User_weixin,
       text: "999999",
       top: 276,
       userup: {

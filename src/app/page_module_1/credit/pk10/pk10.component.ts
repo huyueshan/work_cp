@@ -1124,7 +1124,8 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         let p = this.popup.setnumb.data;
         for (let i = 0; i < p.length; i++) {
             d.push(Number(p[i].value));
-        }
+        };
+        d.sort((a,b)=>{return a-b});
         Base.Store.set("selmoeny", d, true);
         this.selmoeny = d;
         this.POPNOTE({msg:'保存成功！'});

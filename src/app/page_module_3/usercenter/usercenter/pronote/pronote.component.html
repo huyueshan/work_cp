@@ -1,9 +1,9 @@
 <div class="flex-c mycontainer">
   <div class="flex-r querycontent">
     <span class="flex-r" style="justify-content: flex-start;">
-      <span class="query_item">
-        <span class="btn btn1" (click)="clear()">{{now_lang.User_center_c.Delet_choose}}</span>
-        <span class="btn btn1" (click)="read()">{{now_lang.User_center_c.Sign_readed}}</span>
+      <span class="flex-r btngroup">
+        <span (click)="clear()">{{now_lang.User_center_c.Delet_choose}}</span>
+        <span (click)="read()">{{now_lang.User_center_c.Sign_readed}}</span>
       </span>
     </span>
     <p>{{now_lang.User_center_c.Unread}}（

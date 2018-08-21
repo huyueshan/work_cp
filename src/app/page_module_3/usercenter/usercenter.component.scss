@@ -29,17 +29,27 @@ ul {
 }
 
 .container {
+    position: relative;
     width: 100%;
     min-width: 1200px;
     margin: 0;
     padding: 0;
-    background: url("../images/mod3/bg_m3_01.png") center no-repeat;
-    background-size: cover;
     align-content: center;
     ul,
     dl {
         list-style: none
     }
+}
+.container:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../images/mod3/bg_m3_01.png") center no-repeat;
+    background-size: cover;
+    z-index: -8;
 }
 
 .usercontent {

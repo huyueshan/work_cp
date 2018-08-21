@@ -51,7 +51,7 @@
           <th>{{now_lang.User_center_c.Outcome}}</th>
           <th>{{now_lang.User_center_c.Income}}</th>
           <th>{{now_lang.User_center_c.Balance}}</th>
-          <th style="width:200px">{{now_lang.User_center_c.Remarks}}</th>
+          <th style="width:280px">{{now_lang.User_center_c.Remarks}}</th>
         </tr>
         <tr *ngFor="let item of acchangedata">
           <td>{{item.user}}</td>
@@ -63,14 +63,16 @@
           <td>{{item.rebates}}</td>
         </tr>
         <tr class="total_tr">
-          <td colspan="2">{{now_lang.User_center_c.Small_plan}}0{{now_lang.User_center_c.Stock}}</td>
-          <td colspan="3">{{now_lang.User_center_c.Outcome}} 0 (0)</td>
-          <td colspan="2">{{now_lang.User_center_c.Income}} 0 (0)</td>
+          <td colspan="3">{{now_lang.User_center_c.Small_plan}}0{{now_lang.User_center_c.Stock}}</td>
+          <td>{{now_lang.User_center_c.Outcome}} 0 (0)</td>
+          <td>{{now_lang.User_center_c.Income}} 0 (0)</td>
+          <td colspan="2"></td>
         </tr>
         <tr class="total_tr">
-          <td colspan="2">{{now_lang.User_center_c.All_Stock}}0{{now_lang.User_center_c.Stock}}</td>
-          <td colspan="3">{{now_lang.User_center_c.Outcome}} 0 (0)</td>
-          <td colspan="2">{{now_lang.User_center_c.Income}} 0 (0)</td>
+          <td colspan="3">{{now_lang.User_center_c.All_Stock}}0{{now_lang.User_center_c.Stock}}</td>
+          <td>{{now_lang.User_center_c.Outcome}} 0 (0)</td>
+          <td>{{now_lang.User_center_c.Income}} 0 (0)</td>
+          <td colspan="2"></td>
         </tr>
       </table>
     </div>

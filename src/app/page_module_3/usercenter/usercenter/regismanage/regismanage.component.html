@@ -32,7 +32,8 @@
     </span>
     <span class="flex-r formitem radiobox">
       <span class="flex-r groupbox">
-        <span [ngClass]="{bg_y:formdata.group=='配额奖金组'}" (click)="formdata.group='配额奖金组'">{{now_lang.User_center_c.Quota_fund_group}}</span>
+        <span [ngClass]="{bg_y:formdata.group=='配额奖金组'}" (click)="formdata.group='配额奖金组'">配额奖金组</span>
+        <!-- <span [ngClass]="{bg_y:formdata.group=='配额奖金组'}" (click)="formdata.group='配额奖金组'">{{now_lang.User_center_c.Quota_fund_group}}</span> -->
         <span [ngClass]="{bg_y:formdata.group=='其他资金组'}" (click)="formdata.group='其他资金组'">{{now_lang.User_center_c.Choose_other_moneygro}}</span>
       </span>
     </span>
@@ -49,7 +50,7 @@
   </div>
 
   <div class="subbox">
-    <button class="btn bg_y">{{now_lang.User_center_c.Immediate_registration}}</button>
+    <span class="btn bg_y">{{now_lang.User_center_c.Immediate_registration}}</span>
   </div>
 
 

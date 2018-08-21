@@ -17,8 +17,8 @@
     <span class="querybtn">{{now_lang.User_center_c.Search}}</span>
   </div>
   <div class=" flex-c tablebox">
-    <table width="100%" border="1" cellspacing="0" cellpadding="4"   align="center">
-      <tr class="bg_2 sortr">
+    <table width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
+      <tr class="bg_1 sortr">
         <th style="width:210px">{{now_lang.User_center_c.Lot_type}}
           <strong
           (click)="sortclick('type')"> &#10606; </strong>
@@ -51,7 +51,7 @@
       </tr>
     </table>
     <div class="tablewrap">
-      <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4"   align="center">
+      <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
         <tr *ngFor="let item of outdata">
           <td style="width:210px">{{item.type}}</td>
           <td style="width:120px">{{item.numbtou}}</td>
@@ -63,7 +63,7 @@
         </tr>
       </table>
     </div>
-    <table width="100%" border="1" cellspacing="0" cellpadding="4"   align="center">
+    <table width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
       <tr class="bg_1 trbold color_y">
         <td style="width:210px; color: #333">总和</td>
         <td style="width:120px">{{add('numbtou')}}</td>

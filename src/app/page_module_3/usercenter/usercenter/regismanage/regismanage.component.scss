@@ -17,22 +17,20 @@
 }
 
 .bg_1 {
-    background-color: #f5f5f5;
+    background-color: #ECECF4;
 }
 
 .mycontainer {
-    width: 950px;
+    width: 100%;
     padding: 0;
     align-content: flex-start;
     align-items: flex-start;
-    border: 1px solid #ccc;
 }
 
 .formbox {
     width: 100%;
     min-height: 200px;
     padding: 10px 0 20px;
-    border-bottom: 1px solid #ccc;
 }
 
 .formitem {
@@ -55,6 +53,7 @@
     line-height: 28px;
     padding-left: 8px;
     border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .radiobox {
@@ -72,26 +71,22 @@
 }
 
 .groupbox {
-    width: 180px;
+    width: 200px;
     height: 30px;
     line-height: 28px;
-    border: 1px solid #d17702;
 }
 
 .groupbox span {
     width: 50%;
     height: 30px;
     text-align: center;
+    background: linear-gradient(to top, #d7d5d5, #fdfdfd);
     cursor: pointer;
 }
 
-.groupbox span:first-child {
-    border-right: 1px solid #d17702;
-}
-
-.bg_y {
+.groupbox span.bg_y, .bg_y {
     color: white;
-    background-color: #fe8f00;
+    background: linear-gradient(to top, #941927, #e22137);
 }
 
 .subbox {
@@ -100,15 +95,18 @@
 }
 
 .btn {
-    width: 90px;
-    height: 30px;
-    line-height: 28px;
-    padding: 0;
-    border: 1px solid #d17702;
-    border-radius: 2px;
-    outline: none;
-    box-shadow: none;
+    display: inline-block;
+    width: 120px;
+    height: 36px;
+    line-height: 34px;
+    text-align: center;
+    margin: 10px 30px;
+    color: white;
+    border-radius: 4px;
+    background: linear-gradient(to top, #941927, #e22137);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    outline: none;
 }
 
 #other {
