@@ -41,6 +41,7 @@ ul{
 }
 
 .content{
+    position: relative;
     width: 1200px;
     div{
         width: 100%;
@@ -224,7 +225,6 @@ ul{
 
 footer {
     width: 100%;
-    overflow:scroll; 
 }
 .mfoot{
     width: 100%;

@@ -1345,105 +1345,108 @@ export class DPCofficialComponent implements OnInit {
 		this.nowitems = this.items_show[this.nowPageId];
 	}
 	inittab2(){
-        let ulMax = $('.typetab').outerWidth();
-        let liWidth = 0;
-        let toolong = 0;
-        let allliWidth = 0;
-        $.each($('.tab_li'),function(i,n){
-            allliWidth = allliWidth + $(n).outerWidth();
-        });
-        $('.pointl').on('click',function(){
-            //做个过长处理
-            if(allliWidth>ulMax*2&&toolong>=0){
-                toolong = toolong-1;
-            }else{
-                ulMax = $('.typetab').outerWidth();
-            }
-            if (toolong < 1) {
-                $.each($('.tab_li'),function(i,n){
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth<ulMax) {
-                        $(n).removeClass('hide_it')
-                    }
-                    if(liWidth>ulMax){
-                        $(n).addClass('hide_it')
-                    }
-                });
-            }else if (toolong >= 1){
-                $.each($('.tab_li'),function(i,n){
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth>=ulMax&&liWidth<=ulMax*2) {
-                        $(n).removeClass('hide_it')
-                    }
-                    if(liWidth>=ulMax*2){
-                        $(n).addClass('hide_it')
-                    }
-                });
-            }else{
-                $.each($('.tab_li'),function(i,n){
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth>ulMax) {
-                        $(n).addClass('hide_it')
-                    }else{
-                        $(n).removeClass('hide_it')
-                    }
-                });
-            }
-            if (liWidth<ulMax) {
+		let ulMax = $('.typetab').outerWidth();
+		let liWidth = 0;
+		let toolong = 0;
+		let allliWidth = 0;
+		$.each($('.tab_li'),function(i,n){
+			allliWidth = allliWidth + $(n).outerWidth();
+		});
+		$('.pointl').on('click',function(){
+			//做个过长处理
+			if(allliWidth>ulMax*2&&toolong>=0){
+				toolong = toolong-1;
+			}else{
+				ulMax = $('.typetab').outerWidth();
+			}
+			if (toolong < 1) {
+				$.each($('.tab_li'),function(i,n){
+					liWidth = liWidth + $(n).outerWidth();
+					if (liWidth<ulMax) {
+						$(n).removeClass('hide_it')
+					}
+					if(liWidth>ulMax){
+						$(n).addClass('hide_it')
+					}
+				});
+			}else if (toolong >= 1){
+				$.each($('.tab_li'),function(i,n){
+					liWidth = liWidth + $(n).outerWidth();
+					if (liWidth>=ulMax&&liWidth<=ulMax*2    ) {
+						$(n).removeClass('hide_it')
+					}
+					if(liWidth>=ulMax*2){
+						$(n).addClass('hide_it')
+					}
+				});
+			}else{
+				$.each($('.tab_li'),function(i,n){
+					liWidth = liWidth + $(n).outerWidth();
+					if (liWidth>ulMax) {
+						$(n).addClass('hide_it')
+					}else{
+						$(n).removeClass('hide_it')
+					}
+				});
+			}
+			if (liWidth<ulMax) {
 
-            }
-        })
-        $('.pointr').on('click',function(){
-            //做个过长处理
-            if(allliWidth>ulMax*2&&toolong<2){
-                toolong = toolong+1;
-            }else{
-                ulMax = $('.typetab').outerWidth();
-            }
-            if (toolong == 1) {
-                $.each($('.tab_li'),function(i,n){
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth<ulMax) {
-                        $(n).addClass('hide_it')
-                    }
-                    if(liWidth>ulMax&&liWidth<ulMax*2){
-                        $(n).removeClass('hide_it')
-                    }
-                });
-            }else if (toolong >= 2){
-                $.each($('.tab_li'),function(i,n){
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth<ulMax*2) {
-                        $(n).addClass('hide_it')
-                    }
-                    if(liWidth>ulMax*2){
-                        $(n).removeClass('hide_it')
-                    }
+			}
+			liWidth = 0;
+		})
+		$('.pointr').on('click',function(){
+			//做个过长处理
+			if(allliWidth>ulMax*2&&toolong<2){
+				toolong = toolong+1;
+			}else{
+				ulMax = $('.typetab').outerWidth();
+			}
+			if (toolong == 1) {
+				$.each($('.tab_li'),function(i,n){
+					liWidth = liWidth + $(n).outerWidth();
+					if (liWidth<ulMax) {
+						$(n).addClass('hide_it')
+					}
+					if(liWidth>ulMax&&liWidth<ulMax*2){
+						$(n).removeClass('hide_it')
+					}
+				});
+			}else if (toolong >= 2){
+				$.each($('.tab_li'),function(i,n){
+					liWidth = liWidth + $(n).outerWidth();
+					if (liWidth<ulMax*2) {
+						$(n).addClass('hide_it')
+					}
+					if(liWidth>ulMax*2){
+						$(n).removeClass('hide_it')
+					}
 
-                });
-            }else{
-                $.each($('.tab_li'),function(i,n){
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth<ulMax) {
-                        $(n).addClass('hide_it')
-                    }else{
-                        $(n).removeClass('hide_it')
-                    }
-                });
-            }
-            
-            if (liWidth<ulMax) {
-                $('.tab_li').removeClass('hide_it');
-            }
-            liWidth = 0
-        })
-        $.each($('.tab_li'),function(i,n){
-            liWidth = liWidth + $(n).outerWidth();
-            if (liWidth>ulMax) {
-                $(n).addClass('hide_it')
-            }
-        });
-        liWidth = 0;
+				});
+			}else{
+				$.each($('.tab_li'),function(i,n){
+					console.log(liWidth)
+					console.log(ulMax)
+					liWidth = liWidth + $(n).outerWidth();
+					if (liWidth<ulMax) {
+						$(n).addClass('hide_it')
+					}else{
+						$(n).removeClass('hide_it')
+					}
+				});
+			}
+			
+			if (liWidth<ulMax) {
+				$('.tab_li').removeClass('hide_it');
+			}
+			liWidth = 0
+		})
+		$.each($('.tab_li'),function(i,n){
+			liWidth = liWidth + $(n).outerWidth();
+			if (liWidth>ulMax) {
+				$(n).addClass('hide_it')
+			}
+		});
+		liWidth = 0;
 	}
 	//路由函数                      
 	linkrouter(t){

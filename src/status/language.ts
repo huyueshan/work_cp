@@ -1185,6 +1185,7 @@ const language_0 = {
 			'Clear_number':'清空号码',
 			'confirm_bet':'确认投注',
 			'In_game':'进入游戏',
+			'in_file':'导入文件'
 
 		},
 		'Right_info':{

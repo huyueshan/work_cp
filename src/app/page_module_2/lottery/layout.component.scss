@@ -543,6 +543,12 @@ a{
             .topr{
                 height: 100%;
                 width:180px;
+                .history_span{
+                    max-width:73px;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
                 .hosthead{
                     width: 100%;
                     height: 30px;

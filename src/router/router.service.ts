@@ -58,7 +58,7 @@ export class RouteguardService implements CanActivate{
 			if(!Base.Store.get('isTemplet')){
 			
 				// 临时切换模块 --陈
-				Base.Store.set('isTemplet','1',false);
+				Base.Store.set('isTemplet','2',false);
 				history.go(0);
 
 

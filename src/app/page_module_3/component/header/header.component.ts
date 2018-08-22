@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit,OnDestroy,AfterViewInit {
     public pathdata = ['index','lottery','usercenter','Activity','Announncement','GameInformation','cpinfo','Mobile']
     public now_lang :any=userModel.langpackage;
     public now_lang_type :any='zh';
+    public regis=false;
+    public login=false;
     public navdata = [
       {
         text: this.now_lang.index.Index,
@@ -107,6 +109,10 @@ export class HeaderComponent implements OnInit,OnDestroy,AfterViewInit {
 
   langclick(i){
     this.langdata.curlang = this.langdata.data[i];
+  }
+
+  close(){
+      this.regis=false;
   }
 
 }

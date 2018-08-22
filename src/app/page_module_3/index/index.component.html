@@ -39,7 +39,7 @@
                             </header>
 
                             <div class="tab_info">
-                                <ul id="infobox" class="flex-c infobox" [style.top.px]= "listdata.top">
+                                <ul id="infobox" class="flex-c infobox" [style.top.px]="listdata.top">
                                     <ng-container *ngIf="cursrank===0">
                                         <li class="flex-r info_tr" *ngFor="let item of listdata.touzhu_list; let i = index">
                                             <span class="flex-r">
@@ -49,7 +49,7 @@
                                             <span class="info-text">
                                                 <strong class="color_m">12345678</strong>元
                                             </span>
-    
+
                                         </li>
                                     </ng-container>
                                     <ng-container *ngIf="cursrank===1">
@@ -61,7 +61,7 @@
                                             <span class="info-text">
                                                 <strong class="color_m">888888</strong>元
                                             </span>
-    
+
                                         </li>
                                     </ng-container>
                                 </ul>

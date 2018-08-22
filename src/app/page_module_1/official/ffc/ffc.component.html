@@ -320,13 +320,13 @@
 							<div class="left_input">
 								<textarea name="" id="fileReader" (keyup) = "textball('fileReader')"></textarea>
 							</div>
-							<div class="btn_box">
-								<div class="rt_btn btnh_w120_h40" (click)="delnum('fileReader')">删除重复号</div>
-								<div class="rt_btn btnh_w120_h40">导入文件
-									<input #uploadFile type="file" accept="text/plain" class="file-input" (change)="filetxt($event,'fileReader')" />
-								</div>
-								<div class="rt_btn btnh_w120_h40" (click)="clearfile('fileReader')">清空</div>
-							</div>
+                            <div class="btn_box">
+                                <div class="rt_btn btnh_w120_h40" (click)="delnum('fileReader')">{{now_lang.Ball_tab.Tips12}}</div>
+                                <div class="rt_btn btnh_w120_h40">{{now_lang.Ball_tab.in_file}}
+                                    <input #uploadFile type="file" accept="text/plain" class="file-input" (change)="filetxt($event,'fileReader')" />
+                                </div>
+                                <div class="rt_btn btnh_w120_h40" (click)="clearfile('fileReader')">{{now_lang.Ball_tab.Clear_number}}</div>
+                            </div>
 							<div class="input_tips">
 									{{now_lang.Ball_tab.Tips11}}  <span class="gray_font">{{now_lang.Ball_tab.Tips12}}</span> {{now_lang.Ball_tab.Tips13}}
 							</div>

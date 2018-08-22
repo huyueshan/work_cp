@@ -10,7 +10,7 @@
                     <li class="flex-r">
                         <a href="javescript:;">登陆</a>
                         <span class="line">|</span>
-                        <a href="javescript:;">注册</a>
+                        <a href="javescript:;" (click)="regis= true">注册</a>
                     </li>
                     <li class="flex-r">
                         <i class="message"></i>
@@ -53,4 +53,10 @@
                     <a href="javescript:;">更多公告</a>
                 </span>
             </div>
+        </div>
+        <div id="regis" *ngIf="regis" >
+            <div class="flex-c regisbox">
+                <app-register (close)="close()"></app-register>
+            </div>
+    
         </div>

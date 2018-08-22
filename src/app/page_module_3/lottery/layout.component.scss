@@ -1,4 +1,23 @@
 
+* {
+    box-sizing: border-box;
+}
+
+ul,ol,dl {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.flex-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center;
+}
 .flex-c {
     display: flex;
     flex-direction: column;
@@ -8,5 +27,15 @@
 }
 div{
     width: 100%;
+}
+
+.container {
+    width: 100%;
+    min-width: 1200px;
+    margin: 0;
+    padding: 0;
+    align-content: center;
+    background: url("../images/mod3/bg_m3_01.png") center no-repeat;
+    background-size: cover;
 }
 

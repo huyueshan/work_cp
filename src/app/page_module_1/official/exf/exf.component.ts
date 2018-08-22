@@ -399,7 +399,7 @@ export class EXFofficialComponent implements OnInit {
             active: 3
         },
         {
-            name: this.now_lang.Lot_tab.Thr_Inde_gall,
+            name: this.now_lang.Lot_tab.Indeterminate_gallbladder,
             active: 4
         },
         {
@@ -514,6 +514,18 @@ export class EXFofficialComponent implements OnInit {
 				addzero:true
             }],
             active: 3
+        },
+        {
+            title: this.now_lang.Lot_tab.Indeterminate_gallbladder,
+            menu: [{
+                    name: this.now_lang.Lot_tab.Indeterminate_gallbladder,
+                    index: 1,
+                    arr: ["qsw"],
+                    format: ["n"],
+                    datarule: ['Rule_12', 1]
+                }
+            ],
+            active: 4
         },
         {
             title: this.now_lang.Lot_tab.Interestily,
@@ -1549,11 +1561,14 @@ export class EXFofficialComponent implements OnInit {
             that.menu_2 = [];
             that.up_ball = 1;
             that.menu_2_data.map(function (res) {
+                console.log(res.active == that.status.menu_1)
                 if (res.active == that.status.menu_1) {
                     that.menu_2.push(res);
                 }
             });
             that.tabcurr = that.menu_2[0].menu[0];
+            console.log(that.menu_2)
+
             if (that.menu_2[0].menu[0].arr) {
                 that.balllist(that.menu_2[0].menu[0].arr);
             } else {

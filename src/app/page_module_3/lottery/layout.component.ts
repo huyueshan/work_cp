@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
 
 import userModel from "../../../status/user.model";
 import { HttpInterceptorService } from '../../Http.Service';
@@ -7,7 +7,7 @@ import { HttpInterceptorService } from '../../Http.Service';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 import {Observable} from 'rxjs';
-import 'rxjs'
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: "app-layout",
@@ -23,5 +23,12 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
     this.now_lang_type=userModel.now_lang_type;
     this.loadpage = userModel.platform;
+    // 路由地址改变后的事件
+    this.router.events
+      .filter(event => event instanceof NavigationEnd)
+      .subscribe((event: NavigationEnd) => {
+        //   history.go(0);
+        window.scrollTo(0,0);
+      });
     }
 }

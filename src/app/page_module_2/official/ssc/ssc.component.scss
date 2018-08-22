@@ -17,7 +17,7 @@ $yellow:#fe8f00;
 
 /* 颜色 */
 .orange_font{
-	color: #fe8f00;
+	color: #B61010;
 }
 
 /* 提示 */
@@ -617,7 +617,7 @@ input[type="number"]{
 					background:#fff;
 					padding-right:30px;
 					.leftnum{
-						width:560px;
+						width:615px;
 						float:left;
 						padding:10px 0px;
 						.numcon{
@@ -625,7 +625,7 @@ input[type="number"]{
 							float:left;
 							.name{
 								float:left;
-								min-width: 35px; height: 26px;
+								min-width: 66px; height: 26px;
 								/* background: url('../../images/sscsprites.png') -0 -53px; */
 								color:#B41011;
 								font-size:12px;
@@ -667,7 +667,7 @@ input[type="number"]{
 								width: 65px; height: 15px;
 								color:#333;
 								font-size:12px;
-								text-align:center;
+								text-align:left;
 								line-height:15px;
 							}
 							.numlist{
@@ -753,7 +753,7 @@ input[type="number"]{
 						.rt_btn{
 							margin: 0 auto;
 							margin-top: 15px;
-							background-color: #fe8f00;
+							background-color: #B61010;
 						}
 						.rt_btn:nth-child(1){
 							margin-top: 75px;
@@ -1371,6 +1371,10 @@ input[type="number"]{
 						td{
 							line-height: 30px;
 							height: 30px;
+		                    max-width:180px;
+		                    text-overflow: ellipsis;
+		                    overflow: hidden;
+		                    white-space: nowrap;
 						}
 						td:nth-child(1){
 							text-indent: 20px;

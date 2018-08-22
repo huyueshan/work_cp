@@ -12,557 +12,725 @@ export class LotteryComponent implements OnInit {
   public now_lang :any=userModel.langpackage;
   public now_lang_type :any='zh';
   loadpage = false;
-  public toptab = 0;
-  public tab = 0;
-  public tabdata = [
+  
+  public cpdata = [
     {
-      name: this.now_lang.Lot_lobby.All,
-      style: "all"
+      title: this.now_lang.lot_type.ssc,
+      isover: false,
+      isactive: false,
+      credit: true,
+      official: true,
+      gxtog: 0,
+      postop:0,
+      items: [
+        {
+          text: this.now_lang.lot_type.cq_ssc,
+          topy: '-10px',
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_cqssc.png"),
+          credit: true,
+          official: true,
+          ido: '101',
+          idc: '201',
+          linko: "/lottery/officialssc/cq",
+          linkc: "/lottery/creditssc/cq"
+        },
+        {
+          text: this.now_lang.lot_type.tj_ssc,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_cqssc.png"),
+          credit: true,
+          official: true,
+          ido:'102',
+          idc: '202',
+          linko: "/lottery/officialssc/tj",
+          linkc: "/lottery/creditssc/tj"
+        },
+        {
+          text: this.now_lang.lot_type.xq_ssc,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_xjssc.png"),
+          credit: true,
+          official: true,
+          ido: '103',
+          idc: '203',
+          linko: "/lottery/officialssc/xq",
+          linkc: "/lottery/creditssc/xq"
+        },
+        {
+          text: this.now_lang.lot_type.bj_ssc,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_sscbj.png"),
+          credit: true,
+          official: true,
+          ido: '104',
+          idc: '204',
+          linko: "/lottery/officialssc/bj",
+          linkc: "/lottery/creditssc/bj"
+        }
+      ]
     },
     {
-      name: this.now_lang.lot_type.ssc,
-      style: "ssc"
+      title: this.now_lang.lot_type.ffc,
+      topy: '-74px',
+      isover: false,
+      isactive: false,
+      credit: true,
+      official: true,
+      gxtog: 0,
+      postop:0,
+      items: [
+        {
+          text: this.now_lang.lot_type.hs_ffc,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_sh15.png"),
+          credit: true,
+          official: true,
+          ido: '105',
+          idc: '205',
+          linko: "/lottery/officialffc/hs",
+          linkc: "/lottery/creditffc/hs"
+        },
+        {
+          text: this.now_lang.lot_type.bj_ffc,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_sscbj.png"),
+          credit: true,
+          official: true,
+          ido: '114',
+          idc: '214',
+          linko: "/lottery/officialffc/bj",
+          linkc: "/lottery/creditffc/bj"
+        },
+        {
+          text: this.now_lang.lot_type.tw_ffc,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_tw5f.png"),
+          credit: true,
+          official: true,
+          ido: '106',
+          idc: '206',
+          linko: "/lottery/officialffc/tw",
+          linkc: "/lottery/creditffc/tw"
+        },
+        {
+          text: this.now_lang.lot_type.jnd_ffc,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_jnd35.png"),
+          credit: true,
+          official: true,
+          ido: '107',
+          idc: '207',
+          linko: "/lottery/officialffc/jnd",
+          linkc: "/lottery/creditffc/jnd"
+        },
+        {
+          text: this.now_lang.lot_type.az_ffc,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_azk8.png"),
+          credit: true,
+          official: true,
+          ido: '108',
+          idc: '208',
+          linko: "/lottery/officialffc/az",
+          linkc: "/lottery/creditffc/az"
+        },
+        {
+          text: this.now_lang.lot_type.slfk_ffc,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_slfk.png"),
+          credit: true,
+          official: true,
+          ido: '109',
+          idc: '209',
+          linko: "/lottery/officialffc/slfk",
+          linkc: "/lottery/creditffc/slfk"
+        },
+        {
+          text: this.now_lang.lot_type.tx_ffc,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_sscbj.png"),
+          credit: true,
+          official: true,
+          ido: '110',
+          idc: '210',
+          linko: "/lottery/officialffc/tx",
+          linkc: "/lottery/creditffc/tx"
+        },
+        {
+          text: this.now_lang.lot_type.qq_ffc,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_sscbj.png"),
+          credit: true,
+          official: true,
+          ido: '111',
+          idc: '211',
+          linko: "/lottery/officialffc/qq",
+          linkc: "/lottery/creditffc/qq"
+        },
+        {
+          text: this.now_lang.lot_type.dj_ffc,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_sscbj.png"),
+          credit: true,
+          official: true,
+          ido: '112',
+          idc: '212',
+          linko: "/lottery/officialffc/dj",
+          linkc: "/lottery/creditffc/dj"
+        },
+        {
+          text: this.now_lang.lot_type.js_ffc,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_sscbj.png"),
+          credit: true,
+          official: true,
+          ido: '113',
+          idc: '213',
+          linko: "/lottery/officialffc/js",
+          linkc: "/lottery/creditffc/js"
+        }
+      ]
     },
     {
-      name: this.now_lang.lot_type.ffc,
-      style: "ffc"
+      title: this.now_lang.lot_type.pk_10,
+      topy: '-138px',
+      isover: false,
+      isactive: false,
+      credit: true,
+      official: true,
+      gxtog: 0,
+      postop:0,
+      items: [
+        {
+          text: this.now_lang.lot_type.bj_pk10,
+          type: "pk10",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_bjpk10.png"),
+          credit: true,
+          official: true,
+          ido: '121',
+          idc: '221',
+          linko: "/lottery/officialpk10/bjpk",
+          linkc: "/lottery/creditpk10/bjpk"
+        },
+        {
+          text: this.now_lang.lot_type.xyft_pk10,
+          type: "pk10",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_xyft.png"),
+          credit: true,
+          official: true,
+          ido: '122',
+          idc: '222',
+          linko: "/lottery/officialpk10/xyft",
+          linkc: "/lottery/creditpk10/xyft"
+        }
+      ]
     },
     {
-      name: this.now_lang.lot_type.pk_10,
-      style: "pks"
+      title: this.now_lang.lot_type.Exf,
+      topy: '-202px',
+      isover: false,
+      isactive: false,
+      credit: true,
+      official: true,
+      gxtog: 0,
+      postop:0,
+      items: [
+        {
+          text: this.now_lang.lot_type.sd_exf,
+          type: "exf",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_sh15.png"),
+          credit: true,
+          official: true,
+          ido: '131',
+          idc: '231',
+          linko: "/lottery/officialexf/sdexf",
+          linkc: "/lottery/creditexf/sdexf"
+        },
+        {
+          text: this.now_lang.lot_type.jx_exf,
+          type: "exf",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_shexf.png"),
+          credit: true,
+          official: true,
+          ido: '132',
+          idc: '232',
+          linko: "/lottery/officialexf/jxexf",
+          linkc: "/lottery/creditexf/jxexf"
+        },
+        {
+          text: this.now_lang.lot_type.hlj_exf,
+          type: "exf",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_shexf.png"),
+          credit: true,
+          official: true,
+          ido: '133',
+          idc: '233',
+          linko: "/lottery/officialexf/hljexf",
+          linkc: "/lottery/creditexf/hljexf"
+        },
+        {
+          text: this.now_lang.lot_type.js_exf,
+          type: "exf",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_jsexf.png"),
+          credit: true,
+          official: true,
+          ido: '134',
+          idc: '234',
+          linko: "/lottery/officialexf/jsexf",
+          linkc: "/lottery/creditexf/jsexf"
+        },
+        {
+          text: this.now_lang.lot_type.shh_exf,
+          type: "exf",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_shexf.png"),
+          credit: true,
+          official: true,
+          ido: '135',
+          idc: '235',
+          linko: "/lottery/officialexf/shexf",
+          linkc: "/lottery/creditexf/shexf"
+        },
+        {
+          text: this.now_lang.lot_type.xj_exf,
+          type: "exf",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_shexf.png"),
+          credit: true,
+          official: true,
+          ido: '136',
+          idc: '236',
+          linko: "/lottery/officialexf/xjexf",
+          linkc: "/lottery/creditexf/xjexf"
+        }
+      ]
     },
     {
-      name: this.now_lang.lot_type.Exf,
-      style: "s5"
+      title: this.now_lang.lot_type.Klc,
+      topy: '-266px',
+      isover: false,
+      isactive: false,
+      credit: true,
+      official: true,
+      gxtog: 0,
+      postop:0,
+      items: [
+        {
+          text: this.now_lang.lot_type.bjkl8_klc,
+          type: "kl8",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_bjk8.png"),
+          credit: false,
+          official: true,
+          ido: '141',
+          idc: '0',
+          linko: "/lottery/officialklc/bjkl8",
+          linkc: "/lottery/creditklc/bjkl8"
+        },
+        {
+          text: this.now_lang.lot_type.jndkl8_klc,
+          type: "kl8",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_jnd28.png"),
+          credit: false,
+          official: true,
+          ido: '142',
+          idc: '0',
+          linko: "/lottery/officialklc/jndkl8",
+          linkc: "/lottery/creditklc/jndkl8"
+        },
+        {
+          text: this.now_lang.lot_type.azkl8_klc,
+          type: "kl8",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_azk8.png"),
+          credit: false,
+          official: true,
+          ido: '143',
+          idc: '0',
+          linko: "/lottery/officialklc/azkl8",
+          linkc: "/lottery/creditklc/azkl8"
+        },
+        {
+          text: this.now_lang.lot_type.slfk_klc,
+          type: "kl8",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_slfk.png"),
+          credit: false,
+          official: true,
+          ido:'144',
+          idc: '0',
+          linko: "/lottery/officialklc/slfk",
+          linkc: "/lottery/creditklc/slfk"
+        },
+        {
+          text: this.now_lang.lot_type.twbg_klc,
+          type: "kl8",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_twbg.png"),
+          credit: false,
+          official: true,
+          ido: '145',
+          idc: '0',
+          linko: "/lottery/officialklc/twbg",
+          linkc: "/lottery/creditklc/twbg"
+        },
+        {
+          text: "广东快十",
+          type: "gdk10",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_bjpk10.png"),
+          credit: true,
+          official: false,
+          ido: '0',
+          idc: '241',
+          linko: "",
+          linkc: "/lottery/creditklc/gdk10"
+        },
+        {
+          text: "广西快十",
+          type: "gxk10",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_bjpk10.png"),
+          credit: true,
+          official: false,
+          ido:' 0',
+          idc: '242',
+          linko: "",
+          linkc: "/lottery/creditkl/gxk10"
+        },
+        {
+          text: "重庆快十",
+          type: "gdk10",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_bjpk10.png"),
+          credit: true,
+          official: false,
+          ido: '0',
+          idc: '243',
+          linko: "",
+          linkc: "/lottery/creditklc/cqk10"
+        }
+      ]
     },
     {
-      name: this.now_lang.lot_type.Klc,
-      style: "klc"
+      title: this.now_lang.lot_type.Dpc,
+      topy: '330px',
+      isover: false,
+      isactive: false,
+      credit: true,
+      official: true,
+      gxtog: 0,
+      postop:0,
+      items: [
+        {
+          text: this.now_lang.lot_type.fc3d_dpc,
+          type: "dpc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_fc3d.png"),
+          credit: false,
+          official: true,
+          ido: '151',
+          idc: '0',
+          linko: "/lottery/officialdpc/fc3d",
+          linkc: "/lottery/creditdpc/fc3d"
+        },
+        {
+          text: this.now_lang.lot_type.pl35_dpc,
+          type: "pl35",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_fc3d.png"),
+          credit: false,
+          official: true,
+          ido: '152',
+          idc: '0',
+          linko: "/lottery/officialdpc/pl35",
+          linkc: "/lottery/creditdpc/pl35"
+        },
+        {
+          text: this.now_lang.lot_type.shssl_dpc,
+          type: "dpc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_shssl.png"),
+          credit: false,
+          official: true,
+          ido: '153',
+          idc: '0',
+          linko: "/lottery/officialdpc/shssl",
+          linkc: "/lottery/creditdpc/shssl"
+        },
+        {
+          text: "香港⑥合彩",
+          type: "lhc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_vrlhc.png"),
+          credit: true,
+          official: false,
+          ido: '0',
+          idc: '251',
+          linko: "",
+          linkc: "/lottery/creditdpc/liuhec"
+        }
+      ]
     },
     {
-      name: this.now_lang.lot_type.Dpc,
-      style: "dpc"
+      title: this.now_lang.lot_type.pc_dd,
+      topy: '-394px',
+      isover: false,
+      isactive: false,
+      credit: true,
+      official: false,
+      gxtog: 1,
+      postop:0,
+      items: [
+        {
+          text: this.now_lang.lot_type.xy_28,
+          type: "pcdd",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_xyft.png"),
+          credit: true,
+          official: false,
+          ido: '0',
+          idc: '261',
+          linko: "",
+          linkc: "/lottery/creditpcdd/xy28"
+        },
+        {
+          text: this.now_lang.lot_type.slfk_28,
+          type: "pcdd",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_slfk28.png"),
+          credit: true,
+          official: false,
+          ido: '0',
+          idc: '262',
+          linko: "",
+          linkc: "/lottery/creditpcdd/snfk28"
+        },
+        {
+          text: this.now_lang.lot_type.az_28,
+          type: "pcdd",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_az28.png"),
+          credit: true,
+          official: false,
+          ido: '0',
+          idc: '263',
+          linko: "",
+          linkc: "/lottery/creditpcdd/az28"
+        },
+        {
+          text: this.now_lang.lot_type.jnd_28,
+          type: "pcdd",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_jnd28.png"),
+          credit: true,
+          official: false,
+          ido: '0',
+          idc: '264',
+          linko: "",
+          linkc: "/lottery/creditpcdd/jnd28"
+        },
+        {
+          text: this.now_lang.lot_type.hs_28,
+          type: "pcdd",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_dj28.png"),
+          credit: true,
+          official: false,
+          ido: '0',
+          idc: '265',
+          linko: "",
+          linkc: "/lottery/creditpcdd/hs28"
+        },
+        {
+          text: this.now_lang.lot_type.tw_28,
+          type: "pcdd",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_tw28.png"),
+          credit: true,
+          official: false,
+          ido: '0',
+          idc: '266',
+          linko: "",
+          linkc: "/lottery/creditpcdd/tw28"
+        },
+        {
+          text: this.now_lang.lot_type.dj_28,
+          type: "pcdd",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_dj28.png"),
+          credit: true,
+          official: false,
+          ido: '0',
+          idc: '267',
+          linko: "",
+          linkc: "/lottery/creditpcdd/dj28"
+        }
+      ]
     },
     {
-      name: this.now_lang.lot_type.pc_dd,
-      style: "pcdd"
+      title: this.now_lang.lot_type.K3,
+      topy: '-458px',
+      type: "k3",
+      isover: false,
+      isactive: false,
+      credit: true,
+      official: true,
+      gxtog: 0,
+      postop:0,
+      items: [
+        {
+          text: this.now_lang.lot_type.ahk3_ffc,
+          type: "k3",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_ahk3.png"),
+          credit: true,
+          official: true,
+          ido: '171',
+          idc: '271',
+          linko: "/lottery/officialk3/ahk3",
+          linkc: "/lottery/creditk3/ahk3"
+        },
+        {
+          text: this.now_lang.lot_type.hbk3_ffc,
+          type: "k3",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_hbk3.png"),
+          credit: true,
+          official: true,
+          ido: '172',
+          idc: '272',
+          linko: "/lottery/officialk3/hbk3",
+          linkc: "/lottery/creditk3/hbk3"
+        },
+        {
+          text: this.now_lang.lot_type.hnk3_ffc,
+          type: "k3",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_hbk3.png"),
+          credit: true,
+          official: true,
+          ido: '173',
+          idc: '273',
+          linko: "/lottery/officialk3/hnk3",
+          linkc: "/lottery/creditk3/hnk3"
+        },
+        {
+          text: this.now_lang.lot_type.hubk3_ffc,
+          type: "k3",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_hub.png"),
+          credit: true,
+          official: true,
+          ido: '174',
+          idc: '274',
+          linko: "/lottery/officialk3/hubk3",
+          linkc: "/lottery/creditk3/hubk3"
+        },
+        {
+          text: this.now_lang.lot_type.shks_ffc,
+          type: "k3",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_hnk3.png"),
+          credit: true,
+          official: true,
+          ido: '175',
+          idc: '275',
+          linko: "/lottery/officialk3/shks",
+          linkc: "/lottery/creditk3/shks"
+        },
+        {
+          text: this.now_lang.lot_type.bjk3_ffc,
+          type: "k3",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_ahk3.png"),
+          credit: true,
+          official: true,
+          ido: '176',
+          idc: '276',
+          linko: "/lottery/officialk3/bjk3",
+          linkc: "/lottery/creditk3/bjk3"
+        },
+        {
+          text: this.now_lang.lot_type.gxk3_ffc,
+          type: "k3",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_ahk3.png"),
+          credit: true,
+          official: true,
+          ido: '177',
+          idc: '277',
+          linko: "/lottery/officialk3/gxk3",
+          linkc: "/lottery/creditk3/gxk3"
+        },
+        {
+          text: this.now_lang.lot_type.jsk3_ffc,
+          type: "k3",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_jsk3.png"),
+          credit: true,
+          official: true,
+          ido: '178',
+          idc: '278',
+          linko: "/lottery/officialk3/jsk3",
+          linkc: "/lottery/creditk3/jsk3"
+        },
+      ]
     },
     {
-      name: this.now_lang.lot_type.K3,
-      style: "k3"
-    },
-    {
-      name: this.now_lang.lot_type.Vrc,
-      style: "vrc"
+      title: this.now_lang.lot_type.Vrc,
+      topy: '-522px',
+      isover: false,
+      isactive: false,
+      credit: false,
+      official: true,
+      gxtog: 0,
+      postop:0,
+      items: [
+        {
+          text: this.now_lang.lot_type.cpbjl_vr,
+          type: "vrcbjl",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_vrbjl.png"),
+          credit: false,
+          official: true,
+          ido: '0',
+          idc: '0',
+          linko: "/lottery/vrc/bjl",
+          linkc: ""
+        },
+        {
+          text: this.now_lang.lot_type.tfencai_vr,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_shssl.png"),
+          credit: false,
+          official: true,
+          ido: '0',
+          idc: '0',
+          linko: "/lottery/vrc/3fc",
+          linkc: ""
+        },
+        {
+          text: this.now_lang.lot_type.jx15_vr,
+          type: "ssc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_jx15.png"),
+          credit: false,
+          official: true,
+          ido: '0',
+          idc: '0',
+          linko: "/lottery/vrc/jx",
+          linkc: ""
+        },
+        {
+          text: this.now_lang.lot_type.kt_vr,
+          type: "pk10",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_xyft.png"),
+          credit: false,
+          official: true,
+          ido: '0',
+          idc: '0',
+          linko: "/lottery/vrc/kt",
+          linkc: ""
+        },
+        {
+          text: this.now_lang.lot_type.lhc_vr,
+          type: "lhc",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_vrlhc.png"),
+          credit: false,
+          official: true,
+          ido: '0',
+          idc: '0',
+          linko: "/lottery/vrc/lhc",
+          linkc: ""
+        },
+        {
+          text: this.now_lang.lot_type.sc_vr,
+          type: "pk10",
+          imgsrc: require("../../images/mod3/cpicon_m3/m3_sscbj.png"),
+          credit: false,
+          official: true,
+          ido: '0',
+          idc: '0',
+          linko: "/lottery/vrc/sc",
+          linkc: ""
+        }
+      ]
     }
   ];
+
   
-  public cpdata = {
-    ssc: [
-      {
-        name: this.now_lang.lot_type.cq_ssc,
-        src: require("../../images/caip/SSCZQ.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditssc/cq",
-        linko: "/lottery/officialssc/cq",
-        bcolor: "#fed1d1"
-      },
-      {
-        name: this.now_lang.lot_type.tj_ssc,
-        src: require("../../images/caip/SSCTJ.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditssc/tj",
-        linko: "/lottery/officialssc/tj",
-        bcolor: "#fed1d1"
-      },
-      {
-        name: this.now_lang.lot_type.xq_ssc,
-        src: require("../../images/caip/SSCXJ.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditssc/xj",
-        linko: "/lottery/officialssc/xj",
-        bcolor: "#fed1d1"
-      },
-      {
-        name: this.now_lang.lot_type.bj_ssc,
-        src: require("../../images/caip/SSCBJ.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditssc/bj",
-        linko: "/lottery/officialssc/bj",
-        bcolor: "#fed1d1"
-      }
-    ],
-    ffc: [
-      {
-        name: this.now_lang.lot_type.lhc_ffc,
-        src: require("../../images/caip/FFC6HC.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditffc/lhc",
-        linko: "/lottery/officialffc/lhc",
-        bcolor: "#fcc0e5"
-      },
-      {
-        name: this.now_lang.lot_type.az_ffc,
-        src: require("../../images/caip/FFCAZ3.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditffc/az",
-        linko: "/lottery/officialffc/az",
-        bcolor: "#fcc0e5"
-      },
-      {
-        name: this.now_lang.lot_type.dj_ffc,
-        src: require("../../images/caip/FFCDJ1.5.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditffc/dj",
-        linko: "/lottery/officialffc/dj",
-        bcolor: "#fcc0e5"
-      },
-      {
-        name: this.now_lang.lot_type.hs_ffc,
-        src: require("../../images/caip/FFCHGKLC.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditffc/hs",
-        linko: "/lottery/officialffc/hs",
-        bcolor: "#fcc0e5"
-      },
-      {
-        name: this.now_lang.lot_type.jnd_ffc,
-        src: require("../../images/caip/FFCJNDKLC.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditffc/jnd",
-        linko: "/lottery/officialffc/jnd",
-        bcolor: "#fcc0e5"
-      },
-      {
-        name: this.now_lang.lot_type.qq_ffc,
-        src: require("../../images/caip/FFCQQ.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditffc/qq",
-        linko: "/lottery/officialffc/qq",
-        bcolor: "#fcc0e5"
-      },
-      {
-        name: this.now_lang.lot_type.slfk_ffc,
-        src: require("../../images/caip/FFCSLFK5.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditffc/slfk",
-        linko: "/lottery/officialffc/slfk",
-        bcolor: "#fcc0e5"
-      },
-      {
-        name: this.now_lang.lot_type.tw_ffc,
-        src: require("../../images/caip/FFCTW5.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditffc/tw",
-        linko: "/lottery/officialffc/tw",
-        bcolor: "#fcc0e5"
-      },
-      {
-        name: this.now_lang.lot_type.tx_ffc,
-        src: require("../../images/caip/FFCTX.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditffc/tx",
-        linko: "/lottery/officialffc/tx",
-        bcolor: "#fcc0e5"
-      }
-    ],
-    pks: [
-      {
-        name: this.now_lang.lot_type.xyft_pk10,
-        src: require("../../images/caip/PKSXYFT.png"),
-        credit: true,
-        official: true,
-        linko: "/lottery/officialpk10/xyft",
-        linkc: "/lottery/creditpk10/xyft",
-        bcolor: "#d2c6f6"
-      },
-      {
-        name: this.now_lang.lot_type.bj_pk10,
-        src: require("../../images/caip/PKSBJ.png"),
-        credit: true,
-        official: true,
-        linko: "/lottery/officialpk10/bjpk",
-        linkc: "/lottery/creditpk10/bjpk",
-        bcolor: "#d2c6f6"
-      }
-    ],
-    s5: [
-      {
-        name: this.now_lang.lot_type.hlj_exf,
-        src: require("../../images/caip/11X5HLJ.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditexf/hljexf",
-        linko: "/lottery/officialexf/hljexf",
-        bcolor: "#b5c0df"
-      },
-      {
-        name: this.now_lang.lot_type.js_exf,
-        src: require("../../images/caip/11X5JS.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditexf/jsexf",
-        linko: "/lottery/officialexf/jsexf",
-        bcolor: "#b5c0df"
-      },
-      {
-        name: this.now_lang.lot_type.jx_exf,
-        src: require("../../images/caip/11X5JX.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditexf/jxexf",
-        linko: "/lottery/officialexf/jxexf",
-        bcolor: "#b5c0df"
-      },
-      {
-        name: this.now_lang.lot_type.sd_exf,
-        src: require("../../images/caip/11X5SD.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditexf/sdexf",
-        linko: "/lottery/officialexf/sdexf",
-        bcolor: "#b5c0df"
-      },
-      {
-        name: this.now_lang.lot_type.shh_exf,
-        src: require("../../images/caip/11X5SH.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditexf/shhexf",
-        linko: "/lottery/officialexf/shhexf",
-        bcolor: "#b5c0df"
-      },
-      {
-        name: this.now_lang.lot_type.xj_exf,
-        src: require("../../images/caip/11X5XJ.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditexf/xjexf",
-        linko: "/lottery/officialexf/xjexf",
-        bcolor: "#b5c0df"
-      }
-    ],
-    klc: [
-    {
-        name: this.now_lang.lot_type.bjkl8_klc,
-        src: require("../../images/caip/KLBJ.png"),
-        credit: false,
-        official: true,
-        linkc: "/lottery/creditklc/bjkl8",
-        linko: "/lottery/officialklc/bjkl8",
-        bcolor: "#b7e1f9"
-    },
-    {
-        name: this.now_lang.lot_type.jndkl8_klc,
-        src: require("../../images/caip/KLJND.png"),
-        credit: false,
-      official: true,
-      linkc: "/lottery/creditklc/jndkl8",
-      linko: "/lottery/officialklc/jndkl8",
-      bcolor: "#b7e1f9"
-    },
-    {
-      name: this.now_lang.lot_type.azkl8_klc,
-      src: require("../../images/caip/KLAZ.png"),
-      credit: false,
-      official: true,
-      linkc: "/lottery/creditklc/azkl8",
-      linko: "/lottery/officialklc/azkl8",
-      bcolor: "#b7e1f9"
-    },
-    {
-      name: this.now_lang.lot_type.slfk_klc,
-      src: require("../../images/caip/KLSLF.png"),
-      credit: false,
-      official: true,
-      linkc: "/lottery/creditklc/slfk",
-      linko: "/lottery/officialklc/slfk",
-      bcolor: "#b7e1f9"
-    },
-    {
-      name: this.now_lang.lot_type.twbg_klc,
-      src: require("../../images/caip/KLTWBG.png"),
-      credit: false,
-      official: true,
-      linkc: "/lottery/creditklc/twbg",
-      linko: "/lottery/officialklc/twbg",
-      bcolor: "#b7e1f9"
-    },
-    {
-        name: this.now_lang.lot_type.gdk10_klc,
-        src: require("../../images/caip/KLGD.png"),
-        credit: true,
-        official: false,
-        linkc: "/lottery/creditklc/gdk10",
-        linko: "/lottery/officialklc/gdk10",
-        bcolor: "#b7e1f9"
-      },
-      {
-        name: this.now_lang.lot_type.gxk10_klc,
-        src: require("../../images/caip/KLGX.png"),
-        credit: true,
-        official: false,
-        linkc: "/lottery/creditklc/gxk10",
-        linko: "/lottery/officialklc/gxk10",
-        bcolor: "#b7e1f9"
-      },
-      {
-        name: this.now_lang.lot_type.cqk10_klc,
-        src: require("../../images/caip/KLZQ.png"),
-        credit: true,
-        official: false,
-        linkc: "/lottery/creditklc/cqk10",
-        linko: "/lottery/officialklc/cqk10",
-        bcolor: "#b7e1f9"
-      }
-    ],
-    dpc: [
-      {
-        name: this.now_lang.lot_type.fc3d_dpc,
-        src: require("../../images/caip/DFC.png"),
-        credit: false,
-        official: true,
-        linkc: "/lottery/creditdpc/fc3d",
-        linko: "/lottery/officialdpc/fc3d",
-        bcolor: "#bff6cf"
-      },
-      {
-        name: this.now_lang.lot_type.pl35_dpc,
-        src: require("../../images/caip/DPLSW.png"),
-        credit: false,
-        official: true,
-        linkc: "/lottery/creditdpc/pl35",
-        linko: "/lottery/officialdpc/pl35",
-        bcolor: "#bff6cf"
-      },
-      {
-        name: this.now_lang.lot_type.shssl_dpc,
-        src: require("../../images/caip/DSHSSL.png"),
-        credit: false,
-        official: true,
-        linkc: "/lottery/creditdpc/shssl",
-        linko: "/lottery/officialdpc/shssl",
-        bcolor: "#bff6cf"
-      },
-      {
-        name: "香港⑥合彩",
-        src: require("../../images/caip/VRLHC.png"),
-        credit: true,
-        official: false,
-        linkc: "/lottery/creditdpc/liuhec",
-        linko: "",
-        bcolor: "#bff6cf"
-      },
-    ],
-    pcdd: [
-      {
-        name: this.now_lang.lot_type.az_28,
-        src: require("../../images/caip/PDAZ28.png"),
-        credit: true,
-        official: false,
-        linko: "",
-        linkc: "/lottery/creditpcdd/az28",
-        bcolor: "#cde6a1"
-      },
-      {
-        name: this.now_lang.lot_type.dj_28,
-        src: require("../../images/caip/PDDJ28.png"),
-        credit: true,
-        official: false,
-        linko: "",
-        linkc: "/lottery/creditpcdd/dj28",
-        bcolor: "#cde6a1"
-      },
-      {
-        name: this.now_lang.lot_type.hs_28,
-        src: require("../../images/caip/PDHS28.png"),
-        credit: true,
-        official: false,
-        linko: "",
-        linkc: "/lottery/creditpcdd/hs28",
-        bcolor: "#cde6a1"
-      },
-      {
-        name: this.now_lang.lot_type.jnd_28,
-        src: require("../../images/caip/PDJND28.png"),
-        credit: true,
-        official: false,
-        linko: "",
-        linkc: "/lottery/creditpcdd/jnd28",
-        bcolor: "#cde6a1"
-      },
-      {
-        name: this.now_lang.lot_type.slfk_28,
-        src: require("../../images/caip/PDSLFK28.png"),
-        credit: true,
-        official: false,
-        linko: "",
-        linkc: "/lottery/creditpcdd/xy28",
-        bcolor: "#cde6a1"
-      },
-      {
-        name: this.now_lang.lot_type.tw_28,
-        src: require("../../images/caip/PDTW28.png"),
-        credit: true,
-        official: false,
-        linko: "",
-        linkc: "/lottery/creditpcdd/slfk28",
-        bcolor: "#cde6a1"
-      },
-      {
-        name: this.now_lang.lot_type.xy_28,
-        src: require("../../images/caip/PDXY28.png"),
-        credit: true,
-        official: false,
-        linko: "",
-        linkc: "/lottery/creditpcdd/xy28",
-        bcolor: "#cde6a1"
-      }
-    ],
-    k3: [
-      {
-        name: this.now_lang.lot_type.ahk3_ffc,
-        src: require("../../images/caip/K3AH.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditk3/ahk3",
-        linko: "/lottery/officialk3/ahk3",
-        bcolor: "#eec391"
-      },
-      {
-        name: this.now_lang.lot_type.bjk3_ffc,
-        src: require("../../images/caip/K3BJ.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditk3/bjk3",
-        linko: "/lottery/officialk3/bjk3",
-        bcolor: "#eec391"
-      },
-      {
-        name: this.now_lang.lot_type.gxk3_ffc,
-        src: require("../../images/caip/K3GX.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditk3/gxk3",
-        linko: "/lottery/officialk3/gxk3",
-        bcolor: "#eec391"
-      },
-      {
-        name: this.now_lang.lot_type.hbk3_ffc,
-        src: require("../../images/caip/K3HEBE.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditk3/hbk3",
-        linko: "/lottery/officialk3/hbk3",
-        bcolor: "#eec391"
-      },
-      {
-        name: this.now_lang.lot_type.hnk3_ffc,
-        src: require("../../images/caip/K3HN.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditk3/hnk3",
-        linko: "/lottery/officialk3/hnk3",
-        bcolor: "#eec391"
-      },
-      {
-        name: this.now_lang.lot_type.hubk3_ffc,
-        src: require("../../images/caip/K3HUBEI.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditk3/hubk3",
-        linko: "/lottery/officialk3/hubk3",
-        bcolor: "#eec391"
-      },
-      {
-        name: this.now_lang.lot_type.jsk3_ffc,
-        src: require("../../images/caip/K3JS.png"),
-        credit: true,
-        official: true,
-        linkc: "/lottery/creditk3/jsk3",
-        linko: "/lottery/officialk3/jsk3",
-        bcolor: "#eec391"
-      },
-      {
-        name: this.now_lang.lot_type.shks_ffc,
-        src: require("../../images/caip/K3SH.png"),
-        credit: true,
-        official: true,
-        linkc: "lottery/creditssc/shk3",
-        linko: "lottery/officialssc/shk3",
-        bcolor: "#eec391"
-      }
-    ],
-    vrc: [
-      {
-        name: this.now_lang.lot_type.tfencai_vr,
-        src: require("../../images/caip/VR3FC.png"),
-        credit: true,
-        official: true,
-        linko: "/lottery/vrc/3fc",
-        linkc: "/lottery/vrc/3fc",
-        bcolor: "#ffa18e"
-      },
-      {
-        name: this.now_lang.lot_type.cpbjl_vr,
-        src: require("../../images/caip/VRCPBJL.png"),
-        credit: true,
-        official: true,
-        linko: "/lottery/vrc/bjl",
-        linkc: "/lottery/vrc/bjl",
-        bcolor: "#ffa18e"
-      },
-      {
-        name: this.now_lang.lot_type.jx15_vr,
-        src: require("../../images/caip/VRJX1.5FC.png"),
-        credit: true,
-        official: true,
-        linko: "/lottery/vrc/jx",
-        linkc: "/lottery/vrc/jx",
-        bcolor: "#ffa18e"
-      },
-      {
-        name: this.now_lang.lot_type.kt_vr,
-        src: require("../../images/caip/VRKT.png"),
-        credit: false,
-        official: true,
-        linko: "/lottery/vrc/kt",
-        linkc: "/lottery/vrc/kt",
-        bcolor: "#ffa18e"
-      },
-      {
-        name: this.now_lang.lot_type.lhc_vr,
-        src: require("../../images/caip/VRLHC.png"),
-        credit: true,
-        official: true,
-        linko: "/lottery/vrc/lhc",
-        linkc: "/lottery/vrc/lhc",
-        bcolor: "#ffa18e"
-      },
-      {
-        name: this.now_lang.lot_type.sc_vr,
-        src: require("../../images/caip/VRSC.png"),
-        credit: true,
-        official: false,
-        linko: "/lottery/vrc/sc",
-        linkc: "/lottery/vrc/sc",
-        bcolor: "#ffa18e"
-      }
-    ]
-  };
   public outdata = [];
   public testdata;
   constructor(private router: Router) {}
@@ -570,90 +738,34 @@ export class LotteryComponent implements OnInit {
   ngOnInit() {
     this.now_lang_type=userModel.now_lang_type;
     this.loadpage = userModel.platform;
-    this.setdata();
-  }
-  linkrouter(i, o, c) {
-    let od = this.outdata;
-    let tb = this.toptab;
-    if (tb !== 2) {
-      if (od[i].official) {
-        this.router.navigate([o]);
-      } else {
-        this.router.navigate([c]);
-      }
-    } else {
-      if (od[i].credit) {
-        this.router.navigate([c]);
-      } else {
-        this.router.navigate([o]);
-      }
-    }
   }
 
-  toptabclick(i) {
-    this.toptab = i;
-    this.setdata();
-  }
-  tabclick(i) {
-    this.tab = i;
-    this.setdata();
+  // 显示彩票栏底部更多按钮方法
+  butshow(item){
+      let n = 0 ;
+      if (!item.gxtog) {
+          for (let i = 0; i < item.items.length; i++) {
+            item.items[i].official && n++;
+          }
+      }else{
+        for (let i = 0; i < item.items.length; i++) {
+          item.items[i].credit && n++;
+        }
+      }
+
+      return n>6 ? true : false
   }
 
-  // 设置需要显示的彩种数据
-  setdata() {
-    let d = this.cpdata;
-    let td = this.tabdata;
-    let tb = this.tab;
-    this.outdata.length = 0;
-    // 玩法选全部
-    if (this.toptab == 0) {
-      if (this.tab == 0) {
-        for (let key in d) {
-          for (let i = 0; i < d[key].length; i++) {
-            this.outdata.push(d[key][i]);
-          }
-        }
-      } else {
-        for (let i = 0; i < d[td[tb].style].length; i++) {
-          this.outdata.push(d[td[tb].style][i]);
-        }
-      }
-    }
-    // 玩法选官方
-    if (this.toptab == 1) {
-      if (this.tab == 0) {
-        for (let key in d) {
-          for (let i = 0; i < d[key].length; i++) {
-            if (d[key][i].official) {
-              this.outdata.push(d[key][i]);
-            }
-          }
-        }
-      } else {
-        for (let i = 0; i < d[td[tb].style].length; i++) {
-          if (d[td[tb].style][i].official) {
-            this.outdata.push(d[td[tb].style][i]);
-          }
-        }
-      }
-    }
-    // 玩法选信用
-    if (this.toptab == 2) {
-      if (this.tab == 0) {
-        for (let key in d) {
-          for (let i = 0; i < d[key].length; i++) {
-            if (d[key][i].credit) {
-              this.outdata.push(d[key][i]);
-            }
-          }
-        }
-      } else {
-        for (let i = 0; i < d[td[tb].style].length; i++) {
-          if (d[td[tb].style][i].credit) {
-            this.outdata.push(d[td[tb].style][i]);
-          }
-        }
-      }
-    }
+  
+  linkrout(item, i) {
+      console.log(item);
+    // 跳转路由
+    let str = item.gxtog ? item.items[i].linkc : item.items[i].linko;
+    this.router.navigate([str]);
   }
+
+  more(item){
+    item.postop = item.postop===0 ? -240 : 0;
+  }
+
 }

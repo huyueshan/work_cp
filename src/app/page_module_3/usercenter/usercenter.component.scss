@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-ul {
+ul,ol,dl {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -35,10 +35,6 @@ ul {
     margin: 0;
     padding: 0;
     align-content: center;
-    ul,
-    dl {
-        list-style: none
-    }
 }
 .container:before {
     content: '';

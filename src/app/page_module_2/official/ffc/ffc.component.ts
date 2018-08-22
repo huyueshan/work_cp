@@ -16,6 +16,13 @@ import { Utils } from '../../../../factory/utils';
 })
 
 export class FFCofficialComponent implements OnInit {
+    // 传给弹窗组件数据
+    public  popoutInfo={
+        title:'string',
+        msg:'string',
+        event: false,
+        show: false,
+    }
 
 	constructor(private route: ActivatedRoute,private httpClient:HttpClient,private router: Router) { }
 	loadpage=false;
@@ -83,6 +90,9 @@ export class FFCofficialComponent implements OnInit {
 			checkon:false
 		}
 	]
+	//追号提交数据
+	public lotdata_submit :any = [];
+
 	public typeoptiondata :any = [
       5,
       10,
@@ -103,13 +113,85 @@ export class FFCofficialComponent implements OnInit {
 		},
 		multiple_option:1
 	}
+	public Open_stop :any = false
+	public Win_stop :any = false
 	public chase_number_config :any = $.extend(true, {}, this.chase_config_ori);
 	//目前追号面板
 	public c_now_panel :any = 'one'
 	public chase_money :any = 0;
 	public chase_amount :any = 0;
 	//追号数据结束
-
+	// 新增数据
+	public history_list :any = 
+	[
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        
+    ];
 	public curinpt = {value:''};
 	//路由id
 	public routid;
@@ -531,7 +613,7 @@ export class FFCofficialComponent implements OnInit {
 			index:9
 		}
 	};
-
+// 追号函数
 	typeoptchange() {
 		let that = this;
 		if (that.chase_number_config.select_amount == 'all') {
@@ -546,17 +628,20 @@ export class FFCofficialComponent implements OnInit {
 		if (item.checkon) {
 			if (item.multiple == 0) {
 				item.multiple = that.chase_number_config.multiple;
-				item.take_money = item.multiple*item.price;
+				item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
 			}
 
 		}else{
 			item.multiple = 0;
+			item.take_money = 0;
 		}
 		that.repanel_data()
+		console.log(that.lotdata_now)
 	}
 	// 生成计划
 	produce_plan(){
 		let that = this;
+		that.lotdata_now = $.extend(true, [], that.lotdata);
 		let gap_number,gap_multiple,multiple,chase_amount;
 		if (that.c_now_panel == 'two') {
 			gap_number = that.chase_number_config.chase_rule.number;
@@ -570,7 +655,7 @@ export class FFCofficialComponent implements OnInit {
 				console.log((i)%gap_number)
 				that.lotdata_now[i].checkon = true;
 				that.lotdata_now[i].multiple = multiple;
-				that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price;
+				that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
 				if ((i+1)%gap_number == 0) {
 					multiple = multiple*gap_multiple;
 				}; 
@@ -583,26 +668,47 @@ export class FFCofficialComponent implements OnInit {
 				chase_amount = that.lotdata_now.length;
 			}
 			for (var i = 0; i <= chase_amount-1; i++) {
+
 				that.lotdata_now[i].checkon = true;
 				that.lotdata_now[i].multiple = multiple;
-				that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price;
+				that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
 			};
 		}
 		that.repanel_data()
 	}
 	//单个金钱计算
-	get_takemon(item){
+	get_takemon(item,e){
 		let that = this;
-		item.take_money = item.multiple*item.price;
+		if (item.multiple == 0) {
+			item.checkon = false;
+		}else{
+			item.checkon = true;
+		}
+		// for (var k = 0; k <= that.sureballlist.length-1; k++) {
+
+		// }
+		item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
 		that.repanel_data()
 	}
+    changeregnum(e) {
+        let v = e.target;
+        v.value = v.value.replace(/\D/g, "");
+        if (Number(v.value) === 0 && v.value !== "") {
+            v.value = 0;
+        }
+        if (Number(v.value) > 0) {
+            v.value = Number(v.value);
+        }
+    }
 	// 总金钱总期数计算
 	repanel_data(){
 		let that = this;
 		let amount = 0;
 		let chase_amount = 0;
 		for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-			amount = that.lotdata_now[i].multiple*that.lotdata_now[i].price+amount;
+			for (var k = 0; k <= that.sureballlist.length-1; k++) {
+				amount = that.lotdata_now[i].multiple*that.lotdata_now[i].price/that.modelarr[that.model]+amount;
+			}
 			if (that.lotdata_now[i].checkon) {
 				chase_amount = chase_amount+1;
 			};
@@ -642,6 +748,92 @@ export class FFCofficialComponent implements OnInit {
 			$('.one').removeClass('active')
 		}
 	}
+	//提交追号
+	submit_chase(){
+		let that = this;
+		//清空
+		that.lotdata_submit = [];
+		for (var i = 0; i <= that.lotdata_now.length-1; i++) {
+			console.log(that.lotdata_now[i].checkon != false)
+			if (that.lotdata_now[i].checkon != false) {
+				for (var k = 0; k <= that.sureballlist.length-1; k++) {
+						let rechase :any= {};
+						rechase.Open_stop = that.Open_stop;
+						rechase.Win_stop = that.Win_stop;
+						rechase.multiple = that.lotdata_now[i].multiple;
+						rechase.model = that.model;
+						rechase.count = 1;
+						rechase.sum = (2*rechase.multiple) /that.modelarr[rechase.model]
+						rechase.amount = that.totalinfo.amount;
+						rechase.ball = that.sureballlist[k].ball;
+						rechase.name = that.sureballlist[k].name;
+						rechase.issue = that.lotdata_now[i].lot_num;
+						that.lotdata_submit.push(rechase)
+				}
+			};
+		}
+		console.log(that.lotdata_submit)
+		if(!that.lotdata_submit[0]){
+            that.POPNOTE({msg:'请选择追号期数'});
+			return
+		}else{
+			that.POPNOTE({msg:`您确定追号${that.lotdata_now.length}期么? 总投入${that.chase_money}元。`},that.betnow);
+			return
+		}
+		
+		
+	}
+	betnow(){
+		// 在此处提交追号所有号码
+	}
+    close_chase(){
+        $('#layer3').find('.chase_container').removeClass('show_this');
+        $('#layer3').removeClass('show_this');
+        let that = this;
+        that.rechase_dataall()
+    }
+	chase_number(){
+		let that = this;
+		if (!that.sureballlist[0]) {
+			that.POPNOTE({msg:'注单列表为空，请先下注！或者随机1注',btn:'随机一注'},that.radomshowchase);
+			return false
+		};
+		that.showchase();
+    }  
+	show_chasenumber(param,nextrun){
+		let msg = param.msg;
+		let til = param.til;
+		let self = this;
+		let str = '';	
+		let dom = $(this.parseDom(str))
+		dom.find('.close').on('click',function(){
+			self.hid_layer();
+		}) 
+		dom.find('.confirm_box').on('click',function(){
+			nextrun();
+		})
+		$('#layer').append(dom);
+		setTimeout(function(){
+			dom.addClass('tobig')
+		}, 10)
+		window.onresize = function () {
+			console.log('x')
+		}
+	}
+
+    radomshowchase(){
+        this.mathball(this.menu_2);
+        $('#layer3').find('.chase_container').addClass('show_this');
+        $('#layer3').addClass('show_this');
+    }
+    showchase(){
+        $('#layer3').find('.chase_container').addClass('show_this');
+        $('#layer3').addClass('show_this');
+    }
+	hid_layer(){
+		document.getElementById("layer").innerHTML = '';
+	}
+//追号函数结束
 	// 遗漏数据
 	omitarr = {
 		0:[],1:[],2:[],3:[],4:[]
@@ -1116,13 +1308,28 @@ export class FFCofficialComponent implements OnInit {
 		this.balllist(['b','s','g']);
 		this.now_description = this.lot_rules[this.now_tips_menu]['description'];
 		this.tabmenu(this.menu_1[3])
-		//路由控制
+		if(this.tabcurr.isupload){
+            this.up_ball=2
+		}
+        //路由控制
         this.route.params.subscribe(data => {
             this.getPageId();
+            this.balllist(['b','s','g']);
+            this.now_description = this.lot_rules[this.now_tips_menu]['description'];
+            this.status = {
+                menu_1:4,
+                menu_2:1
+            };
+            if (this.nowPageId === 'qq_ffc') {
+                this.tabmenu(this.menu_1[6])
+            }else{
+                this.tabmenu(this.menu_1[3])
+            }
+            this.delball('clear','');
+            if(this.tabcurr.isupload){
+                this.up_ball=2
+            }
         });
-		if(this.tabcurr.isupload){
-			this.up_ball=2
-		}
         // 注册拖拽
         this.drag_tag();
 	}
@@ -1576,7 +1783,7 @@ export class FFCofficialComponent implements OnInit {
 	// 处理过滤结果
 	filteresult(id,type){
 		if($('#'+id).val() == ''){
-			this.show_layer({'msg':'您还没有输入号码','til':'操作提示'},'')
+            this.POPNOTE({msg:'您还没有输入号码'});
 			return
 		}
 		let self=this,rep=0,nob=0,ball ='',con = '',val='';
@@ -1600,16 +1807,16 @@ export class FFCofficialComponent implements OnInit {
 		if(type == 'del'){
 			$('#'+id).val(val)
 			if(rep==0 && nob==0){
-				self.show_layer({'msg':'没有重复号码','til':'操作提示'},'')
+                self.POPNOTE({msg:'没有重复号码'});
 			}else{
 				con = '已经为您过滤了'+rep+'个重复号，'+nob+'个无效号，过滤内容为：'+ball
-				self.show_layer({'msg':con,'til':'操作提示'},'')
+                self.POPNOTE({msg:con});
 			}
 		}else{
 			if(rep!=0 || nob!=0){
 				$('#'+id).val(null)
 				con = '将要自动过滤'+rep+'个重复号，'+nob+'个无效号，过滤内容为：'+ball
-				self.show_layer({'msg':con,'til':'操作提示'},'')
+                self.POPNOTE({msg:con});
 			}else{
 				$('#'+id).val(null)
 			}
@@ -1694,7 +1901,7 @@ export class FFCofficialComponent implements OnInit {
 	addball(arrob,type){
 		let that = this
 		if(!type){
-			that.show_layer({'msg':'号码选择不完整，请重新选择','til':'操作提示'},'')
+            that.POPNOTE({msg:'号码选择不完整，请重新选择'});
 			return
 		}
 		let arr = []
@@ -1778,13 +1985,22 @@ export class FFCofficialComponent implements OnInit {
 		}
 		this.allbet(this.sureballlist)
 	}
+	// 确认投注
+	affirm(){
+        if (this.sureballlist.length<1) {
+            this.POPNOTE({msg:'没有投注内容！'});
+        }else{
+            this.POPNOTE({msg:'投注成功！'});
+            this.delball('clear','');
+        }
+    }
 	
 	// 随机选号号码
 	mathball(arr){
 		let that = this
 		let obj:any = {}
 		if(that.radom_input.value==0){
-			that.show_layer({'msg':'随机注数不能小于1','til':'操作提示'},'')
+            that.POPNOTE({msg:'随机注数不能小于1'});
 			return
 		}
 		arr.map(function(res){
@@ -1839,10 +2055,14 @@ export class FFCofficialComponent implements OnInit {
 			that.orderinfo.total = that.sureballlist.length;
 			that.orderinfo.betcount = that.orderinfo.betcount + redata.count;
 			that.orderinfo.money = Utils.algorithm.add(that.orderinfo.money.toFixed(2),redata.sum);
+			console.log(that.sureballlist)
 		}
 	}
-	
 	addrem(item){
+		//倍数锁
+		if (this.lock_multible) {
+			return false
+		};
 		this.multiple_input.value = parseInt(this.multiple_input.value);
 		this.radom_input.value = parseInt(this.radom_input.value);
 		if (item=='multiple') {
@@ -1851,8 +2071,12 @@ export class FFCofficialComponent implements OnInit {
 		}else if(item=='radom'){
 			this.radom_input.value = this.radom_input.value +1;
 		}
+		
 	}
 	minusrem(item){
+		if (this.lock_multible) {
+			return false
+		};
 		this.multiple_input.value = parseInt(this.multiple_input.value);
 		this.radom_input.value = parseInt(this.radom_input.value);
 		if (item=='multiple') {
@@ -1928,61 +2152,49 @@ export class FFCofficialComponent implements OnInit {
 	　　 objE.innerHTML = arg;
 	　　 return objE.childNodes;
 	};
-	show_layer(param,nextrun){
-		let msg = param.msg;
-		let til = param.til;
-		let self = this;
-		let str = '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">'+til+'</div><div class="close">x</div></div><div class="content_box">'+msg+'</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';	
-		let dom = $(this.parseDom(str))
-		dom.find('.close').on('click',function(){
-			self.hid_layer();
-		}) 
-		dom.find('.confirm_box').on('click',function(){
-			if(nextrun=='' || !nextrun){
-				self.hid_layer();
-			}else{
-				nextrun();
-			}
-			
-		})
-		$('#layer').append(dom);
-		setTimeout(function(){
-			dom.addClass('tobig')
-		}, 10)
-		window.onresize = function () {
-		}
-	}
-	hid_layer(){
-		console.log('有反应么')
-		document.getElementById("layer").innerHTML = '';
-	}
 
-	show_chasenumber(param,nextrun){
-		let msg = param.msg;
-		let til = param.til;
-		let self = this;
-		let str = '';	
-		let dom = $(this.parseDom(str))
-		dom.find('.close').on('click',function(){
-			self.hid_layer();
-		}) 
-		dom.find('.confirm_box').on('click',function(){
-			nextrun();
-		})
-		$('#layer').append(dom);
-		setTimeout(function(){
-			dom.addClass('tobig')
-		}, 10)
-		window.onresize = function () {
-			console.log('x')
+
+    
+    // 绑定给弹窗组件的事件；
+    NOTARIZE(){
+        return
+    }
+    // 弹窗关闭事件 可以自定义命名
+    closePopouot(e){
+        this.popoutInfo.show = false;
+    }
+
+    // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
+    POPNOTE(data,fn=null){
+        let o = {
+            title:'操作提示',   //title不传值默认为 ‘操作提示’
+            msg:' ',
+            event: false,
+            show: true,
+        }
+        if (typeof fn === 'function') {
+            this.NOTARIZE = fn;
+            o.event = true;
+        }else{
+            this.NOTARIZE = ()=>{return};
+        }
+        this.popoutInfo = Object.assign({},o,data);
+    }
+    // 锁定倍数
+	public lock_multible :any=false;
+	lock_multiple(item){
+		let now_btn = $(item.target);
+		console.log($(item.target).hasClass('switch_btn'));
+		if (!$(item.target).hasClass('switch_btn')) {
+			now_btn = $(item.target).parent();
 		}
-	}
-	close_chase(){
-		$('#layer2').find('.chase_container').removeClass('show_this');
-		let that = this;
-		that.rechase_dataall()
-	}
-	chase_number(){
-		$('#layer2').find('.chase_container').addClass('show_this');
+		if(now_btn.hasClass('on')){
+			this.lock_multible = false;
+			$('#testinput').removeAttr('disabled');
+		}else{
+			this.lock_multible = true;
+			$('#testinput').attr({disabled: 'disabled'});
+		}
+
 	}
 }

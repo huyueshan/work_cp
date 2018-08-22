@@ -14,26 +14,12 @@ $yellow:#fe8f00;
 	user-select:none;
 	font-size:12px;
 }
+
 /* 颜色 */
 .orange_font{
-	color: #fe8f00;
+	color: #B61010;
 }
-.jiangjin_tips{
-	float: left;
-    position: relative;
-    z-index: 998;
-    width: 100px;
-    height: 32px;
-    line-height: 32px;
-    text-align: center;
-    font-size: 14px;
-    background-color: rgb(204, 204, 204);
-    color: rgb(68, 68, 68);
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px;
-    margin-top: 5px;
-}
+
 /* 提示 */
 .tips{
 	width: 250px;
@@ -42,20 +28,15 @@ $yellow:#fe8f00;
 	background-color: #222;
 	line-height: 25px;
 	position: absolute;
-	left: 0;
+	left: 11px;
 	top:0;
 	color: white;
 	/* margin-top: -125%; */
-	transform:translateY(-110%) scale(0.5);
-	margin-left: -125px;
+	transform:translate(-50%,-110%) scale(0.5);
 	border:2px solid #fe8f00;
 	border-radius: 4px;
 	text-align: center;
 	transition:0.1s ease;
-}
-.long_tips{
-	text-align: left;
-	width: 400px;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -68,10 +49,11 @@ input[type="number"]{
 	height:auto;
 	width: 50px;
 	position: absolute;
+	left: 2px;
 	margin-left:56px;
 	border:1px solid #ccc;
 	box-shadow: 0px -2px 8px 1px rgba(0,0,0,0.2);
-	margin-top: 22px;
+	margin-top: 21px;
 	background-color: #fff;
 	li{
 		border-bottom: 1px solid #ccc;
@@ -89,12 +71,14 @@ input[type="number"]{
 	/* display: none; */
 	visibility: hidden;
 }
-
+.hide_it{
+	display: none;
+}
 
 .tipsshow{
 	/* display: block; */
 	visibility: visible;
-	transform:translateY(-110%) scale(1);
+	transform:translate(-50%,-110%) scale(1);
 }
 .check_ballplace{
 	height: 35px;
@@ -128,187 +112,184 @@ input[type="number"]{
 	}
 }
 
-// .topbox{
-// 	width:1200px;
-// 	margin:0 auto;
-// 	overflow:hidden;
-// 	height:40px;
-// 	.topleft{
-// 		float:left;
-// 		overflow:hidden;
-// 		height:40px;
-// 		.time{
-// 			float:left;
-// 			height:15px;
-// 			line-height:15px;
-// 			border-right:1px solid #ffffff;
-// 			padding-right:10px;
-// 			color:#fff;
-// 			margin-top:12px;
-// 			font-size:14px;
-// 		}
-// 		.language{
-// 			margin-top:9px;
-// 			float:left;
-// 			margin-left:10px;
-// 			cursor:pointer;
-// 			img{
-// 				height:16px;
-// 			}
-// 		}
-// 	}
-// 	.topright{
-// 		float:right;
-// 		overflow:hidden;
-// 		height:40px;
-// 		.userinfo{
-// 			float:left;
-// 			padding:10px;
-// 			font-size:14px;
-// 			color:#fff;
-// 			.title{
-// 				float:left;
-// 			}
-// 			.getinfo{
-// 				float:left;
-// 				color:#fff;
-// 			}
-// 			.mr20{
-// 				margin-right:20px;
-// 			}
-// 			.ml10{
-// 				margin-left:20px;
-// 			}
-// 			.money{
-// 				float:left;
-// 				width: 80px;
-// 				color:$yellow;
-// 			}
-// 			.titlerel{
-// 				float:left;
-// 				margin-left:10px;
-// 				margin-top:3px;
-// 				cursor:pointer;
-// 			}
-// 		}
-// 		.centerlist{
-// 			float:left; 
-// 			height:40px;
-// 			padding:12px 0px;
-// 			margin-left:20px;
-// 			li{
-// 				float:left;
-// 				color:#fff;
-// 				list-style:none;
-// 				padding:0px 10px;
-// 				height:14px;
-// 				line-height:14px;
-// 				border-right:1px solid #fff;
-// 				a{
-// 					color:#fff;
-// 					cursor:pointer;
-// 					:hover{
-// 						color:$yellow;
-// 					}
-// 				}
-// 			}
-// 			:last-child{
-// 				padding-right:0px;
-// 				border-right:none;
-// 			}
+.topbox{
+	width:1200px;
+	margin:0 auto;
+	overflow:hidden;
+	height:40px;
+	.topleft{
+		float:left;
+		overflow:hidden;
+		height:40px;
+		.time{
+			float:left;
+			height:15px;
+			line-height:15px;
+			border-right:1px solid #ffffff;
+			padding-right:10px;
+			color:#fff;
+			margin-top:12px;
+			font-size:14px;
+		}
+		.language{
+			margin-top:9px;
+			float:left;
+			margin-left:10px;
+			cursor:pointer;
+			img{
+				height:16px;
+			}
+		}
+	}
+	.topright{
+		float:right;
+		overflow:hidden;
+		height:40px;
+		.userinfo{
+			float:left;
+			padding:10px;
+			font-size:14px;
+			color:#fff;
+			.title{
+				float:left;
+			}
+			.getinfo{
+				float:left;
+				color:#fff;
+			}
+			.mr20{
+				margin-right:20px;
+			}
+			.ml10{
+				margin-left:20px;
+			}
+			.money{
+				float:left;
+				color:$yellow;
+			}
+			.titlerel{
+				float:left;
+				margin-left:10px;
+				margin-top:3px;
+				cursor:pointer;
+			}
+		}
+		.centerlist{
+			float:left; 
+			height:40px;
+			padding:12px 0px;
+			margin-left:20px;
+			li{
+				float:left;
+				color:#fff;
+				list-style:none;
+				padding:0px 10px;
+				height:14px;
+				line-height:14px;
+				border-right:1px solid #fff;
+				a{
+					color:#fff;
+					cursor:pointer;
+					:hover{
+						color:$yellow;
+					}
+				}
+			}
+			:last-child{
+				padding-right:0px;
+				border-right:none;
+			}
 			
-// 		}
-// 	}
-// }
+		}
+	}
+}
 
-// .headbox{
-// 	width:1200px;
-// 	margin:0 auto;
-// 	overflow:hidden;
-// 	height:80px;
-// 	padding:10px 0px;
-// 	.headleft{
-// 		float:left;
-// 		overflow:hidden;
-// 		height:100%;
-// 		width:370px;
-// 		.logo{
-// 			height:60px;
-// 		}
-// 	}
-// 	.headright{
-// 		float:right;
-// 		overflow:hidden;
-// 		height:100%;
-// 		width:830px;
-// 		.navtab{
-// 			float:right; 
-// 			padding:12px 0px;
-// 			margin-left:20px;
-// 			li{
-// 				float:left;
-// 				color:#fff;
-// 				list-style:none;
-// 				margin-right:45px;
-// 				.pc{
-// 					font-size:16px;
-// 					text-align:center;
-// 					margin-bottom:0px;
-// 					font-weight:bold;
-// 				}
-// 				.pe{
-// 					font-size:12px;
-// 					text-align:center;
-// 					width:100%;
-// 					margin-bottom:0px;
-// 				}
-// 				a{
-// 					color:#333;
-// 					cursor:pointer;
-// 					text-decoration:none;
-// 					:hover{
-// 						color:$yellow;
-// 					}
-// 				}
-// 				:hover{
-// 					color:$yellow;
-// 				}
-// 			}
-// 			:last-child{
-// 				margin-right:0px;
-// 			}
+.headbox{
+	width:1200px;
+	margin:0 auto;
+	overflow:hidden;
+	height:80px;
+	padding:10px 0px;
+	.headleft{
+		float:left;
+		overflow:hidden;
+		height:100%;
+		width:370px;
+		.logo{
+			height:60px;
+		}
+	}
+	.headright{
+		float:right;
+		overflow:hidden;
+		height:100%;
+		width:830px;
+		.navtab{
+			float:right; 
+			padding:12px 0px;
+			margin-left:20px;
+			li{
+				float:left;
+				color:#fff;
+				list-style:none;
+				margin-right:45px;
+				.pc{
+					font-size:16px;
+					text-align:center;
+					margin-bottom:0px;
+					font-weight:bold;
+				}
+				.pe{
+					font-size:12px;
+					text-align:center;
+					width:100%;
+					margin-bottom:0px;
+				}
+				a{
+					color:#333;
+					cursor:pointer;
+					text-decoration:none;
+					:hover{
+						color:$yellow;
+					}
+				}
+				:hover{
+					color:$yellow;
+				}
+			}
+			:last-child{
+				margin-right:0px;
+			}
 			
-// 		}
-// 	}
-// }
-// .banner{
-// 	width:100%;
-// 	float:left;
-// 	text-align:center;
-// 	height:200px;
-// 	.img{
-// 		height:200px;
-// 		margin:0 auto;
-// 		background:url(../../images/banner_10.jpg) center no-repeat;
-// 		background-size:cover;
-// 	}
-// }
+		}
+	}
+}
+.banner{
+	width:100%;
+	float:left;
+	text-align:center;
+	height:200px;
+	.img{
+		height:200px;
+		margin:0 auto;
+		background:url(../../images/banner_10.jpg) center no-repeat;
+		background-size:cover;
+	}
+}
 .conbox{
 	width:100%;
 	float:left;
 	background:url("../../images/bg_02.jpg") center no-repeat;
 	background-size: cover;
 	.content{
-		width:1200px;
+		width:1000px;
 		position:relative;
 		margin:0 auto;
 		overflow:hidden;
-		margin-bottom:20px;
 		.gamenav{
 			width:100%;
 			float:left;
 			position:relative;
-			margin-top:30px;
 			.alltype{
 				width:240px;
 				height:100px;
@@ -419,7 +400,7 @@ input[type="number"]{
 						line-height:50px;
 						text-align:center;
 						color:#fff;
-						font-size:22px;
+						font-size:23px;
 						margin-right:10px
 					}
 				}
@@ -463,23 +444,22 @@ input[type="number"]{
 			width:100%;
 			float:left;
 			position:relative;
-			margin-top:20px;
 			/* overflow:hidden; */
 			.sscleft{
-				width:900px;
+				width:1000px;
 				float:left;
 				/* overflow:hidden; */
 				border-radius:4px;
 				.tabbox{
-					height:50px;
+					height:36px;
 					width:100%;
 					float:left;
-					background:#333;
+					background:#3B3B3B;
 					.pointl{
 						float:left;
-						width:50px;
-						height:50px;
-						line-height:50px;
+						width:36px;
+						height:36px;
+						line-height:36px;
 						text-align:center;
 						padding-top: 5px;
 						cursor:pointer;
@@ -490,60 +470,81 @@ input[type="number"]{
 					}
 					.typetab{
 						float:left;
-						max-width:690px;
+						max-width:728px;
 						width: 100%;
 						/* overflow:hidden; */
-						height:50px;
+						height:36px;
 						li{
-							height:50px;
+							height:36px;
 							float:left;
 							font-size:14px;
 							color:#fff;
 							padding:0px 10px;
-							line-height:50px;
+							line-height:36px;
 							cursor:pointer;
+							position: relative;
 						}
 						.active{
-							background:#3d3d3d;
+							background:#B61010;
+						}
+						.active:before{
+							content: '';
+						    position: absolute;
+						    top: 36px;
+						    left: 50%;
+						    margin-left: -9px;
+						    width: 0;
+						    height: 0;
+						    border-left: 8px solid transparent;
+						    border-top: 8px solid #B61010;
+						    border-right: 8px solid transparent;
 						}
 					}
 					.pointr{
 						float:left;
 						width:50px;
-						height:50px;
-						line-height:50px;
+						height:36px;
+						line-height:36px;
 						text-align:center;
 						padding-top: 5px;
 						cursor:pointer;
+						border-right: 1px solid #101010;
 						i{
 							width: 20px; height: 20px;
 							background: url('../../images/sscsprites.png') -100px -111px;
 						}
 					}
 					.totaltype{
-						height:25px;
+						height:23px;
 						float:right;
 						border-radius:2px;
-						border:1px solid #fff;
+						/* border:1px solid #fff; */
 						overflow:hidden;
 						margin-right:20px;
-						margin-top:13px;
+						margin-top:6px;
+						background-color: #575757;
+						border-radius: 11px;
 						li{
 							float:left;
-							padding:0px 10px;
+							/* padding:0px 10px; */
+							text-align: center;
 							line-height:23px;
+							width: 70px;
 							cursor:pointer;
 							color:#fff;
+							border-radius: 11px;
+							background-color: #575757;
 							a{
-								color:#fff;
+								color:#DCDCDC;
 								text-decoration: none;
 							}
 						}
 						.active{
-							color:#333;
-							background:#fff;
+							color:#fff;
+
+							background:#B61010;
 							a{
-								color:#333;
+								color:#fff;
 								text-decoration: none;
 							}
 						}
@@ -552,40 +553,45 @@ input[type="number"]{
 				.tabcon{
 					width:100%;
 					float:left;
-					background:#3d3d3d;
+					background:#fff;
 					overflow:hidden;
-					padding:20px 40px;
+					padding:12px 40px;
+					border-bottom: 1px solid #E6E6E6;
 					.tabshow{
 						width:100%;
 						float:left;
 						.navcon{
 							width:100%;
 							float:left;	
-							margin-bottom:10px;
+							margin-top:5px;
 							.labtit{
-								color:#fff;
+								color:#333333;
 								float:left;
 								width:80px;
-								height:30px;
-								line-height:30px;
+								height:25px;
+								line-height:25px;
 								font-size:14px;
+								font-weight: bold;
+							}
+							.labtit.en{
+								width: 170px;
 							}
 							li{
 								cursor:pointer;
 								padding:0px 5px;
-								height:30px;
-								line-height:30px;
+								height:25px;
+								line-height:25px;
 								text-align:center;
 								font-size:14px;
-								color:#fff;
+								color:#666666;
 								float:left;
-								background:#525151;
+								background:#fff;
 								margin-left:10px;
 								border-radius:4px;
 							}
 							.active{
-								background:$yellow;
-								color:#333;
+								/* background:$yellow; */
+								color:#B61010;
 							}
 						}
 						.navcon.en{
@@ -603,88 +609,15 @@ input[type="number"]{
 						}
 					}
 				}
-				.chooseno{
-					width:100%;
-					height:40px;
-					float:left;
-					padding-left:40px;
-					background:#fff;
-					padding-right:30px;
-					.helpbox{
-						width:100%;
-						line-height:40px;
-						.hot_lost{
-							display: inline-block;
-							float:left;
-						}
-						.hot_hidden{
-							display: none;
-						}
-						label{
-							float:left;
-							margin-right:15px;
-							color:#333;
-							input[type=checkbox]{
-								border:1px solid $yellow;
-								color:$yellow;
-								width:18px;
-								height:18px;
-								float:left;
-								margin-top: 12px;
-								margin-right:3px;
-							}
-						}
-						.tip{
-							float:left;
-							position:relative;
-							padding-left:13px;
-							i{
-								width: 8px; height: 17px;
-								background: url('../../images/sscsprites.png') -141px -72px;
-								position:absolute;
-								top:11px;
-								left:0px;
-								cursor: pointer;
-							}
-						}
 
-						.example{
-							float:right;
-							position:relative;
-							padding-left:13px;
-							margin-left:20px;
-
-							
-							.tips span{
-								/* white-space:nowrap; */
-							}
-							.i1{
-								width: 8px; height: 17px;
-								background: url('../../images/sscsprites.png') -141px -72px;
-								position:absolute;
-								top:11px;
-								left:0px;
-								cursor:pointer;
-							}
-							.i2{
-								width: 16px; height: 18px;
-								background: url('../../images/sscsprites.png') -141px -18px;
-								position:absolute;
-								top:11px;
-								left:0px;
-								cursor:pointer;
-							}
-						}
-					}
-				}
 				.chooselist{
 					width:100%;
 					float:left;
-					padding-left:40px;
+					padding-left:35px;
 					background:#fff;
 					padding-right:30px;
 					.leftnum{
-						width:560px;
+						width:615px;
 						float:left;
 						padding:10px 0px;
 						.numcon{
@@ -692,11 +625,10 @@ input[type="number"]{
 							float:left;
 							.name{
 								float:left;
-								width: 65px; height: 26px;
-								background: url('../../images/sscsprites.png') -0 -53px;
-								color:#333;
+								min-width: 66px; height: 26px;
+								/* background: url('../../images/sscsprites.png') -0 -53px; */
+								color:#B41011;
 								font-size:12px;
-								text-align:center;
 								line-height:24px;
 								margin-top:6px;
 							}
@@ -707,7 +639,7 @@ input[type="number"]{
 								li{
 									float:left;
 									width: 38px; height: 38px;
-									background: url('../../images/sscsprites.png') -103px -0;
+									background: url('../../images/lot_choose_2/ball_bg.png') center center no-repeat;
 									text-align:center;
 									line-height:36px;
 									font-size:16px;
@@ -717,12 +649,12 @@ input[type="number"]{
 								}
 								:hover{
 									width: 38px; height: 38px;
-									background: url('../../images/hoveball.png');
-									color:#fff;
+									background: url('../../images/lot_choose_2/ball_hover.png') center center no-repeat;
+									color:#333;
 								}
 								.active{
 									width: 38px; height: 38px;
-									background: url('../../images/sscsprites.png') -103px -38px;
+									background: url('../../images/lot_choose_2/ball_active.png') center center no-repeat;
 									color:#fff;
 								}
 							}
@@ -735,7 +667,7 @@ input[type="number"]{
 								width: 65px; height: 15px;
 								color:#333;
 								font-size:12px;
-								text-align:center;
+								text-align:left;
 								line-height:15px;
 							}
 							.numlist{
@@ -750,7 +682,7 @@ input[type="number"]{
 									margin-right:5px;
 								}
 								.active{
-									color:$yellow;
+									color:#999999;
 								}
 							}
 						}
@@ -758,10 +690,11 @@ input[type="number"]{
 					.numright{
 						float:right;
 						padding:10px 0px;
+						margin-right: 66px;
 						li{
 							float:left;
 							width: 38px; height: 38px;
-							background: url('../../images/sscsprites.png') -103px -0;
+							background: url('../../images/lot_choose_2/font_bg.png') 1px center no-repeat;
 							text-align:center;
 							line-height:34px;
 							font-size:14px;
@@ -775,18 +708,18 @@ input[type="number"]{
 						}
 						:hover{
 							width: 38px; height: 38px;
-							background: url('../../images/sscsprites.png') -103px -38px;
+							background: url('../../images/lot_choose_2/font_active.png') 1px center  no-repeat;
 							color:#fff;
 						}
 						.active{
 							width: 38px; height: 38px;
-							background: url('../../images/sscsprites.png') -103px -38px;
+							background: url('../../images/lot_choose_2/font_active.png') 1px center  no-repeat;
 							color:#fff;
 						}
 					}
 				}
 				.elsebg{
-					background:#eeeeee;
+					/* background:#eeeeee; */
 				}
 				.sumBtn_box{
 					height: 350px;
@@ -808,6 +741,7 @@ input[type="number"]{
 						    margin-top: 15px;
 						    padding: 15px;
 						    border-radius: 8px;
+						    background-color: #eee;
 						    resize: none;
 						}
 					}
@@ -819,8 +753,7 @@ input[type="number"]{
 						.rt_btn{
 							margin: 0 auto;
 							margin-top: 15px;
-							background-color: #fe8f00;
-							position: relative;
+							background-color: #B61010;
 						}
 						.rt_btn:nth-child(1){
 							margin-top: 75px;
@@ -831,29 +764,19 @@ input[type="number"]{
 						/* background-color: pink; */
 						padding-left: 30px;
 						clear: both;
-						padding-top: 30px;
 						.gray_font{
 							font-weight: bold;
 						}
-					}
-					.file-input{
-						width: 120px;
-						height: 38px;
-						position:absolute;
-						left:0px;
-						top:0px;
-						opacity: 0;
-						cursor:pointer;
 					}
 				}
 				.addchoose{
 					width:100%;
 					float:left;
-					padding:20px 40px;
+					padding:20px 35px;
 					background:#fff;
 					.funleft{
 						float:left;
-						width:660px;
+						width:100%;
 						.topcz{
 							width:100%;
 							float:left;
@@ -861,7 +784,7 @@ input[type="number"]{
 								float:left;
 								color:#333;
 								margin-right:10px;
-								line-height:22px;
+								line-height:23px;
 								position: relative;
 								.title{
 									color:#333;
@@ -869,73 +792,99 @@ input[type="number"]{
 									float:left;
 									min-width: 25px;
 								}
+								.title1{
+									min-width: 67px;
+								}
 								.btnaddrem{
-									width:15px;
-									height:15px;
+									width:22px;
+									height:22px;
 									font-size:14px;
-									background:#CCCCCC;
-									border-radius:50%;
+									/* background:#CCCCCC; */
+									/* border-radius:50%; */
 									display: inline-block;
-									line-height:13px;
+									line-height:19px;
 									text-align:center;
-									color:#fff;
+									color:#999999;
 									font-weight:bold;
 									cursor:pointer;
 									font-style:normal;
 									float:left;
-									margin-top:3px;
+									border: 1px solid #E6E6E6;
+									box-sizing:border-box;
+								    background: -webkit-linear-gradient(#ffffff, #F3F3F3); /* Safari 5.1 - 6.0 */
+								    background: -o-linear-gradient(#ffffff, #F3F3F3); /* Opera 11.1 - 12.0 */
+								    background: -moz-linear-gradient(#ffffff, #F3F3F3); /* Firefox 3.6 - 15 */
+								    background: linear-gradient(#ffffff, #F3F3F3); /* 标准的语法 */
+									/* margin-top:3px; */
+								}
+								.btnaddrem:active{
+									background: -webkit-linear-gradient(#F3F3F3, #ffffff); /* Safari 5.1 - 6.0 */
+								    background: -o-linear-gradient(#F3F3F3, #ffffff); /* Opera 11.1 - 12.0 */
+								    background: -moz-linear-gradient(#F3F3F3, #ffffff); /* Firefox 3.6 - 15 */
+								    background: linear-gradient(#F3F3F3, #ffffff); /* 标准的语法 */
 								}
 								.range_box{
 									display: inline-block;
-									height: 22px;
+									height: 23px;
 									width: 90px;
 									float: left;
 									margin-left: 10px;
 									margin-right: 10px;
 									.range_line{
-										height: 6px;
-										margin-top: 9px;
-										border: 1px solid #fe8f00;
-										background-color: #fe8f00;
+										height: 4px;
+										margin-top: 10px;
+										border: 1px solid #D83C3D;
+										background-color: #D83C3D;
 										border-radius: 4px;
 										position: relative;
 										.range_tag{
-											margin-top: -5px;
-
-											width: 18px;
-											height: 13px;
-											border: 1px solid #fe8f00;
-											background-color: #fe8f00;
-											border-radius: 4px;
+											margin-top: -6px;
+											width: 14px;
+											height: 14px;
+											/* border: 1px solid #D83C3D; */
+											background-color: #fff;
+											border-radius: 7px;
+											box-shadow: 0px 1px 1px 1px #aaa;
 											cursor: pointer;
 											position: absolute;
-											right: 1px;
+											right:1px;
 										}
 									}
 								}
 
 
+
 								.mathinput{
 									width:50px;
-									height:22px;
-									line-height:22px;
+									height:18px;
+									line-height:18px;
 									font-size:12px;
-									border-radius:4px;
-									margin:0 5px;
+									/* border-radius:4px; */
+									border: 1px solid #E6E6E6;
+									border-left:none;
+									border-right:none;
+									margin:0 0px;
 									padding:5 10px;
 									text-align:center;
 									float:left;
 								}
 								.mathselect{
 									width:40px;
-									height:22px;
-									line-height:22px;
+									height:20px;
+									line-height:20px;
 									font-size:12px;
 									border-radius:4px;
 									margin:0 5px;
 									padding:5 10px;
 									text-align:center;
 									float:left;
+									/* option{
+										background-color: #B5100E;
+										color: #fff;
+									}
+									option:hover{
+										background-color: #EB5A5B;
+									} */
 								}
 								.ml10{
 									margin-left:10px;
@@ -943,23 +892,31 @@ input[type="number"]{
 								.mr10{
 									margin-right:10px;
 								}
+								.comtext{
+									float:left;
+									color:#333;
+									font-size:12px;
+									margin-left: 10px;
+									em{
+										font-style:normal;
+										color:#B6110F;
+										margin:5px;
+										font-weight:bold;
+										font-size: 20px;
+									}
+								}
 							}
 						}
 						.tip{
 							width:100%;
 							float:left;
-							margin-top:10px;
+							margin-top:-13px;
+							margin-bottom:20px;
 							line-height:40px;
-							.comtext{
-								float:left;
-								color:#333;
-								font-size:12px;
-								em{
-									font-style:normal;
-									color:$yellow;
-									margin:5px;
-									font-weight:bold;
-								}
+							.left_til{
+								font-size: 14px;
+								color: #000;
+								font-weight: bold;
 							}
 							label{
 								float:right;
@@ -977,62 +934,252 @@ input[type="number"]{
 								}
 							}
 						}
+						.chooseno{
+							width:100%;
+							height:40px;
+							float:left;
+							background:#fff;
+							padding-right:30px;
+
+							.helpbox{
+								width:100%;
+								line-height:40px;
+								height: 40px;
+								.tip1{
+									min-width:10%;
+									float:left;
+									line-height:40px;
+									margin-right: 40px;
+									.left_til{
+										font-size: 14px;
+										color: #000;
+										font-weight: bold;
+									}
+									label{
+										float:right;
+										margin-right:15px;
+										color:#333;
+										input[type=checkbox]{
+											border:1px solid $yellow;
+											color:$yellow;
+											width:18px;
+											height:18px;
+											float:left;
+											margin-top: 12px;
+											margin-right:3px;
+											cursor:pointer;
+										}
+									}
+								}
+								.hot_lost{
+									display: inline-block;
+									float:left;
+								}
+								.hot_hidden{
+									display: none;
+								}
+								label{
+									float:left;
+									margin-right:15px;
+									color:#333;
+									input[type=checkbox]{
+										border:1px solid $yellow;
+										color:$yellow;
+										width:18px;
+										height:18px;
+										float:left;
+										margin-top: 12px;
+										margin-right:3px;
+									}
+								}
+								.tip{
+									float:left;
+									width: 558px!important;
+									margin-top: 0px!important;
+									position:relative;
+									padding-left:28px;
+									i{
+										width: 8px; height: 17px;
+										background: url('../../images/sscsprites.png') -141px -72px;
+										position:absolute;
+										top:11px;
+										left:0px;
+										cursor: pointer;
+									}
+								}
+					
+								.example_box{
+									float:left;
+									position:relative;
+									height: 100%;
+									min-width: 35px;
+								}
+								.example{
+									/* float:right; */
+									position:absolute;
+									left: -2px;
+									.tips span{
+										/* white-space:nowrap; */
+									}
+									.i1{
+										width: 30px; height: 20px;
+										background: url('../../images/mod2/2_tips.png') center center no-repeat;
+										-webkit-background-size: contain;
+										background-size: contain;
+										position:absolute;
+										top:11px;
+										left:0px;
+										cursor:pointer;
+									}
+									.i2{
+										height: 100%;
+										width: 30px;
+										text-align: center;
+										/* background: url('../../images/sscsprites.png') -141px -18px; */
+										background-color: #ACAFC2;
+										color: #fff;
+										cursor:pointer;
+										padding: 3px;
+										border:0px solid transparent;
+										border-radius: 5px;
+									}
+								}
+							}
+						}
 					}
+
 					.btnright{
-						float:right;
-						width:150px;
+						/* float:right; */
+						width:300px;
+						margin: 0 auto;
+						a{
+							margin-right: 15px;
+							height: 40px;
+							width: 133px;
+							padding: 3px 18px;
+							line-height: 33px;
+
+						}
+						.choose_ball{
+
+						}
+
+						i{
+							height: 27px;
+							width: 27px;
+							margin-right: 4px;
+							background-color: pink;
+							margin-top: 3px;
+							overflow: hidden;
+							vertical-align: middle;
+						}
+						.bet_now{
+							margin-top: 30px;
+							font-weight: bold;
+							i{
+								background: url("../../images/lot_choose_2/bet_now.png") center center no-repeat ;
+								-webkit-background-size: contain;
+								background-size: contain;
+							}
+						}
+
+
+						.choose_ball{
+							margin-top: 30px;
+							font-weight: bold;
+							i{
+								background: url("../../images/lot_choose_2/choose_ball.png") center center no-repeat ;
+								-webkit-background-size: contain;
+								background-size: contain;
+							}
+						}
+						a:hover{
+							text-decoration: none;
+						}
 						.noactive{
-							background:#666;
+							background:#aaa;
+							color: #fff;
 						}
 					}
 				}
 				.resultarea{
+					height: 250px;
 					width:100%;
 					float:left;
-					padding:20px 40px;
-					background:#eeeeee;
+					/* padding:20px 40px; */
+					background:#fff;
+					border-top: 1px solid #eee;
+					border-bottom: 1px solid #eee;
 					.betcheck{
 						float:left;
-						width:670px;
-						height:177px;
-						background:url("../../images/6_63.png") center no-repeat;
+						width:630px;
+						height:100%;
+						/* background:url("../../images/6_63.png") center no-repeat; */
 						background-size: contain;
-						padding:20px 30px;
+						/* padding:20px 30px; */
+						border-right: 1px solid #ddd;
+						overflow: hidden;
+						.fake_th{
+							height: 30px;
+							width: 100%;
+							background-color: #F1F1F1;
+							ul{
+								height: 100%;
+								width: 100%;
+								li{
+									float: left;
+									min-width: 55px;
+									line-height: 30px;
+									color: #666666;
+								}
+							}
+						}
 						.betarea{
 							width:100%;
-							overflow-y:scroll;
-							height:120px;
-							padding-right:20px;
+							overflow-y:auto;
+							height:175px;
 							li{
-								height:30px;
-								width:100%;
+								height:35px;
+								width: 100%;
 								list-style:none;
 								float:left;
-								border-bottom:1px solid #CCCCCC;
-								line-height:30px;
-								display: flex;
+								/* border-bottom:1px solid #CCCCCC; */
+								line-height:35px;
+								/* display: flex; */
+
+								text-overflow: ellipsis;
 								.lot_type{
 									text-align: left;
+									text-indent: 10px;
+									width:188px;
 								}
 								.lot_num{
-									width: 40%;
 									overflow:hidden;
 									text-overflow:ellipsis;
 									white-space:nowrap;
-									letter-spacing: 3px;
+									letter-spacing: 0.5px;
+									width:125px;
 								}
 								.lot_close{
 									height: 100%;
-									width: 5%;
+									width: 30px;
 									cursor: pointer;
 									text-align: right;
-									background:  url(../../images/close01.png) center right no-repeat;
+									background:  url(../../images/mod2/2_delete.png) center left no-repeat;
+
 								}
+								.lot_mode{
+									/* width:  */
+								}
+							}
+							li:nth-child(even){
+								background-color: #F4F4F4;
 							}
 							li>div{
 								display: inline-block;
-								text-align: center;
-								width: 20%;
+								width: 55px;
+								height: 35px;
+								float: left;
 							}
 						}
 						.info{
@@ -1040,16 +1187,104 @@ input[type="number"]{
 							text-align:center;
 							color:#333;
 							font-size:12px;
+							padding-top:5px;
+							height: 45px;
+							background-color: #F1F1F1;
+							box-shadow: 0px 0px 5px 5px rgba(111,111,111,.15) , 0 2px 7px 0 rgba(0,0,0,.2);
 							span{
 								margin:0 5px;
 								color:$yellow;
+							}
+							.btn_gray{
+
+							}
+							.btn_clear{
+
 							}
 						}
 					}
 					.btnright{
 						float:right;
-						width:120px;
-						padding-top:20px;
+						width:370px;
+						padding: 15px 50px 10px 20px;
+						.bet_history{
+							margin-top: 10px;
+							font-weight: bold;
+							text-decoration: none;
+							i{
+								width: 20px;
+								height: 100%;
+								margin-right: 5px;
+								vertical-align: middle;
+								background: url("../../images/mod2/2_chase.png") top 8px left no-repeat ;
+								-webkit-background-size: contain;
+								background-size: contain;
+							}
+						}
+						.comfirm_now{
+							margin-top: 10px;
+							font-weight: bold;
+							i{
+								background: url("../../images/mod2/2_check.png") center center no-repeat ;
+								-webkit-background-size: contain;
+								background-size: contain;
+							}
+						}
+						.lit_til{
+							color: #666666;
+						}
+						.row_text{
+							div{
+								line-height: 30px;
+								vertical-align: middle;
+							}
+						}
+						.mathinput{
+							width: 50px;
+						    height: 18px;
+						    line-height: 18px;
+						    font-size: 12px;
+						    border: 1px solid #E6E6E6;
+
+						    margin: 4px 6px;
+						    padding: 5 10px;
+						    text-align: center;
+						    float: left;
+
+						}
+						.switch_btn{
+							width: 60px;
+							height: 30px;
+							background-color: #BFBFBF;
+							border:2px solid #BFBFBF;
+							transition:all 0.3s ease;
+							border-radius: 15px;
+							cursor: pointer;
+							position: relative;
+							.sw_dot{
+								height: 26px;
+								width: 26px;
+								border: 0px solid transparent;
+								border-radius: 50%;
+							    background: -webkit-linear-gradient(#F0F0F0, #F9F9F9); /* Safari 5.1 - 6.0 */
+							    background: -o-linear-gradient(#F0F0F0, #F9F9F9); /* Opera 11.1 - 12.0 */
+							    background: -moz-linear-gradient(#F0F0F0, #F9F9F9); /* Firefox 3.6 - 15 */
+							    background: linear-gradient(#F0F0F0, #F9F9F9); /* 标准的语法 */
+							    position: absolute;
+							    left: 0px;
+							    top: 0px;
+							}
+						}
+						.switch_btn.on{
+							width: 60px;
+							height: 30px;
+							background-color: #D93D3D;
+							border:2px solid #D93D3D;
+							.sw_dot{
+								position: absolute;
+							    left:29px;
+							}
+						}
 						label{
 							float:left;
 							margin-right:15px;
@@ -1074,9 +1309,76 @@ input[type="number"]{
 				.surearea{
 					width:100%;
 					float:left;
-					padding:20px 40px;
+					padding:2px 0px;
 					background:#fff;
 					text-align:center;
+					.history_box{
+						height: 221px;
+						width: 100%;
+						.head_top{
+							height: 40px;
+							width: 100%;
+							padding: 0 20px;
+							background-color: #F1F1F1;
+						}
+						.til_top{
+							color: #333333;
+							font-size: 14px;
+							font-weight: bold;
+						}
+						.btn_refresh{
+							i{
+								height: 100%;
+								width: 13px;
+								background: url("../../images/mod2/2_refresh.png") top 1px center no-repeat ;
+								-webkit-background-size: contain;
+								background-size: contain;
+								margin-right: 5px;
+								vertical-align: middle;
+							}
+						}
+						.retreat{
+							width: 90px;
+							height: 25px;
+							line-height: 25px;
+							color: #A3A3A3;
+							background-color: #DCDCDC;
+						}
+						.fake_table{
+							width: 100%;
+
+						}
+						tbody{
+							overflow: scroll;
+							height: 140px;
+
+						}
+						.fake_head{
+							height: 28px;
+							width: 100%;
+							border-bottom: 1px solid #E6E6E6;
+						}
+						.fake_th{
+							font-size: 14px;
+							color: #666666;
+							line-height: 28px;
+							min-width: 77px;
+
+						}
+						tr:nth-child(even){
+							background-color: #F4F4F4;
+						}
+						td{
+							line-height: 30px;
+							height: 30px;
+						}
+						td:nth-child(1){
+							text-indent: 20px;
+
+
+						}
+
+					}
 					
 				}
 			}
@@ -1089,124 +1391,6 @@ input[type="number"]{
 		}
 	}
 }
-
-// 模块二样式
-.conbox{
-    background: none;
-    .content{
-        width:1000px;
-        margin-top:0;
-        .sscorder{
-            margin-top:0;
-            .sscleft{
-                width: 100%;
-                border: none;
-                border-radius: 0;
-				.tabbox{
-					height:36px;
-					float:left;
-					background:#3B3B3B;
-					.pointl{
-						float:left;
-						width:36px;
-						height:36px;
-						line-height:36px;
-					}
-					.typetab{
-						max-width:728px;
-						width: 100%;
-                        height:36px;
-						li{
-							height:36px;
-							line-height:36px;
-							position: relative;
-						}
-						.active{
-							background:#B61010;
-						}
-						.active:before{
-							content: '';
-						    position: absolute;
-						    top: 36px;
-						    left: 50%;
-						    margin-left: -9px;
-						    width: 0;
-						    height: 0;
-						    border-left: 8px solid transparent;
-						    border-top: 8px solid #B61010;
-						    border-right: 8px solid transparent;
-						}
-					}
-					.pointr{
-						height:36px;
-						line-height:36px;
-						padding-top: 5px;
-						border-right: 1px solid #101010;
-					}
-					.totaltype{
-						height:23px;
-						margin-top:6px;
-						background-color: #575757;
-                        border: none;
-						border-radius: 11px;
-						li{
-							padding:0; 
-							text-align: center;
-							width: 70px;
-							cursor:pointer;
-							border-radius: 11px;
-							background-color: #575757;
-							a{
-								color:#DCDCDC;
-								text-decoration: none;
-							}
-						}
-						.active{
-							color:#fff;
-							background:#B61010;
-							a{
-								color:#fff;
-								text-decoration: none;
-							}
-						}
-					}
-				}
-				.tabcon{
-					background:#fff;
-					padding:12px 40px;
-					border-bottom: 1px solid #E6E6E6;
-					.tabshow{
-						.navcon{
-							margin-top:5px;
-							margin-bottom:0;
-							.labtit{
-								color:#333333;
-								height:25px;
-								line-height:25px;
-								font-weight: bold;
-							}
-							.labtit.en{
-								width: 170px;
-							}
-							li{
-								height:25px;
-								line-height:25px;
-								color:#666666;
-								background:#fff;
-							}
-							.active{
-								background: none;
-								color:#B61010;
-							}
-						}
-					}
-				}
-            }
-        }
-    }
-}
-
-// 模块二样式end
 .fl{
 	float:left;
 }
@@ -1214,12 +1398,64 @@ input[type="number"]{
 .btnh_w120_h40{
 	cursor: pointer;
     width: 120px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 4px;
+}
+.btnh_w130_h40{
+	cursor: pointer;
+    width: 130px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 4px;
+}
+.w60_h22_btn{
+	cursor: pointer;
+    width: 60px;
+    height: 22px;
+    line-height: 20px!important;
+    text-align: center;
+    font-size: 12px;
+    color: #C2C2C2;
+    border:1px solid #C2C2C2;
+    border-radius: 1px;
+    margin: 4px 6px!important;
+}
+/* 修改01 */
+.btn_mid{
+	cursor: pointer;
+    width: 120px;
     height: 35px;
     line-height: 35px;
     text-align: center;
     font-size: 16px;
     color: #fff;
+    background-color: #B62337;
     border-radius: 4px;
+}
+.btn_long{
+	width: 360px;
+	height: 60px;
+	border:0px solid transparent;
+	border-radius: 4px;
+	line-height: 60px;
+	text-align: center!important;
+	font-size: 18px;
+	color: #fff;
+	text-decoration: none;
+	cursor: pointer;
+	i{
+		width: 30px;
+		height: 100%;
+		vertical-align: middle;
+		margin-right: 5px;
+	}
 }
 .btnh_w150_h50{
 	cursor: pointer;
@@ -1237,8 +1473,67 @@ input[type="number"]{
     -webkit-box-shadow: 0 15px 30px 0 rgba(255,255,255,.15) inset, 0 2px 7px 0 rgba(0,0,0,.5);
     box-shadow: 0 15px 30px 0 rgba(255,255,255,.15) inset, 0 2px 7px 0 rgba(0,0,0,.5);
 }
-.bgyellow{
-	background: $yellow;
+.bgred{
+    background: -webkit-linear-gradient(#D83C3D, #B62337); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#D83C3D, #B62337); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#D83C3D, #B62337); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#D83C3D, #B62337); /* 标准的语法 */
+	float:right;
+	-moz-box-shadow: 0 10px 20px 0 rgba(255,255,255,.15) inset,0 2px 7px 0 rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 10px 20px 0 rgba(255,255,255,.15) inset, 0 2px 7px 0 rgba(0,0,0,.2);
+    box-shadow: 0 10px 20px 0 rgba(255,255,255,.15) inset, 0 2px 7px 0 rgba(0,0,0,.2);
+    color: #fff;
+}
+.btn_clear{
+	height: 100%;
+	width: 30px;
+	display: inline-block;
+  	background:  url(../../images/mod2/2_delete.png) top 5px left 5px  no-repeat;
+  	vertical-align: middle;
+  	overflow: hidden;
+}
+.btn_gray{
+    background: -webkit-linear-gradient(#FFFFFF, #DEDEDE); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#FFFFFF, #DEDEDE); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#FFFFFF, #DEDEDE); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#FFFFFF, #DEDEDE); /* 标准的语法 */
+	float:right;
+	-moz-box-shadow: 0 10px 20px 0 rgba(255,255,255,.15) inset,0 2px 7px 0 rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 10px 20px 0 rgba(255,255,255,.15) inset, 0 2px 7px 0 rgba(0,0,0,.2);
+    box-shadow: 0 10px 20px 0 rgba(255,255,255,.15) inset, 0 2px 7px 0 rgba(0,0,0,.2);
+    color: #666;
+    font-size: 12px;
+	margin-right: 20px;
+	margin-top: 0px;
+	border:1px solid #eee;
+
+}
+.btn_gray_noshadow{
+    background: -webkit-linear-gradient(#FFFFFF, #DEDEDE); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#FFFFFF, #DEDEDE); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#FFFFFF, #DEDEDE); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#FFFFFF, #DEDEDE); /* 标准的语法 */
+	float:right;
+    color: #666;
+    font-size: 12px;
+	margin-right: 20px;
+	margin-top: 0px;
+	border:1px solid #eee;
+
+}
+.btn_gray:hover{
+	text-decoration:none;
+	 -moz-box-shadow: 0 15px 30px 0 rgba(255,255,255,.15) inset,0 2px 7px 0 rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 15px 30px 0 rgba(255,255,255,.15) inset, 0 2px 7px 0 rgba(0,0,0,.5);
+    box-shadow: 0 15px 30px 0 rgba(255,255,255,.15) inset, 0 2px 7px 0 rgba(0,0,0,.5);
+}
+.bggray{
+    background: -webkit-linear-gradient(#FCFCFC, #DCDCDC); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#FCFCFC, #DCDCDC); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#FCFCFC, #DCDCDC); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#FCFCFC, #DCDCDC); /* 标准的语法 */
+    border: 1px solid #C2C2C2;
+    color: #666666;
 	float:right;
 	-moz-box-shadow: 0 10px 20px 0 rgba(255,255,255,.15) inset,0 2px 7px 0 rgba(0,0,0,.2);
     -webkit-box-shadow: 0 10px 20px 0 rgba(255,255,255,.15) inset, 0 2px 7px 0 rgba(0,0,0,.2);
@@ -1271,7 +1566,7 @@ input[type="range"] {
   display: inline-block;
   position: relative;
   width: 90px;
-  height: 22px;
+  height: 23px;
   background: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1349,11 +1644,21 @@ input[type="range"]::-ms-track {
 }
 
 .flex-r {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+.flex-r-l {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: left;
+    align-items: left;
+}
+.marr_10{
+	margin-right: 10px;
 }
 .flex-c {
   display: flex;
@@ -1361,6 +1666,12 @@ input[type="range"]::-ms-track {
   justify-content: flex-start;
   align-content: flex-start;
   align-items: flex-start;
+}
+.font_red{
+	color:#D93D3D;
+}
+.font_bold{
+	font-weight: bold;
 }
 // 右边信息区域样式开始
 .infobox {

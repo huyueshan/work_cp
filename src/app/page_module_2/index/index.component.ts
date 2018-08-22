@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit ,OnDestroy} from "@angular/core";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import userModel from '../../../status/user.model';
   
@@ -13,6 +13,7 @@ export class IndexComponent implements OnInit {
   // 头部左边导航数据
   public now_lang :any=userModel.langpackage;
   public now_lang_type :any='zh';
+  public clearinterval_func :any=false;
   public now_board :any={
       index:0,
       content:'暂无公告',
@@ -767,7 +768,7 @@ export class IndexComponent implements OnInit {
     })
   }
   ngAfterViewInit(){
-    this.register_banner()
+    this.lunBo()
     this.drop_down();
   }
   // 中间内容区tab切换事件
@@ -848,110 +849,112 @@ export class IndexComponent implements OnInit {
     this.router.navigate(["/creditssc/cq"]);
     return false;
   }
-  register_banner(){
+  public timeout :any= {}; 
+  lunBo(){
+    let that = this;
+    console.log('???????????????????????????')
 
-    function lunBo(){
-      console.log('???????????????????????????')
+      var oDiv = document.getElementById('LunBo');
 
-        var oDiv = document.getElementById('LunBo');
+      var oOther = document.getElementById('Other');
 
-        var oOther = document.getElementById('Other');
+      var oUl = oDiv.getElementsByTagName('ul')[0];
 
-        var oUl = oDiv.getElementsByTagName('ul')[0];
+      var oLi = oUl.getElementsByTagName('li');
 
-        var oLi = oUl.getElementsByTagName('li');
+      var oPoint :any= oDiv.getElementsByTagName('span');
 
-        var oPoint :any= oDiv.getElementsByTagName('span');
 
-        var time:any = 0;
+      var speed = -oLi[0].offsetWidth;  //这是每次移动的距离为li的宽度，也就是图片的宽度
 
-        var speed = -oLi[0].offsetWidth;  //这是每次移动的距离为li的宽度，也就是图片的宽度
+      oUl.style.width = 100+"%";//设置Ul的宽度
 
-        oUl.style.width = 100+"%";//设置Ul的宽度
+      var index = 1;
+      var dot_index = 1;
+      /*基础实现部分*/
 
-        var index = 1;
-        var dot_index = 1;
-        /*基础实现部分*/
-
-        function move() {
-          if (index == 0) {
-            $(oLi).removeClass('active');
-            $(oLi[0]).addClass('active')
-            for (var i = 0; i <oPoint.length; i++) {
-                oPoint[i].className= '';
-            }
-            oPoint[0].className ='red'
-          }else if($(oLi).parent().find('.active').next().length > 0){
-            console.log(index)
-            $(oLi).parent().find('.active').removeClass('active').next().addClass('active');
-            for (var i = 0; i <oPoint.length; i++) {
-                oPoint[i].className= '';
-            }
-            oPoint[index-1].className ='red';
-          }else{
-            $(oLi).removeClass('active');
-            $(oLi[0]).addClass('active');
-            for (var i = 0; i <oPoint.length; i++) {
-                oPoint[i].className= '';
-            }
-            oPoint[0].className ='red';
-            index = 0;
+      function move() {
+        if (index == 0) {
+          $(oLi).removeClass('active');
+          $(oLi[0]).addClass('active')
+          for (var i = 0; i <oPoint.length; i++) {
+              oPoint[i].className= '';
           }
-          index = index + 1;
+          oPoint[0].className ='red'
+        }else if($(oLi).parent().find('.active').next().length > 0){
+          console.log(index)
+          $(oLi).parent().find('.active').removeClass('active').next().addClass('active');
+          for (var i = 0; i <oPoint.length; i++) {
+              oPoint[i].className= '';
+          }
+          oPoint[index-1].className ='red';
+        }else{
+          $(oLi).removeClass('active');
+          $(oLi[0]).addClass('active');
+          for (var i = 0; i <oPoint.length; i++) {
+              oPoint[i].className= '';
+          }
+          oPoint[0].className ='red';
+          index = 0;
         }
+        index = index + 1;
+        // if (this.clearinterval_func == true) {
+        //   console.log('clear_it')
+        //   clearInterval(time);
+        // };
+        
+      }
 
-        /*setInterval(move,1000)：这个是循环定时器，它会每隔1000ms调用move函数*/
+      /*setInterval(move,1000)：这个是循环定时器，它会每隔1000ms调用move函数*/
 
-        time = setInterval(move,3000);
-
-
-
-        //鼠标移入移出事件：很简单，我要让当鼠标移入时轮播图暂停，就先清除定时器，移出时重新打开即可
-
-        oDiv.onmouseover = function(){clearInterval(time);oOther.style.display = 'block';};
-
-        oDiv.onmouseout = function(){time = setInterval(move,3000);oOther.style.display = 'none'};
-
-
-
-        /*小圆点跟随变动*/
-
-        function point(){
-
-            var flag=-oUl.offsetLeft/oLi[0].offsetWidth;
-
-            for (var i = 0; i <oPoint.length; i++) {
-
-                oPoint[i].className ='';
-
-            }
-
-            oPoint[flag].className ='red';//选中的小圆点加红色背景
-
-        }
+      that.timeout = setInterval(move,3000);
+      console.log('7777777878787878')
 
 
-        /*单击小圆点切换对应图片*/
+      //鼠标移入移出事件：很简单，我要让当鼠标移入时轮播图暂停，就先清除定时器，移出时重新打开即可
 
-        for (var i = 0; i <oPoint.length; i++) {
-            oPoint[i].index = i;
-            oPoint[i].onclick =function () {
-                for (var i = 0; i <oPoint.length; i++) {
-                    oPoint[i].className= '';
-                }
-                console.log(this.index);
-                $(oLi).removeClass('active');
-                $(oLi[this.index]).addClass('active');
-                index =  this.index + 1;
-                this.className = 'red';
-            }
+      oDiv.onmouseover = function(){clearInterval(that.timeout);oOther.style.display = 'block';};
 
-        }
+      oDiv.onmouseout = function(){that.timeout = setInterval(move,3000);oOther.style.display = 'none'};
 
-    }
-    lunBo();
+
+
+      // /*小圆点跟随变动*/
+
+      // function point(){
+
+      //     var flag=-oUl.offsetLeft/oLi[0].offsetWidth;
+
+      //     for (var i = 0; i <oPoint.length; i++) {
+
+      //         oPoint[i].className ='';
+
+      //     }
+
+      //     oPoint[flag].className ='red';//选中的小圆点加红色背景
+
+      // }
+
+
+      /*单击小圆点切换对应图片*/
+
+      for (var i = 0; i <oPoint.length; i++) {
+          oPoint[i].index = i;
+          oPoint[i].onclick =function () {
+              for (var i = 0; i <oPoint.length; i++) {
+                  oPoint[i].className= '';
+              }
+              console.log(this.index);
+              $(oLi).removeClass('active');
+              $(oLi[this.index]).addClass('active');
+              index =  this.index + 1;
+              this.className = 'red';
+          }
+
+      }
 
   }
+
   next_board(){
       console.log(this.board.length)
       console.log(this.now_board.index)
@@ -965,5 +968,8 @@ export class IndexComponent implements OnInit {
     if (this.now_board.index>0) {
       this.now_board = this.board[this.now_board.index-1];
     }
+  }
+  ngOnDestroy(){
+    clearInterval(this.timeout)
   }
 }

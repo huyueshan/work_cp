@@ -1,45 +1,38 @@
 
 
-<div class="flex-c">
-    <div class="mainbox">
-        <div class="flex-c main">
-            <div class="toptab">
-                <ul class="flex-r">
-                    <li [ngClass]="{active: toptab === 0}" (click)="toptabclick(0)">{{now_lang.LOT_NAV.ALL_LOT}}</li>
-                    <li [ngClass]="{active: toptab === 1 , bodl: toptab === 2 , bodr: toptab === 0}" (click)="toptabclick(1)">{{now_lang.Ball_tab.Official}}</li>
-                    <li [ngClass]="{active: toptab === 2}" (click)="toptabclick(2)">{{now_lang.Ball_tab.Credit}}</li>
-                </ul>
-            </div>
-            <div class="tab">
-                <ul class="flex-r">
-                    <li class="flex-r" *ngFor="let item of tabdata; let i=index"> 
-                        <span [ngClass]="{active: tab === i}" (click)="tabclick(i)">{{item.name}}</span>
-                        <span class="bdicon">
-                            <i [ngClass]="{hide: tab === i || tab === i+1}"></i>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <div class="content">
-                <ul class="flex-r czbox">
-                    <li  class="flex-c" *ngFor="let child of outdata; let i=index">
-                        <span  class="flex-c item">
-                            <span class="flex-r imgbox" [ngStyle]="{'background-color': child.bcolor}">
-                                    <img src="{{child.src}}" alt="child.name"
-                                    (click)="linkrouter(i,child.linko,child.linkc)">
-                            </span>
-                            <span class="flex-r infobox">
-                                <span class="info">{{child.name}}</span>
-                                <span class="link" (click)="linkrouter(i,child.linko,child.linkc)">{{now_lang.Ball_tab.In_game}}></span>
-                            </span>
+<div class="flex-c content">
+    <!-- <div class="mdimg">
+        <img src="../../images/mod3/bg_m3_02.png" alt="" width="100%" height="auto">
+    </div> -->
+    <div class="games">
+        <ul class="flex-r gamecon">
+            <li class="flex-c items" *ngFor="let item of cpdata; let i=index">
+                <header class="flex-r gname" [ngStyle]="{'background-position-y': item.topy}">
+                    <h3>{{item.title}}</h3> 
+                    <span class="flex-r gxbtn">
+                        <button  [ngClass]="{active: !item.gxtog}" [disabled]="!item.official" (click)="item.gxtog=0">官方</button>
+                        <button [ngClass]="{active: item.gxtog}" [disabled]="!item.credit" (click)="item.gxtog=1">信用</button>
+                    </span>
+                </header>
+                <div  class="gamelist">
+                    <ul class="flex-c gamebox" [style.top.px]="item.postop">
+                        <ng-container *ngFor="let child of item.items; let m=index">
+                            <li class="flex-r item" *ngIf="(item.gxtog && child.credit) || (!item.gxtog && child.official)" >
+                                <span class="flex-r cpnote"  (click)="linkrout(child)">
+                                    <img [src]="child.imgsrc" alt="{{child.text}}">
+                                    <span>{{child.text}}</span>
+                                </span>
+                                <button class="active" (click)="linkrout(item, m)">立即开始</button>
+                            </li>
+                        </ng-container>
+                    </ul>
 
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer">
-        <app-footer></app-footer>
+                </div>
+                <div class="flex-r ibtn"  *ngIf="butshow(item)" (click)="more(item)" >
+                    <i [ngClass]="{rotate:item.postop!==0}"></i>
+                </div>
+
+            </li>
+        </ul>
     </div>
 </div>
