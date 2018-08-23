@@ -84,21 +84,19 @@ export class HttpInterceptorService {
    * @returns {void|Promise<string>|Promise<T>|any} 
    */  
   private handleError(error) {  
-    console.log(error);  
     let msg = '请求失败';  
     if (error['status'] == 0) {  
-      console.log('请求参数正确asfhuweofowe fhrowe hroewhfoe ofh eorheowrho hoh');  
+		msg = '请求参数正确';  
     }  
     if (error['status'] == 400) {  
-      console.log('请求参数正确');  
+		msg = '请求参数正确';  
     }  
     if (error['status'] == 404) {  
-      console.error('请检查路径是否正确');  
+		msg = '请检查路径是否正确';	  
     }  
     if (error['status'] == 500) {  
-      console.error('请求的服务器错误');  
+		msg = '请求的服务器错误';	
     }  
-    console.log(msg);  
     return {success: false, msg: msg};  
   }  
 }  

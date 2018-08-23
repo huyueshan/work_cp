@@ -1,12 +1,7 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  OnDestroy,
-} from "@angular/core";
+import { Component, OnInit, Input, OnDestroy } from "@angular/core";
 import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
 import "rxjs/add/operator/filter";
-import userModel from '../../../../status/user.model';
+import userModel from "../../../../status/user.model";
 import { Base } from "../../../../factory/base.model";
 import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 @Component({
@@ -15,7 +10,8 @@ import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
   styleUrls: ["./credtop.component.scss"]
 })
 export class CredtopComponent implements OnInit, OnDestroy {
-  @Input() type: string; //当前的彩种
+  @Input()
+  type: string; //当前的彩种
   // @Input() number: number[];  //开奖区开奖号码
   @Input()
   indata: {
@@ -25,12 +21,12 @@ export class CredtopComponent implements OnInit, OnDestroy {
     next: string; //x下期开奖期号
     time: any;
   };
-  
-  public timedate = new Date();
+
+  public timedate;
   public time;
   public shownav = false;
   // public routid;  //路由ID
-  public currentgameid = '0'; // 当前彩种id
+  public currentgameid = "0"; // 当前彩种id
   public textnumber = 1;
   public currentparent: string; //一级导航
   public currentitem: string; // 二级导航
@@ -50,9 +46,13 @@ export class CredtopComponent implements OnInit, OnDestroy {
   public pcddsum;
   public lhcte;
   // 语言
-  public now_lang :any=userModel.langpackage;
-  public now_lang_type :any='zh';
-  
+  public now_lang: any = userModel.langpackage;
+  public now_lang_type: any = "zh";
+
+  public toplsactive = 1;
+  public toplsval = "1期";
+  public hostarr = [, , , , ,];
+
   public data = [
     {
       title: this.now_lang.lot_type.ssc,
@@ -71,8 +71,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/ZQSSC.png"),
           credit: true,
           official: true,
-          ido: '101',
-          idc: '201',
+          ido: "101",
+          idc: "201",
           linko: "/lottery/officialssc/cq",
           linkc: "/lottery/creditssc/cq"
         },
@@ -82,8 +82,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/TJSSC.png"),
           credit: true,
           official: true,
-          ido:'102',
-          idc: '202',
+          ido: "102",
+          idc: "202",
           linko: "/lottery/officialssc/tj",
           linkc: "/lottery/creditssc/tj"
         },
@@ -93,8 +93,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/XJSSC.png"),
           credit: true,
           official: true,
-          ido: '103',
-          idc: '203',
+          ido: "103",
+          idc: "203",
           linko: "/lottery/officialssc/xq",
           linkc: "/lottery/creditssc/xq"
         },
@@ -104,8 +104,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/BJSSC.png"),
           credit: true,
           official: true,
-          ido: '104',
-          idc: '204',
+          ido: "104",
+          idc: "204",
           linko: "/lottery/officialssc/bj",
           linkc: "/lottery/creditssc/bj"
         }
@@ -128,8 +128,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/HGKLC.png"),
           credit: true,
           official: true,
-          ido: '105',
-          idc: '205',
+          ido: "105",
+          idc: "205",
           linko: "/lottery/officialffc/hs",
           linkc: "/lottery/creditffc/hs"
         },
@@ -139,8 +139,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/BJSSC.png"),
           credit: true,
           official: true,
-          ido: '114',
-          idc: '214',
+          ido: "114",
+          idc: "214",
           linko: "/lottery/officialffc/bj",
           linkc: "/lottery/creditffc/bj"
         },
@@ -150,8 +150,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/TW5FC.png"),
           credit: true,
           official: true,
-          ido: '106',
-          idc: '206',
+          ido: "106",
+          idc: "206",
           linko: "/lottery/officialffc/tw",
           linkc: "/lottery/creditffc/tw"
         },
@@ -161,8 +161,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/JNDKLC.png"),
           credit: true,
           official: true,
-          ido: '107',
-          idc: '207',
+          ido: "107",
+          idc: "207",
           linko: "/lottery/officialffc/jnd",
           linkc: "/lottery/creditffc/jnd"
         },
@@ -172,8 +172,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/AZ3FC.png"),
           credit: true,
           official: true,
-          ido: '108',
-          idc: '208',
+          ido: "108",
+          idc: "208",
           linko: "/lottery/officialffc/az",
           linkc: "/lottery/creditffc/az"
         },
@@ -183,8 +183,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/SLFK5F.png"),
           credit: true,
           official: true,
-          ido: '109',
-          idc: '209',
+          ido: "109",
+          idc: "209",
           linko: "/lottery/officialffc/slfk",
           linkc: "/lottery/creditffc/slfk"
         },
@@ -194,8 +194,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/TXFFC.png"),
           credit: true,
           official: true,
-          ido: '110',
-          idc: '210',
+          ido: "110",
+          idc: "210",
           linko: "/lottery/officialffc/tx",
           linkc: "/lottery/creditffc/tx"
         },
@@ -205,8 +205,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/QQFFC.png"),
           credit: true,
           official: true,
-          ido: '111',
-          idc: '211',
+          ido: "111",
+          idc: "211",
           linko: "/lottery/officialffc/qq",
           linkc: "/lottery/creditffc/qq"
         },
@@ -216,8 +216,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/DJ1.5FC.png"),
           credit: true,
           official: true,
-          ido: '112',
-          idc: '212',
+          ido: "112",
+          idc: "212",
           linko: "/lottery/officialffc/dj",
           linkc: "/lottery/creditffc/dj"
         },
@@ -227,8 +227,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: "",
           credit: true,
           official: true,
-          ido: '113',
-          idc: '213',
+          ido: "113",
+          idc: "213",
           linko: "/lottery/officialffc/js",
           linkc: "/lottery/creditffc/js"
         }
@@ -251,8 +251,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/BJPKS.png"),
           credit: true,
           official: true,
-          ido: '121',
-          idc: '221',
+          ido: "121",
+          idc: "221",
           linko: "/lottery/officialpk10/bjpk",
           linkc: "/lottery/creditpk10/bjpk"
         },
@@ -262,8 +262,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/XYFT.png"),
           credit: true,
           official: true,
-          ido: '122',
-          idc: '222',
+          ido: "122",
+          idc: "222",
           linko: "/lottery/officialpk10/xyft",
           linkc: "/lottery/creditpk10/xyft"
         }
@@ -286,8 +286,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/SD11X5.png"),
           credit: true,
           official: true,
-          ido: '131',
-          idc: '231',
+          ido: "131",
+          idc: "231",
           linko: "/lottery/officialexf/sdexf",
           linkc: "/lottery/creditexf/sdexf"
         },
@@ -297,8 +297,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/JX11X5.png"),
           credit: true,
           official: true,
-          ido: '132',
-          idc: '232',
+          ido: "132",
+          idc: "232",
           linko: "/lottery/officialexf/jxexf",
           linkc: "/lottery/creditexf/jxexf"
         },
@@ -308,8 +308,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/HLJ11X5.png"),
           credit: true,
           official: true,
-          ido: '133',
-          idc: '233',
+          ido: "133",
+          idc: "233",
           linko: "/lottery/officialexf/hljexf",
           linkc: "/lottery/creditexf/hljexf"
         },
@@ -319,8 +319,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/JS11X5.png"),
           credit: true,
           official: true,
-          ido: '134',
-          idc: '234',
+          ido: "134",
+          idc: "234",
           linko: "/lottery/officialexf/jsexf",
           linkc: "/lottery/creditexf/jsexf"
         },
@@ -330,8 +330,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/SH11X5.png"),
           credit: true,
           official: true,
-          ido: '135',
-          idc: '235',
+          ido: "135",
+          idc: "235",
           linko: "/lottery/officialexf/shexf",
           linkc: "/lottery/creditexf/shexf"
         },
@@ -341,8 +341,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/XJ11X5.png"),
           credit: true,
           official: true,
-          ido: '136',
-          idc: '236',
+          ido: "136",
+          idc: "236",
           linko: "/lottery/officialexf/xjexf",
           linkc: "/lottery/creditexf/xjexf"
         }
@@ -365,8 +365,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/BJKL8.png"),
           credit: false,
           official: true,
-          ido: '141',
-          idc: '0',
+          ido: "141",
+          idc: "0",
           linko: "/lottery/officialklc/bjkl8",
           linkc: "/lottery/creditklc/bjkl8"
         },
@@ -376,8 +376,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/JNDKLC.png"),
           credit: false,
           official: true,
-          ido: '142',
-          idc: '0',
+          ido: "142",
+          idc: "0",
           linko: "/lottery/officialklc/jndkl8",
           linkc: "/lottery/creditklc/jndkl8"
         },
@@ -387,8 +387,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/AZ3FC.png"),
           credit: false,
           official: true,
-          ido: '143',
-          idc: '0',
+          ido: "143",
+          idc: "0",
           linko: "/lottery/officialklc/azkl8",
           linkc: "/lottery/creditklc/azkl8"
         },
@@ -398,8 +398,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/SLFK5F.png"),
           credit: false,
           official: true,
-          ido:'144',
-          idc: '0',
+          ido: "144",
+          idc: "0",
           linko: "/lottery/officialklc/slfk",
           linkc: "/lottery/creditklc/slfk"
         },
@@ -409,8 +409,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/TWBG.png"),
           credit: false,
           official: true,
-          ido: '145',
-          idc: '0',
+          ido: "145",
+          idc: "0",
           linko: "/lottery/officialklc/twbg",
           linkc: "/lottery/creditklc/twbg"
         },
@@ -420,8 +420,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/GDKS.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '241',
+          ido: "0",
+          idc: "241",
           linko: "",
           linkc: "/lottery/creditklc/gdk10"
         },
@@ -431,8 +431,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/GXKS.png"),
           credit: true,
           official: false,
-          ido:' 0',
-          idc: '242',
+          ido: " 0",
+          idc: "242",
           linko: "",
           linkc: "/lottery/creditkl/gxk10"
         },
@@ -442,8 +442,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/ZQKS.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '243',
+          ido: "0",
+          idc: "243",
           linko: "",
           linkc: "/lottery/creditklc/cqk10"
         }
@@ -466,8 +466,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/FC3D.png"),
           credit: false,
           official: true,
-          ido: '151',
-          idc: '0',
+          ido: "151",
+          idc: "0",
           linko: "/lottery/officialdpc/fc3d",
           linkc: "/lottery/creditdpc/fc3d"
         },
@@ -477,8 +477,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/PLSW.png"),
           credit: false,
           official: true,
-          ido: '152',
-          idc: '0',
+          ido: "152",
+          idc: "0",
           linko: "/lottery/officialdpc/pl35",
           linkc: "/lottery/creditdpc/pl35"
         },
@@ -488,8 +488,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/SHSSL.png"),
           credit: false,
           official: true,
-          ido: '153',
-          idc: '0',
+          ido: "153",
+          idc: "0",
           linko: "/lottery/officialdpc/shssl",
           linkc: "/lottery/creditdpc/shssl"
         },
@@ -499,8 +499,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/LHCD.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '251',
+          ido: "0",
+          idc: "251",
           linko: "",
           linkc: "/lottery/creditdpc/liuhec"
         }
@@ -523,8 +523,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/XY28.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '261',
+          ido: "0",
+          idc: "261",
           linko: "",
           linkc: "/lottery/creditpcdd/xy28"
         },
@@ -534,8 +534,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/SLFK28.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '262',
+          ido: "0",
+          idc: "262",
           linko: "",
           linkc: "/lottery/creditpcdd/snfk28"
         },
@@ -545,8 +545,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/AZ28.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '263',
+          ido: "0",
+          idc: "263",
           linko: "",
           linkc: "/lottery/creditpcdd/az28"
         },
@@ -556,8 +556,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/JND28.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '264',
+          ido: "0",
+          idc: "264",
           linko: "",
           linkc: "/lottery/creditpcdd/jnd28"
         },
@@ -567,8 +567,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/HS28.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '265',
+          ido: "0",
+          idc: "265",
           linko: "",
           linkc: "/lottery/creditpcdd/hs28"
         },
@@ -578,8 +578,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/TW28.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '266',
+          ido: "0",
+          idc: "266",
           linko: "",
           linkc: "/lottery/creditpcdd/tw28"
         },
@@ -589,8 +589,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/DJ28.png"),
           credit: true,
           official: false,
-          ido: '0',
-          idc: '267',
+          ido: "0",
+          idc: "267",
           linko: "",
           linkc: "/lottery/creditpcdd/dj28"
         }
@@ -614,8 +614,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/AHK3.png"),
           credit: true,
           official: true,
-          ido: '171',
-          idc: '271',
+          ido: "171",
+          idc: "271",
           linko: "/lottery/officialk3/ahk3",
           linkc: "/lottery/creditk3/ahk3"
         },
@@ -625,8 +625,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/HEBEIKUAI3.png"),
           credit: true,
           official: true,
-          ido: '172',
-          idc: '272',
+          ido: "172",
+          idc: "272",
           linko: "/lottery/officialk3/hbk3",
           linkc: "/lottery/creditk3/hbk3"
         },
@@ -636,8 +636,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/HNK3.png"),
           credit: true,
           official: true,
-          ido: '173',
-          idc: '273',
+          ido: "173",
+          idc: "273",
           linko: "/lottery/officialk3/hnk3",
           linkc: "/lottery/creditk3/hnk3"
         },
@@ -647,8 +647,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/HUBEIKUAI3.png"),
           credit: true,
           official: true,
-          ido: '174',
-          idc: '274',
+          ido: "174",
+          idc: "274",
           linko: "/lottery/officialk3/hubk3",
           linkc: "/lottery/creditk3/hubk3"
         },
@@ -658,8 +658,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/SHK3.png"),
           credit: true,
           official: true,
-          ido: '175',
-          idc: '275',
+          ido: "175",
+          idc: "275",
           linko: "/lottery/officialk3/shks",
           linkc: "/lottery/creditk3/shks"
         },
@@ -669,8 +669,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/BJK3.png"),
           credit: true,
           official: true,
-          ido: '176',
-          idc: '276',
+          ido: "176",
+          idc: "276",
           linko: "/lottery/officialk3/bjk3",
           linkc: "/lottery/creditk3/bjk3"
         },
@@ -680,8 +680,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/GXK3.png"),
           credit: true,
           official: true,
-          ido: '177',
-          idc: '277',
+          ido: "177",
+          idc: "277",
           linko: "/lottery/officialk3/gxk3",
           linkc: "/lottery/creditk3/gxk3"
         },
@@ -691,11 +691,11 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/JSKS.png"),
           credit: true,
           official: true,
-          ido: '178',
-          idc: '278',
+          ido: "178",
+          idc: "278",
           linko: "/lottery/officialk3/jsk3",
           linkc: "/lottery/creditk3/jsk3"
-        },
+        }
       ]
     },
     {
@@ -715,8 +715,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/CPBJL.png"),
           credit: false,
           official: true,
-          ido: '0',
-          idc: '0',
+          ido: "0",
+          idc: "0",
           linko: "/lottery/vrc/bjl",
           linkc: ""
         },
@@ -726,8 +726,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/WMFFC.png"),
           credit: false,
           official: true,
-          ido: '0',
-          idc: '0',
+          ido: "0",
+          idc: "0",
           linko: "/lottery/vrc/3fc",
           linkc: ""
         },
@@ -737,8 +737,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/JX1.5FC.png"),
           credit: false,
           official: true,
-          ido: '0',
-          idc: '0',
+          ido: "0",
+          idc: "0",
           linko: "/lottery/vrc/jx",
           linkc: ""
         },
@@ -748,8 +748,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/KT.png"),
           credit: false,
           official: true,
-          ido: '0',
-          idc: '0',
+          ido: "0",
+          idc: "0",
           linko: "/lottery/vrc/kt",
           linkc: ""
         },
@@ -759,8 +759,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/WMLHC.png"),
           credit: false,
           official: true,
-          ido: '0',
-          idc: '0',
+          ido: "0",
+          idc: "0",
           linko: "/lottery/vrc/lhc",
           linkc: ""
         },
@@ -770,8 +770,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
           imgsrc: require("../../images/caip/icon/SC.png"),
           credit: false,
           official: true,
-          ido: '0',
-          idc: '0',
+          ido: "0",
+          idc: "0",
           linko: "/lottery/vrc/sc",
           linkc: ""
         }
@@ -779,8 +779,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
     }
   ];
 
-    //  临时数据
-    public gamepam = {
+  //  临时数据
+  public gamepam = {
     ssc: { min: 0, max: 9, len: 10, length: 5, blean: true },
     exf: { min: 1, max: 11, len: 11, length: 5, blean: true },
     pk10: { min: 1, max: 10, len: 10, length: 10, blean: false },
@@ -793,12 +793,12 @@ export class CredtopComponent implements OnInit, OnDestroy {
     gxk10: { min: 1, max: 20, len: 20, length: 5, blean: true },
     kl8: { min: 1, max: 80, len: 80, length: 20, blean: false },
     pcdd: { min: 0, max: 9, len: 10, length: 3, blean: true },
-    vrcbjl: { min: 0, max: 9, len: 10, length: 4, blean: true },
-    };
-    // 临时数据end
+    vrcbjl: { min: 0, max: 9, len: 10, length: 4, blean: true }
+  };
+  // 临时数据end
   constructor(private route: ActivatedRoute, private router: Router) {}
   ngOnInit() {
-    this.now_lang_type=userModel.now_lang_type;
+    this.now_lang_type = userModel.now_lang_type;
     // 设置应该显示的logo图片
     this.route.params.subscribe(data => {
       this.routreg(data.id);
@@ -806,27 +806,30 @@ export class CredtopComponent implements OnInit, OnDestroy {
     });
     // this.setresultdata();
 
-    
     this.time = setInterval(() => {
-      this.timedate = new Date();
+      let t = new Date();
+      let s1 = Number(t.getHours());
+      let st1 = s1 > 10 ? s1 + "" : "0" + s1;
+      let s2 = Number(t.getMinutes());
+      let st2 = s2 > 10 ? s2 + "" : "0" + s2;
+      let s3 = Number(t.getSeconds());
+      let st3 = s3 > 10 ? s3 + "" : "0" + s3;
+      let str = st1+st2+st3;
+      this.timedate = str.split("");
     }, 1000);
   }
-  ngAfterViewInit() {
-  }
+  ngAfterViewInit() {}
   ngOnDestroy() {
     clearInterval(this.time);
   }
 
-//   navtog(bl){
-//     this.shownav=bl;
-//   }
   // 开奖结果球动画控制
-  Rotates(){
-      let _that = this;
-      // 延迟的目的是等待第一次页面样式渲染完成，不然动画出不来
-      setTimeout(function(){
-            _that.rotate = !_that.rotate;
-      }, 100)
+  Rotates() {
+    let _that = this;
+    // 延迟的目的是等待第一次页面样式渲染完成，不然动画出不来
+    setTimeout(function() {
+      _that.rotate = !_that.rotate;
+    }, 100);
   }
   //判断路由地址是否有效
   routreg(id) {
@@ -836,11 +839,11 @@ export class CredtopComponent implements OnInit, OnDestroy {
       let b = d[i].items;
       for (let q = 0; q < b.length; q++) {
         if (rout === b[q].linko) {
-            this.currentitem = b[q].text;
-            this.currentactive = i;
-            this.type = b[q].type;
-            this.currentgameid = b[q].ido;
-            this.indata.style = "official";
+          this.currentitem = b[q].text;
+          this.currentactive = i;
+          this.type = b[q].type;
+          this.currentgameid = b[q].ido;
+          this.indata.style = "official";
           // 设置彩种logo
           if (b[q].imgsrc) {
             this.isrc = b[q].imgsrc;
@@ -850,11 +853,11 @@ export class CredtopComponent implements OnInit, OnDestroy {
           //此处请求官方玩法数据
         }
         if (rout === b[q].linkc) {
-            this.currentitem = b[q].text;
-            this.currentactive = i;
-            this.type = b[q].type;
-            this.currentgameid = b[q].idc;
-            this.indata.style = "credit";
+          this.currentitem = b[q].text;
+          this.currentactive = i;
+          this.type = b[q].type;
+          this.currentgameid = b[q].idc;
+          this.indata.style = "credit";
           // 设置彩种logo
           if (b[q].imgsrc) {
             this.isrc = b[q].imgsrc;
@@ -864,7 +867,7 @@ export class CredtopComponent implements OnInit, OnDestroy {
           //此处请求信用玩法数据
         }
       }
-    }    
+    }
     // 设置开奖球属性
     this.setresultdata();
   }
@@ -896,37 +899,37 @@ export class CredtopComponent implements OnInit, OnDestroy {
     let str = this.indata.style === "credit" ? O.linkc : O.linko;
     this.router.navigate([str]);
   }
-  result(){
+  result() {
     Base.Store.set("HistoryID", this.currentgameid, false);
     this.router.navigate(["/result"]);
   }
 
-    // 规则说明关闭事件
-    ruleclose() {
-        this.rule_show = false;
+  // 规则说明关闭事件
+  ruleclose() {
+    this.rule_show = false;
+  }
+  // 规则说明显示事件
+  ruleopen() {
+    this.rulenav();
+    this.rule_show = true;
+  }
+  // 规则导航数据设置
+  rulenav() {
+    this.ruletab = [];
+    let d = this.data;
+    for (let i = 0; i < d.length; i++) {
+      for (let q = 0; q < d[i].items.length; q++) {
+        let di = d[i].items[q];
+        let o = {
+          text: di.text,
+          type: di.type,
+          credit: di.credit,
+          official: di.official
+        };
+        this.ruletab.push(o);
       }
-      // 规则说明显示事件
-      ruleopen() {
-        this.rulenav();
-        this.rule_show = true;
-      }
-      // 规则导航数据设置
-      rulenav() {
-        this.ruletab=[];
-        let d = this.data;
-        for (let i = 0; i < d.length; i++) {
-          for (let q = 0; q < d[i].items.length; q++) {
-            let di = d[i].items[q];
-            let o = {
-                text: di.text,
-                type: di.type,
-                credit: di.credit,
-                official: di.official,
-            };
-            this.ruletab.push(o);
-          }
-        }
-      }
+    }
+  }
 
   // 设置开奖数据
   setresultdata() {

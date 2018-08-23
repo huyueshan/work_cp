@@ -113,6 +113,7 @@ export class HeaderComponent implements OnInit,OnDestroy,AfterViewInit {
 
   close(){
       this.regis=false;
+      this.login=false;
   }
 
 }

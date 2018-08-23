@@ -14,6 +14,7 @@ import { PageComponent } from './page/page.component';
 import { LanguageComponent } from "./language/language.component";
 import { RuleComponent } from './credtop/rule/rule.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule],
@@ -28,6 +29,7 @@ import { RegisterComponent } from './register/register.component';
     LanguageComponent,
     RuleComponent,
     RegisterComponent,
+    LoginComponent,
   ],
   exports: [
     HeaderComponent,
@@ -39,6 +41,7 @@ import { RegisterComponent } from './register/register.component';
     PageComponent,
     LanguageComponent,
     RegisterComponent,
+    LoginComponent,
   ]
 })
 export class ComponentsModule {}

@@ -1,108 +1,101 @@
 <div class="flex-r gamenav">
-    <div class="padright">
-        <div class="flex-r navitem alltype" (mouseenter)="shownav=true" (mouseleave)="shownav=false">
-            <div class="fltitle" [ngClass]="{'en': now_lang_type==='en'}">{{now_lang.LOT_NAV.ALL_LOT}}</div>
-            <div class="flex-r frimg">
-                <img [src]="isrc" alt="{{currentitem}}" width="100px" height="auto"/>
-            </div>
-
+    <div class="flex-c navitem alltype">
+        <div class="flex-r frimg">
+            <img [src]="isrc" alt="{{currentitem}}" width="100px" height="auto" />
         </div>
-        <!-- 全部彩种列表 -->
-        <div class="allnav" (mouseenter)="shownav=true" (mouseleave)="shownav=false" [hidden]="!shownav">
-            <ul class="flex-sc sidel">
-                <li class="flex-sc" *ngFor="let item of data; let i=index" onselectstart="return false;" style="-moz-user-select:none;">
-                    <ng-container *ngIf="(indata.style === 'official'&& item.official)||(indata.style === 'credit'&& item.credit)">
-                        <div class="flex-sr itembox" (click)="itemboxclick(i)" (mouseenter)="itemboxenter(i)" (mouseleave)="itemboxleave(i)" [ngClass]="{'yborder': currentactive == i}">
-                            <div class="flex-sr">
-                                <i class="sideicon" [ngStyle]="{'background-position-x.px':item.bg.x,'background-position-y.px':item.bg.y}" [ngClass]="{sideiconhoverbg: item.isover || currentactive == i}"></i>
-                                <span style="padding-left: 10px;">{{item.title}}</span>
-                            </div>
-                            <div>
-                                <i class="itemboxiconr" [ngClass]="{'iconactive': currentactive == i}"> &#8250;</i>
-                            </div>
-                        </div>
-                        <ng-container *ngIf="currentactive == i">
-                            <ng-container *ngFor="let child of item.items; let n=index">
-                                <div class="item" (click)="itemclick(child)" [ngClass]="{'itemactive': currentitem== child.text}" *ngIf="(indata.style === 'official'&& child.official)||(indata.style === 'credit'&& child.credit)">
-                                    {{child.text}}
-                                </div>
+        <h3>{{currentitem}}</h3>
+        <!-- <h3>重庆时时彩</h3> -->
 
-                            </ng-container>
-                        </ng-container>
-                    </ng-container>
+    </div>
+    <div class="flex-c navitem gametime">
+        <div class="fltitle">
+            <p>{{now_lang.LOT_NAV.NUMBER}}
+                <span class="color_y">{{indata.next}}</span>
+                {{now_lang.LOT_NAV.STAGE}} {{now_lang.LOT_NAV.PRE_TIME}}</p>
+        </div>
+        <ul class="flex-r frtime">
+            <li class="flex-r"><i>{{timedate[0]}}</i><i>{{timedate[1]}}</i><span>:</span></li>
+            <li class="flex-r"><i>{{timedate[2]}}</i><i>{{timedate[3]}}</i><span>:</span></li>
+            <li class="flex-r"><i>{{timedate[4]}}</i><i>{{timedate[5]}}</i></li>
+        </ul>
+    </div>
+    <div class="flex-c navitem gameresult">
+        <div class="fltitle">
+            <p>{{now_lang.LOT_NAV.NUMBER}}
+                <span class="color_y">{{indata.prev}}</span>
+                {{now_lang.LOT_NAV.STAGE}} {{now_lang.LOT_NAV.AWARD_NUMBER}}</p>
+        </div>
+        <!-- 不同彩种开奖球布局 -->
+        <span class="flex-r resultball" *ngIf="type==='ssc'||type==='exf'||type==='dpc'||type==='gxk10'||type==='pl35'">
+            <i *ngFor="let item of resultdata" [ngClass]="{bg_r50:item.color==='red',bg_b50:item.color==='blue',bg_g50:item.color==='green',rotates:rotate}">{{item.numb}}</i>
+        </span>
+        <span class="flex-r resultball resultball1" *ngIf="type==='k3'">
+            <i *ngFor="let item of resultdata" [ngClass]="{bg_r50:item.color==='red',bg_b50:item.color==='blue',bg_g50:item.color==='green',rotates:rotate}">{{item.numb}}</i>
+        </span>
+        <span class="flex-r resultball resultball2" *ngIf="type==='pk10'||type==='gdk10'||type==='kl8'">
+            <i *ngFor="let item of resultdata" [ngClass]="{rotates:rotate}">{{item.numb}}</i>
+        </span>
+        <span class="flex-r resultball resultball3" *ngIf="type==='pcdd'">
+            <i [ngClass]="{bg_r50:resultdata[0].color==='red',bg_b50:resultdata[0].color==='blue',bg_g50:resultdata[0].color==='green',bg_gray50:resultdata[0].color==='gray',rotates:rotate}">{{resultdata[0].numb}}</i>
+            <span>+</span>
+            <i [ngClass]="{bg_r50:resultdata[1].color==='red',bg_b50:resultdata[1].color==='blue',bg_g50:resultdata[1].color==='green',bg_gray50:resultdata[1].color==='gray',rotates:rotate}">{{resultdata[1].numb}}</i>
+            <span>+</span>
+            <i [ngClass]="{bg_r50:resultdata[2].color==='red',bg_b50:resultdata[2].color==='blue',bg_g50:resultdata[2].color==='green',bg_gray50:resultdata[2].color==='gray',rotates:rotate}">{{resultdata[2].numb}}</i>
+            <span>=</span>
+            <i [ngClass]="{bg_r50:pcddsum.color==='red',bg_b50:pcddsum.color==='blue',bg_g50:pcddsum.color==='green',bg_gray50:pcddsum.color==='gray',rotates:rotate}">{{pcddsum.numb}}</i>
+        </span>
+        <span class="flex-r resultball resultball4" *ngIf="type==='lhc'">
+            <span class="flex-c" *ngFor="let item of resultdata">
+                <i [ngClass]="{bg_r50:item.color==='red',bg_b50:item.color==='blue',bg_g50:item.color==='green',rotates:rotate}">{{item.numb}}</i>
+                <span>{{item.shengxiao}}</span>
+            </span>
+            <span class="jia">+</span>
+            <span class="flex-c">
+                <i [ngClass]="{bg_r50:lhcte.color==='red',bg_b50:lhcte.color==='blue',bg_g50:lhcte.color==='green',rotates:rotate}">{{lhcte.numb}}</i>
+                <span>{{lhcte.shengxiao}}</span>
+            </span>
+        </span>
+        <span class="flex-r resultball" *ngIf="type==='vrcbjl'">
+            <span class="xian">闲</span>
+            <i *ngFor="let item of resultdata let i= index" [ngClass]="{bg_b50:i<2,rotates:rotate}">{{item.numb}}</i>
+            <span class="zhuang">庄</span>
+        </span>
+
+        <!-- 不同彩种开奖球布局end -->
+    </div>
+    <div class="flex-c navitem toplist">
+        <span class="flex-r hosthead">
+            <span [ngClass]="{active:toplsactive === 0}" (click)="toplsactive = 0">出码排行</span>
+            <span [ngClass]="{active:toplsactive === 1}" (click)="toplsactive = 1">遗漏排行</span>
+        </span>
+        <ng-container *ngIf="toplsactive === 1">
+            <ul class="flex-c">
+                <li class="flex-r" *ngFor="let item of hostarr">
+                    <span>050810</span>
+                    <span class="color_y history_span">10,5,8,1,9,12,12,12</span>
                 </li>
             </ul>
-        </div>
-    </div>
-    <div class="padright">
-        <div class="flex-r navitem gametime">
-            <div class="fltitle">
-                <p>{{now_lang.LOT_NAV.NUMBER}}
-                    <span class="color_y">{{indata.next}}</span>
-                    {{now_lang.LOT_NAV.STAGE}}</p>
-                <p>{{now_lang.LOT_NAV.PRE_TIME}}</p>
-            </div>
-            <ul class="flex-r frtime">
-                <li>{{timedate| date:'hh'}}</li>
-                <li>{{timedate| date:'mm'}}</li>
-                <li>{{timedate| date:'ss'}}</li>
+        </ng-container>
+        <ng-container *ngIf="toplsactive === 0">
+            <span class="flex-r hosthead">
+                <p>次数</p>
+                <p>
+                    <span class="flex-r slect">
+                        <select name="issue" id="issue" [(ngModel)]="toplsval">
+                            <option value="1期">1期</option>
+                            <option value="2期">2期</option>
+                            <option value="3期">3期</option>
+                        </select>
+                    </span>
+                </p>
+            </span>
+            <ul class="flex-c">
+                <li class="flex-r" *ngFor="let item of hostarr">
+                    <span>第一球单双@双</span>
+                    <span class="color_y history_span">{{toplsval}}</span>
+                </li>
             </ul>
-        </div>
-    </div>
-    <div>
-        <div class="flex-r navitem gameresult">
-            <div class="fltitle">
-                <p>{{now_lang.LOT_NAV.NUMBER}}
-                    <span class="color_y">{{indata.prev}}</span>
-                    {{now_lang.LOT_NAV.STAGE}}</p>
-                <p>{{now_lang.LOT_NAV.AWARD_NUMBER}}</p>
-            </div>
-            <!-- 不同彩种开奖球布局 -->
-            <span class="flex-r resultball" *ngIf="type==='ssc'||type==='exf'||type==='dpc'||type==='gxk10'||type==='pl35'"  >
-                <i *ngFor="let item of resultdata" [ngClass]="{bg_r50:item.color==='red',bg_b50:item.color==='blue',bg_g50:item.color==='green',rotates:rotate}">{{item.numb}}</i>
-            </span>
-            <span class="flex-r resultball resultball1" *ngIf="type==='k3'"  >
-                <i *ngFor="let item of resultdata" [ngClass]="{bg_r50:item.color==='red',bg_b50:item.color==='blue',bg_g50:item.color==='green',rotates:rotate}">{{item.numb}}</i>
-            </span>
-            <span class="flex-r resultball resultball2" *ngIf="type==='pk10'||type==='gdk10'||type==='kl8'">
-                <i *ngFor="let item of resultdata" [ngClass]="{rotates:rotate}">{{item.numb}}</i>
-            </span>
-            <span class="flex-r resultball resultball3" *ngIf="type==='pcdd'">
-                <i [ngClass]="{bg_r50:resultdata[0].color==='red',bg_b50:resultdata[0].color==='blue',bg_g50:resultdata[0].color==='green',bg_gray50:resultdata[0].color==='gray',rotates:rotate}">{{resultdata[0].numb}}</i>
-                <span>+</span>
-                <i [ngClass]="{bg_r50:resultdata[1].color==='red',bg_b50:resultdata[1].color==='blue',bg_g50:resultdata[1].color==='green',bg_gray50:resultdata[1].color==='gray',rotates:rotate}">{{resultdata[1].numb}}</i>
-                <span>+</span>
-                <i [ngClass]="{bg_r50:resultdata[2].color==='red',bg_b50:resultdata[2].color==='blue',bg_g50:resultdata[2].color==='green',bg_gray50:resultdata[2].color==='gray',rotates:rotate}">{{resultdata[2].numb}}</i>
-                <span>=</span>
-                <i [ngClass]="{bg_r50:pcddsum.color==='red',bg_b50:pcddsum.color==='blue',bg_g50:pcddsum.color==='green',bg_gray50:pcddsum.color==='gray',rotates:rotate}">{{pcddsum.numb}}</i>
-            </span>
-            <span class="flex-r resultball resultball4" *ngIf="type==='lhc'">
-                <span class="flex-c" *ngFor="let item of resultdata">
-                    <i [ngClass]="{bg_r50:item.color==='red',bg_b50:item.color==='blue',bg_g50:item.color==='green',rotates:rotate}">{{item.numb}}</i>
-                    <span>{{item.shengxiao}}</span>
-                </span>
-                <span class="jia">+</span>
-                <span class="flex-c">
-                    <i [ngClass]="{bg_r50:lhcte.color==='red',bg_b50:lhcte.color==='blue',bg_g50:lhcte.color==='green',rotates:rotate}">{{lhcte.numb}}</i>
-                    <span>{{lhcte.shengxiao}}</span>
-                </span>
-            </span>
-            <span class="flex-r resultball" *ngIf="type==='vrcbjl'">
-                <span class ="xian">闲</span>
-                <i *ngFor="let item of resultdata let i= index" [ngClass]="{bg_b50:i<2,rotates:rotate}">{{item.numb}}</i>
-                <span class ="zhuang">庄</span>
-            </span>
-
-            <!-- 不同彩种开奖球布局end -->
-            <ng-container *ngIf="type!=='lhc'">
-
-                <div class="line"></div>
-                <div class="flex-c currresult">
-                    <span (click)="ruleopen()">游戏规则</span>
-                    <span (click)="result()">{{now_lang.LOT_NAV.RECENT_NUMBER}}</span>
-                </div>
-            </ng-container>
-        </div>
+        </ng-container>
     </div>
 </div>
 

@@ -254,7 +254,7 @@ export class SSCofficialComponent implements OnInit {
         },
         {
             name: this.now_lang.Lot_tab.Dragon_tiger,
-            href: '#/'
+            href: 'lottery/creditssc/cq'
         }
     ];
 

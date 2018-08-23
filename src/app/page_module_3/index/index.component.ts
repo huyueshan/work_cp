@@ -14,56 +14,6 @@ export class IndexComponent implements OnInit {
   // 头部左边导航数据
   public now_lang: any = userModel.langpackage;
   public now_lang_type: any = "zh";
-  public navdata = [
-    {
-      text: this.now_lang.index.Index,
-      bgpositiony: -10,
-      isover: false,
-      link: ""
-    },
-    {
-      text: this.now_lang.index.Lot_lobby,
-      bgpositiony: -114,
-      isover: false,
-      link: ""
-      //   link: "/lottery"
-    },
-    {
-      text: this.now_lang.index.User_center,
-      bgpositiony: -218,
-      isover: false,
-      link: ""
-      //   link: "/usercenter"
-    },
-    {
-      text: this.now_lang.index.Discount,
-      bgpositiony: -322,
-      isover: false,
-      link: ""
-      //   link: "/usercenter/discount"
-    },
-    {
-      text: this.now_lang.index.Notice,
-      bgpositiony: -10,
-      isover: false,
-      link: ""
-      //   link: "/usercenter/webnote"
-    },
-    {
-      text: this.now_lang.index.Lot_info,
-      bgpositiony: -114,
-      isover: false,
-      link: ""
-      //   link: "/usercenter/proinfo"
-    },
-    {
-      text: this.now_lang.index.Pho_bet,
-      bgpositiony: -218,
-      isover: false,
-      link: ""
-      //   link: "game2"
-    }
-  ];
   public lineinfo = {
     width: "60px",
     left: "0px"

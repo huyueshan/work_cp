@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
-import { SharkModule } from "@ntesmail/shark-angular2";
 import { Routes,RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { ComponentsModule } from "../component/components.module";
 import { FormsModule } from "@angular/forms";
+import { RouteguardService } from "../../../router/router.service";
 
 /***********components***************/
 import { UsercenterComponent } from "./usercenter.component";
@@ -16,10 +16,11 @@ export const routes: Routes = [
       {
         path: "goucaiquery",
         loadChildren: './usercenter/goucaiquery/goucaiquery.module#GoucaiqueryModule',
+		canActivate: [RouteguardService]
       },
       {
         path: "Zhuihaoquery",
-    loadChildren: './usercenter/zhuihaoquery/zhuihaoquery.module#ZhuihaoqueryModule',
+		loadChildren: './usercenter/zhuihaoquery/zhuihaoquery.module#ZhuihaoqueryModule',
       },
       {
         path: "moneyrecord",
@@ -111,7 +112,6 @@ export const routes: Routes = [
 
 @NgModule({
   imports: [
-    SharkModule,
     RouterModule.forChild(routes),
     CommonModule,
     ComponentsModule,

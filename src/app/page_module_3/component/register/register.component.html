@@ -1,6 +1,6 @@
 <div class="container flex-r">
     <div class="flex-c main">
-        <i class="closei" (click)="closeself()"> &times; </i>
+        <i class="closei" (click)="closeself()" *ngIf="officon" > &times; </i>
         <form id="reform" class="reform flex-c rel">
             <div class="errbox" *ngIf="errtip">
                 <app-errtip [message]="errtip"></app-errtip>
@@ -57,7 +57,7 @@
                 <button class="sub-btn" (click)="onsubmit()">立即注册</button>
             </div>
             <div class="flex-r reform-item linktip">
-                <a href="#/login">我要登录</a> &nbsp;|&nbsp;
+                <a href="#/login">我要登录</a>|
                 <a href="javascript:;">联系客服</a>
             </div>
         </form>

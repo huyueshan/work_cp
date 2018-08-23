@@ -1,4 +1,11 @@
-import { Component, OnInit, Output, EventEmitter, ElementRef } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ElementRef
+} from "@angular/core";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 
 @Component({
@@ -7,7 +14,8 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
   styleUrls: ["./register.component.scss"]
 })
 export class RegisterComponent implements OnInit {
-@Output() private close=new EventEmitter();
+  @Input() officon?: boolean = true;
+  @Output() close = new EventEmitter();
   public formdata = {
     account: "",
     password1: "",
@@ -225,8 +233,7 @@ export class RegisterComponent implements OnInit {
     return false;
   }
 
-
-  closeself(){
+  closeself() {
     this.close.emit();
   }
 }

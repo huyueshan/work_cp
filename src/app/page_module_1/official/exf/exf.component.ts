@@ -298,6 +298,7 @@ export class EXFofficialComponent implements OnInit {
                 this.now_lang.Lot_tab.ForT_str,
                 this.now_lang.Lot_tab.Two_star_str,
                 this.now_lang.Lot_tab.Gall,
+                this.now_lang.Lot_tab.Thr_Inde_gall,
                 this.now_lang.Lot_tab.Interestily,
                 this.now_lang.Lot_tab.Choose_odd,
                 this.now_lang.Lot_tab.Choose_eve,
@@ -418,7 +419,7 @@ export class EXFofficialComponent implements OnInit {
 
         {
             name: this.now_lang.Lot_tab.Dragon_tiger,
-            active: 8
+            href: 'lottery/creditexf/sdexf'
         }
     ];
 
@@ -514,6 +515,19 @@ export class EXFofficialComponent implements OnInit {
 				addzero:true
             }],
             active: 3
+        },
+		{
+            title: this.now_lang.Lot_tab.Thr_Inde_gall,
+            menu: [{
+                name: this.now_lang.Lot_tab.Thr_Inde_gall,
+                index: 1,
+				arr: ["qsw"],
+				format: ["n"],
+				datarule: ['Rule_3', 1],
+				addgang:true,
+				addzero:true
+            }],
+            active: 4
         },
         {
             title: this.now_lang.Lot_tab.Indeterminate_gallbladder,

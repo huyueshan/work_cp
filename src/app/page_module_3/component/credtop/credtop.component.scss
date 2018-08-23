@@ -15,259 +15,252 @@
 }
 
 .color_y {
-    color: #fe8f00;
-    font-size: 12px;
+    color: #C42136;
 }
 
 .gamenav {
-    width: 100%;
-    color: #ccc;
-    .padright {
-        position: relative;
-        padding-right: 20px;
-        .allnav {
-            position: absolute;
-            top: 100px;
-            left: 0;
-            width: 240px;
-            z-index: 999;
-            .sidel {
-                width: 100%;
-                height: auto;
-                padding-bottom: 210px;
-                border: none;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-content: space-between;
-                overflow: hidden;
-                background-color: transparent;
-                .flex-sr {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    align-content: center;
-                    align-items: center;
-                }
-                .flex-sc {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    align-content: space-between;
-                }
-                li {
-                    width: 100%;
-                    font-size: 14px;
-                    color: white;
-                    .itembox {
-                        font-size: 14px;
-                        height: 42px;
-                        line-height: 40px;
-                        padding:0 12px 0 20px;
-                        font-weight: bold;
-                        background-color: #fe8f00;
-                        border-bottom: 2px solid white;
-                        cursor: pointer;
-                        .itemboxiconr {
-                            font-size: 30px;
-                            line-height: 32px;
-                            padding-top: 4px;
-                            padding-right: 6px;
-                            transform: rotate(0);
-                        }
-                        .iconactive {
-                            line-height: 48px;
-                            padding-right: 0;
-                            transform: rotate(90deg);
-                        }
-                        .sideicon {
-                            width: 36px;
-                            height: 24px;
-                            background: url('../../images/cred01.png');
-                            background-repeat: no-repeat;
-                        }
-                    }
-                    .itembox:hover {
-                        background-color: #FE7200;
-                    }
-                    .item {
-                        font-size: 12px;
-                        height: 32px;
-                        line-height: 30px;
-                        padding:0 18px 0 60px;
-                        background-color: #525151;
-                        color: white;
-                        border-bottom: 1px solid white;
-                        cursor: pointer;
-                    }
-                    .itemactive,
-                    .item:hover {
-                        color: #fe8f00;
-                    }
-                    .yborder {
-                        background-color: #FE7200;
-                    }
-                }
-            }
-        }
-
-    }
+    width: 1200px;
+    height: 160px;
+    color: white;
+    justify-content: space-between;
     .navitem {
-        height: 100px;
-        background-color: #333;
-        border-radius: 4px;
+        height: 160px;
+        background-color: #211B27;
         overflow: hidden;
         .fltitle {
-            width: 150px;
-            line-height: 22px;
-            padding-left: 30px;
+            font-size: 18px;
+            line-height: 26px;
+            margin: 20px;
         }
-
     }
     .alltype {
-        
-        width: 240px;
-        .fltitle {
-            background: #fe8f00;
-            width: 40px;
-            color: #fff;
-            font-size: 14px;
-            text-align: center;
-            line-height: 20px;
-            height: 100px;
-            padding: 10px 10px;
-            cursor: pointer;
-        }
-        .fltitle.en{
-            width: 40px;
-            padding: 10px 13px;
-            line-height: 14px;
-            letter-spacing: 5px;
-            white-space:wrap;
-            word-break:break-all;
-        }
+        width: 160px;
+        align-content: center;
+        align-items: center;
+        background-color: #C42133;
         .frimg {
-            flex: 1;
+            height: 120px;
+            flex: 0 0 120px;
             justify-content: center;
         }
-    
+        h3 {
+            display: inline-block;
+            height: 40px;
+            line-height: 20px;
+            font-size: 14px;
+            font-weight: normal;
+        }
     }
     .gametime {
-        width: 340px;
+        width: 350px;
+        align-items: center;
         .frtime {
-            text-align: center;
-            padding-right: 10px;
+            width: 220px;
+            height: 58px;
+            border: 1px solid #766C6C;
+            border-radius: 4px;
+            background-color: #342840;
+            justify-content: center;
             li {
                 list-style: none;
-                display: block;
-                width: 50px;
-                height: 50px;
-                background: url("../../images/sscsprites.png") -53px -0;
-                line-height: 50px;
+                height: 40px;
                 text-align: center;
                 color: #fff;
                 font-size: 16px;
+                i{
+                    position: relative;
+                    width: 24px;
+                    height: 40px;
+                    line-height: 40px;
+                    font-size: 24px;
+                    border: none;
+                    border-radius: 10px;
+                    background-color: #A41524;
+                    margin: 2px;
+                }
+                i:after {
+                    content: '';
+                    position: absolute;
+                    top: calc(50% - 1px) ;
+                    left: 0;
+                    width: 100%;
+                    height: 2px;
+                    background-color: #342840;
+                }
+                span{
+                    // line-height: 30px;
+                    font-size: 30px;
+                    margin: 2px;
+                    margin-top: -2px; 
+                }
             }
         }
     }
     .gameresult {
-        width: 580px;
-        .resultball{
-            flex: 1;
+        width: 380px;
+        align-items: center;
+        .resultball {
+            width: 100%; // height: 100px;
+            // flex: 0 0 100px;
             justify-content: space-around;
+            align-content: center;
             flex-wrap: wrap;
-            i{
+            i {
                 display: inline-block;
-                width:50px;
-                height: 50px;
-                line-height: 46px;
-                font-size: 24px;
+                width: 58px;
+                height: 58px;
+                line-height: 52px;
+                font-size: 26px;
                 text-align: center;
                 color: white;
-                background: url('../../images/resultball.png') -10px -64px;
+                background: url('../../images/mod3/balls_m3_01.png') -10px -522px;
                 transform: rotatey(0deg);
                 transition: transform 1000ms ease;
             }
-            .rotates{
-                transform:rotatey(360deg);
+            .rotates {
+                transform: rotatey(360deg);
             }
-            .bg_r50{
-                background: url('../../images/resultball.png') -10px -204px;
+            .bg_r50 {
+                background: url('../../images/mod3/balls_m3_01.png') -10px -522px;
             }
-            .bg_b50{
-                background: url('../../images/resultball.png') -10px -274px;
+            .bg_b50 {
+                background: url('../../images/mod3/balls_m3_01.png') -10px -600px;
             }
-            .bg_g50{
-                background: url('../../images/resultball.png') -10px -344px;
+            .bg_g50 {
+                background: url('../../images/mod3/balls_m3_01.png') -10px -678px;
             }
-            .bg_gray50{
-                background: url('../../images/resultball.png') -10px -134px;
+            .bg_gray50 {
+                background: url('../../images/mod3/balls_m3_01.png') -10px -756px;
             }
-            .xian{
+            .xian {
                 font-size: 20px;
                 font-weight: bold;
                 color: #4291DB;
             }
-            .zhuang{
+            .zhuang {
                 font-size: 20px;
                 font-weight: bold;
-                color: #fe8f00;
+                color: #C42136;
             }
         }
-        .resultball1{
+        .resultball1 {
             padding: 0 60px 0 30px;
         }
-        .resultball2{
+        .resultball2 {
             padding-right: 4px;
-            i{
-                width:34px;
-                height: 34px;
-                line-height: 30px;
+            i {
+                width: 42px;
+                height: 42px;
+                line-height: 34px;
                 font-size: 16px;
                 margin: 2px 0;
-                background: url('../../images/resultball.png') -10px -10px;
+                background: url('../../images/mod3/balls_m3_01.png') -10px -10px;
             }
         }
-        .resultball3{
+        .resultball3 {
             padding: 0 30px;
-            span{
+            span {
                 font-size: 22px;
                 font-weight: bold;
             }
         }
-        .resultball4{
+        .resultball4 {
             padding-right: 20px;
-            span{
+            span {
                 font-size: 14px;
                 font-weight: bold;
                 align-self: center;
             }
-            .jia{
+            .jia {
                 font-size: 22px;
                 font-weight: bold;
                 padding-bottom: 24px;
-
             }
-
         }
     }
-    .line {
-        width: 2px;
-        height: 52px;
-        background: url("../../images/sscsprites.png") -161px -0;
-    }
-    .currresult {
-        font-size: 12px;
-        line-height: 16px;
-        width: 68px;
-        height: 100px;
-        justify-content: center;
-        align-items: center;
-        span{
-            color: #fe8f00;
-            margin: 5px 0;
-            border-bottom: 1px solid #fe8f00;
-            cursor: pointer;
+    .toplist {
+        width: 260px; // height: 100%;
+        .hosthead {
+            width: 100%;
+            height: 30px;
+            flex: 0 0 30px;
+            line-height: 30px;
+            color: white;
+            border-bottom: 1px solid #342840;
+            span{
+                cursor: pointer;
+            }
+            span,
+            p {
+                display: inline-block;
+                width: 50%;
+                text-align: center;
+            }
+            .active {
+                background-color: #342840;
+            }
+            .slect {
+                position: relative;
+                width: 80px;
+                height: 26px;
+                line-height: 26px;
+                select {
+                    width: 100%;
+                    height: 26px;
+                    padding-left: 30px;
+                    color: white;
+                    background-color: inherit;
+                    border: none;
+                    appearance: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    cursor: pointer;
+                    option {
+                        color: black;
+                    }
+                }
+            }
+            .slect:after {
+                content: '';
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                width: 0;
+                height: 0;
+                border-left: 4px solid transparent;
+                border-top: 6px solid white;
+                border-right: 4px solid transparent;
+                pointer-events: none;
+                cursor: pointer;
+            }
+        }
+        ul {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            li {
+                width: 100%;
+                height: 22px;
+                flex: 0 0 22px;
+                line-height: 22px;
+                font-size: 10px;
+                padding: 0 10px;
+                justify-content: space-between;
+                span{
+                    display: inline-block;
+                    width: 50%;
+                    text-align: center;
+                }
+                .history_span {
+                    // max-width: 73px;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
+            }
+            li:hover {
+                background-color: #170E1F;
+            }
         }
     }
 }
