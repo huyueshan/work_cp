@@ -4,8 +4,6 @@
             <img [src]="isrc" alt="{{currentitem}}" width="100px" height="auto" />
         </div>
         <h3>{{currentitem}}</h3>
-        <!-- <h3>重庆时时彩</h3> -->
-
     </div>
     <div class="flex-c navitem gametime">
         <div class="fltitle">
@@ -14,13 +12,126 @@
                 {{now_lang.LOT_NAV.STAGE}} {{now_lang.LOT_NAV.PRE_TIME}}</p>
         </div>
         <ul class="flex-r frtime">
-            <li class="flex-r"><i>{{timedate[0]}}</i><i>{{timedate[1]}}</i><span>:</span></li>
-            <li class="flex-r"><i>{{timedate[2]}}</i><i>{{timedate[3]}}</i><span>:</span></li>
-            <li class="flex-r"><i>{{timedate[4]}}</i><i>{{timedate[5]}}</i></li>
+            <li class="flex-r">
+                    <i class="flex-c paranm">
+                        <div class="flex-r va1">
+                            <span class="vabox">{{uptimedata[0]}}</span>
+                        </div>
+                        <div class="flex-r va2">
+                            <span class="vabox">{{timedate[0]}}</span>
+                        </div>
+                        <div class="transbox">
+                            <div class="playcon" [ngClass]="{playani:timeanimat(0)}" >
+                                <div class="flex-r tras1">
+                                    <span class="vabox">{{uptimedata[0]}}</span>
+                                </div>
+                                <div class="flex-r tras2">
+                                    <span class="vabox">{{timedate[0]}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </i>
+                <i class="flex-c paranm">
+                    <div class="flex-r va1">
+                        <span class="vabox">{{uptimedata[1]}}</span>
+                    </div>
+                    <div class="flex-r va2">
+                        <span class="vabox">{{timedate[1]}}</span>
+                    </div>
+                    <div class="transbox">
+                        <div class="playcon" [ngClass]="{playani:timeanimat(1)}" >
+                            <div class="flex-r tras1">
+                                <span class="vabox">{{uptimedata[1]}}</span>
+                            </div>
+                            <div class="flex-r tras2">
+                                <span class="vabox">{{timedate[1]}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </i>
+                <span class="dabd">:</span>
+            </li>
+            <li class="flex-r">
+                <i class="flex-c paranm">
+                    <div class="flex-r va1">
+                        <span class="vabox">{{uptimedata[2]}}</span>
+                    </div>
+                    <div class="flex-r va2">
+                        <span class="vabox">{{timedate[2]}}</span>
+                    </div>
+                    <div class="transbox">
+                        <div class="playcon" [ngClass]="{playani:timeanimat(2)}" >
+                            <div class="flex-r tras1">
+                                <span class="vabox">{{uptimedata[2]}}</span>
+                            </div>
+                            <div class="flex-r tras2">
+                                <span class="vabox">{{timedate[2]}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </i>
+                <i class="flex-c paranm">
+                    <div class="flex-r va1">
+                        <span class="vabox">{{uptimedata[3]}}</span>
+                    </div>
+                    <div class="flex-r va2">
+                        <span class="vabox">{{timedate[3]}}</span>
+                    </div>
+                    <div class="transbox">
+                        <div class="playcon" [ngClass]="{playani:timeanimat(3)}" >
+                            <div class="flex-r tras1">
+                                <span class="vabox">{{uptimedata[3]}}</span>
+                            </div>
+                            <div class="flex-r tras2">
+                                <span class="vabox">{{timedate[3]}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </i>
+                <span class="dabd">:</span>
+            </li>
+            <li class="flex-r">
+                <i class="flex-c paranm">
+                    <div class="flex-r va1">
+                        <span class="vabox">{{uptimedata[4]}}</span>
+                    </div>
+                    <div class="flex-r va2">
+                        <span class="vabox">{{timedate[4]}}</span>
+                    </div>
+                    <div class="transbox">
+                        <div class="playcon" [ngClass]="{playani:timeanimat(4)}" >
+                            <div class="flex-r tras1">
+                                <span class="vabox">{{uptimedata[4]}}</span>
+                            </div>
+                            <div class="flex-r tras2">
+                                <span class="vabox">{{timedate[4]}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </i>
+                <i class="flex-c paranm">
+                    <div class="flex-r va1">
+                        <span class="vabox">{{uptimedata[5]}}</span>
+                    </div>
+                    <div class="flex-r va2">
+                        <span class="vabox">{{timedate[5]}}</span>
+                    </div>
+                    <div class="transbox">
+                        <div class="playcon" [ngClass]="{playani:timeanimat(5)}" >
+                            <div class="flex-r tras1">
+                                <span class="vabox">{{uptimedata[5]}}</span>
+                            </div>
+                            <div class="flex-r tras2">
+                                <span class="vabox">{{timedate[5]}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </i>
+            </li>
         </ul>
     </div>
-    <div class="flex-c navitem gameresult">
-        <div class="fltitle">
+    <div class="flex-c navitem gameresult" [ngClass]="{lagbox:type==='kl8'||type==='lhc'||type==='pk10'||type==='gdk10'}">
+        <div class="fltitle" [ngClass]="{marg10:type==='kl8'}">
             <p>{{now_lang.LOT_NAV.NUMBER}}
                 <span class="color_y">{{indata.prev}}</span>
                 {{now_lang.LOT_NAV.STAGE}} {{now_lang.LOT_NAV.AWARD_NUMBER}}</p>
@@ -63,7 +174,7 @@
 
         <!-- 不同彩种开奖球布局end -->
     </div>
-    <div class="flex-c navitem toplist">
+    <div class="flex-c navitem toplist" *ngIf="type!=='kl8' && type!=='lhc' && type!=='pk10' && type!=='gdk10'">
         <span class="flex-r hosthead">
             <span [ngClass]="{active:toplsactive === 0}" (click)="toplsactive = 0">出码排行</span>
             <span [ngClass]="{active:toplsactive === 1}" (click)="toplsactive = 1">遗漏排行</span>
@@ -99,6 +210,5 @@
     </div>
 </div>
 
-
-<!-- 规则说明组件 -->
-<app-rule [ruleshow]="rule_show" [cptype]="type" [cpstyle]="indata.style" [cpnav]="ruletab" [cpname]="currentitem" (close)="ruleclose()"></app-rule>
+        <!-- 规则说明组件 -->
+        <!-- <app-rule [ruleshow]="rule_show" [cptype]="type" [cpstyle]="indata.style" [cpnav]="ruletab" [cpname]="currentitem" (close)="ruleclose()"></app-rule> -->

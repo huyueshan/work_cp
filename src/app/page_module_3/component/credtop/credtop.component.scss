@@ -1,3 +1,7 @@
+
+*{
+    box-sizing: border-box;
+}
 .flex-r {
     display: flex;
     flex-direction: row;
@@ -32,6 +36,9 @@
             line-height: 26px;
             margin: 20px;
         }
+        .marg10{
+            margin: 10px;
+        }
     }
     .alltype {
         width: 160px;
@@ -52,13 +59,13 @@
         }
     }
     .gametime {
-        width: 350px;
+        width: 340px;
         align-items: center;
         .frtime {
             width: 220px;
             height: 58px;
             border: 1px solid #766C6C;
-            border-radius: 4px;
+            border-radius: 8px;
             background-color: #342840;
             justify-content: center;
             li {
@@ -67,31 +74,32 @@
                 text-align: center;
                 color: #fff;
                 font-size: 16px;
-                i{
+                i {
                     position: relative;
-                    width: 24px;
-                    height: 40px;
-                    line-height: 40px;
-                    font-size: 24px;
-                    border: none;
-                    border-radius: 10px;
-                    background-color: #A41524;
-                    margin: 2px;
+                    // width: 24px;
+                    // height: 40px;
+                    // line-height: 40px;
+                    // font-size: 24px;
+                    // border: none;
+                    // border-radius: 8px;
+                    // background-color: #A41524;
+                    // margin: 2px;
+                    // box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, 0.3);
                 }
                 i:after {
                     content: '';
                     position: absolute;
-                    top: calc(50% - 1px) ;
+                    top: calc(50% - 1px);
                     left: 0;
                     width: 100%;
                     height: 2px;
                     background-color: #342840;
                 }
-                span{
+                .dabd {
                     // line-height: 30px;
                     font-size: 30px;
                     margin: 2px;
-                    margin-top: -2px; 
+                    margin-top: -2px;
                 }
             }
         }
@@ -100,8 +108,7 @@
         width: 380px;
         align-items: center;
         .resultball {
-            width: 100%; // height: 100px;
-            // flex: 0 0 100px;
+            width: 100%;
             justify-content: space-around;
             align-content: center;
             flex-wrap: wrap;
@@ -149,12 +156,12 @@
         .resultball2 {
             padding-right: 4px;
             i {
-                width: 42px;
-                height: 42px;
-                line-height: 34px;
-                font-size: 16px;
-                margin: 2px 0;
-                background: url('../../images/mod3/balls_m3_01.png') -10px -10px;
+                width: 47px;
+                height: 47px;
+                line-height: 42px;
+                font-size: 20px;
+                margin: 4px;
+                background: url('../../images/mod3/ballk8_m3_01.png') no-repeat;
             }
         }
         .resultball3 {
@@ -178,8 +185,12 @@
             }
         }
     }
+    .lagbox {
+        width: 660px;
+        padding: 0 30px;
+    }
     .toplist {
-        width: 260px; // height: 100%;
+        width: 260px;
         .hosthead {
             width: 100%;
             height: 30px;
@@ -187,7 +198,7 @@
             line-height: 30px;
             color: white;
             border-bottom: 1px solid #342840;
-            span{
+            span {
                 cursor: pointer;
             }
             span,
@@ -246,7 +257,7 @@
                 font-size: 10px;
                 padding: 0 10px;
                 justify-content: space-between;
-                span{
+                span {
                     display: inline-block;
                     width: 50%;
                     text-align: center;
@@ -264,3 +275,85 @@
         }
     }
 }
+
+
+//===== 时间翻页动画样式开始 ==========
+
+.paranm {
+    position: relative;
+    width: 24px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #A41524;
+    margin: 2px;
+    box-shadow: inset 0 2px 2px 1px rgba(0, 0, 0, 0.3), 0px 0px 3px rgba(0,0,0,0.5);;
+    .vabox{
+        display: inline-block;
+        width: 24px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 24px;
+        border: none;
+        border-radius: 8px;
+        background-color: #A41524;
+        box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, 0.3);
+        color: white;
+        text-align: center;
+    }
+    .va1, .va2{
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        overflow: hidden;
+    }
+    .va1{
+        top: 0;
+        align-items: flex-start;
+    }
+    .va2{
+        top: 50%;
+        align-items: flex-end;
+    }
+    .transbox{
+        position: absolute;
+        top: 0;
+        left:0;
+        .playcon {
+            position: relative;
+            width: 24px;
+            height: 40px;
+            transform: rotateX(0deg);
+            transform-style: preserve-3d;
+            .tras1 {
+                position: absolute;
+                width: 100%;
+                height: 50%;
+                top: 0;
+                left:0;
+                transform: rotateX(180deg);
+                backface-visibility: hidden;
+                overflow: hidden;
+                align-items: flex-end;
+            }
+            .tras2 {
+                position: absolute;
+                width: 100%;
+                height: 50%;
+                top: 0;
+                left:0;
+                backface-visibility: hidden;
+                overflow: hidden;
+                align-items: flex-start;
+            }
+        }
+        .playani {
+            transition: transform 800ms ease;
+            transform: rotateX(180deg);
+        }
+    }
+}
+//===== 时间翻页动画样式结束 ==========

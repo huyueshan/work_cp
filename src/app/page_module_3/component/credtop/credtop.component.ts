@@ -22,7 +22,9 @@ export class CredtopComponent implements OnInit, OnDestroy {
     time: any;
   };
 
-  public timedate;
+  public timedate= ['0','0','0','0','0','0',];
+  public uptimedata= ['0','0','0','0','0','0',];
+  public animat = [false,false,false,false,false,false,]
   public time;
   public shownav = false;
   // public routid;  //路由ID
@@ -804,23 +806,32 @@ export class CredtopComponent implements OnInit, OnDestroy {
       this.routreg(data.id);
       this.Rotates(); // 此处动画事件需要在请求到数据后异步执行
     });
-    // this.setresultdata();
-
     this.time = setInterval(() => {
       let t = new Date();
       let s1 = Number(t.getHours());
-      let st1 = s1 > 10 ? s1 + "" : "0" + s1;
+      let st1 = s1 >= 10 ? s1 + "" : "0" + s1;
       let s2 = Number(t.getMinutes());
-      let st2 = s2 > 10 ? s2 + "" : "0" + s2;
+      let st2 = s2 >= 10 ? s2 + "" : "0" + s2;
       let s3 = Number(t.getSeconds());
-      let st3 = s3 > 10 ? s3 + "" : "0" + s3;
+      let st3 = s3 >= 10 ? s3 + "" : "0" + s3;
       let str = st1+st2+st3;
-      this.timedate = str.split("");
+      this.uptimedata = str.split("");
     }, 1000);
   }
   ngAfterViewInit() {}
   ngOnDestroy() {
-    clearInterval(this.time);
+    // clearInterval(this.time);
+  }
+
+  timeanimat(i){
+       if (this.timedate[i] === this.uptimedata[i]) {
+          return false
+      }else{
+          setTimeout(() => {
+            this.timedate[i] = this.uptimedata[i]
+          }, 800);
+          return true
+      }
   }
 
   // 开奖结果球动画控制

@@ -56,7 +56,7 @@
             color: white;
             padding: 0 12px;
             justify-content: space-between;
-            background: linear-gradient(to top, #c76401, #fba915);
+            background: linear-gradient(to top, #941927, #e22137);
             i {
                 font-size: 20px;
                 align-self: flex-start;
@@ -90,8 +90,8 @@
             }
             .affirm, .cancel:hover{
                 color: white;
-                background: linear-gradient(to top, #c76401, #fba915);
-                border: 1px solid #c76401;
+                background: linear-gradient(to top, #941927, #e22137);
+                border: none;
             }
         }
     }

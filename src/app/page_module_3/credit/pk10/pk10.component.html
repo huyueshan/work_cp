@@ -15,7 +15,7 @@
                     </div>
                     <div class="flex-r selctbox" onselectstart="return false;" style="-moz-user-select:none;">
                         <span class="flex-r">
-                            <strong>$</strong>
+                            <strong>￥</strong>
                             <span class="flex-r rangebox">
                                 <span class="showvalue">{{(odds-rangevalue)| number : '1.0-1'}}%</span>
                                 <span class="icon" (click)="rangevaluelessen()">-</span>
@@ -222,7 +222,7 @@
                             </div>
                         </div>
                         <!-- 底部问路-->
-                        <div *ngIf="type<3">
+                        <div class="flex-r wenlu"  *ngIf="type<3">
                             <app-wenlu></app-wenlu>
                         </div>
                         <!-- 快选金额 -->
@@ -248,6 +248,7 @@
                                         </span>
 
                                     </div>
+                                    <div class="flex-r tip" *ngIf="kxtip" >{{kxtipstr}}</div>
                                     <div class="flex-r btnbox">
                                         <span class="btn1" (click)="setboxvalid()">{{boxvalid?'禁用':'开启'}}</span>
                                         <span class="btn2" (click)="savenum()">保存</span>
@@ -315,8 +316,6 @@
                     </div>
 
                 </div>
-                <!-- 右边信息区内容 -->
-                <app-sider></app-sider>
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@
                     </div>
                     <div class="flex-r selctbox">
                         <span class="flex-r">
-                            <strong>$</strong>
+                            <strong>￥</strong>
                             <span class="flex-r rangebox">
                                 <span class="showvalue">{{(odds-rangevalue)| number : '1.0-1'}}%</span>
                                 <span class="icon" (click)="rangevaluelessen()">-</span>
@@ -21,7 +21,7 @@
                                 <span class="icon" (click)="rangevalueadd()">+</span>
                             </span>
                         </span>
-                        <span class="flex-r btngroup">
+                        <span class="flex-r tbtngroup">
                             <button [ngClass]="{btnactive:selectbtnvalue === 0}" (click)="tabclick(0)">一般</button>
                             <button [ngClass]="{btnactive:selectbtnvalue === 1}" (click)="tabclick(1)">快捷</button>
                             <button class="kuxuan" (click)="tabclick(2)">快选金额</button>
@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex-c conmain" style="height: 280px;">
+                            <div class="flex-c conmain" style="height: 336px;">
                                 <div class="flex-c conmainbox" *ngFor="let item of pcdata1; let i=index">
                                     <span class="flex-r itembox" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
                                         <span class="flex-r item1" [title]="'球号：'+item.numb">
@@ -179,6 +179,7 @@
                                         </span>
 
                                     </div>
+                                    <div class="flex-r tip" *ngIf="kxtip" >{{kxtipstr}}</div>
                                     <div class="flex-r btnbox">
                                         <span class="btn1" (click)="setboxvalid()">{{boxvalid?'禁用':'开启'}}</span>
                                         <span class="btn2" (click)="savenum()">保存</span>
@@ -246,8 +247,6 @@
                     </div>
 
                 </div>
-                <!-- 右边信息区内容 -->
-                <app-sider></app-sider>
             </div>
         </div>
     </div>
