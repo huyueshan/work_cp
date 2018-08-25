@@ -336,6 +336,9 @@
                 left:0;
                 transform: rotateX(180deg);
                 backface-visibility: hidden;
+                -webkit-backface-visibility:hidden;
+                -moz-backface-visibility:hidden;
+                -ms-backface-visibility:hidden;
                 overflow: hidden;
                 align-items: flex-end;
             }
@@ -346,6 +349,9 @@
                 top: 0;
                 left:0;
                 backface-visibility: hidden;
+                -webkit-backface-visibility:hidden;
+                -moz-backface-visibility:hidden;
+                -ms-backface-visibility:hidden;
                 overflow: hidden;
                 align-items: flex-start;
             }

@@ -677,7 +677,7 @@
             }
             .optionbox1{
                 height: 230px;
-                flex: 0 0 230px;
+                // flex: 0 0 230px;
                 margin-bottom: 2px;
             }
             .optionbox2{
@@ -1141,6 +1141,7 @@ input[type="range"] {
 }
 input[type="range"]:focus{
     outline:none;
+    -moz-outline:white;
 }
 
 // range中心圆点

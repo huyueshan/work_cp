@@ -17,7 +17,7 @@ export class RuleComponent implements OnInit, OnChanges{
 
   @Output() private close=new EventEmitter();
   @HostListener('window:resize',['$event']) onResize(e){
-    this.setfixed(this.popup.note, 850, 640);
+    this.setfixed(this.popup.note, 850, 520);
   }
   public rule_data=""; // 规则内容
   public navdata = []; // 导航数据
@@ -63,7 +63,7 @@ export class RuleComponent implements OnInit, OnChanges{
         this.rule_data = CPLAY[this.cptype][this.cpstyle]
 
         let p = this.popup;
-        this.setfixed(p.note, 850, 640);
+        this.setfixed(p.note, 850, 520);
         this.scale = false;
         setTimeout(() => {
             this.scale = true;
