@@ -6,5 +6,4 @@ import '@angular/router';
 import '@angular/http';
 import '@angular/forms';
 import '@angular/animations';
-import '@ntesmail/shark-angular2';
 import 'rxjs';

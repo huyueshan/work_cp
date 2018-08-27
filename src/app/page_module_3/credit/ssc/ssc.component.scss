@@ -186,7 +186,7 @@
     position: relative;
     width: 100%;
     min-height: 600px;
-    background-color: #F2F2F2;
+    background-color: white;
     .content {
         width: 100%;
         align-items: center;
@@ -580,8 +580,13 @@
             }
             .tip{
                 width: 100%;
-                font-size: 12px;
+                height: 14px;
+                font-size: 10px;
                 justify-content: center;
+                p{
+                    line-height: 14px;
+                    color: black;
+                }
             }
             .btnbox {
                 width: 100%;

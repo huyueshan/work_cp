@@ -1,4 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { Waybills } from "../../../../factory/Waybill";
+require("../../../../styles/waybill/waybill_1.scss")
 
 @Component({
   selector: 'app-wenlu',
@@ -114,6 +116,7 @@ export class WenluComponent implements OnInit {
   constructor(private el: ElementRef,) { }
 
   ngOnInit() {
+	Waybills.Waybill({type:'haoma',isToradora:!0,gametype:'SSC',index:1,ele:$("#WAYBILL-BODY")});
     this.typeoptchange(); //初始问路tab数据；
     this.tablebox1.data = this.setwenludata(); //临时测试数据
     this.tablebox2.data = this.setwenludata(); //临时测试数据
@@ -135,6 +138,7 @@ export class WenluComponent implements OnInit {
     // 底部问路拖拽事件
   // ev 事件对象 ， t 当前表格数据对象
   dragdown(ev, t) {
+	  console.log(t)
     let _that = this;
     let d = _that[t];
     let e = ev || event;

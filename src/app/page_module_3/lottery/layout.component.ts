@@ -23,12 +23,5 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
     this.now_lang_type=userModel.now_lang_type;
     this.loadpage = userModel.platform;
-    // 路由地址改变后的事件
-    this.router.events
-      .filter(event => event instanceof NavigationEnd)
-      .subscribe((event: NavigationEnd) => {
-        //   history.go(0);
-        window.scrollTo(0,0);
-      });
-    }
+  }
 }

@@ -248,7 +248,9 @@
                                         </span>
 
                                     </div>
-                                    <div class="flex-r tip" *ngIf="kxtip" >{{kxtipstr}}</div>
+                                    <div class="flex-r tip">
+                                        <p *ngIf="kxtip">{{kxtipstr}}</p>
+                                    </div>
                                     <div class="flex-r btnbox">
                                         <span class="btn1" (click)="setboxvalid()">{{boxvalid?'禁用':'开启'}}</span>
                                         <span class="btn2" (click)="savenum()">保存</span>

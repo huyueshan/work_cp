@@ -829,7 +829,7 @@ export class CredtopComponent implements OnInit, OnDestroy {
       }else{
           setTimeout(() => {
             this.timedate[i] = this.uptimedata[i]
-          }, 800);
+          }, 700);
           return true
       }
   }

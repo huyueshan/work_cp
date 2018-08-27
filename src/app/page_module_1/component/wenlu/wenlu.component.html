@@ -1,5 +1,3 @@
-
-
 <div class="flex-c sscbottom">
     <ul class="flex-r tabbox">
         <li class="tabitem">
@@ -13,109 +11,9 @@
             </span>
         </li>
     </ul>
-    <div class="flex-r wenlu">
-        <div class="flex-r wenlubtn">
-            <strong></strong>
-        </div>
-        <!-- //大路 -->
-        <div class="flex-r wtablebox">
-            <div class="flex-r wtable">
-                <div class="iteminfo">
-                    {{tablebox1.name}}
-                </div>
-                <div class="wrapbox" [ngStyle]="{'width': tablebox1.width}">
-                    <div class="tablebox" id="tablebox1" [ngStyle]="{'left': tablebox1.left}" (mousedown)="dragdown($event,'tablebox1')" (mouseup)="tablebox1.drag = false"
-                        (mousemove)="dragmove($event,'tablebox1')" (mouseleave)="tablebox1.drag = false">
-                        <table id="table1" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
-                            <tr *ngFor="let item of tablebox1.data">
-                                <td *ngFor="let child of item"></td>
-                            </tr>
-
-                        </table>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-    <!-- ===盘珠路======== -->
-    <div class="flex-r wenlu">
-        <div class="flex-r wenlubtn">
-            <strong></strong>
-        </div>
-        <div class="flex-r wtablebox">
-            <div class="flex-r wtable">
-                <div class="iteminfo infosmall">
-                    {{tablebox2.name}}
-                </div>
-                <div class="wrapbox" [ngStyle]="{'width': tablebox2.width}">
-                    <div class="tablebox" id="tablebox2" [ngStyle]="{'left': tablebox2.left}" (mousedown)="dragdown($event,'tablebox2')" (mouseup)="tablebox2.drag = false"
-                        (mousemove)="dragmove($event,'tablebox2')" (mouseleave)="tablebox2.drag = false">
-                        <table id="table2" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
-                            <tr *ngFor="let item of tablebox2.data">
-                                <td *ngFor="let child of item"></td>
-                            </tr>
-
-                        </table>
-                    </div>
-                </div>
-
-            </div>
-            <!-- 大眼路 -->
-            <div class="flex-r wtable">
-                <div class="iteminfo infosmall">
-                    {{tablebox3.name}}
-                </div>
-                <div class="wrapbox" [ngStyle]="{'width': tablebox3.width}">
-                    <div class="tablebox" id="tablebox3" [ngStyle]="{'left': tablebox3.left}" (mousedown)="dragdown($event,'tablebox3')" (mouseup)="tablebox3.drag = false"
-                        (mousemove)="dragmove($event,'tablebox3')" (mouseleave)="tablebox3.drag = false">
-                        <table id="table3" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
-                            <tr *ngFor="let item of tablebox3.data">
-                                <td *ngFor="let child of item"></td>
-                            </tr>
-
-                        </table>
-                    </div>
-                </div>
-
-            </div>
-            <!-- 小路 -->
-            <div class="flex-r wtable">
-                <div class="iteminfo">
-                    {{tablebox4.name}}
-                </div>
-                <div class="wrapbox" [ngStyle]="{'width': tablebox4.width}">
-                    <div class="tablebox" id="tablebox4" [ngStyle]="{'left': tablebox4.left}" (mousedown)="dragdown($event,'tablebox4')" (mouseup)="tablebox4.drag = false"
-                        (mousemove)="dragmove($event,'tablebox4')" (mouseleave)="tablebox4.drag = false">
-                        <table id="table4" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
-                            <tr *ngFor="let item of tablebox4.data">
-                                <td *ngFor="let child of item"></td>
-                            </tr>
-
-                        </table>
-                    </div>
-                </div>
-
-            </div>
-            <!-- 曱甴路 -->
-            <div class="flex-r wtable">
-                <div class="iteminfo infosmall">
-                    {{tablebox5.name}}
-                </div>
-                <div class="wrapbox" [ngStyle]="{'width': tablebox5.width}">
-                    <div class="tablebox" id="tablebox5" [ngStyle]="{'left': tablebox5.left}" (mousedown)="dragdown($event,'tablebox5')" (mouseup)="tablebox5.drag = false"
-                        (mousemove)="dragmove($event,'tablebox5')" (mouseleave)="tablebox5.drag = false">
-                        <table id="table5" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
-                            <tr *ngFor="let item of tablebox5.data">
-                                <td *ngFor="let child of item"></td>
-                            </tr>
-
-                        </table>
-                    </div>
-                </div>
-
-            </div>
+    <div class="waybill-main">
+        <div class="w-item clear" id="WAYBILL-BODY">
         </div>
     </div>
 </div>
+

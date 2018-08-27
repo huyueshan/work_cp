@@ -34,7 +34,7 @@
                 </span>
                 <span class="flex-r headr">
                     <ul class="flex-r" id="nav">
-                        <li class="flex-r" *ngFor="let item of navdata; let i = index" (click)="navclick($event,i)">
+                        <li class="flex-r" *ngFor="let item of navdata; let i = index" (click)="navclick(i)">
                             <a attr.href="{{item.link}}">{{item.text}}</a>
                         </li>
                     </ul>

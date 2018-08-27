@@ -1,0 +1,313 @@
+
+
+*{
+    box-sizing: border-box;
+}
+/* 龙虎斗 start */
+.toradora {
+    position: relative;
+    /*height: 410px;*/
+    /*z-index: 3;*/
+}
+.toradora_bar {
+    float: none;
+    position: relative;
+    /*z-index: 3;*/
+    width: 900px;
+}
+.toradora li {
+    /*width: 149px;*/
+    height: 91px;
+    line-height: normal;
+    float: left;
+    display: inline-block;
+    margin: 0 1px 1px 0;
+    overflow: hidden;
+    font-size: 14px;
+}
+.wid0{
+    width:126px !important;
+}
+.wid1 {
+    width: 223px !important;
+}
+.offset-1{
+    margin-left: 64px;
+}
+.offset-2{
+    margin-left: 128px;
+}
+.offset-3{
+    margin-left: 192px;
+}
+.offset-4{
+    margin-left: 256px;
+}
+.offset-5{
+    margin-left: 320px;
+}
+.offset-6{
+    margin-left: 384px;
+}
+.ball0-1{
+    margin-left: 113px;
+}
+.ball0-2{
+    margin-left: 225px;
+}
+.ball0-3{
+    margin-left: 338px;
+}
+.ball0-4{
+    margin-left: 113px;
+}
+.toradora .t-head {
+    font-size:13px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: 700;
+    padding-bottom: 1px;
+}
+.toradora .t-box {
+    overflow: hidden;
+    height: 60px;
+
+}
+.toradora .t-item {
+    float: left;
+    /*width: 63.5px;*/
+    text-align: center;
+    padding: 0;
+    height: 59px;
+}
+.toradora .t-item .txt-red, .toradora .t-item .txt-blue {
+    font-size: 14px;
+    font-weight: 700;
+}
+.toradora .t-item .txt-red {
+  
+}
+.toradora .t-name span {
+    display: inline;
+    float: none;
+    height: 29px;
+    line-height: 29px;
+    font-weight: 700;
+    font-size:12px;
+}
+.toradora .t-odds {
+
+    font-family: Arial;
+    margin-left: 3px;
+}
+.toradora .t-input {
+    padding-top: 3px;
+}
+.toradora .t-input input {
+    width: 80%;
+    height: 17px;
+    line-height: 17px\9;
+    cursor: text;
+    border: none;
+    text-align: center;
+    vertical-align: middle;
+    outline: none;
+
+}
+.toradora .t-item .txt-blue {
+ 
+}
+.toradora .t-item .txt-white {
+  
+}
+.toradora_btn {
+    text-align: center;
+    padding: 10px 20px 10px 0;
+    /*position: absolute;
+    right: 10px;
+    bottom: 0;*/
+    float: left;
+    margin-top: 10px;
+}
+/* 龙虎斗 end */
+/* 路单样式，BY CHC ----------start------*/
+
+table.waybill-table{background:#1491c1;}
+.waybill-table td{background:#000;}
+.waybill-tab dd a{color:#fff;background:url(./img/waybill-ico.png) no-repeat 0 -343px;border-radius:3px;}
+.waybill-tab dd a.active{background-position:0 -368px;}
+.waybill-tab-13 select,waybill-tab-5 select{background-position:89px center}
+.waybill-toradora .waybill{background:url(./img/waybill_bg.png) no-repeat 60px top #000;}
+
+
+.waybill-wrap,.waybill-box-1{background:#000;}
+.big-road-wrap dd{border-right:1px solid #1795c1;}
+.w-item-main dl{border-top:1px solid #1795c1;border-left:1px solid #1795c1;}
+.w-item-main dt{border-right:1px solid #1795c1;border-bottom:1px solid #1795c1;background:url(./img/waybill-dl-bg.png) repeat;}
+.w-item-main td{border-left:1px solid #1795c1;border-bottom:1px solid #1795c1}
+.next-road-wrap{border-right:1px solid #1795c1}
+.w-side span a,
+.w-item-main dt span {background:url(./img/waybill-ico.png) no-repeat;}
+.w-side .odd-road a{background-position:0 0px;}
+.w-side .even-road a{background-position:0 -112px;}
+.w-side .odd-road a.active{background-position:-91px 0;}
+.w-side .even-road a.active{background-position:-91px -112px}
+.w-side i{background:url(./img/waybill-ico.png) no-repeat;}
+.w-side i.icon-empty{background:none;}
+.w-side i.icon-1-red{background-position:-155px -334px;}
+.w-side i.icon-2-red{background-position:-155px -357px;}
+.w-side i.icon-3-red{background-position:-155px -377px;}
+.w-side i.icon-1-blue{background-position:-106px -334px;}
+.w-side i.icon-2-blue{background-position:-106px -357px;}
+.w-side i.icon-3-blue{background-position:-106px -377px;}
+.w-item-main .dl span{background-position:-8px -228px;}
+.w-item-main .zpl span{background-position: -47px -228px;}
+.w-item-main .dyl span{background-position: -86px -228px;}
+.w-item-main .xl span{background-position: -126px -228px;}
+.w-item-main .yyl span{background-position: -165px -228px;}
+.w-item-main i{background:url(./img/waybill-icon.png) no-repeat 0 30px;color:#fff;}
+.w-item-main i.font-prediction{background:url(./img/waybill-icon.gif) no-repeat 0 30px;}
+.w-item-main i.font-red{background-position:0 -45px;}
+.w-item-main i.font-blue{background-position:0 -60px;}
+.w-item-main i.font-green{background-position:0 -75px;}
+.w-item-main i.font-even{background-position:0 -45px;}
+.w-item-main i.font-odd{background-position:0 -60px;}
+/*.w-item-main i.font-big{background-position:0 -165px;}
+.w-item-main i.font-small{background-position:0 -180px;}
+.w-item-main i.font-dragon{background-position:0 -195px;}
+.w-item-main i.font-tiger{background-position:0 -210px;}
+.w-item-main i.font-draw{background-position:0 -225px;}*/
+.w-item-main i.road-icon2-red{background-position:0 0px;}
+.w-item-main i.road-icon2-blue{background-position:0 -15px;}
+.w-item-main i.road-icon2-green{background-position:0 -30px;}
+.w-item-main i.road-icon3-red{background-position:0 -45px;}
+.w-item-main i.road-icon3-blue{background-position:0 -60px;}
+.w-item-main i.road-icon3-green{background-position:0 -75px;}
+.w-item-main i.road-icon1-red{background-position:0 -90px;}
+.w-item-main i.road-icon1-blue{background-position:0 -105px;}
+.w-item-main i.road-icon1-green{background-position:0 -120px;}
+.w-item-main i.font-txt{background-position:0 -60px;}
+.home {
+	background: #c00000;
+}
+.w-side {
+    width: 68px;
+    float: left;
+}
+div.w-side span {
+    width: 100%;
+    height: 98px;
+    margin: 10px 0;
+    display: table;
+}
+.w-side .even-road a,.w-side .odd-road a {
+    display: inline-block;
+    width: 44px;
+    height: 98px;
+    background: url("./img/wenlu_m1_01.png") no-repeat;
+    margin-left: 10px;
+
+    // 文字样式
+    font-size: 20px;
+    font-weight: 700;
+    padding-top: 20px;
+    line-height: 30px;
+    
+}
+.big-road-wrap {
+    margin-bottom: 4px;
+}
+.w-item-main {
+    float: left;
+    width: 812px;
+    margin-left: 4px;
+}
+.w-item-main .big-road-wrap,.w-item-main .next-road-wrap{
+    margin: 10px 0;
+}
+.w-item-main dl {
+    height: 98px;
+    border: 1px solid #999;
+}
+.w-item-main dt {
+    float: left;
+    width: 32px;
+    height: 96px;
+    border: none;
+    color: white;
+    background-color: #333333;
+    background-image: none ;
+}
+
+.w-item-main dd {
+    position: relative;
+    float: left;
+    overflow: hidden;
+}
+.big-road-wrap dd {
+    width: 778px;
+    height: 98px;
+    border: none;
+}
+.w-item-main dd {
+    position: relative;
+    float: left;
+    overflow: hidden;
+}
+.w-item-main table {
+    border-collapse: collapse;
+    cursor: all-scroll;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    border-spacing: 0px;
+}
+.w-item-main table {
+    border-collapse: collapse;
+    cursor: all-scroll;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    border-spacing: 0px;
+}
+.w-item-main td {
+    padding: 0px;
+    border-color: #999;
+}
+.w-item-main td i {
+    display: block;
+    width: 15px;
+    height: 15px;
+    font-style: normal;
+    text-align: center;
+    line-height: 15px;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+.next-road-wrap{
+    border:none;
+}
+.next-road-wrap dl {
+    width: 203px;
+    float: left;
+}
+.next-road-wrap dl dd {
+    width: 168px;
+    height: 96px;
+    border: none;
+}
+.w-side span a, .w-item-main dt span{
+    display: inline-block;
+    width: 32px;
+    height: 100%;
+    padding: 0 8px;
+    font-size: 16px;
+    line-height: 40px;
+    color: white;
+    text-align: center;
+    padding-top: 6px;
+    background-image: none ;
+}

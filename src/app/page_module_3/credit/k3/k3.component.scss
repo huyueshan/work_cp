@@ -4,7 +4,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    font-size: 12px;
+    font-size: 14px;
     box-sizing: border-box;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .color_y {
-    color: #fe8f00;
+    color: #C42136;
 }
 
 .color_r {
@@ -46,33 +46,30 @@
 .sscbox {
     width: 100%;
     min-width: 1200px;
-    font-size: 14px;
 }
 
 .pccontain {
     width: 100%;
     align-self: center;
-    background: #111 url(../../images/bg_02.jpg) center no-repeat;
-    background-size: cover;
     .contaner {
         width: 1200px;
         align-self: center;
-        padding-top: 30px;
+        background-color: #342840;
+        margin-bottom: 40px;
         .mainbox {
-            padding: 20px 0;
+            padding-top: 10px;
             justify-content: space-between;
             align-content: flex-start;
             align-items: flex-start;
             .contentbox {
-                width: 900px;
+                width: 100%;
                 border-radius: 5px;
-                background-color: #ddd;
                 align-self: stretch;
                 .tabbox {
                     width: 100%;
                     padding-right: 20px;
                     justify-content: space-between;
-                    background-color: #333;
+                    background-color: #170E1F;
                     border-top-left-radius: 4px;
                     border-top-right-radius: 4px;
                     overflow: hidden;
@@ -85,67 +82,66 @@
                             cursor: pointer;
                         }
                         .tabactive {
-                            background-color: #3d3d3d;
+                            background: linear-gradient(to top, #941927, #e22137);
                         }
                     }
                     .togglebtn {
-                        width: 90px;
-                        height: 25px;
-                        line-height: 18px;
+                        width: 110px;
+                        height: 26px;
                         border: 1px solid white;
-                        border-radius: 3px;
-                        color: white;
-                        background-color: #333;
+                        color: black;
+                        background: linear-gradient(to top, #d7d5d5, #fdfdfd);
                         overflow: hidden;
                         span {
+                            display: inline-block;
                             width: 50%;
                             height: 100%;
-                            line-height: 24px;
+                            line-height: 22px;
                             text-align: center;
                             cursor: pointer;
                         }
                         .togactive,
                         span:hover {
-                            color: #111;
-                            background-color: white;
+                            color: white;
+                            background: linear-gradient(to top, #941927, #e22137);
                         }
                     }
                 }
                 .selctbox {
                     width: 100%;
-                    height: 60px;
+                    height: 40px;
                     padding: 0 20px 0 30px;
                     justify-content: space-between;
-                    background-color: #3d3d3d;
+                    color: black;
+                    background-color: white;
+                    border-bottom: 1px solid #D7D1D1;
                     strong {
                         width: 30px;
                         height: 30px;
                         line-height: 30px;
-                        font-size: 20px;
+                        font-size: 18px;
+                        font-weight: normal;
                         text-align: center;
-                        border-radius: 50%;
-                        background-color: #fe8f00;
-                        color: white;
                     }
                     .rangebox {
-                        color: white;
                         .showvalue {
-                            flex: 0 0 70px;
+                            flex: 0 0 50px;
                             width: 50px;
                             text-align: right;
                             padding-right: 20px;
                         }
                         .icon {
                             flex: none;
-                            width: 16px;
-                            height: 16px;
-                            font-size: 14px;
-                            line-height: 14px;
-                            text-align: center;
+                            width: 20px;
+                            height: 20px;
+                            line-height: 16px;
+                            font-size: 16px;
                             font-weight: bold;
+                            text-align: center;
+                            padding-left: 1px;
+                            border: 1px solid #CFCCCC;
                             border-radius: 50%;
-                            background-color: #999;
-                            color: white;
+                            color: #C42136;
                             cursor: pointer;
                         }
                         .range {
@@ -156,17 +152,16 @@
                     }
                     .btngroup {
                         button {
-                            width: 80px;
-                            font-size: 14px;
-                            height: 32px;
-                            line-height: 30px;
+                            width: 68px;
+                            height: 26px;
+                            font-size: 12px;
+                            line-height: 24px;
                             text-align: center;
                             padding: 0;
-                            background-color: #ccc;
-                            color: #333;
-                            border: 1px solid #999;
-                            border-radius: 3px;
-                            margin-left: 10px;
+                            color: black;
+                            background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+                            border: 1px solid #CFCCCC;
+                            margin-left: 20px;
                             outline: none;
                             cursor: pointer;
                         }
@@ -177,9 +172,7 @@
                         .resetbtn:hover,
                         .kuxuan:hover {
                             color: white;
-                            background-color: #fe8f00;
-                            background: linear-gradient(to top, #c76401, #fba915);
-                            border: 1px solid #d17702;
+                            background: linear-gradient(to top, #941927, #e22137);
                             outline: none;
                         }
                     }
@@ -191,31 +184,30 @@
 
 .mycontaion {
     position: relative;
-    width: 900px;
+    width: 100%;
+    min-height: 600px;
+    background-color: white;
     .content {
         width: 100%;
         align-items: center;
         .contitle{
             width: 100%;
-            height: 26px;
+            height: 40px;
             font-size: 14px;
             justify-content: center;
             align-items: center;
             color: white;
             letter-spacing: 5px;
-            font-weight: bold;
-            background-color: #fe8f00;
+            // font-weight: bold;
+            background: linear-gradient(to top, #941927, #e22137);
         }
         .conmain {
             width: 100%;
-            background-color: white;
             flex-wrap: wrap;
-            background-color: white;
             .contenttop {
-                // width: 100%;
                 flex: 0 0 20%;
-                background-color: #eee;
-                border-right: 1px solid #ddd;
+                background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+                border-right: 1px solid #D7D1D1;
                 span {
                     width: 100%;
                 }
@@ -224,29 +216,25 @@
                     height: 40px;
                     span {
                         text-align: center;
-                        border-right: 1px solid #ddd;
-                    }
-                    span:last-child {
-                        border-right: none;
                     }
                     .item1,
                     .item2 {
                         font-weight: normal;
-                        flex: 3;
+                        flex: 2.5;
                         line-height: 24px;
                     }
                     .item3 {
-                        flex: 4;
+                        flex: 5;
                     }
                 }
             }
             .conmainbox {
-                width: 180px;
-                height: 40px;
+                width: 240px;
+                height: 46px;
                 align-content: center;
                 align-items: center;
-                border-right: 1px solid #ddd;
-                border-bottom: 1px solid #ddd;
+                border-right: 1px solid #D7D1D1;
+                border-bottom: 1px solid #D7D1D1;
                 span {
                     width: 100%;
                 }
@@ -256,7 +244,7 @@
                     justify-content: space-between;
                     .item1,
                     .item2 {
-                        flex: 3;
+                        flex: 2.5;
                         text-align: center;
                     }
                     .item1 {
@@ -264,32 +252,20 @@
                         font-weight: bold;
                         text-align: center;
                         i {
-                            width: 20px;
-                            height: 20px;
+                            width: 14px;
+                            height: 14px;
                             margin-bottom: 2px;
-                            background: url("../../images/ks01.png") -10px -10px;
+                            background: url('../../images/mod3/k3_m3_01.png') -10px -175px;
                         }
                     }
                     .item3 {
-                        flex: 4;
+                        flex: 5;
                         text-align: center;
-                        input {
-                            width: 56px;
-                        }
                     }
                     .doubicon i:first-child{
                         margin-right: 5px;
                     }
                 } 
-                .contenttop1 {
-                    .itembox {
-                        flex: 0 0 180px;
-                        justify-content: center;
-                        background-color: #fe7200;
-                        font-size: 16px;
-                        color: white;
-                    }
-                }
             }
             .conmainbox:last-child .contenttop {
                 border-right: none;
@@ -300,20 +276,20 @@
 }
 .subbox {
     width: 100%;
-    padding: 20px 0 40px 0;
-    justify-content: center;
+    padding: 20px 20px 40px 20px;
+    justify-content: flex-end;
     .btngroup {
         button {
-            width: 80px;
+            width: 108px;
             font-size: 14px;
-            height: 32px;
-            line-height: 30px;
+            height: 40px;
+            line-height: 38px;
             text-align: center;
             padding: 0;
-            background-color: #ccc;
-            color: #333;
-            border: 1px solid #999;
-            border-radius: 3px;
+            color: white;
+            background: linear-gradient(to top, #2A2132, #423252);
+            border: none;
+            border-radius: 4px;
             outline: none;
             cursor: pointer;
         }
@@ -323,14 +299,13 @@
         .btnactive,
         .resetbtn:hover {
             color: white;
-            background-color: #fe8f00;
-            background: linear-gradient(to top, #c76401, #fba915);
-            border: 1px solid #d17702;
+            background: linear-gradient(to top, #941927, #e22137);
+            border: none;
             outline: none;
         }
         .inmoney {
-            width: 80px;
-            height: 32px;
+            width: 108px;
+            height: 40px;
             text-align: center;
             margin-right: 10px;
         }
@@ -339,25 +314,26 @@
 
 // 输入框统一样式
 .inmoney {
-    width: 60px;
-    font-size: 12px;
-    height: 22px;
+    width: 88px;
+    font-size: 14px;
+    height: 30px;
     text-align: center;
-    border: 1px solid #ccc;
+    border: 1px solid  #D7D1D1;
+    border-radius: 4px;
 }
 
 .btngroup {
     button {
-        width: 80px;
+        width: 108px;
         font-size: 14px;
-        height: 32px;
-        line-height: 30px;
+        height: 40px;
+        line-height: 38px;
         text-align: center;
         padding: 0;
-        background-color: #ccc;
-        color: #333;
-        border: 1px solid #999;
-        border-radius: 3px;
+        color: white;
+        background: linear-gradient(to top, #2A2132, #423252);
+        border: none;
+        border-radius: 4px;
         outline: none;
         cursor: pointer;
     }
@@ -367,14 +343,13 @@
     .btnactive,
     .resetbtn:hover {
         color: white;
-        background-color: #fe8f00;
-        background: linear-gradient(to top, #c76401, #fba915);
-        border: 1px solid #d17702;
+        background: linear-gradient(to top, #941927, #e22137);
+        border: none;
         outline: none;
     }
     .inmoney {
-        width: 80px;
-        height: 32px;
+        width: 108px;
+        height: 40px;
         text-align: center;
         margin-right: 10px;
     }
@@ -392,18 +367,18 @@
         position: relative;
         padding-top: 4px;
         width: 100%;
-        border: 1px solid #ccc;
+        border: 1px solid #999;
         border-radius: 4px;
         background-color: white;
-        box-shadow: 0 2px 4px 0px rgba(0, 0, 0, .2);
+        box-shadow: 0 2px 4px 1px rgba(0, 0, 0, .3);
         i {
             position: absolute;
             top: -4px;
             left: 37px;
             width: 6px;
             height: 6px;
-            border-left: 1px solid #ccc;
-            border-top: 1px solid #ccc;
+            border-left: 1px solid #999;
+            border-top: 1px solid #999;
             background-color: white;
             transform: rotate(45deg);
         }
@@ -419,6 +394,7 @@
         }
     }
 }
+
 
 .setbox {
     position: fixed;
@@ -443,7 +419,7 @@
             color: white;
             padding: 0 12px 0 20px;
             justify-content: space-between;
-            background: linear-gradient(to top, #c76401, #fba915);
+            background: linear-gradient(to top, #941927, #e22137);
             i {
                 font-size: 18px;
                 cursor: pointer;
@@ -486,6 +462,16 @@
                     }
                 }
             }
+            .tip{
+                width: 100%;
+                height: 14px;
+                font-size: 10px;
+                justify-content: center;
+                p{
+                    line-height: 14px;
+                    color: black;
+                }
+            }
             .btnbox {
                 width: 100%;
                 justify-content: center;
@@ -503,7 +489,7 @@
                 }
                 .btn2,
                 .btn1:hover {
-                    background-color: #fe8f00;
+                    background-color: #C42136;
                 }
                 .btn2 {
                     margin-left: 10px;
@@ -511,11 +497,10 @@
             }
         }
     }
-    .scale{
+    .scale {
         transform: scale(1);
     }
 }
-
 
 .subpopup {
     position: fixed;
@@ -538,7 +523,7 @@
             color: white;
             padding: 0 12px 0 20px;
             justify-content: space-between;
-            background: linear-gradient(to top, #c76401, #fba915);
+            background: linear-gradient(to top, #941927, #e22137);
             i {
                 font-size: 18px;
                 cursor: pointer;
@@ -592,22 +577,23 @@
             justify-content: flex-end;
             strong {
                 font-size: 20px;
-                color: #fe8f00;
+                color: #C42136;
                 padding: 0 8px;
             }
-            .newpoint{
+            .newpoint {
                 margin-left: 150px;
                 align-items: center;
-                input{
+                input {
                     margin-right: 6px;
                 }
             }
         }
     }
-    .scale{
+    .scale {
         transform: scale(1);
     }
 }
+
 //遮罩层
 .shade {
     position: fixed;
@@ -630,8 +616,9 @@ input[type="range"] {
     cursor: pointer;
     outline: none;
 }
-input[type="range"]:focus{
-    outline:1px solid #3D3D3D;
+
+input[type="range"]:focus {
+    outline: 1px solid white;
 }
 
 // range中心圆点
@@ -639,10 +626,10 @@ input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     height: 12px;
-    width: 18px;
+    width: 22px;
     border: none;
-    border-radius: 5px;
-    background-color: #fff;
+    border-radius: 6px;
+    background: linear-gradient(to top, #941927, #e22137);
     cursor: pointer;
     margin-top: -4px;
 }
@@ -654,7 +641,7 @@ input[type="range"]::-moz-range-thumb {
     width: 18px;
     border: none;
     border-radius: 5px;
-    background-color: #fff;
+    background: linear-gradient(to top, #941927, #e22137);
     cursor: pointer;
 }
 
@@ -665,7 +652,7 @@ input[type="range"]::-ms-thumb {
     width: 18px;
     border: none;
     border-radius: 5px;
-    background-color: #fff;
+    background: linear-gradient(to top, #941927, #e22137);
     cursor: pointer;
     margin-top: 1px;
 }
@@ -677,7 +664,7 @@ input[type="range"]::slider-thumb {
     width: 18px;
     border: none;
     border-radius: 5px;
-    background-color: #fff;
+    background: linear-gradient(to top, #941927, #e22137);
     cursor: pointer;
     margin-top: -6px;
 }
@@ -686,7 +673,7 @@ input[type="range"]::slider-thumb {
 input[type="range"]::-webkit-slider-runnable-track {
     width: 100%;
     height: 4px;
-    background-color: #fe8f00;
+    background-color: #CFCCCC;
     border-radius: 2px;
     cursor: pointer;
     z-index: 3;
@@ -695,7 +682,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 input[type="range"]::-moz-range-track {
     width: 100%;
     height: 4px;
-    background-color: #fe8f00;
+    background-color: #CFCCCC;
     border-radius: 2px;
     cursor: pointer;
 }
@@ -704,8 +691,8 @@ input[type="range"]::-ms-track {
     width: 100%;
     height: 2px;
     border-color: transparent;
-    color: #fe8f00;
+    color: #CFCCCC;
     border-radius: 2px;
-    background: #fe8f00;
+    background: #CFCCCC;
     cursor: pointer;
 }

@@ -15,6 +15,8 @@ import userModel from "../../../../status/user.model";
 import {
     Base
 } from "../../../../factory/base.model";
+import { Waybills } from "../../../../factory/Waybill";
+
 
 @Component({
     selector: "app-credit",
@@ -23,6 +25,7 @@ import {
 })
 export class SscComponent implements OnInit, OnDestroy, AfterViewInit {
     loadpage = false;
+	
     public cpnav = {
         style: "credit",
         prev: "20180517022",
@@ -717,7 +720,6 @@ export class SscComponent implements OnInit, OnDestroy, AfterViewInit {
 
     ngOnInit() {
         this.loadpage = userModel.platform;
-
         if (!Base.Store.get("selmoeny")) {
             Base.Store.set("selmoeny", this.selmoeny, true);
         } else {

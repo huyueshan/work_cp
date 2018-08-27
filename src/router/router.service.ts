@@ -18,15 +18,13 @@ import languagepackage from "../status/language";
 @Injectable()
 
 export class RouteguardService implements CanActivate{
-	constructor(private router: Router, private httpClient : HttpClient ,private hserve:HttpInterceptorService) { }
+	constructor(private router: Router, private httpClient : HttpClient ,private hserve:HttpInterceptorService) {}
 	private isLoaded = false;
+	
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean>{
 		return new Promise(resolve => {
 			let that = this;
-			if (this.isLoaded) {
-			  resolve(true);
-			  return;
-			}
+			
 			//语言检测
 			let lang_config = userModel.lang_config;
 			let now_lang = {}
@@ -44,246 +42,29 @@ export class RouteguardService implements CanActivate{
 		    function load_langpackge(lang){
 			    userModel.now_lang_type = lang;
 		        now_lang = languagepackage[lang];
-		        // Sstore['langpackage'] = now_lang;
 		        userModel.langpackage = now_lang;
-		        
-		    }
+				          
+		    } 
 		    check_language();
-
-			this.hserve.post(Api.gettemple,{},)
-			.then(result => {  
-			  console.log("登录接口返回的信息是：" , result);//打印返回的数据  
-			});
-
-			if(!Base.Store.get('isTemplet')){
 			
-				// 临时切换模块 --陈
-				Base.Store.set('isTemplet','2',false);
-				history.go(0);
-
-
-				// 根据域名配置不通路由模块
-				this.httpClient.get(Api.gettemple)
-				.subscribe(menuGroups => {
-					const appnewRoutes: Routes =[
-						{
-							path: '',
-							redirectTo: 'index',
-							pathMatch: 'full'
-                        },
-                        {
-							path: 'index',
-							loadChildren: '../app/page_module_1/index/index.module#IndexModule'
-						},
-						{
-							path: 'login',
-							loadChildren: '../app/page_module_1/login/login.module#LoginModule',
-							canActivate: [RouteguardService]
-						}, 
-						{
-							path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
-							redirectTo: 'home',
-							pathMatch: 'full'  // 必须要设置
-						}
-					];
-					this.router.resetConfig(appnewRoutes);
-					this.isLoaded = true;
-					resolve(true);
-					this.router.navigateByUrl(userModel.currenturl);
-					Base.Store.set('isTemplet','1',false)
-					userModel.platform = true
+			// 判断是否需要重置路由的
+			if (this.isLoaded) {
+				resolve(true);
+				return;
+			}
+			if(!Base.Store.get('isTemplet')){
+                Base.Store.set('isTemplet','1',false);
+                history.go(0);
+				this.hserve.post(Api.gettemple,{},)
+				.then(result => {  
+				  console.log("登录接口返回的信息是：" , result);//打印返回的数据  
+				  that.routerReconfig('1')
+				  resolve(true);
+				  Base.Store.set('isTemplet','1',false)
 				});
 			}else{
-				// 这里接口写好后会换成接口的返回字段，肯定不能用缓存来判断 Base.Store.get('isTemplet')
-				if(Base.Store.get('isTemplet')=='1'){
-					const appnewRoutes: Routes =[
-						{
-							path: '',
-							redirectTo: 'index',
-							pathMatch: 'full'
-						},
-						{
-							path: 'login',
-							loadChildren: '../app/page_module_1/login/login.module#LoginModule',
-							canActivate: [RouteguardService]
-						},
-						{
-							path: 'forgetpass',
-							loadChildren: '../app/page_module_1/forgetpass/forgetpass.module#ForgetpassModule',
-							canActivate: [RouteguardService]
-						}, 
-						{
-							path: 'register',
-							loadChildren: '../app/page_module_1/register/register.module#RegisterModule'
-						},
-						{
-							path: 'index',
-							loadChildren: '../app/page_module_1/index/index.module#IndexModule'
-						},
-                        {
-							path: 'result',
-							loadChildren: '../app/page_module_1/result/result.module#ResultModule',
-							canActivate: [RouteguardService]
-						},  
-						{
-							path: 'lottery',
-							loadChildren: '../app/page_module_1/lottery/layout.module#LayoutModule',
-							canActivate: [RouteguardService]
-						},  
-						{
-							path: 'home',
-							loadChildren: '../app/page_module_1/home/home.module#HomeModule',
-						}, 
-						{
-							path: 'register',
-							loadChildren: '../app/page_module_1/register/register.module#RegisterModule'
-						},
-						{
-							path: 'index',
-							loadChildren: '../app/page_module_1/index/index.module#IndexModule'
-						},
-						{
-							path: 'usercenter',
-							loadChildren: '../app/page_module_1/usercenter/usercenter.module#UsercenterModule',
-							
-                        },
-						{
-							path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
-							redirectTo: 'index',
-							pathMatch: 'full'  // 必须要设置
-						}
-					];
-					this.router.resetConfig(appnewRoutes);
-					this.isLoaded = true;
-					resolve(true);
-					this.router.navigateByUrl(userModel.currenturl);
-				}else if(Base.Store.get('isTemplet')=='2'){
-					const appnewRoutes: Routes =[
-						{
-							path: '',
-							redirectTo: 'index',
-							pathMatch: 'full'
-						},
-						{
-							path: 'login',
-							loadChildren: '../app/page_module_2/login/login.module#LoginModule',
-							canActivate: [RouteguardService]
-						},
-						{
-							path: 'register',
-							loadChildren: '../app/page_module_2/register/register.module#RegisterModule'
-						},
-						{
-							path: 'index',
-							loadChildren: '../app/page_module_2/index/index.module#IndexModule'
-						},
-						{
-							path: 'lottery',
-							loadChildren: '../app/page_module_2/lottery/layout.module#LayoutModule',
-							canActivate: [RouteguardService]
-						},  
-						{
-							path: 'home',
-							loadChildren: '../app/page_module_2/home/home.module#HomeModule'
-						}, 
-						{
-							path: 'register',
-							loadChildren: '../app/page_module_2/register/register.module#RegisterModule'
-						},
-						{
-							path: 'index',
-							loadChildren: '../app/page_module_2/index/index.module#IndexModule'
-						},
-						{
-							path: 'usercenter',
-							loadChildren: '../app/page_module_2/usercenter/usercenter.module#UsercenterModule',
-							
-                        },
-                        {
-							path: 'result',
-							loadChildren: '../app/page_module_2/result/result.module#ResultModule',
-						}, 
-						{
-							path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
-							redirectTo: 'index',
-							pathMatch: 'full'  // 必须要设置
-						}
-					];
-					this.router.resetConfig(appnewRoutes);
-					this.isLoaded = true;
-					resolve(true);
-					this.router.navigateByUrl(userModel.currenturl);
-				}else if(Base.Store.get('isTemplet')=='3'){
-					const appnewRoutes: Routes =[
-						{
-							path: '',
-							redirectTo: 'index',
-							pathMatch: 'full'
-						},
-						{
-							path: 'login',
-							loadChildren: '../app/page_module_3/login/login.module#LoginModule',
-							canActivate: [RouteguardService]
-						},
-						{
-							path: 'forgetpass',
-							loadChildren: '../app/page_module_3/forgetpass/forgetpass.module#ForgetpassModule',
-							canActivate: [RouteguardService]
-						}, 
-						{
-							path: 'register',
-							loadChildren: '../app/page_module_3/register/register.module#RegisterModule',
-                            canActivate: [RouteguardService]
-						},
-						{
-							path: 'index',
-							loadChildren: '../app/page_module_3/index/index.module#IndexModule',
-                            canActivate: [RouteguardService]
-						},
-                        {
-							path: 'result',
-							loadChildren: '../app/page_module_3/result/result.module#ResultModule',
-							canActivate: [RouteguardService]
-						},  
-						{
-							path: 'lottery',
-							loadChildren: '../app/page_module_3/lottery/layout.module#LayoutModule',
-							canActivate: [RouteguardService]
-						},  
-						{
-							path: 'register',
-							loadChildren: '../app/page_module_3/register/register.module#RegisterModule',
-                            canActivate: [RouteguardService]
-						},
-						{
-							path: 'usercenter',
-							loadChildren: '../app/page_module_3/usercenter/usercenter.module#UsercenterModule',
-                            canActivate: [RouteguardService]
-							
-                        },
-                        {
-                            path: 'result',
-                            loadChildren: '../app/page_module_3/result/result.module#ResultModule',
-                            canActivate: [RouteguardService]
-                        },
-						{
-							path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
-							redirectTo: 'index',
-							pathMatch: 'full'  // 必须要设置
-						}
-					];
-					this.router.resetConfig(appnewRoutes);
-					this.isLoaded = true;
-					resolve(true);
-					this.router.navigateByUrl(userModel.currenturl);
-				}else{
-                    // Base.Store.set('isTemplet','1',false);
-                    // history.go(0);
-                }
-				
-				
+				that.routerReconfig(Base.Store.get('isTemplet'))
 				userModel.platform = true
-				
 				// 返回值 true: 跳转到当前路由 false: 不跳转到当前路由
 				// 当前路由名称
 				var path = route.routeConfig.path;  
@@ -316,5 +97,204 @@ export class RouteguardService implements CanActivate{
 				}
 			}
 		})
+	}
+	
+	routerReconfig(t){
+		const item1:Routes =[
+			{
+				path: '',
+				redirectTo: 'index',
+				pathMatch: 'full'
+			},
+			{
+				path: 'login',
+				loadChildren: '../app/page_module_1/login/login.module#LoginModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'forgetpass',
+				loadChildren: '../app/page_module_1/forgetpass/forgetpass.module#ForgetpassModule',
+				canActivate: [RouteguardService]
+			}, 
+			{
+				path: 'register',
+				loadChildren: '../app/page_module_1/register/register.module#RegisterModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'index',
+				loadChildren: '../app/page_module_1/index/index.module#IndexModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'result',
+				loadChildren: '../app/page_module_1/result/result.module#ResultModule',
+				canActivate: [RouteguardService]
+			},  
+			{
+				path: 'lottery',
+				loadChildren: '../app/page_module_1/lottery/layout.module#LayoutModule',
+				canActivate: [RouteguardService]
+			},  
+			{
+				path: 'home',
+				loadChildren: '../app/page_module_1/home/home.module#HomeModule',
+				canActivate: [RouteguardService]
+			}, 
+			{
+				path: 'register',
+				loadChildren: '../app/page_module_1/register/register.module#RegisterModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'index',
+				loadChildren: '../app/page_module_1/index/index.module#IndexModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'usercenter',
+				loadChildren: '../app/page_module_1/usercenter/usercenter.module#UsercenterModule',
+				canActivate: [RouteguardService]
+				
+			},
+			{
+				path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
+				redirectTo: 'index',
+				pathMatch: 'full'  // 必须要设置
+			}
+		];
+		const item2:Routes =[
+			{
+				path: '',
+				redirectTo: 'index',
+				pathMatch: 'full'
+			},
+			{
+				path: 'login',
+				loadChildren: '../app/page_module_2/login/login.module#LoginModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'register',
+				loadChildren: '../app/page_module_2/register/register.module#RegisterModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'index',
+				loadChildren: '../app/page_module_2/index/index.module#IndexModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'result',
+				loadChildren: '../app/page_module_2/result/result.module#ResultModule',
+				canActivate: [RouteguardService]
+			},  
+			{
+				path: 'lottery',
+				loadChildren: '../app/page_module_2/lottery/layout.module#LayoutModule',
+				canActivate: [RouteguardService]
+			},  
+			{
+				path: 'home',
+				loadChildren: '../app/page_module_2/home/home.module#HomeModule',
+				canActivate: [RouteguardService]
+			}, 
+			{
+				path: 'register',
+				loadChildren: '../app/page_module_2/register/register.module#RegisterModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'index',
+				loadChildren: '../app/page_module_2/index/index.module#IndexModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'usercenter',
+				loadChildren: '../app/page_module_2/usercenter/usercenter.module#UsercenterModule',
+				canActivate: [RouteguardService]
+				
+			},
+			{
+				path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
+				redirectTo: 'index',
+				pathMatch: 'full'  // 必须要设置
+			}
+		];
+		const item3:Routes =[
+			{
+				path: '',
+				redirectTo: 'index',
+				pathMatch: 'full'
+			},
+			{
+				path: 'login',
+				loadChildren: '../app/page_module_3/login/login.module#LoginModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'forgetpass',
+				loadChildren: '../app/page_module_3/forgetpass/forgetpass.module#ForgetpassModule',
+				canActivate: [RouteguardService]
+			}, 
+			{
+				path: 'register',
+				loadChildren: '../app/page_module_3/register/register.module#RegisterModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'index',
+				loadChildren: '../app/page_module_3/index/index.module#IndexModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'result',
+				loadChildren: '../app/page_module_3/result/result.module#ResultModule',
+				canActivate: [RouteguardService]
+			},  
+			{
+				path: 'lottery',
+				loadChildren: '../app/page_module_3/lottery/layout.module#LayoutModule',
+				canActivate: [RouteguardService]
+			},  
+			{
+				path: 'home',
+				loadChildren: '../app/page_module_3/home/home.module#HomeModule',
+				canActivate: [RouteguardService]
+			}, 
+			{
+				path: 'register',
+				loadChildren: '../app/page_module_3/register/register.module#RegisterModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'index',
+				loadChildren: '../app/page_module_3/index/index.module#IndexModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'usercenter',
+				loadChildren: '../app/page_module_3/usercenter/usercenter.module#UsercenterModule',
+				canActivate: [RouteguardService]
+				
+			},
+			{
+				path: 'phone',
+				loadChildren: '../app/page_module_3/phone/phone.module#PhoneModule',
+				canActivate: [RouteguardService]
+				
+			},
+			{
+				path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
+				redirectTo: 'index',
+				pathMatch: 'full'  // 必须要设置
+			}
+		];
+		
+		// 下面固定，勿动
+		const routitem = 'item'+t
+		this.router.resetConfig(eval(routitem));
+		this.isLoaded = true;
+		this.router.navigateByUrl(userModel.currenturl);
 	}
 }

@@ -15,7 +15,7 @@
                         </div>
                         <div class="flex-r selctbox" onselectstart="return false;" style="-moz-user-select:none;">
                             <span class="flex-r">
-                                <strong>$</strong>
+                                <strong>￥</strong>
                                 <span class="flex-r rangebox">
                                     <span class="showvalue">{{(odds-rangevalue)| number : '1.0-1'}}%</span>
                                     <span class="icon" (click)="rangevaluelessen()">-</span>
@@ -48,11 +48,11 @@
     
                                         </div>
                                     </div>
-                                    <div class="flex-c conmain" style="height: 120px">
+                                    <div class="flex-c conmain" style="height: 144px">
                                         <div class="flex-c conmainbox conmainbox2" *ngFor="let item of bettatab8_1; let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)" >
         
                                             <span class="flex-r itembox">
-                                                <span class="item1 itembold"  *ngIf="item.numb!==null" [title]="typedata[type - 1].name+'：'+item.numb">
+                                                <span class="item1"  *ngIf="item.numb!==null" [title]="typedata[type - 1].name+'：'+item.numb">
                                                     <i>{{item.numb}}</i> 
                                                 </span>
                                                 <span class="item2 color_y"  *ngIf="item.numb!==null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
@@ -111,11 +111,11 @@
     
                                         </div>
                                     </div>
-                                    <div class="flex-c conmain" style="height: 120px">
+                                    <div class="flex-c conmain" style="height: 144px">
                                         <div class="flex-c conmainbox conmainbox2" *ngFor="let item of ITEM.data1; let i=index">
         
                                             <span class="flex-r itembox" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
-                                                <span class="item1 itembold"  *ngIf="item.numb!==null" [title]="typedata[type - 1].name+'：'+item.numb">
+                                                <span class="item1"  *ngIf="item.numb!==null" [title]="typedata[type - 1].name+'：'+item.numb">
                                                     <i>{{item.numb}}</i> 
                                                 </span>
                                                 <span class="item2 color_y"  *ngIf="item.numb!==null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
@@ -160,7 +160,7 @@
 
                                     </div>
                                 </div>
-                                <div class="flex-c conmain" style="height: 120px">
+                                <div class="flex-c conmain" style="height: 144px">
                                     <div class="flex-c conmainbox conmainbox2" *ngFor="let item of betdatab2_1.data1; let i=index">
     
                                         <span class="flex-r itembox" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
@@ -179,7 +179,7 @@
                                     <div class="flex-c conmainbox conmainbox2  ballbox" *ngFor="let item of betdatab2_1.data2; let i=index">
     
                                         <span class="flex-r itembox" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
-                                            <span class="item1 itembold" [title]="item.title+'：'+item.name">
+                                            <span class="item1 " [title]="item.title+'：'+item.name">
                                                 {{item.name}}
                                             </span>
                                             <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
@@ -224,7 +224,7 @@
                                 </div>
                             </div>
                             <!-- 按钮 -->
-                            <div class="flex-r subbox">
+                            <div class="flex-r subbox" [ngClass]="{flcenter:type === 7}">
                                 <span class="flex-r btngroup">
                                     <span *ngIf="!inputshow">
                                         <input type="text" maxlength="9" class="inmoney" id="allinmoney" name="allinmoney" [(ngModel)]="setallmoney.value" value=""
@@ -243,7 +243,7 @@
                                 </div>
                             </div>
                             <!-- 底部问路-->
-                            <div>
+                            <div class="flex-r wenlu" *ngIf="type!==8">
                                 <app-wenlu></app-wenlu>
                             </div>
                             <!-- 快选金额 -->
@@ -268,6 +268,9 @@
                                                 <span (click)="numbdel()">删除</span>
                                             </span>
     
+                                        </div>
+                                        <div class="flex-r tip">
+                                            <p *ngIf="kxtip">{{kxtipstr}}</p>
                                         </div>
                                         <div class="flex-r btnbox">
                                             <span class="btn1" (click)="setboxvalid()">{{boxvalid?'禁用':'开启'}}</span>
@@ -336,8 +339,6 @@
                         </div>
     
                     </div>
-                    <!-- 右边信息区内容 -->
-                    <app-sider></app-sider>
                 </div>
             </div>
         </div>

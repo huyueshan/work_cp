@@ -30,6 +30,7 @@ export class HttpInterceptorService {
    * @returns {Promise<R>|Promise<U>} 
    */  
   public get(url: string, params: any): any {  
+    params = JSON.parse(JSON.stringify(params));
     return this.http.get(url, {search: params})  
       .toPromise()  
       .then(this.handleSuccess)  
@@ -43,7 +44,7 @@ export class HttpInterceptorService {
    * @returns {Promise<R>|Promise<U>} 
    */  
   public post(url: string, params: any): any {  
-
+    params = JSON.parse(JSON.stringify(params));
     const myHeaders: Headers = new Headers();
     myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
     return this.http.post(url, params, { headers: myHeaders })  

@@ -56,6 +56,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     public allinput = false;
     public btolast = 0; //控制 前中后选择
     public selmoeny = [100, 200, 500, 1000, 5000]; // 活动选择金额框数据
+    public kxtip = false; // 快选金额保存提示显示控制
+    public kxtipstr; // 快选金额提示信息
     public newpoint = false; // 绑定提交时的最新赔率
     public kuaitoutab = 0; //控制快速投注和键盘下注
     public kuaitoudata = {
@@ -2820,14 +2822,15 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             }
         }
     }
+
     // 禁用快选活动框事件
     setboxvalid() {
         this.boxvalid = !this.boxvalid;
-        let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
-        this.POPNOTE({msg:s});
-        // setTimeout(() => {
-        //     this.popup.note.show = false;
-        // }, 2000);
+        this.kxtipstr = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
+        this.kxtip = true ;
+        setTimeout(() => {
+            this.kxtip = false ;
+        }, 2000);
     }
     // 滑块左侧递减事件
     rangevaluelessen() {
@@ -2889,9 +2892,10 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         d.sort((a,b)=>{return a-b});
         Base.Store.set("selmoeny", d, true);
         this.selmoeny = d;
-        this.POPNOTE({msg:"保存成功！"});
+        this.kxtipstr = '保存成功！'
+        this.kxtip = true ;
         setTimeout(() => {
-            this.close();
+            this.kxtip = false ;
         }, 2000);
     }
     numbdel() {
@@ -2999,14 +3003,11 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     setposition(e) {
         this.delay = true;
         let box = this.boxposition;
-        box.x = e.target.offsetLeft - 4 + "px";
-        if (
-            this.curinpt === this.setallmoney ||
-            this.curinpt === this.kuaitoudata
-        ) {
-            box.y = e.target.offsetTop + 30 + "px";
+        box.x = e.target.offsetLeft + 4 + "px";
+        if (this.curinpt == this.setallmoney) {
+            box.y = e.target.offsetTop + 40 + "px";
         } else {
-            box.y = e.target.offsetTop + 22 + "px";
+            box.y = e.target.offsetTop + 30 + "px";
         }
         // 延迟是避免切换输入框后 显示的选择框被延迟的离开焦点事件影响又隐藏
         setTimeout(() => {

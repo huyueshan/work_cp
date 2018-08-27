@@ -1,0 +1,97 @@
+
+*{
+    box-sizing: border-box;
+}
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.flex-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center;
+}
+
+.flex-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center;
+}
+
+
+.color_m {
+    color: #C42136;
+}
+
+.container {
+    width: 100%;
+    min-width: 1200px;
+    margin: 0;
+    padding: 0;
+    background: url("../images/mod3/bg_m3_01.png") center no-repeat;
+    background-size: cover;
+    ul{
+        list-style: none
+    }
+    .content{
+        width: 1200px;
+        height: 760px;
+        background: url("../images/mod3/phonebg_m3_01.png") no-repeat;
+        background-size: cover;
+        margin-bottom: 40px;
+        padding-top: 110px;
+        .top{
+            margin-bottom: 24px;
+        }
+        p{
+            line-height: 64px;
+            font-size: 20px;
+            color: white;
+            letter-spacing: 8px;
+        }
+        .btngroup{
+            margin-top: 44px;
+            justify-content: center;
+            span{
+                width: 150px;
+                height: 40px;
+                margin: 10px;
+                font-size: 16px;
+                color: white;
+                border: 1px solid white;
+                border-radius: 10px;
+                justify-content: center;
+                cursor: pointer;
+                i{
+                    display: inline-block;
+                    margin: 0 10px;
+                }
+            }
+            .andr{
+                i{
+                    width: 15px;
+                    height: 18px;
+                    background: url('../images/mod3/phone.png') -10px -10px;
+                }
+            }
+            .opho{
+                i{
+                    width: 18px;
+                    height: 22px;
+                    background: url('../images/mod3/phone.png') -10px -48px;
+                }
+            }
+
+        }
+
+    }
+}
+
+
+
+

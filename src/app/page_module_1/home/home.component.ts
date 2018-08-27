@@ -1,5 +1,6 @@
 
 import { Component } from '@angular/core';
+import { HttpInterceptorService } from '../../Http.Service';
 
 @Component({
     selector: 'home',
@@ -32,11 +33,19 @@ export class HomeComponent {
         segmentSize: 5,
     }
 
-	constructor() { 
-        
-    }
+	constructor( private shttp:HttpInterceptorService) {}
     
 	ngOnInit(){
+        // 测试请求
+        // this.shttp.get('http://127.0.0.1:3000',{'查询':"测试",2:"diy"}).then(result => {  
+        //     console.log("登录接口返回的信息是：" , result); 
+        //     if (result.status == 200 && result.data) {
+        //       console.log('qingqiu neirong:',result.data);
+        //       console.log('qingqiu code',result.statusText);
+        //     } else { // 失败  
+        //       alert(result.message);  
+        //     }  
+        //   });
     }
 
     // 测试弹窗确认按钮事件

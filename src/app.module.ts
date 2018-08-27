@@ -9,7 +9,11 @@ import { ApplicationRef } from '@angular/core';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-
+import { Base } from './factory/base.model';
+const way = Base.Store.get('isTemplet');
+// if(Base.Store.get('isTemplet')){
+	// require("./styles/waybill/waybill_"+way+".scss");在页面引用可解决图片路径权限问题
+// };
 import "./styles/scss/index.scss";
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './router/router.module';

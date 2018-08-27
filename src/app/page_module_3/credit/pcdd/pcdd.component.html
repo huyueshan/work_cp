@@ -60,7 +60,7 @@
                             </div>
                             <!-- =================================== -->
                             <div class="flex-r conmain2">
-                                <div class="flex-r" >
+                                <div class="flex-r">
                                     <div class="flex-r itembox sanbao" [ngClass]="{checkbg:selectbtnvalue===1&&selballdata.checked}">
                                         <span class="flex-r item1 " (click)="rapid(selballdata)"> {{selballdata.name}}</span>
                                         <span class="item2 color_y" (click)="rapid(selballdata)">{{(selballdata.point+(selballdata.step*rangevalue))| number : '1.0-3'}} </span>
@@ -134,7 +134,8 @@
                                         </span>
 
                                     </div>
-                                    <span class="flex-r itembox" *ngFor="let child of item; let q=index" [ngClass]="{checkbg:selectbtnvalue===1&&child.checked}" (click)="rapid(child)">
+                                    <span class="flex-r itembox" *ngFor="let child of item; let q=index" [ngClass]="{checkbg:selectbtnvalue===1&&child.checked}"
+                                        (click)="rapid(child)">
                                         <span class="item1" [title]="child.title+'：'+child.name">
                                             {{child.name}}
                                         </span>
@@ -157,9 +158,10 @@
                             </div>
                         </div>
                         <!-- 快选金额 -->
-                        <div class="setbox" *ngIf="popup.setnumb.show" [style.left.px]= "popup.setnumb.left" [style.top.px]= "popup.setnumb.top">
+                        <div class="setbox" *ngIf="popup.setnumb.show" [style.left.px]="popup.setnumb.left" [style.top.px]="popup.setnumb.top">
                             <div class="flex-c content" [ngClass]="{scale:popup.setnumb.scale}">
-                                <div class="flex-r top" (mousedown)="popmousedown($event,'setnumb')" (mouseleave)="popmouseup($event,'setnumb')" (mouseup)="popmouseup($event,'setnumb')" (mousemove)="popmousmove($event,'setnumb')">
+                                <div class="flex-r top" (mousedown)="popmousedown($event,'setnumb')" (mouseleave)="popmouseup($event,'setnumb')" (mouseup)="popmouseup($event,'setnumb')"
+                                    (mousemove)="popmousmove($event,'setnumb')">
                                     <span>快选金额</span>
                                     <i (click)="close()"> &times; </i>
                                 </div>
@@ -179,7 +181,9 @@
                                         </span>
 
                                     </div>
-                                    <div class="flex-r tip" *ngIf="kxtip" >{{kxtipstr}}</div>
+                                    <div class="flex-r tip">
+                                        <p *ngIf="kxtip">{{kxtipstr}}</p>
+                                    </div>
                                     <div class="flex-r btnbox">
                                         <span class="btn1" (click)="setboxvalid()">{{boxvalid?'禁用':'开启'}}</span>
                                         <span class="btn2" (click)="savenum()">保存</span>
@@ -189,14 +193,15 @@
                         </div>
 
                         <!-- 提交窗口 -->
-                        <div class="subpopup" *ngIf="popup.sub.show" [style.left.px]= "popup.sub.left" [style.top.px]= "popup.sub.top">
+                        <div class="subpopup" *ngIf="popup.sub.show" [style.left.px]="popup.sub.left" [style.top.px]="popup.sub.top">
                             <div class="flex-c content" [ngClass]="{scale:popup.sub.scale}">
-                                <div class="flex-r top" (mousedown)="popmousedown($event,'sub')" (mouseleave)="popmouseup($event,'sub')" (mouseup)="popmouseup($event,'sub')" (mousemove)="popmousmove($event,'sub')">
+                                <div class="flex-r top" (mousedown)="popmousedown($event,'sub')" (mouseleave)="popmouseup($event,'sub')" (mouseup)="popmouseup($event,'sub')"
+                                    (mousemove)="popmousmove($event,'sub')">
                                     <span>投注信息</span>
                                     <i (click)="close()"> &times; </i>
                                 </div>
                                 <div class="flex-c thead">
-                                    <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
+                                    <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4" align="center">
                                         <tr class="bg_1">
                                             <th style="width: 40px;">序号</th>
                                             <th style="width: 140px;">频道</th>
@@ -210,7 +215,7 @@
                                     </table>
                                 </div>
                                 <div class="flex-c tablewrap">
-                                    <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
+                                    <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4" align="center">
                                         <tbody>
                                             <tr *ngFor="let item of subdata; let i=index">
                                                 <td style="width: 40px;">{{ i + 1 }}</td>
@@ -226,10 +231,11 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <span class="flex-r foot">共<strong>{{subdata.length}}</strong>注，总计投注金额
+                                <span class="flex-r foot">共
+                                    <strong>{{subdata.length}}</strong>注，总计投注金额
                                     <strong>{{submoney}}</strong>元
                                     <span class="flex-r newpoint">
-                                        <input type="checkbox" [(ngModel)]="newpoint">  按最新赔率提交
+                                        <input type="checkbox" [(ngModel)]="newpoint"> 按最新赔率提交
                                     </span>
                                 </span>
                                 <div class="flex-r subbox">
@@ -237,7 +243,7 @@
                                         <button class="btnactive" (click)="submit()">提交</button>
                                         <button class="resetbtn" (click)="close()">取消</button>
                                     </span>
-        
+
                                 </div>
                             </div>
                         </div>
