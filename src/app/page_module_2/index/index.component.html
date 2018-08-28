@@ -1,6 +1,4 @@
 <div class="container">
-
-        
         <div class="head_box">
             <div class="head">
                 <div class="head_top">
@@ -36,7 +34,7 @@
                             [(ngModel)]="logindata.security.value"
                             (focus)="focus('security')"security
                             />
-                            <span class="secuimg" style='text-align:center'>uyes</span>
+                            <a class="secuimg" style='text-align:center' href="#/login">uyes</a>
                         </div>
                         <div class="btngroup flex-r">
                             <div class="btn_loding" (click)="onsubmit()">
@@ -56,7 +54,6 @@
                 <div class="head_mid">
                     <div class="flex-r topnav head_mid_right fl-r">
                         <span *ngFor="let item of navdatal; let i=index"  class='top_nav_item' [ngClass]="{'navhover': item.isover,'production_li':i == 1}"
-
                         (mouseenter)="navmouseenter(i,'left')" (mouseleave)="navmouseleave(i,'left')" (click)="linkrouter(item.link)">{{item.text}}</span>
                         <span *ngFor="let item of navdatar; let i=index"  class='top_nav_item' [ngClass]="{'navhover': item.isover}"
                         (mouseenter)="navmouseenter(i,'right')" (mouseleave)="navmouseleave(i,'right')">{{item.text}}</span>
@@ -64,65 +61,65 @@
                 </div>
 
             </div>
-        <div class="hid_top">
-            <div class="hid_box flex-r">
-                <div class="child_box flex-r">
-                    <div class="child_col">
-                        <div class="top_til">
-                            官方玩法
-                        </div>
+            <div class="hid_top">
+                <div class="hid_box flex-r">
+                    <div class="child_box flex-r">
+                        <div class="child_col">
+                            <div class="top_til">
+                                官方玩法
+                            </div>
 
-                        <div class="cont_box">
-                            <ul class="flex-r-l-w czbox">
-                                <li   class="" *ngFor="let child of cpdata; let i=index" >
-                                    <ng-container *ngIf="i<=29">
-                                        <span  (click)="linkrouter(child.linko)" class="flex-c item">
-                                            <span class="flex-r imgbox" >
-                                                    <img src="{{child.src}}" alt="child.name"
-                                                    >
+                            <div class="cont_box">
+                                <ul class="flex-r-l-w czbox">
+                                    <li   class="" *ngFor="let child of cpdata; let i=index" >
+                                        <ng-container *ngIf="i<=29">
+                                            <span  (click)="linkrouter(child.linko)" class="flex-c item">
+                                                <span class="flex-r imgbox" >
+                                                        <img src="{{child.src}}" alt="child.name"
+                                                        >
+                                                </span>
+                                                <span class="info flex-r">{{child.name}}</span>
+
                                             </span>
-                                            <span class="info flex-r">{{child.name}}</span>
-
-                                        </span>
-                                    </ng-container>
-                                </li>
-                            </ul>
+                                        </ng-container>
+                                    </li>
+                                </ul>
+                            </div>
+                            
                         </div>
-                        
+
+                    </div>
+                    <div class="child_box flex-r">
+                        <div class="child_col">
+                            <div class="top_til">
+                                信用玩法
+                            </div>
+
+                            <div class="cont_box">
+                                <ul class="flex-r-l-w czbox">
+                                    <li   class="" *ngFor="let child of cpdata; let i=index" >
+                                        <ng-container *ngIf="i<=29">
+                                            <span   (click)="linkrouter(child.linkc)" class="flex-c item">
+                                                <span class="flex-r imgbox" >
+                                                        <img src="{{child.src}}" alt="child.name"
+                                                       >
+                                                </span>
+                                                <span class="info flex-r">{{child.name}}</span>
+
+                                            </span>
+                                        </ng-container>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+
                     </div>
 
                 </div>
-                <div class="child_box flex-r">
-                    <div class="child_col">
-                        <div class="top_til">
-                            信用玩法
-                        </div>
 
-                        <div class="cont_box">
-                            <ul class="flex-r-l-w czbox">
-                                <li   class="" *ngFor="let child of cpdata; let i=index" >
-                                    <ng-container *ngIf="i<=29">
-                                        <span   (click)="linkrouter(child.linkc)" class="flex-c item">
-                                            <span class="flex-r imgbox" >
-                                                    <img src="{{child.src}}" alt="child.name"
-                                                   >
-                                            </span>
-                                            <span class="info flex-r">{{child.name}}</span>
-
-                                        </span>
-                                    </ng-container>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                    </div>
-
-                </div>
-
+            
             </div>
-
-        
-        </div>
             <div class="top_banner">
                 <div class="lunBo" id="LunBo">
 
@@ -247,48 +244,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer ">
-            <div class="foot_box flex-r" >
-                <div class="foot_c">
-                    <div class="foot_c_cont">
-                        <div class="top">
-                            银行卡类型
-                        </div>
-                        <div class="bot bank_c">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="foot_c">
-                    <div class="foot_c_cont">
-                        <div class="top">
-                            新手帮助
-                        </div>
-                        <div class="bot  ">
-                            <a href="">〉存款帮助</a>
-                            <a href="">〉取款帮助</a>
-                            <a href="">〉联系我们</a>
-                            <a href="">〉常见问题</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="foot_c">
-                    <div class="foot_c_cont">
-                        <div class="erweima">
-                            <img src="../images/head_top/erweima.png"  alt="">
-                        </div>
-                        <div class="app_til">
-                            手机APP
-                        </div>
-                        <a class="app_bot" href="">
-
-                            手机APP下载
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        <app-footer></app-footer>
 </div>
 
 

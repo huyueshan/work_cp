@@ -1,0 +1,85 @@
+<div class="flex-c container">
+  <div class="flex-r querycontent">
+    <span class="flex-r" style="justify-content: flex-start;">
+      <span class="query_item">
+        <label for="starttime">{{now_lang.User_center_c.Time}}： </label>
+        <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
+        <label for="endtime">{{now_lang.User_center_c.GO}} </label>
+        <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
+      </span>
+      <span class="query_item">
+        <label for="numb">{{now_lang.User_center_c.User_name}}： </label>
+        <input type="text" id="username" name="username" [(ngModel)]="querydata.username" />
+      </span>
+      <span class="flex-r query_item">
+        <input type="checkbox" id="wrap" name="wrap" [(ngModel)]="querydata.iswrap" />{{now_lang.User_center_c.Include_lower}}</span>
+    </span>
+    <span class="querybtn">{{now_lang.User_center_c.Search}}</span>
+  </div>
+  <div class=" flex-c tablebox">
+    <table width="100%" id="table">
+      <tr class="bg_2 sortr">
+        <th style="width:210px">{{now_lang.User_center_c.Lot_type}}
+          <strong
+          (click)="sortclick('type')"> &#10606; </strong>
+        </th>
+        <th style="width:120px">{{now_lang.User_center_c.Bet_men}}
+          <strong
+          (click)="sortclick('numbtou')"> &#10606; </strong>
+        </th>
+        <th style="width:120px">{{now_lang.User_center_c.Bet_ordernumber}}
+          <strong
+          (click)="sortclick('celltou')"> &#10606; </strong>
+        </th>
+        <th style="width:120px">{{now_lang.User_center_c.Bet_money}}
+          <strong
+          (click)="sortclick('money')"> &#10606; </strong>
+        </th>
+        <th style="width:120px">{{now_lang.User_center_c.Bonus}}
+          <strong
+          (click)="sortclick('bonus')"> &#10606; </strong>
+        </th>
+        <th style="width:120px">{{now_lang.User_center_c.Back_bonus_point}}
+          <strong
+          (click)="sortclick('rebates')"> &#10606; </strong>
+        </th>
+        <th>
+          <span class="padright">{{now_lang.User_center_c.Profit}}<strong
+          (click)="sortclick('fitorloss')"> &#10606; </strong></span>
+          
+        </th>
+      </tr>
+    </table>
+    <div class="tablewrap">
+      <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4"   align="center">
+        <tr *ngFor="let item of outdata">
+          <td style="">{{item.type}}</td>
+          <td style="">{{item.numbtou}}</td>
+          <td style="">{{item.celltou}}</td>
+          <td style="">{{item.money}}</td>
+          <td style="">{{item.bonus}}</td>
+          <td style="">{{item.rebates}}</td>
+          <td>{{item.fitorloss}}</td>
+        </tr>
+        <tr class="bg_1 trbold color_y">
+          <td style="color: #333">总和</td>
+          <td style="">{{add('numbtou')}}</td>
+          <td style="">{{add('celltou')}}</td>
+          <td style="">{{add('money')}}</td>
+          <td style="">{{add('bonus')}}</td>
+          <td style="">{{add('rebates')}}</td>
+          <td>
+            <span class="padright">{{add('fitorloss')}}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+  <div class="viewbox">
+    <div class="draw">
+      <span>{{now_lang.User_center_c.Map_area}}</span>
+    </div>
+
+  </div>
+</div>

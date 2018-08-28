@@ -18,7 +18,7 @@
                     <ul class="flex-c gamebox" [style.top.px]="item.postop">
                         <ng-container *ngFor="let child of item.items; let m=index">
                             <li class="flex-r item" *ngIf="(item.gxtog && child.credit) || (!item.gxtog && child.official)" >
-                                <span class="flex-r cpnote"  (click)="linkrout(child)">
+                                <span class="flex-r cpnote" (click)="linkrout(item, m)">
                                     <img [src]="child.imgsrc" alt="{{child.text}}">
                                     <span>{{child.text}}</span>
                                 </span>

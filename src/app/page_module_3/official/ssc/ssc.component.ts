@@ -118,6 +118,7 @@ export class SSCofficialComponent implements OnInit {
     public now_description = '';
     public rangenum = 180200;
     public hothidden = false;
+    public nowitems :any={};
     public userInfo = {
         name: '赌神',
         balance: '9999.99',
@@ -130,6 +131,66 @@ export class SSCofficialComponent implements OnInit {
     // public rangevalue = rangevalue;
     public now_lang: any = userModel.langpackage;
     public now_lang_type: any = 'zh';
+    //追号数据
+    public lotdata = [
+        {
+            lot_num:'20181719',
+            multiple:0,
+            price:2,
+            take_money:0,
+            expire_time:'2018-06-11 15:19:30',
+            checkon:false
+        },
+        {
+            lot_num:'20181720',
+            multiple:0,
+            price:2,
+            take_money:0,
+            expire_time:'2018-06-11 15:19:30',
+            checkon:false
+        },
+        {
+            lot_num:'20181721',
+            multiple:0,
+            price:2,
+            take_money:0,
+            expire_time:'2018-06-11 15:19:30',
+            checkon:false
+        }
+    ]
+    //追号提交数据
+    public lotdata_submit :any = [];
+
+    public typeoptiondata :any = [
+      5,
+      10,
+      15,
+      25,
+      'all'
+    ];
+    // 复制追号数据
+    public lotdata_now = $.extend(true, [], this.lotdata);
+    // 追号配置
+    public chase_config_ori :any = {
+        multiple:1,
+        chase_amount:5,
+        select_amount:5,
+        chase_rule:{
+            number:1,
+            multiple:2
+        },
+        multiple_option:1
+    }
+    public Open_stop :any = false
+    public Win_stop :any = false
+    public chase_number_config :any = $.extend(true, {}, this.chase_config_ori);
+    //目前追号面板
+    public c_now_panel :any = 'one'
+    public chase_money :any = 0;
+    public chase_amount :any = 0;
+    //追号数据结束
+
+
     status = {
         menu_1: 1, //一级tab默认项
         menu_2: 1 //二级tab默认项
@@ -193,12 +254,13 @@ export class SSCofficialComponent implements OnInit {
         },
         {
             name: this.now_lang.Lot_tab.Dragon_tiger,
-            href: '#/'
+            href: 'lottery/creditssc/cq'
         }
     ];
 
     // 2级tab数据以及对应要显示的内容
-    menu_2_data = [{
+    menu_2_data = [
+        {
             title: this.now_lang.Lot_tab.Five_star_str,
             menu: [{
                     name: this.now_lang.Lot_tab.Five_star_eve,
@@ -994,7 +1056,7 @@ export class SSCofficialComponent implements OnInit {
             index: 9
         },
         'bdd9': {
-            title: '后三一码不定胆',
+            title: '不定胆',
             ball: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
             tab: this.ball_tab[1],
             index: 9
@@ -1100,6 +1162,236 @@ export class SSCofficialComponent implements OnInit {
         },
         5: {}
     };
+
+// 追号函数
+    typeoptchange() {
+        let that = this;
+        if (that.chase_number_config.select_amount == 'all') {
+            that.chase_number_config.chase_amount = that.lotdata_now.length;
+        }else{
+            that.chase_number_config.chase_amount = that.chase_number_config.select_amount;
+        }
+    }
+    check_lot(item){
+        console.log(item.checkon)
+        let that = this;
+        if (item.checkon) {
+            if (item.multiple == 0) {
+                item.multiple = that.chase_number_config.multiple;
+                item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
+            }
+
+        }else{
+            item.multiple = 0;
+            item.take_money = 0;
+        }
+        that.repanel_data()
+        console.log(that.lotdata_now)
+    }
+    // 生成计划
+    produce_plan(){
+        let that = this;
+        that.lotdata_now = $.extend(true, [], that.lotdata);
+        let gap_number,gap_multiple,multiple,chase_amount;
+        if (that.c_now_panel == 'two') {
+            gap_number = that.chase_number_config.chase_rule.number;
+            gap_multiple = that.chase_number_config.chase_rule.multiple;
+            multiple = that.chase_number_config.multiple;
+            chase_amount = that.chase_number_config.chase_amount;
+            if(chase_amount>that.lotdata_now.length){
+                chase_amount = that.lotdata_now.length;
+            }
+            for (var i = 0; i <= chase_amount-1; i++) {
+                console.log((i)%gap_number)
+                that.lotdata_now[i].checkon = true;
+                that.lotdata_now[i].multiple = multiple;
+                that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
+                if ((i+1)%gap_number == 0) {
+                    multiple = multiple*gap_multiple;
+                }; 
+
+            };          
+        }else{
+            multiple = that.chase_number_config.multiple;
+            chase_amount = that.chase_number_config.chase_amount;
+            if(chase_amount>that.lotdata_now.length){
+                chase_amount = that.lotdata_now.length;
+            }
+            for (var i = 0; i <= chase_amount-1; i++) {
+
+                that.lotdata_now[i].checkon = true;
+                that.lotdata_now[i].multiple = multiple;
+                that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
+            };
+        }
+        that.repanel_data()
+    }
+    //单个金钱计算
+    get_takemon(item,e){
+        let that = this;
+        if (item.multiple == 0) {
+            item.checkon = false;
+        }else{
+            item.checkon = true;
+        }
+        // for (var k = 0; k <= that.sureballlist.length-1; k++) {
+
+        // }
+        item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
+        that.repanel_data()
+    }
+    changeregnum(e) {
+        let v = e.target;
+        v.value = v.value.replace(/\D/g, "");
+        if (Number(v.value) === 0 && v.value !== "") {
+            v.value = 0;
+        }
+        if (Number(v.value) > 0) {
+            v.value = Number(v.value);
+        }
+    }
+    // 总金钱总期数计算
+    repanel_data(){
+        let that = this;
+        let amount = 0;
+        let chase_amount = 0;
+        for (var i = 0; i <= that.lotdata_now.length-1; i++) {
+            for (var k = 0; k <= that.sureballlist.length-1; k++) {
+                amount = that.lotdata_now[i].multiple*that.lotdata_now[i].price/that.modelarr[that.model]+amount;
+            }
+            if (that.lotdata_now[i].checkon) {
+                chase_amount = chase_amount+1;
+            };
+        };
+        that.chase_amount = chase_amount;
+        if(that.chase_amount>that.lotdata_now.length){
+            that.chase_amount = that.lotdata_now.length;
+        }
+        that.chase_money = amount;
+    }
+    //清空追号
+    rechase_data(){
+        let that = this;
+        that.lotdata_now = $.extend(true, [], that.lotdata);
+        that.repanel_data()
+    }
+    //清空追号所有数据
+    rechase_dataall(){
+        let that = this;
+        that.lotdata_now = $.extend(true, [], that.lotdata);
+        that.chase_number_config = $.extend(true, {}, that.chase_config_ori);
+        that.repanel_data()
+    }
+    tab_chase(para,item_one,item_two){
+        let that = this;
+        that.rechase_dataall();
+        that.c_now_panel = para;
+        if (para == 'one') {
+            $(item_one).addClass('active');
+            $(item_two).removeClass('active');
+            $('.one').addClass('active')
+            $('.two').removeClass('active')
+        }else if(para == 'two'){
+            $(item_two).addClass('active');
+            $(item_one).removeClass('active');
+            $('.two').addClass('active')
+            $('.one').removeClass('active')
+        }
+    }
+    //提交追号
+    submit_chase(){
+        let that = this;
+        //清空
+        that.lotdata_submit = [];
+        for (var i = 0; i <= that.lotdata_now.length-1; i++) {
+            console.log(that.lotdata_now[i].checkon != false)
+            if (that.lotdata_now[i].checkon != false) {
+                for (var k = 0; k <= that.sureballlist.length-1; k++) {
+                        let rechase :any= {};
+                        rechase.Open_stop = that.Open_stop;
+                        rechase.Win_stop = that.Win_stop;
+                        rechase.multiple = that.lotdata_now[i].multiple;
+                        rechase.model = that.model;
+                        rechase.count = 1;
+                        rechase.sum = (2*rechase.multiple) /that.modelarr[rechase.model]
+                        rechase.amount = that.totalinfo.amount;
+                        rechase.ball = that.sureballlist[k].ball;
+                        rechase.name = that.sureballlist[k].name;
+                        rechase.issue = that.lotdata_now[i].lot_num;
+                        that.lotdata_submit.push(rechase)
+                }
+            };
+        }
+        console.log(that.lotdata_submit)
+        if(!that.lotdata_submit[0]){
+            that.POPNOTE({msg:'请选择追号期数'});
+            return
+        }else{
+            that.POPNOTE({msg:`您确定追号${that.lotdata_now.length}期么? 总投入${that.chase_money}元。`},that.betnow);
+            return
+        }
+        
+        
+    }
+    betnow(){
+        // 在此处提交追号所有号码
+    }
+    close_chase(){
+        $('#layer2').find('.chase_container').removeClass('show_this');
+        let that = this;
+        that.rechase_dataall()
+    }
+    chase_number(){
+        let that = this;
+        if (!that.sureballlist[0]) {
+            that.POPNOTE({msg:'注单列表为空，请先下注！或者随机1注',btn:'随机一注'},that.radomshowchase);
+            return false
+        };
+        that.showchase();
+        
+    }  
+    show_chasenumber(param,nextrun){
+        let msg = param.msg;
+        let til = param.til;
+        let self = this;
+        let str = '';   
+        let dom = $(this.parseDom(str))
+        dom.find('.close').on('click',function(){
+            self.hid_layer();
+        }) 
+        dom.find('.confirm_box').on('click',function(){
+            nextrun();
+        })
+        $('#layer').append(dom);
+        setTimeout(function(){
+            dom.addClass('tobig')
+        }, 10)
+        window.onresize = function () {
+            console.log('x')
+        }
+    }
+  
+    radomshowchase(){
+        this.mathball(this.menu_2);
+        $('#layer2').find('.chase_container').addClass('show_this');
+    }
+    showchase(){
+        $('#layer2').find('.chase_container').addClass('show_this');
+    }
+    hid_layer(){
+        document.getElementById("layer").innerHTML = '';
+    }
+    // 弹层1
+    parseDom(arg) {
+    　　 var objE = document.createElement("div");
+    　　 objE.innerHTML = arg;
+    　　 return objE.childNodes;
+    };
+//追号函数结束
+
+
+
+
     //所有的规则
     lot_rules = {
         '1_1': {
@@ -1410,12 +1702,12 @@ export class SSCofficialComponent implements OnInit {
             example: "投注方案：1,2；开奖号码前三位：至少出现1和2各1个，即中前三二码不定位一等奖。",
             rule: "从0-9中选择2个号码，每注由2个不同的号码组成，开奖号码的万位、千位、百位中同时包含所选的2个号码，即为中奖。",
         },
-        '10_1': {
+        '10_2': {
             description: "从十位、个位中的“大、小、单、双”中至少各选一个组成一注。",
             example: "投注方案：大单；开奖号码十位与个位：大单，即中后二大小单双一等奖。",
             rule: "对十位和个位的“大（56789）小（01234）、单（13579）双（02468）”形态进行购买，所选号码的位置、形态与开奖号码的位置、形态相同，即为中奖。",
         },
-        '10_2': {
+        '10_1': {
             description: "从万位、千位中的“大、小、单、双”中至少各选一个组成一注。",
             example: "投注方案：小双；开奖号码万位与千位：小双，即中前二大小单双一等奖。",
             rule: "对万位和千位的“大（56789）小（01234）、单（13579）双（02468）”形态进行购买，所选号码的位置、形态与开奖号码的位置、形态相同，即为中奖。",
@@ -1597,7 +1889,7 @@ export class SSCofficialComponent implements OnInit {
 
     }
     ngAfterViewInit() {
-        this.inittab2();
+        // this.inittab2();
     }
     // 拖动条函数
     drag_tag() {
@@ -1633,108 +1925,108 @@ export class SSCofficialComponent implements OnInit {
 
     }
     //tab切换暂时是写死的
-    inittab2() {
-        let ulMax = $('.typetab').outerWidth();
-        let liWidth = 0;
-        let toolong = 0;
-        let allliWidth = 0;
-        $.each($('.tab_li'), function (i, n) {
-            allliWidth = allliWidth + $(n).outerWidth();
-        });
-        $('.pointl').on('click', function () {
-            //做个过长处理
-            if (allliWidth > ulMax * 2 && toolong >= 0) {
-                toolong = toolong - 1;
-            } else {
-                ulMax = $('.typetab').outerWidth();
-            }
-            if (toolong < 1) {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax) {
-                        $(n).removeClass('hide_it')
-                    }
-                    if (liWidth > ulMax) {
-                        $(n).addClass('hide_it')
-                    }
-                });
-            } else if (toolong >= 1) {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth >= ulMax && liWidth <= ulMax * 2) {
-                        $(n).removeClass('hide_it')
-                    }
-                    if (liWidth >= ulMax * 2) {
-                        $(n).addClass('hide_it')
-                    }
-                });
-            } else {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth > ulMax) {
-                        $(n).addClass('hide_it')
-                    } else {
-                        $(n).removeClass('hide_it')
-                    }
-                });
-            }
-            if (liWidth < ulMax) {
+    // inittab2() {
+    //     let ulMax = $('.typetab').outerWidth();
+    //     let liWidth = 0;
+    //     let toolong = 0;
+    //     let allliWidth = 0;
+    //     $.each($('.tab_li'), function (i, n) {
+    //         allliWidth = allliWidth + $(n).outerWidth();
+    //     });
+    //     $('.pointl').on('click', function () {
+    //         //做个过长处理
+    //         if (allliWidth > ulMax * 2 && toolong >= 0) {
+    //             toolong = toolong - 1;
+    //         } else {
+    //             ulMax = $('.typetab').outerWidth();
+    //         }
+    //         if (toolong < 1) {
+    //             $.each($('.tab_li'), function (i, n) {
+    //                 liWidth = liWidth + $(n).outerWidth();
+    //                 if (liWidth < ulMax) {
+    //                     $(n).removeClass('hide_it')
+    //                 }
+    //                 if (liWidth > ulMax) {
+    //                     $(n).addClass('hide_it')
+    //                 }
+    //             });
+    //         } else if (toolong >= 1) {
+    //             $.each($('.tab_li'), function (i, n) {
+    //                 liWidth = liWidth + $(n).outerWidth();
+    //                 if (liWidth >= ulMax && liWidth <= ulMax * 2) {
+    //                     $(n).removeClass('hide_it')
+    //                 }
+    //                 if (liWidth >= ulMax * 2) {
+    //                     $(n).addClass('hide_it')
+    //                 }
+    //             });
+    //         } else {
+    //             $.each($('.tab_li'), function (i, n) {
+    //                 liWidth = liWidth + $(n).outerWidth();
+    //                 if (liWidth > ulMax) {
+    //                     $(n).addClass('hide_it')
+    //                 } else {
+    //                     $(n).removeClass('hide_it')
+    //                 }
+    //             });
+    //         }
+    //         if (liWidth < ulMax) {
 
-            }
-            liWidth = 0;
-        })
-        $('.pointr').on('click', function () {
-            //做个过长处理
-            if (allliWidth > ulMax * 2 && toolong < 2) {
-                toolong = toolong + 1;
-            } else {
-                ulMax = $('.typetab').outerWidth();
-            }
-            if (toolong == 1) {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax) {
-                        $(n).addClass('hide_it')
-                    }
-                    if (liWidth > ulMax && liWidth < ulMax * 2) {
-                        $(n).removeClass('hide_it')
-                    }
-                });
-            } else if (toolong >= 2) {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax * 2) {
-                        $(n).addClass('hide_it')
-                    }
-                    if (liWidth > ulMax * 2) {
-                        $(n).removeClass('hide_it')
-                    }
+    //         }
+    //         liWidth = 0;
+    //     })
+    //     $('.pointr').on('click', function () {
+    //         //做个过长处理
+    //         if (allliWidth > ulMax * 2 && toolong < 2) {
+    //             toolong = toolong + 1;
+    //         } else {
+    //             ulMax = $('.typetab').outerWidth();
+    //         }
+    //         if (toolong == 1) {
+    //             $.each($('.tab_li'), function (i, n) {
+    //                 liWidth = liWidth + $(n).outerWidth();
+    //                 if (liWidth < ulMax) {
+    //                     $(n).addClass('hide_it')
+    //                 }
+    //                 if (liWidth > ulMax && liWidth < ulMax * 2) {
+    //                     $(n).removeClass('hide_it')
+    //                 }
+    //             });
+    //         } else if (toolong >= 2) {
+    //             $.each($('.tab_li'), function (i, n) {
+    //                 liWidth = liWidth + $(n).outerWidth();
+    //                 if (liWidth < ulMax * 2) {
+    //                     $(n).addClass('hide_it')
+    //                 }
+    //                 if (liWidth > ulMax * 2) {
+    //                     $(n).removeClass('hide_it')
+    //                 }
 
-                });
-            } else {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax) {
-                        $(n).addClass('hide_it')
-                    } else {
-                        $(n).removeClass('hide_it')
-                    }
-                });
-            }
+    //             });
+    //         } else {
+    //             $.each($('.tab_li'), function (i, n) {
+    //                 liWidth = liWidth + $(n).outerWidth();
+    //                 if (liWidth < ulMax) {
+    //                     $(n).addClass('hide_it')
+    //                 } else {
+    //                     $(n).removeClass('hide_it')
+    //                 }
+    //             });
+    //         }
 
-            if (liWidth < ulMax) {
-                $('.tab_li').removeClass('hide_it');
-            }
-            liWidth = 0
-        })
-        $.each($('.tab_li'), function (i, n) {
-            liWidth = liWidth + $(n).outerWidth();
-            if (liWidth > ulMax) {
-                $(n).addClass('hide_it')
-            }
-        });
-        liWidth = 0;
-    }
+    //         if (liWidth < ulMax) {
+    //             $('.tab_li').removeClass('hide_it');
+    //         }
+    //         liWidth = 0
+    //     })
+    //     $.each($('.tab_li'), function (i, n) {
+    //         liWidth = liWidth + $(n).outerWidth();
+    //         if (liWidth > ulMax) {
+    //             $(n).addClass('hide_it')
+    //         }
+    //     });
+    //     liWidth = 0;
+    // }
     //路由函数                      
     linkrouter(t) {
         this.router.navigate([t]);
@@ -2423,27 +2715,35 @@ export class SSCofficialComponent implements OnInit {
         }
     }
 
-    addrem(item) {
+    addrem(item){
+        //倍数锁
+        if (this.lock_multible) {
+            return false
+        };
         this.multiple_input.value = parseInt(this.multiple_input.value);
         this.radom_input.value = parseInt(this.radom_input.value);
-        if (item == 'multiple') {
-            this.multiple_input.value = this.multiple_input.value + 1;
+        if (item=='multiple') {
+            this.multiple_input.value = this.multiple_input.value+1;
             this.countbet(this.ballcurr.totalbet)
-        } else if (item == 'radom') {
-            this.radom_input.value = this.radom_input.value + 1;
+        }else if(item=='radom'){
+            this.radom_input.value = this.radom_input.value +1;
         }
+        
     }
-    minusrem(item) {
+    minusrem(item){
+        if (this.lock_multible) {
+            return false
+        };
         this.multiple_input.value = parseInt(this.multiple_input.value);
         this.radom_input.value = parseInt(this.radom_input.value);
-        if (item == 'multiple') {
-            if (this.multiple_input.value > 1) {
-                this.multiple_input.value = this.multiple_input.value - 1;
+        if (item=='multiple') {
+            if (this.multiple_input.value>1) {
+                this.multiple_input.value = this.multiple_input.value-1;
                 this.countbet(this.ballcurr.totalbet)
             }
-        } else if (item == 'radom') {
-            if (this.radom_input.value > 1) {
-                this.radom_input.value = this.radom_input.value - 1;
+        }else if(item=='radom'){
+            if (this.radom_input.value>1) {
+                this.radom_input.value = this.radom_input.value-1;
             }
         }
     }
@@ -2554,5 +2854,22 @@ export class SSCofficialComponent implements OnInit {
             this.NOTARIZE = ()=>{return};
         }
         this.popoutInfo = Object.assign({},o,data);
+    }
+    // 锁定倍数
+    public lock_multible :any=false;
+    lock_multiple(item){
+        let now_btn = $(item.target);
+        console.log($(item.target).hasClass('switch_btn'));
+        if (!$(item.target).hasClass('switch_btn')) {
+            now_btn = $(item.target).parent();
+        }
+        if(now_btn.hasClass('on')){
+            this.lock_multible = false;
+            $('#testinput').removeAttr('disabled');
+        }else{
+            this.lock_multible = true;
+            $('#testinput').attr({disabled: 'disabled'});
+        }
+
     }
 }

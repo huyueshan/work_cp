@@ -1055,7 +1055,7 @@ export class SSCofficialComponent implements OnInit {
             index: 9
         },
         'bdd9': {
-            title: '后三一码不定胆',
+            title: '不定胆',
             ball: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
             tab: this.ball_tab[1],
             index: 9
@@ -1701,12 +1701,12 @@ export class SSCofficialComponent implements OnInit {
             example: "投注方案：1,2；开奖号码前三位：至少出现1和2各1个，即中前三二码不定位一等奖。",
             rule: "从0-9中选择2个号码，每注由2个不同的号码组成，开奖号码的万位、千位、百位中同时包含所选的2个号码，即为中奖。",
         },
-        '10_1': {
+        '10_2': {
             description: "从十位、个位中的“大、小、单、双”中至少各选一个组成一注。",
             example: "投注方案：大单；开奖号码十位与个位：大单，即中后二大小单双一等奖。",
             rule: "对十位和个位的“大（56789）小（01234）、单（13579）双（02468）”形态进行购买，所选号码的位置、形态与开奖号码的位置、形态相同，即为中奖。",
         },
-        '10_2': {
+        '10_1': {
             description: "从万位、千位中的“大、小、单、双”中至少各选一个组成一注。",
             example: "投注方案：小双；开奖号码万位与千位：小双，即中前二大小单双一等奖。",
             rule: "对万位和千位的“大（56789）小（01234）、单（13579）双（02468）”形态进行购买，所选号码的位置、形态与开奖号码的位置、形态相同，即为中奖。",
@@ -2714,27 +2714,35 @@ export class SSCofficialComponent implements OnInit {
         }
     }
 
-    addrem(item) {
+    addrem(item){
+        //倍数锁
+        if (this.lock_multible) {
+            return false
+        };
         this.multiple_input.value = parseInt(this.multiple_input.value);
         this.radom_input.value = parseInt(this.radom_input.value);
-        if (item == 'multiple') {
-            this.multiple_input.value = this.multiple_input.value + 1;
+        if (item=='multiple') {
+            this.multiple_input.value = this.multiple_input.value+1;
             this.countbet(this.ballcurr.totalbet)
-        } else if (item == 'radom') {
-            this.radom_input.value = this.radom_input.value + 1;
+        }else if(item=='radom'){
+            this.radom_input.value = this.radom_input.value +1;
         }
+        
     }
-    minusrem(item) {
+    minusrem(item){
+        if (this.lock_multible) {
+            return false
+        };
         this.multiple_input.value = parseInt(this.multiple_input.value);
         this.radom_input.value = parseInt(this.radom_input.value);
-        if (item == 'multiple') {
-            if (this.multiple_input.value > 1) {
-                this.multiple_input.value = this.multiple_input.value - 1;
+        if (item=='multiple') {
+            if (this.multiple_input.value>1) {
+                this.multiple_input.value = this.multiple_input.value-1;
                 this.countbet(this.ballcurr.totalbet)
             }
-        } else if (item == 'radom') {
-            if (this.radom_input.value > 1) {
-                this.radom_input.value = this.radom_input.value - 1;
+        }else if(item=='radom'){
+            if (this.radom_input.value>1) {
+                this.radom_input.value = this.radom_input.value-1;
             }
         }
     }
@@ -2845,5 +2853,22 @@ export class SSCofficialComponent implements OnInit {
             this.NOTARIZE = ()=>{return};
         }
         this.popoutInfo = Object.assign({},o,data);
+    }
+    // 锁定倍数
+    public lock_multible :any=false;
+    lock_multiple(item){
+        let now_btn = $(item.target);
+        console.log($(item.target).hasClass('switch_btn'));
+        if (!$(item.target).hasClass('switch_btn')) {
+            now_btn = $(item.target).parent();
+        }
+        if(now_btn.hasClass('on')){
+            this.lock_multible = false;
+            $('#testinput').removeAttr('disabled');
+        }else{
+            this.lock_multible = true;
+            $('#testinput').attr({disabled: 'disabled'});
+        }
+
     }
 }

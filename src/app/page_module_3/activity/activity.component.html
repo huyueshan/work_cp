@@ -1,0 +1,34 @@
+<div class="flex-c container">
+    <header>
+        <app-header [username]="'test08'" [curpath]="'Activity'"></app-header>
+    </header>
+    <main>
+        <div class="flex-c  content">
+            <div class="flex-r topnav" >
+                <ul class="flex-r">
+                    <li *ngFor="let item of navdata; let i = index" [ngClass]="{active:nacactive===i}" (click)="nacactive=i">{{item.name}}
+                    </li>
+                </ul>
+            </div>
+            <div class="mainbox">
+                <ul class="flex-c activs">
+                    <li class="flex-c actitem" *ngFor="let item of actdata">
+                        <span class="flex-c mainbox">
+                            <img [src]="item.isrc" alt="{{item.title}}">
+                            <span class="flex-r mfoot">
+                                <p><span>{{item.title}}</span>{{item.content}}</p>
+                                <span class="flex-r btn_rf" (click)="item.on = !item.on">{{item.on?'收起':'查看详情'}} <i [ngClass]="{rotate:item.on}" ></i> </span>
+                            </span>
+                        </span>
+                        <span class="infobox" *ngIf="item.on" >
+                            <img src="../images/mod3/info_m3_01.png" alt="生日优惠">
+                        </span>
+
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+</div>
+

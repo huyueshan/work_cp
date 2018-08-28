@@ -477,10 +477,13 @@ $browser: null;
     }
     .close{
         height: 100%;
-        width: 20%;
+        width: 8%;
+        cursor: pointer;
         text-align: center;
         line-height: 30px;
         float: right;
+        color: #fff;
+        font-size: 20px;
     }
     .content_box{
         width: 100%;
@@ -520,7 +523,7 @@ $browser: null;
     }
     z-index: 887;
     .config_input{
-        height: 30px;
+        height:23px;
         width: 50px;
         margin: 0 10px;
         text-align: center;
@@ -630,6 +633,7 @@ $browser: null;
                 }
                 .preduce_btn{
                     margin-top: 10px;
+                    margin-right: 19px;
                     background-color: #fe8f00;
                 }
             }
@@ -661,6 +665,7 @@ $browser: null;
                 clear: both;
                 max-height: 175px;
                 overflow-y:scroll;
+                padding-top: 3px;
                 li{
                     width: 100%;
                     height: 35px;
@@ -709,10 +714,13 @@ $browser: null;
         }
         .close{
             height: 100%;
-            width: 5%;
+            width: 8%;
+            cursor: pointer;
             text-align: center;
             line-height: 30px;
             float: right;
+            color: #fff;
+            font-size: 20px;
         }
         .content_box{
             width: 100%;
@@ -788,7 +796,7 @@ $browser: null;
     }
     z-index: 887;
     .config_input{
-        height: 30px;
+        height: 23px;
         width: 50px;
         margin: 0 10px;
         text-align: center;
@@ -854,7 +862,7 @@ $browser: null;
                     display: inline-block;
                     float: left;
                     .config_input{
-                        height: 30px;
+                        height: 23px;
                         text-align: center;
                     }
                     div{
@@ -898,6 +906,7 @@ $browser: null;
                 }
                 .preduce_btn{
                     margin-top: 10px;
+                    margin-right: 19px;
                     background-color: #B62337;
                 }
             }
@@ -929,6 +938,7 @@ $browser: null;
                 clear: both;
                 max-height: 175px;
                 overflow-y:scroll;
+                padding-top: 3px;
                 li{
                     width: 100%;
                     height: 35px;
@@ -975,13 +985,16 @@ $browser: null;
             font-size: 14px;
             text-indent: 20px;
         }
-        .close{
-            height: 100%;
-            width: 5%;
-            text-align: center;
-            line-height: 30px;
-            float: right;
-        }
+    .close{
+        height: 100%;
+        width: 8%;
+        cursor: pointer;
+        text-align: center;
+        line-height: 30px;
+        float: right;
+        color: #fff;
+        font-size: 20px;
+    }
         .content_box{
             width: 100%;
             text-align: center;

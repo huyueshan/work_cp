@@ -115,6 +115,7 @@ input {
         position: relative;
         .head_mid_right{
             width: 85%;
+            height: 100%;
             padding-right: 20px;
             .top_nav_item{
                 width: 150px;
@@ -574,83 +575,7 @@ input {
         }
     }
 }
-.footer{
-    background: url("../images/head_top/footer1-bg1.png");
-    .foot_box{
-        width: 1200px;
-        height: 150px;
-        /* background-color: lightblue; */
-        margin: 0 auto;
-    }
-    .foot_c{
 
-        height: 150px;
-        width: 34%;
-        background: url("../images/head_top/menu-bar.png") right top 38px no-repeat;
-        -webkit-background-size: 1px 75px;
-        background-size: 1px 75px;
-        a:hover{
-            color: #b61010!important;
-            text-decoration: none;
-        }
-        .foot_c_cont{
-            height: 90px;
-            width: 65%;
-            margin: 36px auto;
-            .top{
-                height: 35px;
-                color: white;
-                line-height: 30px;
-                font-size: 14px;
-            }
-            .bot{
-                height: 60px;
-                width: 100%;
-                a{
-                    width: 50%;
-                    color: #757575;
-                    float: left;
-                    margin-bottom: 8px;
-                }
-                a:hover{
-                    width: 50%;
-                    color: #b61010;
-                    text-decoration: none;
-                }
-            }
-            .bank_c{
-                background:url("../images/head_top/cirrus.png")  no-repeat;
-            }
-            .erweima{
-                display: inline-block;
-                height: 55px;
-                width: 55px;
-                float: left;
-                margin-top: 8px;
-            }
-
-            .app_til,.app_bot{
-                display: inline-block;
-                height: 30px;
-                width: 110px;
-                float: left;
-                line-height: 30px;
-                color: #757575;
-                font-size: 12px;
-                padding-left: 20px;
-            }
-            .app_til{
-                margin-top: 0px;
-                color: white;
-                font-size: 14px;
-            }
-        }
-    }
-
-    .foot_c:nth-last-child(1){
-        background: none!important;
-    }
-}
 
 .forgetbtn {
     display: inline-block;

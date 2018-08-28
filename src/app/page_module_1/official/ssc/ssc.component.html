@@ -230,7 +230,7 @@
                         </span>
                         <ul class="typetab">
                             <ng-container *ngFor="let val of menu_1; let i = index;">
-                                <li class="tab_li" [ngClass]="{active: status.menu_1 === val.active}" (click)="tabmenu(val)">{{val.name}}</li>
+                                <li class="tab_li"  [ngClass]="{active: status.menu_1 === val.active}" (click)="tabmenu(val)">{{val.name}}</li>
                             </ng-container>
                         </ul>
                         <span class="pointr">
@@ -399,11 +399,9 @@
                             </div>
                             <div class="tip">
                                 <span class="comtext">{{now_lang.Ball_tab.All_choose}}
-                                    <em>{{totalinfo.count}}</em>{{now_lang.Ball_tab.Ticket}}，{{now_lang.Ball_tab.All_pay}}
-                                    <em>{{totalinfo.sum}}</em>{{now_lang.Ball_tab.Profit}}，{{now_lang.Ball_tab.Yuan}}
-                                    <em>{{totalinfo.amount}}</em>{{now_lang.Ball_tab.Radom}}{{now_lang.Ball_tab.Yuan}}</span>
-                                <label>
-                                    <input type="checkbox" />{{now_lang.Ball_tab.Lock_multipel}}</label>
+                                    <em>{{totalinfo.count}}</em>{{now_lang.Ball_tab.Ticket}}，{{now_lang.Ball_tab.All_pay}}<em>{{totalinfo.sum}}</em>{{now_lang.Ball_tab.Yuan}}，
+                                    {{now_lang.Ball_tab.Profit}}<em>{{totalinfo.amount}}</em>{{now_lang.Ball_tab.Yuan}}</span>
+                                <label><input type="checkbox" class="switch_btn" [ngClass]="{on: lock_multible}" (click)='lock_multiple($event)' />{{now_lang.Ball_tab.Lock_multipel}}</label>
                             </div>
                         </div>
                         <div class="btnright">
@@ -414,7 +412,7 @@
                     <div class="resultarea">
                         <div class="betcheck">
                             <ul class="betarea">
-                                <li *ngFor="let val of sureballlist;let i = index"><div class="lot_type" style="width:160px;">{{val.name}}</div><div class="lot_num" [title]="val.ball">{{val.ball}}</div><div>{{models[val.model]}}</div><div>{{val.count}}{{now_lang.Ball_tab.Ticket}}</div><div>{{val.multiple}}{{now_lang.Ball_tab.Multiple1}}</div><div>{{val.sum}}{{now_lang.Ball_tab.Yuan}}</div> <a class="lot_close" (click)="delball('del',val)"></a></li>
+                                <li *ngFor="let val of sureballlist;let i = index"><div class="lot_type" style="min-width:160px;">{{val.name}}</div><div class="lot_num" [title]="val.ball">{{val.ball}}</div><div>{{models[val.model]}}</div><div>{{val.count}}{{now_lang.Ball_tab.Ticket}}</div><div>{{val.multiple}}{{now_lang.Ball_tab.Multiple1}}</div><div>{{val.sum}}{{now_lang.Ball_tab.Yuan}}</div> <a class="lot_close" (click)="delball('del',val)"></a></li>
                             </ul>
                             <p class="info">
                                 {{now_lang.Ball_tab.On}}<span>20180517021</span>{{now_lang.Ball_tab.Expire_time}}：<span>00:04:22</span>{{now_lang.Ball_tab.All_orders}}：<span>{{orderinfo.total}}</span>{{now_lang.Ball_tab.All_tickets}}<span>{{orderinfo.betcount}}</span>{{now_lang.Ball_tab.All_amounts}}<span>{{orderinfo.money}}</span>{{now_lang.Ball_tab.Yuan}}

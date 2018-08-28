@@ -766,6 +766,9 @@ export class IndexComponent implements OnInit {
     $('.hid_top').on('mouseout',function  (argument) {
       $('.hid_top').removeClass('active');
     })
+    $('.production_li').on('mouseout',function  (argument) {
+      $('.hid_top').removeClass('active');
+    })
   }
   ngAfterViewInit(){
     this.lunBo()

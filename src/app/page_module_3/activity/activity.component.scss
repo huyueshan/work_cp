@@ -1,0 +1,134 @@
+
+*{
+    box-sizing: border-box;
+}
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.flex-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center;
+}
+
+.flex-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center;
+}
+
+
+.color_m {
+    color: #C42136;
+}
+
+.container {
+    width: 100%;
+    min-width: 1200px;
+    margin: 0;
+    padding: 0;
+    background: url("../images/mod3/bg_m3_01.png") center no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    ul{
+        list-style: none
+    }
+    .content{
+        width: 1200px;
+        margin-bottom: 40px;
+        .topnav{
+            width: 100%;
+            font-size: 14px;
+            color: white;
+            background-color: #2D1837;
+            ul{
+                width: 100%;
+                height: 50px;
+                align-content: center;
+                li{
+                    line-height: 50px;
+                    padding: 0 20px;
+                    cursor: pointer;
+                }
+                .active{
+                    background-color:#20182A;
+                }
+            }
+        }
+        .mainbox{
+            width: 100%;
+            .activs{
+                width: 100%;
+                align-content: center;
+                background-color: #342840;
+                .actitem{
+                    width: 100%;
+                    min-height: 50px;
+                    margin-bottom: 20px;
+                    .mainbox{
+                        position: relative;
+                        width: 100%;
+                        height: auto;
+                        color: white;
+                        img{
+                            width: 100%;
+                            height: auto;
+                        }
+                        .mfoot{
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 50px;
+                            padding: 8px 20px;
+                            background-color: rgba(0,0,0,.7);
+                            justify-content: space-between;
+                            p{
+
+                                line-height: 24px;
+                                font-size: 10px;
+                                span{
+                                    font-size: 14px;
+                                    padding-right: 40px;
+                                }
+                            }
+                            .btn_rf{
+                                font-size: 14px;
+                                align-items: center;
+                                cursor: pointer;
+                                i{
+                                    display: inline-block;
+                                    width: 14px;
+                                    height: 14px;
+                                    background: url("../images/mod3/right_m3_01.png") center no-repeat;
+                                    margin: 8px;
+                                    cursor: pointer;
+                                }
+                                .rotate{
+                                    transform:rotate(-90deg);
+                                }
+                            }
+                        }
+                        .infobox{
+                            img{
+                                width: 100%;
+                                height: auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+
+

@@ -1,0 +1,190 @@
+
+*{
+    box-sizing: border-box;
+}
+.flex-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+  }
+.flex-r-l {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: left;
+    align-items: left;
+}
+  .flex-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+  }
+.userbox{
+    margin: 30px 30px;
+    width:588px;
+    /* height:375px; */
+    /* padding:10px 30px; */
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+.usertitle{
+    width:100%;
+    height: 64px;
+    line-height: 64px;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+.usercontent{
+    position: relative;
+    width: 100%;
+    font-size: 14px;
+    /* padding:36px 50px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+.usercontent input{
+    border:none;
+    outline: none;
+    background-color: #F5F5F5;
+    height: 20px;
+    line-height: 20px;
+}
+.usseritem{
+    width: 100%;
+    height: 74px;
+    color: #666;
+    border-bottom: 1px solid #E6E6E6;
+    div{
+        display: inline-block;
+    }
+
+}
+.lable{
+    width: 140px;
+    line-height: 73px;
+    padding-left: 20px;
+    display: inline-block;
+    min-height: 73px;
+    color: #676767;
+    background-color: #F5F5F5;
+    flex-shrink: 0;
+    align-self: stretch;
+    vertical-align: middle;
+    font-size: 14px;
+    margin-right: 20px;
+    border-right:1px solid #E6E6E6;
+    border-bottom:1px solid #E6E6E6;
+
+
+}
+.lable:nth-last-child(1){
+    border-bottom: none;
+}
+.usseritem:nth-last-child(1){
+    border-bottom: none;
+}
+.left_til{
+    min-width: 180px;
+}
+
+.userup{
+    position: absolute;
+    line-height: 40px;
+    left: 150px;
+    width:230px;
+    height: 40px;
+    text-indent: 14px;
+
+    border: 1px solid #E6E6E6;
+    background-color: #fff;
+    input{
+        font-size: 14px;
+        background-color: #fff;
+        color: #343434;
+        vertical-align: top;
+        line-height: 40px;
+        height: 100%;
+    }
+}
+.userup i{
+    width:22px;
+    height: 22px;
+    margin-top: 10px;
+    margin-left: 26px;
+    background: url("../../../images/user01.png") -10px -107px no-repeat;
+}
+.xiugai{
+    color:#fe8f00;
+    line-height: 71px;
+    cursor: pointer;
+    float: left;
+}
+.userbtn{
+    width: 100px;
+    height: 40px;
+    margin:  0 20px 20px 30px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fe8f00;
+    border: 1px solid #d17702;
+    border-radius: 2px;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    box-shadow: none;
+}
+.userbtn:hover{
+    outline: none;
+    box-shadow: none;
+}
+.xiugaibtn {
+    width: 108px;
+    height: 42px;
+    line-height: 28px;
+    padding: 0;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    border: 1px solid #B52525;
+    background: -webkit-linear-gradient(#FF6162, #E44647); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#FF6162, #E44647); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#FF6162, #E44647); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#FF6162, #E44647); /* 标准的语法 */
+}
+.xiugaibtn1{
+    width: 108px;
+    height: 42px;
+    line-height: 28px;
+    padding: 0;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    border: 1px solid #2C64C3;
+    background: -webkit-linear-gradient(#66A3F4, #376CD6); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#66A3F4, #376CD6); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#66A3F4, #376CD6); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#66A3F4, #376CD6); /* 标准的语法 */
+}
+.xiugaibtn1:hover{
+
+    background: -webkit-linear-gradient(#487be1, #7982ff); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#487be1, #7982ff); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#487be1, #7982ff); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#487be1, #7982ff); /* 标准的语法 */
+}
+.xiugaibtn:hover {
+    background: -webkit-linear-gradient(#ff6767, #ed6b6b); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#ff6767, #ed6b6b); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#ff6767, #ed6b6b); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#ff6767, #ed6b6b); /* 标准的语法 */
+}

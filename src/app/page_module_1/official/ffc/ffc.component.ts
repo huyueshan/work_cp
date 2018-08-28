@@ -489,7 +489,7 @@ export class FFCofficialComponent implements OnInit {
 			index:9
 		},
 		'bdd9':{
-			title:'后三一码不定胆',
+			title:'不定胆',
 			ball:[0,1,2,3,4,5,6,7,8,9],
 			tab:this.ball_tab[1],
 			index:9
@@ -1988,6 +1988,10 @@ export class FFCofficialComponent implements OnInit {
 	}
 	
 	addrem(item){
+		//倍数锁
+		if (this.lock_multible) {
+			return false
+		};
 		this.multiple_input.value = parseInt(this.multiple_input.value);
 		this.radom_input.value = parseInt(this.radom_input.value);
 		if (item=='multiple') {
@@ -1996,8 +2000,12 @@ export class FFCofficialComponent implements OnInit {
 		}else if(item=='radom'){
 			this.radom_input.value = this.radom_input.value +1;
 		}
+		
 	}
 	minusrem(item){
+		if (this.lock_multible) {
+			return false
+		};
 		this.multiple_input.value = parseInt(this.multiple_input.value);
 		this.radom_input.value = parseInt(this.radom_input.value);
 		if (item=='multiple') {
@@ -2126,4 +2134,21 @@ export class FFCofficialComponent implements OnInit {
         }
         this.popoutInfo = Object.assign({},o,data);
     }
+    // 锁定倍数
+	public lock_multible :any=false;
+	lock_multiple(item){
+		let now_btn = $(item.target);
+		console.log($(item.target).hasClass('switch_btn'));
+		if (!$(item.target).hasClass('switch_btn')) {
+			now_btn = $(item.target).parent();
+		}
+		if(now_btn.hasClass('on')){
+			this.lock_multible = false;
+			$('#testinput').removeAttr('disabled');
+		}else{
+			this.lock_multible = true;
+			$('#testinput').attr({disabled: 'disabled'});
+		}
+
+	}
 }

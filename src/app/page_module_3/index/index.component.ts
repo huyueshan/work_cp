@@ -1,3 +1,4 @@
+import { LayoutModule } from './../../page_module_4/lottery/layout.module';
 import { Component, OnInit, ElementRef } from "@angular/core";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import userModel from "../../../status/user.model";
@@ -39,7 +40,7 @@ export class IndexComponent implements OnInit {
       top: "-329px",
       deftop: "-329px",
       overtop: "-492px",
-      link: ""
+      link: "/lottery/officialklc/bjkl8"
     },
     {
       name: "重庆时时彩",
@@ -48,7 +49,7 @@ export class IndexComponent implements OnInit {
       top: "-574px",
       deftop: "-574px",
       overtop: "-657px",
-      link: ""
+      link: "/lottery/officialssc/cq"
     },
     {
       name: "福彩3D",
@@ -57,7 +58,7 @@ export class IndexComponent implements OnInit {
       top: "-89px",
       deftop: "-89px",
       overtop: "-410px",
-      link: ""
+      link: "/lottery/officialdpc/fc3d"
     },
     {
       name: "北京Pk10",
@@ -66,7 +67,7 @@ export class IndexComponent implements OnInit {
       top: "-10px",
       deftop: "-10px",
       overtop: "-249px",
-      link: ""
+      link: "/lottery/officialpk10/bjpk"
     },
     {
       name: "幸运28",
@@ -75,7 +76,7 @@ export class IndexComponent implements OnInit {
       top: "-169px",
       deftop: "-169px",
       overtop: "-740px",
-      link: ""
+      link: "/lottery/creditpcdd/xy28"
     }
   ];
 
@@ -140,5 +141,12 @@ export class IndexComponent implements OnInit {
     }
     this.cursrank = i;
     this.listdata.top = 0;
+  }
+  
+  
+  linkrout(L) {
+    // 跳转路由
+    // let str = item.gxtog ? item.items[i].linkc : item.items[i].linko;
+    this.router.navigate([L]);
   }
 }

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import '../../images/common';
 html,body {height:100%;}
-$yellow:#fe8f00;
+$yellow:#C42136;
 .nav{
 	width:100%;
 	position:relative;
@@ -12,11 +12,11 @@ $yellow:#fe8f00;
 	-moz-user-select:none;
 	-ms-user-select:none;
 	user-select:none;
-	font-size:12px;
+	font-size:14px;
 }
 /* 颜色 */
 .orange_font{
-	color: #fe8f00;
+	color: #C42136;
 }
 
 /* 提示 */
@@ -33,7 +33,7 @@ $yellow:#fe8f00;
 	/* margin-top: -125%; */
 	transform:translateY(-110%) scale(0.5);
 	margin-left: -125px;
-	border:2px solid #fe8f00;
+	border:2px solid #C42136;
 	border-radius: 4px;
 	text-align: center;
 	transition:0.1s ease;
@@ -82,7 +82,7 @@ input[type="number"]{
 .check_ballplace{
 	height: 35px;
 	width: 100%;
-	background-color: #fff;
+	background-color: #F2F2F2;
 	clear: both;
 	>div{
 		height: 100%;
@@ -276,204 +276,35 @@ input[type="number"]{
 	}
 }
 .conbox{
-	width:100%;
-	float:left;
-	background:url("../../images/bg_02.jpg") center no-repeat;
-	background-size: cover;
+    width: 100%;
+    min-width: 1200px;
 	.content{
 		width:1200px;
 		position:relative;
 		margin:0 auto;
 		overflow:hidden;
-		margin-bottom:20px;
-		.gamenav{
-			width:100%;
-			float:left;
-			position:relative;
-			margin-top:30px;
-			.alltype{
-				width:240px;
-				height:100px;
-				float:left;
-				border-radius:4px;
-				overflow:hidden;
-				cursor:pointer;
-				.fltitle{
-					background:$yellow;
-					width:40px;
-					color:#fff;
-					font-size:14px;
-					text-align:center;
-					line-height:20px;
-					height:100px;
-					float:left;
-					padding:10px 10px;
-				}
-				.frimg{
-					background:#333333;
-					width:200px;
-					text-align:center;
-					float:left;
-					line-height:100px;
-					img{
-						height:83px;
-					}
-				}
-			}
-			.gametime{
-				width:340px;
-				height:100px;
-				float:left;
-				border-radius:4px;
-				overflow:hidden;
-				padding:25px;
-				background:#333333;
-				margin-left:20px;
-				.fltitle{
-					width:40px;
-					color:#fff;
-					font-size:12px;
-					float:left;
-					width:125px;
-					height:100%;
-					p{
-						width:100%;
-						color:#fff;
-						margin:0;
-						line-height:20px;
-						span{
-							color:$yellow;
-							padding:0 3px;
-						}
-					}
-				}
-				.frtime{
-					text-align:center;
-					float:right;
-					margin:0px;
-					padding:0px;
-					li{
-						float:left;
-						list-style:none;
-						width: 50px; height: 50px;
-						background: url('../../images/sscsprites.png') -53px -0;
-						line-height:50px;
-						text-align:center;
-						color:#fff;
-						font-size:16px;
-					}
-				}
-			}
-			.gameresult{
-				width:580px;
-				height:100px;
-				float:right;
-				border-radius:4px;
-				padding:25px;
-				background:#333333;
-				.fltitle{
-					width:40px;
-					color:#fff;
-					font-size:12px;
-					float:left;
-					width:125px;
-					height:100%;
-					p{
-						width:100%;
-						color:#fff;
-						margin:0;
-						line-height:20px;
-						span{
-							color:$yellow;
-							padding:0 3px;
-						}
-					}
-				}
-				.frnumber{
-					float:left;
-					margin:0px;
-					padding:0px;
-					li{
-						float:left;
-						list-style:none;
-						width: 53px; height: 53px;
-						background: url('../../images/sscsprites.png') -0 -0;
-						line-height:50px;
-						text-align:center;
-						color:#fff;
-						font-size:22px;
-						margin-right:10px
-					}
-				}
-				.line{
-					float:left;
-					width: 2px; height: 52px;
-					background: url('../../images/sscsprites.png') -161px -0;
-					margin-left:10px;
-				}
-				.currresult{
-					width:40px;
-					color:#fff;
-					font-size:12px;
-					float:right;
-					width:60px;
-					height:100%;
-					.pt{
-						width:100%;
-						color:$yellow;
-						font-size:14px;
-						margin:0;
-						text-align:center;
-						margin-top:5px;
-					}
-					.pimg{
-						text-align:center;
-						width:100%;
-						height:15px;
-						margin:0;
-						margin-top:5px;
-						span{
-							display: inline-block;
-							width: 14px; height: 15px;
-							background: url('../../images/sscsprites.png') -141px -36px;
-						}
-					}
-				}
-			}
-		}
+        background-color: #342840;
+        margin-bottom: 40px;
 		.sscorder{
 			width:100%;
 			float:left;
 			position:relative;
-			margin-top:20px;
+			margin-top:10px;
 			/* overflow:hidden; */
 			.sscleft{
-				width:900px;
+				width:100%;
 				float:left;
 				/* overflow:hidden; */
-				border-radius:4px;
 				.tabbox{
 					height:50px;
 					width:100%;
 					float:left;
-					background:#333;
-					.pointl{
-						float:left;
-						width:50px;
-						height:50px;
-						line-height:50px;
-						text-align:center;
-						padding-top: 5px;
-						cursor:pointer;
-						i{
-							width: 20px; height: 20px;
-							background: url('../../images/sscsprites.png') -120px -111px;
-						}
-					}
+					background-color: #170E1F;
+                    padding-right: 20px;
 					.typetab{
 						float:left;
-						max-width:690px;
-						width: 100%;
+						// max-width:690px;
+						// width: 100%;
 						/* overflow:hidden; */
 						height:50px;
 						li{
@@ -486,47 +317,34 @@ input[type="number"]{
 							cursor:pointer;
 						}
 						.active{
-							background:#3d3d3d;
-						}
-					}
-					.pointr{
-						float:left;
-						width:50px;
-						height:50px;
-						line-height:50px;
-						text-align:center;
-						padding-top: 5px;
-						cursor:pointer;
-						i{
-							width: 20px; height: 20px;
-							background: url('../../images/sscsprites.png') -100px -111px;
+                            background: linear-gradient(to top, #941927, #e22137);
 						}
 					}
 					.totaltype{
-						height:25px;
-						float:right;
-						border-radius:2px;
-						border:1px solid #fff;
-						overflow:hidden;
-						margin-right:20px;
-						margin-top:13px;
+                        width: 110px;
+                        height: 26px;
+                        float: right;
+                        margin-top: 12px;
+                        border: 1px solid white;
+                        color: black;
+                        background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+                        overflow: hidden;
 						li{
 							float:left;
-							padding:0px 10px;
-							line-height:23px;
+                            width: 50%;
+                            height: 100%;
+                            text-align: center;
+							line-height:22px;
 							cursor:pointer;
-							color:#fff;
 							a{
-								color:#fff;
+                                color: black;
 								text-decoration: none;
 							}
 						}
-						.active{
-							color:#333;
-							background:#fff;
+						.active,li:hover{
+                            background: linear-gradient(to top, #941927, #e22137);
 							a{
-								color:#333;
-								text-decoration: none;
+                                color: white;
 							}
 						}
 					}
@@ -534,9 +352,10 @@ input[type="number"]{
 				.tabcon{
 					width:100%;
 					float:left;
-					background:#3d3d3d;
+					background:#F2F2F2;
 					overflow:hidden;
-					padding:20px 40px;
+					padding:20px;
+                    border-bottom: 1px solid #D7D1D1;;
 					.tabshow{
 						width:100%;
 						float:left;
@@ -545,7 +364,7 @@ input[type="number"]{
 							float:left;	
 							margin-bottom:10px;
 							.labtit{
-								color:#fff;
+								color:black;
 								float:left;
 								width:80px;
 								height:30px;
@@ -562,15 +381,15 @@ input[type="number"]{
 								line-height:30px;
 								text-align:center;
 								font-size:14px;
-								color:#fff;
+								color:black;
 								float:left;
-								background:#525151;
+                                background: linear-gradient(to top, #d7d5d5, #fdfdfd);
 								margin-left:10px;
-								border-radius:4px;
+								border: 1px solid #D7D1D1;
 							}
 							.active{
-								background:$yellow;
-								color:#333;
+                                color: white;
+                                background: linear-gradient(to top, #941927, #e22137);
 							}
 						}
 						.navcon.en{
@@ -581,23 +400,26 @@ input[type="number"]{
 						}
 						.tip{
 							font-size:12px;
-							color:#fff;
+							color:black;
 							width:100%;
 							margin-top:10px;
-							float:left;
+                            float:left;
 						}
 					}
 				}
 				.chooseno{
 					width:100%;
 					height:40px;
+                    line-height: 40px;
 					float:left;
 					padding-left:40px;
-					background:#fff;
-					padding-right:30px;
+					background:#F2F2F2;
+                    padding-right:30px;
+                    .info{
+                        float: left;
+                    }
 					.helpbox{
-						width:100%;
-						line-height:40px;
+                        float: right;
 						.hot_lost{
 							display: inline-block;
 							float:left;
@@ -623,50 +445,42 @@ input[type="number"]{
 							float:left;
 							position:relative;
 							padding-left:13px;
-							i{
-								width: 8px; height: 17px;
-								background: url('../../images/sscsprites.png') -141px -72px;
-								position:absolute;
-								top:11px;
-								left:0px;
-								cursor: pointer;
-							}
 						}
 
-						.example{
-							float:right;
-							position:relative;
-							padding-left:13px;
-							margin-left:20px;
+						// .example{
+						// 	float:right;
+						// 	position:relative;
+						// 	padding-left:13px;
+						// 	margin-left:20px;
 
 							
-							.tips span{
-								/* white-space:nowrap; */
-							}
-							.i1{
-								width: 8px; height: 17px;
-								background: url('../../images/sscsprites.png') -141px -72px;
-								position:absolute;
-								top:11px;
-								left:0px;
-								cursor:pointer;
-							}
-							.i2{
-								width: 16px; height: 18px;
-								background: url('../../images/sscsprites.png') -141px -18px;
-								position:absolute;
-								top:11px;
-								left:0px;
-								cursor:pointer;
-							}
-						}
+						// 	.tips span{
+						// 		/* white-space:nowrap; */
+						// 	}
+						// 	.i1{
+						// 		width: 8px; height: 17px;
+						// 		background: url('../../images/sscsprites.png') -141px -72px;
+						// 		position:absolute;
+						// 		top:11px;
+						// 		left:0px;
+						// 		cursor:pointer;
+						// 	}
+						// 	.i2{
+						// 		width: 16px; height: 18px;
+						// 		background: url('../../images/sscsprites.png') -141px -18px;
+						// 		position:absolute;
+						// 		top:11px;
+						// 		left:0px;
+						// 		cursor:pointer;
+						// 	}
+						// }
 					}
 				}
 				.chooselist{
 					width:100%;
 					float:left;
 					padding-left:40px;
-					background:#fff;
+					background:#F2F2F2;
 					padding-right:30px;
 					.leftnum{
 						width:560px;
@@ -677,9 +491,10 @@ input[type="number"]{
 							float:left;
 							.name{
 								float:left;
-								width: 65px; height: 26px;
-								background: url('../../images/sscsprites.png') -0 -53px;
-								color:#333;
+                                width: 65px;
+                                height: 26px;
+								// background: url('../../images/sscsprites.png') -0 -53px;
+								color:black;
 								font-size:12px;
 								text-align:center;
 								line-height:24px;
@@ -739,10 +554,14 @@ input[type="number"]{
 								}
 							}
 						}
-					}
+                    }
+                    
+
+                    // TODO:  球样式调整位置！
 					.numright{
 						float:right;
-						padding:10px 0px;
+                        padding:10px 0px;
+                        margin-right: 150px;
 						li{
 							float:left;
 							width: 38px; height: 38px;
@@ -771,13 +590,13 @@ input[type="number"]{
 					}
 				}
 				.elsebg{
-					background:#eeeeee;
+					background:#f2f2f2;
 				}
 				.sumBtn_box{
 					height: 350px;
 					/* margin-top: 236px; */
 					clear: both;
-					background-color: #fff;
+                    background-color: #f2f2f2;
 					.left_input{
 						width: 700px;
 						height: 85%;
@@ -804,7 +623,7 @@ input[type="number"]{
 						.rt_btn{
 							margin: 0 auto;
 							margin-top: 15px;
-							background-color: #fe8f00;
+							background-color: #C42136;
 							position: relative;
 						}
 						.rt_btn:nth-child(1){
@@ -835,7 +654,8 @@ input[type="number"]{
 					width:100%;
 					float:left;
 					padding:20px 40px;
-					background:#fff;
+					background:#f2f2f2;
+                    border-bottom: 1px solid #D6D6D6;
 					.funleft{
 						float:left;
 						width:650px;
@@ -852,7 +672,7 @@ input[type="number"]{
 									color:#333;
 									font-size:12px;
 									float:left;
-									min-width: 25px;
+									min-width: 27px;
 								}
 								.btnaddrem{
 									width:15px;
@@ -880,16 +700,16 @@ input[type="number"]{
 									.range_line{
 										height: 6px;
 										margin-top: 9px;
-										border: 1px solid #fe8f00;
-										background-color: #fe8f00;
+										border: 1px solid #C42136;
+										background-color: #C42136;
 										border-radius: 4px;
 										position: relative;
 										.range_tag{
 											margin-top: -5px;
 											width: 18px;
 											height: 13px;
-											border: 1px solid #fe8f00;
-											background-color: #fe8f00;
+											border: 1px solid #C42136;
+											background-color: #C42136;
 											border-radius: 4px;
 											cursor: pointer;
 											position: absolute;
@@ -995,6 +815,7 @@ input[type="number"]{
 								border-bottom:1px solid #CCCCCC;
 								line-height:30px;
 								display: flex;
+
 								.lot_type{
                                     text-align: left;
 								}
@@ -1016,6 +837,9 @@ input[type="number"]{
 							li>div{
 								display: inline-block;
 								text-align: center;
+							    overflow:hidden;
+							    text-overflow:ellipsis;
+							    white-space:nowrap;
 								width: 20%;
 							}
 						}
@@ -1134,292 +958,3 @@ input[type="number"]{
 .mb10{
 	margin-bottom:10px;
 }
-input[type="range"] {
-  display: inline-block;
-  position: relative;
-  width: 90px;
-  height: 22px;
-  background: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  outline: none;
-  margin:0px 5px;
-}
-
-/*range中心圆点*/
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 12px;
-  width: 18px;
-  border-radius: 5px;
-  background-color: #fe8f00;
-  cursor: pointer;
-  margin-top: -4px;
-}
-
-input[type="range"]::-moz-range-thumb {
-  -moz-appearance: none;
-  appearance: none;
-  height: 12px;
-  width: 18px;
-  border-radius: 5px;
-  background-color: #fe8f00;
-  cursor: pointer;
-}
-input[type="range"]::-ms-thumb {
-  -ms-appearance: none;
-  appearance: none;
-  height: 12px;
-  width: 18px;
-  border-radius: 5px;
-  background-color: #fe8f00;
-  cursor: pointer;
-  margin-top: 1px;
-}
-input[type="range"]::slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 12px;
-  width: 18px;
-  border-radius: 5px;
-  background-color: #fe8f00;
-  cursor: pointer;
-  margin-top: -6px;
-}
-/*range轨道*/
-input[type="range"]::-webkit-slider-runnable-track {
-  width: 100px;
-  height: 4px;
-  background-color: #fe8f00;
-  border-radius: 2px;
-  cursor: pointer;
-}
-input[type="range"]::-moz-range-track {
-  width: 100px;
-  height: 4px;
-  background-color: #fe8f00;
-  border-radius: 2px;
-  cursor: pointer;
-}
-input[type="range"]::-ms-track {
-  width: 100px;
-  height: 4px;
-  border-color: transparent;
-  color: #fe8f00;
-  border-radius: 2px;
-  background: #fe8f00;
-  cursor: pointer;
-}
-
-.flex-r {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-content: center;
-  align-items: center;
-}
-.flex-c {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-content: flex-start;
-  align-items: flex-start;
-}
-// 右边信息区域样式开始
-.infobox {
-  width: 280px;
-  float:right;
-  .userbtngroup{
-  	height: 35px;
-  	display: flex;
-  	justify-content: space-between ;
-  	margin-top: 20px;
-  	.money_btn{
-  		height: 30px;
-  		width: 70px;
-  		text-align: center;
-  		vertical-align: middle;
-  		line-height: 28px;
-  		background-color: #525151;
-  		border:1px solid #A6A6A6;
-  		border-radius: 3px;
-  		cursor:pointer;
-  		box-sizing:border-box;
-
-  	}
-  }
-}
-
-.infoitem {
-  width: 100%;
-  border-radius: 4px;
-  overflow: hidden;
-  .top_til{
-	height: 50px;
-	width: 100%;
-	background-color: #333333;
-	
-	/* -webkit-background-size: 20px; */
-	/* background-size: 20px; */
-  }
-  .til_ico{
-  	display: inline-block;
-  	width: 32px;
-  	height: 32px;
-  	margin-top: 8px;
-  	margin-left: 20px;
-  	
-  }
-  .til_ico_history{
-  	background: #333333 url(../../images/sscsprites.png) 0px -79px no-repeat;
-  }
-  .til_ico_rank{
-  	background: #333333 url(../../images/sscsprites.png) -32px -79px no-repeat;
-  }
-  .til_font{
-  	display: inline-block;
-  	vertical-align: top;
-  	color: #ddd;
-  	margin-left: 10px;
-  	line-height: 50px;
-  	font-size: 16px;
-  	height: 100%;
-  }
-}
-
-.userinfobox {
-  padding: 25px 25px;
-  color: white;
-  background-color: #333;
-
-}
-.userinfo {
-  padding-bottom: 20px;
-}
-.userinfo i {
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  overflow: hidden;
-  
-}
-.userinfo i img{
-	width: 100%;
-	height: 100%;
-	object-fit:cover;
-}
-.userinfo span {
-  padding-left: 20px;
-  font-size: 18px;
-}
-.userbtngroupbtngroup {
-  width: 100%;
-  padding-top: 16px;
-  justify-content: space-between;
-}
-.userbtngroupbtngroup span {
-  width: 70px;
-  height: 30px;
-  line-height: 28px;
-  text-align: center;
-  background-color: #525151;
-  color: #ccc;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-}
-.resultinfobox {
-  width: 100%;
-  padding-top: 20px;
-}
-.resultinfo,
-.tabtn {
-  width: 100%;
-}
-.tabtn span {
-  width: 50%;
-  height: 50px;
-  font-size: 16px;
-  line-height: 50px;
-  text-align: center;
-  color: white;
-  cursor:pointer;
-  background-color: #333;
-}
-.tabtn span.btnactive {
-  color: white;
-  border-color: #fe8f00;
-  background-color: #fe8f00;
-}
-.resultinfo .resultul{
-	width: 100%;
-}
-.resultinfo .num_til{
-	width: 20px;
-	height: 20px;
-	border: 1px solid transparent;
-	border-radius: 50%;
-	background-color: #FE8F00;
-	line-height: 18px;
-	text-align: center;
-	margin-top: 2px;
-	color: white;
-}
-.resultinfo .font_orange{
-	color: #FE8F00;
-	font-weight: bold;
-}
-.resultinfo .name_font{
-	margin-left: -40px;
-}
-.resultul .resultitem {
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  font-size: 12px;
-  justify-content: space-between;
-  padding: 0 25px;
-  background-color: #eee;
-  border-bottom: 1px solid white;
-}
-.resultitem:last-child {
-  border-bottom: none;
-}
-.querybox {
-  padding: 5px 20px;
-  justify-content: flex-end;
-  background-color: #eee;
-}
-select#qishu {
-  width: 100px;
-  height: 30px;
-  line-height: 28px;
-  border-color: #ccc;
-}
-.querybox,
-.resultbox,
-.resulttable {
-  width: 100%;
-}
-.resulttable {
-  height: 340px;
-  background-color: white;
-  overflow-y: scroll;
-}
-.resulttable table {
-  table-layout: fixed;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-}
-.resulttable table td {
-  text-align: left;
-  padding-left: 8px;
-  height: 30px;
-  border: 1px solid #ccc;
-}
-// 右边信息区域样式结束
-

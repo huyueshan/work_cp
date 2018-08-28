@@ -1,6 +1,6 @@
 <div class="flex-c container">
     <header>
-        <app-header></app-header>
+        <app-header [username]="'test08'" [curpath]="'index'"></app-header>
     </header>
     <main>
         <div class="flex-c content">
@@ -10,7 +10,7 @@
             <div class="flex-c gamesbox">
                 <div class="games">
                     <ul class="flex-r">
-                        <li class="flex-c" *ngFor="let item of cpdata; let i = index" (mouseenter)="entercp(i)" (mouseleave)="leavecp(i)">
+                        <li class="flex-c" *ngFor="let item of cpdata; let i = index" (mouseenter)="entercp(i)" (mouseleave)="leavecp(i)" (click)="linkrout(item.link)">
                             <span class="flex-c cpitem">
                                 <i [ngStyle]="{'background-position-y': item.top,'width':item.width,'height':item.height}"></i>
                                 <span>{{item.name}}</span>

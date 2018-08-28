@@ -1,0 +1,791 @@
+*{
+    box-sizing: border-box;
+}
+.flex-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+.flex-r-l {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: left;
+    align-items: left;
+}
+.flex-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+table td,
+table th {
+    border: 1px solid #ccc;
+    height: 40px;
+    line-height: 38px;
+    text-align: center;
+}
+
+.mainbox {
+    width: 98%;
+    margin: 10px 1%;
+    position: relative;
+    align-items: flex-start;
+    padding: 30px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+
+.itemlabel {
+    width: 168px;
+    padding-top: 8px;
+    padding-right: 30px;
+    text-align: right;
+    font-size: 14px;
+    line-height: 40px;
+}
+
+
+
+.bankbox {
+  width: 100%;
+  height: 554px;
+  padding: 10px 30px;
+  justify-content: flex-start;
+}
+.bankhead {
+  width: 100%;
+  height: 44px;
+  padding: 5px 0;
+  font-size: 24px;
+  font-weight: 500;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+.bankhead p {
+  padding-left: 20px;
+  font-size: 14px;
+}
+.bankcontent {
+  position: relative;
+  padding: 15px 0;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+.bankitembox{
+  padding:8px;
+}
+.bankitem {
+  width: 300px;
+  height: 115px;
+  font-size: 12px;
+  padding: 5px 9px;
+  background-color: white;
+  border:1px solid transparent;
+  border-radius: 5px;
+  color: white;
+  background-color: #F6803A;
+  .info_box{
+    width: 123px;
+  }
+  .card_num{
+    font-size: 20px;
+    border-bottom: 1px solid #FA9355;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.bankitem i {
+  width: 60px;
+  height: 40px;
+  background: url("../../../images/user_center/bank_pinan.png") center center no-repeat;
+  margin-right: 10px;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.jianshe{
+  background-color: #4484DE;
+  .card_num{
+    border-bottom: 1px solid #5D95E6;
+
+  }
+  i{
+    background: url("../../../images/user_center/jianshe.png") center center no-repeat;
+    -webkit-background-size: contain;
+    background-size: contain;
+  }
+}
+.bold {
+  font-weight: bold;
+}
+.cardtype {
+  padding: 3px;
+  /* background-color: #B61010; */
+  margin-left: 5px;
+}
+.bankinfo {
+  align-items: flex-end;
+}
+.bankinfo {
+  line-height: 22px;
+}
+.del {
+  width: 40px;
+  height: 20px;
+  line-height: 18px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 9px;
+  cursor: pointer;
+}
+.del:hover{
+  color: #fff;
+  border-color: #fff;
+}
+.add {
+  width: 115px;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+  cursor: pointer;
+  background-color: #EAEFF3;
+  border:2px dashed #DEDFE1;
+}
+.add strong {
+  font-size: 60px;
+  line-height: 95px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+input[type="date"] {
+    width: 140px;
+    height: 30px;
+    line-height: 20px;
+    padding: 5px 0 4px 5px;
+    border: 1px solid #ccc;
+}
+
+#money,
+#password {
+    width: 125px;
+    height: 40px;
+    line-height: 38px;
+    padding-left: 5px;
+    border: 1px solid #ccc;
+}
+
+.btntab {
+    justify-content: flex-start;
+}
+
+.btntab span {
+    padding: 30px 8px 30px 0;
+}
+
+.btntab button {
+    font-size: 14px;
+    height: 40px;
+    background: -webkit-linear-gradient(#ff6161, #e24545); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#ff6161, #e24545); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#ff6161, #e24545); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#ff6161, #e24545); /* 标准的语法 */
+    border: 1px solid #b52525;
+    border-radius: 2px;
+    color: white;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.btntab button:hover {
+    outline: none;
+    box-shadow: none;
+}
+
+table td.alignr {
+    text-align: right;
+    padding-right: 10px;
+}
+
+table td.alignl {
+    text-align: left;
+    padding-left: 10px;
+}
+
+// 添加银行卡弹窗样式
+#addcontent {
+    position: absolute;
+    top: -96px;
+    left: 180px;
+    width: 500px;
+    height: 520px;
+    font-size: 14px;
+    color: #333;
+    background-color: white;
+    box-shadow: 0 0 6px 2px #B61010;
+    z-index: 99;
+}
+
+#addcontent,
+.addform {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.addform {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.addgead {
+    width: 100%;
+    height: 50px;
+    line-height: 48px;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+.addgead span {
+    width: 450px;
+    text-align: center;
+}
+
+.addgead i {
+    height: 50px;
+    font-size: 36px;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+}
+
+.formitem {
+    height: 50px;
+    justify-content: flex-start;
+}
+
+.formitem label {
+    width: 160px;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.formitem input {
+    width: 240px;
+    height: 32px;
+    line-height: 30px;
+    padding-left: 8px;
+}
+
+.formitem input[name="check"] {
+    width: 16px;
+    height: 16px;
+}
+
+.formitem input#note {
+    width: 130px;
+}
+
+.note,
+.check {
+    width: 240px;
+}
+
+.check {
+    font-size: 12px;
+    justify-content: flex-start;
+}
+
+.check p {
+    padding-left: 5px;
+}
+
+.getnote,
+.btngroup span {
+    width: 90px;
+    height: 30px;
+    line-height: 28px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.getnote:hover,
+.btngroup span:hover {
+    color: white;
+    background-color: #B61010;
+}
+
+.btngroup span:last-child {
+    margin-left: 8px;
+}
+
+.btngroup {
+    width: 100%;
+    padding-top: 30px;
+    justify-content: center;
+}
+
+.color_y {
+    color: #B61010;
+}
+
+.shade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 19;
+}
+
+// ======查看流水样式=========
+.flowbox {
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #f5f5f5;
+    width: 98%;
+    margin: 10px 1%;
+}
+
+.flowboxtop {
+    width: 100%;
+    padding-left: 20px;
+    padding-top: 10px;
+    border: 1px solid #ccc;
+    border-bottom: none;
+}
+
+.topinfo {
+    font-size: 12px;
+    line-height: 30px;
+}
+
+.flowbox .btntab span {
+    padding: 8px 8px 20px 0;
+}
+
+.flowbox .btntab button {
+    font-size: 12px;
+    height: 30px;
+    line-height: 28px;
+    background: -webkit-linear-gradient(#ff6161, #e24545); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#ff6161, #e24545); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#ff6161, #e24545); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#ff6161, #e24545); /* 标准的语法 */
+    border: 1px solid #b52525;
+    color: #fff;
+    border-radius: 2px;
+    padding-top: 0;
+}
+
+.flowbox .btntab button.btnactive,
+.flowbox .btntab button:hover {
+    background-color: #B61010;
+    border: 1px solid #d17702;
+    color: white;
+}
+
+.tablebox {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-top: none;
+    overflow-x: scroll;
+}
+
+.tablebox th,
+.tablebox td {
+    text-align: center;
+}
+
+.tablebox td {
+    height: 80px;
+}
+
+.tablebox th {
+    font-weight: bold;
+}
+
+.datecell span:first-child {
+    border-bottom: 1px solid #ccc;
+}
+
+.tablebox table tr {
+    background-color: white;
+}
+
+.tablebox table tr:nth-of-type(even) {
+    background-color: #f5f5f5;
+}
+
+.tablebox table tr .color11 {
+    background-color: #ffe7c8;
+}
+
+.tablebox table tr .color22 {
+    background-color: #ffe0e0;
+}
+
+.tablebox table tr .color33 {
+    background-color: #edfbe7;
+}
+
+.color_r {
+    color: #fe0000;
+}
+
+.bottinfo {
+    font-size: 12px;
+    line-height: 30px;
+    padding: 20px 30px;
+}
+
+.warning {
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+.warning p {
+    padding: 0 10px;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #B61010;
+    color: white;
+    border-radius: 2px;
+}
+
+// ==================
+.querycontent {
+    width: 100%;
+    height: 50px;
+    padding: 0 10px;
+    /* border: 1px solid #ccc; */
+    border-radius: 3px;
+    /* background-color: #f5f5f5; */
+}
+
+.query_item {
+    flex: none;
+    padding-right: 20px;
+}
+
+.querybtn {
+    display: inline-block;
+    width: 70px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+    background-color: #B61010;
+    border: 1px solid #d17702;
+    border-radius: 2px;
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+
+.rbtn .querybtn:last-child {
+    margin-left: 8px;
+}
+
+.tablebox1 {
+    width: 100%;
+    padding: 10px 0 0;
+}
+
+.tablewrap {
+    width: 100%;
+    overflow-x: scroll;
+    border: 1px solid #ccc;
+}
+
+.tablewrap table td {
+    height: 40px;
+}
+
+
+
+
+
+*{
+    box-sizing: border-box;
+}
+.flex-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+.flex-r-l {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: left;
+    align-items: left;
+}
+.flex-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.bg_1 {
+    background-color: #f5f5f5;
+}
+
+.container {
+    width: 100%;
+    padding: 0;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+input {
+    width: 132px;
+    height: 30px;
+    line-height: 20px;
+    padding: 5px 0 4px 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    margin-top: 0;
+}
+
+#wrap {
+    margin-right: 5px;
+}
+
+select {
+    width: 100px;
+    height: 30px;
+    line-height: 20px;
+    border: 1px solid #ccc;
+}
+
+.querycontent {
+    width: 100%;
+    height: 50px;
+    padding: 0 10px;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 3px; */
+    /* background-color: #f5f5f5; */
+}
+.querycontent>span,.querycontent>span>span{
+     margin-right: 15px;
+}
+.querycontent select{
+    min-width: 120px;
+    height: 28px;
+}
+.querycontent label{
+    color: #989898;
+}
+.querybtn {
+    width: 70px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+    color: white;
+    background: -webkit-linear-gradient(#D63C3E, #B52036); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#D63C3E, #B52036); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#D63C3E, #B52036); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#D63C3E, #B52036); /* 标准的语法 */
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+
+
+.tablebox {
+    width: 100%;
+    padding: 10px 0 0;
+}
+
+.tablewrap {
+    width: 98%;
+    margin: 0 auto;
+    overflow-x: hidden;
+    
+    border: 1px solid #F5F5F5;
+    border-top: 2px solid #636363;
+}
+#get_more{
+    height: 40px;
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+}
+#get_more td{
+    background: url("../../../images/user_center/more.png") center left 47% no-repeat ;
+    text-align: center!important;
+}
+#table {
+    table-layout: fixed;
+    /* border: 1px solid #ccc; */
+    border-collapse: collapse;
+    width: 100%;
+    border: none;
+}
+
+#table th,
+    {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    color: #656565;
+}
+
+#table th,
+#table td {
+    text-align: left;
+    text-indent: 15px;
+    height: 40px;
+    border: none;
+    /* border: 1px solid #ccc; */
+}
+#table td{
+   color: #333333 
+}
+#table tr:nth-child(odd){
+   background-color: #F5F5F5;
+}
+#table tr:nth-last-child(1){
+    cursor: pointer;
+    
+}
+.page {
+    align-self: center;
+}
+.total_tr {
+    font-size: 14px;
+    color: #fe8f00;
+    background-color: #F1F1F1;
+
+    td{
+        text-align: center!important;
+
+    }
+}
+.total_tr:nth-last-child(1){
+    box-shadow: 0px 0px 12px #999;
+}
+
+.font_bold{
+    color: #333333;
+    font-weight: bold;
+}
+.info {
+    padding-left: 1%;
+    height: 54px;
+    line-height: 54px;
+    font-size: 10px;
+    color: #B90F0F;
+    font-weight: bold;
+}
+
+.page {
+    align-self: center;
+}
+.checkboxs {
+    width: 98%;
+    padding: 10px 0 0;
+    margin: 0 1%;
+    .checkcontent {
+        width: 100%;
+        border: 1px solid #ccc;
+        font-size: 12px;
+        line-height: 26px;
+    }
+
+    .checkwrap {
+        color: #333;
+        padding: 0 14px;
+    }
+
+    .checkcontent_top {
+        height: 40px;
+        border-bottom: 1px solid #E6E6E6 ;
+        background-color: #f5f5f5;
+        justify-content: flex-start;
+    }
+
+    .checkcontent_top,
+    .checksbox {
+        /* padding: 5px 10px; */
+    }
+
+    .checksbox {
+        width: 100%;
+    }
+
+    .checksbox div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex-grow: 20px;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+    }
+    .checksbox>div:nth-child(1){
+        border-bottom: 1px solid #E6E6E6 ;
+    }
+    .check_box_r{
+        padding-left: 13px;
+        display: flex;
+        color:#333333;
+    }
+    .checktitle {
+        width: 100px;
+        min-height: 50px;
+        color: #676767;
+        background-color: #F5F5F5;
+        flex-shrink: 0;
+        align-self: stretch;
+        vertical-align: middle;
+        font-size: 14px;
+        display: flex;
+        justify-content:center;
+        align-items:Center;
+    }
+    .checktitle_top{
+        height: 40px;
+        min-height: 40px;
+        border-bottom: 1px solid #E6E6E6 ;
+        /* margin-right: 14px; */
+    }
+
+}

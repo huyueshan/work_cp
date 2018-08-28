@@ -1,0 +1,186 @@
+<div class="flex-c container">
+  <div class="flex-r subbox bg_1">
+    <span class="btn1" [ngClass]="{bg_y:btninfo=='推广链接'}" (click)="btninfo='推广链接'">{{now_lang.User_center_c.Extension_link}}</span>
+    <span class="btn1" [ngClass]="{bg_y:btninfo=='推广管理'}" (click)="btninfo='推广管理'">{{now_lang.User_center_c.Extension_manage}}</span>
+  </div>
+
+  <!-- ==推广链接-->
+  <div class="flex-c formbox" *ngIf="btninfo =='推广链接'">
+    <div class="row_box flex-r-l">
+      <span class="flex-r formitem">
+        <label for="domainname">{{now_lang.User_center_c.Extension_station}}：</label>
+        <select id="domainname" name="domainname" [(ngModel)]="formdata.domainname">
+          <option value="本站" selected>本站</option>
+          <option value="option1">option1</option>
+          <option value="option2">option2</option>
+          <option value="option3">option3</option>
+        </select>
+      </span>
+      <span class="flex-r formitem">
+        <label for="type">{{now_lang.User_center_c.User_type}}：</label>
+        <select id="type" name="type" [(ngModel)]="formdata.type">
+          <option value="会员" selected>{{now_lang.User_center_c.Menber}}</option>
+          <option value="option1">option1</option>
+          <option value="option2">option2</option>
+          <option value="option3">option3</option>
+        </select>
+      </span>
+      <span class="flex-r formitem">
+        <label for="validate">{{now_lang.User_center_c.Link_validity_period}}：</label>
+        <select id="validate" name="validate" [(ngModel)]="formdata.validate">
+          <option value="一天" selected>{{now_lang.User_center_c.One_day}}</option>
+          <option value="option1">option1</option>
+          <option value="option2">option2</option>
+          <option value="option3">option3</option>
+        </select>
+      </span>
+    </div>
+
+    <span class="flex-r formitem">
+      <strong class="settitle">
+        {{now_lang.User_center_c.Reward_gro_set}}
+      </strong>
+    </span>
+    <span class="flex-r formitem">
+      <label for="money">{{now_lang.User_center_c.Set_up_a_bonus}}：</label>
+      <select id="money" name="money" [(ngModel)]="formdata.money">
+        <option value="选择其他资金组" selected>{{now_lang.User_center_c.Choose_other_moneygro}}</option>
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+      </select>
+      <p class="warning">* {{now_lang.User_center_c.tips16}}</p>
+    </span>
+
+    <span class="flex-r formitem">
+      <span class="flex-r linkbtn ">
+        <button class="btn1 bg_y querybtn_big">{{now_lang.User_center_c.Generating_link}}</button>
+      </span>
+    </span>
+  </div>
+  <!-- ==推广管理-->
+  <div class="flex-c tablebox" *ngIf="btninfo =='推广管理'">
+    <div class=" flex-c">
+      <div class="tablewrap">
+        <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4"   align="center">
+          <tr class="bg_1">
+            <th style="width: 250px">{{now_lang.User_center_c.Promotion_channel_link}}</th>
+            <th>{{now_lang.User_center_c.Promotion_channel_link}}</th>
+            <th>{{now_lang.User_center_c.Regist_number}}</th>
+            <th>{{now_lang.User_center_c.Opening_type}}</th>
+            <th>{{now_lang.User_center_c.State}}</th>
+            <th style="width: 150px">{{now_lang.User_center_c.State}}</th>
+            <th>{{now_lang.User_center_c.Return_point_rate}}</th>
+            <th style="width: 140px">{{now_lang.User_center_c.Operation}}</th>
+          </tr>
+          <tr *ngFor="let item of regisdatalist; let i = index">
+            <td>
+              <a class="color_y" href="javascript:;">{{item.link}}</a>
+            </td>
+            <td>{{item. callnumb}}</td>
+            <td>{{item.mannumb}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.status}}</td>
+            <td>{{item.time}}</td>
+            <td>{{item.rebates}}</td>
+            <td>
+              <span class="color_y padr" (click)="show(item, 0)">{{now_lang.User_center_c.Operation}}</span>
+              <span class="color_y padr" (click)="show(item, 1)">{{now_lang.User_center_c.Edit}}</span>
+              <span class="color_y" (click)="del(i)">{{now_lang.User_center_c.Delet}}</span>
+            </td>
+          </tr>
+          <tr id="get_more" >
+              <td colspan='8' (click)="get_more()">
+                加载更多
+              </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- <div class="page" shark-pager [currentPage]="pagination.page" [totalPage]="pagination.totalPage" [gopage]="pagination.gopage"
+        [hl]="hl" [segmentSize]="pagination.segmentSize" [startFrom]="pagination.startFrom" (onPageChanged)="onPageChanged($event);">
+      </div> -->
+    </div>
+
+    <div id="addcontent" *ngIf="infobox" class="flex-c">
+      <div class="flex-r addgead">
+        <span>{{now_lang.User_center_c.Details}}</span>
+        <i (click)="hide()"> &times; </i>
+      </div>
+      <div class="contentbox">
+        <div class="flex-c content">
+          <div class="row_box flex-r-l">
+            <div class="flex-r contentitem">
+              <span class="labelspan">{{now_lang.User_center_c.Promotion_channel_link}}：</span>
+              <span class="contentinfo">
+                <a class="color_y" href="javascript:;">{{viewdata.link}}</a>
+              </span>
+            </div>
+            <div class="flex-r contentitem">
+              <span class="labelspan">{{now_lang.User_center_c.Amount_of_access}}：</span>
+              <span class="contentinfo"> {{viewdata.callnumb}}
+              </span>
+            </div>
+            <div class="flex-r contentitem">
+              <span class="labelspan">{{now_lang.User_center_c.Regist_number}}：</span>
+              <span class="contentinfo"> {{viewdata.mannumb}}
+              </span>
+            </div>
+          </div>
+          <div class="flex-r contentitem">
+            <span class="labelspan">{{now_lang.User_center_c.Opening_type}}：</span>
+            <span class="contentinfo"> {{viewdata.type}}
+              <select id="edittype" name="edittype" [(ngModel)]="editform.type" *ngIf="edit">
+                <option value="会员" selected>{{now_lang.User_center_c.Menber}}</option>
+                <option value="option1">option1</option>
+                <option value="option2">option2</option>
+                <option value="option3">option3</option>
+              </select>
+            </span>
+          </div>
+          <div class="flex-r contentitem">
+            <span class="labelspan">{{now_lang.User_center_c.State}}：</span>
+            <span class="contentinfo"> {{viewdata.status}}
+              <select id="editstatus" name="editstatus" [(ngModel)]="editform.status" *ngIf="edit">
+                <option value="永久有效" selected>{{now_lang.User_center_c.Permanent_validity}}</option>
+                <option value="option1">option1</option>
+                <option value="option2">option2</option>
+                <option value="option3">option3</option>
+              </select>
+            </span>
+          </div>
+          <div class="flex-r contentitem">
+            <span class="labelspan">{{now_lang.User_center_c.Generation_time}}：</span>
+            <span class="contentinfo"> {{viewdata.time}}
+            </span>
+          </div>
+          <div class="flex-r contentitem">
+            <span class="labelspan">{{now_lang.User_center_c.Return_point_rate}}：</span>
+            <span class="contentinfo"> {{viewdata.rebates}}
+              <select id="editrebates" name="editrebates" [(ngModel)]="editform.rebates" *ngIf="edit">
+                <option value="0.071" selected>0.071</option>
+                <option value="option1">option1</option>
+                <option value="option2">option2</option>
+                <option value="option3">option3</option>
+              </select>
+            </span>
+          </div>
+          <div class="flex-r contentitem code">
+            <span class="labelspan">{{now_lang.User_center_c.QR_code}}：</span>
+            <span class="contentinfo">
+              <span class="codeimg"></span>
+            </span>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</div>
+<div class="shade" [style.width.px]="shade.w" [style.height.px]="shade.h" *ngIf="infobox"></div>

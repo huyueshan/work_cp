@@ -1637,27 +1637,35 @@ export class KLCofficialComponent implements OnInit {
         }
     }
 
-    addrem(item) {
+    addrem(item){
+        //倍数锁
+        if (this.lock_multible) {
+            return false
+        };
         this.multiple_input.value = parseInt(this.multiple_input.value);
         this.radom_input.value = parseInt(this.radom_input.value);
-        if (item == 'multiple') {
-            this.multiple_input.value = this.multiple_input.value + 1;
+        if (item=='multiple') {
+            this.multiple_input.value = this.multiple_input.value+1;
             this.countbet(this.ballcurr.totalbet)
-        } else if (item == 'radom') {
-            this.radom_input.value = this.radom_input.value + 1;
+        }else if(item=='radom'){
+            this.radom_input.value = this.radom_input.value +1;
         }
+        
     }
-    minusrem(item) {
+    minusrem(item){
+        if (this.lock_multible) {
+            return false
+        };
         this.multiple_input.value = parseInt(this.multiple_input.value);
         this.radom_input.value = parseInt(this.radom_input.value);
-        if (item == 'multiple') {
-            if (this.multiple_input.value > 1) {
-                this.multiple_input.value = this.multiple_input.value - 1;
+        if (item=='multiple') {
+            if (this.multiple_input.value>1) {
+                this.multiple_input.value = this.multiple_input.value-1;
                 this.countbet(this.ballcurr.totalbet)
             }
-        } else if (item == 'radom') {
-            if (this.radom_input.value > 1) {
-                this.radom_input.value = this.radom_input.value - 1;
+        }else if(item=='radom'){
+            if (this.radom_input.value>1) {
+                this.radom_input.value = this.radom_input.value-1;
             }
         }
     }
@@ -1741,5 +1749,22 @@ export class KLCofficialComponent implements OnInit {
             this.NOTARIZE = ()=>{return};
         }
         this.popoutInfo = Object.assign({},o,data);
+    }
+    // 锁定倍数
+    public lock_multible :any=false;
+    lock_multiple(item){
+        let now_btn = $(item.target);
+        console.log($(item.target).hasClass('switch_btn'));
+        if (!$(item.target).hasClass('switch_btn')) {
+            now_btn = $(item.target).parent();
+        }
+        if(now_btn.hasClass('on')){
+            this.lock_multible = false;
+            $('#testinput').removeAttr('disabled');
+        }else{
+            this.lock_multible = true;
+            $('#testinput').attr({disabled: 'disabled'});
+        }
+
     }
 }

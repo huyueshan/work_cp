@@ -6,7 +6,6 @@ import { ComponentsModule } from '../component/components.module';
 
 /***********components***************/
 import { RegisterComponent } from './register.component';
-// import { ErrtipComponent } from '../component/errtip/errtip.component';
 
 const routes = [
     { path: '', component: RegisterComponent},

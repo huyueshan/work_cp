@@ -1,0 +1,257 @@
+*{
+    box-sizing: border-box;
+}
+.flex-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+.flex-r-l {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: left;
+    align-items: left;
+}
+.flex-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.color_y,
+.securityinfo p.color_y {
+    color: #fe8f00;
+}
+
+.securitybox {
+    width: 100%;
+    height: 680px;
+    padding: 10px 30px;
+    /* background-color: #f5f5f5; */
+    /* border: 1px solid #ccc; */
+    justify-content: flex-start;
+}
+
+
+
+
+
+.securityhead {
+    width: 33%;
+    height: 100%;
+    line-height: 44px;
+    font-size: 24px;
+    font-weight: 500;
+    justify-content: flex-start;
+    border-right: 1px solid #E5E5E5;
+    .sec_clas{
+        height: 50px;
+        text-indent: 30px;
+        background:  url("../../../images/user_center/sercury.png") center left no-repeat;
+    }
+}
+.securityhead:nth-last-child(1){
+    border: none;
+}
+.head_info{
+    height: 190px;
+    width: 100%;
+    background-color: #F4F4F4;
+    border-radius: 5px;
+    padding: 25px 20px;
+    .toptil{
+        height: 50px;
+        font-size: 18px;
+        line-height: 45px;
+        color: #666666;
+
+    }
+    .last_log{
+        width: 269px;
+        margin: 0 auto;
+        text-indent: 30px;
+        background: url("../../../images/user_center/last_log.png") center left  no-repeat;
+    }
+    .last_ip{
+        width: 269px;
+        margin: 0 auto;
+        text-indent: 30px;
+        background: url("../../../images/user_center/last_log.png") center left  no-repeat;
+    }
+    .mid_cont{
+        height: 90px;
+        width: 100%;
+        font-size: 15px;
+        /* background-color: lightpink; */
+        div{
+            margin-right: 10px;
+            height: 36px;
+            line-height: 26px;
+            
+        }
+        .font_green{
+            font-size: 20px;
+            color: #1AB358;
+            font-weight: bold;
+        }
+        .fake_table{
+            width: 269px;
+            margin: 0 auto;
+            text-indent: 30px;
+            color: #000;
+        }
+    }
+
+
+}
+.securityhead span {
+    padding-right: 20px;
+}
+
+.pipe {
+    position: relative;
+    width:60%;
+    height: 36px;
+    background: url("../../../images/user_center/mid.png") center center no-repeat;
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+
+.pipetop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 326px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #fe8f00;
+}
+
+.securityitem {
+    width: 100%;
+    height: 125px;
+    border-bottom: 1px solid #ccc;
+}
+
+.securityitem i {
+    width: 90px;
+    height: 90px;
+}
+
+.securityinfo {
+    height: 40px;
+    padding-left: 14px;
+}
+
+.securityinfo span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.securityinfo p {
+    font-size: 12px;
+    color: #999;
+}
+
+.securityicon1 {
+    background: url("../../../images/user_center/pass_word_big.png")  center center  no-repeat;
+}
+
+.securityicon2 {
+    background: url("../../../images/user_center/out_pass.png") center center no-repeat;
+}
+
+.securityicon3 {
+    background: url("../../../images/user_center/phone_number.png") center center no-repeat;
+}
+
+.securityicon4 {
+    background: url("../../../images/user_center/security_qus.png") center center no-repeat;
+
+}
+
+.xiugaibtn {
+    width: 108px;
+    height: 42px;
+    line-height: 28px;
+    padding: 0;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    border: 1px solid #B52525;
+    background: -webkit-linear-gradient(#FF6162, #E44647); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#FF6162, #E44647); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#FF6162, #E44647); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#FF6162, #E44647); /* 标准的语法 */
+}
+.xiugaibtn1{
+    width: 108px;
+    height: 42px;
+    line-height: 28px;
+    padding: 0;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    border: 1px solid #2C64C3;
+    background: -webkit-linear-gradient(#66A3F4, #376CD6); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#66A3F4, #376CD6); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#66A3F4, #376CD6); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#66A3F4, #376CD6); /* 标准的语法 */
+}
+.xiugaibtn1:hover{
+
+    background: -webkit-linear-gradient(#487be1, #7982ff); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#487be1, #7982ff); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#487be1, #7982ff); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#487be1, #7982ff); /* 标准的语法 */
+}
+.xiugaibtn:hover {
+    background: -webkit-linear-gradient(#ff6767, #ed6b6b); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#ff6767, #ed6b6b); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#ff6767, #ed6b6b); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#ff6767, #ed6b6b); /* 标准的语法 */
+}
+
+.histinfo {
+    padding: 10px 0;
+    color: #999;
+}
+
+.tablewrap {
+    width: 100%;
+}
+
+#table {
+    table-layout: fixed;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#table th {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#table th,
+#table td {
+    text-align: center;
+    height: 40px;
+    border: 1px solid #ccc;
+}
+
+.bg_1 {
+    background-color: #f5f5f5;
+}
+
+.bg_2 {
+    background-color: white;
+}

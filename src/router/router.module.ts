@@ -187,6 +187,12 @@ const appRoutes: Routes = [
         
     },
     {
+        path: 'activity',
+        loadChildren: '../app/page_module_3/activity/activity.module#ActivityModule',
+        canActivate: [RouteguardService]
+        
+    },
+    {
 		path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
 		redirectTo: 'index',
 		pathMatch: 'full'  // 必须要设置

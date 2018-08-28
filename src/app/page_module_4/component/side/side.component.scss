@@ -1,0 +1,97 @@
+.sidel {
+    width: 100%;
+    /* border: 1px solid #ccc; */
+    border-bottom: none;
+    transition: all 5s linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    .flex-r {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+    }
+    .flex-c {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-content: space-between;
+    }
+    li {
+        width: 100%;
+        font-size: 14px;
+        color: #333333;
+        .itembox{
+            height: 50px;
+            line-height: 50px;
+            padding: 0 18px;
+            /* border-bottom: 1px solid #ccc; */
+            background-color: #313234;
+            cursor: pointer;
+        }
+        .item {
+            height: 40px;
+            line-height: 40px;
+            padding:0 18px 0 60px;
+            color: #CDCDCD;
+            background-color: #2B2C2E;
+            /* border-bottom: 1px solid #ccc; */
+            cursor: pointer;
+        }
+        
+        .item:hover {
+            background-color: #fff;
+            color:  #B61010;
+        }
+        .itemactive{
+            background-color: white;
+            color:  #B61010;
+        }
+        .itembox {
+            padding-left: 20px;
+            font-weight: bold;
+            background-color: #313234;
+            color: white;
+            .itemboxiconr {
+                font-size: 30px;
+                line-height: 50px;
+                transform: rotate(0);
+            }
+            .iconactive {
+                line-height: 60px;
+                transform: rotate(90deg);
+            }
+            .sideicon {
+                width: 28px;
+                height: 28px;
+                background-repeat: no-repeat;
+                background-position-y: -10px;
+            }
+        }
+        .itembox:hover {
+            color: #B61010;
+        }
+        strong {
+            font-weight: bold;
+            color: #c48c15;
+            padding-right: 5px;
+        }
+        .yborder {
+            padding-right: 14px;
+            /* border: 1px solid #B61010; */
+            background-color: #121212;
+            color: #B61010;
+        }
+    }
+    .sidetop {
+        height: 60px;
+        line-height: 60px;
+        color: white;
+        font-size: 24px;
+        padding-left: 20px;
+        background-color: #18182b;
+    }
+}

@@ -53,14 +53,11 @@ export class RouteguardService implements CanActivate{
 				return;
 			}
 			if(!Base.Store.get('isTemplet')){
-                Base.Store.set('isTemplet','1',false);
-                history.go(0);
 				this.hserve.post(Api.gettemple,{},)
 				.then(result => {  
 				  console.log("登录接口返回的信息是：" , result);//打印返回的数据  
 				  that.routerReconfig('1')
 				  resolve(true);
-				  Base.Store.set('isTemplet','1',false)
 				});
 			}else{
 				that.routerReconfig(Base.Store.get('isTemplet'))
@@ -281,6 +278,12 @@ export class RouteguardService implements CanActivate{
 			{
 				path: 'phone',
 				loadChildren: '../app/page_module_3/phone/phone.module#PhoneModule',
+				canActivate: [RouteguardService]
+				
+			},
+			{
+				path: 'activity',
+				loadChildren: '../app/page_module_3/activity/activity.module#ActivityModule',
 				canActivate: [RouteguardService]
 				
 			},

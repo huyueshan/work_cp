@@ -820,7 +820,8 @@ export class CredtopComponent implements OnInit, OnDestroy {
   }
   ngAfterViewInit() {}
   ngOnDestroy() {
-    // clearInterval(this.time);
+    clearInterval(this.time);
+    this.time = null;
   }
 
   timeanimat(i){
@@ -829,7 +830,7 @@ export class CredtopComponent implements OnInit, OnDestroy {
       }else{
           setTimeout(() => {
             this.timedate[i] = this.uptimedata[i]
-          }, 700);
+          }, 800);
           return true
       }
   }

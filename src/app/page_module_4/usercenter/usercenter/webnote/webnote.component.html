@@ -1,0 +1,35 @@
+<div class="flex-c container">
+  <div class="flex-c querycontent">
+    <span class="witem whead">
+      <strong class='border_b'>{{this.now_lang.User_center_c.Bulletin_list}}</strong>
+    </span>
+    <div class="witem witem_c" *ngFor="let item of webnotedata;let i = index" (click)='toggle_show(i)' (mouseenter)="enter(i)" (mouseleave)="leave(i)">
+      <!-- <span class="flex-r" [ngClass]="{color_y: item.hover}">
+        <i [ngClass]="{bg_y: item.hover}" >{{item.id}}</i>{{item.text}}</span>
+      <span class="flex-c" style="align-items: flex-end;">
+        <p>{{item.time}}</p>
+        <P *ngIf="item.hover" class="linkitem color_y">{{this.now_lang.User_center_c.Bankcard1}}>></P>
+      </span> -->
+      <div class="top_time">
+        2018-05-29 00:00:00
+      </div>
+      <div class="mid_til">
+        支付宝启用通知
+      </div>
+      <div class="arrow_down" [ngClass]="{arrow_up: isInArray(showhich,i)}">
+        
+      </div>
+      <div class="content_box" [ngClass]="{hidden_this: !isInArray(showhich,i)}" >
+        大似睡非睡上的分safe上弹发斯蒂芬上弹发送到安生点发送到安生点发送到对方手打发顺丰但是阿达是发顺丰 阿萨德发射点发三帆上弹萨顶顶爱上发送爱上阿诗丹顿大似睡非睡上的分safe上弹发斯蒂芬上弹发送到安生点发送到安生点发送到对方手打发顺丰但是阿达是发顺丰 阿萨德发射点发三帆上弹萨顶顶爱上发送爱上阿诗丹顿大似睡非睡上的分safe上弹发斯蒂芬上弹发送到安生点发送到安生点发送到对方手打发顺丰但是阿达是发顺丰 阿萨德发射点发三帆上弹萨顶顶爱上发送爱上阿诗丹顿大似睡非睡上的分safe上弹发斯蒂芬上弹发送到安生点发送到安生点发送到对方手打发顺丰但是阿达是发顺丰 阿萨德发射点发三帆上弹萨顶顶爱上发送爱上阿诗丹顿大似睡非睡上的分safe上弹发斯蒂芬上弹发送到安生点发送到安生点发送到对方手打发顺丰但是阿达是发顺丰 阿萨德发射点发三帆上弹萨顶顶爱上发送爱上阿诗丹顿
+      </div>
+    </div>
+  </div>
+  <div class=" flex-c tablebox">
+    <div id="get_more" >
+      <div >
+        加载更多
+      </div>
+    </div>
+
+  </div>
+</div>

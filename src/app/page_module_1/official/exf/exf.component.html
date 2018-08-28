@@ -420,11 +420,9 @@
                             </div>
                             <div class="tip">
                                 <span class="comtext">{{now_lang.Ball_tab.All_choose}}
-                                    <em>{{totalinfo.count}}</em>{{now_lang.Ball_tab.All_choose}}，{{now_lang.Ball_tab.All_pay}}
-                                    <em>{{totalinfo.sum}}</em>{{now_lang.Ball_tab.Ticket}}，{{now_lang.Ball_tab.Profit}}
-                                    <em>{{totalinfo.amount}}</em>{{now_lang.Ball_tab.Yuan}}</span>
-                                <label>
-                                    <input type="checkbox" />{{now_lang.Ball_tab.Lock_multipel}}</label>
+                                    <em>{{totalinfo.count}}</em>{{now_lang.Ball_tab.Ticket}}，{{now_lang.Ball_tab.All_pay}}<em>{{totalinfo.sum}}</em>{{now_lang.Ball_tab.Yuan}}，
+                                    {{now_lang.Ball_tab.Profit}}<em>{{totalinfo.amount}}</em>{{now_lang.Ball_tab.Yuan}}</span>
+                                <label><input type="checkbox" class="switch_btn" [ngClass]="{on: lock_multible}" (click)='lock_multiple($event)' />{{now_lang.Ball_tab.Lock_multipel}}</label>
                             </div>
                         </div>
                         <div class="btnright">

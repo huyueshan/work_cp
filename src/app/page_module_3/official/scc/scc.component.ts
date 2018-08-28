@@ -230,7 +230,6 @@ export class SCCofficialComponent implements OnInit {
   public now_tab2click_num;
   public hid_tab;
   // public rangevalue = rangevalue;
-
   status = {
     menu_1: 1, //一级tab默认项
     menu_2: 1 //二级tab默认项
@@ -405,7 +404,6 @@ export class SCCofficialComponent implements OnInit {
     4: ["全", "清"]
   };
   now_balllist = []; //当前号码列表
-
   // 所有号码的列表数据
   ball_data = {
     cgj: {
@@ -1054,7 +1052,6 @@ export class SCCofficialComponent implements OnInit {
   public ballcurr: any = {}; // 当前选中的球以及匹配状态
   public tabcurr: any = {}; // 当前选中的tab信息
   public choosem_status = false; // 当前选中的tab信息
-
   // 选中号码
   choosetab(index, clickindex, val, that) {
     this.now_matchball = {
@@ -1179,7 +1176,6 @@ export class SCCofficialComponent implements OnInit {
     amount: 0
   }; //当前下注信息
   modelarr = [1, 10, 100, 1000]; // 下注模式对应的要除以的金额
-
   // 导入txt
   filestatus = true;
   @ViewChild("uploadFile")
@@ -1582,30 +1578,38 @@ export class SCCofficialComponent implements OnInit {
     }
   }
 
-  addrem(item) {
-    this.multiple_input.value = parseInt(this.multiple_input.value);
-    this.radom_input.value = parseInt(this.radom_input.value);
-    if (item == "multiple") {
-      this.multiple_input.value = this.multiple_input.value + 1;
-      this.countbet(this.ballcurr.totalbet);
-    } else if (item == "radom") {
-      this.radom_input.value = this.radom_input.value + 1;
+    addrem(item){
+        //倍数锁
+        if (this.lock_multible) {
+            return false
+        };
+        this.multiple_input.value = parseInt(this.multiple_input.value);
+        this.radom_input.value = parseInt(this.radom_input.value);
+        if (item=='multiple') {
+            this.multiple_input.value = this.multiple_input.value+1;
+            this.countbet(this.ballcurr.totalbet)
+        }else if(item=='radom'){
+            this.radom_input.value = this.radom_input.value +1;
+        }
+        
     }
-  }
-  minusrem(item) {
-    this.multiple_input.value = parseInt(this.multiple_input.value);
-    this.radom_input.value = parseInt(this.radom_input.value);
-    if (item == "multiple") {
-      if (this.multiple_input.value > 1) {
-        this.multiple_input.value = this.multiple_input.value - 1;
-        this.countbet(this.ballcurr.totalbet);
-      }
-    } else if (item == "radom") {
-      if (this.radom_input.value > 1) {
-        this.radom_input.value = this.radom_input.value - 1;
-      }
+    minusrem(item){
+        if (this.lock_multible) {
+            return false
+        };
+        this.multiple_input.value = parseInt(this.multiple_input.value);
+        this.radom_input.value = parseInt(this.radom_input.value);
+        if (item=='multiple') {
+            if (this.multiple_input.value>1) {
+                this.multiple_input.value = this.multiple_input.value-1;
+                this.countbet(this.ballcurr.totalbet)
+            }
+        }else if(item=='radom'){
+            if (this.radom_input.value>1) {
+                this.radom_input.value = this.radom_input.value-1;
+            }
+        }
     }
-  }
   // 下拉框选择input值
   check_multi(item) {
     this.multiple_input.value = item;
@@ -1727,4 +1731,21 @@ export class SCCofficialComponent implements OnInit {
     }
     this.popoutInfo = Object.assign({}, o, data);
   }
+    // 锁定倍数
+    public lock_multible :any=false;
+    lock_multiple(item){
+        let now_btn = $(item.target);
+        console.log($(item.target).hasClass('switch_btn'));
+        if (!$(item.target).hasClass('switch_btn')) {
+            now_btn = $(item.target).parent();
+        }
+        if(now_btn.hasClass('on')){
+            this.lock_multible = false;
+            $('#testinput').removeAttr('disabled');
+        }else{
+            this.lock_multible = true;
+            $('#testinput').attr({disabled: 'disabled'});
+        }
+
+    }
 }

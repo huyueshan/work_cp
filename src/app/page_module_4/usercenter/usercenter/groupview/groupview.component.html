@@ -1,0 +1,171 @@
+<div class="flex-c container">
+  <div class="flex-r querycontent">
+    <span class="flex-r" style="justify-content: flex-start;">
+      <span class="query_item">
+        <label for="starttime"> {{now_lang.User_center_c.Time}}： </label>
+        <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
+        <label for="endtime">{{now_lang.User_center_c.Go}} </label>
+        <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
+      </span>
+      <span class="flex-r" style="justify-content: flex-start;">
+        <span class="query_item" *ngFor="let item of querydatelist; let i=index" style=" padding-right: 10px">
+          <span class="datebtn" [ngClass]="{bd_y:querydatelistindex == i}" (click)="querydatelistindex = i">{{item.text}}</span>
+        </span>
+      </span>
+    </span>
+    <span>
+      <button class="querybtn">{{now_lang.User_center_c.Search}}</button>
+    </span>
+  </div>
+  <div class="list_box">
+    <div class="list_item ">
+      <div class="">
+        {{now_lang.User_center_c.Inmoney}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909 
+      </div>
+    </div>
+    <div class="list_item inmoney">
+      <div class="">
+        {{now_lang.User_center_c.Group_Inmoney}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909 
+      </div>
+    </div>
+    <div class="list_item out_meny_bg">
+      <div class="">
+        {{now_lang.User_center_c.Group_Outmoney}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909
+      </div>
+    </div>
+    <div class="list_item all_people">
+      <div class="">
+        {{now_lang.User_center_c.Group_mens}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909 
+      </div>
+    </div>
+    <div class="list_item new_people">
+      <div class="">
+        {{now_lang.User_center_c.New_add_men}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909 
+      </div>
+    </div>
+    <div class="list_item active_men">
+      <div class="">
+        {{now_lang.User_center_c.Activity_men}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909 
+      </div>
+    </div>
+    <div class="list_item now_online">
+      <div class="">
+        {{now_lang.User_center_c.Now_online}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909 
+      </div>
+    </div>
+    <div class="list_item offline_men">
+      <div class="">
+        3{{now_lang.User_center_c.Day_offline}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909 
+      </div>
+    </div>
+    <div class="list_item offline_men">
+      <div class="">
+        7{{now_lang.User_center_c.Day_offline}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909 
+      </div>
+    </div>
+
+  </div>
+  <div class="lot_box">
+    <div class="list_item roks">
+      <div class="">
+        {{now_lang.User_center_c.Bet_money}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909
+      </div>
+    </div>
+    <div class="list_item winmoney">
+      <div class="">
+        {{now_lang.User_center_c.Win_money}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909 
+      </div>
+    </div>
+    <div class="list_item tie_back">
+      <div class="">
+       {{now_lang.User_center_c.tie_back}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909 
+      </div>
+    </div>
+    <div class="list_item bet_back">
+      <div class="">
+        {{now_lang.User_center_c.Bet_back}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909 
+      </div>
+    </div>
+    <div class="list_item agent_back">
+      <div class="">
+        {{now_lang.User_center_c.Agent_back}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909 
+      </div>
+    </div>
+    <div class="list_item activ_win">
+      <div class="">
+        3{{now_lang.User_center_c.Activity_bonus}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909 
+      </div>
+    </div>
+    <div class="list_item pure_win">
+      <div class="">
+        7{{now_lang.User_center_c.Total_win}}{{now_lang.User_center_c.Yuan}}
+      </div>
+      <div>
+        1163.3909 
+      </div>
+    </div>
+
+  </div>
+  <div class=" flex-c tablebox">
+    
+    <div class="flex-c viewbox bg_1">
+      <div class="flex-r wraning color_y">
+        <i></i>
+        <p> {{now_lang.User_center_c.Tips9}}</p>
+      </div>
+      <div class="flex-c draw">
+        <div style="padding-top: 30px;">
+          <div class="flex-c drawbox" id="drawbox">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,90 @@
+<div class="flex-c container">
+  <div class="flex-r querycontent flex-r-l">
+    <span class="flex-r" style="justify-content: flex-start;">
+      <span class="query_item">
+        <label for="starttime">{{now_lang.User_center_c.Time}}： </label>
+        <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
+        <label for="endtime">{{now_lang.User_center_c.Go}} </label>
+        <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
+      </span>
+      <span class="query_item">
+        <label for="username">{{now_lang.User_center_c.User_name}}： </label>
+        <input type="text" id="username" name="username" [(ngModel)]="querydata.username" />
+      </span>
+      <span class="flex-r query_item">
+        <input type="checkbox" id="wrap" name="wrap" [(ngModel)]="querydata.iswrap" />{{now_lang.User_center_c.Include_lower}}</span>
+    </span>
+    <span class="querybtn">{{now_lang.User_center_c.Search}}</span>
+  </div>
+  <div class="checkboxs">
+    <div class="flex-c checkcontent">
+      <div class="flex-r checkcontent_top">
+      <span class="checktitle checktitle_top">{{now_lang.User_center_c.Type}}：</span>
+      <div class="check_box_r flex-r">
+        <input type="checkbox" id="all"  name="all" [(ngModel)]="checkdatas.all" (click)="checksall()" />{{now_lang.User_center_c.All_type}}
+      </div>
+      
+      </div>
+      <div class="checksbox">
+        <div class="flex-r" style="flex-wrap: nowrap;">
+          <span class="checktitle">{{now_lang.User_center_c.Income}}:</span>
+          <div class="flex-r" style="padding:10px 0">
+            <span class="flex-r checkwrap" *ngFor="let item of checkdatas.income; let i = index" >
+                <input type="checkbox" class="checkitems" name="{{item.title}}" [(ngModel)]="item.checked" (change)="checkchange('income',i)" />{{item.title}}
+            </span>
+          </div>
+        </div>
+        <div class="flex-r" style="flex-wrap: nowrap;">
+          <span class="checktitle">{{now_lang.User_center_c.Outcome}}:</span>
+          <div class="flex-r" style="padding:10px 0">
+            <span class="flex-r checkwrap" *ngFor="let item of checkdatas.expend; let q = index" >
+                <input type="checkbox" class="checkitems" name="{{item.title}}" [(ngModel)]="item.checked" (change)="checkchange('expend',q)" />{{item.title}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=" flex-c tablebox">
+    <div class="tablewrap">
+      <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4"   align="center">
+        <tr class="bg_1">
+          <th>{{now_lang.User_center_c.User_name}}</th>
+          <th style="width:160px">{{now_lang.User_center_c.Time}}</th>
+          <th>{{now_lang.User_center_c.Ledger_type}}</th>
+          <th>{{now_lang.User_center_c.Outcome}}</th>
+          <th>{{now_lang.User_center_c.Income}}</th>
+          <th>{{now_lang.User_center_c.Balance}}</th>
+          <th style="width:200px">{{now_lang.User_center_c.Remarks}}</th>
+        </tr>
+        <tr *ngFor="let item of acchangedata">
+          <td>{{item.user}}</td>
+          <td>{{item.time}}</td>
+          <td>{{item.type}}</td>
+          <td>{{item.expend}}</td>
+          <td>{{item.income}}</td>
+          <td>{{item.money}}</td>
+          <td>{{item.rebates}}</td>
+        </tr>
+        <tr class="total_tr">
+          <td colspan="2">{{now_lang.User_center_c.Small_plan}} <span class='font_bold'> 0{{now_lang.User_center_c.Stock}}</span></td>
+          <td colspan="3">{{now_lang.User_center_c.Outcome}} <span class='font_bold'>0 (0)</span></td>
+          <td colspan="2">{{now_lang.User_center_c.Income}} <span class='font_bold'>0 (0)</span></td>
+        </tr>
+        <tr class="total_tr">
+          <td colspan="2">{{now_lang.User_center_c.All_Stock}}<span class='font_bold'> 0{{now_lang.User_center_c.Stock}}</span></td>
+          <td colspan="3">{{now_lang.User_center_c.Outcome}} <span class='font_bold'>0 (0)</span></td>
+          <td colspan="2">{{now_lang.User_center_c.Income}} <span class='font_bold'>0 (0)</span></td>
+        </tr>
+      </table>
+    </div>
+    <div class="info">
+      <p>{{now_lang.User_center_c.Remarks}}：{{now_lang.User_center_c.Tips1}}</p>
+    </div>
+    
+    <!-- <div class="page" shark-pager [currentPage]="pagination.page" [totalPage]="pagination.totalPage" [gopage]="pagination.gopage"
+      [hl]="hl" [segmentSize]="pagination.segmentSize" [startFrom]="pagination.startFrom" (onPageChanged)="onPageChanged($event);">
+    </div> -->
+
+  </div>
+</div>

@@ -924,7 +924,7 @@ input[type="number"]{
 									color:#333;
 									font-size:12px;
 									float:left;
-									min-width: 25px;
+									min-width: 27px;
 								}
 								.btnaddrem{
 									width:15px;
@@ -1089,6 +1089,9 @@ input[type="number"]{
 							li>div{
 								display: inline-block;
 								text-align: center;
+							    overflow:hidden;
+							    text-overflow:ellipsis;
+							    white-space:nowrap;
 								width: 20%;
 							}
 						}

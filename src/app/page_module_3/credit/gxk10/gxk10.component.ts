@@ -1828,7 +1828,7 @@ export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
     setposition(e) {
         this.delay = true;
         let box = this.boxposition;
-        box.x = e.target.offsetLeft - 4 + "px";
+        box.x = e.target.offsetLeft + 4 + "px";
         if (this.curinpt == this.setallmoney) {
             box.y = e.target.offsetTop + 40 + "px";
         } else {

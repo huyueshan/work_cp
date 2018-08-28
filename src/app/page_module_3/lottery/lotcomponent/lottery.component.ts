@@ -758,7 +758,6 @@ export class LotteryComponent implements OnInit {
 
   
   linkrout(item, i) {
-      console.log(item);
     // 跳转路由
     let str = item.gxtog ? item.items[i].linkc : item.items[i].linko;
     this.router.navigate([str]);

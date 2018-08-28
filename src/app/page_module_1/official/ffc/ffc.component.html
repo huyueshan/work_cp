@@ -371,7 +371,9 @@
 								</div>
 							</div>
 							<div class="tip">
-								<span class="comtext">{{now_lang.Ball_tab.All_choose}}<em>{{totalinfo.count}}</em>{{now_lang.Ball_tab.All_choose}}，{{now_lang.Ball_tab.All_pay}}<em>{{totalinfo.sum}}</em>{{now_lang.Ball_tab.Ticket}}，{{now_lang.Ball_tab.Profit}}<em>{{totalinfo.amount}}</em>{{now_lang.Ball_tab.Yuan}}</span>
+								<span class="comtext">{{now_lang.Ball_tab.All_choose}}
+                                    <em>{{totalinfo.count}}</em>{{now_lang.Ball_tab.Ticket}}，{{now_lang.Ball_tab.All_pay}}<em>{{totalinfo.sum}}</em>{{now_lang.Ball_tab.Yuan}}，
+                                    {{now_lang.Ball_tab.Profit}}<em>{{totalinfo.amount}}</em>{{now_lang.Ball_tab.Yuan}}</span>
 								<div class="jiangjin_tips" *ngIf='nowitems.reward_show' (mouseenter)="show_tips('reward_rule',tips3)"  (mouseleave)="hid_tips('reward_rule',tips3)">
 									{{now_lang.Ball_tab.Bonus_calculation}}
 									<div class="tips long_tips" #tips3  [ngClass]="{tipshidden:tips_hidden}">
@@ -379,7 +381,7 @@
 										<!-- 111 -->
 									</div>
 								</div>
-								<label><input type="checkbox" />{{now_lang.Ball_tab.Lock_multipel}}</label>
+								<label><input type="checkbox" class="switch_btn" [ngClass]="{on: lock_multible}" (click)='lock_multiple($event)' />{{now_lang.Ball_tab.Lock_multipel}}</label>
 							</div>
 						</div>
 						<div class="btnright">

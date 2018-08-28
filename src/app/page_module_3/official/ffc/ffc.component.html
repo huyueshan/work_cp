@@ -32,8 +32,8 @@
 			            				{{now_lang.Chase_num.Ori_multiple}}<input  class="config_input" [(ngModel)]='chase_number_config.multiple' maxlength="3"  type="number" (keyup) = 'changeregnum($event)' >
 			            			</div>
 			            			<div class="config_item checkbox_box">
-			            				<label><input type="checkbox" />{{now_lang.Ball_tab.Open_stop}}</label>
-										<label><input type="checkbox" />{{now_lang.Ball_tab.Win_stop}}</label>
+			            				<label><input type="checkbox" [(ngModel)]="Open_stop"/>{{now_lang.Ball_tab.Open_stop}}</label>
+										<label><input type="checkbox" [(ngModel)]="Win_stop"/>{{now_lang.Ball_tab.Win_stop}}</label>
 			            			</div>
 			            		</div>
 			            		<div class="config_col">
@@ -130,8 +130,8 @@
 			            				{{now_lang.Chase_num.Ori_multiple}}<input  class="config_input" [(ngModel)]='chase_number_config.multiple' maxlength="3"  type="number" (keyup) = 'changeregnum($event)'>
 			            			</div>
 			            			<div class="config_item checkbox_box">
-			            				<label><input type="checkbox" />{{now_lang.Ball_tab.Open_stop}}</label>
-										<label><input type="checkbox" />{{now_lang.Ball_tab.Win_stop}}</label>
+			            				<label><input type="checkbox" [(ngModel)]="Open_stop"/>{{now_lang.Ball_tab.Open_stop}}</label>
+										<label><input type="checkbox" [(ngModel)]="Win_stop"/>{{now_lang.Ball_tab.Win_stop}}</label>
 			            			</div>
 			            		</div>
 			            		<div class="config_col">
@@ -320,13 +320,13 @@
 							<div class="left_input">
 								<textarea name="" id="fileReader" (keyup) = "textball('fileReader')"></textarea>
 							</div>
-							<div class="btn_box">
-								<div class="rt_btn btnh_w120_h40" (click)="delnum('fileReader')">删除重复号</div>
-								<div class="rt_btn btnh_w120_h40">导入文件
-									<input #uploadFile type="file" accept="text/plain" class="file-input" (change)="filetxt($event,'fileReader')" />
-								</div>
-								<div class="rt_btn btnh_w120_h40" (click)="clearfile('fileReader')">清空</div>
-							</div>
+                            <div class="btn_box">
+                                <div class="rt_btn btnh_w120_h40" (click)="delnum('fileReader')">{{now_lang.Ball_tab.Tips12}}</div>
+                                <div class="rt_btn btnh_w120_h40">{{now_lang.Ball_tab.in_file}}
+                                    <input #uploadFile type="file" accept="text/plain" class="file-input" (change)="filetxt($event,'fileReader')" />
+                                </div>
+                                <div class="rt_btn btnh_w120_h40" (click)="clearfile('fileReader')">{{now_lang.Ball_tab.Clear_number}}</div>
+                            </div>
 							<div class="input_tips">
 									{{now_lang.Ball_tab.Tips11}}  <span class="gray_font">{{now_lang.Ball_tab.Tips12}}</span> {{now_lang.Ball_tab.Tips13}}
 							</div>
@@ -371,7 +371,9 @@
 								</div>
 							</div>
 							<div class="tip">
-								<span class="comtext">{{now_lang.Ball_tab.All_choose}}<em>{{totalinfo.count}}</em>{{now_lang.Ball_tab.All_choose}}，{{now_lang.Ball_tab.All_pay}}<em>{{totalinfo.sum}}</em>{{now_lang.Ball_tab.Ticket}}，{{now_lang.Ball_tab.Profit}}<em>{{totalinfo.amount}}</em>{{now_lang.Ball_tab.Yuan}}</span>
+								<span class="comtext">{{now_lang.Ball_tab.All_choose}}
+                                    <em>{{totalinfo.count}}</em>{{now_lang.Ball_tab.Ticket}}，{{now_lang.Ball_tab.All_pay}}<em>{{totalinfo.sum}}</em>{{now_lang.Ball_tab.Yuan}}，
+                                    {{now_lang.Ball_tab.Profit}}<em>{{totalinfo.amount}}</em>{{now_lang.Ball_tab.Yuan}}</span>
 								<div class="jiangjin_tips" *ngIf='nowitems.reward_show' (mouseenter)="show_tips('reward_rule',tips3)"  (mouseleave)="hid_tips('reward_rule',tips3)">
 									{{now_lang.Ball_tab.Bonus_calculation}}
 									<div class="tips long_tips" #tips3  [ngClass]="{tipshidden:tips_hidden}">
@@ -379,7 +381,7 @@
 										<!-- 111 -->
 									</div>
 								</div>
-								<label><input type="checkbox" />{{now_lang.Ball_tab.Lock_multipel}}</label>
+								<label><input type="checkbox" class="switch_btn" [ngClass]="{on: lock_multible}" (click)='lock_multiple($event)' />{{now_lang.Ball_tab.Lock_multipel}}</label>
 							</div>
 						</div>
 						<div class="btnright">
@@ -399,8 +401,8 @@
 						<div class="btnright">
 							<a class="btnh_w120_h40 bgfff mb10" >{{now_lang.Ball_tab.Order_history}}</a>
 							<a class="btnh_w120_h40 bgfff mb10" (click)='chase_number()'>{{now_lang.Ball_tab.Chasing}}</a>
-							<label><input type="checkbox" />{{now_lang.Ball_tab.Open_stop}}</label>
-							<label><input type="checkbox" />{{now_lang.Ball_tab.Win_stop}}</label>
+							<label><input type="checkbox" [(ngModel)]="Open_stop"/>{{now_lang.Ball_tab.Open_stop}}</label>
+							<label><input type="checkbox" [(ngModel)]="Win_stop"/>{{now_lang.Ball_tab.Win_stop}}</label>
 						</div>
 					</div>
 					<div class="surearea">
