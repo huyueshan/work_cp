@@ -26,6 +26,9 @@ import "rxjs/add/operator/filter";
 })
 export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     loadpage = false;
+	public gamedata:any ={
+		gametype:'KLC'
+	}
     public cpnav = {
         style: "credit",
         prev: "20180517022",

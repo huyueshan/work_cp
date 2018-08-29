@@ -37,6 +37,9 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         next: "20180517023",
         time: ""
     };
+	public gamedata:any ={
+		gametype:'PK10'
+	}
     public routeid;
     public rastep = 7.8; // 滑动条步长
     public odds = 7.8; // 赔率

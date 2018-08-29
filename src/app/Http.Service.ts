@@ -85,9 +85,10 @@ export class HttpInterceptorService {
    * @returns {void|Promise<string>|Promise<T>|any} 
    */  
   private handleError(error) {  
-    let msg = '请求失败';  
+    let msg = '网络请求失败';  
     if (error['status'] == 0) {  
-		msg = '请求参数正确';  
+		msg = '网络请求失败';  
+		alert(msg)
     }  
     if (error['status'] == 400) {  
 		msg = '请求参数正确';  
@@ -98,6 +99,6 @@ export class HttpInterceptorService {
     if (error['status'] == 500) {  
 		msg = '请求的服务器错误';	
     }  
-    return {success: false, msg: msg};  
+    return {success: false, msg: msg, status:error['status']};  
   }  
 }  

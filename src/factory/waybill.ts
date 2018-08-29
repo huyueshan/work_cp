@@ -1,5 +1,6 @@
 export const Waybills = {
   Waybill(e) {
+	  var qw = 0;
     function a(t, e, a, i) {
       return e > 6 ||
         i[t + "_" + e] ||
@@ -28,7 +29,6 @@ export const Waybills = {
     e.isToradora = !0;
 
     var r = (function() {
-        console.log(e);
         var t,
           a = e.type;
         switch (!0) {
@@ -199,7 +199,6 @@ export const Waybills = {
                 left: d - l + "px"
               });
           }
-          console.log(e);
           //拖动事件
           a[0].onmousedown = function(e) {
             var ev = e || event;
@@ -351,215 +350,13 @@ export const Waybills = {
       (o.prototype.HandleUpRoadData = function(t) {
         t === !0 && (this.TEMP.roadData = null);
         if (e) {
-          t = [
-            "2",
-            "7",
-            "6",
-            "1",
-            "4",
-            "7",
-            "1",
-            "9",
-            "4",
-            "3",
-            "0",
-            "5",
-            "6",
-            "7",
-            "5",
-            "2",
-            "2",
-            "9",
-            "8",
-            "3",
-            "4",
-            "2",
-            "9",
-            "0",
-            "4",
-            "0",
-            "4",
-            "1",
-            "1",
-            "0",
-            "5",
-            "5",
-            "3",
-            "7",
-            "3",
-            "1",
-            "7",
-            "8",
-            "2",
-            "3",
-            "7",
-            "7",
-            "4",
-            "2",
-            "9",
-            "1",
-            "3",
-            "1",
-            "2",
-            "9",
-            "4",
-            "9",
-            "4",
-            "5",
-            "6",
-            "6",
-            "1",
-            "9",
-            "9",
-            "3",
-            "0",
-            "7",
-            "3",
-            "4",
-            "4",
-            "4",
-            "3",
-            "7",
-            "4",
-            "4",
-            "5",
-            "2",
-            "0",
-            "0",
-            "5",
-            "0",
-            "6",
-            "4",
-            "0",
-            "6",
-            "3",
-            "9",
-            "6",
-            "3",
-            "7",
-            "8",
-            "0",
-            "1",
-            "3",
-            "3",
-            "0",
-            "7",
-            "3",
-            "2",
-            "8",
-            "4",
-            "7",
-            "1",
-            "5",
-            "2"
-          ];
-        } else {
-          t = [
-            "2",
-            "7",
-            "6",
-            "1",
-            "4",
-            "7",
-            "1",
-            "9",
-            "4",
-            "3",
-            "0",
-            "5",
-            "6",
-            "7",
-            "5",
-            "2",
-            "2",
-            "9",
-            "8",
-            "3",
-            "4",
-            "2",
-            "9",
-            "0",
-            "4",
-            "0",
-            "4",
-            "1",
-            "1",
-            "0",
-            "5",
-            "5",
-            "3",
-            "7",
-            "3",
-            "1",
-            "7",
-            "8",
-            "2",
-            "3",
-            "7",
-            "7",
-            "4",
-            "2",
-            "9",
-            "1",
-            "3",
-            "1",
-            "2",
-            "9",
-            "4",
-            "9",
-            "4",
-            "5",
-            "6",
-            "6",
-            "1",
-            "9",
-            "9",
-            "3",
-            "0",
-            "7",
-            "3",
-            "4",
-            "4",
-            "4",
-            "3",
-            "7",
-            "4",
-            "4",
-            "5",
-            "2",
-            "0",
-            "0",
-            "5",
-            "0",
-            "6",
-            "4",
-            "0",
-            "6",
-            "3",
-            "9",
-            "6",
-            "3",
-            "7",
-            "8",
-            "0",
-            "1",
-            "3",
-            "3",
-            "0",
-            "7",
-            "3",
-            "2",
-            "8",
-            "4",
-            "7",
-            "1",
-            "5",
-            "2"
-          ];
-        }
+			t = e.waydata
+		}else{
+			t=[]
+		}
         var a = this;
         // t = $.parseJSON(t),
-        console.log(t), (a.TEMP.data = t.reverse()), a.RenderAll("baser");
+       (a.TEMP.data = t.reverse()), a.RenderAll("baser");
       }),
       (o.prototype.Trend = function(t, e, i, n) {
         var r,
@@ -728,6 +525,18 @@ export const Waybills = {
         );
       }),
       (o.prototype.TotalCol = function() {
+		  function unique1(array){
+    var n=[];//一个新的临时数组
+    for(var i=0;i<array.length;i++){
+        //如果当前数组的第i调已经保存进入临时数组，那么跳过
+        //否则把当前项push到临时数组里面
+        if(n.indexOf(array[i])==-1){
+            n.push(array[i]);
+        }
+    }
+    return n;
+}
+
         var t = this.originData
             .join(",")
             .replace(/和,/g, "")
@@ -736,11 +545,22 @@ export const Waybills = {
           a,
           i = t.concat(),
           n = t.concat();
+
         var data;
+		qw = qw+1;
+		var cq = [];
+		cq = unique1(n)
+		if(qw%3==0){
+			cq.push(unique1(n)[0])
+			cq.push(unique1(n)[1])
+		}else{
+			cq.push(unique1(n)[0])
+		}
         return (
-          $.each($.unique(n), function(t, e) {
+          $.each(cq, function(t, e) {
+			  // console.log($.unique(n));
             a += "(" + e + ",)+|";
-          }),
+          }),	
           (a = new RegExp(a.slice(0, -1), "g")),
           (data = (i.join(",") + ",").match(a)),
           $.each(data, function(t, a) {

@@ -1197,7 +1197,7 @@ export class K3officialComponent implements OnInit {
             // 配置规则提示
             that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
             that.now_description = that.lot_rules[that.now_tips_menu]['description'];
-            if (that.status.menu_1 > 8) {
+            if (that.status.menu_1 > 0) {
                 that.hothidden = true;
             } else {
                 that.hothidden = false;
@@ -1229,9 +1229,11 @@ export class K3officialComponent implements OnInit {
         that.status.menu_2 = data.index
         if (data.isupload) {
             that.up_ball = 2
+            that.hothidden = true;
         } else {
             that.up_ball = 1
             this.balllist(data.arr)
+            that.hothidden = true;
         }
         that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
         that.now_description = that.lot_rules[that.now_tips_menu]['description'];
@@ -1253,7 +1255,7 @@ export class K3officialComponent implements OnInit {
         that.now_balllist = []
         arr.map(function (res) {
             if (that.tabcurr.choose) {
-                that.hothidden = false;
+                that.hothidden = true;
             } else {
                 that.hothidden = true;
             }

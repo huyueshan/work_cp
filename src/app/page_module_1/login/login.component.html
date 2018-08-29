@@ -2,7 +2,7 @@
 	<div class="loginmod">
 		<!-- 登录 -->
 		<div class="logo"><img src='../images/1_LOGO.png' /></div>
-		<div class="dialog_login">
+		<div class="dialog_login" id="dialog_login">
 			<span class="dialog_title">用户登录</span>
 			<div class="form logincon">
 				<div class="errtip">
@@ -26,7 +26,7 @@
 				<div class="form-group">
 					<label class="control-label bg-code"></label>
 					<div class="input">
-						<input type="text" class="form-control code"  name="tx_code" rule="v_code" placeholder="验证码" required="" maxlength="20">
+						<input type="text" class="form-control code" autocomplete="off" name="tx_code" rule="v_code" placeholder="验证码" required="" maxlength="20">
 						<a class="tx_code" ng-click="captcha('mobile')"><img class="yzmcode" src="../images/1_LOGO.png" /><span  class="getimg">换一个</span></a>
 					</div>
 				</div>				

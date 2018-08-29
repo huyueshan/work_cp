@@ -783,7 +783,6 @@ input[type="number"]{
 					background:#eeeeee;
 				}
 				.sumBtn_box{
-					height: 350px;
 					/* margin-top: 236px; */
 					clear: both;
 					background-color: #fff;
@@ -802,7 +801,6 @@ input[type="number"]{
 						    margin-top: 15px;
 						    padding: 15px;
 						    border-radius: 8px;
-						    background-color: #eee;
 						    resize: none;
 						}
 					}
@@ -827,6 +825,16 @@ input[type="number"]{
 						padding-left: 30px;
 						clear: both;
 						padding-top: 30px;
+						.gray_font{
+							font-weight: bold;
+						}
+					}
+					.input_tips2{
+						height: 15%;
+						/* background-color: pink; */
+						padding-left: 30px;
+						clear: both;
+						padding-top: 10px;
 						.gray_font{
 							font-weight: bold;
 						}

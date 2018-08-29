@@ -139,7 +139,6 @@ const Matchrule = {
 						_selfs = new Array(len.datarule[1])
 						algorithm.plzh(_selfs, _arr, _indexs, _total, _where);
 						for(var j = 0;j<_total.length;j++){
-							console.log(_total[j])
 							if(algorithm.hasArr(allarr[0][l],_total[j])){
 								c = c + 1
 							}
@@ -596,7 +595,6 @@ const Matchrule = {
 		}
 		totalbet = arr.length
 		if(totalbet>0){
-			Isaddball = true
 			for(var i=0;i<arr.length;i++){
 				allarr.push(arr[i])
 				nary.push(arr[i])
@@ -617,7 +615,9 @@ const Matchrule = {
 			for(var i=0;i<allarr.length;i++){
 				ballarr.push([allarr[i].split('').join(',')])
 			}
-			
+		}
+		if(ballarr.length>0){
+			Isaddball = true
 		}
 		obj = {'status':Isaddball,'allarr':ballarr,'totalbet':totalbet,'ball':[],'repball':rep,'noball':noball}
 		obj.ball.push(TranBall(obj,len))
@@ -1161,7 +1161,7 @@ const algorithm = {
 	},
 	// 去掉重复的包括顺序不同数字的重复
 	disrepeat (arr){
-		var arr = arr,i,j,
+		var arr = arr,i,j,newarr = [],
 		len = arr.length;
 		for(i = 0; i < len; i++){
 			for(j = i + 1; j < len; j++){
@@ -1172,7 +1172,12 @@ const algorithm = {
 				}
 			}
 		}
-		return arr;
+		for(var k = 0; k < arr.length; k++){
+			if(arr[k].split('')[0] != arr[k].split('')[1]){
+				newarr.push(arr[k])
+			}
+		}
+		return newarr;
 	},
 	// 留下重复的包括顺序不同数字的重复
 	disrepeatno (allarr,arr){

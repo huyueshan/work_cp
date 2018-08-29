@@ -262,7 +262,7 @@ export class SCCofficialComponent implements OnInit {
     },
     {
       name: this.now_lang.Lot_tab.Dragon_tiger,
-      active: 7
+      href: 'lottery/creditssc/cq'
     }
   ];
 
@@ -966,12 +966,15 @@ export class SCCofficialComponent implements OnInit {
   // 时时彩一级导航切换
   tabmenu(data) {
     let that = this;
-    that.now_tab2click_num =
-      that.menu_2_data[data.active - 1]["menu"][0].arr.length;
-    that.inittab();
+    console.log(data)
+
+
     if (data.href) {
       that.router.navigateByUrl(data.href);
     } else {
+      that.now_tab2click_num =
+      that.menu_2_data[data.active - 1]["menu"][0].arr.length;
+      that.inittab();
       that.status.menu_1 = data.active;
       that.status.menu_2 = 1;
       that.menu_2 = [];
@@ -1018,9 +1021,11 @@ export class SCCofficialComponent implements OnInit {
     that.status.menu_2 = data.index;
     if (data.isupload) {
       that.up_ball = 2;
+      that.hothidden = true;
     } else {
       that.up_ball = 1;
       this.balllist(data.arr);
+      that.hothidden = false;
     }
     that.now_tips_menu = that.status.menu_1 + "_" + that.status.menu_2;
     that.now_description = that.lot_rules[that.now_tips_menu]["description"];
@@ -1213,6 +1218,7 @@ export class SCCofficialComponent implements OnInit {
     let str = Utils.algorithm.getNum($("#" + id).val());
     this.filedata(str, "");
   }
+  public filterstatus = false
   // 处理输入框的数据
   filedata(str, type) {
     let self = this;
@@ -1238,6 +1244,7 @@ export class SCCofficialComponent implements OnInit {
         amount: 0
       };
     }
+	this.filterstatus = false
   }
 
   // 处理过滤结果
@@ -1277,6 +1284,7 @@ export class SCCofficialComponent implements OnInit {
             : val + obj.allarr[i][0].split(",").join("");
       }
     }
+	this.filterstatus = true
     if (type == "del") {
       $("#" + id).val(val);
       if (rep == 0 && nob == 0) {
@@ -1292,22 +1300,21 @@ export class SCCofficialComponent implements OnInit {
         self.POPNOTE({ msg: con });
       }
     } else {
-      if (rep != 0 || nob != 0) {
-        $("#" + id).val(null);
-        con =
-          "将要自动过滤" +
-          rep +
-          "个重复号，" +
-          nob +
-          "个无效号，过滤内容为：" +
-          ball;
-        self.POPNOTE({ msg: con });
-      } else {
-        $("#" + id).val(null);
-      }
-    }
+            if (rep != 0 || nob != 0) {
+                $('#' + id).val(val)
+                con = '将要自动过滤' + rep + '个重复号，' + nob + '个无效号，过滤内容为：' + ball
+                self.POPNOTE({msg:con},self.qdfunc);
+            } else {
+				if(self.filterstatus){
+					self.addball(self.menu_2,self.ballcurr.status)
+					$('#' + id).val(null)
+				}
+            }
+        }
   }
-
+	qdfunc(){
+		this.addball(this.menu_2,this.ballcurr.status)
+	}
   // 计算当前点击投注信息
   countbet(totalbet) {
     let sum, amount;
@@ -1435,8 +1442,11 @@ export class SCCofficialComponent implements OnInit {
     }
     let arr = [];
     if (that.tabcurr.isupload) {
-      this.filteresult("fileReader", "");
-    }
+		if(!that.filterstatus){
+			that.filteresult('fileReader', '');
+			return
+		}
+	}
     if (that.tabcurr.choose) {
       var _selfs;
       var _arr = [];

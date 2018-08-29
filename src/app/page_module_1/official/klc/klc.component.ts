@@ -194,7 +194,7 @@ export class KLCofficialComponent implements OnInit {
     // 拖拽数据结束
     public now_tips_menu: any = '1_1';
     public now_description = '';
-    public hothidden = false;
+    public hothidden = true;
     public nowPageId: any = '';
     public nowitems: any = {};
     public userInfo = {
@@ -1226,7 +1226,7 @@ export class KLCofficialComponent implements OnInit {
             if (that.status.menu_1 > 8) {
                 that.hothidden = true;
             } else {
-                that.hothidden = false;
+                that.hothidden = true;
             }
         }
         if (this.tabcurr.isupload) {
@@ -1254,9 +1254,11 @@ export class KLCofficialComponent implements OnInit {
         that.status.menu_2 = data.index
         if (data.isupload) {
             that.up_ball = 2
+            that.hothidden = true;
         } else {
             that.up_ball = 1
             this.balllist(data.arr)
+            that.hothidden = true;
         }
         that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
         that.now_description = that.lot_rules[that.now_tips_menu]['description'];
@@ -1278,14 +1280,12 @@ export class KLCofficialComponent implements OnInit {
         that.now_balllist = []
         arr.map(function (res) {
             if (that.tabcurr.choose) {
-                that.hothidden = false;
+                that.hothidden = true;
             } else {
                 that.hothidden = true;
             }
             that.now_balllist.push(that.ball_data[res])
         })
-
-
     }
     setmatch_tab(data, n) {
         data[0] = {};

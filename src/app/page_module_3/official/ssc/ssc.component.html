@@ -1,17 +1,18 @@
 <div class="flex-c body" [hidden]="!loadpage">
     <div id="layer"></div>
-    <div id="layer2" #layer2>
+    <div id="layer3_c" #layer2>
         <div class="chase_container ">
             <div class="cover_bg" #cover_bg></div>
             <div id="layer_box" #layer>
                 <div class="top_til">
-                    <div class="til">{{nowitems.name}}  {{now_lang.Chase_num.Chase_num}}</div><div class="close" (click)='close_chase()'>x</div>
+                    <div class="til">{{nowitems.name}} {{now_lang.Chase_num.Chase_num}}</div>
+                    <div class="close" (click)='close_chase()'>x</div>
                 </div>
                 <div class="content_box">
                     <div>
                         <div class="top_tab">
                             <div class="tab_box">
-                                <div class="tab_item one active" (click)='tab_chase("one",one_chase,two_chase)' >
+                                <div class="tab_item one active" (click)='tab_chase("one",one_chase,two_chase)'>
                                     {{now_lang.Chase_num.Chase_multiple}}
                                 </div>
                                 <div class="tab_item two" (click)='tab_chase("two",one_chase,two_chase)'>
@@ -22,23 +23,27 @@
                         <div class="one_chase active" #one_chase>
                             <div class="top_config">
                                 <div class="config_col">
-                                    
+
                                     <div class="config_item">
-                                        {{now_lang.Chase_num.Chase_issues}}<input  class="config_input" maxlength="3"   [(ngModel)]='chase_number_config.chase_amount' type="number" (keyup) = 'changeregnum($event)'>
+                                        {{now_lang.Chase_num.Chase_issues}}
+                                        <input class="config_input" maxlength="3" [(ngModel)]='chase_number_config.chase_amount' type="number" (keyup)='changeregnum($event)'>
                                     </div>
                                     <div class="config_item">
-                                        {{now_lang.Chase_num.Ori_multiple}}<input  class="config_input" [(ngModel)]='chase_number_config.multiple' maxlength="3"  type="number" (keyup) = 'changeregnum($event)' >
+                                        {{now_lang.Chase_num.Ori_multiple}}
+                                        <input class="config_input" [(ngModel)]='chase_number_config.multiple' maxlength="3" type="number" (keyup)='changeregnum($event)'>
                                     </div>
                                     <div class="config_item checkbox_box">
-                                        <label><input type="checkbox" [(ngModel)]="Open_stop"/>{{now_lang.Ball_tab.Open_stop}}</label>
-                                        <label><input type="checkbox" [(ngModel)]="Win_stop"/>{{now_lang.Ball_tab.Win_stop}}</label>
+                                        <label>
+                                            <input type="checkbox" [(ngModel)]="Open_stop" />{{now_lang.Ball_tab.Open_stop}}</label>
+                                        <label>
+                                            <input type="checkbox" [(ngModel)]="Win_stop" />{{now_lang.Ball_tab.Win_stop}}</label>
                                     </div>
                                 </div>
                                 <div class="config_col">
                                     <div class="config_item ">
                                         {{now_lang.Chase_num.Chase_issues}}:
                                         <select id="select_amount" name="select_amount" [(ngModel)]="chase_number_config.select_amount" (change)="typeoptchange()">
-                                            <option *ngFor="let item of typeoptiondata"   value="{{item}}">{{item=='all'?now_lang.Chase_num.Chase_all:item+now_lang.Chase_num.issues}}</option>
+                                            <option *ngFor="let item of typeoptiondata" value="{{item}}">{{item=='all'?now_lang.Chase_num.Chase_all:item+now_lang.Chase_num.issues}}</option>
                                         </select>
 
                                     </div>
@@ -47,20 +52,20 @@
                                         <div>
                                             {{chase_amount}}
                                         </div>
-                                        
+
                                     </div>
                                     <div class="config_item ">
                                         {{now_lang.Chase_num.Chase_amount}}:
                                         <div>
                                             {{chase_money}}{{now_lang.Chase_num.yuan}}
                                         </div>
-                                        
+
                                     </div>
                                     <div class="config_item flr">
                                         <div class="preduce_btn btnh_w120_h40" (click)="produce_plan()">
                                             {{now_lang.Chase_num.Produce_plan}}
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -92,12 +97,13 @@
                                     <ul>
                                         <li *ngFor='let item of lotdata_now'>
                                             <div class="item_child">
-                                                <label><input type="checkbox" (change)='check_lot(item)' [(ngModel)]="item.checkon"  />{{item.lot_num}}</label>
+                                                <label>
+                                                    <input type="checkbox" (change)='check_lot(item)' [(ngModel)]="item.checkon" />{{item.lot_num}}</label>
                                             </div>
                                             <div class="item_child">
                                                 <div>
-                                                    <input  class="config_input" (input)='get_takemon(item)' [(ngModel)]="item.multiple" maxlength="10"  (keyup) = 'changeregnum($event)'
-                                              type="number">{{now_lang.Chase_num.Mult}}
+                                                    <input class="config_input" (input)='get_takemon(item)' [(ngModel)]="item.multiple" maxlength="10" (keyup)='changeregnum($event)'
+                                                        type="number">{{now_lang.Chase_num.Mult}}
                                                 </div>
                                             </div>
                                             <div class="item_child">
@@ -109,7 +115,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div>  
+                            </div>
                         </div>
                         <div class="two_chase" #two_chase>
                             <div class="top_config">
@@ -118,25 +124,30 @@
                                         {{now_lang.Chase_num.Chase_plan}}:
                                     </div>
                                     <div class="config_item">
-                                        {{now_lang.Chase_num.Every_divi}}<input  class="config_input" maxlength="3" [(ngModel)]='chase_number_config.chase_rule.number' type="number" (keyup) = 'changeregnum($event)'>{{now_lang.Chase_num.issues}}X
-                                        <input  class="config_input" [(ngModel)]='chase_number_config.chase_rule.multiple'   maxlength="3"  type="number" (keyup) = 'changeregnum($event)'>{{now_lang.Chase_num.Mult}}
+                                        {{now_lang.Chase_num.Every_divi}}
+                                        <input class="config_input" maxlength="3" [(ngModel)]='chase_number_config.chase_rule.number' type="number" (keyup)='changeregnum($event)'>{{now_lang.Chase_num.issues}}X
+                                        <input class="config_input" [(ngModel)]='chase_number_config.chase_rule.multiple' maxlength="3" type="number" (keyup)='changeregnum($event)'>{{now_lang.Chase_num.Mult}}
                                     </div>
                                     <div class="config_item">
-                                        {{now_lang.Chase_num.Chase_issues}}<input  class="config_input" maxlength="3"   [(ngModel)]='chase_number_config.chase_amount' type="number" (keyup) = 'changeregnum($event)'>
+                                        {{now_lang.Chase_num.Chase_issues}}
+                                        <input class="config_input" maxlength="3" [(ngModel)]='chase_number_config.chase_amount' type="number" (keyup)='changeregnum($event)'>
                                     </div>
                                     <div class="config_item">
-                                        {{now_lang.Chase_num.Ori_multiple}}<input  class="config_input" [(ngModel)]='chase_number_config.multiple' maxlength="3"  type="number" (keyup) = 'changeregnum($event)'>
+                                        {{now_lang.Chase_num.Ori_multiple}}
+                                        <input class="config_input" [(ngModel)]='chase_number_config.multiple' maxlength="3" type="number" (keyup)='changeregnum($event)'>
                                     </div>
                                     <div class="config_item checkbox_box">
-                                        <label><input type="checkbox" [(ngModel)]="Open_stop"/>{{now_lang.Ball_tab.Open_stop}}</label>
-                                        <label><input type="checkbox" [(ngModel)]="Win_stop"/>{{now_lang.Ball_tab.Win_stop}}</label>
+                                        <label>
+                                            <input type="checkbox" [(ngModel)]="Open_stop" />{{now_lang.Ball_tab.Open_stop}}</label>
+                                        <label>
+                                            <input type="checkbox" [(ngModel)]="Win_stop" />{{now_lang.Ball_tab.Win_stop}}</label>
                                     </div>
                                 </div>
                                 <div class="config_col">
                                     <div class="config_item ">
                                         {{now_lang.Chase_num.Chase_issues}}:
                                         <select id="select_amount" name="select_amount" [(ngModel)]="chase_number_config.select_amount" (change)="typeoptchange()">
-                                            <option *ngFor="let item of typeoptiondata"   value="{{item}}">{{item=='all'?now_lang.Chase_num.Chase_all:item+now_lang.Chase_num.issues}}</option>
+                                            <option *ngFor="let item of typeoptiondata" value="{{item}}">{{item=='all'?now_lang.Chase_num.Chase_all:item+now_lang.Chase_num.issues}}</option>
                                         </select>
 
                                     </div>
@@ -146,20 +157,20 @@
                                             {{chase_amount}}
 
                                         </div>
-                                        
+
                                     </div>
                                     <div class="config_item ">
                                         {{now_lang.Chase_num.Chase_amount}}:
                                         <div>
                                             {{chase_money}}{{now_lang.Chase_num.yuan}}
                                         </div>
-                                        
+
                                     </div>
                                     <div class="config_item flr">
                                         <div class="preduce_btn btnh_w120_h40" (click)="produce_plan()">
                                             {{now_lang.Chase_num.Produce_plan}}
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -191,11 +202,12 @@
                                     <ul>
                                         <li *ngFor='let item of lotdata_now'>
                                             <div class="item_child">
-                                                <label><input type="checkbox" (change)='check_lot(item)' [(ngModel)]="item.checkon"  />{{item.lot_num}}</label>
+                                                <label>
+                                                    <input type="checkbox" (change)='check_lot(item)' [(ngModel)]="item.checkon" />{{item.lot_num}}</label>
                                             </div>
                                             <div class="item_child">
                                                 <div>
-                                                    <input  class="config_input" (input)='get_takemon(item)' [(ngModel)]="item.multiple" maxlength="10"  type="number" >{{now_lang.Chase_num.Mult}}
+                                                    <input class="config_input" (input)='get_takemon(item)' [(ngModel)]="item.multiple" maxlength="10" type="number">{{now_lang.Chase_num.Mult}}
                                                 </div>
                                             </div>
                                             <div class="item_child">
@@ -213,7 +225,7 @@
                 </div>
                 <div class="confirm_box">
                     <div class="confirm_btn" (click)="rechase_data()">{{now_lang.Chase_num.Clear_chase}}</div>
-                    <div class="confirm_btn" (click)="submit_chase()" >{{now_lang.Chase_num.Chase_bet}}</div>
+                    <div class="confirm_btn" (click)="submit_chase()">{{now_lang.Chase_num.Chase_bet}}</div>
                     <div class="confirm_btn" (click)="close_chase()">{{now_lang.Chase_num.Cancel}}</div>
                 </div>
             </div>
@@ -227,7 +239,7 @@
                     <div class="tabbox">
                         <ul class="typetab">
                             <ng-container *ngFor="let val of menu_1; let i = index;">
-                                <li class="tab_li"  [ngClass]="{active: status.menu_1 === val.active}" (click)="tabmenu(val)">{{val.name}}</li>
+                                <li class="tab_li" [ngClass]="{active: status.menu_1 === val.active}" (click)="tabmenu(val)">{{val.name}}</li>
                             </ng-container>
                         </ul>
                         <ul class="totaltype">
@@ -245,7 +257,6 @@
                                 <span class="labtit" [ngClass]="{'en': now_lang_type==='en'}">{{val.title}}</span>
                                 <li [ngClass]="{active: status.menu_2 === item.index}" *ngFor="let item of val.menu" (click)="tabmenu2(item)">{{item.name}}</li>
                             </ul>
-                            <p class="tip">提示：重庆时时彩单玩法最高派奖 300000 元</p>
                         </div>
                     </div>
                     <div class="chooseno">
@@ -253,19 +264,21 @@
                             <span>{{menu_1[status.menu_1 - 1].name}}：{{currtabname}}</span>
                         </div>
                         <div class="helpbox">
-                            <div class="hot_lost" [ngClass]="{hot_hidden:hothidden}">
-                                <label>
+                            <div class="sbtnbox" [ngClass]="{hot_hidden:hothidden}">
+                                    <span class="sbtn" [ngClass]="{active:omitname==='当前遗漏'}" (click)="checkomit('yl')">{{now_lang.Ball_tab.Miss}}</span>
+                                    <span class="sbtn" [ngClass]="{active:omitname==='当前冷热'}"  (click)="checkomit('lr')" >{{now_lang.Ball_tab.Hot_cold}}</span>
+                                <!-- <label>
                                     <input #curel type="checkbox" (click)="checkomit(curel,'yl')" name="ballcheck" />{{now_lang.Ball_tab.Miss}}</label>
                                 <label>
-                                    <input #lr type="checkbox" (click)="checkomit(lr,'lr')" name="ballcheck" />{{now_lang.Ball_tab.Hot_cold}}</label>
+                                    <input #lr type="checkbox" (click)="checkomit(lr,'lr')" name="ballcheck" />{{now_lang.Ball_tab.Hot_cold}}</label> -->
                             </div>
                             <div class="tip">
-                                <!-- <i></i> -->
                                 {{now_description}}
+                            </div>
+                            <!-- <i></i> -->
                                 <!-- <div class="tips" #tips2 [ngClass]="{tipshidden:tips_hidden}">
                                     <span>{{now_tips}}</span>
                                 </div> -->
-                            </div>
                             <!-- <div class="example" style="padding-left:19px;">
                                 <i class="i2" (mouseenter)="show_tips('example',tips1)" (mouseleave)="hid_tips('example',tips1)"></i>
                                 {{now_lang.Ball_tab.Choose_examp}}
@@ -287,7 +300,7 @@
                     </div>
                     <div class="check_ballplace" *ngIf="choosem_status">
                         <div class="til">
-                           {{now_lang.Ball_tab.Choose_place}}：
+                            {{now_lang.Ball_tab.Choose_place}}：
                         </div>
                         <div id="fiveabso" class="check_box">
                             <label>
@@ -334,11 +347,11 @@
                                 <textarea name="" id="fileReader" (keyup)="textball('fileReader')"></textarea>
                             </div>
                             <div class="btn_box">
-                                <div class="rt_btn btnh_w120_h40" (click)="delnum('fileReader')">{{now_lang.Ball_tab.Tips12}}</div>
-                                <div class="rt_btn btnh_w120_h40">{{now_lang.Ball_tab.in_file}}
+                                <div class="rt_btn" (click)="delnum('fileReader')">{{now_lang.Ball_tab.Tips12}}</div>
+                                <div class="rt_btn">{{now_lang.Ball_tab.in_file}}
                                     <input #uploadFile type="file" accept="text/plain" class="file-input" (change)="filetxt($event,'fileReader')" />
                                 </div>
-                                <div class="rt_btn btnh_w120_h40" (click)="clearfile('fileReader')">{{now_lang.Ball_tab.Clear_number}}</div>
+                                <div class="rt_btn" (click)="clearfile('fileReader')">{{now_lang.Ball_tab.Clear_number}}</div>
                             </div>
                             <div class="input_tips">
                                 {{now_lang.Ball_tab.Tips11}}
@@ -346,29 +359,39 @@
                             </div>
                         </div>
                     </div>
+
+                    <p class="tip">提示：重庆时时彩单玩法最高派奖 300000 元</p>
                     <div class="addchoose">
                         <div class="funleft">
                             <div class="topcz">
-                                <div class="amount">
+                                <div class="amount btnrect">
                                     <span class="title">{{now_lang.Ball_tab.Multiple}}：</span>
 
-                                    <em class="btnaddrem" (click)="minusrem('multiple')">-</em>
-                                    <input class="mathinput" type="text" name="beis" id="testinput" [(ngModel)]="multiple_input.value"
-                                        (focus)="toggle_ul('multiple')" maxlength="5" (keyup)="changereg()" (blur)="toggle_ul('')"
-                                    />
-                                    <em class="btnaddrem" (click)="addrem('multiple')">+</em>
+                                    <em class="btnaddrem leftb" (click)="minusrem('multiple')">-</em>
+                                    <input class="mathinput" type="text" name="beis" id="testinput" [(ngModel)]="multiple_input.value" (focus)="toggle_ul('multiple')"
+                                        maxlength="5" (keyup)="changereg()" (blur)="toggle_ul('')" />
+                                    <em class="btnaddrem rightb" (click)="addrem('multiple')">+</em>
 
                                     <ul class="dropdown" [ngClass]="{ulhidden:ul_hidden}">
                                         <li (click)="check_multi(item)" *ngFor="let item of multi_select">{{item}}</li>
                                     </ul>
                                 </div>
-                                <div class="amount">
+
+                                <!-- 金额单位修改 -->
+                                <div class="amount btnrect">
                                     <span class="title">{{now_lang.Ball_tab.Model}}：</span>
-                                    <select class="mathselect" name="mos" [(ngModel)]="model" (change)="modelchange(totalinfo.count)">
+                                    <span class="bopt">
+                                        <span [ngClass]="{active:model === '0'}" (click)="modelchange(totalinfo.count,'0')">元</span>
+                                        <span class="mid" [ngClass]="{active:model === '1'}" (click)="modelchange(totalinfo.count,'1')">角</span>
+                                        <span [ngClass]="{active:model === '2'}" (click)="modelchange(totalinfo.count,'2')">分</span>
+                                    </span>
+                                    <!-- <select class="mathselect" name="mos" [(ngModel)]="model" (change)="modelchange(totalinfo.count)">
                                         <option *ngFor="let item of models;let i = index" [value]='i'>{{item}}</option>
-                                    </select>
+                                    </select> -->
                                 </div>
-                                <div class="amount">
+
+                                <!-- 随机一注移动 -->
+                                <!-- <div class="amount">
                                     <span class="title">{{now_lang.Ball_tab.Radom}}：</span>
                                     <em class="btnaddrem" (click)="minusrem('radom')">-</em>
                                     <input class="mathinput" type="text" name="beis" maxlength="5" [(ngModel)]="radom_input.value"
@@ -376,8 +399,9 @@
                                     <em class="btnaddrem" (click)="addrem('radom')">+</em>
                                     <span class="title ml10">{{now_lang.Ball_tab.Ticket}}</span>
 
-                                </div>
+                                </div> -->
                                 <div class="amount">
+                                    <strong>￥</strong>
                                     <span class="title mr10">{{rangepercent}}%</span>
                                     <em class="btnaddrem" (click)="rangevaluelessen()">-</em>
 
@@ -393,42 +417,166 @@
                                     <span class="title ml10">{{rangenum}}</span>
                                 </div>
                             </div>
-                            <div class="tip">
+                            <!-- <div class="tip">
                                 <span class="comtext">{{now_lang.Ball_tab.All_choose}}
-                                    <em>{{totalinfo.count}}</em>{{now_lang.Ball_tab.Ticket}}，{{now_lang.Ball_tab.All_pay}}<em>{{totalinfo.sum}}</em>{{now_lang.Ball_tab.Yuan}}，
-                                    {{now_lang.Ball_tab.Profit}}<em>{{totalinfo.amount}}</em>{{now_lang.Ball_tab.Yuan}}</span>
-                                <label><input type="checkbox" class="switch_btn" [ngClass]="{on: lock_multible}" (click)='lock_multiple($event)' />{{now_lang.Ball_tab.Lock_multipel}}</label>
-                            </div>
+                                    <em>{{totalinfo.count}}</em>{{now_lang.Ball_tab.Ticket}}，{{now_lang.Ball_tab.All_pay}}
+                                    <em>{{totalinfo.sum}}</em>{{now_lang.Ball_tab.Yuan}}， {{now_lang.Ball_tab.Profit}}
+                                    <em>{{totalinfo.amount}}</em>{{now_lang.Ball_tab.Yuan}}</span>
+                                <label>
+                                    <input type="checkbox" class="switch_btn" [ngClass]="{on: lock_multible}" (click)='lock_multiple($event)'
+                                    />{{now_lang.Ball_tab.Lock_multipel}}</label>
+                            </div> -->
                         </div>
-                        <div class="btnright">
-                            <a class="btnh_w120_h40 mb10 bgyellow" [ngClass]="{noactive: !ballcurr.status}" (click)='addball(menu_2,ballcurr.status)'>{{now_lang.Ball_tab.Add_number}}</a>
-                            <a class="btnh_w120_h40 bgyellow" (click)='mathball(menu_2)'>{{now_lang.Ball_tab.Radom_add}}</a>
+                    </div>
+                    <div class="midsub">
+                        <div class="btngroup">
+                            <a class="btndef" [ngClass]="{noactive: ballcurr.status}" (click)='addball(menu_2,ballcurr.status)'>确认选号</a>
+
+                            <!-- 随机一注按钮 -->
+                            <!-- <a class="btnh_w120_h40 bgyellow" (click)='mathball(menu_2)'>{{now_lang.Ball_tab.Radom_add}}</a> -->
+
+                            <a class="btndef noactive">立即下注</a>
                         </div>
+                        <div class="tip">
+                            <span class="comtext">{{now_lang.Ball_tab.All_choose}}
+                                <em>{{totalinfo.count}}</em>{{now_lang.Ball_tab.Ticket}}，{{now_lang.Ball_tab.All_pay}}
+                                <em>{{totalinfo.sum}}</em>{{now_lang.Ball_tab.Yuan}}， {{now_lang.Ball_tab.Profit}}
+                                <em>{{totalinfo.amount}}</em>{{now_lang.Ball_tab.Yuan}}</span>
+                        </div>
+
                     </div>
                     <div class="resultarea">
                         <div class="betcheck">
+                            <div class="fake_th">
+                                <ul>
+                                    <li>
+                                        <span class="title">{{now_lang.Ball_tab.Radom}}：</span>
+                                        <input class="mathinput" type="text" name="beis" maxlength="5" [(ngModel)]="radom_input.value" (focus)="inmoneyfocus('radom')"
+                                            (keyup)="changereg()" />
+                                        <span class="title ml10">{{now_lang.Ball_tab.Ticket}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="betbtn suiji" (click)='mathball(menu_2)'>
+                                            <i></i>
+                                            <span>随机</span>
+                                        </span>
+                                    </li>
+                                    <li>
+
+                                        <span class="betbtn clear" (click)="delball('clear','')">
+                                            <i></i>
+                                            <span>清空</span>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
                             <ul class="betarea">
-                                <li *ngFor="let val of sureballlist;let i = index"><div class="lot_type" style="min-width:160px;">{{val.name}}</div><div class="lot_num" [title]="val.ball">{{val.ball}}</div><div>{{models[val.model]}}</div><div>{{val.count}}{{now_lang.Ball_tab.Ticket}}</div><div>{{val.multiple}}{{now_lang.Ball_tab.Multiple1}}</div><div>{{val.sum}}{{now_lang.Ball_tab.Yuan}}</div> <a class="lot_close" (click)="delball('del',val)"></a></li>
+                                <li *ngFor="let val of sureballlist;let i = index">
+                                    <div class="lot_type">{{val.name}}</div>
+                                    <div class="lot_num" [title]="val.ball">{{val.ball}}</div>
+                                    <div class="info">{{models[val.model]}}</div>
+                                    <div class="info">{{val.count}}注</div>
+                                    <div class="info">{{val.multiple}}倍</div>
+                                    <div class="info">{{val.sum}}元</div>
+                                    <div class="lot_close" (click)="delball('del',val)"></div>
+                                </li>
                             </ul>
-                            <p class="info">
-                                {{now_lang.Ball_tab.On}}<span>20180517021</span>{{now_lang.Ball_tab.Expire_time}}：<span>00:04:22</span>{{now_lang.Ball_tab.All_orders}}：<span>{{orderinfo.total}}</span>{{now_lang.Ball_tab.All_tickets}}<span>{{orderinfo.betcount}}</span>{{now_lang.Ball_tab.All_amounts}}<span>{{orderinfo.money}}</span>{{now_lang.Ball_tab.Yuan}}
-                            </p>
+                            <!-- <div class="info">
+                                <div class="btnh_w120_h40 btn_gray " (click)="delball('clear','')">
+                                    <div class="btn_clear"></div>清空号码</div>
+                            </div> -->
                         </div>
                         <div class="btnright">
-                            <a class="btnh_w120_h40 bgfff mb10" >{{now_lang.Ball_tab.Order_history}}</a>
-                            <a class="btnh_w120_h40 bgfff mb10" (click)='chase_number()'>{{now_lang.Ball_tab.Chasing}}</a>
-                            <label><input type="checkbox" [(ngModel)]="Open_stop"/>{{now_lang.Ball_tab.Open_stop}}</label>
-                            <label><input type="checkbox" [(ngModel)]="Win_stop"/>{{now_lang.Ball_tab.Win_stop}}</label>
+                            <div class="restop">
+                                <div class="title">操作状态</div>
+                                <div class="suoding"> 
+                                    <span class="sbtnbox">
+                                        <span class="sbtn" [ngClass]="{active:lock_multible}" (click)='lock_multiple(false)'>是</span>
+                                        <span class="sbtn" [ngClass]="{active:!lock_multible}" (click)='lock_multiple(true)' >否</span>
+                                    </span>
+                                    <span>
+                                        是否锁定倍数
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="rescont">
+                                <div>
+                                    <dl>
+                                        <dt>选择：</dt>
+                                        <dd>
+                                            <strong class="orange_font">{{orderinfo.betcount}}</strong>
+                                            注<strong class="orange_font">{{orderinfo.total}}</strong>单</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>投注：</dt>
+                                        <dd>
+                                            <strong class="orange_font">{{orderinfo.money}}</strong>元</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt>追号：</dt>
+                                        <dd>无追号</dd>
+                                    </dl>
+                                </div>
+                                <div class="zhuistate">
+                                    <label>
+                                        <input type="checkbox" [(ngModel)]="Open_stop" />{{now_lang.Ball_tab.Open_stop}}</label>
+                                    <label>
+                                        <input type="checkbox" [(ngModel)]="Win_stop" />{{now_lang.Ball_tab.Win_stop}}</label>
+                                        
+                                    <div class="zhuibtn" (click)='chase_number()'>
+                                           <span class="btnbox"><i></i> <span>我要追号</span> </span>
+                                        </div>
+                                </div>
+
+
+                            </div>
                         </div>
                     </div>
                     <div class="surearea">
-                        <a class="btnh_w120_h40 bgyellowcenter" (click)="delball('clear','')">{{now_lang.Ball_tab.Clear_number}}</a>
-                        <a class="btnh_w120_h40 bgyellowcenter">{{now_lang.Ball_tab.confirm_bet}}</a>
+                        <div class="flex-r head_top">
+                            <div class="retreat">批量撤单(0)</div>
+                            <div class="til_top">游戏记录</div>
+                            <div class="flex-r">
+                                <div class="hisbtn">刷新</div>
+                                <div class="hisbtn">更多记录</div>
+                            </div>
+                        </div>
+                        <div class="history_box">
+
+                            <table class="fake_table">
+                                <thead class="fake_head ">
+                                    <tr>
+                                        <th class="fake_th" style="text-indent:20px;">注册编号</th>
+                                        <th class="fake_th">玩法</th>
+                                        <th class="fake_th">期号</th>
+                                        <th class="fake_th">投注时间</th>
+                                        <th class="fake_th">投注内容</th>
+                                        <th class="fake_th">倍模</th>
+                                        <th class="fake_th">总金额</th>
+                                        <th class="fake_th">奖金</th>
+                                        <th class="fake_th">状态</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="max-height:140px;">
+                                    <tr *ngFor='let item of history_list;let i=index;'>
+                                        <td>{{item.number}}</td>
+                                        <td>{{item.play_type}}</td>
+                                        <td>{{item.issues}}</td>
+                                        <td>{{item.time}}</td>
+                                        <td>{{item.balls}}</td>
+                                        <td>{{item.multiple_model}}</td>
+                                        <td>{{item.all_amount}}</td>
+                                        <td>{{item.bonus}}</td>
+                                        <td>{{item.status}}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- <a class="btnh_w120_h40 bgredcenter">确认投注</a> -->
                     </div>
                 </div>
             </div>
-        </div>
-        <div>
         </div>
 
         <app-pupout [data]='popoutInfo' (close)="closePopouot($event)" (notarize)="NOTARIZE()"></app-pupout>

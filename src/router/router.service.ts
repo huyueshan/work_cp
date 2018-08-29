@@ -273,7 +273,6 @@ export class RouteguardService implements CanActivate{
 				path: 'usercenter',
 				loadChildren: '../app/page_module_3/usercenter/usercenter.module#UsercenterModule',
 				canActivate: [RouteguardService]
-				
 			},
 			{
 				path: 'phone',

@@ -24,6 +24,9 @@ import "rxjs/add/operator/filter";
 })
 export class ExfComponent implements OnInit, OnDestroy, AfterViewInit {
   loadpage = false;
+  public gamedata:any ={
+		gametype:'EXF'
+	}
   public cpnav = {
     style: "credit",
     prev: "20180517022",

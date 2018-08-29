@@ -223,7 +223,7 @@
                         </div>
                         <!-- 底部问路-->
                         <div *ngIf="type<3">
-                            <app-wenlu></app-wenlu>
+                            <app-wenlu  [gamedata]="gamedata"></app-wenlu>
                         </div>
                         <!-- 快选金额 -->
                         <div class="setbox" *ngIf="popup.setnumb.show" [style.left.px]= "popup.setnumb.left" [style.top.px]= "popup.setnumb.top">

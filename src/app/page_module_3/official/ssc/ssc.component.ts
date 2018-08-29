@@ -190,6 +190,80 @@ export class SSCofficialComponent implements OnInit {
     public chase_amount :any = 0;
     //追号数据结束
 
+	// 新增数据
+	public history_list :any = 
+	[
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        
+    ];
+
+
+
 
     status = {
         menu_1: 1, //一级tab默认项
@@ -259,8 +333,7 @@ export class SSCofficialComponent implements OnInit {
     ];
 
     // 2级tab数据以及对应要显示的内容
-    menu_2_data = [
-        {
+    menu_2_data = [{
             title: this.now_lang.Lot_tab.Five_star_str,
             menu: [{
                     name: this.now_lang.Lot_tab.Five_star_eve,
@@ -1337,7 +1410,7 @@ export class SSCofficialComponent implements OnInit {
         // 在此处提交追号所有号码
     }
     close_chase(){
-        $('#layer2').find('.chase_container').removeClass('show_this');
+        $('#layer3_c').find('.chase_container').removeClass('show_this');
         let that = this;
         that.rechase_dataall()
     }
@@ -1373,10 +1446,10 @@ export class SSCofficialComponent implements OnInit {
   
     radomshowchase(){
         this.mathball(this.menu_2);
-        $('#layer2').find('.chase_container').addClass('show_this');
+        $('#layer3_c').find('.chase_container').addClass('show_this');
     }
     showchase(){
-        $('#layer2').find('.chase_container').addClass('show_this');
+        $('#layer3_c').find('.chase_container').addClass('show_this');
     }
     hid_layer(){
         document.getElementById("layer").innerHTML = '';
@@ -1889,7 +1962,7 @@ export class SSCofficialComponent implements OnInit {
 
     }
     ngAfterViewInit() {
-        // this.inittab2();
+        this.inittab2();
     }
     // 拖动条函数
     drag_tag() {
@@ -1925,108 +1998,108 @@ export class SSCofficialComponent implements OnInit {
 
     }
     //tab切换暂时是写死的
-    // inittab2() {
-    //     let ulMax = $('.typetab').outerWidth();
-    //     let liWidth = 0;
-    //     let toolong = 0;
-    //     let allliWidth = 0;
-    //     $.each($('.tab_li'), function (i, n) {
-    //         allliWidth = allliWidth + $(n).outerWidth();
-    //     });
-    //     $('.pointl').on('click', function () {
-    //         //做个过长处理
-    //         if (allliWidth > ulMax * 2 && toolong >= 0) {
-    //             toolong = toolong - 1;
-    //         } else {
-    //             ulMax = $('.typetab').outerWidth();
-    //         }
-    //         if (toolong < 1) {
-    //             $.each($('.tab_li'), function (i, n) {
-    //                 liWidth = liWidth + $(n).outerWidth();
-    //                 if (liWidth < ulMax) {
-    //                     $(n).removeClass('hide_it')
-    //                 }
-    //                 if (liWidth > ulMax) {
-    //                     $(n).addClass('hide_it')
-    //                 }
-    //             });
-    //         } else if (toolong >= 1) {
-    //             $.each($('.tab_li'), function (i, n) {
-    //                 liWidth = liWidth + $(n).outerWidth();
-    //                 if (liWidth >= ulMax && liWidth <= ulMax * 2) {
-    //                     $(n).removeClass('hide_it')
-    //                 }
-    //                 if (liWidth >= ulMax * 2) {
-    //                     $(n).addClass('hide_it')
-    //                 }
-    //             });
-    //         } else {
-    //             $.each($('.tab_li'), function (i, n) {
-    //                 liWidth = liWidth + $(n).outerWidth();
-    //                 if (liWidth > ulMax) {
-    //                     $(n).addClass('hide_it')
-    //                 } else {
-    //                     $(n).removeClass('hide_it')
-    //                 }
-    //             });
-    //         }
-    //         if (liWidth < ulMax) {
+    inittab2() {
+        let ulMax = $('.typetab').outerWidth();
+        let liWidth = 0;
+        let toolong = 0;
+        let allliWidth = 0;
+        $.each($('.tab_li'), function (i, n) {
+            allliWidth = allliWidth + $(n).outerWidth();
+        });
+        $('.pointl').on('click', function () {
+            //做个过长处理
+            if (allliWidth > ulMax * 2 && toolong >= 0) {
+                toolong = toolong - 1;
+            } else {
+                ulMax = $('.typetab').outerWidth();
+            }
+            if (toolong < 1) {
+                $.each($('.tab_li'), function (i, n) {
+                    liWidth = liWidth + $(n).outerWidth();
+                    if (liWidth < ulMax) {
+                        $(n).removeClass('hide_it')
+                    }
+                    if (liWidth > ulMax) {
+                        $(n).addClass('hide_it')
+                    }
+                });
+            } else if (toolong >= 1) {
+                $.each($('.tab_li'), function (i, n) {
+                    liWidth = liWidth + $(n).outerWidth();
+                    if (liWidth >= ulMax && liWidth <= ulMax * 2) {
+                        $(n).removeClass('hide_it')
+                    }
+                    if (liWidth >= ulMax * 2) {
+                        $(n).addClass('hide_it')
+                    }
+                });
+            } else {
+                $.each($('.tab_li'), function (i, n) {
+                    liWidth = liWidth + $(n).outerWidth();
+                    if (liWidth > ulMax) {
+                        $(n).addClass('hide_it')
+                    } else {
+                        $(n).removeClass('hide_it')
+                    }
+                });
+            }
+            if (liWidth < ulMax) {
 
-    //         }
-    //         liWidth = 0;
-    //     })
-    //     $('.pointr').on('click', function () {
-    //         //做个过长处理
-    //         if (allliWidth > ulMax * 2 && toolong < 2) {
-    //             toolong = toolong + 1;
-    //         } else {
-    //             ulMax = $('.typetab').outerWidth();
-    //         }
-    //         if (toolong == 1) {
-    //             $.each($('.tab_li'), function (i, n) {
-    //                 liWidth = liWidth + $(n).outerWidth();
-    //                 if (liWidth < ulMax) {
-    //                     $(n).addClass('hide_it')
-    //                 }
-    //                 if (liWidth > ulMax && liWidth < ulMax * 2) {
-    //                     $(n).removeClass('hide_it')
-    //                 }
-    //             });
-    //         } else if (toolong >= 2) {
-    //             $.each($('.tab_li'), function (i, n) {
-    //                 liWidth = liWidth + $(n).outerWidth();
-    //                 if (liWidth < ulMax * 2) {
-    //                     $(n).addClass('hide_it')
-    //                 }
-    //                 if (liWidth > ulMax * 2) {
-    //                     $(n).removeClass('hide_it')
-    //                 }
+            }
+            liWidth = 0;
+        })
+        $('.pointr').on('click', function () {
+            //做个过长处理
+            if (allliWidth > ulMax * 2 && toolong < 2) {
+                toolong = toolong + 1;
+            } else {
+                ulMax = $('.typetab').outerWidth();
+            }
+            if (toolong == 1) {
+                $.each($('.tab_li'), function (i, n) {
+                    liWidth = liWidth + $(n).outerWidth();
+                    if (liWidth < ulMax) {
+                        $(n).addClass('hide_it')
+                    }
+                    if (liWidth > ulMax && liWidth < ulMax * 2) {
+                        $(n).removeClass('hide_it')
+                    }
+                });
+            } else if (toolong >= 2) {
+                $.each($('.tab_li'), function (i, n) {
+                    liWidth = liWidth + $(n).outerWidth();
+                    if (liWidth < ulMax * 2) {
+                        $(n).addClass('hide_it')
+                    }
+                    if (liWidth > ulMax * 2) {
+                        $(n).removeClass('hide_it')
+                    }
 
-    //             });
-    //         } else {
-    //             $.each($('.tab_li'), function (i, n) {
-    //                 liWidth = liWidth + $(n).outerWidth();
-    //                 if (liWidth < ulMax) {
-    //                     $(n).addClass('hide_it')
-    //                 } else {
-    //                     $(n).removeClass('hide_it')
-    //                 }
-    //             });
-    //         }
+                });
+            } else {
+                $.each($('.tab_li'), function (i, n) {
+                    liWidth = liWidth + $(n).outerWidth();
+                    if (liWidth < ulMax) {
+                        $(n).addClass('hide_it')
+                    } else {
+                        $(n).removeClass('hide_it')
+                    }
+                });
+            }
 
-    //         if (liWidth < ulMax) {
-    //             $('.tab_li').removeClass('hide_it');
-    //         }
-    //         liWidth = 0
-    //     })
-    //     $.each($('.tab_li'), function (i, n) {
-    //         liWidth = liWidth + $(n).outerWidth();
-    //         if (liWidth > ulMax) {
-    //             $(n).addClass('hide_it')
-    //         }
-    //     });
-    //     liWidth = 0;
-    // }
+            if (liWidth < ulMax) {
+                $('.tab_li').removeClass('hide_it');
+            }
+            liWidth = 0
+        })
+        $.each($('.tab_li'), function (i, n) {
+            liWidth = liWidth + $(n).outerWidth();
+            if (liWidth > ulMax) {
+                $(n).addClass('hide_it')
+            }
+        });
+        liWidth = 0;
+    }
     //路由函数                      
     linkrouter(t) {
         this.router.navigate([t]);
@@ -2095,6 +2168,7 @@ export class SSCofficialComponent implements OnInit {
     // 时时彩二级导航切换
     currtabname = ''
     tabmenu2(data) {
+        console.log(data)
         let that = this
         that.inittab()
         that.currtabname = data.name
@@ -2103,9 +2177,11 @@ export class SSCofficialComponent implements OnInit {
         if (data.isupload) {
             that.up_ball = 2
             this.balllist(data.arr)
+            that.hothidden = true;
         } else {
             that.up_ball = 1
             this.balllist(data.arr)
+            that.hothidden = false;
         }
         that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
         that.now_description = that.lot_rules[that.now_tips_menu]['description'];
@@ -2359,6 +2435,7 @@ export class SSCofficialComponent implements OnInit {
         let str = Utils.algorithm.getNum($('#' + id).val())
         this.filedata(str, '')
     }
+	public filterstatus = false!!!
     // 处理输入框的数据
     filedata(str, type) {
         let self = this
@@ -2388,8 +2465,10 @@ export class SSCofficialComponent implements OnInit {
                 amount: 0
             }
         }
+		this.filterstatus = false
     }
     // 处理过滤结果
+	
     filteresult(id, type) {
         if ($('#' + id).val() == '') {
             this.POPNOTE({msg:'您还没有输入号码'});
@@ -2418,6 +2497,7 @@ export class SSCofficialComponent implements OnInit {
                 val = i < obj.allarr.length - 1 ? val + obj.allarr[i][0].split(',').join('') + '，' : val + obj.allarr[i][0].split(',').join('')
             }
         }
+		this.filterstatus = true
         if (type == 'del') {
             $('#' + id).val(val)
             if (rep == 0 && nob == 0) {
@@ -2428,14 +2508,21 @@ export class SSCofficialComponent implements OnInit {
             }
         } else {
             if (rep != 0 || nob != 0) {
-                $('#' + id).val(null)
+                $('#' + id).val(val)
                 con = '将要自动过滤' + rep + '个重复号，' + nob + '个无效号，过滤内容为：' + ball
-                self.POPNOTE({msg:con});
+                self.POPNOTE({msg:con},self.qdfunc);
             } else {
-                $('#' + id).val(null)
+				if(self.filterstatus){
+					self.addball(self.menu_2,self.ballcurr.status)
+					$('#' + id).val(null)
+				}
             }
         }
+		
     }
+	qdfunc(){
+		this.addball(this.menu_2,this.ballcurr.status)
+	}
     // 计算当前点击投注信息
     countbet(totalbet) {
         if (!totalbet) {
@@ -2452,7 +2539,8 @@ export class SSCofficialComponent implements OnInit {
     }
 
     // 改变金额模式
-    modelchange(count) {
+    modelchange(count,i) {
+        this.model = i;
         if (this.totalinfo.sum == 0) {
             return
         }
@@ -2504,12 +2592,12 @@ export class SSCofficialComponent implements OnInit {
     }
 
     // 遗漏选择
-    omitname = ''
-    checkomit(obj, type) {
+    omitname = '当前遗漏'
+    checkomit(type) {
         let that = this
-        if ($(obj).is(':checked')) {
-            $("input:checkbox[name='ballcheck']").prop("checked", false)
-            $(obj).prop("checked", true)
+        // if ($(obj).is(':checked')) {
+        //     $("input:checkbox[name='ballcheck']").prop("checked", false)
+        //     $(obj).prop("checked", true)
 
             if (type == 'yl') {
                 that.omitarr = {
@@ -2530,15 +2618,15 @@ export class SSCofficialComponent implements OnInit {
                 }
                 that.omitname = '当前冷热'
             }
-        } else {
-            that.omitarr = {
-                0: [],
-                1: [],
-                2: [],
-                3: [],
-                4: []
-            }
-        }
+        // } else {
+        //     that.omitarr = {
+        //         0: [],
+        //         1: [],
+        //         2: [],
+        //         3: [],
+        //         4: []
+        //     }
+        // }
     }
     abotitle: any = {
         "w": '万',
@@ -2557,7 +2645,10 @@ export class SSCofficialComponent implements OnInit {
         }
         let arr = []
         if (that.tabcurr.isupload) {
-            this.filteresult('fileReader', '')
+			if(!that.filterstatus){
+				that.filteresult('fileReader', '');
+				return
+			}
         }
         if (that.tabcurr.choose) {
             var _selfs;
@@ -2857,13 +2948,13 @@ export class SSCofficialComponent implements OnInit {
     }
     // 锁定倍数
     public lock_multible :any=false;
-    lock_multiple(item){
-        let now_btn = $(item.target);
-        console.log($(item.target).hasClass('switch_btn'));
-        if (!$(item.target).hasClass('switch_btn')) {
-            now_btn = $(item.target).parent();
-        }
-        if(now_btn.hasClass('on')){
+    lock_multiple(i){
+        // let now_btn = $(item.target);
+        // console.log($(item.target).hasClass('switch_btn'));
+        // if (!$(item.target).hasClass('switch_btn')) {
+        //     now_btn = $(item.target).parent();
+        // }
+        if(i){
             this.lock_multible = false;
             $('#testinput').removeAttr('disabled');
         }else{

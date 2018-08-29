@@ -26,6 +26,9 @@ import "rxjs/add/operator/filter";
 })
 export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     loadpage = false;
+	public gamedata:any ={
+		gametype:'FFC'
+	}
     public cpnav = {
         style: "credit",
         prev: "20180517022",

@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { Waybills } from "../../../../factory/Waybill";
 require("../../../../styles/waybill/waybill_1.scss")
 
@@ -8,10 +8,10 @@ require("../../../../styles/waybill/waybill_1.scss")
   styleUrls: ['./wenlu.component.scss']
 })
 export class WenluComponent implements OnInit {
-
+	@Input() gamedata: any;
     public bottabactive = 0; // 控制 底部问路tab标签变量
-    public typeoption = "龙虎斗"; //绑定 底部问路选择框数据
-    public bottomtabdata;
+    public typeoption = "第一球"; //绑定 底部问路选择框数据
+    public bottomtabdata:any;
     public bottomtabdata1 = [
       {
         name: "1vs2"
@@ -114,27 +114,51 @@ export class WenluComponent implements OnInit {
   
 
   constructor(private el: ElementRef,) { }
-
+	waydata = ["8","2","0","0","5","4","7","1","8","2","4","2","7","2","0","0","7","7","8","6","0","1","6","7","9","7","8","1","8","5","1","3","5","4","9","4","6","2","2","7","8","6","7","9","6","5","7","3","2","2","2","3","7","6","4","7","5","4","8","5","1","2","4","9","0","3","1","7","6","9","2","5","9","6","6","1","9","1","7","5","1","5","5","7","4","2","4","9","0","6","4","8","4","9","8","4","5","1","5","5"];
+		
   ngOnInit() {
-	Waybills.Waybill({type:'haoma',isToradora:!0,gametype:'SSC',index:1,ele:$("#WAYBILL-BODY")});
+	Waybills.Waybill({type:'haoma',waydata:this.waydata,isToradora:!0,gametype:this.gamedata.gametype,index:1,ele:$("#WAYBILL-BODY")});
     this.typeoptchange(); //初始问路tab数据；
-    this.tablebox1.data = this.setwenludata(); //临时测试数据
-    this.tablebox2.data = this.setwenludata(); //临时测试数据
-    this.tablebox3.data = this.setwenludata(); //临时测试数据
-    this.tablebox4.data = this.setwenludata(); //临时测试数据
-    this.tablebox5.data = this.setwenludata(); //临时测试数据
-
   }
 
   typeoptchange() {
-    this.bottabactive = 0;
+	  console.log(this.gamedata)
     if (this.typeoption === "龙虎斗") {
       this.bottomtabdata = this.bottomtabdata1;
     } else {
       this.bottomtabdata = this.bottomtabdata2;
     }
+	if(this.bottabactive==0){
+		this.waydata = ["8","2","0","0","5","4","7","1","8","2","4","2","7","2","0","0","7","7","8","6","0","1","6","7","9","7","8","1","8","5","1","3","5","4","9","4","6","2","2","7","8","6","7","9","6","5","7","3","2","2","2","3","7","6","4","7","5","4","8","5","1","2","4","9","0","3","1","7","6","9","2","5","9","6","6","1","9","1","7","5","1","5","5","7","4","2","4","9","0","6","4","8","4","9","8","4","5","1","5","5"];
+		Waybills.Waybill({type:'haoma',waydata:this.waydata,isToradora:!0,gametype:this.gamedata.gametype,index:1,ele:$("#WAYBILL-BODY")});
+	}else if(this.bottabactive==1){
+		this.waydata = ["双","双","双","双","双","单","双","单","单","双","双","双","双","单","双","双","双","单","单","双","双","双","单","双","单","单","单","双","单","双","单","单","单","单","双","单","双","双","双","双","单","双","双","单","单","双","单","单","单","双","双","双","单","单","双","双","单","单","双","双","单","单","双","双","单","双","单","单","单","双","单","双","单","单","双","双","单","单","单","单","单","单","单","单","单","双","双","双","单","双","双","双","双","双","单","双","双","单","单","单"];
+		Waybills.Waybill({type:'danshuang',waydata:this.waydata,isToradora:!0,gametype:'SSC',index:1,ele:$("#WAYBILL-BODY")});
+	}else if(this.bottabactive==2){
+		this.waydata = ["小","大","小","小","小","大","小","大","小","大","小","小","小","大","小","小","小","大","大","大","大","小","小","大","大","大","大","大","小","大","大","小","小","大","小","大","小","大","小","小","大","大","大","大","大","大","大","大","小","小","小","小","小","大","大","小","大","大","小","大","大","小","小","小","大","小","小","小","大","大","大","小","大","大","大","大","小","大","小","大","大","小","大","大","大","小","小","小","大","小","大","小","大","小","大","大","小","大","小","大"];
+		Waybills.Waybill({type:'daxiao',waydata:this.waydata,isToradora:!0,gametype:this.gamedata.gametype,index:1,ele:$("#WAYBILL-BODY")});   
+	}else{
+		this.waydata = ["虎","龙","虎","龙","和","和","龙","虎","龙","龙","虎","虎","虎","龙","和","虎","龙","虎","和","和","龙","虎","虎","龙","和","虎","龙","龙","龙","虎","龙","龙","和","龙","虎","龙","龙","和","龙","虎","龙","龙","虎","虎","龙","虎","虎","龙","龙","龙","龙","龙","龙","虎","龙","龙","龙","和","和","虎","虎","虎","龙","和","龙","虎","虎","虎","虎","龙","虎","虎","虎","虎","龙","和","虎","龙","龙","龙","龙","龙","虎","龙","龙","虎","虎","虎","龙","虎","虎","虎","虎","虎","虎","龙","虎","和","龙","虎"]
+		Waybills.Waybill({type:'daxiao',waydata:this.waydata,isToradora:!0,gametype:this.gamedata.gametype,index:1,ele:$("#WAYBILL-BODY")});
+	}
+	
   }
-
+	changeWay(i){
+		this.bottabactive = i;
+		if(this.bottabactive==0){
+			this.waydata = ["8","2","0","0","5","4","7","1","8","2","4","2","7","2","0","0","7","7","8","6","0","1","6","7","9","7","8","1","8","5","1","3","5","4","9","4","6","2","2","7","8","6","7","9","6","5","7","3","2","2","2","3","7","6","4","7","5","4","8","5","1","2","4","9","0","3","1","7","6","9","2","5","9","6","6","1","9","1","7","5","1","5","5","7","4","2","4","9","0","6","4","8","4","9","8","4","5","1","5","5"];
+			Waybills.Waybill({type:'haoma',waydata:this.waydata,isToradora:!0,gametype:'SSC',index:1,ele:$("#WAYBILL-BODY")});
+		}else if(this.bottabactive==1){
+			this.waydata = ["双","双","双","双","双","单","双","单","单","双","双","双","双","单","双","双","双","单","单","双","双","双","单","双","单","单","单","双","单","双","单","单","单","单","双","单","双","双","双","双","单","双","双","单","单","双","单","单","单","双","双","双","单","单","双","双","单","单","双","双","单","单","双","双","单","双","单","单","单","双","单","双","单","单","双","双","单","单","单","单","单","单","单","单","单","双","双","双","单","双","双","双","双","双","单","双","双","单","单","单"];
+			Waybills.Waybill({type:'danshuang',waydata:this.waydata,isToradora:!0,gametype:this.gamedata.gametype,index:1,ele:$("#WAYBILL-BODY")});
+		}else if(this.bottabactive==2){
+			this.waydata = ["小","大","小","小","小","大","小","大","小","大","小","小","小","大","小","小","小","大","大","大","大","小","小","大","大","大","大","大","小","大","大","小","小","大","小","大","小","大","小","小","大","大","大","大","大","大","大","大","小","小","小","小","小","大","大","小","大","大","小","大","大","小","小","小","大","小","小","小","大","大","大","小","大","大","大","大","小","大","小","大","大","小","大","大","大","小","小","小","大","小","大","小","大","小","大","大","小","大","小","大"];
+			Waybills.Waybill({type:'daxiao',waydata:this.waydata,isToradora:!0,gametype:this.gamedata.gametype,index:1,ele:$("#WAYBILL-BODY")});
+		}else{
+			this.waydata = ["虎","龙","虎","龙","和","和","龙","虎","龙","龙","虎","虎","虎","龙","和","虎","龙","虎","和","和","龙","虎","虎","龙","和","虎","龙","龙","龙","虎","龙","龙","和","龙","虎","龙","龙","和","龙","虎","龙","龙","虎","虎","龙","虎","虎","龙","龙","龙","龙","龙","龙","虎","龙","龙","龙","和","和","虎","虎","虎","龙","和","龙","虎","虎","虎","虎","龙","虎","虎","虎","虎","龙","和","虎","龙","龙","龙","龙","龙","虎","龙","龙","虎","虎","虎","龙","虎","虎","虎","虎","虎","虎","龙","虎","和","龙","虎"]
+			Waybills.Waybill({type:'daxiao',waydata:this.waydata,isToradora:!0,gametype:this.gamedata.gametype,index:1,ele:$("#WAYBILL-BODY")});
+		}
+	}
     // 底部问路拖拽事件
   // ev 事件对象 ， t 当前表格数据对象
   dragdown(ev, t) {

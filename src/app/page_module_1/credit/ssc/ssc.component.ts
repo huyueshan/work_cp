@@ -716,6 +716,9 @@ export class SscComponent implements OnInit, OnDestroy, AfterViewInit {
         event: false,
         show: false,
     }
+	public gamedata:any ={
+		gametype:'SSC'
+	}
     constructor(private el: ElementRef, private router: Router, private route: ActivatedRoute) {}
 
     ngOnInit() {

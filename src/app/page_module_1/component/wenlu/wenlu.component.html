@@ -5,14 +5,14 @@
                 <option *ngFor="let item of typeoptiondata" value="{{item}}">{{item}}</option>
             </select>
         </li>
-        <li class="tabitem" *ngFor="let item of bottomtabdata; let i=index">
-            <span class="tabbtn" [ngClass]="{tabbtnactive:bottabactive == i }" (click)="bottabactive = i">
+        <li class="tabitem" *ngFor="let item of bottomtabdata; let i=index" (click)="changeWay(i)">
+            <span class="tabbtn" [ngClass]="{tabbtnactive:bottabactive == i }">
                 {{item.name}}
             </span>
         </li>
     </ul>
     <div class="waybill-main">
-        <div class="w-item clear" id="WAYBILL-BODY">
+        <div class="w-item clear" id="WAYBILL-BODY" style="margin-left:10px;">
         </div>
     </div>
 </div>

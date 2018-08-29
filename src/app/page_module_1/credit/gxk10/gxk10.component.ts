@@ -26,6 +26,9 @@ import {
 })
 export class Gxk10Component implements OnInit, OnDestroy, AfterViewInit {
     loadpage = false;
+	public gamedata:any ={
+		gametype:'GXK10'
+	}
     public cpnav = {
         style: "credit",
         prev: "20180517022",

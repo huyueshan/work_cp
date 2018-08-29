@@ -1063,3 +1063,280 @@ $browser: null;
     }
 
 }
+#layer3_c{
+    .chase_container{
+        visibility: hidden;
+    }
+    z-index: 887;
+    .config_input{
+        height: 23px;
+        width: 50px;
+        margin: 0 10px;
+        text-align: center;
+        border:1px solid #ddd;
+    }
+    #layer_box{
+        min-width: 800px;
+        max-width: 900px;
+        /* height: 300px; */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform:translateY(-50%) translateX(-50%) scale(0.5);
+        transition:0.1s ease;
+        background-color: white;
+        border: 0px solid transparent;
+        border-radius: 5px;
+        box-shadow: 0 0 10px 0 #aaa;
+        overflow: hidden;
+        z-index: 887;
+        background-color: #eee;
+        /* visibility: hidden; */
+        .top_til{
+            height: 40px;
+            background: linear-gradient(to top, #941927, #e22137);
+        }
+        .top_tab{
+            height: 50px;
+            /* background-color: pink; */
+            .tab_box{
+                height: 40px;
+                width: 160px;
+                margin: 0 auto;
+                .tab_item{
+                    height: 100%;
+                    width: 80px;
+                    font-size: 15px;
+                    display: inline-block;
+                    line-height: 40px;
+                    color: black;
+                    float: left;
+                    background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+                    cursor: pointer;
+                }
+                .tab_item.active{
+                    color: white;
+                    background: linear-gradient(to top, #941927, #e22137);
+                }
+
+            }
+        }
+        .top_config{
+            height: 100px;
+            .config_col{
+                height: 50px;
+                padding: 0 20px;
+                /* background: green; */
+                .config_item{
+                    height: 100%;
+                    line-height: 50px;
+                    margin-right: 10px;
+                    padding-left: 10px;
+                    display: inline-block;
+                    float: left;
+                    .config_input{
+                        height: 23px;
+                        text-align: center;
+                    }
+                    div{
+                        display: inline-block;
+                    }
+                }
+                
+                label{
+                    float:left;
+                    margin-right:15px;
+                    color:#333;
+                    height:20px;
+                    line-height:20px;
+                    margin-top:2px;
+                    font-weight:500;
+                    input[type=checkbox]{
+                        border:1px solid #fff000;
+                        color:#fff000;
+                        width:18px;
+                        height:18px;
+                        float:left;
+                        margin-top: 2px;
+                        margin-right:3px;
+                        cursor:pointer;
+                    }
+                }
+
+                select {
+                    width: 110px;
+                    height: 30px;
+                    line-height: 30px;
+                    border: 1px solid #999;
+                    border-radius: 2px;
+                }
+                .checkbox_box{
+                    width: 150px;
+                    float: right;
+                }
+                .flr{
+                    float: right;
+                }
+                .preduce_btn{
+                    margin-top: 10px;
+                    margin-right: 19px;
+                    color: white;
+                    background: linear-gradient(to top, #941927, #e22137);
+                }
+                // .preduce_btn:hover{
+                //     background: linear-gradient(to top, #941927, #e22137);
+                // }
+            }
+        }
+        .number_list{
+            .itembox{
+                position: relative;
+                display: inline-block;
+                float: left;
+                width: 25%; 
+                .til_top{
+                    height: 40px;
+                    background-color: #eee;
+                    line-height: 40px;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+                .divid{
+                    height: 20px;
+                    top: 10px;
+                    position: absolute;
+                    right: 0;
+                    border-left: 1px solid #ccc;
+                    border-right: 1px solid #eee;
+                    display: inline-block;
+                }
+            }
+            .item_content{
+                clear: both;
+                max-height: 175px;
+                overflow-y:scroll;
+                padding-top: 3px;
+                li{
+                    width: 100%;
+                    height: 35px;
+                    .item_child{
+                        height: 100%;
+                        float: left;
+                        display: inline-block;
+                        line-height: 35px;
+                        width: 25%;
+                        label{
+                            float: left;
+                            height: 100%!important;
+                            margin-right: 15px;
+                            color: #333;
+                            height: 20px;
+                            line-height: 35px;
+                            font-weight: 500;
+                            margin-left: 20px;
+                            input{
+                                border: 1px solid #fff000;
+                                color: #fff000;
+                                width: 18px;
+                                height: 18px;
+                                float: left;
+                                margin-top: 9px;
+                                margin-right: 3px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        
+        
+        .til{
+            height: 38px;
+            line-height: 38px;
+            width: 80%;
+            float: left;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            text-indent: 20px;
+        }
+    .close{
+        height: 100%;
+        width: 8%;
+        cursor: pointer;
+        text-align: center;
+        line-height: 30px;
+        float: right;
+        color: #fff;
+        font-size: 20px;
+    }
+        .content_box{
+            width: 100%;
+            text-align: center;
+            line-height: 25px;
+            padding:25px 0px;
+            background-color: #fff;
+        }
+        .confirm_box{
+            width: 100%;
+            background-color: #eee;
+            padding: 30px;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content:center;
+        }
+        .confirm_btn{
+            display: inline-block;
+            height: 30px;
+            line-height: 28px;
+            color: white;
+            padding: 0 20px;
+            border:0px solid transparent;
+            border-radius: 5px;
+            background: linear-gradient(to top, #941927, #e22137);
+            margin: 0 10px 0 0px;
+            float: left;
+            cursor:pointer;
+            transform:none;
+
+        }
+        
+    }
+    #layer_box.tobig{
+        transform:translateY(-50%) translateX(-50%) scale(1);
+    }
+    .language_box{
+        display: inline-block;
+        margin-top: 2px;
+    }
+    .show_this{
+        visibility: visible;
+        #layer_box{
+            transform:translateY(-50%) translateX(-50%) scale(1);
+        }
+        .cover_bg{
+            visibility: visible;
+            opacity: 0.2;
+        }
+
+    }
+    .one_chase,.two_chase{
+        display: none;
+    }
+    .one_chase.active,.two_chase.active{
+        display: block;
+    }
+    
+}
+#layer3_c.show_this{
+    visibility: visible;
+    .cover_bg{
+        visibility: visible;
+        opacity: 0.2;
+    }
+
+}
