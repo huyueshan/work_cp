@@ -9,43 +9,43 @@
                 <img src="../../images/mod3/logo_m3_01.png" alt="阿瑞斯">
             </div>
             <div calss="account">
-                <div class="flex-r reform-item" [ngClass]="{'errborder': inborder.account}">
+                <div class="flex-r reform-item">
                     <label for="account">
                     </label>
-                    <input class="reform-item-in" type="text" placeholder="账号只能有3-15位是熟悉和字母组成" [(ngModel)]="formdata.account" name="account"
+                    <input class="reform-item-in" [ngClass]="{'errborder': inborder.account}" type="text" placeholder="账号只能有3-15位是熟悉和字母组成" [(ngModel)]="formdata.account" name="account"
                         id="account" (blur)="validator('account')" (keyup.enter)="validator('account')">
                 </div>
             </div>
             <div calss="password">
-                <div class="flex-r reform-item" [ngClass]="{'errborder': inborder.password1}">
+                <div class="flex-r reform-item">
                     <label for="password1">
                     </label>
-                    <input class="reform-item-in" id="password1" type="password" placeholder="密码长度有6-13个数字和字母组成" [(ngModel)]="formdata.password1"
+                    <input class="reform-item-in" [ngClass]="{'errborder': inborder.password1}" id="password1" type="password" placeholder="密码长度有6-13个数字和字母组成" [(ngModel)]="formdata.password1"
                         name="password" (blur)="validator('password1')" (keyup.enter)="validator('password1')">
                 </div>
             </div>
             <div calss="password">
-                <div class="flex-r reform-item" [ngClass]="{'errborder': inborder.password2}">
+                <div class="flex-r reform-item">
                     <label for="password2">
                     </label>
-                    <input class="reform-item-in" id="password2" name="password2" type="password" placeholder="重复输入密码" [(ngModel)]="formdata.password2"
+                    <input class="reform-item-in"  [ngClass]="{'errborder': inborder.password2}" id="password2" name="password2" type="password" placeholder="重复输入密码" [(ngModel)]="formdata.password2"
                         (blur)="validator('password2')" (keyup.enter)="validator('password2')">
                 </div>
             </div>
             <div calss="phone">
-                <div class="flex-r reform-item" [ngClass]="{'errborder': inborder.phone}">
+                <div class="flex-r reform-item">
                     <label for="apassword2">
                     </label>
-                    <input class="reform-item-in" type="text" id="phone" name="phone" placeholder="手机号码" [(ngModel)]="formdata.phone" (blur)="validator('phone')"
+                    <input class="reform-item-in" [ngClass]="{'errborder': inborder.phone}" type="text" id="phone" name="phone" placeholder="手机号码" [(ngModel)]="formdata.phone" (blur)="validator('phone')"
                         (keyup.enter)="validator('phone')">
                 </div>
             </div>
             <div>
                 <div class="flex-r reform-item">
-                    <div class="flex-r" [ngClass]="{'errborder': inborder.security}">
+                    <div class="flex-r">
                         <label for="security">
                         </label>
-                        <input class="reform-item-in reform-item-se" id="security" name="security" type="text" placeholder="验证码" [(ngModel)]="formdata.security"
+                        <input class="reform-item-in reform-item-se" [ngClass]="{'errborder': inborder.security}" id="security" name="security" type="text" placeholder="验证码" [(ngModel)]="formdata.security"
                             (blur)="validator('security')" (keyup.enter)="validator('security')">
                     </div>
                     <div class="flex-r">
