@@ -267,35 +267,10 @@
                             <div class="sbtnbox" [ngClass]="{hot_hidden:hothidden}">
                                     <span class="sbtn" [ngClass]="{active:omitname==='当前遗漏'}" (click)="checkomit('yl')">{{now_lang.Ball_tab.Miss}}</span>
                                     <span class="sbtn" [ngClass]="{active:omitname==='当前冷热'}"  (click)="checkomit('lr')" >{{now_lang.Ball_tab.Hot_cold}}</span>
-                                <!-- <label>
-                                    <input #curel type="checkbox" (click)="checkomit(curel,'yl')" name="ballcheck" />{{now_lang.Ball_tab.Miss}}</label>
-                                <label>
-                                    <input #lr type="checkbox" (click)="checkomit(lr,'lr')" name="ballcheck" />{{now_lang.Ball_tab.Hot_cold}}</label> -->
                             </div>
                             <div class="tip">
                                 {{now_description}}
                             </div>
-                            <!-- <i></i> -->
-                                <!-- <div class="tips" #tips2 [ngClass]="{tipshidden:tips_hidden}">
-                                    <span>{{now_tips}}</span>
-                                </div> -->
-                            <!-- <div class="example" style="padding-left:19px;">
-                                <i class="i2" (mouseenter)="show_tips('example',tips1)" (mouseleave)="hid_tips('example',tips1)"></i>
-                                {{now_lang.Ball_tab.Choose_examp}}
-                                <div class="tips" #tips1 [ngClass]="{tipshidden:tips_hidden}">
-                                    <span [innerHtml]='now_tips'></span>
-                                    111
-                                </div>
-
-                            </div>
-                            <div class="example">
-                                <i class="i1" (mouseenter)="show_tips('rule',tips)" (mouseleave)="hid_tips('rule',tips)"></i>
-                                {{now_lang.Ball_tab.Play_examp}}
-                                <div class="tips" #tips [ngClass]="{tipshidden:tips_hidden}">
-                                    <span [innerHtml]='now_tips'></span>
-                                    111
-                               </div>
-                            </div> -->
                         </div>
                     </div>
                     <div class="check_ballplace" *ngIf="choosem_status">
@@ -385,21 +360,8 @@
                                         <span class="mid" [ngClass]="{active:model === '1'}" (click)="modelchange(totalinfo.count,'1')">角</span>
                                         <span [ngClass]="{active:model === '2'}" (click)="modelchange(totalinfo.count,'2')">分</span>
                                     </span>
-                                    <!-- <select class="mathselect" name="mos" [(ngModel)]="model" (change)="modelchange(totalinfo.count)">
-                                        <option *ngFor="let item of models;let i = index" [value]='i'>{{item}}</option>
-                                    </select> -->
                                 </div>
 
-                                <!-- 随机一注移动 -->
-                                <!-- <div class="amount">
-                                    <span class="title">{{now_lang.Ball_tab.Radom}}：</span>
-                                    <em class="btnaddrem" (click)="minusrem('radom')">-</em>
-                                    <input class="mathinput" type="text" name="beis" maxlength="5" [(ngModel)]="radom_input.value"
-                                        (focus)="inmoneyfocus('radom')" (keyup)="changereg()" />
-                                    <em class="btnaddrem" (click)="addrem('radom')">+</em>
-                                    <span class="title ml10">{{now_lang.Ball_tab.Ticket}}</span>
-
-                                </div> -->
                                 <div class="amount">
                                     <strong>￥</strong>
                                     <span class="title mr10">{{rangepercent}}%</span>
@@ -417,23 +379,12 @@
                                     <span class="title ml10">{{rangenum}}</span>
                                 </div>
                             </div>
-                            <!-- <div class="tip">
-                                <span class="comtext">{{now_lang.Ball_tab.All_choose}}
-                                    <em>{{totalinfo.count}}</em>{{now_lang.Ball_tab.Ticket}}，{{now_lang.Ball_tab.All_pay}}
-                                    <em>{{totalinfo.sum}}</em>{{now_lang.Ball_tab.Yuan}}， {{now_lang.Ball_tab.Profit}}
-                                    <em>{{totalinfo.amount}}</em>{{now_lang.Ball_tab.Yuan}}</span>
-                                <label>
-                                    <input type="checkbox" class="switch_btn" [ngClass]="{on: lock_multible}" (click)='lock_multiple($event)'
-                                    />{{now_lang.Ball_tab.Lock_multipel}}</label>
-                            </div> -->
                         </div>
                     </div>
                     <div class="midsub">
                         <div class="btngroup">
                             <a class="btndef" [ngClass]="{noactive: ballcurr.status}" (click)='addball(menu_2,ballcurr.status)'>确认选号</a>
 
-                            <!-- 随机一注按钮 -->
-                            <!-- <a class="btnh_w120_h40 bgyellow" (click)='mathball(menu_2)'>{{now_lang.Ball_tab.Radom_add}}</a> -->
 
                             <a class="btndef noactive">立即下注</a>
                         </div>
@@ -481,10 +432,6 @@
                                     <div class="lot_close" (click)="delball('del',val)"></div>
                                 </li>
                             </ul>
-                            <!-- <div class="info">
-                                <div class="btnh_w120_h40 btn_gray " (click)="delball('clear','')">
-                                    <div class="btn_clear"></div>清空号码</div>
-                            </div> -->
                         </div>
                         <div class="btnright">
                             <div class="restop">

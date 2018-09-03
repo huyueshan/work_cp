@@ -1487,11 +1487,16 @@ export class FFCofficialComponent implements OnInit {
         if (data.isupload) {
             that.up_ball = 2
             this.balllist(data.arr)
-            that.hothidden = true;
         } else {
             that.up_ball = 1
             this.balllist(data.arr)
+        }
+        if (data.isupload) {
+            that.hothidden = true;
+        } else if (that.status.menu_1<=8){
             that.hothidden = false;
+        }else{
+            that.hothidden = true;
         }
 		that.now_tips_menu = that.status.menu_1+'_'+that.status.menu_2;
 		that.now_description = that.lot_rules[that.now_tips_menu]['description'];

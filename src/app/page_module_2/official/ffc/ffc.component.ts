@@ -314,7 +314,7 @@ export class FFCofficialComponent implements OnInit {
 		},
 		{
 			name:this.now_lang.Lot_tab.Dragon_tiger,
-			href:'#/'
+	        href: 'lottery/creditssc/cq'
 		}
 	];
 	
@@ -561,7 +561,7 @@ export class FFCofficialComponent implements OnInit {
 			index:9
 		},
 		'bdd9':{
-			title:'后三一码不定胆',
+			title:'不定胆',
 			ball:[0,1,2,3,4,5,6,7,8,9],
 			tab:this.ball_tab[1],
 			index:9
@@ -1581,13 +1581,20 @@ export class FFCofficialComponent implements OnInit {
 		that.currtabname = data.name
 		that.tabcurr = data
 		that.status.menu_2 = data.index
-		if(data.isupload){
-			that.up_ball = 2
-			this.balllist(data.arr)
-		}else{
-			that.up_ball = 1
-			this.balllist(data.arr)
-		}
+        if (data.isupload) {
+            that.up_ball = 2
+            this.balllist(data.arr)
+        } else{
+            that.up_ball = 1
+            this.balllist(data.arr)
+        }
+        if (data.isupload) {
+            that.hothidden = true;
+        } else if (that.status.menu_1<=8){
+            that.hothidden = false;
+        }else{
+            that.hothidden = true;
+        }
 		that.now_tips_menu = that.status.menu_1+'_'+that.status.menu_2;
 		that.now_description = that.lot_rules[that.now_tips_menu]['description'];
 		//读取tab
@@ -1781,6 +1788,7 @@ export class FFCofficialComponent implements OnInit {
 		let str =  Utils.algorithm.getNum($('#'+id).val())
 		this.filedata(str,'')
 	}
+	public filterstatus = false
 	// 处理输入框的数据
 	filedata(str,type){
 		let self=this
@@ -1806,6 +1814,7 @@ export class FFCofficialComponent implements OnInit {
 		}else{
 			self.totalinfo = {count:0,sum:0,amount:0} 
 		}
+		this.filterstatus = false
 	}
 	// 处理过滤结果
 	filteresult(id,type){
@@ -1831,6 +1840,7 @@ export class FFCofficialComponent implements OnInit {
 				val = i<obj.allarr.length-1?val+obj.allarr[i][0].split(',').join('')+'，':val+obj.allarr[i][0].split(',').join('')
 			}
 		}
+		this.filterstatus = true
 		if(type == 'del'){
 			$('#'+id).val(val)
 			if(rep==0 && nob==0){
@@ -1839,15 +1849,21 @@ export class FFCofficialComponent implements OnInit {
 				con = '已经为您过滤了'+rep+'个重复号，'+nob+'个无效号，过滤内容为：'+ball
                 self.POPNOTE({msg:con});
 			}
-		}else{
-			if(rep!=0 || nob!=0){
-				$('#'+id).val(null)
-				con = '将要自动过滤'+rep+'个重复号，'+nob+'个无效号，过滤内容为：'+ball
-                self.POPNOTE({msg:con});
-			}else{
-				$('#'+id).val(null)
-			}
-		}
+		}else {
+            if (rep != 0 || nob != 0) {
+                $('#' + id).val(val)
+                con = '将要自动过滤' + rep + '个重复号，' + nob + '个无效号，过滤内容为：' + ball
+                self.POPNOTE({msg:con},self.qdfunc);
+            } else {
+				if(self.filterstatus){
+					self.addball(self.menu_2,self.ballcurr.status)
+					$('#' + id).val(null)
+				}
+            }
+        }
+	}
+	qdfunc(){
+		this.addball(this.menu_2,this.ballcurr.status)
 	}
 	// 计算当前点击投注信息
 	countbet(totalbet){
@@ -1932,8 +1948,11 @@ export class FFCofficialComponent implements OnInit {
 			return
 		}
 		let arr = []
-		if(that.tabcurr.isupload){
-			this.filteresult('fileReader','')
+		if (that.tabcurr.isupload) {
+			if(!that.filterstatus){
+				that.filteresult('fileReader', '');
+				return
+			}
 		}
 		if(that.tabcurr.choose){
 			var _selfs;

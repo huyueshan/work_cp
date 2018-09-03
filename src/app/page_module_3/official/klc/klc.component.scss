@@ -1,22 +1,16 @@
 @charset "UTF-8";
-@import '../../images/common';
 html,body {height:100%;}
-$yellow:#fe8f00;
-.nav{
-	width:100%;
-	position:relative;
-	float:left;
-}
+$yellow: #c42136;
 *{
 	-webkit-user-select:none;
 	-moz-user-select:none;
 	-ms-user-select:none;
 	user-select:none;
-	font-size:12px;
+	font-size:14px;
 }
 /* 颜色 */
 .orange_font{
-	color: #fe8f00;
+    color: #c42136;
 }
 .jiangjin_tips{
 	float: left;
@@ -35,23 +29,21 @@ $yellow:#fe8f00;
     margin-top: 5px;
 }
 /* 提示 */
-.tips{
-	width: 250px;
-	/* min-height: 74px; */
-	padding: 10px 25px;
-	background-color: #222;
-	line-height: 25px;
-	position: absolute;
-	left: 0;
-	top:0;
-	color: white;
-	/* margin-top: -125%; */
-	transform:translateY(-110%) scale(0.5);
-	margin-left: -125px;
-	border:2px solid #fe8f00;
-	border-radius: 4px;
-	text-align: center;
-	transition:0.1s ease;
+.tips {
+    width: 250px;
+    padding: 10px 25px;
+    background-color: #222;
+    line-height: 25px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: white;
+    transform: translateY(-110%) scale(0.5);
+    margin-left: -125px;
+    border: 2px solid #c42136;
+    border-radius: 4px;
+    text-align: center;
+    transition: 0.1s ease;
 }
 .long_tips{
 	text-align: left;
@@ -86,703 +78,321 @@ input[type="number"]{
 	display: none;
 }
 .tipshidden{
-	/* display: none; */
 	visibility: hidden;
 }
 
 
 .tipsshow{
-	/* display: block; */
 	visibility: visible;
 	transform:translateY(-110%) scale(1);
 }
-.check_ballplace{
-	height: 35px;
-	width: 100%;
-	background-color: #fff;
-	clear: both;
-	>div{
-		height: 100%;
-		line-height: 35px;
-		vertical-align: top;
-		font-size: 14px;
-		float: left;
-	}
-	.til{
-		text-indent: 38px;
-		width: 15%;
-	}
-	.check_box{
-		width: 25%;
-	}
-	.check_box input{
-		margin-top: 10px;
-		margin-right: 5px;
-		vertical-align: top;
-	}
-	.tips_right{
-		width: 60%;
-	}
-	.tips_right>div{
-		display: inline-block;
-	}
+
+.check_ballplace {
+    height: 35px;
+    width: 100%;
+    background-color: #f2f2f2;
+    clear: both;
+    >div {
+        height: 100%;
+        line-height: 35px;
+        vertical-align: top;
+        font-size: 14px;
+        float: left;
+    }
+    .til {
+        text-indent: 38px;
+        width: 15%;
+    }
+    .check_box {
+        width: 25%;
+    }
+    .check_box input {
+        margin-top: 10px;
+        margin-right: 5px;
+        vertical-align: top;
+    }
+    .tips_right {
+        width: 60%;
+    }
+    .tips_right>div {
+        display: inline-block;
+    }
 }
 
-.topbox{
-	width:1200px;
-	margin:0 auto;
-	overflow:hidden;
-	height:40px;
-	.topleft{
-		float:left;
-		overflow:hidden;
-		height:40px;
-		.time{
-			float:left;
-			height:15px;
-			line-height:15px;
-			border-right:1px solid #ffffff;
-			padding-right:10px;
-			color:#fff;
-			margin-top:12px;
-			font-size:14px;
-		}
-		.language{
-			margin-top:9px;
-			float:left;
-			margin-left:10px;
-			cursor:pointer;
-			img{
-				height:16px;
-			}
-		}
-	}
-	.topright{
-		float:right;
-		overflow:hidden;
-		height:40px;
-		.userinfo{
-			float:left;
-			padding:10px;
-			font-size:14px;
-			color:#fff;
-			.title{
-				float:left;
-			}
-			.getinfo{
-				float:left;
-				color:#fff;
-			}
-			.mr20{
-				margin-right:20px;
-			}
-			.ml10{
-				margin-left:20px;
-			}
-			.money{
-				float:left;
-				width: 80px;
-				color:$yellow;
-			}
-			.titlerel{
-				float:left;
-				margin-left:10px;
-				margin-top:3px;
-				cursor:pointer;
-			}
-		}
-		.centerlist{
-			float:left; 
-			height:40px;
-			padding:12px 0px;
-			margin-left:20px;
-			li{
-				float:left;
-				color:#fff;
-				list-style:none;
-				padding:0px 10px;
-				height:14px;
-				line-height:14px;
-				border-right:1px solid #fff;
-				a{
-					color:#fff;
-					cursor:pointer;
-					:hover{
-						color:$yellow;
-					}
-				}
-			}
-			:last-child{
-				padding-right:0px;
-				border-right:none;
-			}
-			
-		}
-	}
-}
 
-.headbox{
-	width:1200px;
-	margin:0 auto;
-	overflow:hidden;
-	height:80px;
-	padding:10px 0px;
-	.headleft{
-		float:left;
-		overflow:hidden;
-		height:100%;
-		width:370px;
-		.logo{
-			height:60px;
-		}
-	}
-	.headright{
-		float:right;
-		overflow:hidden;
-		height:100%;
-		width:830px;
-		.navtab{
-			float:right; 
-			padding:12px 0px;
-			margin-left:20px;
-			li{
-				float:left;
-				color:#fff;
-				list-style:none;
-				margin-right:45px;
-				.pc{
-					font-size:16px;
-					text-align:center;
-					margin-bottom:0px;
-					font-weight:bold;
-				}
-				.pe{
-					font-size:12px;
-					text-align:center;
-					width:100%;
-					margin-bottom:0px;
-				}
-				a{
-					color:#333;
-					cursor:pointer;
-					text-decoration:none;
-					:hover{
-						color:$yellow;
-					}
-				}
-				:hover{
-					color:$yellow;
-				}
-			}
-			:last-child{
-				margin-right:0px;
-			}
-			
-		}
-	}
-}
-.banner{
-	width:100%;
-	float:left;
-	text-align:center;
-	height:200px;
-	.img{
-		height:200px;
-		margin:0 auto;
-		background:url(../../images/banner_10.jpg) center no-repeat;
-		background-size:cover;
-	}
-}
-.conbox{
-	width:100%;
-	float:left;
-	background:url("../../images/bg_02.jpg") center no-repeat;
-	background-size: cover;
-	.content{
-		width:1200px;
-		position:relative;
-		margin:0 auto;
-		overflow:hidden;
-		margin-bottom:20px;
-		.gamenav{
-			width:100%;
-			float:left;
-			position:relative;
-			margin-top:30px;
-			.alltype{
-				width:240px;
-				height:100px;
-				float:left;
-				border-radius:4px;
-				overflow:hidden;
-				cursor:pointer;
-				.fltitle{
-					background:$yellow;
-					width:40px;
-					color:#fff;
-					font-size:14px;
-					text-align:center;
-					line-height:20px;
-					height:100px;
-					float:left;
-					padding:10px 10px;
-				}
-				.frimg{
-					background:#333333;
-					width:200px;
-					text-align:center;
-					float:left;
-					line-height:100px;
-					img{
-						height:83px;
-					}
-				}
-			}
-			.gametime{
-				width:340px;
-				height:100px;
-				float:left;
-				border-radius:4px;
-				overflow:hidden;
-				padding:25px;
-				background:#333333;
-				margin-left:20px;
-				.fltitle{
-					width:40px;
-					color:#fff;
-					font-size:12px;
-					float:left;
-					width:125px;
-					height:100%;
-					p{
-						width:100%;
-						color:#fff;
-						margin:0;
-						line-height:20px;
-						span{
-							color:$yellow;
-							padding:0 3px;
-						}
-					}
-				}
-				.frtime{
-					text-align:center;
-					float:right;
-					margin:0px;
-					padding:0px;
-					li{
-						float:left;
-						list-style:none;
-						width: 50px; height: 50px;
-						background: url('../../images/sscsprites.png') -53px -0;
-						line-height:50px;
-						text-align:center;
-						color:#fff;
-						font-size:16px;
-					}
-				}
-			}
-			.gameresult{
-				width:580px;
-				height:100px;
-				float:right;
-				border-radius:4px;
-				padding:25px;
-				background:#333333;
-				.fltitle{
-					width:40px;
-					color:#fff;
-					font-size:12px;
-					float:left;
-					width:125px;
-					height:100%;
-					p{
-						width:100%;
-						color:#fff;
-						margin:0;
-						line-height:20px;
-						span{
-							color:$yellow;
-							padding:0 3px;
-						}
-					}
-				}
-				.frnumber{
-					float:left;
-					margin:0px;
-					padding:0px;
-					li{
-						float:left;
-						list-style:none;
-						width: 53px; height: 53px;
-						background: url('../../images/sscsprites.png') -0 -0;
-						line-height:50px;
-						text-align:center;
-						color:#fff;
-						font-size:22px;
-						margin-right:10px
-					}
-				}
-				.line{
-					float:left;
-					width: 2px; height: 52px;
-					background: url('../../images/sscsprites.png') -161px -0;
-					margin-left:10px;
-				}
-				.currresult{
-					width:40px;
-					color:#fff;
-					font-size:12px;
-					float:right;
-					width:60px;
-					height:100%;
-					.pt{
-						width:100%;
-						color:$yellow;
-						font-size:14px;
-						margin:0;
-						text-align:center;
-						margin-top:5px;
-					}
-					.pimg{
-						text-align:center;
-						width:100%;
-						height:15px;
-						margin:0;
-						margin-top:5px;
-						span{
-							display: inline-block;
-							width: 14px; height: 15px;
-							background: url('../../images/sscsprites.png') -141px -36px;
-						}
-					}
-				}
-			}
-		}
-		.sscorder{
-			width:100%;
-			float:left;
-			position:relative;
-			margin-top:20px;
-			/* overflow:hidden; */
-			.sscleft{
-				width:900px;
-				float:left;
-				/* overflow:hidden; */
-				border-radius:4px;
-				.tabbox{
-					height:50px;
-					width:100%;
-					float:left;
-					background:#333;
-					.pointl{
-						float:left;
-						width:50px;
-						height:50px;
-						line-height:50px;
-						text-align:center;
-						padding-top: 5px;
-						cursor:pointer;
-						i{
-							width: 20px; height: 20px;
-							background: url('../../images/sscsprites.png') -120px -111px;
-						}
-					}
-					.typetab{
-						float:left;
-						max-width:690px;
-						width: 100%;
-						/* overflow:hidden; */
-						height:50px;
-						li{
-							height:50px;
-							float:left;
-							font-size:14px;
-							color:#fff;
-							padding:0px 10px;
-							line-height:50px;
-							cursor:pointer;
-						}
-						.active{
-							background:#3d3d3d;
-						}
-					}
-					.pointr{
-						float:left;
-						width:50px;
-						height:50px;
-						line-height:50px;
-						text-align:center;
-						padding-top: 5px;
-						cursor:pointer;
-						i{
-							width: 20px; height: 20px;
-							background: url('../../images/sscsprites.png') -100px -111px;
-						}
-					}
-					.totaltype{
-						height:25px;
-						float:right;
-						border-radius:2px;
-						border:1px solid #fff;
-						overflow:hidden;
-						margin-right:20px;
-						margin-top:13px;
-						li{
-							float:left;
-							padding:0px 10px;
-							line-height:23px;
-							cursor:pointer;
-							color:#fff;
-							a{
-								color:#fff;
-								text-decoration: none;
-							}
-						}
-						.active{
-							color:#333;
-							background:#fff;
-							a{
-								color:#333;
-								text-decoration: none;
-							}
-						}
-					}
-				}
-				.tabcon{
-					width:100%;
-					float:left;
-					background:#3d3d3d;
-					overflow:hidden;
-					padding:20px 40px;
-					.tabshow{
-						width:100%;
-						float:left;
-						.navcon{
-							width:100%;
-							float:left;	
-							margin-bottom:10px;
-							.labtit{
-								color:#fff;
-								float:left;
-								width:80px;
-								height:30px;
-								line-height:30px;
-								font-size:14px;
-							}
-							li{
-								cursor:pointer;
-								padding:0px 5px;
-								height:30px;
-								line-height:30px;
-								text-align:center;
-								font-size:14px;
-								color:#fff;
-								float:left;
-								background:#525151;
-								margin-left:10px;
-								border-radius:4px;
-							}
-							.active{
-								background:$yellow;
-								color:#333;
-							}
-						}
-						.tip{
-							font-size:12px;
-							color:#fff;
-							width:100%;
-							margin-top:10px;
-							float:left;
-						}
-					}
-				}
-				.chooseno{
-					width:100%;
-					height:40px;
-					float:left;
-					padding-left:40px;
-					background:#fff;
-					padding-right:30px;
-					.helpbox{
-						width:100%;
-						line-height:40px;
-						.hot_lost{
-							display: inline-block;
-							float:left;
-						}
-						.hot_hidden{
-							display: none;
-						}
-						label{
-							float:left;
-							margin-right:15px;
-							color:#333;
-							input[type=checkbox]{
-								border:1px solid $yellow;
-								color:$yellow;
-								width:18px;
-								height:18px;
-								float:left;
-								margin-top: 12px;
-								margin-right:3px;
-							}
-						}
-						.tip{
-							float:left;
-							position:relative;
-							padding-left:13px;
-							i{
-								width: 8px; height: 17px;
-								background: url('../../images/sscsprites.png') -141px -72px;
-								position:absolute;
-								top:11px;
-								left:0px;
-								cursor: pointer;
-							}
-						}
-
-						.example{
-							float:right;
-							position:relative;
-							padding-left:13px;
-							margin-left:20px;
-
-							
-							.tips span{
-								/* white-space:nowrap; */
-							}
-							.i1{
-								width: 8px; height: 17px;
-								background: url('../../images/sscsprites.png') -141px -72px;
-								position:absolute;
-								top:11px;
-								left:0px;
-								cursor:pointer;
-							}
-							.i2{
-								width: 16px; height: 18px;
-								background: url('../../images/sscsprites.png') -141px -18px;
-								position:absolute;
-								top:11px;
-								left:0px;
-								cursor:pointer;
-							}
-						}
-					}
-				}
-				.chooselist{
-					width:100%;
-					float:left;
-					padding-left:40px;
-					background:#fff;
-					padding-right:30px;
-					.leftnum{
-						width:560px;
-						float:left;
-						padding:10px 0px;
-						.numcon{
-							width:100%;
-							float:left;
-							.name{
-								float:left;
-								width: 65px; height: 26px;
-								background: url('../../images/sscsprites.png') -0 -53px;
-								color:#333;
-								font-size:12px;
-								text-align:center;
-								line-height:24px;
-								margin-top:6px;
-							}
-							.numlist{
-								float:left;
-								margin-left:15px;
-								width:473px;
-								li{
-									float:left;
-									width: 38px; height: 38px;
-									background: url('../../images/sscsprites.png') -103px -0;
-									text-align:center;
-									line-height:36px;
-									font-size:16px;
-									color:#333;
-									margin-right:5px;
-									cursor:pointer;
-								}
-								:hover{
-									 
-									background: url('../../images/hoveball.png');
-									color:#fff;
-								}
-								.active{
-									
-									background: url('../../images/sscsprites.png') -103px -38px;
-									color:#fff;
-								}
-							}
-						}
-						.choosecheck{
-							width:100%;
-							float:left;
-							.name{
-								float:left;
-								width: 65px; height: 15px;
-								color:#333;
-								font-size:12px;
-								text-align:center;
-								line-height:15px;
-							}
-							.numlist{
-								float:left;
-								margin-left:15px;
-								li{
-									float:left;
-									width: 38px; height: 15px;
-									text-align:center;
-									font-size:12px;
-									color:#333;
-									margin-right:5px;
-								}
-								.active{
-									color:$yellow;
-								}
-							}
-						}
-					}
-					.numright{
-						float:right;
-						padding:10px 0px;
-						li{
-							float:left;
-							width: 38px; height: 38px;
-							background: url('../../images/sscsprites.png') -103px -0;
-							text-align:center;
-							line-height:34px;
-							font-size:14px;
-							color:#333;
-							margin-right:5px;
-							padding-right:0px;
-							cursor:pointer;
-						}
-						:last-child{
-							margin-right:0px;
-						}
-						:hover{
-							width: 38px; height: 38px;
-							background: url('../../images/sscsprites.png') -103px -38px;
-							color:#fff;
-						}
-						.active{
-							width: 38px; height: 38px;
-							background: url('../../images/sscsprites.png') -103px -38px;
-							color:#fff;
-						}
-					}
-				}
-				.elsebg{
-					background:#eeeeee;
-				}
-
+.conbox {
+    width: 100%;
+    min-width: 1200px;
+    .content {
+        width: 1200px;
+        position: relative;
+        margin: 0 auto;
+        overflow: hidden;
+        background-color: #342840;
+        margin-bottom: 40px;
+        .sscorder {
+            width: 100%;
+            float: left;
+            position: relative;
+            margin-top: 10px;
+            .sscleft {
+                width: 100%;
+                float: left;
+                background: #f2f2f2;
+                .tabbox {
+                    height: 50px;
+                    width: 100%;
+                    float: left;
+                    background-color: #170e1f;
+                    padding-right: 20px;
+                    .typetab {
+                        float: left; 
+                        height: 50px;
+                        li {
+                            height: 50px;
+                            float: left;
+                            font-size: 14px;
+                            color: #fff;
+                            padding: 0px 10px;
+                            line-height: 50px;
+                            cursor: pointer;
+                        }
+                        .active {
+                            background: linear-gradient(to top, #941927, #e22137);
+                        }
+                    }
+                    .totaltype {
+                        width: 110px;
+                        height: 26px;
+                        float: right;
+                        margin-top: 12px;
+                        border: 1px solid white;
+                        color: black;
+                        background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+                        overflow: hidden;
+                        li {
+                            float: left;
+                            width: 50%;
+                            height: 100%;
+                            text-align: center;
+                            line-height: 22px;
+                            cursor: pointer;
+                            a {
+                                color: black;
+                                text-decoration: none;
+                            }
+                        }
+                        .active,
+                        li:hover {
+                            background: linear-gradient(to top, #941927, #e22137);
+                            a {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+                .tabcon {
+                    width: 100%;
+                    float: left; // background: #f2f2f2;
+                    overflow: hidden;
+                    padding: 20px;
+                    border-bottom: 1px solid #d7d1d1;
+                    .tabshow {
+                        width: 100%;
+                        float: left;
+                        .navcon {
+                            width: 100%;
+                            float: left;
+                            margin-bottom: 10px;
+                            .labtit {
+                                color: black;
+                                float: left;
+                                width: 80px;
+                                height: 30px;
+                                line-height: 30px;
+                                font-size: 14px;
+                            }
+                            .labtit.en {
+                                width: 170px;
+                            }
+                            li {
+                                cursor: pointer;
+                                padding: 0px 5px;
+                                height: 30px;
+                                line-height: 30px;
+                                text-align: center;
+                                font-size: 14px;
+                                color: black;
+                                float: left;
+                                background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+                                margin-left: 10px;
+                                border: 1px solid #d7d1d1;
+                            }
+                            .active {
+                                color: white;
+                                background: linear-gradient(to top, #941927, #e22137);
+                            }
+                        }
+                        .navcon.en {
+                            margin-bottom: 0px;
+                            li {
+                                margin-bottom: 20px;
+                            }
+                        }
+                        .tip {
+                            font-size: 12px;
+                            color: black;
+                            width: 100%;
+                            margin-top: 10px;
+                            float: left;
+                        }
+                    }
+                }
+                .chooseno {
+                    width: 100%;
+                    height: 40px;
+                    line-height: 40px;
+                    float: left;
+                    padding-left: 40px;
+                    padding-right: 30px;
+                    .info {
+                        float: left;
+                    }
+                    .helpbox {
+                        float: right;
+                        .hot_lost {
+                            display: inline-block;
+                            float: left;
+                        }
+                        .hot_hidden {
+                            display: none;
+                        }
+                        
+                        .tip {
+                            float: left;
+                            width: auto;
+                            position: relative;
+                            padding-left: 13px;
+                            line-height: 40px;
+                            padding: 0;
+                        }
+                         
+                    }
+                }
+                .chooselist {
+                    width: 100%;
+                    float: left;
+                    padding-left: 40px; 
+                    padding-right: 30px;
+                    .leftnum {
+                        width: 630px;
+                        float: left;
+                        padding: 10px 0px;
+                        .numcon {
+                            width: 100%;
+                            float: left;
+                            .name {
+                                float: left;
+                                width: 65px;
+                                height: 26px; 
+                                color: black;
+                                font-size: 12px;
+                                text-align: center;
+                                line-height: 24px;
+                                margin-top: 9px;
+                            }
+                            .numlist {
+                                float: left;
+                                margin-left: 15px;
+                                width: 550px;
+                                li {
+                                    float: left;
+                                    width: 43px;
+                                    height: 43px;
+                                    background: url('../../images/mod3/balls_m3_02.png') -10px -136px;
+                                    text-align: center;
+                                    line-height: 40px;
+                                    font-size: 16px;
+                                    color: #333;
+                                    margin-right: 5px;
+                                    cursor: pointer;
+                                }
+                                :hover {
+                                    background: url('../../images/mod3/balls_m3_02.png') -10px -73px;
+                                }
+                                .active {
+                                    background: url('../../images/mod3/balls_m3_02.png') -10px -10px;
+                                    color: #fff;
+                                }
+                            }
+                        }
+                        .choosecheck {
+                            width: 100%;
+                            float: left;
+                            .name {
+                                float: left;
+                                width: 65px;
+                                height: 15px;
+                                color: #333;
+                                font-size: 12px;
+                                text-align: center;
+                                line-height: 15px;
+                            }
+                            .numlist {
+                                float: left;
+                                margin-left: 15px;
+                                li {
+                                    float: left;
+                                    width: 43px;
+                                    height: 15px;
+                                    text-align: center;
+                                    font-size: 12px;
+                                    color: #333;
+                                    margin-right: 5px;
+                                }
+                                .active {
+                                    color: $yellow;
+                                }
+                            }
+                        }
+                    } 
+                    // TODO:  球样式调整位置！
+                    .numright {
+                        float: right;
+                        padding: 10px 0px;
+                        margin-right: 150px;
+                        li {
+                            float: left; 
+                            width: 43px;
+                            height: 43px;
+                            background: url('../../images/mod3/balls_m3_02.png') -10px -136px;
+                            text-align: center;
+                            line-height: 40px;
+                            font-size: 14px;
+                            color: #333;
+                            margin-right: 5px;
+                            padding-right: 0px;
+                            cursor: pointer;
+                        }
+                        :last-child {
+                            margin-right: 0px;
+                        }
+                        :hover {
+                            background: url('../../images/mod3/balls_m3_02.png') -10px -73px; //   color: #fff;
+                        }
+                        .active {
+                            background: url('../../images/mod3/balls_m3_02.png') -10px -10px;
+                            color: #fff;
+                        }
+                    }
+                }
+                .elsebg {
+                    background: white;
+                }
+                #square .leftnum .numcon .name{
+                    line-height: 30px;
+                    margin: 0;
+                }
 				#square .numlist{
 					li{
 						float:left;
@@ -799,24 +409,20 @@ input[type="number"]{
 							background: none;
 						}
 						.btn_square{
-							overflow:visible;
-							background:  url(../../images/square.png) top center no-repeat;
-							-webkit-background-size: 100% 110%;
-							background-size: 100% 110%;
+                            box-sizing: border-box;
+                            overflow:visible;
+                            border: 1px solid #D4D4D4;
+                            border-radius: 4px;
+                            box-shadow: inset 0 -2px 8px rgba(0, 0, 0, 0.3);
 						}
 						.btn_square:hover{
 							width: 68px; height: auto;
-							background: url('../../images/square_hover.png') top center no-repeat;
-							-webkit-background-size: 100% 110%;
-							background-size: 100% 110%;
-							color:#fff;
+                            border-color: rgba(247, 90, 90, 0.6);
 						}
 						.active{
 							width: 68px; height: auto;
-							background: url('../../images/square_active.png') top center no-repeat!important;
-							-webkit-background-size: 100% 110%!important;
-							background-size: 100% 110%!important;
 							color:#fff;
+                            background: linear-gradient(to top, #cf364c, #ec5c5c);
 						}
 						.radix{
 							color: red!important;
@@ -825,308 +431,715 @@ input[type="number"]{
 					}
 					
 					.ball_item{
-						/* height: 20px; */
 						width: 68px;
 						line-height: 30px;
 					}
 					
 				}
+                .sumBtn_box {
+                    height: 350px;
+                    clear: both;
+                    .left_input {
+                        width: 700px;
+                        height: 85%;
+                        float: left;
+                        textarea {
+                            color: #333;
+                            border: 1px solid #d7d1d1;
+                            background: #fff;
+                            width: 650px;
+                            height: 265px;
+                            margin-left: 25px;
+                            margin-top: 15px;
+                            padding: 15px;
+                            border-radius: 8px;
+                            resize: none;
+                        }
+                    }
+                    .btn_box {
+                        width: 200px;
+                        height: 85%;
+                        float: right;
+                        margin-right: 150px;
+                        .rt_btn {
+                            margin: 0 auto;
+                            height: 40px;
+                            line-height: 38px;
+                            text-align: center;
+                            padding: 0 14px;
+                            margin: 15px;
+                            border-radius: 4px;
+                            color: white;
+                            background: linear-gradient(to top, #2A2132, #423252);
+                            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                            position: relative;
+                        }
+                        .rt_btn:nth-child(1) {
+                            margin-top: 75px;
+                        }
+                        .rt_btn:hover {
+                            background: linear-gradient(to top, #941927, #e22137);
 
-				.sumBtn_box{
-					height: 350px;
-					/* margin-top: 236px; */
-					clear: both;
-					background-color: #fff;
-					.left_input{
-						width: 700px;
-						height: 85%;
-						/* background-color: blue; */
-						float: left;
-						textarea{
-							color: #333;
-						    border: 1px solid #D7D1D1;
-						    background: #fff;
-							width: 650px;
-						    height: 265px;
-						    margin-left: 25px;
-						    margin-top: 15px;
-						    padding: 15px;
-						    border-radius: 8px;
-						    background-color: #eee;
-						    resize: none;
-						}
-					}
-					.btn_box{
-						width: 200px;
-						height: 85%;
-						/* background-color: green; */
-						float: right;
-						.rt_btn{
-							margin: 0 auto;
-							margin-top: 15px;
-							background-color: #fe8f00;
-						}
-						.rt_btn:nth-child(1){
-							margin-top: 75px;
-						}
-					}
-					.input_tips{
+                        }
+                    }
+                    .input_tips {
+                        height: 15%;
+                        padding-left: 30px;
+                        clear: both;
+                        padding-top: 30px;
+                        .gray_font {
+                            font-weight: bold;
+                        }
+                    }
+					.input_tips2{
+                        float: left;
 						height: 15%;
-						/* background-color: pink; */
 						padding-left: 30px;
 						clear: both;
+						padding-top: 10px;
 						.gray_font{
 							font-weight: bold;
 						}
 					}
-				}
-				.addchoose{
-					width:100%;
-					float:left;
-					padding:20px 40px;
-					background:#fff;
-					.funleft{
-						float:left;
-						width:650px;
-						.topcz{
-							width:100%;
-							float:left;
-							.amount{
-								float:left;
-								color:#333;
-								margin-right:10px;
-								line-height:22px;
-								position: relative;
-								.title{
-									color:#333;
-									font-size:12px;
-									float:left;
-									min-width: 27px;
-								}
-								.btnaddrem{
-									width:15px;
-									height:15px;
-									font-size:14px;
-									background:#CCCCCC;
-									border-radius:50%;
-									display: inline-block;
-									line-height:13px;
-									text-align:center;
-									color:#fff;
-									font-weight:bold;
-									cursor:pointer;
-									font-style:normal;
-									float:left;
-									margin-top:3px;
-								}
-								.range_box{
-									display: inline-block;
-									height: 22px;
-									width: 90px;
-									float: left;
-									margin-left: 10px;
-									margin-right: 10px;
-									.range_line{
-										height: 6px;
-										margin-top: 9px;
-										border: 1px solid #fe8f00;
-										background-color: #fe8f00;
-										border-radius: 4px;
-										position: relative;
-										.range_tag{
-											margin-top: -5px;
+                    .file-input {
+                        width: 120px;
+                        height: 38px;
+                        position: absolute;
+                        left: 0px;
+                        top: 0px;
+                        opacity: 0;
+                        cursor: pointer;
+                    }
+                }
+                .tip {
+                    font-size: 12px;
+                    color: black;
+                    width: 100%;
+                    padding-left: 20px;
+                    padding-top: 10px;
+                    float: left;
+                }
+                .addchoose {
+                    width: 100%;
+                    float: left;
+                    padding: 20px 40px;
+                    .funleft {
+                        float: left;
+                        width: 800px;
+                        .topcz {
+                            width: 100%;
+                            float: left;
+                            .amount {
+                                float: left;
+                                color: #333;
+                                margin-right: 10px;
+                                line-height: 32px;
+                                position: relative;
+                                strong {
+                                    float: left;
+                                    margin: 0 8px;
+                                }
+                                .title {
+                                    color: #333;
+                                    font-size: 12px;
+                                    float: left;
+                                    min-width: 27px;
+                                }
+                                .btnaddrem {
+                                    display: block;
+                                    float: left;
+                                    width: 22px;
+                                    height: 22px;
+                                    line-height: 20px;
+                                    font-size: 14px;
+                                    font-weight: 900;
+                                    font-style: normal;
+                                    border-radius: 50%;
+                                    text-align: center;
+                                    color: #C42136;
+                                    border: 1px solid #d7d1d1;
+                                    cursor: pointer;
+                                    margin-top: 5px;
+                                    padding-left: 1px;
+                                }
+                                .range_box {
+                                    display: inline-block;
+                                    height: 32px;
+                                    width: 90px;
+                                    float: left;
+                                    margin: 0 10px;
+                                    .range_line {
+                                        height: 4px;
+                                        margin-top: 14px;
+                                        background-color: #CFCCCC;
+                                        position: relative;
+                                        .range_tag {
+                                            position: absolute;
+                                            right: 1px;
+                                            width: 28px;
+                                            height: 18px;
+                                            margin-top: -7px;
+                                            border-radius: 9px;
+                                            background-color: #c42136;
+                                            cursor: pointer;
+                                        }
+                                    }
+                                }
+                                .mathinput {
+                                    width: 50px;
+                                    height: 22px;
+                                    line-height: 22px;
+                                    font-size: 12px;
+                                    border-radius: 4px;
+                                    margin: 0 5px;
+                                    padding: 5 10px;
+                                    text-align: center;
+                                    float: left;
+                                }
+                                .mathselect {
+                                    width: 40px;
+                                    height: 22px;
+                                    line-height: 22px;
+                                    font-size: 12px;
+                                    border-radius: 4px;
+                                    margin: 0 5px;
+                                    padding: 5 10px;
+                                    text-align: center;
+                                    float: left;
+                                }
+                                .ml10 {
+                                    margin-left: 10px;
+                                }
+                                .mr10 {
+                                    margin-right: 10px;
+                                }
+                            }
+                            .btnrect {
+                                line-height: 30px;
+                                .btnaddrem {
+                                    display: inline-block;
+                                    width: 32px;
+                                    height: 32px;
+                                    line-height: 30px;
+                                    float: left;
+                                    font-size: 14px;
+                                    font-weight: bold;
+                                    font-style: normal;
+                                    text-align: center;
+                                    margin: 0;
+                                    padding: 0;
+                                    color: black;
+                                    background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+                                    border: 1px solid #d7d1d1;
+                                    border-radius: 0;
+                                    cursor: pointer;
+                                }
+                                .btnaddrem.leftb {
+                                    border-top-left-radius: 4px;
+                                    border-bottom-left-radius: 4px;
+                                    border-right: none;
+                                }
+                                .btnaddrem.rightb {
+                                    border-top-right-radius: 4px;
+                                    border-bottom-right-radius: 4px;
+                                    border-left: none;
+                                }
+                                .mathinput {
+                                    width: 50px;
+                                    height: 32px;
+                                    line-height: 30px;
+                                    font-size: 14px;
+                                    text-align: center;
+                                    float: left;
+                                    border: 1px solid #d7d1d1;
+                                    border-radius: 0;
+                                    background-color: #E7E6E6;
+                                    margin: 0;
+                                    box-sizing: border-box;
+                                }
+                                input[disabled]{
+                                    cursor: no-drop;
+                                    background-color: #333333;
+                                    color: white;
+                                }
+                                .bopt {
+                                    display: block;
+                                    width: 102px;
+                                    height: 32px;
+                                    ;
+                                    float: left;
+                                    border: 1px solid #d7d1d1;
+                                    border-radius: 4px;
+                                    box-sizing: border-box;
+                                    span {
+                                        display: block;
+                                        width: 30px;
+                                        height: 32px;
+                                        text-align: center;
+                                        float: left;
+                                        overflow: hidden;
+                                        background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+                                        box-sizing: border-box;
+                                        cursor: pointer;
+                                    }
+                                    .mid {
+                                        border-left: 1px solid #d7d1d1;
+                                        border-right: 1px solid #d7d1d1;
+                                    }
+                                    .active {
+                                        width: 40px;
+                                        background: #E7E6E6;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .midsub {
+                    float: left;
+                    width: 100%; 
+                    padding: 20px 40px; 
+                    .tip {
+                        width: auto;
+                        float: right;
+                        line-height: 40px;
+                        padding: 0;
+                        margin-right: 20px;
+                        .comtext {
+                            float: left;
+                            color: black;
+                            font-size: 14px;
+                            em {
+                                font-style: normal;
+                                color: $yellow;
+                                margin: 5px;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                    .btngroup {
+                        float: right;
+                        .btndef {
+                            display: block;
+                            float: left;
+                            width: 108px;
+                            font-size: 14px;
+                            height: 40px;
+                            line-height: 38px;
+                            text-align: center;
+                            text-decoration: none;
+                            padding: 0;
+                            margin: 0 10px;
+                            color: white;
+                            background: linear-gradient(to top, #2A2132, #423252);
+                            border-radius: 4px;
+                            cursor: pointer;
+                        }
+                        .noactive {
+                            color: white;
+                            background: linear-gradient(to top, #941927, #e22137);
+                        }
+                    }
+                }
+                .resultarea {
+                    padding: 0 20px;
+                    width: 100%;
+                    float: left;
+                    border-top: 1px solid #d7d1d1;
+                    .betcheck {
+                        float: left;
+                        width: 850px;
+                        overflow: hidden;
+                        .fake_th {
+                            height: 50px;
+                            width: 100%;
+                            float: left;
+                            ul {
+                                float: right;
+                                li {
+                                    float: left;
+                                    min-width: 55px;
+                                    line-height: 50px;
+                                    color: black;
+                                    margin: 0 8px;
+                                    .mathinput {
+                                        width: 40px;
+                                        height: 24px;
+                                        border: 1px solid #d7d1d1;
+                                        text-align: center;
+                                    }
+                                    .betbtn {
+                                        display: inline-block;
+                                        height: 34px;
+                                        line-height: 32px;
+                                        margin-top: 8px;
+                                        padding-right: 8px;
+                                        border: 1px solid #d7d1d1;
+                                        background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+                                        cursor: pointer;
+                                        span {
+                                            display: block;
+                                            float: left;
+                                            line-height: 36px;
+                                        }
+                                    }
+                                    .suiji i {
+                                        display: block;
+                                        float: left;
+                                        width: 20px;
+                                        height: 18px;
+                                        background: url('../../images/mod3/icon_m3_02.png') -10px -269px;
+                                        margin: 8px;
+                                    }
+                                    .clear i {
+                                        display: block;
+                                        float: left;
+                                        width: 12px;
+                                        height: 15px;
+                                        background: url('../../images/mod3/icon_m3_02.png') -10px -197px;
+                                        margin: 9px;
+                                    }
+                                }
+                            }
+                        }
+                        .betarea {
+                            float: left;
+                            width: 100%;
+                            overflow-y: auto;
+                            height: 260px;
+                            padding: 0 20px;
+                            border: 1px solid #d7d1d1;
+                            background-color: #F8F6F6;
+                            li {
+                                height: 40px;
+                                width: 100%;
+                                list-style: none;
+                                float: left;
+                                line-height: 40px;
+                                border-bottom: 1px solid #d7d1d1;
+                                text-overflow: ellipsis;
+                                .lot_type {
+                                    text-align: center;
+                                    text-indent: 10px;
+                                    width: 30%;
+                                }
+                                .lot_num {
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                    letter-spacing: 0.5px;
+                                    width: 30%;
+                                }
+                                .info {
+                                    width: 8%;
+                                    text-align: right;
+                                }
+                                .lot_close {
+                                    float: right;
+                                    width: 13px;
+                                    height: 13px;
+                                    background: url('../../images/mod3/icon_m3_02.png') -10px -98px;
+                                    margin: 11px;
+                                    cursor: pointer;
+                                }
+                            }
+                            li:nth-child(even) {
+                                background-color: #F2F2F2;
+                            }
+                            li>div {
+                                display: inline-block;
+                                width: 55px;
+                                height: 35px;
+                                float: left;
+                            }
+                        }
+                    }
+                    .btnright {
+                        float: right;
+                        width: 300px; 
+                        .restop {
+                            float: left;
+                            width: 100%;
+                            height: 50px;
+                            line-height: 50px;
+                            padding: 0 10px;
+                            overflow: hidden;
+                            .title{
+                                float: left;
+                            }
+                            .suoding{
+                                float: right;
+                                .sbtnbox{
+                                    float: left;
+                                    display: block;
+                                    width: 110px;
+                                    height: 26px;
+                                    margin-top: 12px;
+                                    margin-right: 6px;
+                                    border: 1px solid #d7d1d1;
+                                    overflow: hidden;
+                                    .sbtn{
+                                        float: left;
+                                        display: inline-block;
+                                        width: 50%;
+                                        height: 24px;
+                                        line-height: 24px;
+                                        text-align: center;
+                                        background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+                                        cursor: pointer;
+                                    }
+                                    .active{
+                                        color: white;
+                                        background: linear-gradient(to top, #941927, #e22137);
 
-											width: 18px;
-											height: 13px;
-											border: 1px solid #fe8f00;
-											background-color: #fe8f00;
-											border-radius: 4px;
-											cursor: pointer;
-											position: absolute;
-											right: 1px;
-										}
-									}
-								}
+                                    }
+                                }
+                            }
+                        }
+                        .rescont{
+                            float: left;
+                            width: 100%;
+                            overflow-y: auto;
+                            height: 260px;
+                            padding: 0 20px;
+                            border: 1px solid #d7d1d1;
+                            background-color: #F8F6F6;
+                            overflow: hidden;
+                            dl{
+                                height: 40px;
+                                width: 100%;
+                                list-style: none;
+                                float: left;
+                                line-height: 40px;
+                                padding: 0 10px;
+                                border-bottom: 1px solid #d7d1d1;
+                                dt{
+                                    float: left;
+                                }
+                                dd{
+                                    float: right;
+                                }
+                                strong{
+                                    margin: 0 4px 0 14px;
+                                }
+                            }
+                            .zhuistate{
+                                width: 100%;
+                                float: left;
+                                padding: 10px;
+                                margin-top: 40px;
+                                label{
+                                    display: block;
+                                    width:50%;
+                                    float: left;
+                                    margin: 0;
+                                }
+                                .zhuibtn{
+                                    float: left;
+                                    width: 100%;
+                                    font-size: 14px;
+                                    height: 40px;
+                                    line-height: 38px;
+                                    text-align: center;
+                                    margin: 14px 0;
+                                    color: white;
+                                    background: linear-gradient(to top, #941927, #e22137);
+                                    border-radius: 4px;
+                                    cursor: pointer;
+                                    .btnbox{
+                                        display: flex;
+                                        width: 100%;
+                                        justify-content: center;
+                                        align-items: center;
+                                    }
+                                    i{
+                                        display: inline-block;
+                                        width: 16px;
+                                        height: 17px;
+                                        margin-right: 6px;
+                                        margin-top: -4px;
+                                        background: url('../../images/mod3/icon_m3_02.png') -10px -232px;
+                                    }
+                                    span{
+                                        display: inline-block;
+                                        height: 40px;
+                                        line-height: 38px;
 
+                                    }
+                                }
+                            }
+                        }
 
-								.mathinput{
-									width:50px;
-									height:22px;
-									line-height:22px;
-									font-size:12px;
-									border-radius:4px;
-									margin:0 5px;
-									padding:5 10px;
-									text-align:center;
-									float:left;
-								}
-								.mathselect{
-									width:40px;
-									height:22px;
-									line-height:22px;
-									font-size:12px;
-									border-radius:4px;
-									margin:0 5px;
-									padding:5 10px;
-									text-align:center;
-									float:left;
-								}
-								.ml10{
-									margin-left:10px;
-								}
-								.mr10{
-									margin-right:10px;
-								}
-							}
-						}
-						.tip{
-							width:100%;
-							float:left;
-							margin-top:10px;
-							line-height:40px;
-							.comtext{
-								float:left;
-								color:#333;
-								font-size:12px;
-								em{
-									font-style:normal;
-									color:$yellow;
-									margin:5px;
-									font-weight:bold;
-								}
-							}
-							label{
-								float:right;
-								margin-right:15px;
-								color:#333;
-								input[type=checkbox]{
-									border:1px solid $yellow;
-									color:$yellow;
-									width:18px;
-									height:18px;
-									float:left;
-									margin-top: 12px;
-									margin-right:3px;
-									cursor:pointer;
-								}
-							}
-						}
-					}
-					.btnright{
-						float:right;
-						width:150px;
-						.noactive{
-							background:#666;
-						}
-					}
-				}
-				.resultarea{
-					width:100%;
-					float:left;
-					padding:20px 40px;
-					background:#eeeeee;
-					.betcheck{
-						float:left;
-						width:670px;
-						height:177px;
-						background:url("../../images/6_63.png") center no-repeat;
-						background-size: contain;
-						padding:20px 30px;
-						.betarea{
-							width:100%;
-							overflow-y:scroll;
-							height:120px;
-							padding-right:20px;
-							li{
-								height:30px;
-								width:100%;
-								list-style:none;
-								float:left;
-								border-bottom:1px solid #CCCCCC;
-								line-height:30px;
-								display: flex;
-								.lot_type{
-									text-align: left;
-								}
-								.lot_num{
-									width: 40%;
-									overflow:hidden;
-									text-overflow:ellipsis;
-									white-space:nowrap;
-								}
-								.lot_close{
-									height: 100%;
-									width: 5%;
-									cursor: pointer;
-									text-align: right;
-									background:  url(../../images/close01.png) center right no-repeat;
-								}
-							}
-							li>div{
-								display: inline-block;
-								text-align: center;
-							    overflow:hidden;
-							    text-overflow:ellipsis;
-							    white-space:nowrap;
-								width: 20%;
-							}
-						}
-						.info{
-							width:100%;
-							text-align:center;
-							color:#333;
-							font-size:12px;
-							span{
-								margin:0 5px;
-								color:$yellow;
-							}
-						}
-					}
-					.btnright{
-						float:right;
-						width:120px;
-						padding-top:20px;
-						label{
-							float:left;
-							margin-right:15px;
-							color:#333;
-							height:20px;
-							line-height:20px;
-							margin-top:5px;
-							font-weight:500;
-							input[type=checkbox]{
-								border:1px solid $yellow;
-								color:$yellow;
-								width:18px;
-								height:18px;
-								float:left;
-								margin-top: 2px;
-								margin-right:3px;
-								cursor:pointer;
-							}
-						}
-					}
-				}
-				.surearea{
-					width:100%;
-					float:left;
-					padding:20px 40px;
-					background:#fff;
-					text-align:center;
-					
-				}
-			}
-			.sscright{
-				width:280px;
-				float:right;
-				overflow:hidden;
-				border-radius:4px;
-			}
-		}
-	}
-}
-.fl{
-	float:left;
+                        .comfirm_now {
+                            margin-top: 10px;
+                            font-weight: bold;
+                        }
+                        .lit_til {
+                            color: #666666;
+                        }
+                        .row_text {
+                            div {
+                                line-height: 30px;
+                                vertical-align: middle;
+                            }
+                        }
+                        .mathinput {
+                            width: 50px;
+                            height: 18px;
+                            line-height: 18px;
+                            font-size: 12px;
+                            border: 1px solid #E6E6E6;
+                            margin: 4px 6px;
+                            padding: 5 10px;
+                            text-align: center;
+                            float: left;
+                        }
+                        .switch_btn {
+                            width: 60px;
+                            height: 30px;
+                            background-color: #BFBFBF;
+                            border: 2px solid #BFBFBF;
+                            transition: all 0.3s ease;
+                            border-radius: 15px;
+                            cursor: pointer;
+                            position: relative;
+                            .sw_dot {
+                                height: 26px;
+                                width: 26px;
+                                border: 0px solid transparent;
+                                border-radius: 50%;
+                                background: -webkit-linear-gradient(#F0F0F0, #F9F9F9);
+                                /* Safari 5.1 - 6.0 */
+                                background: -o-linear-gradient(#F0F0F0, #F9F9F9);
+                                /* Opera 11.1 - 12.0 */
+                                background: -moz-linear-gradient(#F0F0F0, #F9F9F9);
+                                /* Firefox 3.6 - 15 */
+                                background: linear-gradient(#F0F0F0, #F9F9F9);
+                                /* 标准的语法 */
+                                position: absolute;
+                                left: 0px;
+                                top: 0px;
+                            }
+                        }
+                        .switch_btn.on {
+                            width: 60px;
+                            height: 30px;
+                            background-color: #D93D3D;
+                            border: 2px solid #D93D3D;
+                            .sw_dot {
+                                position: absolute;
+                                left: 29px;
+                            }
+                        }
+                        label {
+                            float: left;
+                            margin-right: 15px;
+                            color: #333;
+                            height: 20px;
+                            line-height: 20px;
+                            margin-top: 5px;
+                            font-weight: 500;
+                            input[type=checkbox] {
+                                border: 1px solid $yellow;
+                                color: $yellow;
+                                width: 18px;
+                                height: 18px;
+                                float: left;
+                                margin-top: 2px;
+                                margin-right: 3px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+                .surearea {
+                    width: 100%;
+                    float: left;
+                    padding: 2px 0px;
+                    background: #F2F2F2;
+                    text-align: center;
+                    margin: 30px 0;
+                    overflow: hidden;
+                    .flex-r{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+                    .head_top {
+                        height: 40px;
+                        width: 100%;
+                        padding: 0 20px;
+                        background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+                        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+                        .til_top {
+                            color: black;
+                            font-size: 14px;
+                            font-weight: bold;
+                        }
+                        .retreat {
+                            width: 90px;
+                            height: 25px;
+                            line-height: 25px;
+                            color: black;
+                            background: linear-gradient(to top, #8d8d8d, #bbbaba);
+                            cursor: pointer;
+                        }
+                        .hisbtn{
+                            width: 100px;
+                            height: 24px;
+                            line-height: 24px;
+                            color: white;
+                            margin: 0 10px;
+                            background: linear-gradient(to top, #941927, #e22137);
+                            cursor: pointer;
+                        } 
+                    }
+                    .history_box {
+                        width: 100%;
+                        padding: 0 20px;
+                        .fake_table {
+                            width: 100%;
+                            border: 1px solid #d7d1d1;
+                            border-top: none;
+                            .fake_head {
+                                height: 40px;
+                                width: 100%;
+                                border-bottom: 1px solid #E6E6E6;
+                            }
+                            tbody {
+                                overflow: scroll;
+                                height: 140px;
+                            }
+                        }
+                        .fake_th {
+                            height: 40px;
+                            font-size: 14px;
+                            color: black;
+                            line-height: 38px;
+                            text-align: center;
+                            min-width: 77px;
+                        }
+                        tr:nth-child(even) {
+                            background-color: white;
+                        }
+                        td {
+                            line-height: 30px;
+                            height: 30px;
+                            max-width: 180px;
+                            text-align: center;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                        }
+                        td:nth-child(1) {
+                            text-indent: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .btnh_w120_h40{
@@ -1134,16 +1147,6 @@ input[type="number"]{
     width: 120px;
     height: 35px;
     line-height: 35px;
-    text-align: center;
-    font-size: 16px;
-    color: #fff;
-    border-radius: 4px;
-}
-.btnh_w150_h50{
-	cursor: pointer;
-    width: 150px;
-    height: 45px;
-    line-height: 45px;
     text-align: center;
     font-size: 16px;
     color: #fff;
@@ -1162,16 +1165,6 @@ input[type="number"]{
     -webkit-box-shadow: 0 10px 20px 0 rgba(255,255,255,.15) inset, 0 2px 7px 0 rgba(0,0,0,.2);
     box-shadow: 0 10px 20px 0 rgba(255,255,255,.15) inset, 0 2px 7px 0 rgba(0,0,0,.2);
 }
-.bgfff{
-	background: #fff;
-	color:#333;
-	font-size:14px;
-	float:right;
-	text-decoration:none;
-	 -moz-box-shadow: 0 10px 20px 0 rgba(255,255,255,.15) inset,0 2px 7px 0 rgba(0,0,0,.2);
-    -webkit-box-shadow: 0 10px 20px 0 rgba(255,255,255,.15) inset, 0 2px 7px 0 rgba(0,0,0,.2);
-    box-shadow: 0 10px 20px 0 rgba(255,255,255,.15) inset, 0 2px 7px 0 rgba(0,0,0,.2);
-}
 .bgyellowcenter{
 	background: $yellow;
 	color:#fff;
@@ -1184,86 +1177,6 @@ input[type="number"]{
 }
 .mb10{
 	margin-bottom:10px;
-}
-input[type="range"] {
-  display: inline-block;
-  position: relative;
-  width: 90px;
-  height: 22px;
-  background: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  outline: none;
-  margin:0px 5px;
-}
-
-/*range中心圆点*/
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 12px;
-  width: 18px;
-  border-radius: 5px;
-  background-color: #fe8f00;
-  cursor: pointer;
-  margin-top: -4px;
-}
-
-input[type="range"]::-moz-range-thumb {
-  -moz-appearance: none;
-  appearance: none;
-  height: 12px;
-  width: 18px;
-  border-radius: 5px;
-  background-color: #fe8f00;
-  cursor: pointer;
-}
-input[type="range"]::-ms-thumb {
-  -ms-appearance: none;
-  appearance: none;
-  height: 12px;
-  width: 18px;
-  border-radius: 5px;
-  background-color: #fe8f00;
-  cursor: pointer;
-  margin-top: 1px;
-}
-input[type="range"]::slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 12px;
-  width: 18px;
-  border-radius: 5px;
-  background-color: #fe8f00;
-  cursor: pointer;
-  margin-top: -6px;
-}
-/*range轨道*/
-input[type="range"]::-webkit-slider-runnable-track {
-  width: 100px;
-  height: 4px;
-  background-color: #fe8f00;
-  border-radius: 2px;
-  cursor: pointer;
-}
-input[type="range"]::-moz-range-track {
-  width: 100px;
-  height: 4px;
-  background-color: #fe8f00;
-  border-radius: 2px;
-  cursor: pointer;
-}
-input[type="range"]::-ms-track {
-  width: 100px;
-  height: 4px;
-  border-color: transparent;
-  color: #fe8f00;
-  border-radius: 2px;
-  background: #fe8f00;
-  cursor: pointer;
 }
 
 .flex-r {
@@ -1280,197 +1193,3 @@ input[type="range"]::-ms-track {
   align-content: flex-start;
   align-items: flex-start;
 }
-// 右边信息区域样式开始
-.infobox {
-  width: 280px;
-  float:right;
-  .userbtngroup{
-  	height: 35px;
-  	display: flex;
-  	justify-content: space-between ;
-  	margin-top: 20px;
-  	.money_btn{
-  		height: 30px;
-  		width: 70px;
-  		text-align: center;
-  		vertical-align: middle;
-  		line-height: 28px;
-  		background-color: #525151;
-  		border:1px solid #A6A6A6;
-  		border-radius: 3px;
-  		cursor:pointer;
-  		box-sizing:border-box;
-
-  	}
-  }
-}
-
-.infoitem {
-  width: 100%;
-  border-radius: 4px;
-  overflow: hidden;
-  .top_til{
-	height: 50px;
-	width: 100%;
-	background-color: #333333;
-	
-	/* -webkit-background-size: 20px; */
-	/* background-size: 20px; */
-  }
-  .til_ico{
-  	display: inline-block;
-  	width: 32px;
-  	height: 32px;
-  	margin-top: 8px;
-  	margin-left: 20px;
-  	
-  }
-  .til_ico_history{
-  	background: #333333 url(../../images/sscsprites.png) 0px -79px no-repeat;
-  }
-  .til_ico_rank{
-  	background: #333333 url(../../images/sscsprites.png) -32px -79px no-repeat;
-  }
-  .til_font{
-  	display: inline-block;
-  	vertical-align: top;
-  	color: #ddd;
-  	margin-left: 10px;
-  	line-height: 50px;
-  	font-size: 16px;
-  	height: 100%;
-  }
-}
-
-.userinfobox {
-  padding: 25px 25px;
-  color: white;
-  background-color: #333;
-
-}
-.userinfo {
-  padding-bottom: 20px;
-}
-.userinfo i {
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  overflow: hidden;
-  
-}
-.userinfo i img{
-	width: 100%;
-	height: 100%;
-	object-fit:cover;
-}
-.userinfo span {
-  padding-left: 20px;
-  font-size: 18px;
-}
-.userbtngroupbtngroup {
-  width: 100%;
-  padding-top: 16px;
-  justify-content: space-between;
-}
-.userbtngroupbtngroup span {
-  width: 70px;
-  height: 30px;
-  line-height: 28px;
-  text-align: center;
-  background-color: #525151;
-  color: #ccc;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-}
-.resultinfobox {
-  width: 100%;
-  padding-top: 20px;
-}
-.resultinfo,
-.tabtn {
-  width: 100%;
-}
-.tabtn span {
-  width: 50%;
-  height: 50px;
-  font-size: 16px;
-  line-height: 50px;
-  text-align: center;
-  color: white;
-  cursor:pointer;
-  background-color: #333;
-}
-.tabtn span.btnactive {
-  color: white;
-  border-color: #fe8f00;
-  background-color: #fe8f00;
-}
-.resultinfo .resultul{
-	width: 100%;
-}
-.resultinfo .num_til{
-	width: 20px;
-	height: 20px;
-	border: 1px solid transparent;
-	border-radius: 50%;
-	background-color: #FE8F00;
-	line-height: 18px;
-	text-align: center;
-	margin-top: 2px;
-	color: white;
-}
-.resultinfo .font_orange{
-	color: #FE8F00;
-	font-weight: bold;
-}
-.resultinfo .name_font{
-	margin-left: -40px;
-}
-.resultul .resultitem {
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  font-size: 12px;
-  justify-content: space-between;
-  padding: 0 25px;
-  background-color: #eee;
-  border-bottom: 1px solid white;
-}
-.resultitem:last-child {
-  border-bottom: none;
-}
-.querybox {
-  padding: 5px 20px;
-  justify-content: flex-end;
-  background-color: #eee;
-}
-select#qishu {
-  width: 100px;
-  height: 30px;
-  line-height: 28px;
-  border-color: #ccc;
-}
-.querybox,
-.resultbox,
-.resulttable {
-  width: 100%;
-}
-.resulttable {
-  height: 340px;
-  background-color: white;
-  overflow-y: scroll;
-}
-.resulttable table {
-  table-layout: fixed;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-}
-.resulttable table td {
-  text-align: left;
-  padding-left: 8px;
-  height: 30px;
-  border: 1px solid #ccc;
-}
-// 右边信息区域样式结束
-

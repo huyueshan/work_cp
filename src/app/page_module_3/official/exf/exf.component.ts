@@ -210,7 +210,7 @@ export class EXFofficialComponent implements OnInit {
     public riskvalue = -0.2;
     // 拖拽数据
     public rangepercent = 0;
-    public rangenum = 30033.33;
+    public rangenum = 180200;
     // 拖拽数据结束
     public now_tips_menu: any = "1_1";
     public now_description = "";
@@ -295,8 +295,9 @@ export class EXFofficialComponent implements OnInit {
     public items_show = {
         sdexf_ffc: {
             tabitem: [
-                this.now_lang.Lot_tab.ForT_str,
-                this.now_lang.Lot_tab.Two_star_str,
+                this.now_lang.Lot_tab.Three_star,
+                this.now_lang.Lot_tab.Two_star,
+                this.now_lang.Lot_tab.Indeterminate_gallbladder,
                 this.now_lang.Lot_tab.Gall,
                 this.now_lang.Lot_tab.Thr_Inde_gall,
                 this.now_lang.Lot_tab.Interestily,
@@ -309,8 +310,9 @@ export class EXFofficialComponent implements OnInit {
         },
         jxexf_ffc: {
             tabitem: [
-                this.now_lang.Lot_tab.ForT_str,
-                this.now_lang.Lot_tab.Two_star_str,
+                this.now_lang.Lot_tab.Three_star,
+                this.now_lang.Lot_tab.Two_star,
+                this.now_lang.Lot_tab.Indeterminate_gallbladder,
                 this.now_lang.Lot_tab.Gall,
                 this.now_lang.Lot_tab.Interestily,
                 this.now_lang.Lot_tab.Choose_odd,
@@ -322,8 +324,9 @@ export class EXFofficialComponent implements OnInit {
         },
         hljexf_ffc: {
             tabitem: [
-                this.now_lang.Lot_tab.ForT_str,
-                this.now_lang.Lot_tab.Two_star_str,
+                this.now_lang.Lot_tab.Three_star,
+                this.now_lang.Lot_tab.Two_star,
+                this.now_lang.Lot_tab.Indeterminate_gallbladder,
                 this.now_lang.Lot_tab.Gall,
                 this.now_lang.Lot_tab.Interestily,
                 this.now_lang.Lot_tab.Choose_odd,
@@ -335,8 +338,9 @@ export class EXFofficialComponent implements OnInit {
         },
         jsexf_ffc: {
             tabitem: [
-                this.now_lang.Lot_tab.ForT_str,
-                this.now_lang.Lot_tab.Two_star_str,
+                this.now_lang.Lot_tab.Three_star,
+                this.now_lang.Lot_tab.Two_star,
+                this.now_lang.Lot_tab.Indeterminate_gallbladder,
                 this.now_lang.Lot_tab.Gall,
                 this.now_lang.Lot_tab.Interestily,
                 this.now_lang.Lot_tab.Choose_odd,
@@ -348,8 +352,9 @@ export class EXFofficialComponent implements OnInit {
         },
         shexf_ffc: {
             tabitem: [
-                this.now_lang.Lot_tab.ForT_str,
-                this.now_lang.Lot_tab.Two_star_str,
+                this.now_lang.Lot_tab.Three_star,
+                this.now_lang.Lot_tab.Two_star,
+                this.now_lang.Lot_tab.Indeterminate_gallbladder,
                 this.now_lang.Lot_tab.Gall,
                 this.now_lang.Lot_tab.Interestily,
                 this.now_lang.Lot_tab.Choose_odd,
@@ -361,8 +366,9 @@ export class EXFofficialComponent implements OnInit {
         },
         xjexf_ffc: {
             tabitem: [
-                this.now_lang.Lot_tab.ForT_str,
-                this.now_lang.Lot_tab.Two_star_str,
+                this.now_lang.Lot_tab.Three_star,
+                this.now_lang.Lot_tab.Two_star,
+                this.now_lang.Lot_tab.Indeterminate_gallbladder,
                 this.now_lang.Lot_tab.Gall,
                 this.now_lang.Lot_tab.Interestily,
                 this.now_lang.Lot_tab.Choose_odd,
@@ -388,11 +394,11 @@ export class EXFofficialComponent implements OnInit {
     };
     // 一级tab
     menu_1 = [{
-            name: this.now_lang.Lot_tab.ForT_str,
+            name: this.now_lang.Lot_tab.Three_star,
             active: 1
         },
         {
-            name: this.now_lang.Lot_tab.Two_star_str,
+            name: this.now_lang.Lot_tab.Two_star,
             active: 2
         },
         {
@@ -425,7 +431,7 @@ export class EXFofficialComponent implements OnInit {
 
     // 2级tab数据以及对应要显示的内容
     menu_2_data = [{
-            title: this.now_lang.Lot_tab.ForT_str,
+            title: this.now_lang.Lot_tab.ForT_gro1,
             menu: [{
                     name: this.now_lang.Lot_tab.ForT_str_eve,
                     index: 1,
@@ -435,7 +441,7 @@ export class EXFofficialComponent implements OnInit {
 					addzero:true
                 },
                 {
-                    name: this.now_lang.Lot_tab.ForT_str_odd,
+                    name: this.now_lang.Lot_tab.ForF_star,
                     index: 2,
                     arr: ["dyw"],
                     isupload: true,
@@ -465,7 +471,7 @@ export class EXFofficialComponent implements OnInit {
             active: 1
         },
         {
-            title: this.now_lang.Lot_tab.Two_star_str,
+            title: this.now_lang.Lot_tab.twoT_gro1,
             menu: [{
                     name: this.now_lang.Lot_tab.ForTwo_str_eve,
                     index: 1,
@@ -1618,11 +1624,13 @@ export class EXFofficialComponent implements OnInit {
         that.tabcurr = data;
         that.status.menu_2 = data.index;
         if (data.isupload) {
-            that.up_ball = 2;
-            this.balllist(data.arr);
+            that.up_ball = 2
+            this.balllist(data.arr)
+            that.hothidden = true;
         } else {
-            that.up_ball = 1;
-            this.balllist(data.arr);
+            that.up_ball = 1
+            this.balllist(data.arr)
+            that.hothidden = false;
         }
         that.now_tips_menu = that.status.menu_1 + "_" + that.status.menu_2;
         that.now_description = that.lot_rules[that.now_tips_menu]["description"];
@@ -1941,6 +1949,7 @@ export class EXFofficialComponent implements OnInit {
         let str = Utils.algorithm.getNum($("#" + id).val());
         this.filedata(str, "");
     }
+	public filterstatus = false
     // 处理输入框的数据
     filedata(str, type) {
         let self = this;
@@ -1977,6 +1986,7 @@ export class EXFofficialComponent implements OnInit {
                 amount: 0
             };
         }
+		this.filterstatus = false
     }
     // 处理过滤结果
     filteresult(id, type) {
@@ -2010,6 +2020,7 @@ export class EXFofficialComponent implements OnInit {
                     val + obj.allarr[i][0].split(",").join("");
             }
         }
+		this.filterstatus = true
         if (type == "del") {
             $("#" + id).val(val);
             if (rep == 0 && nob == 0) {
@@ -2026,20 +2037,20 @@ export class EXFofficialComponent implements OnInit {
             }
         } else {
             if (rep != 0 || nob != 0) {
-                $("#" + id).val(null);
-                con =
-                    "将要自动过滤" +
-                    rep +
-                    "个重复号，" +
-                    nob +
-                    "个无效号，过滤内容为：" +
-                    ball;
-                self.POPNOTE({msg:con});
+                $('#' + id).val(val)
+                con = '将要自动过滤' + rep + '个重复号，' + nob + '个无效号，过滤内容为：' + ball
+                self.POPNOTE({msg:con},self.qdfunc);
             } else {
-                $("#" + id).val(null);
+				if(self.filterstatus){
+					self.addball(self.menu_2,self.ballcurr.status)
+					$('#' + id).val(null)
+				}
             }
         }
-    }
+	}
+	qdfunc(){
+		this.addball(this.menu_2,this.ballcurr.status)
+	}
     // 计算当前点击投注信息
     countbet(totalbet) {
         if (!totalbet) {
@@ -2163,8 +2174,11 @@ export class EXFofficialComponent implements OnInit {
 			return
 		}
 		let arr = []
-		if(that.tabcurr.isupload){
-			this.filteresult('fileReader','')
+		if (that.tabcurr.isupload) {
+			if(!that.filterstatus){
+				that.filteresult('fileReader', '');
+				return
+			}
 		}
 		if(that.tabcurr.choose){
 			var _selfs;

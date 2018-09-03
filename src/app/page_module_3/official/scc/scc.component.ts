@@ -148,50 +148,136 @@ export class SCCofficialComponent implements OnInit {
   //追号数据
   public lotdata = [
     {
-      lot_num: "20181719",
-      multiple: 0,
-      price: 2,
-      take_money: 0,
-      expire_time: "2018-06-11 15:19:30",
-      checkon: false
+      lot_num:'20181719',
+      multiple:0,
+      price:2,
+      take_money:0,
+      expire_time:'2018-06-11 15:19:30',
+      checkon:false
     },
     {
-      lot_num: "20181720",
-      multiple: 0,
-      price: 2,
-      take_money: 0,
-      expire_time: "2018-06-11 15:19:30",
-      checkon: false
+      lot_num:'20181720',
+      multiple:0,
+      price:2,
+      take_money:0,
+      expire_time:'2018-06-11 15:19:30',
+      checkon:false
     },
     {
-      lot_num: "20181721",
-      multiple: 0,
-      price: 2,
-      take_money: 0,
-      expire_time: "2018-06-11 15:19:30",
-      checkon: false
+      lot_num:'20181721',
+      multiple:0,
+      price:2,
+      take_money:0,
+      expire_time:'2018-06-11 15:19:30',
+      checkon:false
     }
-  ];
-  public typeoptiondata: any = [5, 10, 15, 25, "all"];
+  ]
+  //追号提交数据
+  public lotdata_submit :any = [];
+
+  public typeoptiondata :any = [
+      5,
+      10,
+      15,
+      25,
+      'all'
+    ];
   // 复制追号数据
   public lotdata_now = $.extend(true, [], this.lotdata);
   // 追号配置
-  public chase_config_ori: any = {
-    multiple: 1,
-    chase_amount: 5,
-    select_amount: 5,
-    chase_rule: {
-      number: 1,
-      multiple: 2
+  public chase_config_ori :any = {
+    multiple:1,
+    chase_amount:5,
+    select_amount:5,
+    chase_rule:{
+      number:1,
+      multiple:2
     },
-    multiple_option: 1
-  };
-  public chase_number_config: any = $.extend(true, {}, this.chase_config_ori);
+    multiple_option:1
+  }
+  public Open_stop :any = false
+  public Win_stop :any = false
+  public chase_number_config :any = $.extend(true, {}, this.chase_config_ori);
   //目前追号面板
-  public c_now_panel: any = "one";
-  public chase_money: any = 0;
-  public chase_amount: any = 0;
+  public c_now_panel :any = 'one'
+  public chase_money :any = 0;
+  public chase_amount :any = 0;
   //追号数据结束
+  
+	// 新增数据
+	public history_list :any = 
+	[
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        
+    ];
+
+
+
   //此彩种细分彩种配置
   public items_show = {
     bjpk_ffc: {
@@ -262,7 +348,7 @@ export class SCCofficialComponent implements OnInit {
     },
     {
       name: this.now_lang.Lot_tab.Dragon_tiger,
-      active: 7
+      href: 'lottery/creditssc/cq'
     }
   ];
 
@@ -485,130 +571,227 @@ export class SCCofficialComponent implements OnInit {
       index: 4
     }
   };
-  //追号函数
+  // 追号函数
   typeoptchange() {
     let that = this;
-    if (that.chase_number_config.select_amount == "all") {
+    if (that.chase_number_config.select_amount == 'all') {
       that.chase_number_config.chase_amount = that.lotdata_now.length;
-    } else {
-      that.chase_number_config.chase_amount =
-        that.chase_number_config.select_amount;
+    }else{
+      that.chase_number_config.chase_amount = that.chase_number_config.select_amount;
     }
   }
-  check_lot(item) {
-    console.log(item.checkon);
+  check_lot(item){
+    console.log(item.checkon)
     let that = this;
     if (item.checkon) {
       if (item.multiple == 0) {
         item.multiple = that.chase_number_config.multiple;
-        item.take_money = item.multiple * item.price;
+        item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
       }
-    } else {
+
+    }else{
       item.multiple = 0;
+      item.take_money = 0;
     }
-    that.repanel_data();
+    that.repanel_data()
+    console.log(that.lotdata_now)
   }
   // 生成计划
-  produce_plan() {
+  produce_plan(){
     let that = this;
-    let gap_number, gap_multiple, multiple, chase_amount;
-    if (that.c_now_panel == "two") {
+    that.lotdata_now = $.extend(true, [], that.lotdata);
+    let gap_number,gap_multiple,multiple,chase_amount;
+    if (that.c_now_panel == 'two') {
       gap_number = that.chase_number_config.chase_rule.number;
       gap_multiple = that.chase_number_config.chase_rule.multiple;
       multiple = that.chase_number_config.multiple;
       chase_amount = that.chase_number_config.chase_amount;
-      if (chase_amount > that.lotdata_now.length) {
+      if(chase_amount>that.lotdata_now.length){
         chase_amount = that.lotdata_now.length;
       }
-      for (var i = 0; i <= chase_amount - 1; i++) {
-        console.log(i % gap_number);
+      for (var i = 0; i <= chase_amount-1; i++) {
+        console.log((i)%gap_number)
         that.lotdata_now[i].checkon = true;
         that.lotdata_now[i].multiple = multiple;
-        that.lotdata_now[i].take_money = multiple * that.lotdata_now[i].price;
-        if ((i + 1) % gap_number == 0) {
-          multiple = multiple * gap_multiple;
-        }
-      }
-    } else {
+        that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
+        if ((i+1)%gap_number == 0) {
+          multiple = multiple*gap_multiple;
+        }; 
+
+      };      
+    }else{
       multiple = that.chase_number_config.multiple;
       chase_amount = that.chase_number_config.chase_amount;
-      if (chase_amount > that.lotdata_now.length) {
+      if(chase_amount>that.lotdata_now.length){
         chase_amount = that.lotdata_now.length;
       }
-      for (var i = 0; i <= chase_amount - 1; i++) {
+      for (var i = 0; i <= chase_amount-1; i++) {
+
         that.lotdata_now[i].checkon = true;
         that.lotdata_now[i].multiple = multiple;
-        that.lotdata_now[i].take_money = multiple * that.lotdata_now[i].price;
-      }
+        that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
+      };
     }
-    that.repanel_data();
+    that.repanel_data()
   }
   //单个金钱计算
-  get_takemon(item) {
+  get_takemon(item,e){
     let that = this;
-    item.take_money = item.multiple * item.price;
-    that.repanel_data();
+    if (item.multiple == 0) {
+      item.checkon = false;
+    }else{
+      item.checkon = true;
+    }
+    item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
+    that.repanel_data()
   }
+    changeregnum(e) {
+        let v = e.target;
+        v.value = v.value.replace(/\D/g, "");
+        if (Number(v.value) === 0 && v.value !== "") {
+            v.value = 0;
+        }
+        if (Number(v.value) > 0) {
+            v.value = Number(v.value);
+        }
+    }
   // 总金钱总期数计算
-  repanel_data() {
+  repanel_data(){
     let that = this;
     let amount = 0;
     let chase_amount = 0;
-    for (var i = 0; i <= that.lotdata_now.length - 1; i++) {
-      amount =
-        that.lotdata_now[i].multiple * that.lotdata_now[i].price + amount;
-      if (that.lotdata_now[i].checkon) {
-        chase_amount = chase_amount + 1;
+    for (var i = 0; i <= that.lotdata_now.length-1; i++) {
+      for (var k = 0; k <= that.sureballlist.length-1; k++) {
+        amount = that.lotdata_now[i].multiple*that.lotdata_now[i].price/that.modelarr[that.model]+amount;
       }
-    }
+      if (that.lotdata_now[i].checkon) {
+        chase_amount = chase_amount+1;
+      };
+    };
     that.chase_amount = chase_amount;
-    if (that.chase_amount > that.lotdata_now.length) {
+    if(that.chase_amount>that.lotdata_now.length){
       that.chase_amount = that.lotdata_now.length;
     }
     that.chase_money = amount;
   }
   //清空追号
-  rechase_data() {
+  rechase_data(){
     let that = this;
     that.lotdata_now = $.extend(true, [], that.lotdata);
-    that.repanel_data();
+    that.repanel_data()
   }
   //清空追号所有数据
-  rechase_dataall() {
+  rechase_dataall(){
     let that = this;
     that.lotdata_now = $.extend(true, [], that.lotdata);
     that.chase_number_config = $.extend(true, {}, that.chase_config_ori);
-    that.repanel_data();
+    that.repanel_data()
   }
-  tab_chase(para, item_one, item_two) {
+  tab_chase(para,item_one,item_two){
     let that = this;
     that.rechase_dataall();
     that.c_now_panel = para;
-    if (para == "one") {
-      $(item_one).addClass("active");
-      $(item_two).removeClass("active");
-      $(".one").addClass("active");
-      $(".two").removeClass("active");
-    } else if (para == "two") {
-      $(item_two).addClass("active");
-      $(item_one).removeClass("active");
-      $(".two").addClass("active");
-      $(".one").removeClass("active");
+    if (para == 'one') {
+      $(item_one).addClass('active');
+      $(item_two).removeClass('active');
+      $('.one').addClass('active')
+      $('.two').removeClass('active')
+    }else if(para == 'two'){
+      $(item_two).addClass('active');
+      $(item_one).removeClass('active');
+      $('.two').addClass('active')
+      $('.one').removeClass('active')
     }
   }
-  close_chase() {
-    $("#layer2")
-      .find(".chase_container")
-      .removeClass("show_this");
+  //提交追号
+  submit_chase(){
     let that = this;
-    that.rechase_dataall();
+    //清空
+    that.lotdata_submit = [];
+    for (var i = 0; i <= that.lotdata_now.length-1; i++) {
+      console.log(that.lotdata_now[i].checkon != false)
+      if (that.lotdata_now[i].checkon != false) {
+        for (var k = 0; k <= that.sureballlist.length-1; k++) {
+            let rechase :any= {};
+            rechase.Open_stop = that.Open_stop;
+            rechase.Win_stop = that.Win_stop;
+            rechase.multiple = that.lotdata_now[i].multiple;
+            rechase.model = that.model;
+            rechase.count = 1;
+            rechase.sum = (2*rechase.multiple) /that.modelarr[rechase.model]
+            rechase.amount = that.totalinfo.amount;
+            rechase.ball = that.sureballlist[k].ball;
+            rechase.name = that.sureballlist[k].name;
+            rechase.issue = that.lotdata_now[i].lot_num;
+            that.lotdata_submit.push(rechase)
+        }
+      };
+    }
+    console.log(that.lotdata_submit)
+    if(!that.lotdata_submit[0]){
+            that.POPNOTE({msg:'请选择追号期数'});
+      return
+    }else{
+      that.POPNOTE({msg:`您确定追号${that.lotdata_now.length}期么? 总投入${that.chase_money}元。`},that.betnow);
+      return
+    }
+    
+    
   }
-  chase_number() {
-    $("#layer2")
-      .find(".chase_container")
-      .addClass("show_this");
+  betnow(){
+    // 在此处提交追号所有号码
   }
-  //追号函数结束
+  close_chase(){
+    $('#layer3_c').find('.chase_container').removeClass('show_this');
+    let that = this;
+    that.rechase_dataall()
+  }
+  chase_number(){
+    let that = this;
+    if (!that.sureballlist[0]) {
+      that.POPNOTE({msg:'注单列表为空，请先下注！或者随机1注',btn:'随机一注'},that.radomshowchase);
+      return false
+    };
+    that.showchase();
+    
+    }  
+  show_chasenumber(param,nextrun){
+    let msg = param.msg;
+    let til = param.til;
+    let self = this;
+    let str = ''; 
+    let dom = $(this.parseDom(str))
+    dom.find('.close').on('click',function(){
+      self.hid_layer();
+    }) 
+    dom.find('.confirm_box').on('click',function(){
+      nextrun();
+    })
+    $('#layer').append(dom);
+    setTimeout(function(){
+      dom.addClass('tobig')
+    }, 10)
+    window.onresize = function () {
+      console.log('x')
+    }
+  }
+  
+    radomshowchase(){
+      this.mathball(this.menu_2);
+      $('#layer3_c').find('.chase_container').addClass('show_this');
+    }
+    showchase(){
+      $('#layer3_c').find('.chase_container').addClass('show_this');
+    }
+  hid_layer(){
+    document.getElementById("layer").innerHTML = '';
+  }
+  parseDom(arg) {
+　　 var objE = document.createElement("div");
+　　 objE.innerHTML = arg;
+　　 return objE.childNodes;
+  };
+//追号函数结束
   // 遗漏数据
   omitarr = {
     0: [],
@@ -775,7 +958,7 @@ export class SCCofficialComponent implements OnInit {
     this.tabmenu(this.menu_1[0]);
   }
   ngAfterViewInit() {
-    this.inittab2();
+    // this.inittab2();
   }
   check_have_credit() {
     console.log(this.nowPageId);
@@ -791,109 +974,7 @@ export class SCCofficialComponent implements OnInit {
     this.nowPageId = idarray[idarray.length - 1] + "_ffc";
     this.nowitems = this.items_show[this.nowPageId];
   }
-  inittab2() {
-    let ulMax = $(".typetab").outerWidth();
-    let liWidth = 0;
-    let toolong = 0;
-    let allliWidth = 0;
-    $.each($(".tab_li"), function(i, n) {
-      allliWidth = allliWidth + $(n).outerWidth();
-    });
-    $(".pointl").on("click", function() {
-      //做个过长处理
-      if (allliWidth > ulMax * 2 && toolong >= 0) {
-        toolong = toolong - 1;
-      } else {
-        ulMax = $(".typetab").outerWidth();
-      }
-      if (toolong < 1) {
-        $.each($(".tab_li"), function(i, n) {
-          liWidth = liWidth + $(n).outerWidth();
-          if (liWidth < ulMax) {
-            $(n).removeClass("hide_it");
-          }
-          if (liWidth > ulMax) {
-            $(n).addClass("hide_it");
-          }
-        });
-      } else if (toolong >= 1) {
-        $.each($(".tab_li"), function(i, n) {
-          liWidth = liWidth + $(n).outerWidth();
-          if (liWidth >= ulMax && liWidth <= ulMax * 2) {
-            $(n).removeClass("hide_it");
-          }
-          if (liWidth >= ulMax * 2) {
-            $(n).addClass("hide_it");
-          }
-        });
-      } else {
-        $.each($(".tab_li"), function(i, n) {
-          liWidth = liWidth + $(n).outerWidth();
-          if (liWidth > ulMax) {
-            $(n).addClass("hide_it");
-          } else {
-            $(n).removeClass("hide_it");
-          }
-        });
-      }
-      if (liWidth < ulMax) {
-      }
-      liWidth = 0;
-    });
-    $(".pointr").on("click", function() {
-      //做个过长处理
-      if (allliWidth > ulMax * 2 && toolong < 2) {
-        toolong = toolong + 1;
-      } else {
-        ulMax = $(".typetab").outerWidth();
-      }
-      if (toolong == 1) {
-        $.each($(".tab_li"), function(i, n) {
-          liWidth = liWidth + $(n).outerWidth();
-          if (liWidth < ulMax) {
-            $(n).addClass("hide_it");
-          }
-          if (liWidth > ulMax && liWidth < ulMax * 2) {
-            $(n).removeClass("hide_it");
-          }
-        });
-      } else if (toolong >= 2) {
-        $.each($(".tab_li"), function(i, n) {
-          liWidth = liWidth + $(n).outerWidth();
-          if (liWidth < ulMax * 2) {
-            $(n).addClass("hide_it");
-          }
-          if (liWidth > ulMax * 2) {
-            $(n).removeClass("hide_it");
-          }
-        });
-      } else {
-        $.each($(".tab_li"), function(i, n) {
-          console.log(liWidth);
-          console.log(ulMax);
-          liWidth = liWidth + $(n).outerWidth();
-          if (liWidth < ulMax) {
-            $(n).addClass("hide_it");
-          } else {
-            $(n).removeClass("hide_it");
-          }
-        });
-      }
-
-      if (liWidth < ulMax) {
-        $(".tab_li").removeClass("hide_it");
-      }
-      liWidth = 0;
-    });
-    $.each($(".tab_li"), function(i, n) {
-      liWidth = liWidth + $(n).outerWidth();
-      if (liWidth > ulMax) {
-        $(n).addClass("hide_it");
-      }
-    });
-    liWidth = 0;
-  }
-  //路由函数
+  
   linkrouter(t) {
     this.router.navigate([t]);
   }
@@ -915,7 +996,7 @@ export class SCCofficialComponent implements OnInit {
   // 滑块左侧递加事件
   rangevalueadd() {
     let that = this;
-    $("#range_tag").css("left", 70);
+    $("#range_tag").css("left", 62);
     that.rangepercent = 0;
     that.rangenum = 180200;
     this.countbet(this.ballcurr.totalbet);
@@ -931,47 +1012,52 @@ export class SCCofficialComponent implements OnInit {
       this.countbet(this.ballcurr.totalbet);
     }
   }
+  // 拖动条函数
   drag_tag() {
-    let that = this;
-    $("#range_tag").on("mousedown", function(e) {
-      let distance_X;
-      let orin_x = e.pageX || e.clientX + document.body.scrollLeft;
-      let orin_left = parseInt($("#range_tag").css("left"));
-      let now_left;
-      $("body").on("mousemove", function(e) {
-        e = e || window.event;
-        let now_x = e.pageX || e.clientX + document.body.scrollLeft;
-        distance_X = now_x - orin_x;
-        now_left = orin_left + distance_X;
-        if (now_left < 0) {
-          now_left = 0;
-        } else if (now_left > 70) {
-          now_left = 70;
-        }
-        $("#range_tag").css("left", now_left);
-        if (now_left <= 26) {
-          that.rangepercent = 0.1;
-          that.rangenum = 30000;
-        } else {
-          that.rangepercent = 0;
-          that.rangenum = 30033.33;
-        }
-      });
-      $("body").on("mouseup", function() {
-        $("body").unbind();
-      });
-    });
+      let that = this;
+      $('#range_tag').on('mousedown', function (e) {
+          let distance_X;
+          let orin_x = e.pageX || e.clientX + document.body.scrollLeft;
+          let orin_left = parseInt($('#range_tag').css('left'));
+          let now_left;
+          $('body').on('mousemove', function (e) {
+              e = e || window.event;
+              let now_x = e.pageX || e.clientX + document.body.scrollLeft;
+              distance_X = now_x - orin_x;
+              now_left = orin_left + distance_X;
+              if (now_left < 0) {
+                  now_left = 0
+              } else if (now_left > 62) {
+                  now_left = 62
+              }
+              $('#range_tag').css("left", now_left);
+              if (now_left <= 26) {
+                  that.rangepercent = 0.1
+                  that.rangenum = 180000
+              } else {
+                  that.rangepercent = 0
+                  that.rangenum = 180200
+              }
+          })
+          $('body').on('mouseup', function () {
+              $('body').unbind();
+          })
+      })
+
   }
   //拖拽变数结束
   // 时时彩一级导航切换
   tabmenu(data) {
     let that = this;
-    that.now_tab2click_num =
-      that.menu_2_data[data.active - 1]["menu"][0].arr.length;
-    that.inittab();
+    console.log(data)
+
+
     if (data.href) {
       that.router.navigateByUrl(data.href);
     } else {
+      that.now_tab2click_num =
+      that.menu_2_data[data.active - 1]["menu"][0].arr.length;
+      that.inittab();
       that.status.menu_1 = data.active;
       that.status.menu_2 = 1;
       that.menu_2 = [];
@@ -1018,9 +1104,11 @@ export class SCCofficialComponent implements OnInit {
     that.status.menu_2 = data.index;
     if (data.isupload) {
       that.up_ball = 2;
+      that.hothidden = true;
     } else {
       that.up_ball = 1;
       this.balllist(data.arr);
+      that.hothidden = false;
     }
     that.now_tips_menu = that.status.menu_1 + "_" + that.status.menu_2;
     that.now_description = that.lot_rules[that.now_tips_menu]["description"];
@@ -1213,6 +1301,7 @@ export class SCCofficialComponent implements OnInit {
     let str = Utils.algorithm.getNum($("#" + id).val());
     this.filedata(str, "");
   }
+  public filterstatus = false
   // 处理输入框的数据
   filedata(str, type) {
     let self = this;
@@ -1238,6 +1327,7 @@ export class SCCofficialComponent implements OnInit {
         amount: 0
       };
     }
+	this.filterstatus = false
   }
 
   // 处理过滤结果
@@ -1277,6 +1367,7 @@ export class SCCofficialComponent implements OnInit {
             : val + obj.allarr[i][0].split(",").join("");
       }
     }
+	this.filterstatus = true
     if (type == "del") {
       $("#" + id).val(val);
       if (rep == 0 && nob == 0) {
@@ -1292,50 +1383,46 @@ export class SCCofficialComponent implements OnInit {
         self.POPNOTE({ msg: con });
       }
     } else {
-      if (rep != 0 || nob != 0) {
-        $("#" + id).val(null);
-        con =
-          "将要自动过滤" +
-          rep +
-          "个重复号，" +
-          nob +
-          "个无效号，过滤内容为：" +
-          ball;
-        self.POPNOTE({ msg: con });
-      } else {
-        $("#" + id).val(null);
-      }
-    }
+            if (rep != 0 || nob != 0) {
+                $('#' + id).val(val)
+                con = '将要自动过滤' + rep + '个重复号，' + nob + '个无效号，过滤内容为：' + ball
+                self.POPNOTE({msg:con},self.qdfunc);
+            } else {
+				if(self.filterstatus){
+					self.addball(self.menu_2,self.ballcurr.status)
+					$('#' + id).val(null)
+				}
+            }
+        }
   }
-
+	qdfunc(){
+		this.addball(this.menu_2,this.ballcurr.status)
+	}
   // 计算当前点击投注信息
-  countbet(totalbet) {
-    let sum, amount;
-    sum =
-      (this.multiple_input.value * totalbet * 2) / this.modelarr[this.model];
-    amount =
-      Math.round(
-        ((this.rangenum / this.modelarr[this.model]) *
-          this.multiple_input.value -
-          sum) *
-          100
-      ) / 100;
-    this.totalinfo = {
-      count: totalbet,
-      sum: sum,
-      amount: amount
-    };
-  }
+    countbet(totalbet) {
+        if (!totalbet) {
+            return
+        }
+        let sum, amount;
+        sum = (this.multiple_input.value * totalbet * 2) / this.modelarr[this.model];
+        amount = Math.round((((this.rangenum / this.modelarr[this.model]) * this.multiple_input.value) - sum) * 100) / 100
+        this.totalinfo = {
+            count: totalbet,
+            sum: sum,
+            amount: amount
+        }
+    }
 
   // 改变金额模式
-  modelchange(count) {
-    if (this.totalinfo.sum == 0) {
-      return;
-    }
-    let sum;
-    sum = (this.multiple_input.value * count * 2) / this.modelarr[this.model];
-    this.totalinfo.sum = sum;
-    this.totalinfo.amount = 180000 / this.modelarr[this.model] - sum;
+  modelchange(count,i) {
+      this.model = i;
+      if (this.totalinfo.sum == 0) {
+          return
+      }
+      let sum;
+      sum = (this.multiple_input.value * count * 2) / this.modelarr[this.model]
+      this.totalinfo.sum = sum;
+      this.totalinfo.amount = (180000 / this.modelarr[this.model]) - sum;
   }
 
   // 每次点击需要初始化的事件
@@ -1382,41 +1469,29 @@ export class SCCofficialComponent implements OnInit {
   }
 
   // 遗漏选择
-  omitname = "";
-  checkomit(obj, type) {
-    let that = this;
-    if ($(obj).is(":checked")) {
-      $("input:checkbox[name='ballcheck']").prop("checked", false);
-      $(obj).prop("checked", true);
+  omitname = '当前遗漏'
+  checkomit(type) {
+      let that = this
 
-      if (type == "yl") {
-        that.omitarr = {
-          0: ["05", "25", "13", "26", "14", "08", "11", "32", "19", "07"],
-          1: ["05", "25", "13", "26", "14", "08", "11", "32", "19", "07"],
-          2: ["05", "25", "13", "26", "14", "08", "11", "32", "19", "07"],
-          3: ["05", "25", "13", "26", "14", "08", "11", "32", "19", "07"],
-          4: ["05", "25", "13", "26", "14", "08", "11", "32", "19", "07"]
-        };
-        that.omitname = "当前遗漏";
-      } else {
-        that.omitarr = {
-          0: ["09", "25", "13", "26", "14", "08", "11", "32", "19", "07"],
-          1: ["09", "25", "13", "26", "14", "08", "11", "32", "19", "07"],
-          2: ["09", "25", "13", "26", "14", "08", "11", "32", "19", "07"],
-          3: ["09", "25", "13", "26", "14", "08", "11", "32", "19", "07"],
-          4: ["09", "25", "13", "26", "14", "08", "11", "32", "19", "07"]
-        };
-        that.omitname = "当前冷热";
-      }
-    } else {
-      that.omitarr = {
-        0: [],
-        1: [],
-        2: [],
-        3: [],
-        4: []
-      };
-    }
+          if (type == 'yl') {
+              that.omitarr = {
+                  0: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                  1: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                  2: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                  3: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                  4: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07']
+              }
+              that.omitname = '当前遗漏'
+          } else {
+              that.omitarr = {
+                  0: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                  1: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                  2: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                  3: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                  4: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07']
+              }
+              that.omitname = '当前冷热'
+          }
   }
   abotitle: any = {
     w: "万",
@@ -1435,8 +1510,11 @@ export class SCCofficialComponent implements OnInit {
     }
     let arr = [];
     if (that.tabcurr.isupload) {
-      this.filteresult("fileReader", "");
-    }
+		if(!that.filterstatus){
+			that.filteresult('fileReader', '');
+			return
+		}
+	}
     if (that.tabcurr.choose) {
       var _selfs;
       var _arr = [];
@@ -1671,39 +1749,6 @@ export class SCCofficialComponent implements OnInit {
       self.ul_hidden = !self.ul_hidden;
     }, 200);
   }
-  // 弹层1
-  // parseDom(arg) {
-  //     var objE = document.createElement("div");
-  //     objE.innerHTML = arg;
-  //     return objE.childNodes;
-  // };
-  // show_layer(param, nextrun) {
-  //     let msg = param.msg;
-  //     let til = param.til;
-  //     let self = this;
-  //     let str = '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">' + til + '</div><div class="close">x</div></div><div class="content_box">' + msg + '</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';
-  //     let dom = $(this.parseDom(str))
-  //     dom.find('.close').on('click', function () {
-  //         self.hid_layer();
-  //     })
-  //     dom.find('.confirm_box').on('click', function () {
-  //         if (nextrun == '' || !nextrun) {
-  //             self.hid_layer();
-  //         } else {
-  //             nextrun();
-  //         }
-  //     })
-  //     $('#layer').append(dom);
-  //     setTimeout(function () {
-  //         dom.addClass('tobig')
-  //     }, 10)
-  //     window.onresize = function () {
-  //         console.log('x')
-  //     }
-  // }
-  // hid_layer() {
-  //     document.getElementById("layer").innerHTML = '';
-  // }
   // 绑定给弹窗组件的事件；
   NOTARIZE() {
     return;
@@ -1731,21 +1776,16 @@ export class SCCofficialComponent implements OnInit {
     }
     this.popoutInfo = Object.assign({}, o, data);
   }
-    // 锁定倍数
-    public lock_multible :any=false;
-    lock_multiple(item){
-        let now_btn = $(item.target);
-        console.log($(item.target).hasClass('switch_btn'));
-        if (!$(item.target).hasClass('switch_btn')) {
-            now_btn = $(item.target).parent();
-        }
-        if(now_btn.hasClass('on')){
-            this.lock_multible = false;
-            $('#testinput').removeAttr('disabled');
-        }else{
-            this.lock_multible = true;
-            $('#testinput').attr({disabled: 'disabled'});
-        }
+  // 锁定倍数
+  public lock_multible :any=false;
+  lock_multiple(i){
+      if(i){
+          this.lock_multible = false;
+          $('#testinput').removeAttr('disabled');
+      }else{
+          this.lock_multible = true;
+          $('#testinput').attr({disabled: 'disabled'});
+      }
 
-    }
+  }
 }

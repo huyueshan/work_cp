@@ -256,7 +256,7 @@
                     </div>
                     <div class="chooseno">
                         <div class="helpbox">
-                            <div class="hot_lost" [ngClass]="{hot_hidden:hothidden}">
+                            <div class="hot_lost" [ngClass]="{hot_hidden:!hothidden}">
                                 <label>
                                     <input #curel type="checkbox" (click)="checkomit(curel,'yl')" name="ballcheck" />{{now_lang.Ball_tab.Miss}}</label>
                                 <label>

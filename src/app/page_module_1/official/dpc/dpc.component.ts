@@ -495,7 +495,7 @@ export class DPCofficialComponent implements OnInit {
 			index:9
 		},
 		'bdd9':{
-			title:'后三一码不定胆',
+			title:'不定胆',
 			ball:[0,1,2,3,4,5,6,7,8,9],
 			tab:this.ball_tab[1],
 			index:9
@@ -1528,11 +1528,16 @@ export class DPCofficialComponent implements OnInit {
         if (data.isupload) {
             that.up_ball = 2
             this.balllist(data.arr)
-            that.hothidden = true;
         } else if (that.status.menu_1<=8){
             that.up_ball = 1
             this.balllist(data.arr)
+        }
+        if (data.isupload) {
+            that.hothidden = true;
+        } else if (that.status.menu_1<=8){
             that.hothidden = false;
+        }else{
+            that.hothidden = true;
         }
 		that.now_tips_menu = that.status.menu_1+'_'+that.status.menu_2;
 		that.now_description = that.lot_rules[that.now_tips_menu]['description'];

@@ -974,6 +974,8 @@ const language_0 = {
 
 			'ForT_str':'前三直选',
 			'ForT_gro':'前三组选',
+			'ForT_gro1':'前三',
+			'twoT_gro1':'前二',
 
 			'ForT_str_eve':'前三直选复式',
 			'ForT_str_odd':'前三直选单式',

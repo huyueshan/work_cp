@@ -266,7 +266,8 @@ export class SSCofficialComponent implements OnInit {
                     index: 1,
                     arr: ['w', 'q', 'b', 's', 'g'],
                     format: ["n|n|n|n|n"],
-                    datarule: ['Rule_1', 5]
+                    datarule: ['Rule_1', 5],
+					hot:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Five_star_odd,
@@ -274,14 +275,16 @@ export class SSCofficialComponent implements OnInit {
                     arr: ['w', 'q', 'b', 's', 'g'],
                     isupload: true,
                     format: ["n,n,n,n,n"],
-                    datarule: ['Rule_d1', 5]
+                    datarule: ['Rule_d1', 5],
+					hot:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Five_star_com,
                     index: 3,
                     arr: ['w', 'q', 'b', 's', 'g'],
                     format: ["n|n|n|n|n"],
-                    datarule: ['Rule_2', 5]
+                    datarule: ['Rule_2', 5],
+					hot:true
                 }
             ],
             active: 1
@@ -293,37 +296,43 @@ export class SSCofficialComponent implements OnInit {
                 index: 4,
                 arr: ['120'],
                 format: ["m|n|n|n|n"],
-                datarule: ['Rule_3', 5]
+                datarule: ['Rule_3', 5],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.Com_60,
                 index: 5,
                 arr: ['2ch', 'dh'],
                 format: ["m|n,n,n"],
-                datarule: ['Rule_3', 1, 3]
+                datarule: ['Rule_3', 1, 3],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.Com_30,
                 index: 6,
                 arr: ['2ch', 'dh'],
                 format: ["m,n|n"],
-                datarule: ['Rule_3', 2, 1]
+                datarule: ['Rule_3', 2, 1],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.Com_20,
                 index: 7,
                 arr: ['3ch', 'dh'],
                 format: ["m|n,n"],
-                datarule: ['Rule_3', 1, 2]
+                datarule: ['Rule_3', 1, 2],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.Com_10,
                 index: 8,
                 arr: ['3ch', '2ch'],
                 format: ["m|n"],
-                datarule: ['Rule_3', 1, 1]
+                datarule: ['Rule_3', 1, 1],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.Com_5,
                 index: 9,
                 arr: ['4ch', 'dh'],
                 format: ["m|n"],
-                datarule: ['Rule_3', 1, 1]
+                datarule: ['Rule_3', 1, 1],
+				hot:true
             }],
             active: 1
         },
@@ -334,20 +343,23 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['w', 'q', 'b', 's'],
                 format: ["n|n|n|n"],
-                datarule: ['Rule_1', 4]
+                datarule: ['Rule_1', 4],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.ForF_star_odd,
                 index: 2,
                 arr: ['w', 'q', 'b', 's'],
                 isupload: true,
                 format: ["n,n,n,n"],
-                datarule: ['Rule_d1', 4]
+                datarule: ['Rule_d1', 4],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.ForF_star_com,
                 index: 3,
                 arr: ['w', 'q', 'b', 's'],
                 format: ["n|n|n|n"],
-                datarule: ['Rule_2', 4]
+                datarule: ['Rule_2', 4],
+				hot:true
             }],
             active: 2
         },
@@ -358,25 +370,29 @@ export class SSCofficialComponent implements OnInit {
                 index: 4,
                 arr: ['24'],
                 format: ["m|n|n|n"],
-                datarule: ['Rule_3', 4]
+                datarule: ['Rule_3', 4],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.ForF_star_com12,
                 index: 5,
                 arr: ['2ch', 'dh'],
                 format: ["m|n,n"],
-                datarule: ['Rule_3', 1, 2]
+                datarule: ['Rule_3', 1, 2],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.ForF_star_com6,
                 index: 6,
                 arr: ['2ch'],
                 format: ["m|n"],
-                datarule: ['Rule_3', 2]
+                datarule: ['Rule_3', 2],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.ForF_star_com4,
                 index: 7,
                 arr: ['3ch', 'dh'],
                 format: ["m|n"],
-                datarule: ['Rule_3', 1, 1]
+                datarule: ['Rule_3', 1, 1],
+				hot:true
             }],
             active: 2
         },
@@ -387,20 +403,23 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['q', 'b', 's', 'g'],
                 format: ["n|n|n|n"],
-                datarule: ['Rule_1', 4]
+                datarule: ['Rule_1', 4],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackF_star_odd,
                 index: 2,
                 arr: ['q', 'b', 's', 'g'],
                 isupload: true,
                 format: ["n,n,n,n"],
-                datarule: ['Rule_d1', 4]
+                datarule: ['Rule_d1', 4],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackF_star_com,
                 index: 3,
                 arr: ['q', 'b', 's', 'g'],
                 format: ["n|n|n|n"],
-                datarule: ['Rule_2', 4]
+                datarule: ['Rule_2', 4],
+				hot:true
             }],
             active: 3
         },
@@ -411,25 +430,29 @@ export class SSCofficialComponent implements OnInit {
                 index: 4,
                 arr: ['24'],
                 format: ["m|n|n|n"],
-                datarule: ['Rule_3', 4]
+                datarule: ['Rule_3', 4],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackF_star_com12,
                 index: 5,
                 arr: ['2ch', 'dh'],
                 format: ["m|n,n"],
-                datarule: ['Rule_3', 1, 2]
+                datarule: ['Rule_3', 1, 2],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackF_star_com6,
                 index: 6,
                 arr: ['2ch'],
                 format: ["m|n"],
-                datarule: ['Rule_3', 2]
+                datarule: ['Rule_3', 2],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackF_star_com4,
                 index: 7,
                 arr: ['3ch', 'dh'],
                 format: ["m|n"],
-                datarule: ['Rule_3', 1, 1]
+                datarule: ['Rule_3', 1, 1],
+				hot:true
             }],
             active: 3
         },
@@ -440,20 +463,23 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['b', 's', 'g'],
                 format: ["n|n|n"],
-                datarule: ['Rule_1', 3]
+                datarule: ['Rule_1', 3],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackT_star_odd,
                 index: 2,
                 arr: ['b', 's', 'g'],
                 isupload: true,
                 format: ["n,n,n"],
-                datarule: ['Rule_d1', 3]
+                datarule: ['Rule_d1', 3],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackT_str_com,
                 index: 3,
                 arr: ['hz'],
                 format: ["m"],
-                datarule: ['Rule_4', 1, 3]
+                datarule: ['Rule_4', 1, 3],
+				hot:true
             }],
             active: 4
         },
@@ -464,26 +490,30 @@ export class SSCofficialComponent implements OnInit {
                 index: 4,
                 arr: ['zu3'],
                 format: ["m|n"],
-                datarule: ['Rule_5', 2]
+                datarule: ['Rule_5', 2],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackT_str_com6,
                 index: 5,
                 arr: ['zu6'],
                 format: ["m|n|n"],
-                datarule: ['Rule_3', 3]
+                datarule: ['Rule_3', 3],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackT_mix_com,
                 index: 6,
                 arr: ['b', 's', 'g'],
                 isupload: true,
                 format: ["n,n,n"],
-                datarule: ['Rule_d1', 3, 'Z']
+                datarule: ['Rule_d1', 3, 'Z'],
+				hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackT_gro_com,
                 index: 7,
                 arr: ['hz26'],
                 format: ["m"],
-                datarule: ['Rule_4', 1, 3, 'Z3']
+                datarule: ['Rule_4', 1, 3, 'Z3'],
+				hot:true
             }],
             active: 4
         },
@@ -2041,9 +2071,9 @@ export class SSCofficialComponent implements OnInit {
 
     // 自带钩子监听
     ngDoCheck() {
-        if (this.totalinfo.sum > 0 && this.rangenum != (this.totalinfo.amount + this.totalinfo.sum) / parseFloat(this.multiple_input.value)) {
+        /* if (this.totalinfo.sum > 0 && this.rangenum != (this.totalinfo.amount + this.totalinfo.sum) / parseFloat(this.multiple_input.value)) {
             this.countbet(this.ballcurr.totalbet)
-        }
+        } */
     }
     // 滑块左侧递加事件
     rangevalueadd() {
@@ -2080,7 +2110,7 @@ export class SSCofficialComponent implements OnInit {
             // 配置规则提示
             that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
             that.now_description = that.lot_rules[that.now_tips_menu]['description'];
-            if (that.status.menu_1 > 8) {
+            if (that.tabcurr.hot) {
                 that.hothidden = true;
             } else {
                 that.hothidden = false;
@@ -2094,7 +2124,6 @@ export class SSCofficialComponent implements OnInit {
     // 时时彩二级导航切换
     currtabname = ''
     tabmenu2(data) {
-        console.log(data)
         let that = this
         that.inittab()
         that.currtabname = data.name
@@ -2103,12 +2132,25 @@ export class SSCofficialComponent implements OnInit {
         if (data.isupload) {
             that.up_ball = 2
             this.balllist(data.arr)
-            that.hothidden = true;
         } else {
             that.up_ball = 1
             this.balllist(data.arr)
-            that.hothidden = false;
         }
+        console.log(data.isupload)
+        console.log(that.status.menu_1<=8)
+        console.log(that.hothidden)
+        if (data.isupload) {
+            that.hothidden = true;
+        } else if (that.status.menu_1<=8){
+            that.hothidden = false;
+        }else{
+            that.hothidden = true;
+        }
+		if (data.hot) {
+			that.hothidden = true;
+		} else {
+			that.hothidden = false;
+		}
         that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
         that.now_description = that.lot_rules[that.now_tips_menu]['description'];
     }

@@ -229,6 +229,81 @@ export class K3officialComponent implements OnInit {
     public chase_money :any = 0;
     public chase_amount :any = 0;
 //追号数据结束
+
+	// 新增数据
+	public history_list :any = 
+	[
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        
+    ];
+
+
+
     public items_show = {
         'jsk3_ffc': {
             'tabitem': [this.now_lang.Lot_tab.same_number, this.now_lang.Lot_tab.sum, this.now_lang.Lot_tab.thr_c, this.now_lang.Lot_tab.diff_number],
@@ -350,6 +425,7 @@ export class K3officialComponent implements OnInit {
                 arr: ['dxds','hz'],
                 format: ["n"],
                 datarule: ['Rule_14', 1],
+                hot:true
             }],
             active: 2
         },
@@ -743,9 +819,6 @@ export class K3officialComponent implements OnInit {
         }else{
             item.checkon = true;
         }
-        // for (var k = 0; k <= that.sureballlist.length-1; k++) {
-
-        // }
         item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
         that.repanel_data()
     }
@@ -848,7 +921,7 @@ export class K3officialComponent implements OnInit {
         // 在此处提交追号所有号码
     }
     close_chase(){
-        $('#layer2').find('.chase_container').removeClass('show_this');
+        $('#layer3_c').find('.chase_container').removeClass('show_this');
         let that = this;
         that.rechase_dataall()
     }
@@ -884,10 +957,10 @@ export class K3officialComponent implements OnInit {
   
     radomshowchase(){
         this.mathball(this.menu_2);
-        $('#layer2').find('.chase_container').addClass('show_this');
+        $('#layer3_c').find('.chase_container').addClass('show_this');
     }
     showchase(){
-        $('#layer2').find('.chase_container').addClass('show_this');
+        $('#layer3_c').find('.chase_container').addClass('show_this');
     }
     hid_layer(){
         document.getElementById("layer").innerHTML = '';
@@ -1079,8 +1152,6 @@ export class K3officialComponent implements OnInit {
         this.router.navigate([t]);
     }
     routlink(){
-        // let str ;
-        // this.route.params.subscribe(data=>str=data.id);
         this.router.navigate(['/lottery/creditk3', this.routid]);
       }
     // 计算当前点击投注信息
@@ -1109,7 +1180,7 @@ export class K3officialComponent implements OnInit {
     rangevaluelessen() {
         let that = this;
         $('#range_tag').css("left", 0);
-        that.rangepercent = 0.1
+        that.rangepercent = 0.1;
         that.rangenum = 180000
         this.countbet(this.ballcurr.totalbet)
 
@@ -1117,16 +1188,13 @@ export class K3officialComponent implements OnInit {
     // 滑块左侧递加事件
     rangevalueadd() {
         let that = this;
-        $('#range_tag').css("left", 70);
-        that.rangepercent = 0
+        $('#range_tag').css("left", 62);
+        that.rangepercent = 0;
         that.rangenum = 180200
         this.countbet(this.ballcurr.totalbet)
     }
    // 自带钩子监听
    ngDoCheck() {
-    if (this.totalinfo.sum > 0 && this.rangenum != (this.totalinfo.amount + this.totalinfo.sum) / parseFloat(this.multiple_input.value)) {
-        this.countbet(this.ballcurr.totalbet)
-    }
 }
     drag_tag() {
         let that = this;
@@ -1142,8 +1210,8 @@ export class K3officialComponent implements OnInit {
                 now_left = orin_left + distance_X;
                 if (now_left < 0) {
                     now_left = 0
-                } else if (now_left > 70) {
-                    now_left = 70
+                } else if (now_left > 62) {
+                    now_left = 62
                 }
                 $('#range_tag').css("left", now_left);
                 if (now_left <= 26) {
@@ -1197,7 +1265,7 @@ export class K3officialComponent implements OnInit {
             // 配置规则提示
             that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
             that.now_description = that.lot_rules[that.now_tips_menu]['description'];
-            if (that.status.menu_1 > 8) {
+            if (that.tabcurr.hot) {
                 that.hothidden = true;
             } else {
                 that.hothidden = false;
@@ -1229,9 +1297,16 @@ export class K3officialComponent implements OnInit {
         that.status.menu_2 = data.index
         if (data.isupload) {
             that.up_ball = 2
+            that.hothidden = true;
         } else {
             that.up_ball = 1
             this.balllist(data.arr)
+            that.hothidden = true;
+        }
+        if (data.hot) {
+            that.hothidden = true;
+        } else {
+            that.hothidden = false;
         }
         that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
         that.now_description = that.lot_rules[that.now_tips_menu]['description'];
@@ -1253,7 +1328,7 @@ export class K3officialComponent implements OnInit {
         that.now_balllist = []
         arr.map(function (res) {
             if (that.tabcurr.choose) {
-                that.hothidden = false;
+                that.hothidden = true;
             } else {
                 that.hothidden = true;
             }
@@ -1427,7 +1502,8 @@ export class K3officialComponent implements OnInit {
 
 
     // 改变金额模式
-    modelchange(count) {
+    modelchange(count,i) {
+        this.model = i;
         if (this.totalinfo.sum == 0) {
             return
         }
@@ -1473,7 +1549,6 @@ export class K3officialComponent implements OnInit {
             3: [],
             4: []
         }
-        this.omitname = '';
         this.ballcurr.status = false;
         $('.numright').find('li').removeClass('active');
         this.totalinfo = {
@@ -1484,43 +1559,6 @@ export class K3officialComponent implements OnInit {
 
     }
 
-    // 遗漏选择
-    omitname = ''
-    checkomit(obj, type) {
-        let that = this
-        if ($(obj).is(':checked')) {
-            $("input:checkbox[name='ballcheck']").prop("checked", false)
-            $(obj).prop("checked", true)
-
-            if (type == 'yl') {
-                that.omitarr = {
-                    0: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    1: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    2: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    3: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    4: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07']
-                }
-                that.omitname = '当前遗漏'
-            } else {
-                that.omitarr = {
-                    0: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    1: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    2: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    3: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    4: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07']
-                }
-                that.omitname = '当前冷热'
-            }
-        } else {
-            that.omitarr = {
-                0: [],
-                1: [],
-                2: [],
-                3: [],
-                4: []
-            }
-        }
-    }
 
     Csetball(data){
         let d = [];
@@ -1638,8 +1676,6 @@ export class K3officialComponent implements OnInit {
             that.POPNOTE({msg:'随机注数不能小于1'});
             return
         }
-        console.log(arr);
-        
         
         for (let i = 0; i < that.radom_input.value; i++) {
             let b=this.setballdata(3) ;
@@ -1664,10 +1700,8 @@ export class K3officialComponent implements OnInit {
                     ball = ''+b[0]+'|'+b[1]+'|'+b[2];
                 }
             }
-            console.log(ball);
             let obj: any = {}
             obj.ball = ball;
-            // obj.ball = this.setballdata(that.status.menu_2).join(",");
             obj.name = that.currtabname
             obj.multiple = that.multiple_input.value;
             obj.model = that.model;
@@ -1768,35 +1802,6 @@ export class K3officialComponent implements OnInit {
             self.ul_hidden = !self.ul_hidden;
         }, 200)
     }
-    // 弹层1
-    // parseDom(arg) {　　
-    //     var objE = document.createElement("div");　　
-    //     objE.innerHTML = arg;　　
-    //     return objE.childNodes;
-    // };
-    // show_layer(param, nextrun) {
-    //     let msg = param.msg;
-    //     let til = param.til;
-    //     let self = this;
-    //     let str = '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">' + til + '</div><div class="close">x</div></div><div class="content_box">' + msg + '</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';
-    //     let dom = $(this.parseDom(str))
-    //     dom.find('.close').on('click', function () {
-    //         self.hid_layer();
-    //     })
-    //     dom.find('.confirm_box').on('click', function () {
-    //         nextrun();
-    //     })
-    //     $('#layer').append(dom);
-    //     setTimeout(function () {
-    //         dom.addClass('tobig')
-    //     }, 10)
-    //     window.onresize = function () {
-    //         console.log('x')
-    //     }
-    // }
-    // hid_layer() {
-    //     document.getElementById("layer").innerHTML = '';
-    // }    
     // 绑定给弹窗组件的事件；
     NOTARIZE(){
         return
@@ -1823,20 +1828,15 @@ export class K3officialComponent implements OnInit {
         this.popoutInfo = Object.assign({},o,data);
     }
     // 锁定倍数
-    public lock_multible :any=false;
-    lock_multiple(item){
-        let now_btn = $(item.target);
-        console.log($(item.target).hasClass('switch_btn'));
-        if (!$(item.target).hasClass('switch_btn')) {
-            now_btn = $(item.target).parent();
-        }
-        if(now_btn.hasClass('on')){
-            this.lock_multible = false;
-            $('#testinput').removeAttr('disabled');
-        }else{
-            this.lock_multible = true;
-            $('#testinput').attr({disabled: 'disabled'});
-        }
+  public lock_multible :any=false;
+  lock_multiple(i){
+      if(i){
+          this.lock_multible = false;
+          $('#testinput').removeAttr('disabled');
+      }else{
+          this.lock_multible = true;
+          $('#testinput').attr({disabled: 'disabled'});
+      }
 
-    }
+  }
 }

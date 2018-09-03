@@ -356,7 +356,7 @@ export class SSCofficialComponent implements OnInit {
         },
         {
             name: this.now_lang.Lot_tab.Dragon_tiger,
-            href: '#/'
+            href: 'lottery/creditssc/cq'
         }
     ];
 
@@ -1157,7 +1157,7 @@ export class SSCofficialComponent implements OnInit {
             index: 9
         },
         'bdd9': {
-            title: '后三一码不定胆',
+            title: '不定胆',
             ball: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
             tab: this.ball_tab[1],
             index: 9
@@ -1807,12 +1807,12 @@ export class SSCofficialComponent implements OnInit {
             example: "投注方案：1,2；开奖号码前三位：至少出现1和2各1个，即中前三二码不定位一等奖。",
             rule: "从0-9中选择2个号码，每注由2个不同的号码组成，开奖号码的万位、千位、百位中同时包含所选的2个号码，即为中奖。",
         },
-        '10_1': {
+        '10_2': {
             description: "从十位、个位中的“大、小、单、双”中至少各选一个组成一注。",
             example: "投注方案：大单；开奖号码十位与个位：大单，即中后二大小单双一等奖。",
             rule: "对十位和个位的“大（56789）小（01234）、单（13579）双（02468）”形态进行购买，所选号码的位置、形态与开奖号码的位置、形态相同，即为中奖。",
         },
-        '10_2': {
+        '10_1': {
             description: "从万位、千位中的“大、小、单、双”中至少各选一个组成一注。",
             example: "投注方案：小双；开奖号码万位与千位：小双，即中前二大小单双一等奖。",
             rule: "对万位和千位的“大（56789）小（01234）、单（13579）双（02468）”形态进行购买，所选号码的位置、形态与开奖号码的位置、形态相同，即为中奖。",
@@ -2253,6 +2253,13 @@ export class SSCofficialComponent implements OnInit {
             that.up_ball = 1
             this.balllist(data.arr)
         }
+        if (data.isupload) {
+            that.hothidden = true;
+        } else if (that.status.menu_1<=8){
+            that.hothidden = false;
+        }else{
+            that.hothidden = true;
+        }
         that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
         that.now_description = that.lot_rules[that.now_tips_menu]['description'];
 
@@ -2266,7 +2273,7 @@ export class SSCofficialComponent implements OnInit {
         arr.map(function (res) {
             if (res == 'w' || res == 'q' || res == 'b' || res == 's' || res == 'g') {
                 that.hothidden = false;
-            } else {
+            } else{
                 that.hothidden = true;
             }
             that.now_balllist.push(that.ball_data[res])
@@ -2508,6 +2515,7 @@ export class SSCofficialComponent implements OnInit {
         let str = Utils.algorithm.getNum($('#' + id).val())
         this.filedata(str, '')
     }
+    public filterstatus = false
     // 处理输入框的数据
     filedata(str, type) {
         let self = this
@@ -2537,8 +2545,10 @@ export class SSCofficialComponent implements OnInit {
                 amount: 0
             }
         }
+        this.filterstatus = false
     }
     // 处理过滤结果
+    
     filteresult(id, type) {
         if ($('#' + id).val() == '') {
             this.POPNOTE({msg:'您还没有输入号码'});
@@ -2567,6 +2577,7 @@ export class SSCofficialComponent implements OnInit {
                 val = i < obj.allarr.length - 1 ? val + obj.allarr[i][0].split(',').join('') + '，' : val + obj.allarr[i][0].split(',').join('')
             }
         }
+        this.filterstatus = true
         if (type == 'del') {
             $('#' + id).val(val)
             if (rep == 0 && nob == 0) {
@@ -2577,13 +2588,20 @@ export class SSCofficialComponent implements OnInit {
             }
         } else {
             if (rep != 0 || nob != 0) {
-                $('#' + id).val(null)
+                $('#' + id).val(val)
                 con = '将要自动过滤' + rep + '个重复号，' + nob + '个无效号，过滤内容为：' + ball
-                self.POPNOTE({msg:con});
+                self.POPNOTE({msg:con},self.qdfunc);
             } else {
-                $('#' + id).val(null)
+                if(self.filterstatus){
+                    self.addball(self.menu_2,self.ballcurr.status)
+                    $('#' + id).val(null)
+                }
             }
         }
+        
+    }
+    qdfunc(){
+        this.addball(this.menu_2,this.ballcurr.status)
     }
     // 计算当前点击投注信息
     countbet(totalbet) {
@@ -2706,7 +2724,10 @@ export class SSCofficialComponent implements OnInit {
         }
         let arr = []
         if (that.tabcurr.isupload) {
-            this.filteresult('fileReader', '')
+            if(!that.filterstatus){
+                that.filteresult('fileReader', '');
+                return
+            }
         }
         if (that.tabcurr.choose) {
             var _selfs;
@@ -2748,7 +2769,7 @@ export class SSCofficialComponent implements OnInit {
                     let obj: any = {}
                     obj.ball = that.ballcurr.ball[i]
                     // obj.name = that.currtabname
-					obj.name = arrob[0].menu[0].datarule[0]=='Rule_6'?that.currtabname+that.ball_data[that.tabcurr.arr[i]].title:that.currtabname
+                    obj.name = arrob[0].menu[0].datarule[0]=='Rule_6'?that.currtabname+that.ball_data[that.tabcurr.arr[i]].title:that.currtabname
                     obj.multiple = that.multiple_input.value
                     obj.model = that.model
                     obj.count = arrob[0].menu[0].datarule[0] == 'Rule_6' ? that.ballcurr.allarr[i].length : that.totalinfo.count

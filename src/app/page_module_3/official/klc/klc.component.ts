@@ -194,7 +194,7 @@ export class KLCofficialComponent implements OnInit {
     // 拖拽数据结束
     public now_tips_menu: any = '1_1';
     public now_description = '';
-    public hothidden = false;
+    public hothidden = true;
     public nowPageId: any = '';
     public nowitems: any = {};
     public userInfo = {
@@ -274,6 +274,82 @@ export class KLCofficialComponent implements OnInit {
     public chase_money :any = 0;
     public chase_amount :any = 0;
 //追号数据结束
+
+	// 新增数据
+	public history_list :any = 
+	[
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        
+    ];
+
+
+
+
     public items_show = {
         'bjkl8_ffc': {
             'tabitem': [this.now_lang.Lot_tab.any_choose, this.now_lang.Lot_tab.Interest],
@@ -673,9 +749,6 @@ export class KLCofficialComponent implements OnInit {
         }else{
             item.checkon = true;
         }
-        // for (var k = 0; k <= that.sureballlist.length-1; k++) {
-
-        // }
         item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
         that.repanel_data()
     }
@@ -778,7 +851,7 @@ export class KLCofficialComponent implements OnInit {
         // 在此处提交追号所有号码
     }
     close_chase(){
-        $('#layer2').find('.chase_container').removeClass('show_this');
+        $('#layer3_c').find('.chase_container').removeClass('show_this');
         let that = this;
         that.rechase_dataall()
     }
@@ -814,10 +887,10 @@ export class KLCofficialComponent implements OnInit {
   
     radomshowchase(){
         this.mathball(this.menu_2);
-        $('#layer2').find('.chase_container').addClass('show_this');
+        $('#layer3_c').find('.chase_container').addClass('show_this');
     }
     showchase(){
-        $('#layer2').find('.chase_container').addClass('show_this');
+        $('#layer3_c').find('.chase_container').addClass('show_this');
     }
     hid_layer(){
         document.getElementById("layer").innerHTML = '';
@@ -1001,108 +1074,7 @@ export class KLCofficialComponent implements OnInit {
         this.nowPageId = idarray[idarray.length - 1] + '_ffc';
         this.nowitems = this.items_show[this.nowPageId];
     }
-    inittab2() {
-        let ulMax = $('.typetab').outerWidth();
-        let liWidth = 0;
-        let toolong = 0;
-        let allliWidth = 0;
-        $.each($('.tab_li'), function (i, n) {
-            allliWidth = allliWidth + $(n).outerWidth();
-        });
-        $('.pointl').on('click', function () {
-            //做个过长处理
-            if (allliWidth > ulMax * 2 && toolong >= 0) {
-                toolong = toolong - 1;
-            } else {
-                ulMax = $('.typetab').outerWidth();
-            }
-            if (toolong < 1) {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax) {
-                        $(n).removeClass('hide_it')
-                    }
-                    if (liWidth > ulMax) {
-                        $(n).addClass('hide_it')
-                    }
-                });
-            } else if (toolong >= 1) {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth >= ulMax && liWidth <= ulMax * 2) {
-                        $(n).removeClass('hide_it')
-                    }
-                    if (liWidth >= ulMax * 2) {
-                        $(n).addClass('hide_it')
-                    }
-                });
-            } else {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth > ulMax) {
-                        $(n).addClass('hide_it')
-                    } else {
-                        $(n).removeClass('hide_it')
-                    }
-                });
-            }
-            if (liWidth < ulMax) {
 
-            }
-            liWidth = 0;
-        })
-        $('.pointr').on('click', function () {
-            //做个过长处理
-            if (allliWidth > ulMax * 2 && toolong < 2) {
-                toolong = toolong + 1;
-            } else {
-                ulMax = $('.typetab').outerWidth();
-            }
-            if (toolong == 1) {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax) {
-                        $(n).addClass('hide_it')
-                    }
-                    if (liWidth > ulMax && liWidth < ulMax * 2) {
-                        $(n).removeClass('hide_it')
-                    }
-                });
-            } else if (toolong >= 2) {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax * 2) {
-                        $(n).addClass('hide_it')
-                    }
-                    if (liWidth > ulMax * 2) {
-                        $(n).removeClass('hide_it')
-                    }
-
-                });
-            } else {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax) {
-                        $(n).addClass('hide_it')
-                    } else {
-                        $(n).removeClass('hide_it')
-                    }
-                });
-            }
-
-            if (liWidth < ulMax) {
-                $('.tab_li').removeClass('hide_it');
-            }
-            liWidth = 0
-        })
-        $.each($('.tab_li'), function (i, n) {
-            liWidth = liWidth + $(n).outerWidth();
-            if (liWidth > ulMax) {
-                $(n).addClass('hide_it')
-            }
-        });
-        liWidth = 0;
-    }
     //路由函数                      
     linkrouter(t) {
         this.router.navigate([t]);
@@ -1152,7 +1124,7 @@ export class KLCofficialComponent implements OnInit {
     // 滑块左侧递加事件
     rangevalueadd() {
         let that = this;
-        $('#range_tag').css("left", 70);
+        $('#range_tag').css("left", 62);
         that.rangepercent = 0
         that.rangenum = 180200
         this.countbet(this.ballcurr.totalbet)
@@ -1171,8 +1143,8 @@ export class KLCofficialComponent implements OnInit {
                 now_left = orin_left + distance_X;
                 if (now_left < 0) {
                     now_left = 0
-                } else if (now_left > 70) {
-                    now_left = 70
+                } else if (now_left > 62) {
+                    now_left = 62
                 }
                 $('#range_tag').css("left", now_left);
                 if (now_left <= 26) {
@@ -1226,7 +1198,7 @@ export class KLCofficialComponent implements OnInit {
             if (that.status.menu_1 > 8) {
                 that.hothidden = true;
             } else {
-                that.hothidden = false;
+                that.hothidden = true;
             }
         }
         if (this.tabcurr.isupload) {
@@ -1254,9 +1226,11 @@ export class KLCofficialComponent implements OnInit {
         that.status.menu_2 = data.index
         if (data.isupload) {
             that.up_ball = 2
+            that.hothidden = true;
         } else {
             that.up_ball = 1
             this.balllist(data.arr)
+            that.hothidden = true;
         }
         that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
         that.now_description = that.lot_rules[that.now_tips_menu]['description'];
@@ -1278,14 +1252,12 @@ export class KLCofficialComponent implements OnInit {
         that.now_balllist = []
         arr.map(function (res) {
             if (that.tabcurr.choose) {
-                that.hothidden = false;
+                that.hothidden = true;
             } else {
                 that.hothidden = true;
             }
             that.now_balllist.push(that.ball_data[res])
         })
-
-
     }
     setmatch_tab(data, n) {
         data[0] = {};
@@ -1419,9 +1391,9 @@ export class KLCofficialComponent implements OnInit {
         }
     }
 
-
     // 改变金额模式
-    modelchange(count) {
+    modelchange(count,i) {
+        this.model = i;
         if (this.totalinfo.sum == 0) {
             return
         }
@@ -1430,6 +1402,7 @@ export class KLCofficialComponent implements OnInit {
         this.totalinfo.sum = sum;
         this.totalinfo.amount = (180000 / this.modelarr[this.model]) - sum;
     }
+  
 
     // 每次点击需要初始化的事件
     inittab() {
@@ -1476,10 +1449,6 @@ export class KLCofficialComponent implements OnInit {
     omitname = ''
     checkomit(obj, type) {
         let that = this
-        if ($(obj).is(':checked')) {
-            $("input:checkbox[name='ballcheck']").prop("checked", false)
-            $(obj).prop("checked", true)
-
             if (type == 'yl') {
                 that.omitarr = {
                     0: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
@@ -1499,15 +1468,7 @@ export class KLCofficialComponent implements OnInit {
                 }
                 that.omitname = '当前冷热'
             }
-        } else {
-            that.omitarr = {
-                0: [],
-                1: [],
-                2: [],
-                3: [],
-                4: []
-            }
-        }
+        
     }
 
     // 确认选号arrob
@@ -1751,20 +1712,15 @@ export class KLCofficialComponent implements OnInit {
         this.popoutInfo = Object.assign({},o,data);
     }
     // 锁定倍数
-    public lock_multible :any=false;
-    lock_multiple(item){
-        let now_btn = $(item.target);
-        console.log($(item.target).hasClass('switch_btn'));
-        if (!$(item.target).hasClass('switch_btn')) {
-            now_btn = $(item.target).parent();
-        }
-        if(now_btn.hasClass('on')){
-            this.lock_multible = false;
-            $('#testinput').removeAttr('disabled');
-        }else{
-            this.lock_multible = true;
-            $('#testinput').attr({disabled: 'disabled'});
-        }
+  public lock_multible :any=false;
+  lock_multiple(i){
+      if(i){
+          this.lock_multible = false;
+          $('#testinput').removeAttr('disabled');
+      }else{
+          this.lock_multible = true;
+          $('#testinput').attr({disabled: 'disabled'});
+      }
 
-    }
+  }
 }

@@ -292,9 +292,66 @@ export class RouteguardService implements CanActivate{
 				pathMatch: 'full'  // 必须要设置
 			}
 		];
-		
+		const item4:Routes =[
+			{
+				path: '',
+				redirectTo: 'index',
+				pathMatch: 'full'
+			},
+			{
+				path: 'login',
+				loadChildren: '../app/page_module_4/login/login.module#LoginModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'register',
+				loadChildren: '../app/page_module_4/register/register.module#RegisterModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'index',
+				loadChildren: '../app/page_module_4/index/index.module#IndexModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'result',
+				loadChildren: '../app/page_module_4/result/result.module#ResultModule',
+				canActivate: [RouteguardService]
+			},  
+			{
+				path: 'lottery',
+				loadChildren: '../app/page_module_4/lottery/layout.module#LayoutModule',
+				canActivate: [RouteguardService]
+			},  
+			{
+				path: 'home',
+				loadChildren: '../app/page_module_4/home/home.module#HomeModule',
+				canActivate: [RouteguardService]
+			}, 
+			{
+				path: 'register',
+				loadChildren: '../app/page_module_4/register/register.module#RegisterModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'index',
+				loadChildren: '../app/page_module_4/index/index.module#IndexModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'usercenter',
+				loadChildren: '../app/page_module_4/usercenter/usercenter.module#UsercenterModule',
+				canActivate: [RouteguardService]
+				
+			},
+			{
+				path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
+				redirectTo: 'index',
+				pathMatch: 'full'  // 必须要设置
+			}
+		];
 		// 下面固定，勿动
-		const routitem = 'item'+t
+		const routitem = 'item'+t;
 		this.router.resetConfig(eval(routitem));
 		this.isLoaded = true;
 		this.router.navigateByUrl(userModel.currenturl);

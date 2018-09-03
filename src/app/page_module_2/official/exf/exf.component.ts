@@ -214,7 +214,7 @@ export class EXFofficialComponent implements OnInit {
     // 拖拽数据结束
     public now_tips_menu: any = "1_1";
     public now_description = "";
-    public hothidden = false;
+    public hothidden = true;
     public nowPageId: any = "";
     public nowitems: any = {};
     public now_tab1 :any='';
@@ -420,6 +420,7 @@ export class EXFofficialComponent implements OnInit {
 
         {
             name: this.now_lang.Lot_tab.Dragon_tiger,
+            href: 'lottery/creditexf/sdexf',
             active: 8
         }
     ];
@@ -1598,7 +1599,7 @@ export class EXFofficialComponent implements OnInit {
             if (that.status.menu_1 > 8) {
                 that.hothidden = true;
             } else {
-                that.hothidden = false;
+                that.hothidden = true;
             }
         }
         if (this.tabcurr.isupload) {
@@ -1623,11 +1624,18 @@ export class EXFofficialComponent implements OnInit {
         that.tabcurr = data;
         that.status.menu_2 = data.index;
         if (data.isupload) {
-            that.up_ball = 2;
-            this.balllist(data.arr);
-        } else {
-            that.up_ball = 1;
-            this.balllist(data.arr);
+            that.up_ball = 2
+            this.balllist(data.arr)
+        } else{
+            that.up_ball = 1
+            this.balllist(data.arr)
+        }
+        if (data.isupload) {
+            that.hothidden = true;
+        } else if (that.status.menu_1<=8){
+            that.hothidden = true;
+        }else{
+            that.hothidden = true;
         }
         that.now_tips_menu = that.status.menu_1 + "_" + that.status.menu_2;
         that.now_description = that.lot_rules[that.now_tips_menu]["description"];
@@ -1652,8 +1660,8 @@ export class EXFofficialComponent implements OnInit {
         that.now_balllist = [];
         arr.map(function (res) {
             if (res == "w" || res == "q" || res == "b" || res == "s" || res == "g") {
-                that.hothidden = false;
-            } else {
+                that.hothidden = true;
+            } else{
                 that.hothidden = true;
             }
             that.now_balllist.push(that.ball_data[res]);
@@ -1949,6 +1957,7 @@ export class EXFofficialComponent implements OnInit {
         let str = Utils.algorithm.getNum($("#" + id).val());
         this.filedata(str, "");
     }
+    public filterstatus = false
     // 处理输入框的数据
     filedata(str, type) {
         let self = this;
@@ -1985,6 +1994,7 @@ export class EXFofficialComponent implements OnInit {
                 amount: 0
             };
         }
+        this.filterstatus = false
     }
     // 处理过滤结果
     filteresult(id, type) {
@@ -2018,6 +2028,7 @@ export class EXFofficialComponent implements OnInit {
                     val + obj.allarr[i][0].split(",").join("");
             }
         }
+        this.filterstatus = true
         if (type == "del") {
             $("#" + id).val(val);
             if (rep == 0 && nob == 0) {
@@ -2034,19 +2045,19 @@ export class EXFofficialComponent implements OnInit {
             }
         } else {
             if (rep != 0 || nob != 0) {
-                $("#" + id).val(null);
-                con =
-                    "将要自动过滤" +
-                    rep +
-                    "个重复号，" +
-                    nob +
-                    "个无效号，过滤内容为：" +
-                    ball;
-                self.POPNOTE({msg:con});
+                $('#' + id).val(val)
+                con = '将要自动过滤' + rep + '个重复号，' + nob + '个无效号，过滤内容为：' + ball
+                self.POPNOTE({msg:con},self.qdfunc);
             } else {
-                $("#" + id).val(null);
+                if(self.filterstatus){
+                    self.addball(self.menu_2,self.ballcurr.status)
+                    $('#' + id).val(null)
+                }
             }
         }
+    }
+    qdfunc(){
+        this.addball(this.menu_2,this.ballcurr.status)
     }
     // 计算当前点击投注信息
     countbet(totalbet) {
@@ -2163,77 +2174,80 @@ export class EXFofficialComponent implements OnInit {
     // 确认选号
     sureballlist: any = [];
     addball(arrob,type){
-		let that = this
-		if(!type){
+        let that = this
+        if(!type){
             that.POPNOTE({msg:'号码选择不完整，请重新选择'});
-			return
-		}
-		let arr = []
-		if(that.tabcurr.isupload){
-			this.filteresult('fileReader','')
-		}
-		if(that.tabcurr.choose){
-			var _selfs;
-			var _arr = [];
-			var _indexs = [];
-			var _where = 0;
-			var _total = [];
-			var arrc = new Array();
-			$("#fiveabso input:checkbox:checked").each(function(i){
-				arrc[i] = $(this).val();
-			});
-			for(var i=0;i<that.tabcurr.datarule[1];i++){
-				_indexs.push(i)
-			}
-			_arr = arrc
-			_selfs = new Array(that.tabcurr.datarule[1])
-			Utils.algorithm.plzh(_selfs, _arr, _indexs, _total, _where);
-			for(var i=0;i<that.ballcurr.ball.length;i++){
-				if(that.ballcurr.ball[i]!=''){
-					for(var j=0;j<_total.length;j++){
-						let obj:any={}
-						obj.ball = that.ballcurr.ball[i]
-						obj.name = that.currtabname
-						for(var k=0;k<that.tabcurr.datarule[1];k++){
-							obj.name = obj.name + that.abotitle[_total[j][k]]
-						}
-						obj.multiple = that.multiple_input.value
-						obj.model = that.model
-						obj.count = that.totalinfo.count/_total.length
-						obj.sum = that.totalinfo.sum/_total.length
-						obj.amount = that.totalinfo.amount
-						that.sureballlist.push(obj)
-					}
-				}
-			}
-		}else{
-			for(var i=0;i<that.ballcurr.ball.length;i++){
-				if(that.ballcurr.ball[i]!=''){
-					let obj:any={}
-					if(that.tabcurr.addzero){
-						obj.ball = that.ballcurr.ball[i]
-					}else{
-						obj.ball = that.tabcurr.datarule[0]=='Rule_12'?that.ddsmatch[that.ballcurr.ball[i]]:that.ballcurr.ball[i]
-					}
-					obj.name = that.tabcurr.datarule[0]=='Rule_6'?that.currtabname+that.ball_data[that.tabcurr.arr[i]].title:arrob[0].title+that.currtabname
-					obj.multiple = that.multiple_input.value
-					obj.model = that.model
-					obj.count = that.tabcurr.datarule[0]=='Rule_6' || that.tabcurr.datarule[0]=='Rule_12'?that.ballcurr.allarr[i].length:that.totalinfo.count
-					obj.sum = that.tabcurr.datarule[0]=='Rule_6' || that.tabcurr.datarule[0]=='Rule_12'?(that.ballcurr.allarr[i].length/that.ballcurr.totalbet)*that.totalinfo.sum:that.totalinfo.sum
-					obj.amount = that.totalinfo.amount
-					that.sureballlist.push(obj)
-				}
-			}
-		} 
-		that.allbet(that.sureballlist)
-		this.inittab()
-		// 如果一级导航是趣味型
+            return
+        }
+        let arr = []
+        if (that.tabcurr.isupload) {
+            if(!that.filterstatus){
+                that.filteresult('fileReader', '');
+                return
+            }
+        }
+        if(that.tabcurr.choose){
+            var _selfs;
+            var _arr = [];
+            var _indexs = [];
+            var _where = 0;
+            var _total = [];
+            var arrc = new Array();
+            $("#fiveabso input:checkbox:checked").each(function(i){
+                arrc[i] = $(this).val();
+            });
+            for(var i=0;i<that.tabcurr.datarule[1];i++){
+                _indexs.push(i)
+            }
+            _arr = arrc
+            _selfs = new Array(that.tabcurr.datarule[1])
+            Utils.algorithm.plzh(_selfs, _arr, _indexs, _total, _where);
+            for(var i=0;i<that.ballcurr.ball.length;i++){
+                if(that.ballcurr.ball[i]!=''){
+                    for(var j=0;j<_total.length;j++){
+                        let obj:any={}
+                        obj.ball = that.ballcurr.ball[i]
+                        obj.name = that.currtabname
+                        for(var k=0;k<that.tabcurr.datarule[1];k++){
+                            obj.name = obj.name + that.abotitle[_total[j][k]]
+                        }
+                        obj.multiple = that.multiple_input.value
+                        obj.model = that.model
+                        obj.count = that.totalinfo.count/_total.length
+                        obj.sum = that.totalinfo.sum/_total.length
+                        obj.amount = that.totalinfo.amount
+                        that.sureballlist.push(obj)
+                    }
+                }
+            }
+        }else{
+            for(var i=0;i<that.ballcurr.ball.length;i++){
+                if(that.ballcurr.ball[i]!=''){
+                    let obj:any={}
+                    if(that.tabcurr.addzero){
+                        obj.ball = that.ballcurr.ball[i]
+                    }else{
+                        obj.ball = that.tabcurr.datarule[0]=='Rule_12'?that.ddsmatch[that.ballcurr.ball[i]]:that.ballcurr.ball[i]
+                    }
+                    obj.name = that.tabcurr.datarule[0]=='Rule_6'?that.currtabname+that.ball_data[that.tabcurr.arr[i]].title:arrob[0].title+that.currtabname
+                    obj.multiple = that.multiple_input.value
+                    obj.model = that.model
+                    obj.count = that.tabcurr.datarule[0]=='Rule_6' || that.tabcurr.datarule[0]=='Rule_12'?that.ballcurr.allarr[i].length:that.totalinfo.count
+                    obj.sum = that.tabcurr.datarule[0]=='Rule_6' || that.tabcurr.datarule[0]=='Rule_12'?(that.ballcurr.allarr[i].length/that.ballcurr.totalbet)*that.totalinfo.sum:that.totalinfo.sum
+                    obj.amount = that.totalinfo.amount
+                    that.sureballlist.push(obj)
+                }
+            }
+        } 
+        that.allbet(that.sureballlist)
+        this.inittab()
+        // 如果一级导航是趣味型
         if (this.status.menu_1 === 5) {
             for (let i = 0; i < this.match_tab.length; i++) {
                 this.match_tab[i].active = false;
             }
         }
-	}
+    }
 
     allbet(data) {
         let self = this;

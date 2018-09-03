@@ -333,7 +333,8 @@ export class SSCofficialComponent implements OnInit {
     ];
 
     // 2级tab数据以及对应要显示的内容
-    menu_2_data = [{
+    menu_2_data = [
+        {
             title: this.now_lang.Lot_tab.Five_star_str,
             menu: [{
                     name: this.now_lang.Lot_tab.Five_star_eve,
@@ -1246,7 +1247,6 @@ export class SSCofficialComponent implements OnInit {
         }
     }
     check_lot(item){
-        console.log(item.checkon)
         let that = this;
         if (item.checkon) {
             if (item.multiple == 0) {
@@ -1259,7 +1259,6 @@ export class SSCofficialComponent implements OnInit {
             item.take_money = 0;
         }
         that.repanel_data()
-        console.log(that.lotdata_now)
     }
     // 生成计划
     produce_plan(){
@@ -1962,7 +1961,6 @@ export class SSCofficialComponent implements OnInit {
 
     }
     ngAfterViewInit() {
-        this.inittab2();
     }
     // 拖动条函数
     drag_tag() {
@@ -1979,8 +1977,8 @@ export class SSCofficialComponent implements OnInit {
                 now_left = orin_left + distance_X;
                 if (now_left < 0) {
                     now_left = 0
-                } else if (now_left > 70) {
-                    now_left = 70
+                } else if (now_left > 62) {
+                    now_left = 62
                 }
                 $('#range_tag').css("left", now_left);
                 if (now_left <= 26) {
@@ -1996,109 +1994,6 @@ export class SSCofficialComponent implements OnInit {
             })
         })
 
-    }
-    //tab切换暂时是写死的
-    inittab2() {
-        let ulMax = $('.typetab').outerWidth();
-        let liWidth = 0;
-        let toolong = 0;
-        let allliWidth = 0;
-        $.each($('.tab_li'), function (i, n) {
-            allliWidth = allliWidth + $(n).outerWidth();
-        });
-        $('.pointl').on('click', function () {
-            //做个过长处理
-            if (allliWidth > ulMax * 2 && toolong >= 0) {
-                toolong = toolong - 1;
-            } else {
-                ulMax = $('.typetab').outerWidth();
-            }
-            if (toolong < 1) {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax) {
-                        $(n).removeClass('hide_it')
-                    }
-                    if (liWidth > ulMax) {
-                        $(n).addClass('hide_it')
-                    }
-                });
-            } else if (toolong >= 1) {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth >= ulMax && liWidth <= ulMax * 2) {
-                        $(n).removeClass('hide_it')
-                    }
-                    if (liWidth >= ulMax * 2) {
-                        $(n).addClass('hide_it')
-                    }
-                });
-            } else {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth > ulMax) {
-                        $(n).addClass('hide_it')
-                    } else {
-                        $(n).removeClass('hide_it')
-                    }
-                });
-            }
-            if (liWidth < ulMax) {
-
-            }
-            liWidth = 0;
-        })
-        $('.pointr').on('click', function () {
-            //做个过长处理
-            if (allliWidth > ulMax * 2 && toolong < 2) {
-                toolong = toolong + 1;
-            } else {
-                ulMax = $('.typetab').outerWidth();
-            }
-            if (toolong == 1) {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax) {
-                        $(n).addClass('hide_it')
-                    }
-                    if (liWidth > ulMax && liWidth < ulMax * 2) {
-                        $(n).removeClass('hide_it')
-                    }
-                });
-            } else if (toolong >= 2) {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax * 2) {
-                        $(n).addClass('hide_it')
-                    }
-                    if (liWidth > ulMax * 2) {
-                        $(n).removeClass('hide_it')
-                    }
-
-                });
-            } else {
-                $.each($('.tab_li'), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax) {
-                        $(n).addClass('hide_it')
-                    } else {
-                        $(n).removeClass('hide_it')
-                    }
-                });
-            }
-
-            if (liWidth < ulMax) {
-                $('.tab_li').removeClass('hide_it');
-            }
-            liWidth = 0
-        })
-        $.each($('.tab_li'), function (i, n) {
-            liWidth = liWidth + $(n).outerWidth();
-            if (liWidth > ulMax) {
-                $(n).addClass('hide_it')
-            }
-        });
-        liWidth = 0;
     }
     //路由函数                      
     linkrouter(t) {
@@ -2595,10 +2490,6 @@ export class SSCofficialComponent implements OnInit {
     omitname = '当前遗漏'
     checkomit(type) {
         let that = this
-        // if ($(obj).is(':checked')) {
-        //     $("input:checkbox[name='ballcheck']").prop("checked", false)
-        //     $(obj).prop("checked", true)
-
             if (type == 'yl') {
                 that.omitarr = {
                     0: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
@@ -2618,15 +2509,6 @@ export class SSCofficialComponent implements OnInit {
                 }
                 that.omitname = '当前冷热'
             }
-        // } else {
-        //     that.omitarr = {
-        //         0: [],
-        //         1: [],
-        //         2: [],
-        //         3: [],
-        //         4: []
-        //     }
-        // }
     }
     abotitle: any = {
         "w": '万',

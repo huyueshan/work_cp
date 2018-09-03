@@ -194,7 +194,7 @@ export class KLCofficialComponent implements OnInit {
     // 拖拽数据结束
     public now_tips_menu: any = '1_1';
     public now_description = '';
-    public hothidden = false;
+    public hothidden = true;
     public nowPageId: any = '';
     public nowitems: any = {};
     public now_tab1 :any='';
@@ -1313,7 +1313,7 @@ export class KLCofficialComponent implements OnInit {
             if (that.status.menu_1 > 8) {
                 that.hothidden = true;
             } else {
-                that.hothidden = false;
+                that.hothidden = true;
             }
         }
         if (this.tabcurr.isupload) {
@@ -1371,7 +1371,7 @@ export class KLCofficialComponent implements OnInit {
         that.now_balllist = []
         arr.map(function (res) {
             if (that.tabcurr.choose) {
-                that.hothidden = false;
+                that.hothidden = true;
             } else {
                 that.hothidden = true;
             }
