@@ -191,8 +191,7 @@ export class SSCofficialComponent implements OnInit {
     //追号数据结束
 
 	// 新增数据
-	public history_list :any = 
-	[
+	public history_list :any = [
         {
         	number:'888888888888888888888',
         	play_type:'三生万物',
@@ -270,7 +269,8 @@ export class SSCofficialComponent implements OnInit {
         menu_2: 1 //二级tab默认项
     }
     // 一级tab
-    menu_1 = [{
+    menu_1 = [
+        {
             name: this.now_lang.Lot_tab.Five_star,
             active: 1
         },
@@ -341,7 +341,8 @@ export class SSCofficialComponent implements OnInit {
                     index: 1,
                     arr: ['w', 'q', 'b', 's', 'g'],
                     format: ["n|n|n|n|n"],
-                    datarule: ['Rule_1', 5]
+                    datarule: ['Rule_1', 5],
+                    hot:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Five_star_odd,
@@ -356,7 +357,8 @@ export class SSCofficialComponent implements OnInit {
                     index: 3,
                     arr: ['w', 'q', 'b', 's', 'g'],
                     format: ["n|n|n|n|n"],
-                    datarule: ['Rule_2', 5]
+                    datarule: ['Rule_2', 5],
+                    hot:true
                 }
             ],
             active: 1
@@ -1306,9 +1308,6 @@ export class SSCofficialComponent implements OnInit {
         }else{
             item.checkon = true;
         }
-        // for (var k = 0; k <= that.sureballlist.length-1; k++) {
-
-        // }
         item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
         that.repanel_data()
     }
@@ -2010,14 +2009,11 @@ export class SSCofficialComponent implements OnInit {
 
     // 自带钩子监听
     ngDoCheck() {
-        if (this.totalinfo.sum > 0 && this.rangenum != (this.totalinfo.amount + this.totalinfo.sum) / parseFloat(this.multiple_input.value)) {
-            this.countbet(this.ballcurr.totalbet)
-        }
     }
     // 滑块左侧递加事件
     rangevalueadd() {
         let that = this;
-        $('#range_tag').css("left", 70);
+        $('#range_tag').css("left", 62);
         that.rangepercent = 0
         that.rangenum = 180200
         this.countbet(this.ballcurr.totalbet)
@@ -2058,12 +2054,12 @@ export class SSCofficialComponent implements OnInit {
         if (this.tabcurr.isupload) {
             this.up_ball = 2
         }
+        this.checkabo(5);
     }
 
     // 时时彩二级导航切换
     currtabname = ''
     tabmenu2(data) {
-        console.log(data)
         let that = this
         that.inittab()
         that.currtabname = data.name
@@ -2078,8 +2074,14 @@ export class SSCofficialComponent implements OnInit {
             this.balllist(data.arr)
             that.hothidden = false;
         }
+		if (data.hot) {
+			that.hothidden = true;
+		} else {
+			that.hothidden = false;
+		}
         that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
         that.now_description = that.lot_rules[that.now_tips_menu]['description'];
+        this.checkabo(5);
     }
     // 时时彩下注区左侧显示列表
     balllist(arr) {
@@ -2258,17 +2260,24 @@ export class SSCofficialComponent implements OnInit {
         plan: 10
     }
     //选中的位置
-    checkabo() {
-        var arr = new Array();
-        $("#fiveabso input:checkbox:checked").each(function (i) {
-            arr[i] = $(this).val();
-        });
+    checkabo(i=0) {
+        let length = 0;
+        if (i) {
+            length = i;
+        }else{
+            var arr = new Array();
+            $("#fiveabso input:checkbox:checked").each(function (i) {
+                arr[i] = $(this).val();
+            });
+            
+            length = arr.length;
+        }
         let self = this
-        if (arr.length > 1) {
+        if (length > 1) {
             if (self.tabcurr.datarule[0] == 'Rule_d2') {
                 self.filedata(self.curtextstr, '')
             } else {
-                self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](self.now_matchtab, self.tabcurr, arr)
+                arr && (self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](self.now_matchtab, self.tabcurr, arr));
             }
             if (self.ballcurr.status) {
                 self.countbet(self.ballcurr.totalbet)
@@ -2280,9 +2289,9 @@ export class SSCofficialComponent implements OnInit {
                 }
             }
         }
-        this.countabo.count = arr.length
-        if (arr.length >= self.tabcurr.datarule[1]) {
-            this.countabo.plan = Utils.algorithm.arrangement(arr.length, self.tabcurr.datarule[1])
+        this.countabo.count = length
+        if (length >= self.tabcurr.datarule[1]) {
+            this.countabo.plan = Utils.algorithm.arrangement(length, self.tabcurr.datarule[1])
         } else {
             this.countabo.plan = 0
         }
@@ -2685,6 +2694,7 @@ export class SSCofficialComponent implements OnInit {
             that.orderinfo.total = that.sureballlist.length;
             that.orderinfo.betcount = that.orderinfo.betcount + redata.count;
             that.orderinfo.money = Utils.algorithm.add(that.orderinfo.money.toFixed(2), redata.sum);
+            console.log(that.tabcurr);
         }
     }
 
@@ -2771,38 +2781,6 @@ export class SSCofficialComponent implements OnInit {
             self.ul_hidden = !self.ul_hidden;
         }, 200)
     }
-    // 弹层1
-    // parseDom(arg) {　　
-    //     var objE = document.createElement("div");　　
-    //     objE.innerHTML = arg;　　
-    //     return objE.childNodes;
-    // };
-    // show_layer(param, nextrun) {
-    //     let msg = param.msg;
-    //     let til = param.til;
-    //     let self = this;
-    //     let str = '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">' + til + '</div><div class="close">x</div></div><div class="content_box">' + msg + '</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';
-    //     let dom = $(this.parseDom(str))
-    //     dom.find('.close').on('click', function () {
-    //         self.hid_layer();
-    //     })
-    //     dom.find('.confirm_box').on('click', function () {
-    //         if (nextrun == '' || !nextrun) {
-    //             self.hid_layer();
-    //         } else {
-    //             nextrun();
-    //         }
-
-    //     })
-    //     $('#layer').append(dom);
-    //     setTimeout(function () {
-    //         dom.addClass('tobig')
-    //     }, 10)
-    //     window.onresize = function () {}
-    // }
-    // hid_layer() {
-    //     document.getElementById("layer").innerHTML = '';
-    // }    
     // 绑定给弹窗组件的事件；
     NOTARIZE(){
         return
@@ -2831,11 +2809,6 @@ export class SSCofficialComponent implements OnInit {
     // 锁定倍数
     public lock_multible :any=false;
     lock_multiple(i){
-        // let now_btn = $(item.target);
-        // console.log($(item.target).hasClass('switch_btn'));
-        // if (!$(item.target).hasClass('switch_btn')) {
-        //     now_btn = $(item.target).parent();
-        // }
         if(i){
             this.lock_multible = false;
             $('#testinput').removeAttr('disabled');

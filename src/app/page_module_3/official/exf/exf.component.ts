@@ -292,6 +292,80 @@ export class EXFofficialComponent implements OnInit {
     public chase_money :any = 0;
     public chase_amount :any = 0;
 //追号数据结束
+
+	// 新增数据
+	public history_list :any = 
+	[
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        {
+        	number:'888888888888888888888',
+        	play_type:'三生万物',
+        	issues:'1234243234',
+        	time:'2018-10-10 10:10:10',
+        	balls:'01|02|03|04|05',
+        	multiple_model:'1倍/元',
+        	all_amount:'10金额',
+        	bonus:'121212',
+        	status:'已派奖'
+        },
+        
+    ];
+
+
     public items_show = {
         sdexf_ffc: {
             tabitem: [
@@ -1118,7 +1192,7 @@ export class EXFofficialComponent implements OnInit {
         // 在此处提交追号所有号码
     }
     close_chase(){
-        $('#layer2').find('.chase_container').removeClass('show_this');
+        $('#layer3_c').find('.chase_container').removeClass('show_this');
         let that = this;
         that.rechase_dataall()
     }
@@ -1154,10 +1228,10 @@ export class EXFofficialComponent implements OnInit {
   
     radomshowchase(){
         this.mathball(this.menu_2);
-        $('#layer2').find('.chase_container').addClass('show_this');
+        $('#layer3_c').find('.chase_container').addClass('show_this');
     }
     showchase(){
-        $('#layer2').find('.chase_container').addClass('show_this');
+        $('#layer3_c').find('.chase_container').addClass('show_this');
     }
     hid_layer(){
         document.getElementById("layer").innerHTML = '';
@@ -1379,7 +1453,7 @@ export class EXFofficialComponent implements OnInit {
         });
     }
     ngAfterViewInit() {
-        this.inittab2();
+        // this.inittab2();
     }
 
     // 拖动条函数
@@ -1418,109 +1492,107 @@ export class EXFofficialComponent implements OnInit {
     getPageId() {
         let idarray = this.router.url.split("/");
         this.nowPageId = idarray[idarray.length - 1] + "_ffc";
-		console.log(this.nowPageId )
         this.nowitems = this.items_show[this.nowPageId];
-		console.log( this.nowitems)
     }
-    inittab2() {
-        let ulMax = $(".typetab").outerWidth();
-        let liWidth = 0;
-        let toolong = 0;
-        let allliWidth = 0;
-        $.each($(".tab_li"), function (i, n) {
-            allliWidth = allliWidth + $(n).outerWidth();
-        });
-        $(".pointl").on("click", function () {
-            //做个过长处理
-            if (allliWidth > ulMax * 2 && toolong >= 0) {
-                toolong = toolong - 1;
-            } else {
-                ulMax = $(".typetab").outerWidth();
-            }
-            if (toolong < 1) {
-                $.each($(".tab_li"), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax) {
-                        $(n).removeClass("hide_it");
-                    }
-                    if (liWidth > ulMax) {
-                        $(n).addClass("hide_it");
-                    }
-                });
-            } else if (toolong >= 1) {
-                $.each($(".tab_li"), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth >= ulMax && liWidth <= ulMax * 2) {
-                        $(n).removeClass("hide_it");
-                    }
-                    if (liWidth >= ulMax * 2) {
-                        $(n).addClass("hide_it");
-                    }
-                });
-            } else {
-                $.each($(".tab_li"), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth > ulMax) {
-                        $(n).addClass("hide_it");
-                    } else {
-                        $(n).removeClass("hide_it");
-                    }
-                });
-            }
-            if (liWidth < ulMax) {}
-            liWidth = 0;
-        });
-        $(".pointr").on("click", function () {
-            //做个过长处理
-            if (allliWidth > ulMax * 2 && toolong < 2) {
-                toolong = toolong + 1;
-            } else {
-                ulMax = $(".typetab").outerWidth();
-            }
-            if (toolong == 1) {
-                $.each($(".tab_li"), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax) {
-                        $(n).addClass("hide_it");
-                    }
-                    if (liWidth > ulMax && liWidth < ulMax * 2) {
-                        $(n).removeClass("hide_it");
-                    }
-                });
-            } else if (toolong >= 2) {
-                $.each($(".tab_li"), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax * 2) {
-                        $(n).addClass("hide_it");
-                    }
-                    if (liWidth > ulMax * 2) {
-                        $(n).removeClass("hide_it");
-                    }
-                });
-            } else {
-                $.each($(".tab_li"), function (i, n) {
-                    liWidth = liWidth + $(n).outerWidth();
-                    if (liWidth < ulMax) {
-                        $(n).addClass("hide_it");
-                    } else {
-                        $(n).removeClass("hide_it");
-                    }
-                });
-            }
+    // inittab2() {
+    //     let ulMax = $(".typetab").outerWidth();
+    //     let liWidth = 0;
+    //     let toolong = 0;
+    //     let allliWidth = 0;
+    //     $.each($(".tab_li"), function (i, n) {
+    //         allliWidth = allliWidth + $(n).outerWidth();
+    //     });
+    //     $(".pointl").on("click", function () {
+    //         //做个过长处理
+    //         if (allliWidth > ulMax * 2 && toolong >= 0) {
+    //             toolong = toolong - 1;
+    //         } else {
+    //             ulMax = $(".typetab").outerWidth();
+    //         }
+    //         if (toolong < 1) {
+    //             $.each($(".tab_li"), function (i, n) {
+    //                 liWidth = liWidth + $(n).outerWidth();
+    //                 if (liWidth < ulMax) {
+    //                     $(n).removeClass("hide_it");
+    //                 }
+    //                 if (liWidth > ulMax) {
+    //                     $(n).addClass("hide_it");
+    //                 }
+    //             });
+    //         } else if (toolong >= 1) {
+    //             $.each($(".tab_li"), function (i, n) {
+    //                 liWidth = liWidth + $(n).outerWidth();
+    //                 if (liWidth >= ulMax && liWidth <= ulMax * 2) {
+    //                     $(n).removeClass("hide_it");
+    //                 }
+    //                 if (liWidth >= ulMax * 2) {
+    //                     $(n).addClass("hide_it");
+    //                 }
+    //             });
+    //         } else {
+    //             $.each($(".tab_li"), function (i, n) {
+    //                 liWidth = liWidth + $(n).outerWidth();
+    //                 if (liWidth > ulMax) {
+    //                     $(n).addClass("hide_it");
+    //                 } else {
+    //                     $(n).removeClass("hide_it");
+    //                 }
+    //             });
+    //         }
+    //         if (liWidth < ulMax) {}
+    //         liWidth = 0;
+    //     });
+    //     $(".pointr").on("click", function () {
+    //         //做个过长处理
+    //         if (allliWidth > ulMax * 2 && toolong < 2) {
+    //             toolong = toolong + 1;
+    //         } else {
+    //             ulMax = $(".typetab").outerWidth();
+    //         }
+    //         if (toolong == 1) {
+    //             $.each($(".tab_li"), function (i, n) {
+    //                 liWidth = liWidth + $(n).outerWidth();
+    //                 if (liWidth < ulMax) {
+    //                     $(n).addClass("hide_it");
+    //                 }
+    //                 if (liWidth > ulMax && liWidth < ulMax * 2) {
+    //                     $(n).removeClass("hide_it");
+    //                 }
+    //             });
+    //         } else if (toolong >= 2) {
+    //             $.each($(".tab_li"), function (i, n) {
+    //                 liWidth = liWidth + $(n).outerWidth();
+    //                 if (liWidth < ulMax * 2) {
+    //                     $(n).addClass("hide_it");
+    //                 }
+    //                 if (liWidth > ulMax * 2) {
+    //                     $(n).removeClass("hide_it");
+    //                 }
+    //             });
+    //         } else {
+    //             $.each($(".tab_li"), function (i, n) {
+    //                 liWidth = liWidth + $(n).outerWidth();
+    //                 if (liWidth < ulMax) {
+    //                     $(n).addClass("hide_it");
+    //                 } else {
+    //                     $(n).removeClass("hide_it");
+    //                 }
+    //             });
+    //         }
 
-            if (liWidth < ulMax) {
-                $(".tab_li").removeClass("hide_it");
-            }
-            liWidth = 0;
-        });
-        $.each($(".tab_li"), function (i, n) {
-            liWidth = liWidth + $(n).outerWidth();
-            if (liWidth > ulMax) {
-                $(n).addClass("hide_it");
-            }
-        });
-        liWidth = 0;
-    }
+    //         if (liWidth < ulMax) {
+    //             $(".tab_li").removeClass("hide_it");
+    //         }
+    //         liWidth = 0;
+    //     });
+    //     $.each($(".tab_li"), function (i, n) {
+    //         liWidth = liWidth + $(n).outerWidth();
+    //         if (liWidth > ulMax) {
+    //             $(n).addClass("hide_it");
+    //         }
+    //     });
+    //     liWidth = 0;
+    // }
     //路由函数
     linkrouter(t) {
         this.router.navigate([t]);
@@ -2074,14 +2146,15 @@ export class EXFofficialComponent implements OnInit {
     }
 
     // 改变金额模式
-    modelchange(count) {
+    modelchange(count,i) {
+        this.model = i;
         if (this.totalinfo.sum == 0) {
-            return;
+            return
         }
         let sum;
-        sum = (this.multiple_input.value * count * 2) / this.modelarr[this.model];
+        sum = (this.multiple_input.value * count * 2) / this.modelarr[this.model]
         this.totalinfo.sum = sum;
-        this.totalinfo.amount = 180000 / this.modelarr[this.model] - sum;
+        this.totalinfo.amount = (180000 / this.modelarr[this.model]) - sum;
     }
 
     // 每次点击需要初始化的事件
@@ -2129,12 +2202,8 @@ export class EXFofficialComponent implements OnInit {
 
     // 遗漏选择
     omitname = "";
-    checkomit(obj, type) {
+    checkomit(type) {
         let that = this;
-        if ($(obj).is(":checked")) {
-            $("input:checkbox[name='ballcheck']").prop("checked", false);
-            $(obj).prop("checked", true);
-
             if (type == "yl") {
                 that.omitarr = {
                     0: ["05", "25", "13", "26", "14", "08", "11", "32", "19", "07"],
@@ -2154,15 +2223,7 @@ export class EXFofficialComponent implements OnInit {
                 };
                 that.omitname = "当前冷热";
             }
-        } else {
-            that.omitarr = {
-                0: [],
-                1: [],
-                2: [],
-                3: [],
-                4: []
-            };
-        }
+        
     }
 
     // 确认选号
@@ -2400,44 +2461,6 @@ export class EXFofficialComponent implements OnInit {
             self.ul_hidden = !self.ul_hidden;
         }, 200);
     }
-    // 弹层1
-    // parseDom(arg) {
-    //     var objE = document.createElement("div");
-    //     objE.innerHTML = arg;
-    //     return objE.childNodes;
-    // }
-    // show_layer(param, nextrun) {
-    //     let msg = param.msg;
-    //     let til = param.til;
-    //     let self = this;
-    //     let str =
-    //         '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">' +
-    //         til +
-    //         '</div><div class="close">x</div></div><div class="content_box">' +
-    //         msg +
-    //         '</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';
-    //     let dom = $(this.parseDom(str));
-    //     dom.find(".close").on("click", function () {
-    //         self.hid_layer();
-    //     });
-    //     dom.find(".confirm_box").on("click", function () {
-    //         if(nextrun=='' || !nextrun){
-	// 			self.hid_layer();
-	// 		}else{
-	// 			nextrun();
-	// 		}
-    //     });
-    //     $("#layer").append(dom);
-    //     setTimeout(function () {
-    //         dom.addClass("tobig");
-    //     }, 10);
-    //     window.onresize = function () {
-    //         console.log("x");
-    //     };
-    // }
-    // hid_layer() {
-    //     document.getElementById("layer").innerHTML = "";
-    // }
     // 绑定给弹窗组件的事件；
     NOTARIZE(){
         return
@@ -2465,13 +2488,8 @@ export class EXFofficialComponent implements OnInit {
     }
     // 锁定倍数
     public lock_multible :any=false;
-    lock_multiple(item){
-        let now_btn = $(item.target);
-        console.log($(item.target).hasClass('switch_btn'));
-        if (!$(item.target).hasClass('switch_btn')) {
-            now_btn = $(item.target).parent();
-        }
-        if(now_btn.hasClass('on')){
+    lock_multiple(i){
+        if(i){
             this.lock_multible = false;
             $('#testinput').removeAttr('disabled');
         }else{

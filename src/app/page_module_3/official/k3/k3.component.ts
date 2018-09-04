@@ -394,7 +394,7 @@ export class K3officialComponent implements OnInit {
                 index: 2,
                 arr: ['etfx'],
                 format: ["n"],
-                datarule: ['Rule_12', 1],
+                datarule: ['Rule_13', 1],
                 square: true
             }],
             active: 1,
@@ -407,13 +407,13 @@ export class K3officialComponent implements OnInit {
                 index: 3,
                 arr: ['stdx'],
                 format: ["n"],
-                datarule: ['Rule_12', 1],
+                datarule: ['Rule_13', 1],
             }, {
                 name: this.now_lang.Lot_tab.Thr_number_eve,
                 index: 4,
                 arr: ['stfx'],
                 format: ["n"],
-                datarule: ['Rule_12', 1],
+                datarule: ['Rule_13', 1],
             }],
             active: 1
         },
@@ -436,7 +436,7 @@ export class K3officialComponent implements OnInit {
                 index: 1,
                 arr: ['slhtx'],
                 format: ["n"],
-                datarule: ['Rule_12', 1],
+                datarule: ['Rule_14', 1],
             }],
             active: 3
         },
@@ -758,7 +758,6 @@ export class K3officialComponent implements OnInit {
         }
     }
     check_lot(item){
-        console.log(item.checkon)
         let that = this;
         if (item.checkon) {
             if (item.multiple == 0) {
@@ -771,7 +770,6 @@ export class K3officialComponent implements OnInit {
             item.take_money = 0;
         }
         that.repanel_data()
-        console.log(that.lotdata_now)
     }
     // 生成计划
     produce_plan(){
@@ -787,7 +785,6 @@ export class K3officialComponent implements OnInit {
                 chase_amount = that.lotdata_now.length;
             }
             for (var i = 0; i <= chase_amount-1; i++) {
-                console.log((i)%gap_number)
                 that.lotdata_now[i].checkon = true;
                 that.lotdata_now[i].multiple = multiple;
                 that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
@@ -886,7 +883,6 @@ export class K3officialComponent implements OnInit {
         //清空
         that.lotdata_submit = [];
         for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-            console.log(that.lotdata_now[i].checkon != false)
             if (that.lotdata_now[i].checkon != false) {
                 for (var k = 0; k <= that.sureballlist.length-1; k++) {
                         let rechase :any= {};
@@ -904,7 +900,6 @@ export class K3officialComponent implements OnInit {
                 }
             };
         }
-        console.log(that.lotdata_submit)
         if(!that.lotdata_submit[0]){
             that.POPNOTE({msg:'请选择追号期数'});
             return
@@ -951,7 +946,6 @@ export class K3officialComponent implements OnInit {
             dom.addClass('tobig')
         }, 10)
         window.onresize = function () {
-            console.log('x')
         }
     }
   
@@ -1261,7 +1255,6 @@ export class K3officialComponent implements OnInit {
             }
 
             that.currtabname = that.menu_2[0].menu[0].name;
-            console.log(data)
             // 配置规则提示
             that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
             that.now_description = that.lot_rules[that.now_tips_menu]['description'];
@@ -1285,7 +1278,6 @@ export class K3officialComponent implements OnInit {
     currtabname = ''
     tabmenu2(data) {
         let that = this;
-        console.log(that.status);
         if (!data.isupload) {
             that.now_tab2click_num = data.arr.length;
         } else {
@@ -1338,7 +1330,6 @@ export class K3officialComponent implements OnInit {
     }
     // 选中号码
     choosetab(index, clickindex, val, that) {
-        console.log(index, clickindex, val, that);
         this.now_matchball = {
             0: {},
             1: {},
@@ -1581,7 +1572,6 @@ export class K3officialComponent implements OnInit {
             that.POPNOTE({msg:'号码选择不完整，请重新选择'});
             return
         }
-        console.log('dfe',that.ballcurr);
         if (that.tabcurr.datarule[0] == 'Rule_14') {
             
             for (var i = 0; i < that.ballcurr.ball.length; i++) {
@@ -1590,7 +1580,6 @@ export class K3officialComponent implements OnInit {
                         if (that.tabcurr.datarule[1]>1) {
                             obj.ball = this.Csetball(that.ballcurr.allarr);
                         }else{
-                            console.log('dfef',that.tabcurr);
                             obj.ball = that.ball_data[that.tabcurr.arr[that.ballcurr.titleindex[i]]].match[that.ballcurr.ball[i]];
                         }
                         obj.name = that.currtabname;
@@ -1609,13 +1598,22 @@ export class K3officialComponent implements OnInit {
                     if (that.tabcurr.addzero) {
                         obj.ball = that.ballcurr.ball[i]
                     } else {
-                        obj.ball = that.tabcurr.datarule[0] == 'Rule_12' ? that.ball_data[that.tabcurr.arr[0]].match[that.ballcurr.ball[i]] : that.ballcurr.ball[i]
+                        if (that.tabcurr.datarule[0] == 'Rule_13') {
+                            let dd = that.ballcurr.ball[i].split(',')
+                            for (let i = 0; i < dd.length; i++) {
+                                dd[i] = that.ball_data[that.tabcurr.arr[0]].match[dd[i]]
+                            }
+                            obj.ball = dd.join(",")
+                        }else{
+                            obj.ball = that.ballcurr.ball[i]
+
+                        }
                     }
                     obj.name = that.tabcurr.datarule[0] == 'Rule_6' ? that.currtabname + that.ball_data[that.tabcurr.arr[i]].title : that.currtabname
                     obj.multiple = that.multiple_input.value
                     obj.model = that.model
-                    obj.count = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_12' ? that.ballcurr.allarr[i].length : that.totalinfo.count
-                    obj.sum = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_12' ? (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum : that.totalinfo.sum
+                    obj.count = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_13' ? that.ballcurr.allarr[i].length : that.totalinfo.count
+                    obj.sum = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_13' ? (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum : that.totalinfo.sum
                     obj.amount = that.totalinfo.amount
                     that.sureballlist.push(obj)
                 }

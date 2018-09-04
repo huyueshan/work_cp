@@ -252,10 +252,6 @@
                             <span>{{menu_1[status.menu_1 - 1].name}}：{{currtabname}}</span>
                         </div>
                         <div class="helpbox">
-                            <div class="sbtnbox" [ngClass]="{hot_hidden:!hothidden}">
-                                    <span class="sbtn" [ngClass]="{active:omitname==='当前遗漏'}" (click)="checkomit('yl')">{{now_lang.Ball_tab.Miss}}</span>
-                                    <span class="sbtn" [ngClass]="{active:omitname==='当前冷热'}"  (click)="checkomit('lr')" >{{now_lang.Ball_tab.Hot_cold}}</span>
-                            </div>
                             <div class="tip">
                                 {{now_description}}
                             </div>
@@ -270,12 +266,6 @@
                                         <ul class="numlist">
                                             <li #ballid [ngClass]="{active: item==now_matchtab[i][item]}" *ngFor="let item of val.ball;let f = index" (click)='oneball(i,f,item,ballid)'>{{item
                                                 <10? '0'+item:item}}</li>
-                                        </ul>
-                                    </div>
-                                    <div class="choosecheck" [hidden]="!omitarr[val.index] || omitarr[val.index].length<1">
-                                        <div class="name">{{omitname}}</div>
-                                        <ul class="numlist">
-                                            <li class="active" *ngFor="let eldata of omitarr[val.index]">{{eldata}}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -304,12 +294,6 @@
                                                </div>
                                            </li>
 
-                                        </ul>
-                                    </div>
-                                    <div class="choosecheck" [hidden]="!omitarr[val.index] || omitarr[val.index].length<1">
-                                        <div class="name">{{omitname}}</div>
-                                        <ul class="numlist">
-                                            <li class="active" *ngFor="let eldata of omitarr[val.index]">{{eldata}}</li>
                                         </ul>
                                     </div>
                                 </div>
