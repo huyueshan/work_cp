@@ -319,129 +319,802 @@ export class FFCofficialComponent implements OnInit {
 	];
 	
 	// 2级tab数据以及对应要显示的内容
-	menu_2_data = [
-		{
-			title:this.now_lang.Lot_tab.Five_star_str,
-			menu:[{name:this.now_lang.Lot_tab.Five_star_eve,index:1,arr:['w','q','b','s','g'],format: ["n|n|n|n|n"],datarule:['Rule_1',5]},{name:this.now_lang.Lot_tab.Five_star_odd,index:2,arr:['w','q','b','s','g'],isupload:true,format: ["n,n,n,n,n"],datarule:['Rule_d1',5]},{name:this.now_lang.Lot_tab.Five_star_com,index:3,arr:['w','q','b','s','g'],format: ["n|n|n|n|n"],datarule:['Rule_2',5]}],
-			active:1
-		},
-		{
-			title:this.now_lang.Lot_tab.Five_star_gro,
-			menu:[{name:this.now_lang.Lot_tab.Com_120,index:4,arr:['120'],format: ["m|n|n|n|n"],datarule:['Rule_3',5]},{name:this.now_lang.Lot_tab.Com_60,index:5,arr:['2ch','dh'],format: ["m|n,n,n"],datarule:['Rule_3',1,3]},{name:this.now_lang.Lot_tab.Com_30,index:6,arr:['2ch','dh'],format: ["m,n|n"],datarule:['Rule_3',2,1]},{name:this.now_lang.Lot_tab.Com_20,index:7,arr:['3ch','dh'],format: ["m|n,n"],datarule:['Rule_3',1,2]},{name:this.now_lang.Lot_tab.Com_10,index:8,arr:['3ch','2ch'],format: ["m|n"],datarule:['Rule_3',1,1]},{name:this.now_lang.Lot_tab.Com_5,index:9,arr:['4ch','dh'],format: ["m|n"],datarule:['Rule_3',1,1]}],
-			active:1
-		},
-		{
-			title:this.now_lang.Lot_tab.ForF_str,
-			menu:[{name:this.now_lang.Lot_tab.ForF_star_eve,index:1,arr:['w','q','b','s'],format: ["n|n|n|n"],datarule:['Rule_1',4]},{name:this.now_lang.Lot_tab.ForF_star_odd,index:2,arr:['w','q','b','s'],isupload:true,format: ["n,n,n,n"],datarule:['Rule_d1',4]},{name:this.now_lang.Lot_tab.ForF_star_com,index:3,arr:['w','q','b','s'],format: ["n|n|n|n"],datarule:['Rule_2',4]}],
-			active:2
-		},
-		{
-			title:this.now_lang.Lot_tab.ForF_gro,
-			menu:[{name:this.now_lang.Lot_tab.ForF_star_com24,index:4,arr:['24'],format: ["m|n|n|n"],datarule:['Rule_3',4]},{name:this.now_lang.Lot_tab.ForF_star_com12,index:5,arr:['2ch','dh'],format: ["m|n,n"],datarule:['Rule_3',1,2]},{name:this.now_lang.Lot_tab.ForF_star_com6,index:6,arr:['2ch'],format: ["m|n"],datarule:['Rule_3',2]},{name:this.now_lang.Lot_tab.ForF_star_com4,index:7,arr:['3ch','dh'],format: ["m|n"],datarule:['Rule_3',1,1]}],
-			active:2
-		},
-		{
-			title:this.now_lang.Lot_tab.BackF_str,
-			menu:[{name:this.now_lang.Lot_tab.BackF_star_eve,index:1,arr:['q','b','s','g'],format: ["n|n|n|n"],datarule:['Rule_1',4]},{name:this.now_lang.Lot_tab.BackF_star_odd,index:2,arr:['q','b','s','g'],isupload:true,format: ["n,n,n,n"],datarule:['Rule_d1',4]},{name:this.now_lang.Lot_tab.BackF_star_com,index:3,arr:['q','b','s','g'],format: ["n|n|n|n"],datarule:['Rule_2',4]}],
-			active:3
-		},
-		{
-			title:this.now_lang.Lot_tab.BackF_gro,
-			menu:[{name:this.now_lang.Lot_tab.BackF_star_com24,index:4,arr:['24'],format: ["m|n|n|n"],datarule:['Rule_3',4]},{name:this.now_lang.Lot_tab.BackF_star_com12,index:5,arr:['2ch','dh'],format: ["m|n,n"],datarule:['Rule_3',1,2]},{name:this.now_lang.Lot_tab.BackF_star_com6,index:6,arr:['2ch'],format: ["m|n"],datarule:['Rule_3',2]},{name:this.now_lang.Lot_tab.BackF_star_com4,index:7,arr:['3ch','dh'],format: ["m|n"],datarule:['Rule_3',1,1]}],
-			active:3
-		},
-		{
-			title:this.now_lang.Lot_tab.BackT_str,
-			menu:[{name:this.now_lang.Lot_tab.BackT_star_eve,index:1,arr:['b','s','g'],format: ["n|n|n"],datarule:['Rule_1',3]},{name:this.now_lang.Lot_tab.BackT_star_odd,index:2,arr:['b','s','g'],isupload:true,format: ["n,n,n"],datarule:['Rule_d1',3]},{name:this.now_lang.Lot_tab.BackT_str_com,index:3,arr:['hz'],format: ["m"],datarule:['Rule_4',1,3]}],
-			active:4
-		},
-		{
-			title:this.now_lang.Lot_tab.BackT_gro,
-			menu:[{name:this.now_lang.Lot_tab.BackT_str_com3,index:4,arr:['zu3'],format: ["m|n"],datarule:['Rule_5',2]},{name:this.now_lang.Lot_tab.BackT_str_com6,index:5,arr:['zu6'],format: ["m|n|n"],datarule:['Rule_3',3]},{name:this.now_lang.Lot_tab.BackT_mix_com,index:6,arr:['b','s','g'],isupload:true,format: ["n,n,n"],datarule:['Rule_d1',3,'Z']},{name:this.now_lang.Lot_tab.BackT_gro_com,index:7,arr:['hz26'],format: ["m"],datarule:['Rule_4',1,3,'Z3']}],
-			active:4
-		},
-		{
-			title:this.now_lang.Lot_tab.ForT_str,
-			menu:[{name:this.now_lang.Lot_tab.ForT_str_eve,index:1,arr:['w','q','b'],format: ["n|n|n"],datarule:['Rule_1',3]},{name:this.now_lang.Lot_tab.ForT_str_odd,index:2,arr:['w','q','b'],isupload:true,format: ["n,n,n"],datarule:['Rule_d1',3]},{name:this.now_lang.Lot_tab.ForT_str_com,index:3,arr:['hz'],format: ["m"],datarule:['Rule_4',1,3]}],
-			active:5
-		},
-		{
-			title:this.now_lang.Lot_tab.ForT_gro,
-			menu:[{name:this.now_lang.Lot_tab.ForT_str_com3,index:4,arr:['zu3'],format: ["m|n"],datarule:['Rule_5',2]},{name:this.now_lang.Lot_tab.ForT_str_com6,index:5,arr:['zu6'],format: ["m|n|n"],datarule:['Rule_3',3]},{name:this.now_lang.Lot_tab.ForT_mix_com,index:6,arr:['w','q','b'],isupload:true,format: ["n,n,n"],datarule:['Rule_d1',3,'Z']},{name:this.now_lang.Lot_tab.ForT_gro_com,index:7,arr:['hz26'],format: ["m"],datarule:['Rule_4',1,3,'Z3']}],
-			active:5
-		},
-		{
-			title:this.now_lang.Lot_tab.MidT_str,
-			menu:[{name:this.now_lang.Lot_tab.MidT_str_eve,index:1,arr:['q','b','s'],format: ["n|n|n"],datarule:['Rule_1',3]},{name:this.now_lang.Lot_tab.MidT_str_odd,index:2,arr:['q','b','s'],isupload:true,format: ["n,n,n"],datarule:['Rule_d1',3]},{name:this.now_lang.Lot_tab.MidT_star_com,index:3,arr:['hz'],format: ["m"],datarule:['Rule_4',1,3]}],
-			active:6
-		},
-		{
-			title:this.now_lang.Lot_tab.MidT_gro,
-			menu:[{name:this.now_lang.Lot_tab.MidT_gro_3,index:4,arr:['zu3'],format: ["m|n"],datarule:['Rule_5',2]},{name:this.now_lang.Lot_tab.MidT_gro_6,index:5,arr:['zu6'],format: ["m|n|n"],datarule:['Rule_3',3]},{name:this.now_lang.Lot_tab.MidT_mix_gro,index:6,arr:['q','b','s'],isupload:true,format: ["n,n,n"],datarule:['Rule_d1',3,'Z']},{name:this.now_lang.Lot_tab.MidT_gro_com,index:7,arr:['hz26'],format: ["m"],datarule:['Rule_4',1,3,'Z3']}],
-			active:6
-		},
-		{
-			title:this.now_lang.Lot_tab.Two_star_str,
-			menu:[{name:this.now_lang.Lot_tab.BackTwo_str_eve,index:1,arr:['s','g'],format: ["n|n"],datarule:['Rule_1',2]},{name:this.now_lang.Lot_tab.BackTwo_str_odd,index:2,arr:['s','g'],isupload:true,format: ["n,n"],datarule:['Rule_d1',2]},{name:this.now_lang.Lot_tab.ForTwo_str_eve,index:3,arr:['w','q'],format: ["n|n"],datarule:['Rule_1',2]},{name:this.now_lang.Lot_tab.ForTwo_str_odd,index:4,arr:['w','q'],isupload:true,format: ["n,n"],datarule:['Rule_d1',2]},{name:this.now_lang.Lot_tab.BackTwo_str_com,index:5,arr:['hz18'],format: ["m"],datarule:['Rule_4',1,2]},{name:this.now_lang.Lot_tab.ForTwo_str_com,index:6,arr:['hz18'],format: ["m"],datarule:['Rule_4',1,2]}],
-			active:7
-		},
-		{
-			title:this.now_lang.Lot_tab.Two_star_gro,
-			menu:[{name:this.now_lang.Lot_tab.BackTwo_gro_eve,index:7,arr:['zx9'],format: ["m|n"],datarule:['Rule_3',2]},{name:this.now_lang.Lot_tab.BackTwo_gro_odd,index:8,arr:['s','g'],isupload:true,format: ["n,n"],datarule:['Rule_d1',2,'Z']},{name:this.now_lang.Lot_tab.ForTwo_gro_eve,index:9,arr:['zx9'],format: ["m|n"],datarule:['Rule_3',2]},{name:this.now_lang.Lot_tab.ForTwo_gro_odd,index:10,arr:['w','q'],isupload:true,format: ["n,n"],datarule:['Rule_d1',2,'Z']},{name:this.now_lang.Lot_tab.BackTwo_gro_com,index:11,arr:['hz17'],format: ["m"],datarule:['Rule_4',1,2,'Z2']},{name:this.now_lang.Lot_tab.ForTwo_gro_com,index:12,arr:['hz17'],format: ["m"],datarule:['Rule_4',1,2,'Z2'] }],
-			active:7
-		},
-		{
-			title:this.now_lang.Lot_tab.Gall,
-			menu:[{name:this.now_lang.Lot_tab.Gall,index:1,arr:['w','q','b','s','g'],format: ["n"],datarule:['Rule_6',5]}],
-			active:8
-		},
-		{
-			title:this.now_lang.Lot_tab.Thr_Inde_gall,
-			menu:[{name:this.now_lang.Lot_tab.BackT_oneInde_gall,index:1,arr:['bdd9'],format: ["m"],datarule:['Rule_3',1]},{name:this.now_lang.Lot_tab.BackT_twoInde_gall,index:2,arr:['bdd9'],format: ["m|n"],datarule:['Rule_3',2] },{name:this.now_lang.Lot_tab.ForT_oneInde_gall,index:3,arr:['bdd9'],format: ["m"],datarule:['Rule_3',1]},{name:this.now_lang.Lot_tab.ForT_twoInde_gall,index:4,arr:['bdd9'],format: ["m|n"],datarule:['Rule_3',2]}],
-			active:9
-		},
-		{
-			title:this.now_lang.Lot_tab.big_small_odd_eve,
-			menu:[{name:this.now_lang.Lot_tab.ForTwo_danshuang,index:1,arr:['dsw','dsq'],format: ["n|n"],datarule:['Rule_1',2]},{name:this.now_lang.Lot_tab.BackTwo_danshuang,index:2,arr:['dss','dsg'],format: ["n|n"],datarule:['Rule_1',2]}],
-			active:10
-		},
-		{
-			title:this.now_lang.Lot_tab.Special,
-			menu:[{name:this.now_lang.Lot_tab.yffs,index:1,arr:['yffs'],format: ["m"],datarule:['Rule_3',1]},{name:this.now_lang.Lot_tab.hscs,index:2,arr:['hscs'],format: ["m"],datarule:['Rule_3',1]},{name:this.now_lang.Lot_tab.sxbx,index:3,arr:['sxbx'],format: ["m"],datarule:['Rule_3',1]},{name:this.now_lang.Lot_tab.sjfc,index:4,arr:['sjfc'],format: ["m"],datarule:['Rule_3',1]}],
-			active:11
-		},
-		{
-			title:this.now_lang.Lot_tab.choose_two_str,
-			menu:[{name:this.now_lang.Lot_tab.choose_two_str_eve,index:1,arr:['w','q','b','s','g'],format: ["n|n"],datarule:['Rule_7',2]},{name:this.now_lang.Lot_tab.choose_two_str_odd,index:2,arr:['s','g'],isupload:true,format: ["n,n"],datarule:['Rule_d2',2,2],choose:true},{name:this.now_lang.Lot_tab.choose_two_str_com,index:3,arr:['hz18'],format: ["m|n"],datarule:['Rule_8',2,1],choose:true}],
-			active:12
-		},
-		{
-			title:this.now_lang.Lot_tab.choose_two_gro,
-			menu:[{name:this.now_lang.Lot_tab.choose_two_gro_eve,index:4,arr:['zx9'],format: ["m|n"],datarule:['Rule_8',2,2],choose:true},{name:this.now_lang.Lot_tab.choose_two_gro_odd,index:5,arr:['s','g'],isupload:true,format: ["n,n"],datarule:['Rule_d2',2,2,'Z'],choose:true},{name:this.now_lang.Lot_tab.choose_two_gro_com,index:6,arr:['hz17'],format: ["m|n"],datarule:['Rule_8',2,1,'Z2'],choose:true}],
-			active:12
-		},
-		{
-			title:this.now_lang.Lot_tab.choose_thr_str,
-			menu:[{name:this.now_lang.Lot_tab.choose_thr_str_odd,index:1,arr:['b','s','g'],isupload:true,format: ["n,n,n"],datarule:['Rule_d2',3,3],choose:true},{name:this.now_lang.Lot_tab.choose_thr_str_eve,index:2,arr:['w','q','b','s','g'],format: ["n|n|n"],datarule:['Rule_7',3]},{name:this.now_lang.Lot_tab.choose_thr_str_com,index:3,arr:['hz'],format: ["m"],datarule:['Rule_8',3,1],choose:true}],
-			active:13
-		},
-		{
-			title:this.now_lang.Lot_tab.choose_thr_gro,
-			menu:[{name:this.now_lang.Lot_tab.choose_thr_gro_thr,index:4,arr:['zu3'],format: ["m|n"],datarule:['Rule_10',3,2],choose:true},{name:this.now_lang.Lot_tab.choose_thr_gro_six,index:5,arr:['zu6'],format: ["m|n|n"],datarule:['Rule_9',3,3,'Z6'],choose:true},{name:this.now_lang.Lot_tab.choose_thr_mix_gro,index:6,arr:['b','s','g'],isupload:true,format: ["n,n,n"],datarule:['Rule_d2',3,3,'Z'],choose:true},{name:this.now_lang.Lot_tab.choose_thr_gro_thr_com,index:7,arr:['hz26'],format: ["m"],datarule:['Rule_8',3,1,'Z3'],choose:true}],
-			active:13
-		},
-		{
-			title:this.now_lang.Lot_tab.choose_four_str,
-			menu:[{name:this.now_lang.Lot_tab.choose_four_str_odd,index:1,arr:['q','b','s','g'],isupload:true,format: ["n,n,n,n"],datarule:['Rule_d2',4,4],choose:true},{name:this.now_lang.Lot_tab.choose_four_str_eve,index:2,arr:['w','q','b','s','g'],format: ["n|n|n|n"],datarule:['Rule_7',4]}],
-			active:14
-		},
-		{
-			title:this.now_lang.Lot_tab.choose_four_str,
-			menu:[{name:this.now_lang.Lot_tab.choose_four24,index:3,arr:['dh'],format: ["m|n|n|n"],datarule:['Rule_8',4,4],choose:true},{name:this.now_lang.Lot_tab.choose_four12,index:4,arr:['dh','2ch'],format: ["m|n,n"],datarule:['Rule_9',4,1,2],choose:true},{name:this.now_lang.Lot_tab.choose_four6,index:5,arr:['2ch'],format: ["m|n"],datarule:['Rule_8',4,2],choose:true},{name:this.now_lang.Lot_tab.choose_four4,index:6,arr:['3ch','dh'],format: ["m|n"],datarule:['Rule_9',4,1,1],choose:true}],
-			active:14
-		}
-	]
-	menu_2 = []; //存储当前一级导航对应的耳机导航
+  menu_2_data = [
+    {
+      title: this.now_lang.Lot_tab.Five_star_str,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.Five_star_eve,
+          index: 1,
+          arr: ["w", "q", "b", "s", "g"],
+          format: ["n|n|n|n|n"],
+          datarule: ["Rule_1", 5],
+          hot:true
+        },
+        {
+          name: this.now_lang.Lot_tab.Five_star_odd,
+          index: 2,
+          arr: ["w", "q", "b", "s", "g"],
+          isupload: true,
+          format: ["n,n,n,n,n"],
+          datarule: ["Rule_d1", 5]
+        },
+        {
+          name: this.now_lang.Lot_tab.Five_star_com,
+          index: 3,
+          arr: ["w", "q", "b", "s", "g"],
+          format: ["n|n|n|n|n"],
+          datarule: ["Rule_2", 5],
+          hot:true
+        }
+      ],
+      active: 1
+    },
+    {
+      title: this.now_lang.Lot_tab.Five_star_gro,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.Com_120,
+          index: 4,
+          arr: ["120"],
+          format: ["m|n|n|n|n"],
+          datarule: ["Rule_3", 5]
+        },
+        {
+          name: this.now_lang.Lot_tab.Com_60,
+          index: 5,
+          arr: ["2ch", "dh"],
+          format: ["m|n,n,n"],
+          datarule: ["Rule_3", 1, 3]
+        },
+        {
+          name: this.now_lang.Lot_tab.Com_30,
+          index: 6,
+          arr: ["2ch", "dh"],
+          format: ["m,n|n"],
+          datarule: ["Rule_3", 2, 1]
+        },
+        {
+          name: this.now_lang.Lot_tab.Com_20,
+          index: 7,
+          arr: ["3ch", "dh"],
+          format: ["m|n,n"],
+          datarule: ["Rule_3", 1, 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.Com_10,
+          index: 8,
+          arr: ["3ch", "2ch"],
+          format: ["m|n"],
+          datarule: ["Rule_3", 1, 1]
+        },
+        {
+          name: this.now_lang.Lot_tab.Com_5,
+          index: 9,
+          arr: ["4ch", "dh"],
+          format: ["m|n"],
+          datarule: ["Rule_3", 1, 1]
+        }
+      ],
+      active: 1
+    },
+    {
+      title: this.now_lang.Lot_tab.ForF_str,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.ForF_star_eve,
+          index: 1,
+          arr: ["w", "q", "b", "s"],
+          format: ["n|n|n|n"],
+          datarule: ["Rule_1", 4],
+          hot:true
+        },
+        {
+          name: this.now_lang.Lot_tab.ForF_star_odd,
+          index: 2,
+          arr: ["w", "q", "b", "s"],
+          isupload: true,
+          format: ["n,n,n,n"],
+          datarule: ["Rule_d1", 4]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForF_star_com,
+          index: 3,
+          arr: ["w", "q", "b", "s"],
+          format: ["n|n|n|n"],
+          datarule: ["Rule_2", 4],
+          hot:true
+        }
+      ],
+      active: 2
+    },
+    {
+      title: this.now_lang.Lot_tab.ForF_gro,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.ForF_star_com24,
+          index: 4,
+          arr: ["24"],
+          format: ["m|n|n|n"],
+          datarule: ["Rule_3", 4]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForF_star_com12,
+          index: 5,
+          arr: ["2ch", "dh"],
+          format: ["m|n,n"],
+          datarule: ["Rule_3", 1, 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForF_star_com6,
+          index: 6,
+          arr: ["2ch"],
+          format: ["m|n"],
+          datarule: ["Rule_3", 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForF_star_com4,
+          index: 7,
+          arr: ["3ch", "dh"],
+          format: ["m|n"],
+          datarule: ["Rule_3", 1, 1]
+        }
+      ],
+      active: 2
+    },
+    {
+      title: this.now_lang.Lot_tab.BackF_str,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.BackF_star_eve,
+          index: 1,
+          arr: ["q", "b", "s", "g"],
+          format: ["n|n|n|n"],
+          datarule: ["Rule_1", 4],
+          hot:true
+        },
+        {
+          name: this.now_lang.Lot_tab.BackF_star_odd,
+          index: 2,
+          arr: ["q", "b", "s", "g"],
+          isupload: true,
+          format: ["n,n,n,n"],
+          datarule: ["Rule_d1", 4]
+        },
+        {
+          name: this.now_lang.Lot_tab.BackF_star_com,
+          index: 3,
+          arr: ["q", "b", "s", "g"],
+          format: ["n|n|n|n"],
+          datarule: ["Rule_2", 4],
+          hot:true
+        }
+      ],
+      active: 3
+    },
+    {
+      title: this.now_lang.Lot_tab.BackF_gro,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.BackF_star_com24,
+          index: 4,
+          arr: ["24"],
+          format: ["m|n|n|n"],
+          datarule: ["Rule_3", 4]
+        },
+        {
+          name: this.now_lang.Lot_tab.BackF_star_com12,
+          index: 5,
+          arr: ["2ch", "dh"],
+          format: ["m|n,n"],
+          datarule: ["Rule_3", 1, 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.BackF_star_com6,
+          index: 6,
+          arr: ["2ch"],
+          format: ["m|n"],
+          datarule: ["Rule_3", 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.BackF_star_com4,
+          index: 7,
+          arr: ["3ch", "dh"],
+          format: ["m|n"],
+          datarule: ["Rule_3", 1, 1]
+        }
+      ],
+      active: 3
+    },
+    {
+      title: this.now_lang.Lot_tab.BackT_str,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.BackT_star_eve,
+          index: 1,
+          arr: ["b", "s", "g"],
+          format: ["n|n|n"],
+          datarule: ["Rule_1", 3],
+          hot:true
+        },
+        {
+          name: this.now_lang.Lot_tab.BackT_star_odd,
+          index: 2,
+          arr: ["b", "s", "g"],
+          isupload: true,
+          format: ["n,n,n"],
+          datarule: ["Rule_d1", 3]
+        },
+        {
+          name: this.now_lang.Lot_tab.BackT_str_com,
+          index: 3,
+          arr: ["hz"],
+          format: ["m"],
+          datarule: ["Rule_4", 1, 3]
+        }
+      ],
+      active: 4
+    },
+    {
+      title: this.now_lang.Lot_tab.BackT_gro,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.BackT_str_com3,
+          index: 4,
+          arr: ["zu3"],
+          format: ["m|n"],
+          datarule: ["Rule_5", 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.BackT_str_com6,
+          index: 5,
+          arr: ["zu6"],
+          format: ["m|n|n"],
+          datarule: ["Rule_3", 3]
+        },
+        {
+          name: this.now_lang.Lot_tab.BackT_mix_com,
+          index: 6,
+          arr: ["b", "s", "g"],
+          isupload: true,
+          format: ["n,n,n"],
+          datarule: ["Rule_d1", 3, "Z"]
+        },
+        {
+          name: this.now_lang.Lot_tab.BackT_gro_com,
+          index: 7,
+          arr: ["hz26"],
+          format: ["m"],
+          datarule: ["Rule_4", 1, 3, "Z3"]
+        }
+      ],
+      active: 4
+    },
+    {
+      title: this.now_lang.Lot_tab.ForT_str,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.ForT_str_eve,
+          index: 1,
+          arr: ["w", "q", "b"],
+          format: ["n|n|n"],
+          datarule: ["Rule_1", 3],
+          hot:true
+        },
+        {
+          name: this.now_lang.Lot_tab.ForT_str_odd,
+          index: 2,
+          arr: ["w", "q", "b"],
+          isupload: true,
+          format: ["n,n,n"],
+          datarule: ["Rule_d1", 3]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForT_str_com,
+          index: 3,
+          arr: ["hz"],
+          format: ["m"],
+          datarule: ["Rule_4", 1, 3]
+        }
+      ],
+      active: 5
+    },
+    {
+      title: this.now_lang.Lot_tab.ForT_gro,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.ForT_str_com3,
+          index: 4,
+          arr: ["zu3"],
+          format: ["m|n"],
+          datarule: ["Rule_5", 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForT_str_com6,
+          index: 5,
+          arr: ["zu6"],
+          format: ["m|n|n"],
+          datarule: ["Rule_3", 3]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForT_mix_com,
+          index: 6,
+          arr: ["w", "q", "b"],
+          isupload: true,
+          format: ["n,n,n"],
+          datarule: ["Rule_d1", 3, "Z"]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForT_gro_com,
+          index: 7,
+          arr: ["hz26"],
+          format: ["m"],
+          datarule: ["Rule_4", 1, 3, "Z3"]
+        }
+      ],
+      active: 5
+    },
+    {
+      title: this.now_lang.Lot_tab.MidT_str,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.MidT_str_eve,
+          index: 1,
+          arr: ["q", "b", "s"],
+          format: ["n|n|n"],
+          datarule: ["Rule_1", 3],
+          hot:true
+        },
+        {
+          name: this.now_lang.Lot_tab.MidT_str_odd,
+          index: 2,
+          arr: ["q", "b", "s"],
+          isupload: true,
+          format: ["n,n,n"],
+          datarule: ["Rule_d1", 3]
+        },
+        {
+          name: this.now_lang.Lot_tab.MidT_star_com,
+          index: 3,
+          arr: ["hz"],
+          format: ["m"],
+          datarule: ["Rule_4", 1, 3]
+        }
+      ],
+      active: 6
+    },
+    {
+      title: this.now_lang.Lot_tab.MidT_gro,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.MidT_gro_3,
+          index: 4,
+          arr: ["zu3"],
+          format: ["m|n"],
+          datarule: ["Rule_5", 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.MidT_gro_6,
+          index: 5,
+          arr: ["zu6"],
+          format: ["m|n|n"],
+          datarule: ["Rule_3", 3]
+        },
+        {
+          name: this.now_lang.Lot_tab.MidT_mix_gro,
+          index: 6,
+          arr: ["q", "b", "s"],
+          isupload: true,
+          format: ["n,n,n"],
+          datarule: ["Rule_d1", 3, "Z"]
+        },
+        {
+          name: this.now_lang.Lot_tab.MidT_gro_com,
+          index: 7,
+          arr: ["hz26"],
+          format: ["m"],
+          datarule: ["Rule_4", 1, 3, "Z3"]
+        }
+      ],
+      active: 6
+    },
+    {
+      title: this.now_lang.Lot_tab.Two_star_str,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.BackTwo_str_eve,
+          index: 1,
+          arr: ["s", "g"],
+          format: ["n|n"],
+          datarule: ["Rule_1", 2],
+          hot:true
+        },
+        {
+          name: this.now_lang.Lot_tab.BackTwo_str_odd,
+          index: 2,
+          arr: ["s", "g"],
+          isupload: true,
+          format: ["n,n"],
+          datarule: ["Rule_d1", 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForTwo_str_eve,
+          index: 3,
+          arr: ["w", "q"],
+          format: ["n|n"],
+          datarule: ["Rule_1", 2],
+          hot:true
+        },
+        {
+          name: this.now_lang.Lot_tab.ForTwo_str_odd,
+          index: 4,
+          arr: ["w", "q"],
+          isupload: true,
+          format: ["n,n"],
+          datarule: ["Rule_d1", 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.BackTwo_str_com,
+          index: 5,
+          arr: ["hz18"],
+          format: ["m"],
+          datarule: ["Rule_4", 1, 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForTwo_str_com,
+          index: 6,
+          arr: ["hz18"],
+          format: ["m"],
+          datarule: ["Rule_4", 1, 2]
+        }
+      ],
+      active: 7
+    },
+    {
+      title: this.now_lang.Lot_tab.Two_star_gro,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.BackTwo_gro_eve,
+          index: 7,
+          arr: ["zx9"],
+          format: ["m|n"],
+          datarule: ["Rule_3", 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.BackTwo_gro_odd,
+          index: 8,
+          arr: ["s", "g"],
+          isupload: true,
+          format: ["n,n"],
+          datarule: ["Rule_d1", 2, "Z"]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForTwo_gro_eve,
+          index: 9,
+          arr: ["zx9"],
+          format: ["m|n"],
+          datarule: ["Rule_3", 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForTwo_gro_odd,
+          index: 10,
+          arr: ["w", "q"],
+          isupload: true,
+          format: ["n,n"],
+          datarule: ["Rule_d1", 2, "Z"]
+        },
+        {
+          name: this.now_lang.Lot_tab.BackTwo_gro_com,
+          index: 11,
+          arr: ["hz17"],
+          format: ["m"],
+          datarule: ["Rule_4", 1, 2, "Z2"]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForTwo_gro_com,
+          index: 12,
+          arr: ["hz17"],
+          format: ["m"],
+          datarule: ["Rule_4", 1, 2, "Z2"]
+        }
+      ],
+      active: 7
+    },
+    {
+      title: this.now_lang.Lot_tab.Gall,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.Gall,
+          index: 1,
+          arr: ["w", "q", "b", "s", "g"],
+          format: ["n"],
+          datarule: ["Rule_6", 1],
+          hot:true
+        }
+      ],
+      active: 8
+    },
+    {
+      title: this.now_lang.Lot_tab.Thr_Inde_gall,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.BackT_oneInde_gall,
+          index: 1,
+          arr: ["bdd9"],
+          format: ["m"],
+          datarule: ["Rule_3", 1]
+        },
+        {
+          name: this.now_lang.Lot_tab.BackT_twoInde_gall,
+          index: 2,
+          arr: ["bdd9"],
+          format: ["m|n"],
+          datarule: ["Rule_3", 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForT_oneInde_gall,
+          index: 3,
+          arr: ["bdd9"],
+          format: ["m"],
+          datarule: ["Rule_3", 1]
+        },
+        {
+          name: this.now_lang.Lot_tab.ForT_twoInde_gall,
+          index: 4,
+          arr: ["bdd9"],
+          format: ["m|n"],
+          datarule: ["Rule_3", 2]
+        }
+      ],
+      active: 9
+    },
+    {
+      title: this.now_lang.Lot_tab.big_small_odd_eve,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.ForTwo_danshuang,
+          index: 1,
+          arr: ["dsw", "dsq"],
+          format: ["n|n"],
+          datarule: ["Rule_1", 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.BackTwo_danshuang,
+          index: 2,
+          arr: ["dss", "dsg"],
+          format: ["n|n"],
+          datarule: ["Rule_1", 2]
+        }
+      ],
+      active: 10
+    },
+    {
+      title: this.now_lang.Lot_tab.Special,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.yffs,
+          index: 1,
+          arr: ["yffs"],
+          format: ["m"],
+          datarule: ["Rule_3", 1]
+        },
+        {
+          name: this.now_lang.Lot_tab.hscs,
+          index: 2,
+          arr: ["hscs"],
+          format: ["m"],
+          datarule: ["Rule_3", 1]
+        },
+        {
+          name: this.now_lang.Lot_tab.sxbx,
+          index: 3,
+          arr: ["sxbx"],
+          format: ["m"],
+          datarule: ["Rule_3", 1]
+        },
+        {
+          name: this.now_lang.Lot_tab.sjfc,
+          index: 4,
+          arr: ["sjfc"],
+          format: ["m"],
+          datarule: ["Rule_3", 1]
+        }
+      ],
+      active: 11
+    },
+    {
+      title: this.now_lang.Lot_tab.choose_two_str,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.choose_two_str_eve,
+          index: 1,
+          arr: ["w", "q", "b", "s", "g"],
+          format: ["n|n"],
+          datarule: ["Rule_7", 2]
+        },
+        {
+          name: this.now_lang.Lot_tab.choose_two_str_odd,
+          index: 2,
+          arr: ["s", "g"],
+          isupload: true,
+          format: ["n,n"],
+          datarule: ["Rule_d2", 2, 2],
+          choose: true
+        },
+        {
+          name: this.now_lang.Lot_tab.choose_two_str_com,
+          index: 3,
+          arr: ["hz18"],
+          format: ["m|n"],
+          datarule: ["Rule_8", 2, 1],
+          choose: true
+        }
+      ],
+      active: 12
+    },
+    {
+      title: this.now_lang.Lot_tab.choose_two_gro,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.choose_two_gro_eve,
+          index: 4,
+          arr: ["zx9"],
+          format: ["m|n"],
+          datarule: ["Rule_8", 2, 2],
+          choose: true
+        },
+        {
+          name: this.now_lang.Lot_tab.choose_two_gro_odd,
+          index: 5,
+          arr: ["s", "g"],
+          isupload: true,
+          format: ["n,n"],
+          datarule: ["Rule_d2", 2, 2, "Z"],
+          choose: true
+        },
+        {
+          name: this.now_lang.Lot_tab.choose_two_gro_com,
+          index: 6,
+          arr: ["hz17"],
+          format: ["m|n"],
+          datarule: ["Rule_8", 2, 1, "Z2"],
+          choose: true
+        }
+      ],
+      active: 12
+    },
+    {
+      title: this.now_lang.Lot_tab.choose_thr_str,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.choose_thr_str_odd,
+          index: 1,
+          arr: ["b", "s", "g"],
+          isupload: true,
+          format: ["n,n,n"],
+          datarule: ["Rule_d2", 3, 3],
+          choose: true
+        },
+        {
+          name: this.now_lang.Lot_tab.choose_thr_str_eve,
+          index: 2,
+          arr: ["w", "q", "b", "s", "g"],
+          format: ["n|n|n"],
+          datarule: ["Rule_7", 3]
+        },
+        {
+          name: this.now_lang.Lot_tab.choose_thr_str_com,
+          index: 3,
+          arr: ["hz"],
+          format: ["m"],
+          datarule: ["Rule_8", 3, 1],
+          choose: true
+        }
+      ],
+      active: 13
+    },
+    {
+      title: this.now_lang.Lot_tab.choose_thr_gro,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.choose_thr_gro_thr,
+          index: 4,
+          arr: ["zu3"],
+          format: ["m|n"],
+          datarule: ["Rule_10", 3, 2],
+          choose: true
+        },
+        {
+          name: this.now_lang.Lot_tab.choose_thr_gro_six,
+          index: 5,
+          arr: ["zu6"],
+          format: ["m|n|n"],
+          datarule: ["Rule_9", 3, 3, "Z6"],
+          choose: true
+        },
+        {
+          name: this.now_lang.Lot_tab.choose_thr_mix_gro,
+          index: 6,
+          arr: ["b", "s", "g"],
+          isupload: true,
+          format: ["n,n,n"],
+          datarule: ["Rule_d2", 3, 3, "Z"],
+          choose: true
+        },
+        {
+          name: this.now_lang.Lot_tab.choose_thr_gro_thr_com,
+          index: 7,
+          arr: ["hz26"],
+          format: ["m"],
+          datarule: ["Rule_8", 3, 1, "Z3"],
+          choose: true
+        }
+      ],
+      active: 13
+    },
+    {
+      title: this.now_lang.Lot_tab.choose_four_str,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.choose_four_str_odd,
+          index: 1,
+          arr: ["q", "b", "s", "g"],
+          isupload: true,
+          format: ["n,n,n,n"],
+          datarule: ["Rule_d2", 4, 4],
+          choose: true
+        },
+        {
+          name: this.now_lang.Lot_tab.choose_four_str_eve,
+          index: 2,
+          arr: ["w", "q", "b", "s", "g"],
+          format: ["n|n|n|n"],
+          datarule: ["Rule_7", 4]
+        }
+      ],
+      active: 14
+    },
+    {
+      title: this.now_lang.Lot_tab.choose_four_str,
+      menu: [
+        {
+          name: this.now_lang.Lot_tab.choose_four24,
+          index: 3,
+          arr: ["dh"],
+          format: ["m|n|n|n"],
+          datarule: ["Rule_8", 4, 4],
+          choose: true
+        },
+        {
+          name: this.now_lang.Lot_tab.choose_four12,
+          index: 4,
+          arr: ["dh", "2ch"],
+          format: ["m|n,n"],
+          datarule: ["Rule_9", 4, 1, 2],
+          choose: true
+        },
+        {
+          name: this.now_lang.Lot_tab.choose_four6,
+          index: 5,
+          arr: ["2ch"],
+          format: ["m|n"],
+          datarule: ["Rule_8", 4, 2],
+          choose: true
+        },
+        {
+          name: this.now_lang.Lot_tab.choose_four4,
+          index: 6,
+          arr: ["3ch", "dh"],
+          format: ["m|n"],
+          datarule: ["Rule_9", 4, 1, 1],
+          choose: true
+        }
+      ],
+      active: 14
+    }
+  ];
+    
+    menu_2 = []; //存储当前一级导航对应的耳机导航
 	ball_tab = {
 		1:[this.now_lang.Ball_tab.All,this.now_lang.Ball_tab.Big,this.now_lang.Ball_tab.Small,this.now_lang.Ball_tab.Odd,this.now_lang.Ball_tab.Even,this.now_lang.Ball_tab.Clear],
 		2:[this.now_lang.Ball_tab.All,this.now_lang.Ball_tab.Clear],
@@ -686,9 +1359,6 @@ export class FFCofficialComponent implements OnInit {
 		}else{
 			item.checkon = true;
 		}
-		// for (var k = 0; k <= that.sureballlist.length-1; k++) {
-
-		// }
 		item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
 		that.repanel_data()
 	}
@@ -1352,16 +2022,10 @@ export class FFCofficialComponent implements OnInit {
 		'az_ffc':'az_ffc',
 		'jnd_ffc':'jnd_ffc'
     };
-    getPageId(){
-        let that = this;
-        let idarray = this.router.url.split("/");
-        that.nowPageId = idarray[idarray.length-1]+that.url_str.now_til;
-        if (that.url_str[that.nowPageId]) {
-            that.nowPageId = that.url_str[that.nowPageId];
-            that.nowitems = that.items_show[that.nowPageId];
-        }else{
-            console.error('url_str错误!');
-        }
+    getPageId() {
+      let idarray = this.router.url.split("/");
+      this.nowPageId = idarray[idarray.length - 1] + "_ffc";
+      this.nowitems = this.items_show[this.nowPageId];
     }
 	inittab2(){
 		let ulMax = $('.typetab').outerWidth();
@@ -1993,7 +2657,7 @@ export class FFCofficialComponent implements OnInit {
 				if(that.ballcurr.ball[i]!=''){
 					let obj:any={}
 					obj.ball = that.ballcurr.ball[i]
-					obj.name = that.currtabname
+					obj.name = arrob[0].menu[0].datarule[0]=='Rule_6'?that.currtabname+that.ball_data[that.tabcurr.arr[i]].title:that.currtabname
 					obj.multiple = that.multiple_input.value
 					obj.model = that.model
 					obj.count = arrob[0].menu[0].datarule[0]=='Rule_6'?that.ballcurr.allarr[i].length:that.totalinfo.count
@@ -2062,37 +2726,36 @@ export class FFCofficialComponent implements OnInit {
 			let redata:any = {}
 			redata.ball = Utils.Randomrule(obj)
 			redata.name=that.currtabname
-			if(that.tabcurr.choose){
-				let ab = Utils.algorithm.RandomArray(['w','q','b','s','g'],that.tabcurr.datarule[1])
-				console.log(ab)
-				let newab = new Array(that.tabcurr.datarule[1])
-				ab.map(function(res){
-					if(res=='w'){
-						newab[0] = 'w'
-					}
-					if(res=='q'){
-						newab[1] = 'q'
-					}
-					if(res=='b'){
-						newab[2] = 'b'
-					}
-					if(res=='s'){
-						newab[3] = 's'
-					}
-					if(res=='g'){
-						newab[4] = 'g'
-					}
-				})
-				for(var k=0; k<newab.length; k++){
-					if(newab[k] == "" || typeof(newab[k]) == "undefined"){
-						 newab.splice(k,1);
-						  k--;
-					}
-				}
-				for(var k=0;k<that.tabcurr.datarule[1];k++){
-					redata.name = redata.name + that.abotitle[newab[k]]
-				}
-			}
+            if (that.tabcurr.choose || that.tabcurr.datarule[0]=='Rule_6') {
+                let ab = Utils.algorithm.RandomArray(['w', 'q', 'b', 's', 'g'], that.tabcurr.datarule[1])
+                let newab = new Array(that.tabcurr.datarule[1])
+                ab.map(function (res) {
+                    if (res == 'w') {
+                        newab[0] = 'w'
+                    }
+                    if (res == 'q') {
+                        newab[1] = 'q'
+                    }
+                    if (res == 'b') {
+                        newab[2] = 'b'
+                    }
+                    if (res == 's') {
+                        newab[3] = 's'
+                    }
+                    if (res == 'g') {
+                        newab[4] = 'g'
+                    }
+                })
+                for (var k = 0; k < newab.length; k++) {
+                    if (newab[k] == "" || typeof (newab[k]) == "undefined") {
+                        newab.splice(k, 1);
+                        k--;
+                    }
+                }
+                for (var k = 0; k < that.tabcurr.datarule[1]; k++) {
+                    redata.name = that.tabcurr.datarule[0]=='Rule_6'?redata.name + that.abotitle[newab[k]]+'位':redata.name + that.abotitle[newab[k]]
+                }
+            }
 			redata.multiple = that.multiple_input.value
 			redata.model = that.model
 			redata.count = 1
@@ -2102,9 +2765,9 @@ export class FFCofficialComponent implements OnInit {
 			that.orderinfo.total = that.sureballlist.length;
 			that.orderinfo.betcount = that.orderinfo.betcount + redata.count;
 			that.orderinfo.money = Utils.algorithm.add(that.orderinfo.money.toFixed(2),redata.sum);
-			console.log(that.sureballlist)
 		}
-	}
+    }
+    
 	addrem(item){
 		//倍数锁
 		if (this.lock_multible) {

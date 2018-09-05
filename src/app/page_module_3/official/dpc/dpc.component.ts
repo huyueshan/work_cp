@@ -1210,6 +1210,7 @@ export class DPCofficialComponent implements OnInit {
       active: 15
     }
   ];
+ 
   menu_2 = []; //存储当前一级导航对应的耳机导航
   ball_tab = {
     1: [
@@ -3074,7 +3075,6 @@ export class DPCofficialComponent implements OnInit {
         that.orderinfo.money.toFixed(2),
         redata.sum
       );
-      console.log(that.tabcurr);
     }
   }
 

@@ -1112,27 +1112,20 @@ export class KLCofficialComponent implements OnInit {
         this.route.params.subscribe(data=>str=data.id);
         this.router.navigate(['/lottery/creditklc', str]);
       }
-    // 计算当前点击投注信息
-    countbet(totalbet) {
-        if (!totalbet) {
-            return;
-        }
-        let sum, amount;
-        sum =
-            (this.multiple_input.value * totalbet * 2) / this.modelarr[this.model];
-        amount =
-            Math.round(
-                ((this.rangenum / this.modelarr[this.model]) *
-                    this.multiple_input.value -
-                    sum) *
-                100
-            ) / 100;
-        this.totalinfo = {
-            count: totalbet,
-            sum: sum,
-            amount: amount
-        };
-    }
+      // 计算当前点击投注信息
+      countbet(totalbet) {
+          if (!totalbet) {
+              return
+          }
+          let sum, amount;
+          sum = (this.multiple_input.value * totalbet * 2) / this.modelarr[this.model];
+          amount = Math.round((((this.rangenum / this.modelarr[this.model]) * this.multiple_input.value) - sum) * 100) / 100
+          this.totalinfo = {
+              count: totalbet,
+              sum: sum,
+              amount: amount
+          }
+      }
 
     //拖拽变数
     // 滑块左侧递减事件
@@ -1595,6 +1588,7 @@ export class KLCofficialComponent implements OnInit {
         } {
             Base._.removeArr(val, this.sureballlist)
         }
+        this.allbet(this.sureballlist)
     }
 	// 确认投注
 	affirm(){

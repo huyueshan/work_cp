@@ -270,29 +270,16 @@
 					</div>
 					</div>
 					<div *ngIf="up_ball==2" class="ball_box">
-						<div class="check_ballplace">	
-							<div class="til">
-								选择位置：
-							</div>
-							<div class="check_box">
-								<label><input type="checkbox"  name="" />万</label>
-								<label><input type="checkbox"  name="" />千</label>
-								<label><input type="checkbox"  name="" />百</label>
-								<label><input type="checkbox"  name="" />十</label>
-								<label><input type="checkbox"  name="" />个</label>
-							</div>
-							<div class="tips_right">
-								( 温馨提示：你选择了 <div class="orange_font">5</div> 个位置，系统会自动根据位置组合成 <div class="orange_font">10</div> 个方案 )
-							</div>
-						</div>
 						<div class="sumBtn_box">
 							<div class="left_input">
-								<textarea name="" id="" ></textarea>
+                                    <textarea name="" id="fileReader" (keyup) = "textball('fileReader')"></textarea>
 							</div>
 							<div class="btn_box">
-								<div class="rt_btn btnh_w120_h40" (click)="show_layer({'msg':'这就是我想说的话','til':'操作提示'})">删除重复号</div>
-								<div class="rt_btn btnh_w120_h40">导入文件</div>
-								<div class="rt_btn btnh_w120_h40">清空</div>
+								<div class="rt_btn btnh_w120_h40" (click)="delnum('fileReader')">删除重复号</div>
+								<div class="rt_btn btnh_w120_h40">导入文件
+									<input #uploadFile type="file" accept="text/plain" class="file-input" (change)="filetxt($event,'fileReader')" />
+								</div>
+								<div class="rt_btn btnh_w120_h40" (click)="clearfile('fileReader')">清空</div>
 							</div>
 							<div class="input_tips">
 									程序会自动过滤掉不合法的号码,您也可以点击  <span class="gray_font">"删除重复号"</span> 按钮对输入内容进行格式化。
@@ -306,12 +293,12 @@
 								<div class="chooseno">
 									<div class="helpbox">
 										<div class="tip1"> <span class='left_til'>{{now_tab1}}：</span>{{now_tab2}}</div>
-										<div class="hot_lost" [ngClass]="{hot_hidden:hothidden}">
-											<label><input #curel type="checkbox" (click)="checkomit(curel,'yl')" name="ballcheck" />遗漏</label>
-											<label><input #lr type="checkbox" (click)="checkomit(lr,'lr')" name="ballcheck" />冷热</label>
+										<div class="hot_lost" *ngIf="tabcurr.hot">
+											<label><input #curel type="checkbox" (click)="checkomit(curel,'yl')" name="ballcheck" [checked]="omitname==='当前遗漏'" />遗漏</label>
+											<label><input #lr type="checkbox" (click)="checkomit(lr,'lr')" name="ballcheck" [checked]="omitname==='当前冷热'" />冷热</label>
 										</div>
 										<div class="example_box">
-											<div class="example tip_btn"  style=""><i class="i2" (mouseenter)="show_tips('example',tips1)"  (mouseleave)="hid_tips('example',tips1)">示例</i>
+											<div class="example tip_btn"><i class="i2" (mouseenter)="show_tips('example',tips1)"  (mouseleave)="hid_tips('example',tips1)">示例</i>
 												<div class="tips" #tips1 [ngClass]="{tipshidden:tips_hidden}">
 													<span [innerHtml]='now_tips'></span>
 												</div>
@@ -378,7 +365,10 @@
 										</div>
 									</div>
 									<em class="btnaddrem" (click)="rangevalueadd()">+</em><span class="title ml10">{{rangenum}}</span>
-									<span class="comtext"> 共选 <em>{{totalinfo.count}}</em>注，共投<em>{{totalinfo.sum}}</em>元，盈利<em>{{totalinfo.amount}}</em>元</span>
+                                    <span class="comtext">{{now_lang.Ball_tab.All_choose}}
+                                        <em>{{totalinfo.count}}</em>{{now_lang.Ball_tab.Ticket}}，{{now_lang.Ball_tab.All_pay}}
+                                        <em>{{totalinfo.sum}}</em>{{now_lang.Ball_tab.Yuan}}， {{now_lang.Ball_tab.Profit}}
+                                        <em>{{totalinfo.amount}}</em>{{now_lang.Ball_tab.Yuan}}</span>
 								</div>
 							</div>
 							<div class="tip">

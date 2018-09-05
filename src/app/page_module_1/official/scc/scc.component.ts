@@ -288,7 +288,8 @@ export class SCCofficialComponent implements OnInit {
           arr: ["cgj"],
           format: ["n"],
           datarule: ["Rule_3", 1],
-          addzero: true
+          addzero: true,
+          hot:true
         }
       ],
       active: 1
@@ -302,7 +303,8 @@ export class SCCofficialComponent implements OnInit {
           arr: ["cgj", "cyj"],
           format: ["n|n"],
           datarule: ["Rule_11", 1],
-          addzero: true
+          addzero: true,
+          hot:true
         },
         {
           name: this.now_lang.Lot_tab.guess_12_even,
@@ -325,7 +327,8 @@ export class SCCofficialComponent implements OnInit {
           arr: ["cgj", "cyj", "cjj"],
           format: ["n|n|n"],
           datarule: ["Rule_11", 1],
-          addzero: true
+          addzero: true,
+          hot:true
         },
         {
           name: this.now_lang.Lot_tab.guess_123_even,
@@ -348,7 +351,8 @@ export class SCCofficialComponent implements OnInit {
           arr: ["dy", "de", "ds", "dsi"],
           format: ["n|n|n|n"],
           datarule: ["Rule_11", 1],
-          addzero: true
+          addzero: true,
+          hot:true
         },
         {
           name: this.now_lang.Lot_tab.guess_1234_even,
@@ -371,7 +375,8 @@ export class SCCofficialComponent implements OnInit {
           arr: ["dy", "de", "ds", "dsi", "dw"],
           format: ["n|n|n|n|n"],
           datarule: ["Rule_11", 1],
-          addzero: true
+          addzero: true,
+          hot:true
         },
         {
           name: this.now_lang.Lot_tab.guess_12345_even,
@@ -394,12 +399,14 @@ export class SCCofficialComponent implements OnInit {
           arr: ["dy", "de", "ds", "dsi", "dw", "dl", "dq", "db", "dj", "dshi"],
           format: ["n"],
           datarule: ["Rule_6", 10],
-          addzero: true
+          addzero: true,
+          hot:true
         }
       ],
       active: 6
     }
   ];
+ 
   menu_2 = []; //存储当前一级导航对应的耳机导航
   ball_tab = {
     1: [
@@ -1426,24 +1433,20 @@ export class SCCofficialComponent implements OnInit {
 	qdfunc(){
 		this.addball(this.menu_2,this.ballcurr.status)
 	}
-  // 计算当前点击投注信息
-  countbet(totalbet) {
-    let sum, amount;
-    sum =
-      (this.multiple_input.value * totalbet * 2) / this.modelarr[this.model];
-    amount =
-      Math.round(
-        ((this.rangenum / this.modelarr[this.model]) *
-          this.multiple_input.value -
-          sum) *
-          100
-      ) / 100;
-    this.totalinfo = {
-      count: totalbet,
-      sum: sum,
-      amount: amount
-    };
-  }
+    // 计算当前点击投注信息
+    countbet(totalbet) {
+        if (!totalbet) {
+            return
+        }
+        let sum, amount;
+        sum = (this.multiple_input.value * totalbet * 2) / this.modelarr[this.model];
+        amount = Math.round((((this.rangenum / this.modelarr[this.model]) * this.multiple_input.value) - sum) * 100) / 100
+        this.totalinfo = {
+            count: totalbet,
+            sum: sum,
+            amount: amount
+        }
+    }
 
   // 改变金额模式
   modelchange(count) {

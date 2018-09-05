@@ -363,7 +363,8 @@ export class SCCofficialComponent implements OnInit {
           arr: ["cgj"],
           format: ["n"],
           datarule: ["Rule_3", 1],
-          addzero: true
+          addzero: true,
+          hot:true
         }
       ],
       active: 1
@@ -377,7 +378,8 @@ export class SCCofficialComponent implements OnInit {
           arr: ["cgj", "cyj"],
           format: ["n|n"],
           datarule: ["Rule_11", 1],
-          addzero: true
+          addzero: true,
+          hot:true
         },
         {
           name: this.now_lang.Lot_tab.guess_12_even,
@@ -400,7 +402,8 @@ export class SCCofficialComponent implements OnInit {
           arr: ["cgj", "cyj", "cjj"],
           format: ["n|n|n"],
           datarule: ["Rule_11", 1],
-          addzero: true
+          addzero: true,
+          hot:true
         },
         {
           name: this.now_lang.Lot_tab.guess_123_even,
@@ -423,7 +426,8 @@ export class SCCofficialComponent implements OnInit {
           arr: ["dy", "de", "ds", "dsi"],
           format: ["n|n|n|n"],
           datarule: ["Rule_11", 1],
-          addzero: true
+          addzero: true,
+          hot:true
         },
         {
           name: this.now_lang.Lot_tab.guess_1234_even,
@@ -446,7 +450,8 @@ export class SCCofficialComponent implements OnInit {
           arr: ["dy", "de", "ds", "dsi", "dw"],
           format: ["n|n|n|n|n"],
           datarule: ["Rule_11", 1],
-          addzero: true
+          addzero: true,
+          hot:true
         },
         {
           name: this.now_lang.Lot_tab.guess_12345_even,
@@ -469,12 +474,14 @@ export class SCCofficialComponent implements OnInit {
           arr: ["dy", "de", "ds", "dsi", "dw", "dl", "dq", "db", "dj", "dshi"],
           format: ["n"],
           datarule: ["Rule_6", 10],
-          addzero: true
+          addzero: true,
+          hot:true
         }
       ],
       active: 6
     }
   ];
+ 
   menu_2 = []; //存储当前一级导航对应的耳机导航
   ball_tab = {
     1: [
@@ -581,7 +588,6 @@ export class SCCofficialComponent implements OnInit {
     }
   }
   check_lot(item){
-    console.log(item.checkon)
     let that = this;
     if (item.checkon) {
       if (item.multiple == 0) {
@@ -594,7 +600,6 @@ export class SCCofficialComponent implements OnInit {
       item.take_money = 0;
     }
     that.repanel_data()
-    console.log(that.lotdata_now)
   }
   // 生成计划
   produce_plan(){
@@ -1003,14 +1008,6 @@ export class SCCofficialComponent implements OnInit {
   }
   // 自带钩子监听
   ngDoCheck() {
-    if (
-      this.totalinfo.sum > 0 &&
-      this.rangenum !=
-        (this.totalinfo.amount + this.totalinfo.sum) /
-          parseFloat(this.multiple_input.value)
-    ) {
-      this.countbet(this.ballcurr.totalbet);
-    }
   }
   // 拖动条函数
   drag_tag() {
@@ -1049,9 +1046,6 @@ export class SCCofficialComponent implements OnInit {
   // 时时彩一级导航切换
   tabmenu(data) {
     let that = this;
-    console.log(data)
-
-
     if (data.href) {
       that.router.navigateByUrl(data.href);
     } else {

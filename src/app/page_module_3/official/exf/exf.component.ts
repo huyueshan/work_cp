@@ -58,11 +58,11 @@ export class EXFofficialComponent implements OnInit {
         money: 0
     };
     abotitle: any = {
-        w: "万",
-        q: "千",
-        b: "百",
-        s: "十",
-        g: "个"
+        dyw: "第一位",
+        dew: "第二位",
+        dsw: "第三位",
+        dsiw: "第四位",
+        dww: "第五位",
     };
     // 所有要用到的号码
     match_tab: any = {
@@ -591,7 +591,7 @@ export class EXFofficialComponent implements OnInit {
                 index: 1,
                 arr: ["dyw", "dew", "dsw", "dsiw", "dww"],
                 format: ["n"],
-                datarule: ["Rule_6", 5],
+                datarule: ["Rule_6", 1],
 				addzero:true
             }],
             active: 3
@@ -2356,6 +2356,39 @@ export class EXFofficialComponent implements OnInit {
             let redata: any = {};
             redata.ball = Utils.Randomrule_1(obj);
             redata.name = that.currtabname;
+            if (that.tabcurr.choose || that.tabcurr.datarule[0] == "Rule_6") {
+              let ab = Utils.algorithm.RandomArray(
+                ["dyw", "dew", "dsw", "dsiw", "dww"],
+                that.tabcurr.datarule[1]
+              );
+              let newab = new Array(that.tabcurr.datarule[1]);
+              ab.map(function(res) {
+                if (res == "dyw") {
+                  newab[0] = "dyw";
+                }
+                if (res == "dew") {
+                  newab[1] = "dew";
+                }
+                if (res == "dsw") {
+                  newab[2] = "dsw";
+                }
+                if (res == "dsiw") {
+                  newab[3] = "dsiw";
+                }
+                if (res == "dww") {
+                  newab[4] = "dww";
+                }
+              });
+              for (var k = 0; k < newab.length; k++) {
+                if (newab[k] == "" || typeof newab[k] == "undefined") {
+                  newab.splice(k, 1);
+                  k--;
+                }
+              }
+              for (var k = 0; k < that.tabcurr.datarule[1]; k++) {
+                redata.name = redata.name + that.abotitle[newab[k]];
+              }
+            }
             redata.multiple = that.multiple_input.value;
             redata.model = that.model;
             redata.count = 1;

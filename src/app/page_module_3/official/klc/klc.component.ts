@@ -351,27 +351,27 @@ export class KLCofficialComponent implements OnInit {
 
 
     public items_show = {
-        'bjkl8_ffc': {
+        'bjkl8_klc': {
             'tabitem': [this.now_lang.Lot_tab.any_choose, this.now_lang.Lot_tab.Interest],
             'reward_show': false,
             'name': this.now_lang.lot_type.bjkl8_klc
         },
-        'twbg_ffc': {
+        'twbg_klc': {
             'tabitem': [this.now_lang.Lot_tab.any_choose, this.now_lang.Lot_tab.Interest],
             'reward_show': false,
             'name': this.now_lang.lot_type.twbg_klc
         },
-        'jndkl8_ffc': {
+        'jndkl8_klc': {
             'tabitem': [this.now_lang.Lot_tab.any_choose, this.now_lang.Lot_tab.Interest, this.now_lang.Lot_tab.sum, this.now_lang.Lot_tab.pan],
             'reward_show': false,
             'name': this.now_lang.lot_type.jndkl8_klc
         },
-        'azkl8_ffc': {
+        'azkl8_klc': {
             'tabitem': [this.now_lang.Lot_tab.any_choose, this.now_lang.Lot_tab.Interest, this.now_lang.Lot_tab.sum, this.now_lang.Lot_tab.pan],
             'reward_show': false,
             'name': this.now_lang.lot_type.azkl8_klc
         },
-        'slfk_ffc': {
+        'slfk_klc': {
             'tabitem': [this.now_lang.Lot_tab.any_choose, this.now_lang.Lot_tab.Interest, this.now_lang.Lot_tab.sum, this.now_lang.Lot_tab.pan],
             'reward_show': false,
             'name': this.now_lang.lot_type.slfk_klc
@@ -417,7 +417,8 @@ export class KLCofficialComponent implements OnInit {
     ];
 
     // 2级tab数据以及对应要显示的内容
-    menu_2_data = [{
+    menu_2_data = [
+        {
             title: this.now_lang.Lot_tab.any_choose,
             menu: [{
                 name: this.now_lang.Lot_tab.choose_one,
@@ -548,6 +549,7 @@ export class KLCofficialComponent implements OnInit {
         }
 
     ]
+    
     menu_2 = []; //存储当前一级导航对应的耳机导航
     ball_tab = {
         1: [this.now_lang.Ball_tab.All, this.now_lang.Ball_tab.Big, this.now_lang.Ball_tab.Small, this.now_lang.Ball_tab.Odd, this.now_lang.Ball_tab.Even, this.now_lang.Ball_tab.Clear],
@@ -1071,7 +1073,7 @@ export class KLCofficialComponent implements OnInit {
     getPageId() {
 
         let idarray = this.router.url.split("/");
-        this.nowPageId = idarray[idarray.length - 1] + '_ffc';
+        this.nowPageId = idarray[idarray.length - 1] + '_klc';
         this.nowitems = this.items_show[this.nowPageId];
     }
 
@@ -1117,9 +1119,6 @@ export class KLCofficialComponent implements OnInit {
     }
     // 自带钩子监听
     ngDoCheck() {
-        if (this.totalinfo.sum > 0 && this.rangenum != (this.totalinfo.amount + this.totalinfo.sum) / parseFloat(this.multiple_input.value)) {
-            this.countbet(this.ballcurr.totalbet)
-        }
     }
     // 滑块左侧递加事件
     rangevalueadd() {
@@ -1525,11 +1524,13 @@ export class KLCofficialComponent implements OnInit {
 
     // 删除号码
     delball(type, val) {
-        if (type == 'clear') {
-            this.sureballlist = []
-        } {
-            Base._.removeArr(val, this.sureballlist)
-        }
+      if (type == "clear") {
+        this.sureballlist = [];
+      }
+      {
+        Base._.removeArr(val, this.sureballlist);
+      }
+      this.allbet(this.sureballlist);
     }
 	// 确认投注
 	affirm(){

@@ -230,7 +230,7 @@
         </div>
     </div>
     <div class="conbox">
-        <div class="content" style="margin-top:30px;">
+        <div class="content">
             <app-credtop type="exf" [indata]="cpnav"></app-credtop>
             <div class="sscorder">
                 <div class="sscleft">
@@ -264,10 +264,6 @@
                             <span>{{menu_1[status.menu_1 - 1].name}}：{{currtabname}}</span>
                         </div>
                         <div class="helpbox">
-                            <div class="sbtnbox" *ngIf="tabcurr.hot">
-                                <span class="sbtn" [ngClass]="{active:omitname==='当前遗漏'}" (click)="checkomit('yl')">{{now_lang.Ball_tab.Miss}}</span>
-                                <span class="sbtn" [ngClass]="{active:omitname==='当前冷热'}" (click)="checkomit('lr')">{{now_lang.Ball_tab.Hot_cold}}</span>
-                            </div>
                             <div class="tip">
                                 {{now_description}}
                             </div>

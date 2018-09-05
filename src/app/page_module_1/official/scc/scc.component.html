@@ -256,12 +256,10 @@
                     </div>
                     <div class="chooseno">
                         <div class="helpbox">
-                            <div class="hot_lost" [ngClass]="{hot_hidden:hothidden}">
-                                <label>
-                                    <input #curel type="checkbox" (click)="checkomit(curel,'yl')" name="ballcheck" />{{now_lang.Ball_tab.Miss}}</label>
-                                <label>
-                                    <input #lr type="checkbox" (click)="checkomit(lr,'lr')" name="ballcheck" />{{now_lang.Ball_tab.Hot_cold}}</label>
-                            </div>
+                                <div class="hot_lost" *ngIf="tabcurr.hot">
+                                    <label><input #curel type="checkbox" (click)="checkomit(curel,'yl')" name="ballcheck" [checked]="omitname==='当前遗漏'" />遗漏</label>
+                                    <label><input #lr type="checkbox" (click)="checkomit(lr,'lr')" name="ballcheck" [checked]="omitname==='当前冷热'" />冷热</label>
+                                </div>
                             <div class="tip">
                                 <i></i>
                                 {{now_description}}

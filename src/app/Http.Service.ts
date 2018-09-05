@@ -88,7 +88,7 @@ export class HttpInterceptorService {
     let msg = '网络请求失败';  
     if (error['status'] == 0) {  
 		msg = '网络请求失败';  
-		alert(msg)
+		// alert(msg)
     }  
     if (error['status'] == 400) {  
 		msg = '请求参数正确';  

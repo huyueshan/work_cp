@@ -320,7 +320,7 @@ export class FFCofficialComponent implements OnInit {
 		},
 		{
 			title:this.now_lang.Lot_tab.Gall,
-			menu:[{name:this.now_lang.Lot_tab.Gall,index:1,arr:['w','q','b','s','g'],format: ["n"],datarule:['Rule_6',5]}],
+			menu:[{name:this.now_lang.Lot_tab.Gall,index:1,arr:['w','q','b','s','g'],format: ["n"],datarule:['Rule_6',1]}],
 			active:8
 		},
 		{
@@ -1894,7 +1894,7 @@ export class FFCofficialComponent implements OnInit {
 				if(that.ballcurr.ball[i]!=''){
 					let obj:any={}
 					obj.ball = that.ballcurr.ball[i]
-					obj.name = that.currtabname
+					obj.name = arrob[0].menu[0].datarule[0]=='Rule_6'?that.currtabname+that.ball_data[that.tabcurr.arr[i]].title:that.currtabname
 					obj.multiple = that.multiple_input.value
 					obj.model = that.model
 					obj.count = arrob[0].menu[0].datarule[0]=='Rule_6'?that.ballcurr.allarr[i].length:that.totalinfo.count
@@ -1962,37 +1962,36 @@ export class FFCofficialComponent implements OnInit {
 			let redata:any = {}
 			redata.ball = Utils.Randomrule(obj)
 			redata.name=that.currtabname
-			if(that.tabcurr.choose){
-				let ab = Utils.algorithm.RandomArray(['w','q','b','s','g'],that.tabcurr.datarule[1])
-				console.log(ab)
-				let newab = new Array(that.tabcurr.datarule[1])
-				ab.map(function(res){
-					if(res=='w'){
-						newab[0] = 'w'
-					}
-					if(res=='q'){
-						newab[1] = 'q'
-					}
-					if(res=='b'){
-						newab[2] = 'b'
-					}
-					if(res=='s'){
-						newab[3] = 's'
-					}
-					if(res=='g'){
-						newab[4] = 'g'
-					}
-				})
-				for(var k=0; k<newab.length; k++){
-					if(newab[k] == "" || typeof(newab[k]) == "undefined"){
-						 newab.splice(k,1);
-						  k--;
-					}
-				}
-				for(var k=0;k<that.tabcurr.datarule[1];k++){
-					redata.name = redata.name + that.abotitle[newab[k]]
-				}
-			}
+            if (that.tabcurr.choose || that.tabcurr.datarule[0]=='Rule_6') {
+                let ab = Utils.algorithm.RandomArray(['w', 'q', 'b', 's', 'g'], that.tabcurr.datarule[1])
+                let newab = new Array(that.tabcurr.datarule[1])
+                ab.map(function (res) {
+                    if (res == 'w') {
+                        newab[0] = 'w'
+                    }
+                    if (res == 'q') {
+                        newab[1] = 'q'
+                    }
+                    if (res == 'b') {
+                        newab[2] = 'b'
+                    }
+                    if (res == 's') {
+                        newab[3] = 's'
+                    }
+                    if (res == 'g') {
+                        newab[4] = 'g'
+                    }
+                })
+                for (var k = 0; k < newab.length; k++) {
+                    if (newab[k] == "" || typeof (newab[k]) == "undefined") {
+                        newab.splice(k, 1);
+                        k--;
+                    }
+                }
+                for (var k = 0; k < that.tabcurr.datarule[1]; k++) {
+                    redata.name = that.tabcurr.datarule[0]=='Rule_6'?redata.name + that.abotitle[newab[k]]+'位':redata.name + that.abotitle[newab[k]]
+                }
+            }
 			redata.multiple = that.multiple_input.value
 			redata.model = that.model
 			redata.count = 1
@@ -2002,7 +2001,6 @@ export class FFCofficialComponent implements OnInit {
 			that.orderinfo.total = that.sureballlist.length;
 			that.orderinfo.betcount = that.orderinfo.betcount + redata.count;
 			that.orderinfo.money = Utils.algorithm.add(that.orderinfo.money.toFixed(2),redata.sum);
-			console.log(that.sureballlist)
 		}
 	}
 	

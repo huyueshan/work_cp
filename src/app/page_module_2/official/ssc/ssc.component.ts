@@ -298,7 +298,8 @@ export class SSCofficialComponent implements OnInit {
     //路由id
     public routid;
     // 一级tab
-    menu_1 = [{
+    menu_1 = [
+        {
             name: this.now_lang.Lot_tab.Five_star,
             active: 1
         },
@@ -361,14 +362,16 @@ export class SSCofficialComponent implements OnInit {
     ];
 
     // 2级tab数据以及对应要显示的内容
-    menu_2_data = [{
+    menu_2_data = [
+        {
             title: this.now_lang.Lot_tab.Five_star_str,
             menu: [{
                     name: this.now_lang.Lot_tab.Five_star_eve,
                     index: 1,
                     arr: ['w', 'q', 'b', 's', 'g'],
                     format: ["n|n|n|n|n"],
-                    datarule: ['Rule_1', 5]
+                    datarule: ['Rule_1', 5],
+                    hot:true
                 },
                 {
                     name: this.now_lang.Lot_tab.Five_star_odd,
@@ -383,7 +386,8 @@ export class SSCofficialComponent implements OnInit {
                     index: 3,
                     arr: ['w', 'q', 'b', 's', 'g'],
                     format: ["n|n|n|n|n"],
-                    datarule: ['Rule_2', 5]
+                    datarule: ['Rule_2', 5],
+                    hot:true
                 }
             ],
             active: 1
@@ -436,7 +440,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['w', 'q', 'b', 's'],
                 format: ["n|n|n|n"],
-                datarule: ['Rule_1', 4]
+                datarule: ['Rule_1', 4],
+                hot:true
             }, {
                 name: this.now_lang.Lot_tab.ForF_star_odd,
                 index: 2,
@@ -449,7 +454,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 3,
                 arr: ['w', 'q', 'b', 's'],
                 format: ["n|n|n|n"],
-                datarule: ['Rule_2', 4]
+                datarule: ['Rule_2', 4],
+                hot:true
             }],
             active: 2
         },
@@ -489,7 +495,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['q', 'b', 's', 'g'],
                 format: ["n|n|n|n"],
-                datarule: ['Rule_1', 4]
+                datarule: ['Rule_1', 4],
+                hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackF_star_odd,
                 index: 2,
@@ -502,7 +509,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 3,
                 arr: ['q', 'b', 's', 'g'],
                 format: ["n|n|n|n"],
-                datarule: ['Rule_2', 4]
+                datarule: ['Rule_2', 4],
+                hot:true
             }],
             active: 3
         },
@@ -542,7 +550,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['b', 's', 'g'],
                 format: ["n|n|n"],
-                datarule: ['Rule_1', 3]
+                datarule: ['Rule_1', 3],
+                hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackT_star_odd,
                 index: 2,
@@ -596,7 +605,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['w', 'q', 'b'],
                 format: ["n|n|n"],
-                datarule: ['Rule_1', 3]
+                datarule: ['Rule_1', 3],
+                hot:true
             }, {
                 name: this.now_lang.Lot_tab.ForT_str_odd,
                 index: 2,
@@ -652,7 +662,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['q', 'b', 's'],
                 format: ["n|n|n"],
-                datarule: ['Rule_1', 3]
+                datarule: ['Rule_1', 3],
+                hot:true
             }, {
                 name: this.now_lang.Lot_tab.MidT_str_odd,
                 index: 2,
@@ -706,7 +717,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['s', 'g'],
                 format: ["n|n"],
-                datarule: ['Rule_1', 2]
+                datarule: ['Rule_1', 2],
+                hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackTwo_str_odd,
                 index: 2,
@@ -719,7 +731,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 3,
                 arr: ['w', 'q'],
                 format: ["n|n"],
-                datarule: ['Rule_1', 2]
+                datarule: ['Rule_1', 2],
+                hot:true
             }, {
                 name: this.now_lang.Lot_tab.ForTwo_str_odd,
                 index: 4,
@@ -792,7 +805,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['w', 'q', 'b', 's', 'g'],
                 format: ["n"],
-                datarule: ['Rule_6', 1]
+                datarule: ['Rule_6', 1],
+                hot:true
             }],
             active: 8
         },
@@ -1037,6 +1051,7 @@ export class SSCofficialComponent implements OnInit {
             active: 14
         }
     ]
+     
     menu_2 = []; //存储当前一级导航对应的耳机导航
     ball_tab = {
         1: [this.now_lang.Ball_tab.All, this.now_lang.Ball_tab.Big, this.now_lang.Ball_tab.Small, this.now_lang.Ball_tab.Odd, this.now_lang.Ball_tab.Even, this.now_lang.Ball_tab.Clear],
@@ -2437,7 +2452,6 @@ export class SSCofficialComponent implements OnInit {
             }
         }
     }
-
     countabo: any = {
         count: 5,
         plan: 10

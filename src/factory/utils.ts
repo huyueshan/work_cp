@@ -322,7 +322,7 @@ const Matchrule = {
 			let res = ''
 			for(var j=0;j<allarr[i].length;j++){
 				if(len.addzero){
-					var a = allarr[i][j]>10?allarr[i][j]:'0'+allarr[i][j]
+					var a = allarr[i][j]>=10?allarr[i][j]:'0'+allarr[i][j]
 					res = res!=''?res+'|'+a:res+a
 				}else{
 					res = res!=''?res+'|'+allarr[i][j]:res+allarr[i][j]

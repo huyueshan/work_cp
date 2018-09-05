@@ -458,6 +458,7 @@ export class K3officialComponent implements OnInit {
             active: 4
         }
     ]
+    
     menu_2 = []; //存储当前一级导航对应的耳机导航
     ball_tab = {
         1: [this.now_lang.Ball_tab.All, this.now_lang.Ball_tab.Big, this.now_lang.Ball_tab.Small, this.now_lang.Ball_tab.Odd, this.now_lang.Ball_tab.Even, this.now_lang.Ball_tab.Clear],
@@ -1540,7 +1541,7 @@ export class K3officialComponent implements OnInit {
             3: [],
             4: []
         }
-        this.ballcurr.status = false;
+        this.ballcurr = {};
         $('.numright').find('li').removeClass('active');
         this.totalinfo = {
             count: 0,
@@ -1603,7 +1604,7 @@ export class K3officialComponent implements OnInit {
                             for (let i = 0; i < dd.length; i++) {
                                 dd[i] = that.ball_data[that.tabcurr.arr[0]].match[dd[i]]
                             }
-                            obj.ball = dd.join(",")
+                            obj.ball = dd.join("|")
                         }else{
                             obj.ball = that.ballcurr.ball[i]
 
@@ -1644,6 +1645,7 @@ export class K3officialComponent implements OnInit {
         } {
             Base._.removeArr(val, this.sureballlist)
         }
+      this.allbet(this.sureballlist);
     }
 	// 确认投注
 	affirm(){

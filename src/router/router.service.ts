@@ -53,12 +53,14 @@ export class RouteguardService implements CanActivate{
 				return;
 			}
 			if(!Base.Store.get('isTemplet')){
-				this.hserve.post(Api.gettemple,{},)
-				.then(result => {  
-				  console.log("登录接口返回的信息是：" , result);//打印返回的数据  
-				  that.routerReconfig('1')
-				  resolve(true);
-				});
+				// this.hserve.post(',{},)
+				// .then(result => {  
+				  // console.log("登录接口返回的信息是：" , result);//打印返回的数据  
+				  // that.routerReconfig('1')
+				  // resolve(true);
+				// }); 
+				that.routerReconfig('1')
+				resolve(true);
 			}else{
 				that.routerReconfig(Base.Store.get('isTemplet'))
 				userModel.platform = true

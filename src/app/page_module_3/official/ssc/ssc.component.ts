@@ -411,7 +411,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['w', 'q', 'b', 's'],
                 format: ["n|n|n|n"],
-                datarule: ['Rule_1', 4]
+                datarule: ['Rule_1', 4],
+                hot:true
             }, {
                 name: this.now_lang.Lot_tab.ForF_star_odd,
                 index: 2,
@@ -424,7 +425,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 3,
                 arr: ['w', 'q', 'b', 's'],
                 format: ["n|n|n|n"],
-                datarule: ['Rule_2', 4]
+                datarule: ['Rule_2', 4],
+                hot:true
             }],
             active: 2
         },
@@ -464,7 +466,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['q', 'b', 's', 'g'],
                 format: ["n|n|n|n"],
-                datarule: ['Rule_1', 4]
+                datarule: ['Rule_1', 4],
+                hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackF_star_odd,
                 index: 2,
@@ -477,7 +480,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 3,
                 arr: ['q', 'b', 's', 'g'],
                 format: ["n|n|n|n"],
-                datarule: ['Rule_2', 4]
+                datarule: ['Rule_2', 4],
+                hot:true
             }],
             active: 3
         },
@@ -517,7 +521,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['b', 's', 'g'],
                 format: ["n|n|n"],
-                datarule: ['Rule_1', 3]
+                datarule: ['Rule_1', 3],
+                hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackT_star_odd,
                 index: 2,
@@ -571,7 +576,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['w', 'q', 'b'],
                 format: ["n|n|n"],
-                datarule: ['Rule_1', 3]
+                datarule: ['Rule_1', 3],
+                hot:true
             }, {
                 name: this.now_lang.Lot_tab.ForT_str_odd,
                 index: 2,
@@ -627,7 +633,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['q', 'b', 's'],
                 format: ["n|n|n"],
-                datarule: ['Rule_1', 3]
+                datarule: ['Rule_1', 3],
+                hot:true
             }, {
                 name: this.now_lang.Lot_tab.MidT_str_odd,
                 index: 2,
@@ -681,7 +688,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['s', 'g'],
                 format: ["n|n"],
-                datarule: ['Rule_1', 2]
+                datarule: ['Rule_1', 2],
+                hot:true
             }, {
                 name: this.now_lang.Lot_tab.BackTwo_str_odd,
                 index: 2,
@@ -694,7 +702,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 3,
                 arr: ['w', 'q'],
                 format: ["n|n"],
-                datarule: ['Rule_1', 2]
+                datarule: ['Rule_1', 2],
+                hot:true
             }, {
                 name: this.now_lang.Lot_tab.ForTwo_str_odd,
                 index: 4,
@@ -767,7 +776,8 @@ export class SSCofficialComponent implements OnInit {
                 index: 1,
                 arr: ['w', 'q', 'b', 's', 'g'],
                 format: ["n"],
-                datarule: ['Rule_6', 1]
+                datarule: ['Rule_6', 1],
+                hot:true
             }],
             active: 8
         },
@@ -1012,6 +1022,7 @@ export class SSCofficialComponent implements OnInit {
             active: 14
         }
     ]
+    
     menu_2 = []; //存储当前一级导航对应的耳机导航
     ball_tab = {
         1: [this.now_lang.Ball_tab.All, this.now_lang.Ball_tab.Big, this.now_lang.Ball_tab.Small, this.now_lang.Ball_tab.Odd, this.now_lang.Ball_tab.Even, this.now_lang.Ball_tab.Clear],
@@ -2694,7 +2705,6 @@ export class SSCofficialComponent implements OnInit {
             that.orderinfo.total = that.sureballlist.length;
             that.orderinfo.betcount = that.orderinfo.betcount + redata.count;
             that.orderinfo.money = Utils.algorithm.add(that.orderinfo.money.toFixed(2), redata.sum);
-            console.log(that.tabcurr);
         }
     }
 

@@ -414,7 +414,8 @@ export class KLCofficialComponent implements OnInit {
     ];
 
     // 2级tab数据以及对应要显示的内容
-    menu_2_data = [{
+    menu_2_data = [
+        {
             title: this.now_lang.Lot_tab.any_choose,
             menu: [{
                 name: this.now_lang.Lot_tab.choose_one,
@@ -545,6 +546,7 @@ export class KLCofficialComponent implements OnInit {
         }
 
     ]
+    
     menu_2 = []; //存储当前一级导航对应的耳机导航
     ball_tab = {
         1: [this.now_lang.Ball_tab.All, this.now_lang.Ball_tab.Big, this.now_lang.Ball_tab.Small, this.now_lang.Ball_tab.Odd, this.now_lang.Ball_tab.Even, this.now_lang.Ball_tab.Clear],
@@ -1069,24 +1071,11 @@ export class KLCofficialComponent implements OnInit {
     ngAfterViewInit() {
     }
     // 通过id获取目前显示的项目配置文件
-    public url_str :any = {
-        'now_til':'_klc',
-        'bjkl8_klc':'bjkl8_klc',
-        'twbg_klc':'twbg_klc',
-        'jndkl8_klc':'jndkl8_klc',
-        'azkl8_klc':'azkl8_klc',
-        'slfk_klc':'slfk_klc'
-    };
-    getPageId(){
-        let that = this;
+    getPageId() {
+
         let idarray = this.router.url.split("/");
-        that.nowPageId = idarray[idarray.length-1]+that.url_str.now_til;
-        if (that.url_str[that.nowPageId]) {
-            that.nowPageId = that.url_str[that.nowPageId];
-            that.nowitems = that.items_show[that.nowPageId];
-        }else{
-            console.error('url_str错误!');
-        }
+        this.nowPageId = idarray[idarray.length - 1] + '_klc';
+        this.nowitems = this.items_show[this.nowPageId];
     }
     inittab2() {
         let ulMax = $('.typetab').outerWidth();
@@ -1232,9 +1221,6 @@ export class KLCofficialComponent implements OnInit {
     }
     // 自带钩子监听
     ngDoCheck() {
-        if (this.totalinfo.sum > 0 && this.rangenum != (this.totalinfo.amount + this.totalinfo.sum) / parseFloat(this.multiple_input.value)) {
-            this.countbet(this.ballcurr.totalbet)
-        }
     }
     // 滑块左侧递加事件
     rangevalueadd() {
@@ -1688,6 +1674,7 @@ export class KLCofficialComponent implements OnInit {
         } {
             Base._.removeArr(val, this.sureballlist)
         }
+        this.allbet(this.sureballlist);
     }
 	// 确认投注
 	affirm(){

@@ -970,7 +970,7 @@ export class FFCofficialComponent implements OnInit {
           index: 1,
           arr: ["w", "q", "b", "s", "g"],
           format: ["n"],
-          datarule: ["Rule_6", 5],
+          datarule: ["Rule_6", 1],
           hot:true
         }
       ],
@@ -1255,6 +1255,7 @@ export class FFCofficialComponent implements OnInit {
       active: 14
     }
   ];
+  
   menu_2 = []; //存储当前一级导航对应的耳机导航
   ball_tab = {
     1: [
@@ -3055,7 +3056,7 @@ export class FFCofficialComponent implements OnInit {
         if (that.ballcurr.ball[i] != "") {
           let obj: any = {};
           obj.ball = that.ballcurr.ball[i];
-          obj.name = that.currtabname;
+          obj.name = arrob[0].menu[0].datarule[0]=='Rule_6'?that.currtabname+that.ball_data[that.tabcurr.arr[i]].title:that.currtabname;
           obj.multiple = that.multiple_input.value;
           obj.model = that.model;
           obj.count =
@@ -3110,75 +3111,67 @@ export class FFCofficialComponent implements OnInit {
       this.delball("clear", "");
     }
   }
-
+	
   // 随机选号号码
-  mathball(arr) {
-    let that = this;
-    let obj: any = {};
-    if (that.radom_input.value == 0) {
-      that.POPNOTE({ msg: "随机注数不能小于1" });
-      return;
-    }
-    arr.map(function(res) {
-      res.menu.map(function(data) {
-        if (data.index == that.status.menu_2) {
-          obj = data;
-        }
-      });
-    });
-
-    for (let i = 0; i < that.radom_input.value; i++) {
-      let redata: any = {};
-      redata.ball = Utils.Randomrule(obj);
-      redata.name = that.currtabname;
-      if (that.tabcurr.choose) {
-        let ab = Utils.algorithm.RandomArray(
-          ["w", "q", "b", "s", "g"],
-          that.tabcurr.datarule[1]
-        );
-        console.log(ab);
-        let newab = new Array(that.tabcurr.datarule[1]);
-        ab.map(function(res) {
-          if (res == "w") {
-            newab[0] = "w";
-          }
-          if (res == "q") {
-            newab[1] = "q";
-          }
-          if (res == "b") {
-            newab[2] = "b";
-          }
-          if (res == "s") {
-            newab[3] = "s";
-          }
-          if (res == "g") {
-            newab[4] = "g";
-          }
-        });
-        for (var k = 0; k < newab.length; k++) {
-          if (newab[k] == "" || typeof newab[k] == "undefined") {
-            newab.splice(k, 1);
-            k--;
-          }
-        }
-        for (var k = 0; k < that.tabcurr.datarule[1]; k++) {
-          redata.name = redata.name + that.abotitle[newab[k]];
-        }
+  mathball(arr){
+      let that = this
+      let obj:any = {}
+      if(that.radom_input.value==0){
+          that.POPNOTE({msg:'随机注数不能小于1'});
+          return
       }
-      redata.multiple = that.multiple_input.value;
-      redata.model = that.model;
-      redata.count = 1;
-      redata.sum = (2 * redata.multiple) / that.modelarr[redata.model];
-      redata.amount = that.totalinfo.amount;
-      that.sureballlist.push(redata);
-      that.orderinfo.total = that.sureballlist.length;
-      that.orderinfo.betcount = that.orderinfo.betcount + redata.count;
-      that.orderinfo.money = Utils.algorithm.add(
-        that.orderinfo.money.toFixed(2),
-        redata.sum
-      );
-      console.log(that.sureballlist);
-    }
+      arr.map(function(res){
+          res.menu.map(function(data){
+              if(data.index == that.status.menu_2){
+                  obj = data
+              }
+          })
+      })
+      
+      for(let i=0;i<that.radom_input.value;i++){
+          let redata:any = {}
+          redata.ball = Utils.Randomrule(obj)
+          redata.name=that.currtabname
+          if (that.tabcurr.choose || that.tabcurr.datarule[0]=='Rule_6') {
+              let ab = Utils.algorithm.RandomArray(['w', 'q', 'b', 's', 'g'], that.tabcurr.datarule[1])
+              let newab = new Array(that.tabcurr.datarule[1])
+              ab.map(function (res) {
+                  if (res == 'w') {
+                      newab[0] = 'w'
+                  }
+                  if (res == 'q') {
+                      newab[1] = 'q'
+                  }
+                  if (res == 'b') {
+                      newab[2] = 'b'
+                  }
+                  if (res == 's') {
+                      newab[3] = 's'
+                  }
+                  if (res == 'g') {
+                      newab[4] = 'g'
+                  }
+              })
+              for (var k = 0; k < newab.length; k++) {
+                  if (newab[k] == "" || typeof (newab[k]) == "undefined") {
+                      newab.splice(k, 1);
+                      k--;
+                  }
+              }
+              for (var k = 0; k < that.tabcurr.datarule[1]; k++) {
+                  redata.name = that.tabcurr.datarule[0]=='Rule_6'?redata.name + that.abotitle[newab[k]]+'位':redata.name + that.abotitle[newab[k]]
+              }
+          }
+          redata.multiple = that.multiple_input.value
+          redata.model = that.model
+          redata.count = 1
+          redata.sum = (2*redata.multiple) /that.modelarr[redata.model]
+          redata.amount = that.totalinfo.amount
+          that.sureballlist.push(redata)
+          that.orderinfo.total = that.sureballlist.length;
+          that.orderinfo.betcount = that.orderinfo.betcount + redata.count;
+          that.orderinfo.money = Utils.algorithm.add(that.orderinfo.money.toFixed(2),redata.sum);
+      }
   }
 
   addrem(item) {

@@ -392,7 +392,7 @@ export class K3officialComponent implements OnInit {
                 index: 2,
                 arr: ['etfx'],
                 format: ["n"],
-                datarule: ['Rule_12', 1],
+                datarule: ['Rule_13', 1],
                 square: true
             }],
             active: 1,
@@ -405,13 +405,13 @@ export class K3officialComponent implements OnInit {
                 index: 3,
                 arr: ['stdx'],
                 format: ["n"],
-                datarule: ['Rule_12', 1],
+                datarule: ['Rule_13', 1],
             }, {
                 name: this.now_lang.Lot_tab.Thr_number_eve,
                 index: 4,
                 arr: ['stfx'],
                 format: ["n"],
-                datarule: ['Rule_12', 1],
+                datarule: ['Rule_13', 1],
             }],
             active: 1
         },
@@ -423,6 +423,7 @@ export class K3officialComponent implements OnInit {
                 arr: ['dxds','hz'],
                 format: ["n"],
                 datarule: ['Rule_14', 1],
+                hot:true
             }],
             active: 2
         },
@@ -433,7 +434,7 @@ export class K3officialComponent implements OnInit {
                 index: 1,
                 arr: ['slhtx'],
                 format: ["n"],
-                datarule: ['Rule_12', 1],
+                datarule: ['Rule_14', 1],
             }],
             active: 3
         },
@@ -455,6 +456,7 @@ export class K3officialComponent implements OnInit {
             active: 4
         }
     ]
+   
     menu_2 = []; //存储当前一级导航对应的耳机导航
     ball_tab = {
         1: [this.now_lang.Ball_tab.All, this.now_lang.Ball_tab.Big, this.now_lang.Ball_tab.Small, this.now_lang.Ball_tab.Odd, this.now_lang.Ball_tab.Even, this.now_lang.Ball_tab.Clear],
@@ -1570,7 +1572,7 @@ export class K3officialComponent implements OnInit {
             4: []
         }
         this.omitname = '';
-        this.ballcurr.status = false;
+        this.ballcurr = {};
         $('.numright').find('li').removeClass('active');
         this.totalinfo = {
             count: 0,
@@ -1639,7 +1641,6 @@ export class K3officialComponent implements OnInit {
             that.POPNOTE({msg:'号码选择不完整，请重新选择'});
             return
         }
-        console.log('dfe',that.ballcurr);
         if (that.tabcurr.datarule[0] == 'Rule_14') {
             
             for (var i = 0; i < that.ballcurr.ball.length; i++) {
@@ -1648,7 +1649,6 @@ export class K3officialComponent implements OnInit {
                         if (that.tabcurr.datarule[1]>1) {
                             obj.ball = this.Csetball(that.ballcurr.allarr);
                         }else{
-                            console.log('dfef',that.tabcurr);
                             obj.ball = that.ball_data[that.tabcurr.arr[that.ballcurr.titleindex[i]]].match[that.ballcurr.ball[i]];
                         }
                         obj.name = that.currtabname;
@@ -1667,13 +1667,22 @@ export class K3officialComponent implements OnInit {
                     if (that.tabcurr.addzero) {
                         obj.ball = that.ballcurr.ball[i]
                     } else {
-                        obj.ball = that.tabcurr.datarule[0] == 'Rule_12' ? that.ball_data[that.tabcurr.arr[0]].match[that.ballcurr.ball[i]] : that.ballcurr.ball[i]
+                        if (that.tabcurr.datarule[0] == 'Rule_13') {
+                            let dd = that.ballcurr.ball[i].split(',')
+                            for (let i = 0; i < dd.length; i++) {
+                                dd[i] = that.ball_data[that.tabcurr.arr[0]].match[dd[i]]
+                            }
+                            obj.ball = dd.join("|")
+                        }else{
+                            obj.ball = that.ballcurr.ball[i]
+
+                        }
                     }
                     obj.name = that.tabcurr.datarule[0] == 'Rule_6' ? that.currtabname + that.ball_data[that.tabcurr.arr[i]].title : that.currtabname
                     obj.multiple = that.multiple_input.value
                     obj.model = that.model
-                    obj.count = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_12' ? that.ballcurr.allarr[i].length : that.totalinfo.count
-                    obj.sum = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_12' ? (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum : that.totalinfo.sum
+                    obj.count = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_13' ? that.ballcurr.allarr[i].length : that.totalinfo.count
+                    obj.sum = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_13' ? (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum : that.totalinfo.sum
                     obj.amount = that.totalinfo.amount
                     that.sureballlist.push(obj)
                 }
@@ -1704,6 +1713,7 @@ export class K3officialComponent implements OnInit {
         } {
             Base._.removeArr(val, this.sureballlist)
         }
+        this.allbet(this.sureballlist);
     }
 	// 确认投注
 	affirm(){
@@ -1734,8 +1744,6 @@ export class K3officialComponent implements OnInit {
             that.POPNOTE({msg:'随机注数不能小于1'});
             return
         }
-        console.log(arr);
-        
         
         for (let i = 0; i < that.radom_input.value; i++) {
             let b=this.setballdata(3) ;
@@ -1760,10 +1768,8 @@ export class K3officialComponent implements OnInit {
                     ball = ''+b[0]+'|'+b[1]+'|'+b[2];
                 }
             }
-            console.log(ball);
             let obj: any = {}
             obj.ball = ball;
-            // obj.ball = this.setballdata(that.status.menu_2).join(",");
             obj.name = that.currtabname
             obj.multiple = that.multiple_input.value;
             obj.model = that.model;
