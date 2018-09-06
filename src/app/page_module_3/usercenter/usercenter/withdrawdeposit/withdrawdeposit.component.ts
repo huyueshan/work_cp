@@ -54,7 +54,6 @@ export class WithdrawdepositComponent implements OnInit {
   ngOnInit() {}
 
   changereg() {
-    console.log("object");
     let v = this.customoney;
     v = v.replace(/\D/g, "");
     if (Number(v) === 0 || v === "") {

@@ -1552,18 +1552,17 @@ export class KLCofficialComponent implements OnInit {
                     if (that.tabcurr.addzero) {
                         obj.ball = that.ballcurr.ball[i]
                     } else {
-                        obj.ball = that.tabcurr.datarule[0] == 'Rule_12' ? that.ball_data[that.tabcurr.arr[0]].match[that.ballcurr.ball[i]] : that.ballcurr.ball[i]
+                        obj.ball =  that.ball_data[that.tabcurr.arr[0]].match[that.ballcurr.ball[i]]
                     }
-                    obj.name = that.tabcurr.datarule[0] == 'Rule_6' ? that.currtabname + that.ball_data[that.tabcurr.arr[i]].title : that.currtabname
+                    obj.name =  that.currtabname
                     obj.multiple = that.multiple_input.value
                     obj.model = that.model
-                    obj.count = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_12' ? that.ballcurr.allarr[i].length : that.totalinfo.count
-                    obj.sum = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_12' ? (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum : that.totalinfo.sum
+                    obj.count =  that.totalinfo.count
+                    obj.sum = that.totalinfo.sum
                     obj.amount = that.totalinfo.amount
                     that.sureballlist.push(obj)
                 }
             }
-
         }
         that.allbet(that.sureballlist)
         this.inittab()
@@ -1578,7 +1577,7 @@ export class KLCofficialComponent implements OnInit {
         }
         self.orderinfo.total = data.length;
         self.orderinfo.betcount = betcount;
-        self.orderinfo.money = sum;
+        self.orderinfo.money = parseFloat(sum.toFixed(3));
     }
 
     // 删除号码

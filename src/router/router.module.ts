@@ -145,10 +145,10 @@ const appRoutes: Routes = [
         canActivate: [RouteguardService]
     },
 	{
-        path: 'test',
-        loadChildren: '../app/page_module_3/test/detail.module#DetailModule',
+        path: 'index',
+		loadChildren: '../app/page_module_3/index/index.module#IndexModule',
 		canActivate: [RouteguardService]
-	},
+    },
     {
         path: 'forgetpass',
         loadChildren: '../app/page_module_3/forgetpass/forgetpass.module#ForgetpassModule',

@@ -2683,7 +2683,7 @@ export class FFCofficialComponent implements OnInit {
 		}
 		self.orderinfo.total = data.length;
 		self.orderinfo.betcount = betcount;
-		self.orderinfo.money = sum;
+        self.orderinfo.money = parseFloat(sum.toFixed(3));
 
 	}
 	

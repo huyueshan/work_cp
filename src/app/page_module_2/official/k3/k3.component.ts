@@ -54,6 +54,7 @@ export class K3officialComponent implements OnInit {
     public choosem_status = false // 当前选中的tab信息
 
     mathstatus = false // 随机按钮显示隐藏状态
+
     // 统计当前所有下注数据
     orderinfo: any = {
         "total": 0,
@@ -69,9 +70,9 @@ export class K3officialComponent implements OnInit {
     } //当前下注信息
     modelarr = [1, 10, 100, 1000] // 下注模式对应的要除以的金额
     // 传给弹窗组件数据
-    public  popoutInfo={
-        title:'string',
-        msg:'string',
+    public popoutInfo = {
+        title: 'string',
+        msg: 'string',
         event: false,
         show: false,
     }
@@ -152,8 +153,8 @@ export class K3officialComponent implements OnInit {
     public hothidden = true;
     public nowPageId: any = '';
     public nowitems: any = {};
-    public now_tab1 :any='';
-    public now_tab2 :any='';
+    public now_tab1: any = '';
+    public now_tab2: any = '';
     public userInfo = {
         name: '赌神',
         balance: '9999.99',
@@ -173,134 +174,131 @@ export class K3officialComponent implements OnInit {
     // 语言
     public now_lang: any = userModel.langpackage;
     public now_lang_type: any = 'zh';
-//追号数据
-    public lotdata = [
-        {
-            lot_num:'20181719',
-            multiple:0,
-            price:2,
-            take_money:0,
-            expire_time:'2018-06-11 15:19:30',
-            checkon:false
+    //追号数据
+    public lotdata = [{
+            lot_num: '20181719',
+            multiple: 0,
+            price: 2,
+            take_money: 0,
+            expire_time: '2018-06-11 15:19:30',
+            checkon: false
         },
         {
-            lot_num:'20181720',
-            multiple:0,
-            price:2,
-            take_money:0,
-            expire_time:'2018-06-11 15:19:30',
-            checkon:false
+            lot_num: '20181720',
+            multiple: 0,
+            price: 2,
+            take_money: 0,
+            expire_time: '2018-06-11 15:19:30',
+            checkon: false
         },
         {
-            lot_num:'20181721',
-            multiple:0,
-            price:2,
-            take_money:0,
-            expire_time:'2018-06-11 15:19:30',
-            checkon:false
+            lot_num: '20181721',
+            multiple: 0,
+            price: 2,
+            take_money: 0,
+            expire_time: '2018-06-11 15:19:30',
+            checkon: false
         }
     ]
     //追号提交数据
-    public lotdata_submit :any = [];
+    public lotdata_submit: any = [];
 
-    public typeoptiondata :any = [
-      5,
-      10,
-      15,
-      25,
-      'all'
+    public typeoptiondata: any = [
+        5,
+        10,
+        15,
+        25,
+        'all'
     ];
     // 复制追号数据
     public lotdata_now = $.extend(true, [], this.lotdata);
     // 追号配置
-    public chase_config_ori :any = {
-        multiple:1,
-        chase_amount:5,
-        select_amount:5,
-        chase_rule:{
-            number:1,
-            multiple:2
+    public chase_config_ori: any = {
+        multiple: 1,
+        chase_amount: 5,
+        select_amount: 5,
+        chase_rule: {
+            number: 1,
+            multiple: 2
         },
-        multiple_option:1
+        multiple_option: 1
     }
-    public Open_stop :any = false
-    public Win_stop :any = false
-    public chase_number_config :any = $.extend(true, {}, this.chase_config_ori);
+    public Open_stop: any = false
+    public Win_stop: any = false
+    public chase_number_config: any = $.extend(true, {}, this.chase_config_ori);
     //目前追号面板
-    public c_now_panel :any = 'one'
-    public chase_money :any = 0;
-    public chase_amount :any = 0;
-//追号数据结束
-	// 新增数据
-	public history_list :any = 
-	[
-        {
-        	number:'888888888888888888888',
-        	play_type:'三生万物',
-        	issues:'1234243234',
-        	time:'2018-10-10 10:10:10',
-        	balls:'01|02|03|04|05',
-        	multiple_model:'1倍/元',
-        	all_amount:'10金额',
-        	bonus:'121212',
-        	status:'已派奖'
+    public c_now_panel: any = 'one'
+    public chase_money: any = 0;
+    public chase_amount: any = 0;
+    //追号数据结束
+    // 新增数据
+    public history_list: any = [{
+            number: '888888888888888888888',
+            play_type: '三生万物',
+            issues: '1234243234',
+            time: '2018-10-10 10:10:10',
+            balls: '01|02|03|04|05',
+            multiple_model: '1倍/元',
+            all_amount: '10金额',
+            bonus: '121212',
+            status: '已派奖'
         },
         {
-        	number:'888888888888888888888',
-        	play_type:'三生万物',
-        	issues:'1234243234',
-        	time:'2018-10-10 10:10:10',
-        	balls:'01|02|03|04|05',
-        	multiple_model:'1倍/元',
-        	all_amount:'10金额',
-        	bonus:'121212',
-        	status:'已派奖'
+            number: '888888888888888888888',
+            play_type: '三生万物',
+            issues: '1234243234',
+            time: '2018-10-10 10:10:10',
+            balls: '01|02|03|04|05',
+            multiple_model: '1倍/元',
+            all_amount: '10金额',
+            bonus: '121212',
+            status: '已派奖'
         },
         {
-        	number:'888888888888888888888',
-        	play_type:'三生万物',
-        	issues:'1234243234',
-        	time:'2018-10-10 10:10:10',
-        	balls:'01|02|03|04|05',
-        	multiple_model:'1倍/元',
-        	all_amount:'10金额',
-        	bonus:'121212',
-        	status:'已派奖'
+            number: '888888888888888888888',
+            play_type: '三生万物',
+            issues: '1234243234',
+            time: '2018-10-10 10:10:10',
+            balls: '01|02|03|04|05',
+            multiple_model: '1倍/元',
+            all_amount: '10金额',
+            bonus: '121212',
+            status: '已派奖'
         },
         {
-        	number:'888888888888888888888',
-        	play_type:'三生万物',
-        	issues:'1234243234',
-        	time:'2018-10-10 10:10:10',
-        	balls:'01|02|03|04|05',
-        	multiple_model:'1倍/元',
-        	all_amount:'10金额',
-        	bonus:'121212',
-        	status:'已派奖'
+            number: '888888888888888888888',
+            play_type: '三生万物',
+            issues: '1234243234',
+            time: '2018-10-10 10:10:10',
+            balls: '01|02|03|04|05',
+            multiple_model: '1倍/元',
+            all_amount: '10金额',
+            bonus: '121212',
+            status: '已派奖'
         },
         {
-        	number:'888888888888888888888',
-        	play_type:'三生万物',
-        	issues:'1234243234',
-        	time:'2018-10-10 10:10:10',
-        	balls:'01|02|03|04|05',
-        	multiple_model:'1倍/元',
-        	all_amount:'10金额',
-        	bonus:'121212',
-        	status:'已派奖'
+            number: '888888888888888888888',
+            play_type: '三生万物',
+            issues: '1234243234',
+            time: '2018-10-10 10:10:10',
+            balls: '01|02|03|04|05',
+            multiple_model: '1倍/元',
+            all_amount: '10金额',
+            bonus: '121212',
+            status: '已派奖'
         },
         {
-        	number:'888888888888888888888',
-        	play_type:'三生万物',
-        	issues:'1234243234',
-        	time:'2018-10-10 10:10:10',
-        	balls:'01|02|03|04|05',
-        	multiple_model:'1倍/元',
-        	all_amount:'10金额',
-        	bonus:'121212',
-        	status:'已派奖'
+            number: '888888888888888888888',
+            play_type: '三生万物',
+            issues: '1234243234',
+            time: '2018-10-10 10:10:10',
+            balls: '01|02|03|04|05',
+            multiple_model: '1倍/元',
+            all_amount: '10金额',
+            bonus: '121212',
+            status: '已派奖'
         },
-        
+
     ];
     public items_show = {
         'jsk3_k3': {
@@ -420,10 +418,10 @@ export class K3officialComponent implements OnInit {
             menu: [{
                 name: this.now_lang.Lot_tab.sum,
                 index: 1,
-                arr: ['dxds','hz'],
+                arr: ['dxds', 'hz'],
                 format: ["n"],
                 datarule: ['Rule_14', 1],
-                hot:true
+                hot: true
             }],
             active: 2
         },
@@ -434,7 +432,7 @@ export class K3officialComponent implements OnInit {
                 index: 1,
                 arr: ['slhtx'],
                 format: ["n"],
-                datarule: ['Rule_14', 1],
+                datarule: ['Rule_13', 1],
             }],
             active: 3
         },
@@ -456,7 +454,7 @@ export class K3officialComponent implements OnInit {
             active: 4
         }
     ]
-   
+
     menu_2 = []; //存储当前一级导航对应的耳机导航
     ball_tab = {
         1: [this.now_lang.Ball_tab.All, this.now_lang.Ball_tab.Big, this.now_lang.Ball_tab.Small, this.now_lang.Ball_tab.Odd, this.now_lang.Ball_tab.Even, this.now_lang.Ball_tab.Clear],
@@ -747,25 +745,25 @@ export class K3officialComponent implements OnInit {
             square: true
         }
     };
-// 追号函数
+    // 追号函数
     typeoptchange() {
         let that = this;
         if (that.chase_number_config.select_amount == 'all') {
             that.chase_number_config.chase_amount = that.lotdata_now.length;
-        }else{
+        } else {
             that.chase_number_config.chase_amount = that.chase_number_config.select_amount;
         }
     }
-    check_lot(item){
+    check_lot(item) {
         console.log(item.checkon)
         let that = this;
         if (item.checkon) {
             if (item.multiple == 0) {
                 item.multiple = that.chase_number_config.multiple;
-                item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
+                item.take_money = item.multiple * item.price / that.modelarr[that.model] * that.sureballlist.length;
             }
 
-        }else{
+        } else {
             item.multiple = 0;
             item.take_money = 0;
         }
@@ -773,55 +771,55 @@ export class K3officialComponent implements OnInit {
         console.log(that.lotdata_now)
     }
     // 生成计划
-    produce_plan(){
+    produce_plan() {
         let that = this;
         that.lotdata_now = $.extend(true, [], that.lotdata);
-        let gap_number,gap_multiple,multiple,chase_amount;
+        let gap_number, gap_multiple, multiple, chase_amount;
         if (that.c_now_panel == 'two') {
             gap_number = that.chase_number_config.chase_rule.number;
             gap_multiple = that.chase_number_config.chase_rule.multiple;
             multiple = that.chase_number_config.multiple;
             chase_amount = that.chase_number_config.chase_amount;
-            if(chase_amount>that.lotdata_now.length){
+            if (chase_amount > that.lotdata_now.length) {
                 chase_amount = that.lotdata_now.length;
             }
-            for (var i = 0; i <= chase_amount-1; i++) {
-                console.log((i)%gap_number)
+            for (var i = 0; i <= chase_amount - 1; i++) {
+                console.log((i) % gap_number)
                 that.lotdata_now[i].checkon = true;
                 that.lotdata_now[i].multiple = multiple;
-                that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
-                if ((i+1)%gap_number == 0) {
-                    multiple = multiple*gap_multiple;
-                }; 
+                that.lotdata_now[i].take_money = multiple * that.lotdata_now[i].price / that.modelarr[that.model] * that.sureballlist.length;
+                if ((i + 1) % gap_number == 0) {
+                    multiple = multiple * gap_multiple;
+                };
 
-            };          
-        }else{
+            };
+        } else {
             multiple = that.chase_number_config.multiple;
             chase_amount = that.chase_number_config.chase_amount;
-            if(chase_amount>that.lotdata_now.length){
+            if (chase_amount > that.lotdata_now.length) {
                 chase_amount = that.lotdata_now.length;
             }
-            for (var i = 0; i <= chase_amount-1; i++) {
+            for (var i = 0; i <= chase_amount - 1; i++) {
 
                 that.lotdata_now[i].checkon = true;
                 that.lotdata_now[i].multiple = multiple;
-                that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
+                that.lotdata_now[i].take_money = multiple * that.lotdata_now[i].price / that.modelarr[that.model] * that.sureballlist.length;
             };
         }
         that.repanel_data()
     }
     //单个金钱计算
-    get_takemon(item,e){
+    get_takemon(item, e) {
         let that = this;
         if (item.multiple == 0) {
             item.checkon = false;
-        }else{
+        } else {
             item.checkon = true;
         }
         // for (var k = 0; k <= that.sureballlist.length-1; k++) {
 
         // }
-        item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
+        item.take_money = item.multiple * item.price / that.modelarr[that.model] * that.sureballlist.length;
         that.repanel_data()
     }
     changeregnum(e) {
@@ -835,38 +833,38 @@ export class K3officialComponent implements OnInit {
         }
     }
     // 总金钱总期数计算
-    repanel_data(){
+    repanel_data() {
         let that = this;
         let amount = 0;
         let chase_amount = 0;
-        for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-            for (var k = 0; k <= that.sureballlist.length-1; k++) {
-                amount = that.lotdata_now[i].multiple*that.lotdata_now[i].price/that.modelarr[that.model]+amount;
+        for (var i = 0; i <= that.lotdata_now.length - 1; i++) {
+            for (var k = 0; k <= that.sureballlist.length - 1; k++) {
+                amount = that.lotdata_now[i].multiple * that.lotdata_now[i].price / that.modelarr[that.model] + amount;
             }
             if (that.lotdata_now[i].checkon) {
-                chase_amount = chase_amount+1;
+                chase_amount = chase_amount + 1;
             };
         };
         that.chase_amount = chase_amount;
-        if(that.chase_amount>that.lotdata_now.length){
+        if (that.chase_amount > that.lotdata_now.length) {
             that.chase_amount = that.lotdata_now.length;
         }
         that.chase_money = amount;
     }
     //清空追号
-    rechase_data(){
+    rechase_data() {
         let that = this;
         that.lotdata_now = $.extend(true, [], that.lotdata);
         that.repanel_data()
     }
     //清空追号所有数据
-    rechase_dataall(){
+    rechase_dataall() {
         let that = this;
         that.lotdata_now = $.extend(true, [], that.lotdata);
         that.chase_number_config = $.extend(true, {}, that.chase_config_ori);
         that.repanel_data()
     }
-    tab_chase(para,item_one,item_two){
+    tab_chase(para, item_one, item_two) {
         let that = this;
         that.rechase_dataall();
         that.c_now_panel = para;
@@ -875,7 +873,7 @@ export class K3officialComponent implements OnInit {
             $(item_two).removeClass('active');
             $('.one').addClass('active')
             $('.two').removeClass('active')
-        }else if(para == 'two'){
+        } else if (para == 'two') {
             $(item_two).addClass('active');
             $(item_one).removeClass('active');
             $('.two').addClass('active')
@@ -883,98 +881,105 @@ export class K3officialComponent implements OnInit {
         }
     }
     //提交追号
-    submit_chase(){
+    submit_chase() {
         let that = this;
         //清空
         that.lotdata_submit = [];
-        for (var i = 0; i <= that.lotdata_now.length-1; i++) {
+        for (var i = 0; i <= that.lotdata_now.length - 1; i++) {
             console.log(that.lotdata_now[i].checkon != false)
             if (that.lotdata_now[i].checkon != false) {
-                for (var k = 0; k <= that.sureballlist.length-1; k++) {
-                        let rechase :any= {};
-                        rechase.Open_stop = that.Open_stop;
-                        rechase.Win_stop = that.Win_stop;
-                        rechase.multiple = that.lotdata_now[i].multiple;
-                        rechase.model = that.model;
-                        rechase.count = 1;
-                        rechase.sum = (2*rechase.multiple) /that.modelarr[rechase.model]
-                        rechase.amount = that.totalinfo.amount;
-                        rechase.ball = that.sureballlist[k].ball;
-                        rechase.name = that.sureballlist[k].name;
-                        rechase.issue = that.lotdata_now[i].lot_num;
-                        that.lotdata_submit.push(rechase)
+                for (var k = 0; k <= that.sureballlist.length - 1; k++) {
+                    let rechase: any = {};
+                    rechase.Open_stop = that.Open_stop;
+                    rechase.Win_stop = that.Win_stop;
+                    rechase.multiple = that.lotdata_now[i].multiple;
+                    rechase.model = that.model;
+                    rechase.count = 1;
+                    rechase.sum = (2 * rechase.multiple) / that.modelarr[rechase.model]
+                    rechase.amount = that.totalinfo.amount;
+                    rechase.ball = that.sureballlist[k].ball;
+                    rechase.name = that.sureballlist[k].name;
+                    rechase.issue = that.lotdata_now[i].lot_num;
+                    that.lotdata_submit.push(rechase)
                 }
             };
         }
         console.log(that.lotdata_submit)
-        if(!that.lotdata_submit[0]){
-            that.POPNOTE({msg:'请选择追号期数'});
+        if (!that.lotdata_submit[0]) {
+            that.POPNOTE({
+                msg: '请选择追号期数'
+            });
             return
-        }else{
-            that.POPNOTE({msg:`您确定追号${that.lotdata_now.length}期么? 总投入${that.chase_money}元。`},that.betnow);
+        } else {
+            that.POPNOTE({
+                msg: `您确定追号${that.lotdata_now.length}期么? 总投入${that.chase_money}元。`
+            }, that.betnow);
             return
         }
-        
-        
+
+
     }
-    betnow(){
+    betnow() {
         let that = this;
         console.log(that.lotdata_submit)
         // 在此处提交追号所有号码
     }
-    close_chase(){
+    close_chase() {
         $('#layer3').find('.chase_container').removeClass('show_this');
         $('#layer3').removeClass('show_this');
         let that = this;
         that.rechase_dataall()
     }
-    chase_number(){
+    chase_number() {
         let that = this;
         if (!that.sureballlist[0]) {
-            that.POPNOTE({msg:'注单列表为空，请先下注！或者随机1注',btn:'随机一注'},that.radomshowchase);
+            that.POPNOTE({
+                msg: '注单列表为空，请先下注！或者随机1注',
+                btn: '随机一注'
+            }, that.radomshowchase);
             return false
         };
         that.showchase();
-    }  
-    show_chasenumber(param,nextrun){
+    }
+    show_chasenumber(param, nextrun) {
         let msg = param.msg;
         let til = param.til;
         let self = this;
-        let str = '';   
+        let str = '';
         let dom = $(this.parseDom(str))
-        dom.find('.close').on('click',function(){
+        dom.find('.close').on('click', function () {
             self.hid_layer();
-        }) 
-        dom.find('.confirm_box').on('click',function(){
+        })
+        dom.find('.confirm_box').on('click', function () {
             nextrun();
         })
         $('#layer').append(dom);
-        setTimeout(function(){
+        setTimeout(function () {
             dom.addClass('tobig')
         }, 10)
         window.onresize = function () {
             console.log('x')
         }
     }
-    radomshowchase(){
+    radomshowchase() {
         this.mathball(this.menu_2);
         $('#layer3').find('.chase_container').addClass('show_this');
         $('#layer3').addClass('show_this');
     }
-    showchase(){
+    showchase() {
         $('#layer3').find('.chase_container').addClass('show_this');
         $('#layer3').addClass('show_this');
     }
-    hid_layer(){
+    hid_layer() {
         document.getElementById("layer").innerHTML = '';
     }
     // 弹层1
     parseDom(arg) {
-    　　 var objE = document.createElement("div");
-    　　 objE.innerHTML = arg;
-    　　 return objE.childNodes;
+        var objE = document.createElement("div");
+        objE.innerHTML = arg;
+        return objE.childNodes;
     };
-//追号函数结束
+    //追号函数结束
     // 遗漏数据
     omitarr = {
         0: [],
@@ -1145,25 +1150,25 @@ export class K3officialComponent implements OnInit {
     ngAfterViewInit() {}
 
     // 通过id获取目前显示的项目配置文件
-    public url_str :any = {
-        'now_til':'_k3',
-        'jsk3_k3':'jsk3_k3',
-        'ahk3_k3':'ahk3_k3',
-        'hbk3_k3':'hbk3_k3',
-        'hnk3_k3':'hnk3_k3',
-        'hubk3_k3':'hubk3_k3',
-        'shks_k3':'shks_k3',
-        'bjk3_k3':'bjk3_k3',
-        'gxk3_k3':'gxk3_k3',
+    public url_str: any = {
+        'now_til': '_k3',
+        'jsk3_k3': 'jsk3_k3',
+        'ahk3_k3': 'ahk3_k3',
+        'hbk3_k3': 'hbk3_k3',
+        'hnk3_k3': 'hnk3_k3',
+        'hubk3_k3': 'hubk3_k3',
+        'shks_k3': 'shks_k3',
+        'bjk3_k3': 'bjk3_k3',
+        'gxk3_k3': 'gxk3_k3',
     };
-    getPageId(){
+    getPageId() {
         let that = this;
         let idarray = this.router.url.split("/");
-        that.nowPageId = idarray[idarray.length-1]+that.url_str.now_til;
+        that.nowPageId = idarray[idarray.length - 1] + that.url_str.now_til;
         if (that.url_str[that.nowPageId]) {
             that.nowPageId = that.url_str[that.nowPageId];
             that.nowitems = that.items_show[that.nowPageId];
-        }else{
+        } else {
             console.error('url_str错误!');
         }
     }
@@ -1171,11 +1176,11 @@ export class K3officialComponent implements OnInit {
     linkrouter(t) {
         this.router.navigate([t]);
     }
-    routlink(){
+    routlink() {
         // let str ;
         // this.route.params.subscribe(data=>str=data.id);
         this.router.navigate(['/lottery/creditk3', this.routid]);
-      }
+    }
     // 计算当前点击投注信息
     countbet(totalbet) {
         if (!totalbet) {
@@ -1215,12 +1220,12 @@ export class K3officialComponent implements OnInit {
         that.rangenum = 180200
         this.countbet(this.ballcurr.totalbet)
     }
-   // 自带钩子监听
-   ngDoCheck() {
-    if (this.totalinfo.sum > 0 && this.rangenum != (this.totalinfo.amount + this.totalinfo.sum) / parseFloat(this.multiple_input.value)) {
-        this.countbet(this.ballcurr.totalbet)
+    // 自带钩子监听
+    ngDoCheck() {
+        if (this.totalinfo.sum > 0 && this.rangenum != (this.totalinfo.amount + this.totalinfo.sum) / parseFloat(this.multiple_input.value)) {
+            this.countbet(this.ballcurr.totalbet)
+        }
     }
-}
     drag_tag() {
         let that = this;
         $('#range_tag').on('mousedown', function (e) {
@@ -1299,7 +1304,7 @@ export class K3officialComponent implements OnInit {
         if (this.tabcurr.isupload) {
             this.up_ball = 2;
         }
-        if ((that.status.menu_1===1&&that.status.menu_2!==4)||that.status.menu_1===4) {
+        if ((that.status.menu_1 === 1 && that.status.menu_2 !== 4) || that.status.menu_1 === 4) {
             this.mathstatus = false
         } else {
             this.mathstatus = true
@@ -1331,7 +1336,7 @@ export class K3officialComponent implements OnInit {
         }
         that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
         that.now_description = that.lot_rules[that.now_tips_menu]['description'];
-        if ((that.status.menu_1===1&&that.status.menu_2!==4)||that.status.menu_1===4) {
+        if ((that.status.menu_1 === 1 && that.status.menu_2 !== 4) || that.status.menu_1 === 4) {
             this.mathstatus = false
         } else {
             this.mathstatus = true
@@ -1483,20 +1488,20 @@ export class K3officialComponent implements OnInit {
     //选中单个号码
     oneball(index, clickindex, val, id) {
 
-        if (this.now_matchtab[index][val]===undefined) {
+        if (this.now_matchtab[index][val] === undefined) {
             this.now_matchtab[index][val] = '';
         }
-        if (this.now_matchtab[index][val]!=='') {
+        if (this.now_matchtab[index][val] !== '') {
             this.now_matchtab[index][val] = ''
         } else {
             this.now_matchtab[index][val] = val;
-            if (this.status.menu_1===1 && this.status.menu_2===1) {
-                let nn = index===0?1:0;
+            if (this.status.menu_1 === 1 && this.status.menu_2 === 1) {
+                let nn = index === 0 ? 1 : 0;
                 this.now_matchtab[nn][val] = '';
             }
-            
+
         }
-            
+
         let self = this;
         if (self.tabcurr.choose) {
             var arr = new Array();
@@ -1620,10 +1625,10 @@ export class K3officialComponent implements OnInit {
         }
     }
 
-    Csetball(data){
+    Csetball(data) {
         let d = [];
         for (let i = 0; i < data.length; i++) {
-            d[i]=[];
+            d[i] = [];
             for (let q = 0; q < data[i].length; q++) {
                 let v = this.ball_data[this.tabcurr.arr[i]].match[this.ballcurr.allarr[i][q]]
                 d[i].push(v);
@@ -1638,51 +1643,51 @@ export class K3officialComponent implements OnInit {
     addball(arrob, type) {
         let that = this
         if (!type) {
-            that.POPNOTE({msg:'号码选择不完整，请重新选择'});
+            that.POPNOTE({
+                msg: '号码选择不完整，请重新选择'
+            });
             return
         }
         if (that.tabcurr.datarule[0] == 'Rule_14') {
-            
+
             for (var i = 0; i < that.ballcurr.ball.length; i++) {
-                    if (that.ballcurr.ball[i] != '') {
-                        let obj: any = {}
-                        if (that.tabcurr.datarule[1]>1) {
-                            obj.ball = this.Csetball(that.ballcurr.allarr);
-                        }else{
-                            obj.ball = that.ball_data[that.tabcurr.arr[that.ballcurr.titleindex[i]]].match[that.ballcurr.ball[i]];
-                        }
-                        obj.name = that.currtabname;
-                        obj.multiple = that.multiple_input.value;
-                        obj.model = that.model;
-                        obj.count =that.ballcurr.allarr[i].length;
-                        obj.sum = (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum ;
-                        obj.amount = that.totalinfo.amount
-                        that.sureballlist.push(obj)
+                if (that.ballcurr.ball[i] != '') {
+                    let obj: any = {}
+                    if (that.tabcurr.datarule[1] > 1) {
+                        obj.ball = this.Csetball(that.ballcurr.allarr);
+                    } else {
+                        obj.ball = that.ball_data[that.tabcurr.arr[that.ballcurr.titleindex[i]]].match[that.ballcurr.ball[i]];
                     }
+                    obj.name = that.currtabname;
+                    obj.multiple = that.multiple_input.value;
+                    obj.model = that.model;
+                    obj.count =arrob[0].menu[0].datarule[1] === 1? 1: that.totalinfo.count;
+                    obj.sum = arrob[0].menu[0].datarule[1] === 1? (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) *
+                    that.totalinfo.sum
+                  : that.totalinfo.sum;
+                    obj.sum = parseFloat(obj.sum.toFixed(3));
+                    obj.amount = that.totalinfo.amount
+                    that.sureballlist.push(obj)
                 }
-        }else{
+            }
+        } else {
             for (var i = 0; i < that.ballcurr.ball.length; i++) {
                 if (that.ballcurr.ball[i] != '') {
                     let obj: any = {}
                     if (that.tabcurr.addzero) {
                         obj.ball = that.ballcurr.ball[i]
                     } else {
-                        if (that.tabcurr.datarule[0] == 'Rule_13') {
-                            let dd = that.ballcurr.ball[i].split(',')
-                            for (let i = 0; i < dd.length; i++) {
-                                dd[i] = that.ball_data[that.tabcurr.arr[0]].match[dd[i]]
-                            }
-                            obj.ball = dd.join("|")
-                        }else{
-                            obj.ball = that.ballcurr.ball[i]
-
+                        let dd = that.ballcurr.ball[i].split(',')
+                        for (let i = 0; i < dd.length; i++) {
+                            dd[i] = that.ball_data[that.tabcurr.arr[0]].match[dd[i]]
                         }
+                        obj.ball = dd.join("|")
                     }
-                    obj.name = that.tabcurr.datarule[0] == 'Rule_6' ? that.currtabname + that.ball_data[that.tabcurr.arr[i]].title : that.currtabname
+                    obj.name = that.currtabname
                     obj.multiple = that.multiple_input.value
                     obj.model = that.model
-                    obj.count = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_13' ? that.ballcurr.allarr[i].length : that.totalinfo.count
-                    obj.sum = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_13' ? (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum : that.totalinfo.sum
+                    obj.count = that.ballcurr.allarr[i].length
+                    obj.sum = (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum;
                     obj.amount = that.totalinfo.amount
                     that.sureballlist.push(obj)
                 }
@@ -1702,7 +1707,7 @@ export class K3officialComponent implements OnInit {
         }
         self.orderinfo.total = data.length;
         self.orderinfo.betcount = betcount;
-        self.orderinfo.money = sum;
+        self.orderinfo.money = parseFloat(sum.toFixed(3));
     }
 
 
@@ -1715,13 +1720,17 @@ export class K3officialComponent implements OnInit {
         }
         this.allbet(this.sureballlist);
     }
-	// 确认投注
-	affirm(){
-        if (this.sureballlist.length<1) {
-            this.POPNOTE({msg:'没有投注内容！'});
-        }else{
-            this.POPNOTE({msg:'投注成功！'});
-            this.delball('clear','');
+    // 确认投注
+    affirm() {
+        if (this.sureballlist.length < 1) {
+            this.POPNOTE({
+                msg: '没有投注内容！'
+            });
+        } else {
+            this.POPNOTE({
+                msg: '投注成功！'
+            });
+            this.delball('clear', '');
         }
     }
     // 创建开奖数据  len为开奖球数，
@@ -1741,31 +1750,33 @@ export class K3officialComponent implements OnInit {
         let that = this;
         let obj: any = {}
         if (that.radom_input.value == 0) {
-            that.POPNOTE({msg:'随机注数不能小于1'});
+            that.POPNOTE({
+                msg: '随机注数不能小于1'
+            });
             return
         }
-        
+
         for (let i = 0; i < that.radom_input.value; i++) {
-            let b=this.setballdata(3) ;
+            let b = this.setballdata(3);
             let ball = '';
-            if (that.status.menu_1===1) {
-                if (that.status.menu_2===1) {
-                    ball = ''+b[0]+b[0]+'|'+b[1];
+            if (that.status.menu_1 === 1) {
+                if (that.status.menu_2 === 1) {
+                    ball = '' + b[0] + b[0] + '|' + b[1];
                 }
-                if (that.status.menu_2===2) {
-                    ball = ''+b[0]+b[0];
+                if (that.status.menu_2 === 2) {
+                    ball = '' + b[0] + b[0];
                 }
-                if (that.status.menu_2===3) {
-                    ball = ''+b[0]+b[0]+b[0];
+                if (that.status.menu_2 === 3) {
+                    ball = '' + b[0] + b[0] + b[0];
                 }
-                
+
             }
-            if (that.status.menu_1===4) {
-                if (that.status.menu_2===1) {
-                    ball = ''+b[0]+'|'+b[1];
+            if (that.status.menu_1 === 4) {
+                if (that.status.menu_2 === 1) {
+                    ball = '' + b[0] + '|' + b[1];
                 }
-                if (that.status.menu_2===2) {
-                    ball = ''+b[0]+'|'+b[1]+'|'+b[2];
+                if (that.status.menu_2 === 2) {
+                    ball = '' + b[0] + '|' + b[1] + '|' + b[2];
                 }
             }
             let obj: any = {}
@@ -1781,38 +1792,38 @@ export class K3officialComponent implements OnInit {
         }
     }
 
-	addrem(item){
-		//倍数锁
-		if (this.lock_multible) {
-			return false
-		};
-		this.multiple_input.value = parseInt(this.multiple_input.value);
-		this.radom_input.value = parseInt(this.radom_input.value);
-		if (item=='multiple') {
-			this.multiple_input.value = this.multiple_input.value+1;
-			this.countbet(this.ballcurr.totalbet)
-		}else if(item=='radom'){
-			this.radom_input.value = this.radom_input.value +1;
-		}
-		
-	}
-	minusrem(item){
-		if (this.lock_multible) {
-			return false
-		};
-		this.multiple_input.value = parseInt(this.multiple_input.value);
-		this.radom_input.value = parseInt(this.radom_input.value);
-		if (item=='multiple') {
-			if (this.multiple_input.value>1) {
-				this.multiple_input.value = this.multiple_input.value-1;
-				this.countbet(this.ballcurr.totalbet)
-			}
-		}else if(item=='radom'){
-			if (this.radom_input.value>1) {
-				this.radom_input.value = this.radom_input.value-1;
-			}
-		}
-	}
+    addrem(item) {
+        //倍数锁
+        if (this.lock_multible) {
+            return false
+        };
+        this.multiple_input.value = parseInt(this.multiple_input.value);
+        this.radom_input.value = parseInt(this.radom_input.value);
+        if (item == 'multiple') {
+            this.multiple_input.value = this.multiple_input.value + 1;
+            this.countbet(this.ballcurr.totalbet)
+        } else if (item == 'radom') {
+            this.radom_input.value = this.radom_input.value + 1;
+        }
+
+    }
+    minusrem(item) {
+        if (this.lock_multible) {
+            return false
+        };
+        this.multiple_input.value = parseInt(this.multiple_input.value);
+        this.radom_input.value = parseInt(this.radom_input.value);
+        if (item == 'multiple') {
+            if (this.multiple_input.value > 1) {
+                this.multiple_input.value = this.multiple_input.value - 1;
+                this.countbet(this.ballcurr.totalbet)
+            }
+        } else if (item == 'radom') {
+            if (this.radom_input.value > 1) {
+                this.radom_input.value = this.radom_input.value - 1;
+            }
+        }
+    }
     // 下拉框选择input值
     check_multi(item) {
         this.multiple_input.value = item;
@@ -1870,45 +1881,49 @@ export class K3officialComponent implements OnInit {
         }, 200)
     }
     // 绑定给弹窗组件的事件；
-    NOTARIZE(){
+    NOTARIZE() {
         return
     }
     // 弹窗关闭事件 可以自定义命名
-    closePopouot(e){
+    closePopouot(e) {
         this.popoutInfo.show = false;
     }
 
     // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
-    POPNOTE(data,fn=null){
+    POPNOTE(data, fn = null) {
         let o = {
-            title:'操作提示',   //title不传值默认为 ‘操作提示’
-            msg:' ',
+            title: '操作提示', //title不传值默认为 ‘操作提示’
+            msg: ' ',
             event: false,
             show: true,
         }
         if (typeof fn === 'function') {
             this.NOTARIZE = fn;
             o.event = true;
-        }else{
-            this.NOTARIZE = ()=>{return};
+        } else {
+            this.NOTARIZE = () => {
+                return
+            };
         }
-        this.popoutInfo = Object.assign({},o,data);
+        this.popoutInfo = Object.assign({}, o, data);
     }
     // 锁定倍数
-	public lock_multible :any=false;
-	lock_multiple(item){
-		let now_btn = $(item.target);
-		console.log($(item.target).hasClass('switch_btn'));
-		if (!$(item.target).hasClass('switch_btn')) {
-			now_btn = $(item.target).parent();
-		}
-		if(now_btn.hasClass('on')){
-			this.lock_multible = false;
-			$('#testinput').removeAttr('disabled');
-		}else{
-			this.lock_multible = true;
-			$('#testinput').attr({disabled: 'disabled'});
-		}
+    public lock_multible: any = false;
+    lock_multiple(item) {
+        let now_btn = $(item.target);
+        console.log($(item.target).hasClass('switch_btn'));
+        if (!$(item.target).hasClass('switch_btn')) {
+            now_btn = $(item.target).parent();
+        }
+        if (now_btn.hasClass('on')) {
+            this.lock_multible = false;
+            $('#testinput').removeAttr('disabled');
+        } else {
+            this.lock_multible = true;
+            $('#testinput').attr({
+                disabled: 'disabled'
+            });
+        }
 
-	}
+    }
 }

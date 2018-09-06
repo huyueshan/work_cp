@@ -1287,7 +1287,6 @@ export class SSCofficialComponent implements OnInit {
                 chase_amount = that.lotdata_now.length;
             }
             for (var i = 0; i <= chase_amount-1; i++) {
-                console.log((i)%gap_number)
                 that.lotdata_now[i].checkon = true;
                 that.lotdata_now[i].multiple = multiple;
                 that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
@@ -1386,7 +1385,6 @@ export class SSCofficialComponent implements OnInit {
         //清空
         that.lotdata_submit = [];
         for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-            console.log(that.lotdata_now[i].checkon != false)
             if (that.lotdata_now[i].checkon != false) {
                 for (var k = 0; k <= that.sureballlist.length-1; k++) {
                         let rechase :any= {};
@@ -1404,7 +1402,6 @@ export class SSCofficialComponent implements OnInit {
                 }
             };
         }
-        console.log(that.lotdata_submit)
         if(!that.lotdata_submit[0]){
             that.POPNOTE({msg:'请选择追号期数'});
             return
@@ -1449,7 +1446,6 @@ export class SSCofficialComponent implements OnInit {
             dom.addClass('tobig')
         }, 10)
         window.onresize = function () {
-            console.log('x')
         }
     }
   
@@ -2252,7 +2248,6 @@ export class SSCofficialComponent implements OnInit {
             });
             self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](self.now_matchtab, self.tabcurr, arr)
         } else {
-            console.log(self.now_matchtab, self.tabcurr);
             self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](self.now_matchtab, self.tabcurr)
         }
         if (self.ballcurr.status) {
@@ -2623,7 +2618,7 @@ export class SSCofficialComponent implements OnInit {
         }
         self.orderinfo.total = data.length;
         self.orderinfo.betcount = betcount;
-        self.orderinfo.money = sum;
+        self.orderinfo.money = parseFloat(sum.toFixed(3));
     }
 
     // 删除号码
@@ -2653,7 +2648,6 @@ export class SSCofficialComponent implements OnInit {
             that.POPNOTE({msg:'随机注数不能小于1'});
             return
         }
-        console.log(arr);
         arr.map(function (res) {
             res.menu.map(function (data) {
                 if (data.index == that.status.menu_2) {

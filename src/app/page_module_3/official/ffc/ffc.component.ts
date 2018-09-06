@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { SharkModule } from "@ntesmail/shark-angular2";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import {
@@ -1504,7 +1503,6 @@ export class FFCofficialComponent implements OnInit {
     }
   }
   check_lot(item) {
-    console.log(item.checkon);
     let that = this;
     if (item.checkon) {
       if (item.multiple == 0) {
@@ -1518,7 +1516,6 @@ export class FFCofficialComponent implements OnInit {
       item.take_money = 0;
     }
     that.repanel_data();
-    console.log(that.lotdata_now);
   }
   // 生成计划
   produce_plan() {
@@ -1534,7 +1531,6 @@ export class FFCofficialComponent implements OnInit {
         chase_amount = that.lotdata_now.length;
       }
       for (var i = 0; i <= chase_amount - 1; i++) {
-        console.log(i % gap_number);
         that.lotdata_now[i].checkon = true;
         that.lotdata_now[i].multiple = multiple;
         that.lotdata_now[i].take_money =
@@ -1640,7 +1636,6 @@ export class FFCofficialComponent implements OnInit {
     //清空
     that.lotdata_submit = [];
     for (var i = 0; i <= that.lotdata_now.length - 1; i++) {
-      console.log(that.lotdata_now[i].checkon != false);
       if (that.lotdata_now[i].checkon != false) {
         for (var k = 0; k <= that.sureballlist.length - 1; k++) {
           let rechase: any = {};
@@ -1658,7 +1653,6 @@ export class FFCofficialComponent implements OnInit {
         }
       }
     }
-    console.log(that.lotdata_submit);
     if (!that.lotdata_submit[0]) {
       that.POPNOTE({ msg: "请选择追号期数" });
       return;
@@ -1712,7 +1706,6 @@ export class FFCofficialComponent implements OnInit {
       dom.addClass("tobig");
     }, 10);
     window.onresize = function() {
-      console.log("x");
     };
   }
 
@@ -2465,8 +2458,6 @@ export class FFCofficialComponent implements OnInit {
         });
       } else {
         $.each($(".tab_li"), function(i, n) {
-          console.log(liWidth);
-          console.log(ulMax);
           liWidth = liWidth + $(n).outerWidth();
           if (liWidth < ulMax) {
             $(n).addClass("hide_it");
@@ -2668,7 +2659,6 @@ export class FFCofficialComponent implements OnInit {
       if (val == this.ball_tab[4][1]) {
         this.now_matchball[clickindex] = "";
       } else {
-        console.log(this.now_matchball[clickindex]);
         this.now_matchball[clickindex] = val;
         $(that).addClass("active");
       }
@@ -3089,7 +3079,7 @@ export class FFCofficialComponent implements OnInit {
     }
     self.orderinfo.total = data.length;
     self.orderinfo.betcount = betcount;
-    self.orderinfo.money = sum;
+    self.orderinfo.money = parseFloat(sum.toFixed(3));
   }
 
   // 删除号码

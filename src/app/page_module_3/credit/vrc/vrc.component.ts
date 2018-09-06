@@ -252,7 +252,6 @@ chedan(){
   
   // 分页组件点击页码事件，参数i为点击页码数
   getPageData(i) {
-      console.log(i);
       let start = this.pagination.pageSize * (i-1);
       this.tabledata = this.toudata.slice(start,start+this.pagination.pageSize)
   }

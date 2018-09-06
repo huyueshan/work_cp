@@ -4,9 +4,6 @@ import {
     ViewChild
 } from "@angular/core";
 import {
-    SharkModule
-} from "@ntesmail/shark-angular2";
-import {
     ReactiveFormsModule
 } from "@angular/forms";
 import {
@@ -515,7 +512,7 @@ export class EXFofficialComponent implements OnInit {
 					addzero:true
                 },
                 {
-                    name: this.now_lang.Lot_tab.ForF_star,
+                    name: this.now_lang.Lot_tab.ForT_str_odd,
                     index: 2,
                     arr: ["dyw"],
                     isupload: true,
@@ -1026,7 +1023,6 @@ export class EXFofficialComponent implements OnInit {
         }
     }
     check_lot(item){
-        console.log(item.checkon)
         let that = this;
         if (item.checkon) {
             if (item.multiple == 0) {
@@ -1039,7 +1035,6 @@ export class EXFofficialComponent implements OnInit {
             item.take_money = 0;
         }
         that.repanel_data()
-        console.log(that.lotdata_now)
     }
     // 生成计划
     produce_plan(){
@@ -1055,7 +1050,6 @@ export class EXFofficialComponent implements OnInit {
                 chase_amount = that.lotdata_now.length;
             }
             for (var i = 0; i <= chase_amount-1; i++) {
-                console.log((i)%gap_number)
                 that.lotdata_now[i].checkon = true;
                 that.lotdata_now[i].multiple = multiple;
                 that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
@@ -1157,7 +1151,6 @@ export class EXFofficialComponent implements OnInit {
         //清空
         that.lotdata_submit = [];
         for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-            console.log(that.lotdata_now[i].checkon != false)
             if (that.lotdata_now[i].checkon != false) {
                 for (var k = 0; k <= that.sureballlist.length-1; k++) {
                         let rechase :any= {};
@@ -1175,7 +1168,6 @@ export class EXFofficialComponent implements OnInit {
                 }
             };
         }
-        console.log(that.lotdata_submit)
         if(!that.lotdata_submit[0]){
             that.POPNOTE({msg:'请选择追号期数'});
             return
@@ -1188,7 +1180,6 @@ export class EXFofficialComponent implements OnInit {
     }
     betnow(){
         let that = this;
-        console.log(that.lotdata_submit)
         // 在此处提交追号所有号码
     }
     close_chase(){
@@ -1222,7 +1213,6 @@ export class EXFofficialComponent implements OnInit {
             dom.addClass('tobig')
         }, 10)
         window.onresize = function () {
-            console.log('x')
         }
     }
   
@@ -1653,13 +1643,11 @@ export class EXFofficialComponent implements OnInit {
             that.menu_2 = [];
             that.up_ball = 1;
             that.menu_2_data.map(function (res) {
-                console.log(res.active == that.status.menu_1)
                 if (res.active == that.status.menu_1) {
                     that.menu_2.push(res);
                 }
             });
             that.tabcurr = that.menu_2[0].menu[0];
-            console.log(that.menu_2)
 
             if (that.menu_2[0].menu[0].arr) {
                 that.balllist(that.menu_2[0].menu[0].arr);
@@ -1747,7 +1735,6 @@ export class EXFofficialComponent implements OnInit {
             4: {},
             5: {}
         };
-		console.log(clickindex)
         let carr = ["dsw", "dsq", "dss", "dsg"];
         if (Base._.hasArr(this.tabcurr.arr[0], carr)) {
             this.match_tab = {
@@ -2314,7 +2301,7 @@ export class EXFofficialComponent implements OnInit {
         }
         self.orderinfo.total = data.length;
         self.orderinfo.betcount = betcount;
-        self.orderinfo.money = sum;
+        self.orderinfo.money = parseFloat(sum.toFixed(3));
     }
 
     // 删除号码

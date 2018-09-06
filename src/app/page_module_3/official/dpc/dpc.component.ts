@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { SharkModule } from "@ntesmail/shark-angular2";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import {
@@ -1459,7 +1458,6 @@ export class DPCofficialComponent implements OnInit {
     }
   }
   check_lot(item) {
-    console.log(item.checkon);
     let that = this;
     if (item.checkon) {
       if (item.multiple == 0) {
@@ -1473,7 +1471,6 @@ export class DPCofficialComponent implements OnInit {
       item.take_money = 0;
     }
     that.repanel_data();
-    console.log(that.lotdata_now);
   }
   // 生成计划
   produce_plan() {
@@ -1489,7 +1486,6 @@ export class DPCofficialComponent implements OnInit {
         chase_amount = that.lotdata_now.length;
       }
       for (var i = 0; i <= chase_amount - 1; i++) {
-        console.log(i % gap_number);
         that.lotdata_now[i].checkon = true;
         that.lotdata_now[i].multiple = multiple;
         that.lotdata_now[i].take_money =
@@ -1598,7 +1594,6 @@ export class DPCofficialComponent implements OnInit {
     //清空
     that.lotdata_submit = [];
     for (var i = 0; i <= that.lotdata_now.length - 1; i++) {
-      console.log(that.lotdata_now[i].checkon != false);
       if (that.lotdata_now[i].checkon != false) {
         for (var k = 0; k <= that.sureballlist.length - 1; k++) {
           let rechase: any = {};
@@ -1616,7 +1611,6 @@ export class DPCofficialComponent implements OnInit {
         }
       }
     }
-    console.log(that.lotdata_submit);
     if (!that.lotdata_submit[0]) {
       that.POPNOTE({ msg: "请选择追号期数" });
       return;
@@ -1634,7 +1628,6 @@ export class DPCofficialComponent implements OnInit {
   }
   betnow() {
     let that = this;
-    console.log(that.lotdata_submit);
     // 在此处提交追号所有号码
   }
   close_chase() {
@@ -1672,7 +1665,6 @@ export class DPCofficialComponent implements OnInit {
       dom.addClass("tobig");
     }, 10);
     window.onresize = function() {
-      console.log("x");
     };
   }
 
@@ -2620,7 +2612,6 @@ export class DPCofficialComponent implements OnInit {
         arr
       );
     } else {
-      console.log(self.now_matchtab, self.tabcurr);
       self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](
         self.now_matchtab,
         self.tabcurr
@@ -2869,7 +2860,7 @@ export class DPCofficialComponent implements OnInit {
   }
 
   // 遗漏选择
-  omitname = "当前遗漏";
+  omitname = "";
   checkomit(type) {
     let that = this;
     if (type == "yl") {
@@ -2945,7 +2936,6 @@ export class DPCofficialComponent implements OnInit {
     } else {
       for (var i = 0; i < that.ballcurr.ball.length; i++) {
         if (that.ballcurr.ball[i] != "") {
-          console.log(that.ball_data[that.tabcurr.arr[i]].title);
           let obj: any = {};
           obj.ball = that.ballcurr.ball[i];
           obj.name =
@@ -2983,7 +2973,7 @@ export class DPCofficialComponent implements OnInit {
     }
     self.orderinfo.total = data.length;
     self.orderinfo.betcount = betcount;
-    self.orderinfo.money = sum;
+    self.orderinfo.money = parseFloat(sum.toFixed(3));
   }
 
   // 删除号码
@@ -3014,7 +3004,6 @@ export class DPCofficialComponent implements OnInit {
       that.POPNOTE({ msg: "随机注数不能小于1" });
       return;
     }
-    console.log(arr);
     arr.map(function(res) {
       res.menu.map(function(data) {
         if (data.index == that.status.menu_2) {

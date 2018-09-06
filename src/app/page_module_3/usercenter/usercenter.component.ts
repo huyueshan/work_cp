@@ -4,7 +4,6 @@ import {
   AfterViewInit,
   AfterContentChecked
 } from "@angular/core";
-import { SharkModule } from "@ntesmail/shark-angular2";
 import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/filter";
@@ -23,9 +22,6 @@ export class UsercenterComponent
   public now_lang_type: any = "zh";
 
   public currpath = "usercenter"; //传给头部导航路径位置
-  // TODO: 如果使用不同的背景图标；必须先在父组件中线require 这张图片
-  public bgurlinit = require("../images/sidebg1.png");
-  public bgurl = 'url("../../images/sidebg1.png")';
   public currentparent: string; //一级导航
   public currentitem: string; // 二级导航
   public currentactive: number; // 当前展开的子导航

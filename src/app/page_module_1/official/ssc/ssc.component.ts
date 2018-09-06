@@ -2055,9 +2055,6 @@ export class SSCofficialComponent implements OnInit {
 
     // 自带钩子监听
     ngDoCheck() {
-        /* if (this.totalinfo.sum > 0 && this.rangenum != (this.totalinfo.amount + this.totalinfo.sum) / parseFloat(this.multiple_input.value)) {
-            this.countbet(this.ballcurr.totalbet)
-        } */
     }
     // 滑块左侧递加事件
     rangevalueadd() {
@@ -2103,6 +2100,7 @@ export class SSCofficialComponent implements OnInit {
         if (this.tabcurr.isupload) {
             this.up_ball = 2
         }
+        this.checkabo(5);
     }
 
     // 时时彩二级导航切换
@@ -2120,9 +2118,6 @@ export class SSCofficialComponent implements OnInit {
             that.up_ball = 1
             this.balllist(data.arr)
         }
-        console.log(data.isupload)
-        console.log(that.status.menu_1<=8)
-        console.log(that.hothidden)
         if (data.isupload) {
             that.hothidden = true;
         } else if (that.status.menu_1<=8){
@@ -2137,6 +2132,7 @@ export class SSCofficialComponent implements OnInit {
 		}
         that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
         that.now_description = that.lot_rules[that.now_tips_menu]['description'];
+        this.checkabo(5);
     }
     // 时时彩下注区左侧显示列表
     balllist(arr) {
@@ -2314,35 +2310,51 @@ export class SSCofficialComponent implements OnInit {
         count: 5,
         plan: 10
     }
+
     //选中的位置
-    checkabo() {
+    checkabo(i = 0) {
+      let length = 0;
+      if (i) {
+        length = i;
+      } else {
         var arr = new Array();
-        $("#fiveabso input:checkbox:checked").each(function (i) {
-            arr[i] = $(this).val();
+        $("#fiveabso input:checkbox:checked").each(function(i) {
+          arr[i] = $(this).val();
         });
-        let self = this
-        if (arr.length > 1) {
-            if (self.tabcurr.datarule[0] == 'Rule_d2') {
-                self.filedata(self.curtextstr, '')
-            } else {
-                self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](self.now_matchtab, self.tabcurr, arr)
-            }
-            if (self.ballcurr.status) {
-                self.countbet(self.ballcurr.totalbet)
-            } else {
-                self.totalinfo = {
-                    count: 0,
-                    sum: 0,
-                    amount: 0
-                }
-            }
-        }
-        this.countabo.count = arr.length
-        if (arr.length >= self.tabcurr.datarule[1]) {
-            this.countabo.plan = Utils.algorithm.arrangement(arr.length, self.tabcurr.datarule[1])
+  
+        length = arr.length;
+      }
+      let self = this;
+      if (length > 1) {
+        if (self.tabcurr.datarule[0] == "Rule_d2") {
+          self.filedata(self.curtextstr, "");
         } else {
-            this.countabo.plan = 0
+          arr &&
+            (self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](
+              self.now_matchtab,
+              self.tabcurr,
+              arr
+            ));
         }
+        if (self.ballcurr.status) {
+          self.countbet(self.ballcurr.totalbet);
+        } else {
+          self.totalinfo = {
+            count: 0,
+            sum: 0,
+            amount: 0
+          };
+        }
+      }
+      this.countabo.count = length;
+      if (length >= self.tabcurr.datarule[1]) {
+        this.countabo.plan = Utils.algorithm.arrangement(
+          length,
+          self.tabcurr.datarule[1]
+        );
+      } else {
+        this.countabo.plan = 0;
+      }
     }
 
     totalinfo: any = {
@@ -2672,7 +2684,7 @@ export class SSCofficialComponent implements OnInit {
         }
         self.orderinfo.total = data.length;
         self.orderinfo.betcount = betcount;
-        self.orderinfo.money = sum;
+        self.orderinfo.money = parseFloat(sum.toFixed(3));
     }
 
     // 删除号码

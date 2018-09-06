@@ -138,7 +138,6 @@ export class RechargeComponent implements OnInit {
 
 
   changereg() {
-      console.log('object');
     let v = this.customoney;
     v= v.replace(/\D/g, "");
     if (Number(v) === 0 || v === "") {

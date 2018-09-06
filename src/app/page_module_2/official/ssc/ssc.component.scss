@@ -757,9 +757,9 @@ input[type="number"]{
 					.btn_box{
 						width: 200px;
 						height: 85%;
-						/* background-color: green; */
 						float: right;
 						.rt_btn{
+							position: relative;
 							margin: 0 auto;
 							margin-top: 15px;
 							background-color: #B61010;
@@ -767,6 +767,15 @@ input[type="number"]{
 						.rt_btn:nth-child(1){
 							margin-top: 75px;
 						}
+                        .file-input{
+                            width: 120px;
+                            height: 30px;
+                            position:absolute;
+                            left:0px;
+                            top:0px;
+                            opacity: 0;
+                            cursor:pointer;
+                        }
 					}
 					.input_tips{
 						height: 15%;

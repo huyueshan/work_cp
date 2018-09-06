@@ -1506,51 +1506,51 @@ export class K3officialComponent implements OnInit {
     addball(arrob, type) {
         let that = this
         if (!type) {
-            that.POPNOTE({msg:'号码选择不完整，请重新选择'});
+            that.POPNOTE({
+                msg: '号码选择不完整，请重新选择'
+            });
             return
         }
         if (that.tabcurr.datarule[0] == 'Rule_14') {
-            
+
             for (var i = 0; i < that.ballcurr.ball.length; i++) {
-                    if (that.ballcurr.ball[i] != '') {
-                        let obj: any = {}
-                        if (that.tabcurr.datarule[1]>1) {
-                            obj.ball = this.Csetball(that.ballcurr.allarr);
-                        }else{
-                            obj.ball = that.ball_data[that.tabcurr.arr[that.ballcurr.titleindex[i]]].match[that.ballcurr.ball[i]];
-                        }
-                        obj.name = that.currtabname;
-                        obj.multiple = that.multiple_input.value;
-                        obj.model = that.model;
-                        obj.count =that.ballcurr.allarr[i].length;
-                        obj.sum = (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum ;
-                        obj.amount = that.totalinfo.amount
-                        that.sureballlist.push(obj)
+                if (that.ballcurr.ball[i] != '') {
+                    let obj: any = {}
+                    if (that.tabcurr.datarule[1] > 1) {
+                        obj.ball = this.Csetball(that.ballcurr.allarr);
+                    } else {
+                        obj.ball = that.ball_data[that.tabcurr.arr[that.ballcurr.titleindex[i]]].match[that.ballcurr.ball[i]];
                     }
+                    obj.name = that.currtabname;
+                    obj.multiple = that.multiple_input.value;
+                    obj.model = that.model;
+                    obj.count =arrob[0].menu[0].datarule[1] === 1? 1: that.totalinfo.count;
+                    obj.sum = arrob[0].menu[0].datarule[1] === 1? (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) *
+                    that.totalinfo.sum
+                  : that.totalinfo.sum;
+                    obj.sum = parseFloat( obj.sum.toFixed(3) );
+                    obj.amount = that.totalinfo.amount
+                    that.sureballlist.push(obj)
                 }
-        }else{
+            }
+        } else {
             for (var i = 0; i < that.ballcurr.ball.length; i++) {
                 if (that.ballcurr.ball[i] != '') {
                     let obj: any = {}
                     if (that.tabcurr.addzero) {
                         obj.ball = that.ballcurr.ball[i]
                     } else {
-                        if (that.tabcurr.datarule[0] == 'Rule_13') {
-                            let dd = that.ballcurr.ball[i].split(',')
-                            for (let i = 0; i < dd.length; i++) {
-                                dd[i] = that.ball_data[that.tabcurr.arr[0]].match[dd[i]]
-                            }
-                            obj.ball = dd.join("|")
-                        }else{
-                            obj.ball = that.ballcurr.ball[i]
-
+                        let dd = that.ballcurr.ball[i].split(',')
+                        for (let i = 0; i < dd.length; i++) {
+                            dd[i] = that.ball_data[that.tabcurr.arr[0]].match[dd[i]]
                         }
+                        obj.ball = dd.join("|")
                     }
-                    obj.name = that.tabcurr.datarule[0] == 'Rule_6' ? that.currtabname + that.ball_data[that.tabcurr.arr[i]].title : that.currtabname
+                    obj.name = that.currtabname
                     obj.multiple = that.multiple_input.value
                     obj.model = that.model
-                    obj.count = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_13' ? that.ballcurr.allarr[i].length : that.totalinfo.count
-                    obj.sum = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_13' ? (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum : that.totalinfo.sum
+                    obj.count = that.ballcurr.allarr[i].length
+                    obj.sum = (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum;
                     obj.amount = that.totalinfo.amount
                     that.sureballlist.push(obj)
                 }
@@ -1570,7 +1570,7 @@ export class K3officialComponent implements OnInit {
         }
         self.orderinfo.total = data.length;
         self.orderinfo.betcount = betcount;
-        self.orderinfo.money = sum;
+        self.orderinfo.money = parseFloat(sum.toFixed(3));
     }
 
 

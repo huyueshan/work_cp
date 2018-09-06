@@ -242,11 +242,6 @@ export class RouteguardService implements CanActivate{
 				canActivate: [RouteguardService]
 			},
 			{
-				path: 'index',
-				loadChildren: '../app/page_module_3/index/index.module#IndexModule',
-				canActivate: [RouteguardService]
-			},
-			{
 				path: 'result',
 				loadChildren: '../app/page_module_3/result/result.module#ResultModule',
 				canActivate: [RouteguardService]
@@ -256,11 +251,6 @@ export class RouteguardService implements CanActivate{
 				loadChildren: '../app/page_module_3/lottery/layout.module#LayoutModule',
 				canActivate: [RouteguardService]
 			},  
-			{
-				path: 'home',
-				loadChildren: '../app/page_module_3/home/home.module#HomeModule',
-				canActivate: [RouteguardService]
-			}, 
 			{
 				path: 'register',
 				loadChildren: '../app/page_module_3/register/register.module#RegisterModule',

@@ -3,9 +3,6 @@ import {
     OnInit
 } from '@angular/core';
 import {
-    SharkModule
-} from '@ntesmail/shark-angular2';
-import {
     ReactiveFormsModule
 } from "@angular/forms";
 import {
@@ -690,7 +687,6 @@ export class KLCofficialComponent implements OnInit {
         }
     }
     check_lot(item){
-        console.log(item.checkon)
         let that = this;
         if (item.checkon) {
             if (item.multiple == 0) {
@@ -703,7 +699,6 @@ export class KLCofficialComponent implements OnInit {
             item.take_money = 0;
         }
         that.repanel_data()
-        console.log(that.lotdata_now)
     }
     // 生成计划
     produce_plan(){
@@ -719,7 +714,6 @@ export class KLCofficialComponent implements OnInit {
                 chase_amount = that.lotdata_now.length;
             }
             for (var i = 0; i <= chase_amount-1; i++) {
-                console.log((i)%gap_number)
                 that.lotdata_now[i].checkon = true;
                 that.lotdata_now[i].multiple = multiple;
                 that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
@@ -818,7 +812,6 @@ export class KLCofficialComponent implements OnInit {
         //清空
         that.lotdata_submit = [];
         for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-            console.log(that.lotdata_now[i].checkon != false)
             if (that.lotdata_now[i].checkon != false) {
                 for (var k = 0; k <= that.sureballlist.length-1; k++) {
                         let rechase :any= {};
@@ -836,7 +829,6 @@ export class KLCofficialComponent implements OnInit {
                 }
             };
         }
-        console.log(that.lotdata_submit)
         if(!that.lotdata_submit[0]){
             that.POPNOTE({msg:'请选择追号期数'});
             return
@@ -849,7 +841,6 @@ export class KLCofficialComponent implements OnInit {
     }
     betnow(){
         let that = this;
-        console.log(that.lotdata_submit)
         // 在此处提交追号所有号码
     }
     close_chase(){
@@ -883,7 +874,6 @@ export class KLCofficialComponent implements OnInit {
             dom.addClass('tobig')
         }, 10)
         window.onresize = function () {
-            console.log('x')
         }
     }
   
@@ -1493,18 +1483,17 @@ export class KLCofficialComponent implements OnInit {
                     if (that.tabcurr.addzero) {
                         obj.ball = that.ballcurr.ball[i]
                     } else {
-                        obj.ball = that.tabcurr.datarule[0] == 'Rule_12' ? that.ball_data[that.tabcurr.arr[0]].match[that.ballcurr.ball[i]] : that.ballcurr.ball[i]
+                        obj.ball =  that.ball_data[that.tabcurr.arr[0]].match[that.ballcurr.ball[i]]
                     }
-                    obj.name = that.tabcurr.datarule[0] == 'Rule_6' ? that.currtabname + that.ball_data[that.tabcurr.arr[i]].title : that.currtabname
+                    obj.name =  that.currtabname
                     obj.multiple = that.multiple_input.value
                     obj.model = that.model
-                    obj.count = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_12' ? that.ballcurr.allarr[i].length : that.totalinfo.count
-                    obj.sum = that.tabcurr.datarule[0] == 'Rule_6' || that.tabcurr.datarule[0] == 'Rule_12' ? (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) * that.totalinfo.sum : that.totalinfo.sum
+                    obj.count =  that.totalinfo.count
+                    obj.sum = that.totalinfo.sum
                     obj.amount = that.totalinfo.amount
                     that.sureballlist.push(obj)
                 }
             }
-
         }
         that.allbet(that.sureballlist)
         this.inittab()
@@ -1519,7 +1508,7 @@ export class KLCofficialComponent implements OnInit {
         }
         self.orderinfo.total = data.length;
         self.orderinfo.betcount = betcount;
-        self.orderinfo.money = sum;
+        self.orderinfo.money = parseFloat(sum.toFixed(3));
     }
 
     // 删除号码

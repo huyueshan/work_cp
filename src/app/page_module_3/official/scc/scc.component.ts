@@ -615,7 +615,6 @@ export class SCCofficialComponent implements OnInit {
         chase_amount = that.lotdata_now.length;
       }
       for (var i = 0; i <= chase_amount-1; i++) {
-        console.log((i)%gap_number)
         that.lotdata_now[i].checkon = true;
         that.lotdata_now[i].multiple = multiple;
         that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
@@ -714,7 +713,6 @@ export class SCCofficialComponent implements OnInit {
     //清空
     that.lotdata_submit = [];
     for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-      console.log(that.lotdata_now[i].checkon != false)
       if (that.lotdata_now[i].checkon != false) {
         for (var k = 0; k <= that.sureballlist.length-1; k++) {
             let rechase :any= {};
@@ -732,7 +730,6 @@ export class SCCofficialComponent implements OnInit {
         }
       };
     }
-    console.log(that.lotdata_submit)
     if(!that.lotdata_submit[0]){
             that.POPNOTE({msg:'请选择追号期数'});
       return
@@ -777,7 +774,6 @@ export class SCCofficialComponent implements OnInit {
       dom.addClass('tobig')
     }, 10)
     window.onresize = function () {
-      console.log('x')
     }
   }
   
@@ -966,7 +962,6 @@ export class SCCofficialComponent implements OnInit {
     // this.inittab2();
   }
   check_have_credit() {
-    console.log(this.nowPageId);
     if (this.nowPageId == "xyft_ffc") {
       this.hid_tab = true;
     } else {
@@ -1235,12 +1230,10 @@ export class SCCofficialComponent implements OnInit {
       }
     }
     let self = this;
-    console.log(self.now_matchtab, self.tabcurr);
     self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](
       self.now_matchtab,
       self.tabcurr
     );
-    console.log(self.ballcurr);
     if (self.ballcurr.status) {
       self.countbet(self.ballcurr.totalbet);
     } else {
@@ -1588,7 +1581,7 @@ export class SCCofficialComponent implements OnInit {
     }
     self.orderinfo.total = data.length;
     self.orderinfo.betcount = betcount;
-    self.orderinfo.money = sum;
+    self.orderinfo.money = parseFloat(sum.toFixed(3));
   }
 
   // 删除号码
@@ -1626,7 +1619,6 @@ export class SCCofficialComponent implements OnInit {
         }
       });
     });
-    console.log(obj);
     let m = Utils.algorithm.RandomArray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 1);
     for (let i = 0; i < that.radom_input.value; i++) {
       let redata: any = {};

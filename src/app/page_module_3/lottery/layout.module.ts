@@ -1,5 +1,4 @@
 import { NgModule } from "@angular/core";
-import { SharkModule } from "@ntesmail/shark-angular2";
 import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -91,7 +90,6 @@ const routes:Routes = [
 
 @NgModule({
   imports: [
-    SharkModule,
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,

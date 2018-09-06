@@ -393,7 +393,8 @@ export class EXFofficialComponent implements OnInit {
         menu_2: 1 //二级tab默认项
     };
     // 一级tab
-    menu_1 = [{
+    menu_1 = [
+        {
             name: this.now_lang.Lot_tab.Three_star,
             active: 1
         },
@@ -441,7 +442,7 @@ export class EXFofficialComponent implements OnInit {
 					addzero:true
                 },
                 {
-                    name: this.now_lang.Lot_tab.ForF_star,
+                    name: this.now_lang.Lot_tab.ForT_str_odd,
                     index: 2,
                     arr: ["dyw"],
                     isupload: true,
@@ -2248,6 +2249,7 @@ export class EXFofficialComponent implements OnInit {
         }
 	}
 
+
     allbet(data) {
         let self = this;
         let betcount = 0,
@@ -2258,7 +2260,7 @@ export class EXFofficialComponent implements OnInit {
         }
         self.orderinfo.total = data.length;
         self.orderinfo.betcount = betcount;
-        self.orderinfo.money = sum;
+        self.orderinfo.money = parseFloat(sum.toFixed(3));
     }
 
     // 删除号码
