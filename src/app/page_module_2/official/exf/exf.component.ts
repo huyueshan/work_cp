@@ -2346,6 +2346,8 @@ export class EXFofficialComponent implements OnInit {
                 that.orderinfo.money.toFixed(2),
                 redata.sum
             );
+            
+            that.orderinfo.money = parseFloat(that.orderinfo.money.toFixed(3));
         }
     }
 

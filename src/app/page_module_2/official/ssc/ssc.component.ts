@@ -2910,6 +2910,8 @@ export class SSCofficialComponent implements OnInit {
             that.orderinfo.total = that.sureballlist.length;
             that.orderinfo.betcount = that.orderinfo.betcount + redata.count;
             that.orderinfo.money = Utils.algorithm.add(that.orderinfo.money.toFixed(2), redata.sum);
+            
+            that.orderinfo.money = parseFloat(that.orderinfo.money.toFixed(3));
         }
     }
 
