@@ -1,0 +1,285 @@
+<div class="flex-c sscbox" [hidden]="!loadpage">
+    <div class="flex-c ssccontain">
+        <div class="contaner">
+            <app-credtop [type]="'ffc'" [indata]="cpnav"></app-credtop>
+            <div class="flex-r mainbox">
+                <div class="flex-c contentbox">
+                    <div class="flex-r tabbox">
+                        <div class="flex-r tabcontent">
+                            <span *ngFor="let item of typedata" [ngClass]="{tabactive:this.type == item.id}" (click)="togtype(item.id)">{{item.name}}</span>
+                        </div>
+                        <div class="flex-r togglebtn">
+                            <span (click)="routlink()">官方</span>
+                            <span class="togactive">信用</span>
+                        </div>
+                    </div>
+                    <div class="flex-r selctbox" onselectstart="return false;" style="-moz-user-select:none;">
+                        <span class="flex-r">
+                            <strong>￥</strong>
+                            <span class="flex-r rangebox">
+                                <span class="showvalue">{{(odds-rangevalue)| number : '1.0-1'}}%</span>
+                                <span class="icon" (click)="rangevaluelessen()"> - </span>
+                                <span class="flex-r range">
+                                    <input type="range" name="points" min="0" max="{{odds}}" step="{{rastep}}" id="points" [(ngModel)]="rangevalue">
+                                </span>
+                                <span class="icon" (click)="rangevalueadd()">+</span>
+                            </span>
+                        </span>
+                        <span class="flex-r btngroup">
+                            <button [ngClass]="{btnactive:selectbtnvalue === 0}" (click)="tabclick(0)">一般</button>
+                            <button [ngClass]="{btnactive:selectbtnvalue === 1}" (click)="tabclick(1)">快捷</button>
+                            <button  class="kuxuan" (click)="tabclick(2)">快选金额</button>
+                        </span>
+                    </div>
+                    <div class="flex-c mycontaion">
+                        <!-- // 全5中1 -->
+                        <div class="flex-c content" *ngIf="type === 3">
+                            <div class="flex-r contenttop">
+                                <span class="flex-r itembox" *ngFor="let item of contenttoptitle3">
+                                    <span class="item1">号码</span>
+                                    <span class="item2">赔率</span>
+                                    <span class="item3" *ngIf="inputshow">金额</span>
+                                </span>
+
+                            </div>
+                            <div class="flex-c conmain" style="width:100%; height:96px;">
+                                <span class="flex-r itembox itemcol" *ngFor="let item of betdata3;let i=index" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)" >
+                                    <span class="item1" [title]="'全5中一：'+ item.numb">
+                                        <i>{{item.numb}}</i>
+                                    </span>
+                                    <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                    <span class="item3" *ngIf="inputshow">
+                                        <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event,item)"
+                                            (blur)="inmoneyblur()" (keyup)="changereg()">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- // 龙虎斗 -->
+                        <div class="flex-c content" *ngIf="type === 2">
+                            <div class="flex-r conmain2">
+                                <div class="itemwrap2" *ngFor="let item of betdata2;let i=index">
+                                    <div class="flex-c itembox2">
+                                        <span class="item1">
+                                            {{item.title}}
+                                        </span>
+                                        <span class="flex-r item2">
+                                            <span class="flex-r item2info" [ngClass]="{togstyle2:!inputshow,checkbg:selectbtnvalue===1&&item.value1.checked}" (click)="rapid(item.value1)">
+                                                <span class="color_r">龙</span>
+                                                <span class="color_y">{{(item.value1.point+(item.value1.step*rangevalue))| number : '1.0-3'}}</span>
+                                            </span>
+                                            <span class="flex-r item2info" [ngClass]="{togstyle2:!inputshow,checkbg:selectbtnvalue===1&&item.value2.checked}" (click)="rapid(item.value2)">
+                                                <span class="color_g">和</span>
+                                                <span class="color_y">{{(item.value2.point+(item.value2.step*rangevalue))| number : '1.0-2'}}</span>
+                                            </span>
+                                            <span class="flex-r item2info" [ngClass]="{togstyle2:!inputshow,checkbg:selectbtnvalue===1&&item.value3.checked}" (click)="rapid(item.value3)">
+                                                <span class="color_b">虎</span>
+                                                <span class="color_y">{{(item.value3.point+(item.value3.step*rangevalue))| number : '1.0-3'}}</span>
+                                            </span>
+                                        </span>
+                                        <span class="flex-r item3" *ngIf="inputshow">
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value1.value" (focus)="inmoneyfoc($event,item.value1)"
+                                                (blur)="inmoneyblur()" (keyup)="changereg()">
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value2.value" (focus)="inmoneyfoc($event,item.value2)"
+                                                (blur)="inmoneyblur()" (keyup)="changereg()">
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value3.value" (focus)="inmoneyfoc($event,item.value3)"
+                                                (blur)="inmoneyblur()" (keyup)="changereg()">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 整合 -->
+                        <div class="flex-c content content1" *ngIf="type === 1">
+                            <div class="flex-r conmain">
+                                <div class="flex-c conmainbox ballbox" *ngFor="let item of betdatam;let i=index">
+                                    <div class="flex-r contenttop contenttop1">
+
+                                        <span class="flex-r itembox">
+                                            {{item.title}}
+                                        </span>
+                                    </div>
+                                    <div class="flex-r contenttop contenttop3">
+                                        <span class="flex-r itembox">
+                                            <span class="item1">号码</span>
+                                            <span class="item2">赔率</span>
+                                            <span class="item3" *ngIf="inputshow">金额</span>
+                                        </span>
+
+                                    </div>
+                                    <span class="flex-r itembox" *ngFor="let child of item.data1; let q=index" [ngClass]="{checkbg:selectbtnvalue===1&&child.checked}" (click)="rapid(child)">
+                                        <span class="item1" [title]="item.title+child.title+'：'+child.name">
+                                            {{child.name}}
+                                        </span>
+                                        <span class="item2 color_y">{{(child.point+(child.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item3" *ngIf="inputshow">
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="child.value" (focus)="inmoneyfoc($event,child)"
+                                                (blur)="inmoneyblur()" (keyup)="changereg()">
+                                        </span>
+                                    </span>
+                                    <span class="flex-r itembox" *ngFor="let child of item.data2; let q=index" [ngClass]="{checkbg:selectbtnvalue===1&&child.checked}" (click)="rapid(child)">
+                                        <span class=" item1" [title]="item.title+'：'+child.numb">
+                                            <i>{{child.numb}}</i>
+                                        </span>
+                                        <span class="item2 color_y">{{(child.point+(child.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class=" item3" *ngIf="inputshow">
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="child.value" (focus)="inmoneyfoc($event,child)"
+                                                (blur)="inmoneyblur()" (keyup)="changereg()">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="flex-r conmain">
+
+                                <div class="flex-r contenttop contenttop2">
+                                    <span class="flex-r itembo" [ngClass]="{bg_y:btolast===0}" (click)="btolastclick(0)">前三</span>
+                                    <span class="flex-r itembo" [ngClass]="{bg_y:btolast===1}" (click)="btolastclick(1)">中三</span>
+                                    <span class="flex-r itembo" [ngClass]="{bg_y:btolast===2}" (click)="btolastclick(2)">后三</span>
+
+                                </div>
+                            </div>
+                            <div class="flex-r conmain">
+                                <div class="flex-c conmainbox bomainbox" *ngFor="let item of betdatab.data1; let i=index">
+
+                                    <div class="flex-r contenttop contenttop4">
+                                        <span class="flex-r itembox">
+                                            <span class="item1">号码</span>
+                                            <span class="item2">赔率</span>
+                                            <span class="item3" *ngIf="inputshow">金额</span>
+                                        </span>
+
+                                    </div>
+                                    <span class="flex-r itembox" [ngClass]="{checkbg:selectbtnvalue===1&&item.checked}" (click)="rapid(item)">
+                                        <span class="item1 itembold" [title]="betdatab.title+'：'+item.name">
+                                            {{item.name}}
+                                        </span>
+                                        <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item3" *ngIf="inputshow">
+                                            <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event,item)"
+                                                (blur)="inmoneyblur()" (keyup)="changereg()">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 按钮 -->
+                        <div class="flex-r subbox" [ngClass]="{flcenter:type === 2}" >
+                            <span class="flex-r btngroup">
+                                <span *ngIf="!inputshow">
+                                    <input type="text" maxlength="9" class="inmoney" id="allinmoney" name="allinmoney" [(ngModel)]="setallmoney.value" value=""
+                                        (focus)="inmoneyfoc($event,setallmoney)" (blur)="inmoneyblur()" (change)="allchange()" (keyup)="changereg()">
+                                </span>
+                                <button class="btnactive" (click)="sub()">确定</button>
+                                <button class="resetbtn" (click)="reset()">取消</button>
+                            </span>
+                        </div>
+
+                        <!-- 活动选择框 -->
+                        <div id="selectbox" [ngStyle]="{'top': boxposition.y, 'left': boxposition.x}"  *ngIf ="boxshow && boxvalid">
+                            <div class="flex-c selectwrap">
+                                <i></i>
+                                <span class="option" *ngFor="let item of selmoeny" (mousedown)="optinclick(item)">{{item}}元</span>
+                            </div>
+                        </div>
+                        <!-- 底部问路-->
+                        <div class="flex-r wenlu" *ngIf="type!==3">
+                                <app-wenlu [gamedata]="gamedata"></app-wenlu>
+                        </div>
+                        <!-- 快选金额 -->
+                        <div class="setbox" *ngIf="popup.setnumb.show" [style.left.px]= "popup.setnumb.left" [style.top.px]= "popup.setnumb.top">
+                            <div class="flex-c content" [ngClass]="{scale:popup.setnumb.scale}">
+                                <div class="flex-r top" (mousedown)="popmousedown($event,'setnumb')" (mouseleave)="popmouseup($event,'setnumb')" (mouseup)="popmouseup($event,'setnumb')" (mousemove)="popmousmove($event,'setnumb')">
+                                    <span>快选金额</span>
+                                    <i (click)="close()"> &times; </i>
+                                </div>
+                                <div class="flex-c main">
+                                    <p>注意： </p>
+                                    <p>设置只保存在您的电脑，清空浏览器缓存或 更换电脑会显示默认值。</p>
+                                    <div class="flex-c setinput">
+
+                                        <span class="flex-r item" *ngFor="let item of popup.setnumb.data; let i=index">
+                                            <input type="text" name="setinput" maxlength="9" [(ngModel)]="popup.setnumb.data[i].value" (keyup)="changeregset(i)">
+                                            <span (click)="setnumbdel(i)">删除</span>
+                                        </span>
+                                        <span class="flex-r item" *ngIf="popup.setnumb.data.length<5" >
+                                            <input type="text" name="setinput" maxlength="9" [(ngModel)]="popup.setnumb.value" (keyup)="changeregset(-1)">
+                                            <span (click)="addnumb()">增加</span>
+                                            <span (click)="numbdel()">删除</span>
+                                        </span>
+
+                                    </div>
+                                    <div class="flex-r tip">
+                                        <p *ngIf="kxtip">{{kxtipstr}}</p>
+                                    </div>
+                                    <div class="flex-r btnbox">
+                                        <span class="btn1" (click)="setboxvalid()">{{boxvalid?'禁用':'开启'}}</span>
+                                        <span class="btn2" (click)="savenum()">保存</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 提交窗口 -->
+                        <div class="subpopup" *ngIf="popup.sub.show" [style.left.px]= "popup.sub.left" [style.top.px]= "popup.sub.top">
+                            <div class="flex-c content" [ngClass]="{scale:popup.sub.scale}">
+                                <div class="flex-r top" (mousedown)="popmousedown($event,'sub')" (mouseleave)="popmouseup($event,'sub')" (mouseup)="popmouseup($event,'sub')" (mousemove)="popmousmove($event,'sub')">
+                                    <span>投注信息</span>
+                                    <i (click)="close()"> &times; </i>
+                                </div>
+                                <div class="flex-c thead">
+                                    <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
+                                        <tr class="bg_1">
+                                            <th style="width: 40px;">序号</th>
+                                            <th style="width: 140px;">频道</th>
+                                            <th style="width: 140px;">玩法</th>
+                                            <th style="width: 100px;">期号</th>
+                                            <th style="width: 80px;">球号</th>
+                                            <th style="width: 60px;">号码</th>
+                                            <th style="width: 80px;">赔率</th>
+                                            <th style="padding-right: 18px;">金额</th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="flex-c tablewrap">
+                                    <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
+                                        <tbody>
+                                            <tr *ngFor="let item of subdata; let i=index">
+                                                <td style="width: 40px;">{{ i + 1 }}</td>
+                                                <td style="width: 140px;">{{item.channel}}</td>
+                                                <td style="width: 140px;">{{item.type}}</td>
+                                                <td style="width: 100px;">{{item.id}}</td>
+                                                <td style="width: 80px;">{{item.ball}}</td>
+                                                <td style="width: 60px;">{{item.number}}</td>
+                                                <td style="width: 80px;">{{item.point}}</td>
+                                                <td>{{item.money}}</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <span class="flex-r foot">共<strong>{{subdata.length}}</strong>注，总计投注金额
+                                    <strong>{{submoney}}</strong>元
+                                    <span class="flex-r newpoint">
+                                        <input type="checkbox" [(ngModel)]="newpoint">  按最新赔率提交
+                                    </span>
+                                </span>
+                                <div class="flex-r subbox">
+                                    <span class="flex-r btngroup">
+                                        <button class="btnactive" (click)="submit()">提交</button>
+                                        <button class="resetbtn" (click)="close()">取消</button>
+                                    </span>
+        
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 遮罩层 -->
+                        <div class="shade" [style.width.px]="popup.shade.w" [style.height.px]="popup.shade.h" *ngIf="popup.shade.show"></div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-pupout [data]='popoutInfo' (close)="closePopouot($event)" (notarize)="NOTARIZE()"></app-pupout>

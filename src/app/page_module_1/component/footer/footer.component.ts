@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import userModel from '../../../../status/user.model';
-import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
+import { Router } from "@angular/router";
 import { Base } from "../../../../factory/base.model";
 
 @Component({

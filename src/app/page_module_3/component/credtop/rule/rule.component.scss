@@ -38,7 +38,7 @@
     z-index: 999;
     .content{
         width: 850px;
-        height: 640px;
+        height: 520px;
         background-color: white;
         border-radius: 6px;
         box-shadow: 0 0 0px 5px rgba(50, 50, 50, .6);
@@ -56,7 +56,7 @@
             color: white;
             padding: 0 16px;
             justify-content: space-between;
-            background: linear-gradient(to top, #c76401, #fba915);
+            background: linear-gradient(to top, #cf364c, #ec5c5c); 
             i {
                 font-size: 20px;
                 margin-top: -8px;
@@ -79,10 +79,10 @@
                     cursor: pointer;
                 }
                 li:hover{
-                    color:#fe8f00;
+                    color:#CB1F32;
                 }
                 .active{
-                    color:#fe8f00;
+                    color:#CB1F32;
                     background-color: white;
                 }
             }

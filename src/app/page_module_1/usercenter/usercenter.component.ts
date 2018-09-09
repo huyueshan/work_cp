@@ -1,14 +1,8 @@
 import {
   Component,
   OnInit,
-  AfterViewInit,
-  AfterContentChecked
 } from "@angular/core";
-import { SharkModule } from "@ntesmail/shark-angular2";
-import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/filter';
-import { GOUC, userdef } from "../../../factory/usercent";
+import { Router, ActivatedRoute } from "@angular/router";
 import userModel from '../../../status/user.model';
 
 @Component({
@@ -17,7 +11,7 @@ import userModel from '../../../status/user.model';
   styleUrls: ["./usercenter.component.scss"]
 })
 export class UsercenterComponent
-  implements OnInit, AfterViewInit, AfterContentChecked {
+  implements OnInit {
     loadpage=false;
   public now_lang :any=userModel.langpackage;
   public now_lang_type :any='zh';
@@ -205,6 +199,4 @@ export class UsercenterComponent
     this.now_lang_type=userModel.now_lang_type;
     this.loadpage = userModel.platform;
   }
-  ngAfterContentChecked() {}
-  ngAfterViewInit() {}
 }

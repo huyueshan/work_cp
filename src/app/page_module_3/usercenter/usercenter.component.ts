@@ -1,13 +1,9 @@
 import {
   Component,
   OnInit,
-  AfterViewInit,
-  AfterContentChecked
 } from "@angular/core";
-import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
-import { Observable } from "rxjs/Observable";
+import { Router, NavigationEnd } from "@angular/router";
 import "rxjs/add/operator/filter";
-import { GOUC, userdef } from "../../../factory/usercent";
 import userModel from "../../../status/user.model";
 
 @Component({
@@ -16,7 +12,7 @@ import userModel from "../../../status/user.model";
   styleUrls: ["./usercenter.component.scss"]
 })
 export class UsercenterComponent
-  implements OnInit, AfterViewInit, AfterContentChecked {
+  implements OnInit {
   loadpage = false;
   public now_lang: any = userModel.langpackage;
   public now_lang_type: any = "zh";
@@ -165,7 +161,7 @@ export class UsercenterComponent
       ]
     }
   ];
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor( private router: Router) {}
 
   ngOnInit() {
     this.now_lang_type = userModel.now_lang_type;
@@ -178,8 +174,6 @@ export class UsercenterComponent
         this.getrouteurl();
       });
   }
-  ngAfterContentChecked() {}
-  ngAfterViewInit() {}
 
   changpath() {
     this.currpath = 'usercenter';

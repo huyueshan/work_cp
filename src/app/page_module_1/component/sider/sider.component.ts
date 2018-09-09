@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, ElementRef } from "@angular/core";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Router} from "@angular/router";
 
 @Component({
   selector: "app-sider",

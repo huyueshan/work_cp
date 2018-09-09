@@ -15,92 +15,92 @@ export const routes: Routes = [
     children: [
       {
         path: "goucaiquery",
-        loadChildren: './usercenter/goucaiquery/goucaiquery.module#GoucaiqueryModule',
+        loadChildren: './usercenter_1/goucaiquery/goucaiquery.module#GoucaiqueryModule',
 		canActivate: [RouteguardService]
       },
       {
         path: "Zhuihaoquery",
-		loadChildren: './usercenter/zhuihaoquery/zhuihaoquery.module#ZhuihaoqueryModule',
+		loadChildren: './usercenter_1/zhuihaoquery/zhuihaoquery.module#ZhuihaoqueryModule',
       },
       {
         path: "moneyrecord",
-        loadChildren: './usercenter/moneyrecord/moneyrecord.module#MoneyrecordModule',
+        loadChildren: './usercenter_1/moneyrecord/moneyrecord.module#MoneyrecordModule',
       },
       {
         path: "acchange",
-        loadChildren: './usercenter/accountchange/accountchange.module#AccountchangeModule',
+        loadChildren: './usercenter_1/accountchange/accountchange.module#AccountchangeModule',
       },
       {
         path: "myreport",
-        loadChildren: './usercenter/myreport/myreport.module#MyreportModule',
+        loadChildren: './usercenter_1/myreport/myreport.module#MyreportModule',
       },
       {
         path: "groupreport",
-        loadChildren: './usercenter/grouport/grouport.module#GrouportModule',
+        loadChildren: './usercenter_1/grouport/grouport.module#GrouportModule',
       },
       {
         path: "discount",
-        loadChildren: './usercenter/discountinfo/discountinfo.module#DiscountinfoModule',
+        loadChildren: './usercenter_1/discountinfo/discountinfo.module#DiscountinfoModule',
       },
       {
         path: "myoverview",
-        loadChildren: './usercenter/myoverview/myoverview.module#MyoverviewModule',
+        loadChildren: './usercenter_1/myoverview/myoverview.module#MyoverviewModule',
       },
       {
         path: "userdata",
-        loadChildren: './usercenter/userdata/userdata.module#UserdataModule',
+        loadChildren: './usercenter_1/userdata/userdata.module#UserdataModule',
       },
       {
         path: "quota",
-        loadChildren: './usercenter/proquota/proquota.module#ProquotaModule',
+        loadChildren: './usercenter_1/proquota/proquota.module#ProquotaModule',
       },
       {
         path: "proinfo",
-        loadChildren: './usercenter/proinfo/proinfo.module#ProinfoModule',
+        loadChildren: './usercenter_1/proinfo/proinfo.module#ProinfoModule',
       },
       {
         path: "security",
-        loadChildren: './usercenter/security/security.module#SecurityModule',
+        loadChildren: './usercenter_1/security/security.module#SecurityModule',
       },
       {
         path: "bankmanage",
-        loadChildren: './usercenter/bankmanage/bankmanage.module#BankmanageModule',
+        loadChildren: './usercenter_1/bankmanage/bankmanage.module#BankmanageModule',
       },
       {
         path: "pronote",
-        loadChildren: './usercenter/pronote/pronote.module#PronoteModule',
+        loadChildren: './usercenter_1/pronote/pronote.module#PronoteModule',
       },
       {
         path: "webnote",
-        loadChildren: './usercenter/webnote/webnote.module#WebnoteModule',
+        loadChildren: './usercenter_1/webnote/webnote.module#WebnoteModule',
       },
       {
         path: "recharge",
-        loadChildren: './usercenter/recharge/recharge.module#RechargeModule',
+        loadChildren: './usercenter_1/recharge/recharge.module#RechargeModule',
       },
       {
         path: "userlist",
-        loadChildren: './usercenter/userlist/userlist.module#UserlistModule',
+        loadChildren: './usercenter_1/userlist/userlist.module#UserlistModule',
       },
       {
         path: "regismanage",
-        loadChildren: './usercenter/regismanage/regismanage.module#RegismanageModule',
+        loadChildren: './usercenter_1/regismanage/regismanage.module#RegismanageModule',
       },
       {
         path: "regisgenera",
-        loadChildren: './usercenter/regisgeneralize/regisgeneralize.module#RegisgeneralizeModule',
+        loadChildren: './usercenter_1/regisgeneralize/regisgeneralize.module#RegisgeneralizeModule',
       },
       {
         path: "groupview",
-        loadChildren: './usercenter/groupview/groupview.module#GroupviewModule',
+        loadChildren: './usercenter_1/groupview/groupview.module#GroupviewModule',
       },
       {
         path: "prostatistics",
-        loadChildren: './usercenter/prostatistics/prostatistics.module#ProstatisticsModule',
+        loadChildren: './usercenter_1/prostatistics/prostatistics.module#ProstatisticsModule',
       },
       {
         path: "withdrawdeposit",
-        loadChildren: './usercenter/withdrawdeposit/withdrawdeposit.module#WithdrawdepositModule',
+        loadChildren: './usercenter_1/withdrawdeposit/withdrawdeposit.module#WithdrawdepositModule',
       },
       {
         path: "",

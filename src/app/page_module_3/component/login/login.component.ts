@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, Output, EventEmitter, } from '@angular/core';
-import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClient, HttpHeaders } from '@angular/common/http'; 
 
 import { Base } from '../../../../factory/base.model';

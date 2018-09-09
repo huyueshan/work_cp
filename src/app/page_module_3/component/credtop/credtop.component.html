@@ -131,10 +131,11 @@
         </ul>
     </div>
     <div class="flex-c navitem gameresult" [ngClass]="{lagbox:type==='kl8'||type==='lhc'||type==='pk10'||type==='gdk10'}">
-        <div class="fltitle" [ngClass]="{marg10:type==='kl8'}">
+        <div class="flex-r fltitle fltitle2" [ngClass]="{marg10:type==='kl8'}">
             <p>{{now_lang.LOT_NAV.NUMBER}}
                 <span class="color_y">{{indata.prev}}</span>
                 {{now_lang.LOT_NAV.STAGE}} {{now_lang.LOT_NAV.AWARD_NUMBER}}</p>
+                <p class="flex-r guize" (click)="ruleopen()"> <i></i> 玩法规则</p>
         </div>
         <!-- 不同彩种开奖球布局 -->
         <span class="flex-r resultball" *ngIf="type==='ssc'||type==='exf'||type==='dpc'||type==='gxk10'||type==='pl35'">
@@ -211,4 +212,4 @@
 </div>
 
         <!-- 规则说明组件 -->
-        <!-- <app-rule [ruleshow]="rule_show" [cptype]="type" [cpstyle]="indata.style" [cpnav]="ruletab" [cpname]="currentitem" (close)="ruleclose()"></app-rule> -->
+        <app-rule [ruleshow]="rule_show" [cptype]="type" [cpstyle]="indata.style" [cpnav]="ruletab" [cpname]="currentitem" (close)="ruleclose()"></app-rule>

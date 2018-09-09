@@ -29,53 +29,57 @@
         </div>
 
         <div class="headformbox">
-            <div class="headformbg flex-r">
-                <div class="flex-r errbox" *ngIf="errinfo.show">
-                        <span class="color_r">*</span><p>{{errinfo.content}}</p>
-                </div>
-                <div class="accountbox" [ngClass]="{errbd:logindata.name.err}">
-                    <label for="account"></label>
-                    <input type="text"
-                    name="name"
-                    id="account"
-                    placeholder={{now_lang.index.User_pho}}
-                    [(ngModel)]="logindata.name.value"
-                    (focus)="focus('name')" />
-                </div>
-                <div class="passbox" [ngClass]="{errbd:logindata.password.err}">
-                    <label for="password"></label>
-                    <input type="password"
-                    name="password"
-                    id="password"
-                    placeholder={{now_lang.index.Password}}
-                    [(ngModel)]="logindata.password.value"
-                    (focus)="focus('password')" />
-                    <span class="forgetbtn" (click)="linkrouter('/usercenter/security')">{{now_lang.index.Forget}}?</span>
-                </div>
-                <div class="secubox flex-r" [ngClass]="{errbd:logindata.security.err}">
-                    <label for="security"></label>
-                    <input type="text"
-                    name="security"
-                    id="security"
-                    placeholder={{now_lang.index.Smscode}}
-                    [(ngModel)]="logindata.security.value"
-                    (focus)="focus('security')"security
-                    />
-                    <span class="secuimg"></span>
-                </div>
-                <div class="btngroup flex-r">
-                    <div class="btn_loding" (click)="onsubmit()">
-                        <span>{{now_lang.index.Login}}</span>
+            <form>
+                <div class="headformbg flex-r">
+                    <div class="flex-r errbox" *ngIf="errinfo.show">
+                            <span class="color_r">*</span><p>{{errinfo.content}}</p>
                     </div>
-                    <a href="#/register" class="btn_reg">
-                        <span>{{now_lang.index.Regist}}</span>
-                    </a>
-                    <div class="btn_demo">
-                        <span>{{now_lang.index.Try_play}}</span>
+                    
+                    <div class="accountbox" [ngClass]="{errbd:logindata.name.err}">
+                        <label for="account"></label>
+                        <input type="text"
+                        name="name"
+                        id="account"
+                        placeholder={{now_lang.index.User_pho}}
+                        [(ngModel)]="logindata.name.value"
+                        (focus)="focus('name')" />
                     </div>
+                    <div class="passbox" [ngClass]="{errbd:logindata.password.err}">
+                        <label for="password"></label>
+                        <input type="password"
+                        name="password"
+                        id="password"
+                        placeholder={{now_lang.index.Password}}
+                        autocomplete=''
+                        [(ngModel)]="logindata.password.value"
+                        (focus)="focus('password')" />
+                        <span class="forgetbtn" (click)="linkrouter('/usercenter/security')">{{now_lang.index.Forget}}?</span>
+                    </div>
+                    <div class="secubox flex-r" [ngClass]="{errbd:logindata.security.err}">
+                        <label for="security"></label>
+                        <input type="text"
+                        name="security"
+                        id="security"
+                        placeholder={{now_lang.index.Smscode}}
+                        [(ngModel)]="logindata.security.value"
+                        (focus)="focus('security')"security
+                        />
+                        <span class="secuimg"></span>
+                    </div>
+                    <div class="btngroup flex-r">
+                        <div class="btn_loding" (click)="onsubmit()">
+                            <span>{{now_lang.index.Login}}</span>
+                        </div>
+                        <a href="#/register" class="btn_reg">
+                            <span>{{now_lang.index.Regist}}</span>
+                        </a>
+                        <div class="btn_demo" (click)="outlog()">
+                            <span>{{now_lang.index.Try_play}}</span>
+                        </div>
+                    </div>
+    
                 </div>
-
-            </div>
+            </form>
         </div>
 
     </div>

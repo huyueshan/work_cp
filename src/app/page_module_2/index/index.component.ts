@@ -815,7 +815,6 @@ export class IndexComponent implements OnInit {
     }
   }
   linkrouter(t) {
-      console.log(t);
     this.router.navigate([t]);
   }
   
@@ -855,7 +854,6 @@ export class IndexComponent implements OnInit {
   public timeout :any= {}; 
   lunBo(){
     let that = this;
-    console.log('???????????????????????????')
 
       var oDiv = document.getElementById('LunBo');
 
@@ -885,7 +883,6 @@ export class IndexComponent implements OnInit {
           }
           oPoint[0].className ='red'
         }else if($(oLi).parent().find('.active').next().length > 0){
-          console.log(index)
           $(oLi).parent().find('.active').removeClass('active').next().addClass('active');
           for (var i = 0; i <oPoint.length; i++) {
               oPoint[i].className= '';
@@ -911,7 +908,6 @@ export class IndexComponent implements OnInit {
       /*setInterval(move,1000)：这个是循环定时器，它会每隔1000ms调用move函数*/
 
       that.timeout = setInterval(move,3000);
-      console.log('7777777878787878')
 
 
       //鼠标移入移出事件：很简单，我要让当鼠标移入时轮播图暂停，就先清除定时器，移出时重新打开即可
@@ -947,7 +943,6 @@ export class IndexComponent implements OnInit {
               for (var i = 0; i <oPoint.length; i++) {
                   oPoint[i].className= '';
               }
-              console.log(this.index);
               $(oLi).removeClass('active');
               $(oLi[this.index]).addClass('active');
               index =  this.index + 1;
@@ -959,11 +954,7 @@ export class IndexComponent implements OnInit {
   }
 
   next_board(){
-      console.log(this.board.length)
-      console.log(this.now_board.index)
     if (this.now_board.index<this.board.length-1) {
-      console.log(this.board.length)
-      console.log(this.now_board.index+1)
       this.now_board = this.board[this.now_board.index+1];
     }
   }

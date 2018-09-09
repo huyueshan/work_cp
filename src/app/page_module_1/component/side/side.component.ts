@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit } from "@angular/core";
-import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
+import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import "rxjs/add/operator/filter";
 @Component({
   selector: "app-side",

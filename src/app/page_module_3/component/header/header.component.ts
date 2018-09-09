@@ -6,13 +6,9 @@ import {
   AfterViewInit,
   ElementRef
 } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
-
-import { Base } from "../../../../factory/base.model";
+import { HttpClient } from "@angular/common/http";
+import { Router, NavigationEnd } from "@angular/router";
 import userModel from "../../../../status/user.model";
-//语言测试
-import languagepackage from "../../../../status/language";
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",

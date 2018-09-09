@@ -2,15 +2,10 @@ import {
     Component,
     OnInit
 } from "@angular/core";
-import {
-    FormsModule,
-    ReactiveFormsModule
-} from "@angular/forms";
 import userModel from "../../../status/user.model";
 import {
     Base
 } from "../../../factory/base.model";
-// import { FUNCTION_TYPE } from "@angular/compiler/src/output/output_ast";
 
 @Component({
     selector: "app-result",
@@ -1451,7 +1446,6 @@ export class ResultComponent implements OnInit {
     getPageData(i) {
         //  此处请求数据
         this.pageinit();
-        console.log(i);
     }
 
     // ================临时数据开始

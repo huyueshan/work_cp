@@ -4,11 +4,10 @@ import {
   Input,
   OnDestroy,
 } from "@angular/core";
-import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import "rxjs/add/operator/filter";
 import userModel from '../../../../status/user.model';
 import { Base } from "../../../../factory/base.model";
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 @Component({
   selector: "app-credtop",
   templateUrl: "./credtop.component.html",

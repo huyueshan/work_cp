@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { RouterModule, CanActivate, Routes, Router } from "@angular/router";
+import { RouterModule, Routes, Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { RouteguardService } from "./router.service";
 
@@ -27,31 +27,6 @@ const appRoutes: Routes = [
         loadChildren: '../app/page_module_1/home/home.module#HomeModule',
 		canActivate: [RouteguardService]
     }, 
-	{
-        path: 'officialssc',
-		loadChildren: '../app/page_module_1/official/ssc/ssc.module#SSCofficialModule',
-		canActivate: [RouteguardService]
-    }, 
-	{
-        path: 'detail',
-        loadChildren: '../app/page_module_1/detail/detail.module#DetailModule',
-		canActivate: [RouteguardService]
-    }, 
-    {
-        path: 'creditssc',
-        loadChildren: '../app/page_module_1/credit/ssc/ssc.module#SSCcreditModule',
-        canActivate: [RouteguardService]
-    },  
-    {
-        path: 'creditffc',
-        loadChildren: '../app/page_module_1/credit/ffc/ffc.module#FFCcreditModule',
-        canActivate: [RouteguardService]
-    },
-    {
-        path: 'vrc',
-        loadChildren: '../app/page_module_1/credit/vrc/vrc.module#VRCcreditModule',
-        canActivate: [RouteguardService]
-    },
     {
         path: 'lottery',
         loadChildren: '../app/page_module_1/lottery/layout.module#LayoutModule',
@@ -83,19 +58,9 @@ const appRoutes: Routes = [
         loadChildren: '../app/page_module_2/login/login.module#LoginModule',
 		canActivate: [RouteguardService]
     }, 
-	// {
-        // path: 'forgetpass',
-        // loadChildren: '../app/page_module_2/forgetpass/forgetpass.module#ForgetpassModule',
-		// canActivate: [RouteguardService]
-    // }, 
     {
         path: 'home',
         loadChildren: '../app/page_module_2/home/home.module#HomeModule',
-		canActivate: [RouteguardService]
-    }, 
-	{
-        path: 'officialssc',
-		loadChildren: '../app/page_module_2/official/ssc/ssc.module#SSCofficialModule',
 		canActivate: [RouteguardService]
     }, 
 	{
@@ -104,21 +69,6 @@ const appRoutes: Routes = [
 		canActivate: [RouteguardService]
     }, 
     {
-        path: 'creditssc',
-        loadChildren: '../app/page_module_2/credit/ssc/ssc.module#SSCcreditModule',
-        canActivate: [RouteguardService]
-    },  
-    {
-        path: 'creditffc',
-        loadChildren: '../app/page_module_2/credit/ffc/ffc.module#FFCcreditModule',
-        canActivate: [RouteguardService]
-    },
-    {
-        path: 'vrc',
-        loadChildren: '../app/page_module_2/credit/vrc/vrc.module#VRCcreditModule',
-        canActivate: [RouteguardService]
-    },
-    {
         path: 'lottery',
         loadChildren: '../app/page_module_2/lottery/layout.module#LayoutModule',
         canActivate: [RouteguardService]
@@ -126,6 +76,11 @@ const appRoutes: Routes = [
 	{
         path: 'register',
 		loadChildren: '../app/page_module_2/register/register.module#RegisterModule',
+		canActivate: [RouteguardService]
+    },
+	{
+        path: 'index',
+		loadChildren: '../app/page_module_1/index/index.module#IndexModule',
 		canActivate: [RouteguardService]
     },
 	{
@@ -138,16 +93,11 @@ const appRoutes: Routes = [
         loadChildren: '../app/page_module_2/result/result.module#ResultModule',
         canActivate: [RouteguardService]
     },
-    // 模板三路由
+	//模板3的路由
     {
         path: 'login',
         loadChildren: '../app/page_module_3/login/login.module#LoginModule',
         canActivate: [RouteguardService]
-    },
-	{
-        path: 'index',
-		loadChildren: '../app/page_module_3/index/index.module#IndexModule',
-		canActivate: [RouteguardService]
     },
     {
         path: 'forgetpass',
@@ -168,6 +118,11 @@ const appRoutes: Routes = [
         path: 'register',
         loadChildren: '../app/page_module_3/register/register.module#RegisterModule',
         canActivate: [RouteguardService]
+    },
+	{
+        path: 'index',
+		loadChildren: '../app/page_module_3/index/index.module#IndexModule',
+		canActivate: [RouteguardService]
     },
     {
         path: 'usercenter',
@@ -191,12 +146,7 @@ const appRoutes: Routes = [
         loadChildren: '../app/page_module_3/activity/activity.module#ActivityModule',
         canActivate: [RouteguardService]
         
-    },
-    {
-		path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
-		redirectTo: 'index',
-		pathMatch: 'full'  // 必须要设置
-	}
+    }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes, { useHash: true })],

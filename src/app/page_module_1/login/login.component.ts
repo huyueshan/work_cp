@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule } from "@angular/forms";
+import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'; 
-import { RouterModule, Routes, Router } from "@angular/router";
+import { Router } from "@angular/router";
 
 import { Base } from '../../../factory/base.model';
 import { Api } from '../../../factory/api.model';
 import { formmod } from '../../../factory/form';
 import userModel from '../../../status/user.model';
-import { HttpInterceptorService } from '../../../app/Http.Service';
+import { HttpInterceptorService } from '../../../factory/Http.Service';
 
 @Component({
     selector: 'login',
@@ -24,10 +23,6 @@ export class LoginComponent {
 	ngOnInit(){
 		this.loadpage = userModel.platform;
 		Base.DOM.title('用户登录')
-		// let id = document.getElementById('dialog_login');
-		// console.log(document.body.clientHeight)
-		// console.log(id.offsetHeight)
-		// console.log(id.offsetTop)
 	}
 	login(){
 		let val = <any>{}
@@ -42,7 +37,6 @@ export class LoginComponent {
 		
 		
 		this.hserve.post(Api.login,data).then(result => {  
-			console.log("登录接口返回的信息是：" , result);//打印返回的数据  
 			this.router.navigateByUrl("index")
 		});
 	}

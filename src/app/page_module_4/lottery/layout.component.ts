@@ -3,12 +3,6 @@ import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
 
 import userModel from "../../../status/user.model";
 import { Base } from "../../../factory/base.model";
-import { HttpInterceptorService } from "../../Http.Service";
-
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-
-// import {Observable} from 'rxjs';
-// import 'rxjs/Rx'
 
 @Component({
   selector: "app-layout",
@@ -812,8 +806,6 @@ export class LayoutComponent implements OnInit, AfterViewInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private hserve: HttpInterceptorService,
-    private http: HttpClient
   ) {}
 
   ngOnInit() {

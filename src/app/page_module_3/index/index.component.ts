@@ -1,8 +1,6 @@
-import { LayoutModule } from './../../page_module_4/lottery/layout.module';
 import { Component, OnInit, ElementRef } from "@angular/core";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import userModel from "../../../status/user.model";
-import { Base } from "../../../factory/base.model";
 
 @Component({
   selector: "app-index",
@@ -146,7 +144,6 @@ export class IndexComponent implements OnInit {
   
   linkrout(L) {
     // 跳转路由
-    // let str = item.gxtog ? item.items[i].linkc : item.items[i].linko;
     this.router.navigate([L]);
   }
 }

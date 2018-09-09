@@ -1,8 +1,5 @@
-import { UsercenterComponent } from '../usercenter/usercenter.component';
-import { userdef } from '../../../factory/usercent';
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 /***********components***************/
 import { ErrtipComponent } from './errtip/errtip.component';

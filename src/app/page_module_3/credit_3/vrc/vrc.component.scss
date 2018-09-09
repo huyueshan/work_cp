@@ -1,0 +1,624 @@
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.flex-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+}
+
+.flex-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+.color_m {
+    color: #C42136;
+}
+
+.sscbox {
+    width: 100%;
+    min-width: 1200px;
+}
+
+.ssccontain {
+    width: 100%;
+    align-self: center;
+}
+
+.contaner {
+    width: 1200px;
+    align-self: center;
+    background-color: #342840;
+    margin-bottom: 40px;
+}
+
+.mainbox {
+    padding-top: 10px;
+    justify-content: space-between;
+    align-content: flex-start;
+    align-items: flex-start;
+    .contentbox {
+        width: 100%;
+        align-self: stretch;
+        .tabbox {
+            width: 100%;
+            background-color: #170E1F;
+            justify-content: space-between;
+            .tabcontent {
+                span {
+                    height: 50px;
+                    line-height: 50px;
+                    padding: 0 18px;
+                    color: white;
+                    cursor: pointer;
+                }
+                .tabactive {
+                    background: linear-gradient(to top, #941927, #e22137);
+                }
+            }
+            .tagmed{
+                font-size: 14px;
+                align-items: center;
+                padding-right: 20px;
+                color: white;
+                cursor: pointer;
+                i{
+                    display: inline-block;
+                    width: 14px;
+                    height: 14px;
+                    background: url("../../images/mod3/right_m3_01.png") center no-repeat;
+                    margin: 8px;
+                    transform:rotate(90deg);
+                    cursor: pointer;
+                    transition: transform 300ms ease;
+                }
+                .rotate{
+                    transform:rotate(-90deg);
+                }
+            }
+        }
+        
+        .media {
+            width: 100%;
+            height: 320px;
+            padding: 0 50px;
+            background-color: #EEEEEE;
+            justify-content: space-around;
+            align-items: flex-start;
+            overflow: hidden;
+            transition: height 300ms ease;
+            .head {
+                width: 100%;
+                font-size: 16px;
+                font-weight: bold;
+                justify-content: center;
+                .hebox{
+                    color: black;
+                    height: 30px;
+                }
+            }
+            .videobox {
+                width: 460px;
+                height: 300px;
+                padding: 10px 0;
+                .vcontent {
+                    width: 100%;
+                    height: 100%;
+                    background-color: black;
+                    justify-content: center;
+                    i {
+                        width: 55px;
+                        height: 55px;
+                        background: url('../../images/mod3/vrc_m3_01.png') -10px -227px;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .chatbox{
+                width: 580px;
+                height: 300px;
+                padding: 10px 0;
+                justify-content: space-between;
+                align-items: center;
+                .contentbox{
+                    width: 100%;
+                    height: 100%;
+                    .chatcontent{
+                        width: 100%;
+                        flex: 1;
+                        background-color: white;
+                        padding: 5px;
+                        border-left: 1px solid #D8D8D8;
+                        border-right: 1px solid #D8D8D8;
+                        border-top: 2px solid #E22137;
+                    }
+                    .foot{
+                        width: 100%;
+                        height: 50px;
+                        font-size: 12px;
+                        justify-content: space-between;
+                        align-items: center;
+                        border: 1px solid #D8D8D8;
+                        border-top: none;
+                        .face{
+                            width: 20px;
+                            height: 20px;
+                            background: url('../../images/mod3/vrc_m3_01.png') -10px -187px;
+                            margin: 0 10px;
+                            cursor: pointer;
+                        }
+                        .chat{
+                            width: 24px;
+                            height: 17px;
+                            background: url('../../images/mod3/vrc_m3_01.png') -10px -113px;
+                            margin: 0 10px;
+                            cursor: pointer;
+                        }
+                        #chatput{
+                            flex:1;
+                            height: 26px;
+                            line-height: 26px;
+                            font-size: 12px;
+                            padding: 0 12px;
+                            border: none;
+                            border-radius: 13px;
+                            background-color: white;
+                            box-shadow: 0 1px 1px 1px #ccc inset;
+                        }
+                    }
+                }
+            }
+        }
+        .hide{
+            height: 0px;
+        }
+        .playbox {
+            width: 100%;
+            padding: 30px 0 20px;
+            align-items: center;
+            border-top: 1px solid #D8D8D8;
+            background-color: #EEEEEE;
+            .desk {
+                width: 1080px;
+                height: 260px;
+                border: 1px solid #D8D8D8;
+                border-radius: 8px;
+                justify-content: center;
+                .contain_vr{
+                    position: relative;
+                    background-color: #E8E8E8;
+                    border: 1px solid #D8D8D8;
+                    border-radius: 6px;
+                    margin: 5px;
+                    justify-content: center;
+                    align-items: center;
+                    align-content: center;
+                    cursor: pointer;
+                    header{
+                        font-size: 20px;
+                        line-height: 30px;
+                    }
+                    .color_b{
+                        color: #4C6AD6;
+                    }
+                    .color_g{
+                        color: #4AB12E;
+                    }
+                    .color_r{
+                        color: #D32842;
+                    }
+                    footer{
+                        font-size: 20px;
+                        line-height: 30px;
+                        color: #D32842;
+
+                    }
+                    .betball {
+                        position: absolute;
+                        top: 10px;
+                        left: 10px;
+                        padding: 12px;
+                        justify-content: center;
+                        align-self: flex-end;
+                        .betval {
+                            width: 70px;
+                            height: 70px;
+                            font-size: 14px;
+                            font-weight: bold;
+                            color: #A40407;
+                            background: url('../../images/mod3/vrc_m3_01.png') -10px -392px no-repeat;
+                            justify-content: center;
+                        }
+                    }
+                }
+                .contain_vr:hover,.active{
+                    background-color: #CDCDCD;
+                }
+                .con_side{
+                    width: 260px;
+                    height: 250px;
+
+                }
+                .con_he{
+                    width: 530px;
+                    height: 120px;
+
+                }
+                .con_dui{
+                    width: 260px;
+                    height: 120px;
+
+                }
+                
+            }
+            .deskball {
+                width: 100%;
+                height: 100px;
+                padding: 0 50px;
+                justify-content: space-between;
+                .tip{
+                    align-self: flex-start;
+                    margin-top: 20px;
+                    .play{
+                        position: relative;
+                        display: inline-block;
+                        line-height: 18px;
+                        font-size: 14px;
+                        text-align: center;
+                        margin: 0 15px;
+                        color: #C42136;
+                        align-items: center;
+                        cursor: pointer;
+                        i{
+                            width: 14px;
+                            height: 14px;
+                            background: url('../../images/mod3/vrc_m3_01.png') -10px -44px;
+                            margin-right: 6px;
+    
+                        }
+                        .tipbox{
+                            position: absolute;
+                            bottom: 20px;
+                            left: -5px;
+                            padding-bottom: 6px;
+                            .tip{
+                                position: relative;
+                                width: 280px;
+                                padding: 5px;
+                                font-size: 12px;
+                                color: #333;
+                                background-color: white;
+                                border: 1px solid #b52525;
+                                border-radius: 4px;
+                                p{
+                                    font-size: 12px;
+                                    line-height: 18px;
+                                }
+                                .br{
+                                    line-height: 30px;
+                                    height: 30px;
+                                }
+                            }
+                            .tip::before{
+                                content: '';
+                                position: absolute;
+                                bottom: -4px;
+                                left: 34px;
+                                width: 6px;
+                                height: 6px;
+                                border-left: 1px solid #b52525;
+                                border-bottom: 1px solid #b52525;
+                                background-color: white;
+                                transform: rotate(-45deg);
+                            }
+                        }
+                    }
+                }
+                .balwarp{
+                    margin-left: -30px;
+                }
+                .ballbox {
+                    margin: 0 10px;
+                    .ball {
+                        width: 70px;
+                        height: 70px;
+                        line-height: 70px;
+                        text-align: center;
+                        font-weight: bold;
+                        color:#C42136;
+                        background: url('../../images/mod3/vrc_m3_01.png') -10px -302px no-repeat;
+                        overflow: hidden;
+                        cursor: pointer;
+                    }
+                    .active{
+                        background: url('../../images/mod3/vrc_m3_01.png') -10px -392px no-repeat;
+                    }
+                }
+                .custom{
+                    .ball{
+                        justify-content: center;
+                        align-items: center;
+                        input{
+                            width: 40px;
+                            height: 14px;
+                            line-height: 14px;
+                            font-size: 14px;
+                            font-weight: 600;
+                            text-align: center;
+                            border: none;
+                            color:#C42136;
+                            background-color: transparent;
+                        }
+
+                    }
+                }
+                .del{
+                    margin-right: 110px;
+                    .ball:hover{
+                        background: url('../../images/mod3/vrc_m3_01.png') -10px -392px no-repeat;
+                    }
+
+                }                
+            }
+            .butgroup {
+                width: 1080px ;
+                padding: 20px;
+                border-top: 1px dashed #D8D8D8;
+                justify-content: flex-start;
+                align-items: center;
+                .add{
+                    min-width: 150px;
+                    height: 30px;
+                    font-size: 16px;
+                    text-align: center;
+                }
+                span {
+                    width: 130px;
+                    height: 40px;
+                    line-height: 40px;
+                    color: white;
+                    font-size: 18px;
+                    margin: 0 10px;
+                    background: linear-gradient(to top, #941927, #e22137);
+                    border-radius: 4px;
+                    box-shadow: 0 1px 2px 1px rgba(30, 30, 30, .5);
+                    justify-content: center;
+                    cursor: pointer;
+                }
+            }
+        }
+        .tablebox {
+            position: relative;
+            width: 100%;
+            min-height: 200px;
+            padding-bottom:30px;
+            background-color: white;
+            align-items: center;
+            .qcontent {
+                width: 100%;
+                height: 40px;
+                padding: 0 20px;
+                background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+                justify-content: space-between;
+                .lquery {
+                    span {
+                        font-size: 14px;
+                        margin-right: 14px;
+                        cursor: pointer;
+                        span {
+                            margin-right: 0;
+                        }
+                        i {
+                            width: 15px;
+                            height: 15px;
+                            background: url('../../images/mod3/vrc_m3_01.png') -10px -78px no-repeat;
+                            margin-left:4px;
+                        }
+                    }
+                    .active{
+                        color: #CB1F32;
+                    }
+                }
+                .rquery {
+                    .query_item {
+                        flex: none;
+                        padding-right: 20px;
+                        .datebtn {
+                            display: inline-block;
+                            width: 48px;
+                            height: 22px;
+                            line-height: 20px;
+                            text-align: center;
+                            color: black;
+                            background: linear-gradient(to top, #d7d5d5, #fdfdfd);
+                            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                            border: none;
+                            border-radius: 2px;
+                            cursor: pointer;
+                        }
+                        .bd_y {
+                            color: white;
+                            background: linear-gradient(to top, #941927, #e22137);
+                        }
+                    }
+                }
+            }
+            .tablewrap {
+                width: 100%;
+                padding: 0 20px;
+                #table {
+                    table-layout: fixed;
+                    border-collapse: collapse;
+                    border: 1px solid #DADADA;
+                    width: 100%;
+                    .bg_1 {
+                        background-color: #F2F2F2;
+                        border-bottom: 1px solid #DADADA;
+                    }
+                    tr {
+                        th {
+                            font-size: 14px;
+                            font-weight: bold;
+                        }
+                        th,
+                        td {
+                            text-align: center;
+                            height: 40px;
+                            border: none
+                        }
+                        .tablebtn {
+                            display: inline-block;
+                            width: 70px;
+                            height: 20px;
+                            line-height: 20px;
+                            text-align: center;
+                            color: white;
+                            background-color: #b61010;
+                            border: none;
+                            border-radius: 10px;
+                            cursor: pointer;
+                        }
+                        .delicon {
+                            display: inline-block;
+                            width: 16px;
+                            height: 15px;
+                            font-size: 20px;
+                            font-weight: bold;
+                            cursor: pointer;
+                        }
+                    }
+                    tbody {
+                        tr:nth-child(even) {
+                            background-color: #f4f4f4;
+                        }
+                    }
+                }
+            }
+            .tanwarp{
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.7);
+                z-index: 888;
+                .infobox {
+                    width: 900px;
+                    height: 520px;
+                    background-color: white;
+                    border: 1px solid #ccc;
+                    border-radius: 6px;
+                    padding-left: 30px;
+                    .title {
+                        justify-content: space-between;
+                        width: 100%;
+                        height: 50px;
+                        .titlel {
+                            span{
+                                font-size: 18px;
+                            }
+                            i {
+                                display: inline-block;
+                                width: 17px;
+                                height: 17px;
+                                margin-right: 6px;
+                            }
+                        }
+                        .close {
+                            width: 36px;
+                            height: 36px;
+                            line-height: 36px;
+                            text-align: center;
+                            font-size: 36px;
+                            font-weight: bold;
+                            align-self: flex-start;
+                            cursor: pointer;
+                        }
+                    }
+                    .infocont {
+                        width: 100%;
+                        padding-right: 30px;
+                        table {
+                            border-collapse: collapse;
+                            td{
+                                height: 30px;
+                                line-height: 30px;
+                                border: 1px solid #fe8f00;
+                                text-align: center;
+                            }
+                        }
+                        .pad{
+                            font-size: 14px;
+                            padding: 20px 0 10px;
+                        }
+                        .info{
+                            width: 100%;
+                            height: 120px;
+                            background-color: #eee;
+                            border: 1px solid #ccc;
+                            border-radius: 3px;
+                            padding:6px 20px;
+                            p{
+                                font-size: 14px;
+                                line-height: 24px;
+                            }
+                        }
+                        .btnbox{
+                            width:100%;
+                            justify-content: flex-end;
+                            align-content: center;
+                            padding:20px 0;
+                            span{
+                                height: 32px;
+                                padding: 0 24px;
+                                font-size: 14px;
+                                line-height: 30px;
+                                text-align: center;
+                                border: none;
+                                border-radius: 4px;
+                                color: white;
+                                background: linear-gradient(to top, #941927, #e22137);
+                                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                                cursor: pointer;
+                            }
+    
+                        }
+                        .resuttable{
+                            margin-top: 20px;
+                            border-collapse: collapse;
+                            th,td{
+                                height: 30px;
+                                line-height: 30px;
+                                font-size: 14px;
+                                border: 1px solid #fe8f00;
+                                text-align: center;
+                            }
+                            th{
+                                color:white;
+                                background-color: #fe8f00;
+                            }
+    
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.page {
+    align-self: center;
+}

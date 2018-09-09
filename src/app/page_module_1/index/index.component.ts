@@ -1,14 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Component, OnInit,
+    OnDestroy, } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
 import userModel from '../../../status/user.model';
 import { Base } from "../../../factory/base.model";
+import { PageinitService } from '../../../factory/Pageinit.Service';
 
 @Component({
   selector: "app-index",
   templateUrl: "./index.component.html",
   styleUrls: ["./index.component.scss"]
 })
-export class IndexComponent implements OnInit {
+export class IndexComponent implements OnInit, OnDestroy {
   public tabactive = 0; // 头部导航是否鼠标经过
   public tableactive = 0; // 底部大图标链接位置是否鼠标经过
   // 头部左边导航数据
@@ -219,7 +221,7 @@ export class IndexComponent implements OnInit {
     password: /^[\d]{1,15}$/,
     security: /^(\d){4}$/
   };
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private Pginit:PageinitService) {}
 
   ngOnInit() {
     this.now_lang_type=userModel.now_lang_type;
@@ -229,6 +231,27 @@ export class IndexComponent implements OnInit {
         window.scrollTo(0,520);
     }
 
+    
+    if (!Base.Store.get('isLoaded')){
+        console.log('您还没有登录，请登陆！');
+    }else{
+        console.log('您已经登录');
+        this.Pginit.READY();
+    }
+  }
+
+  ngOnDestroy(){
+    clearInterval(this.Pginit.checkStatus);  // 清除Pageinit.Service 中的定时器  ！！！！！！！！！！！！！！！！！！！！！！！！
+
+  }
+
+  // 临时登陆退出
+  outlog(){
+      if (Base.Store.get('isLoaded')) {
+          this.Pginit.USEROUT();
+        }else{
+            this.Pginit.USERLOG();
+      }
   }
 
   // 中间内容区tab切换事件

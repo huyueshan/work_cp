@@ -1,9 +1,8 @@
 import { Component, OnInit, Input, OnDestroy } from "@angular/core";
-import { Router, ActivatedRoute, Params, NavigationEnd } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import "rxjs/add/operator/filter";
 import userModel from "../../../../status/user.model";
 import { Base } from "../../../../factory/base.model";
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 @Component({
   selector: "app-credtop",
   templateUrl: "./credtop.component.html",
@@ -880,6 +879,7 @@ export class CredtopComponent implements OnInit, OnDestroy {
         }
       }
     }
+    Base.Store.set("HistoryID", this.currentgameid, false); //设置开奖奖结果ID
     // 设置开奖球属性
     this.setresultdata();
   }

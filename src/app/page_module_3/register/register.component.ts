@@ -1,5 +1,4 @@
-import { Component, OnInit, ElementRef } from "@angular/core";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-registers",
@@ -7,11 +6,7 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
   styleUrls: ["./register.component.scss"]
 })
 export class RegisterComponent implements OnInit {
-  constructor(
-    private el: ElementRef,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  constructor() {}
   ngOnInit() {}
 
 }

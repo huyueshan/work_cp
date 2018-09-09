@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { HttpInterceptorService } from '../../Http.Service';
+import { HttpInterceptorService } from '../../../factory/Http.Service';
 
 @Component({
     selector: 'home',
@@ -97,7 +97,6 @@ export class HomeComponent {
     // 分页组件点击页码事件，参数i为点击页码数
     getPageData(i) {
         //  此处请求数据
-        console.log(i);
     }
     
     // 改变传给分页组件参数事件

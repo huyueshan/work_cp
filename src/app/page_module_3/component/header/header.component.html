@@ -3,15 +3,28 @@
             <div class="flex-r head">
                 <span class="flex-r headl">
                     <i></i>
-                    <span>当前在线人数：
-                        <strong class="color_m">13652</strong> 人</span>
+                    <span class="flex-r">当前在线人数：
+                        <strong class="color_m">13652</strong>人</span>
                 </span>
                 <ul class="flex-r headr">
-                    <li class="flex-r">
+                    <li class="flex-r" *ngIf="navindex===0">
                         <a href="javescript:;" (click)="login= true">登陆</a>
                         <span class="line">|</span>
                         <a href="javescript:;" (click)="regis= true">注册</a>
                     </li>
+                    <ng-container *ngIf="navindex" >
+                        <li class="flex-r">
+                            <span class="line">欢迎光临：</span>
+                            <strong class="color_m">test02</strong>
+                        </li>
+                        <li class="flex-r">
+                            <a href="javescript:;">登出账号</a>
+                        </li>
+    
+                        <li class="flex-r" *ngIf="navindex===1" >
+                            <a href="#/result">历史开奖</a>
+                        </li>
+                    </ng-container>
                     <li class="flex-r">
                         <i class="message"></i>
                         <a href="#/usercenter/pronote">消息</a>

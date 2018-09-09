@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
-import { Waybills } from "../../../../factory/Waybill";
+import { Waybills } from "../../../../factory/waybill";
 require("../../../../styles/waybill/waybill_1.scss")
 
 @Component({
@@ -70,47 +70,6 @@ export class WenluComponent implements OnInit {
       "第五球",
       "龙虎斗"
     ];
-    public tablebox1 = {
-        name: "大路",
-        width: "780px",
-        evleft: 0,
-        drag: false,
-        left: "0px",
-        data: []
-      };
-      public tablebox2 = {
-        name: "盘珠路",
-        width: "170px",
-        evleft: 0,
-        drag: false,
-        left: "0px",
-        data: []
-      };
-      public tablebox3 = {
-        name: "大眼路",
-        width: "170px",
-        evleft: 0,
-        drag: false,
-        left: "0px",
-        data: []
-      };
-      public tablebox4 = {
-        name: "小路",
-        width: "170px",
-        evleft: 0,
-        drag: false,
-        left: "0px",
-        data: []
-      };
-      public tablebox5 = {
-        name: "曱甴路",
-        width: "170px",
-        evleft: 0,
-        drag: false,
-        left: "0px",
-        data: []
-      };
-    
   
 
   constructor(private el: ElementRef,) { }

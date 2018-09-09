@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
-import { SharkModule } from '@ntesmail/shark-angular2';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 
 
 import { Base } from '../../../../factory/base.model';
-import { Api } from '../../../../factory/api.model';
 import userModel from '../../../../status/user.model';
 
 import languagepackage from '../../../../status/language';
-import Sstore from '../../../../status/user.model'
 
 @Component({
     selector: 'language',
@@ -17,7 +14,7 @@ import Sstore from '../../../../status/user.model'
 })
 
 export class LanguageComponent {
-	constructor(private FormsModule:FormsModule) { 
+	constructor() { 
         let that = this
 	}
 	loadpage=false;

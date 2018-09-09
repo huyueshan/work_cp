@@ -1,18 +1,16 @@
 import { Injectable } from "@angular/core";
 import {
-  Resolve,
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  NavigationStart
 } from "@angular/router";
-import { RouterModule, Routes, Router } from "@angular/router";
+import { Routes, Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
 import userModel from "../status/user.model";
 import { Base } from "../factory/base.model";
-import { Api } from "../factory/api.model";
-import { HttpInterceptorService } from '../app/Http.Service';
+// import { Api } from "../factory/api.model";
+import { HttpInterceptorService } from '../factory/Http.Service';
 
 import languagepackage from "../status/language";
 @Injectable()
@@ -59,7 +57,7 @@ export class RouteguardService implements CanActivate{
 				  // that.routerReconfig('1')
 				  // resolve(true);
 				// }); 
-				that.routerReconfig('1')
+				that.routerReconfig('2')
 				resolve(true);
 			}else{
 				that.routerReconfig(Base.Store.get('isTemplet'))
@@ -115,11 +113,6 @@ export class RouteguardService implements CanActivate{
 				loadChildren: '../app/page_module_1/forgetpass/forgetpass.module#ForgetpassModule',
 				canActivate: [RouteguardService]
 			}, 
-			{
-				path: 'register',
-				loadChildren: '../app/page_module_1/register/register.module#RegisterModule',
-				canActivate: [RouteguardService]
-			},
 			{
 				path: 'index',
 				loadChildren: '../app/page_module_1/index/index.module#IndexModule',
@@ -242,6 +235,11 @@ export class RouteguardService implements CanActivate{
 				canActivate: [RouteguardService]
 			},
 			{
+				path: 'index',
+				loadChildren: '../app/page_module_3/index/index.module#IndexModule',
+				canActivate: [RouteguardService]
+			},
+			{
 				path: 'result',
 				loadChildren: '../app/page_module_3/result/result.module#ResultModule',
 				canActivate: [RouteguardService]
@@ -254,11 +252,6 @@ export class RouteguardService implements CanActivate{
 			{
 				path: 'register',
 				loadChildren: '../app/page_module_3/register/register.module#RegisterModule',
-				canActivate: [RouteguardService]
-			},
-			{
-				path: 'index',
-				loadChildren: '../app/page_module_3/index/index.module#IndexModule',
 				canActivate: [RouteguardService]
 			},
 			{
@@ -275,64 +268,6 @@ export class RouteguardService implements CanActivate{
 			{
 				path: 'activity',
 				loadChildren: '../app/page_module_3/activity/activity.module#ActivityModule',
-				canActivate: [RouteguardService]
-				
-			},
-			{
-				path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
-				redirectTo: 'index',
-				pathMatch: 'full'  // 必须要设置
-			}
-		];
-		const item4:Routes =[
-			{
-				path: '',
-				redirectTo: 'index',
-				pathMatch: 'full'
-			},
-			{
-				path: 'login',
-				loadChildren: '../app/page_module_4/login/login.module#LoginModule',
-				canActivate: [RouteguardService]
-			},
-			{
-				path: 'register',
-				loadChildren: '../app/page_module_4/register/register.module#RegisterModule',
-				canActivate: [RouteguardService]
-			},
-			{
-				path: 'index',
-				loadChildren: '../app/page_module_4/index/index.module#IndexModule',
-				canActivate: [RouteguardService]
-			},
-			{
-				path: 'result',
-				loadChildren: '../app/page_module_4/result/result.module#ResultModule',
-				canActivate: [RouteguardService]
-			},  
-			{
-				path: 'lottery',
-				loadChildren: '../app/page_module_4/lottery/layout.module#LayoutModule',
-				canActivate: [RouteguardService]
-			},  
-			{
-				path: 'home',
-				loadChildren: '../app/page_module_4/home/home.module#HomeModule',
-				canActivate: [RouteguardService]
-			}, 
-			{
-				path: 'register',
-				loadChildren: '../app/page_module_4/register/register.module#RegisterModule',
-				canActivate: [RouteguardService]
-			},
-			{
-				path: 'index',
-				loadChildren: '../app/page_module_4/index/index.module#IndexModule',
-				canActivate: [RouteguardService]
-			},
-			{
-				path: 'usercenter',
-				loadChildren: '../app/page_module_4/usercenter/usercenter.module#UsercenterModule',
 				canActivate: [RouteguardService]
 				
 			},

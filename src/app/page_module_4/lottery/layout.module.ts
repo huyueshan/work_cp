@@ -7,7 +7,6 @@ import { ComponentsModule } from "../component/components.module";
 /***********components***************/
 import { LayoutComponent } from "./layout.component";
 import { RuleComponent } from './components/rule/rule.component';
-import { HttpInterceptorService } from '../../Http.Service';
 
 const routes:Routes = [
   {
@@ -103,6 +102,6 @@ const routes:Routes = [
       LayoutComponent,
       RuleComponent,
     ],
-  providers:[HttpInterceptorService],
+  providers:[],
 })
 export class LayoutModule {}

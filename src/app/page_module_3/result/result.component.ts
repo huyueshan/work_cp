@@ -2,15 +2,10 @@ import {
     Component,
     OnInit
 } from "@angular/core";
-import {
-    FormsModule,
-    ReactiveFormsModule
-} from "@angular/forms";
 import userModel from "../../../status/user.model";
 import {
     Base
 } from "../../../factory/base.model";
-// import { FUNCTION_TYPE } from "@angular/compiler/src/output/output_ast";
 
 @Component({
     selector: "app-result",
@@ -19,7 +14,8 @@ import {
 })
 export class ResultComponent implements OnInit {
     loadpage = false;
-    public gamelist = [{
+    public gamelist = [
+        {
             gamename: "重庆时时彩[官]",
             id: "101",
             type: "ssc",

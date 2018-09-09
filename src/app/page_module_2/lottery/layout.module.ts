@@ -7,7 +7,6 @@ import { ComponentsModule } from "../component/components.module";
 /***********components***************/
 import { LayoutComponent } from "./layout.component";
 import { RuleComponent } from './components/rule/rule.component';
-import { HttpInterceptorService } from '../../Http.Service';
 
 const routes:Routes = [
   {
@@ -21,71 +20,71 @@ const routes:Routes = [
         },
         {
             path: "officialssc",
-            loadChildren: '../official/ssc/ssc.module#SSCofficialModule',
+            loadChildren: '../official_2/ssc/ssc.module#SSCofficialModule',
           },
         {
             path: "officialffc",
-            loadChildren: '../official/ffc/ffc.module#FFCofficialModule',
+            loadChildren: '../official_2/ffc/ffc.module#FFCofficialModule',
           },
           {
             path: 'creditssc',
-            loadChildren: '../credit/ssc/ssc.module#SSCcreditModule',
+            loadChildren: '../credit_2/ssc/ssc.module#SSCcreditModule',
         },  
           {
             path: 'creditffc',
-            loadChildren: '../credit/ffc/ffc.module#FFCcreditModule',
+            loadChildren: '../credit_2/ffc/ffc.module#FFCcreditModule',
         },  
           {
             path: 'creditpk10',
-            loadChildren: '../credit/pk10/pk10.module#Pk10creditModule',
+            loadChildren: '../credit_2/pk10/pk10.module#Pk10creditModule',
         },  
           {
             path: 'creditexf',
-            loadChildren: '../credit/exf/exf.module#ExfcreditModule',
+            loadChildren: '../credit_2/exf/exf.module#ExfcreditModule',
         },  
         {
             path: 'creditklc',
-            loadChildren: '../credit/klc/klc.module#KlccreditModule',
+            loadChildren: '../credit_2/klc/klc.module#KlccreditModule',
         },  
         {
             path: 'creditkl',
-            loadChildren: '../credit/gxk10/gxk10.module#Gxk10creditModule',
+            loadChildren: '../credit_2/gxk10/gxk10.module#Gxk10creditModule',
         },  
           {
             path: 'creditdpc',
-            loadChildren: '../credit/dpc/dpc.module#DpccreditModule',
+            loadChildren: '../credit_2/dpc/dpc.module#DpccreditModule',
         },  
           {
             path: 'creditk3',
-            loadChildren: '../credit/k3/k3.module#K3creditModule',
+            loadChildren: '../credit_2/k3/k3.module#K3creditModule',
         },  
           {
             path: 'creditpcdd',
-            loadChildren: '../credit/pcdd/pcdd.module#PcddcreditModule',
+            loadChildren: '../credit_2/pcdd/pcdd.module#PcddcreditModule',
         },  
           {
             path: 'vrc',
-            loadChildren: '../credit/vrc/vrc.module#VRCcreditModule',
+            loadChildren: '../credit_2/vrc/vrc.module#VRCcreditModule',
         },  
         {
             path: "officialpk10",
-            loadChildren: '../official/scc/scc.module#SCCofficialModule',
+            loadChildren: '../official_2/scc/scc.module#SCCofficialModule',
           },  
         {
             path: "officialklc",
-            loadChildren: '../official/klc/klc.module#KLCofficialModule',
+            loadChildren: '../official_2/klc/klc.module#KLCofficialModule',
           },
         {
             path: "officialdpc",
-            loadChildren: '../official/dpc/dpc.module#DPCofficialModule',
+            loadChildren: '../official_2/dpc/dpc.module#DPCofficialModule',
           },
         {
             path: "officialexf",
-            loadChildren: '../official/exf/exf.module#EXFofficialModule',
+            loadChildren: '../official_2/exf/exf.module#EXFofficialModule',
           },
         {
             path: "officialk3",
-            loadChildren: '../official/k3/k3.module#K3officialModule',
+            loadChildren: '../official_2/k3/k3.module#K3officialModule',
           }
     ],
   },
@@ -103,6 +102,6 @@ const routes:Routes = [
       LayoutComponent,
       RuleComponent,
     ],
-  providers:[HttpInterceptorService],
+  providers:[],
 })
 export class LayoutModule {}

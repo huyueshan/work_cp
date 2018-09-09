@@ -6,7 +6,7 @@ import {
   EventEmitter,
   ElementRef
 } from "@angular/core";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Router, ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: "app-register",

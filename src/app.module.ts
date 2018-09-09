@@ -1,12 +1,13 @@
 import { enableProdMode } from '@angular/core';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, Router } from "@angular/router";
+import { Router } from "@angular/router";
+import { SharkModule } from '@ntesmail/shark-angular2';
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'; 
 import { HttpModule } from '@angular/http';
 import { ApplicationRef } from '@angular/core';
-import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { Base } from './factory/base.model';
@@ -17,9 +18,9 @@ const way = Base.Store.get('isTemplet');
 import "./styles/scss/index.scss";
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './router/router.module';
-import { RouteguardService } from './router/router.service';
 import { InterceptorService } from './router/ljq.service';
-import { HttpInterceptorService } from './app/Http.Service';
+import { HttpInterceptorService } from '../src/factory/Http.Service';
+import { PageinitService } from './factory/Pageinit.Service';
 
 
 if (ENV === 'prod') {
@@ -27,10 +28,12 @@ if (ENV === 'prod') {
 }
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, AppRoutingModule,HttpModule ,HttpClientModule,],
+    imports: [BrowserModule, FormsModule, SharkModule, AppRoutingModule,HttpModule ,HttpClientModule,],
     declarations: [AppComponent],
 	providers: [
-		{provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true},HttpInterceptorService
+        {provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true},
+        HttpInterceptorService,
+        PageinitService,
 	],
     bootstrap: [AppComponent,
         

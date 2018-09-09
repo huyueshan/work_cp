@@ -269,7 +269,7 @@ export const Waybills = {
             return /(^sixi$)|(^danshuang$)|(^daxiao$)|(^weidaxiao$)/.test(t)
               ? 21
               : /(^zongdanshuang$)|(^zongweidaxiao$)/.test(t)
-                ? 55
+                ? 65
                 : void 0;
           })(a));
         var n = !e.isToradora && !!/^(4)|(6)|(5)|(13)$/.test(t);
@@ -292,7 +292,7 @@ export const Waybills = {
           }
         }
         var t;
-        for (var o = a.x || 55, s = a.y || 6, d = "", l = 1; l <= s; l++) {
+        for (var o = a.x || 65, s = a.y || 6, d = "", l = 1; l <= s; l++) {
           d += "<tr>";
           for (var c = 1; n(c); c++) {
             var u = e[c + "_" + l],

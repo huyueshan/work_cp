@@ -24,7 +24,7 @@
             <label for="password1">
               <i class="password-icon"></i>
             </label>
-            <input class="reform-item-in" id="password1" type="password" placeholder="密码长度有6-13个数字和字母组成" [(ngModel)]="formdata.password1"
+            <input class="reform-item-in" id="password1" type="password" placeholder="密码长度有6-13个数字和字母组成" autocomplete='' [(ngModel)]="formdata.password1"
               name="password" (blur)="validator('password1')" (keyup.enter)="validator('password1')">
           </div>
         </div>
@@ -33,7 +33,7 @@
             <label for="password2">
               <i class="password-icon"></i>
             </label>
-            <input class="reform-item-in" id="password2" name="password2" type="password" placeholder="重复输入密码" [(ngModel)]="formdata.password2"
+            <input class="reform-item-in" id="password2" name="password2" type="password" placeholder="重复输入密码" autocomplete='' [(ngModel)]="formdata.password2"
               (blur)="validator('password2')" (keyup.enter)="validator('password2')">
           </div>
         </div>

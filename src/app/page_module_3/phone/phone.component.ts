@@ -1,5 +1,4 @@
-import { Component, OnInit, ElementRef } from "@angular/core";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
 import userModel from "../../../status/user.model";
 
 @Component({
