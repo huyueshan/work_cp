@@ -3,10 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from "@angular/router";
 
 import { Base } from '../../../factory/base.model';
+import { Api } from '../../../factory/api.model';
 import { formmod } from '../../../factory/form';
 import userModel from '../../../status/user.model';
-
-import { PageinitService } from '../../../factory/Pageinit.Service';
+import { HttpInterceptorService } from '../../../factory/Http.Service';
 
 @Component({
     selector: 'login',
@@ -15,14 +15,14 @@ import { PageinitService } from '../../../factory/Pageinit.Service';
 })
 
 export class LoginComponent {
-	constructor(private httpClient:HttpClient, private Pginit:PageinitService,private router: Router) { }
+	constructor(private httpClient:HttpClient,private hserve:HttpInterceptorService,private router: Router,) { }
 	loadpage=false;
     httpOptions = {  
 		headers: new HttpHeaders({ 'Content-Type': 'application/json;application/x-www-form-urlencodeed; charset=utf-8'})  
 	};
 	ngOnInit(){
 		this.loadpage = userModel.platform;
-        Base.DOM.title('用户登录');
+		Base.DOM.title('用户登录')
 	}
 	login(){
 		let val = <any>{}
@@ -33,12 +33,11 @@ export class LoginComponent {
 		let data = {
 			username: val.mobile.value,
 			password: val.password.value
-        } 
-        
-        Base.Store.set('isLoaded',true,false);
-        this.Pginit.USERLOG(data);
-        this.router.navigateByUrl("index")
+		}
 		
 		
+		this.hserve.post(Api.login,data).then(result => {  
+			this.router.navigateByUrl("index")
+		});
 	}
 }

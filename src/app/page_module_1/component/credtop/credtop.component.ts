@@ -8,6 +8,11 @@ import { Router, ActivatedRoute } from "@angular/router";
 import "rxjs/add/operator/filter";
 import userModel from '../../../../status/user.model';
 import { Base } from "../../../../factory/base.model";
+
+
+import { PageinitService } from '../../../../factory/Pageinit.Service';
+import { TransferService } from '../../../../factory/Transfer.Service';
+
 @Component({
   selector: "app-credtop",
   templateUrl: "./credtop.component.html",
@@ -795,8 +800,18 @@ export class CredtopComponent implements OnInit, OnDestroy {
     vrcbjl: { min: 0, max: 9, len: 10, length: 4, blean: true },
     };
     // 临时数据end
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private Pginit:PageinitService, private Transfer:TransferService) {}
   ngOnInit() {
+
+    // http请求测试
+    // if (!Base.Store.get('isLoaded')){
+    //     console.log('您还没有登录，请登陆！');
+    //     this.Pginit.ISLOG();
+    // }else{
+    //     console.log('您已经登录');
+    //     this.Pginit.READY();
+    // }
+
     this.now_lang_type=userModel.now_lang_type;
     // 设置应该显示的logo图片
     this.route.params.subscribe(data => {
@@ -809,16 +824,16 @@ export class CredtopComponent implements OnInit, OnDestroy {
     this.time = setInterval(() => {
       this.timedate = new Date();
     }, 1000);
+
+
   }
   ngAfterViewInit() {
   }
   ngOnDestroy() {
     clearInterval(this.time);
+    clearInterval(this.Pginit.checkStatus);  // 清除Pageinit.Service 中的定时器  ！！！！！！！！！！！！！！！！！！！！！！！！
   }
 
-//   navtog(bl){
-//     this.shownav=bl;
-//   }
   // 开奖结果球动画控制
   Rotates(){
       let _that = this;

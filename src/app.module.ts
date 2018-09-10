@@ -21,6 +21,7 @@ import { AppRoutingModule } from './router/router.module';
 import { InterceptorService } from './router/ljq.service';
 import { HttpInterceptorService } from '../src/factory/Http.Service';
 import { PageinitService } from './factory/Pageinit.Service';
+import { TransferService } from './factory/Transfer.Service';
 
 
 if (ENV === 'prod') {
@@ -34,6 +35,7 @@ if (ENV === 'prod') {
         {provide:HTTP_INTERCEPTORS,useClass:InterceptorService,multi:true},
         HttpInterceptorService,
         PageinitService,
+        TransferService,
 	],
     bootstrap: [AppComponent,
         

@@ -1,9 +1,14 @@
-import { Component, OnInit,Input,OnDestroy } from "@angular/core";
+import { Component, OnInit,Input,OnDestroy} from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 
 import { Base } from "../../../../factory/base.model";
 import userModel from "../../../../status/user.model";
+
+
+import { PageinitService } from '../../../../factory/Pageinit.Service';
+import { TransferService } from '../../../../factory/Transfer.Service';
+
 //语言测试
 @Component({
   selector: "app-header",
@@ -42,16 +47,24 @@ export class HeaderComponent implements OnInit,OnDestroy {
         },
     ];
     
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private httpClient: HttpClient, private router: Router, private Pginit:PageinitService, public Transfer:TransferService) {}
 	ngOnInit(){
+        
+        // http请求测试
+            this.Pginit.READY();
+
 		this.now_lang=userModel.langpackage;
 		this.now_lang_type=userModel.now_lang_type;
         this.timedate = setInterval(() => {
             this.time = new Date();
         }, 1000);
+
 	}
     ngOnDestroy() {
         clearInterval(this.timedate);
+
+        // 凡是引入了PageinitService 服务的页面都需要做下面异步操作
+      clearInterval(this.Pginit.checkStatus);  // 清除Pageinit.Service 中的定时器  ！！！！！！！！！！！！！！！！！！！！！！！！
     }
     refresh_money(em,em2){
     	em.innerHTML = '- - - - - -';

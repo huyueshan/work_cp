@@ -266,7 +266,8 @@ export class SscComponent implements OnInit, OnDestroy, AfterViewInit {
             ]
         }
     };
-    public betdatam = [{
+    public betdatam = [
+        {
             title: "第一球",
             data1: this.setbigorsmall(),
             data2: this.setball()
@@ -369,7 +370,8 @@ export class SscComponent implements OnInit, OnDestroy, AfterViewInit {
         ]
     };
 
-    public betdata2 = [{
+    public betdata2 = [
+        {
             numb: 0,
             title: "万千  第一球VS第二球",
             value1: {

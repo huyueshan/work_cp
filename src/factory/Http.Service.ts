@@ -61,7 +61,7 @@ export class HttpInterceptorService {
   private handleSuccess(res: Response) {  
     let body = res["_body"];  
     console.log("接口返回body：" , res)  
-    console.log("接口返回的成功信息：" , res.json())  
+    // console.log("接口返回的成功信息：" , res.json())  
     if (body) { // 有数据返回  
       return {  
         data: res.json()|| {}, // 返回内容  

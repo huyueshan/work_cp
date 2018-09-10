@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import userModel from '../../../status/user.model';
 import { Base } from "../../../factory/base.model";
 import { PageinitService } from '../../../factory/Pageinit.Service';
+import { TransferService } from '../../../factory/Transfer.Service';
 
 @Component({
   selector: "app-index",
@@ -191,7 +192,7 @@ export class IndexComponent implements OnInit, OnDestroy {
     }
   ];
   // 投注排行和中奖排行数据
-  public touzhu_list = [, , , , , , , , , , ,];
+  public touzhu_list = [, , , , , , , , , , ];
   // 登陆表单数据
   public logindata = {
     name: {
@@ -221,7 +222,7 @@ export class IndexComponent implements OnInit, OnDestroy {
     password: /^[\d]{1,15}$/,
     security: /^(\d){4}$/
   };
-  constructor(private route: ActivatedRoute, private router: Router, private Pginit:PageinitService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private Pginit:PageinitService, private Transfer:TransferService) {}
 
   ngOnInit() {
     this.now_lang_type=userModel.now_lang_type;
@@ -231,16 +232,12 @@ export class IndexComponent implements OnInit, OnDestroy {
         window.scrollTo(0,520);
     }
 
-    
-    if (!Base.Store.get('isLoaded')){
-        console.log('您还没有登录，请登陆！');
-    }else{
-        console.log('您已经登录');
-        this.Pginit.READY();
-    }
+        this.Pginit.READY(true);
   }
 
   ngOnDestroy(){
+
+      // 凡是引入了PageinitService 服务的页面都需要做下面异步操作
     clearInterval(this.Pginit.checkStatus);  // 清除Pageinit.Service 中的定时器  ！！！！！！！！！！！！！！！！！！！！！！！！
 
   }
@@ -250,7 +247,7 @@ export class IndexComponent implements OnInit, OnDestroy {
       if (Base.Store.get('isLoaded')) {
           this.Pginit.USEROUT();
         }else{
-            this.Pginit.USERLOG();
+            this.Pginit.USERLOG({});
       }
   }
 

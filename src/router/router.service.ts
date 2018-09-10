@@ -150,6 +150,12 @@ export class RouteguardService implements CanActivate{
 				
 			},
 			{
+				path: 'AgainLogin',
+				loadChildren: '../app/page_module_1/AgainLogin/AgainLogin.module#AgainLoginModule',
+				canActivate: [RouteguardService]
+				
+			},
+			{
 				path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
 				redirectTo: 'index',
 				pathMatch: 'full'  // 必须要设置

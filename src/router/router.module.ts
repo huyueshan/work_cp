@@ -52,6 +52,11 @@ const appRoutes: Routes = [
         loadChildren: '../app/page_module_1/result/result.module#ResultModule',
         canActivate: [RouteguardService]
     },
+    {
+        path: 'AgainLogin',
+        loadChildren: '../app/page_module_1/AgainLogin/AgainLogin.module#AgainLoginModule',
+        canActivate: [RouteguardService]
+    },
 	//模板2的路由
 	{
         path: 'login',
