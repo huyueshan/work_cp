@@ -17,7 +17,7 @@
         <p>{{now_lang.User_center_c.Tips3}}</p>
       </div>
     </div>
-    <button class="xiugaibtn">{{now_lang.User_center_c.Change_it}}</button>
+    <button class="xiugaibtn" (click)="detail(0)">{{now_lang.User_center_c.Change_it}}</button>
   </div>
   <div class="flex-r securityitem">
     <div class="flex-r">
@@ -27,7 +27,7 @@
         <p>{{now_lang.User_center_c.Tips4}}</p>
       </div>
     </div>
-    <button class="xiugaibtn">{{now_lang.User_center_c.Change_it}}</button>
+    <button class="xiugaibtn" (click)="detail(1)">{{now_lang.User_center_c.Change_it}}</button>
   </div>
   <div class="flex-r securityitem">
     <div class="flex-r">
@@ -37,7 +37,7 @@
         <p>{{now_lang.User_center_c.Tips5}}</p>
       </div>
     </div>
-    <button class="xiugaibtn">{{now_lang.User_center_c.Change_it}}</button>
+    <button class="xiugaibtn" (click)="detail(2)" >{{now_lang.User_center_c.Change_it}}</button>
   </div>
   <div class="flex-r securityitem">
     <div class="flex-r">
@@ -47,13 +47,13 @@
         <p class="color_y">{{now_lang.User_center_c.Tips6}}</p>
       </div>
     </div>
-    <button class="xiugaibtn">{{now_lang.User_center_c.Change_it}}</button>
+    <button class="xiugaibtn" (click)="detail(3)">{{now_lang.User_center_c.Change_it}}</button>
   </div>
   <div class ="securityhead" style="height:60px; padding-top:20px;">
     <span>{{now_lang.User_center_c.Login_history}}</span>
   </div>
   <div class="histinfo">
-    <p >{{now_lang.User_center_c.Tips71}}<span class="color_y">1</span>{{now_lang.User_center_c.Tips72}}<span class="color_y">{{now_lang.User_center_c.Change_password}}</span> </p>
+    <p >{{now_lang.User_center_c.Tips71}}<span class="color_y">1</span>{{now_lang.User_center_c.Tips72}}<span class="color_y" style="cursor: pointer;" (click)="detail(0)">{{now_lang.User_center_c.Change_password}}</span> </p>
   </div>
   <div class="tablewrap">
       <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4"   align="center">
@@ -76,4 +76,33 @@
   
   
 
+</div>
+
+<div *ngIf="modalInfo.show" >
+        <app-modal [data]='modalInfo' (close)="closeModal($event)">
+            <div class="flex-c formbox">
+                <form>
+                    <ul>
+                        <li>
+                            <label for="cur_pswd">请输入原登录密码：</label>
+                            <input id="cur_pswd" type="password" autocomplete=''>
+                        </li>
+                        <li>
+                            <label for="new_pswd">请输入新登录密码：</label>
+                            <input id="new_pswd" type="password" autocomplete='' placeholder="6-13个字符(数字或字母)">
+                        </li>
+                        <li>
+                            <label for="scend_pswd">请再次输入新登录密码：</label>
+                            <input id="scend_pswd" type="password" autocomplete=''>
+                        </li>
+                        <li>
+                            <label for="cur_pswd"></label>
+                            <button class="btn">修改</button>
+                            <button class="btn">重置</button>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+
+        </app-modal>
 </div>

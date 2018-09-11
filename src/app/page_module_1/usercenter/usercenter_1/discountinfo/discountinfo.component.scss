@@ -105,3 +105,31 @@ input[type="checkbox"] {
 .page {
     align-self: center;
 }
+.text{
+    color: red
+}
+.activity{
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    padding: 10px;
+    .tablewrap{
+        width: 720px;
+        padding-bottom: 10px;
+        .color_r{
+            color: red;
+        }
+    }
+    .item{
+        padding: 10px 0;
+        h3{
+            font-size: 14px;
+            line-height: 30px;
+        }
+        p{
+            font-size: 14px;
+            line-height: 22px;
+        }
+
+    }
+}

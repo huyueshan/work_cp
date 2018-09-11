@@ -13,6 +13,7 @@ import { PupoutComponent } from './pupout/pupout.component';
 import { PageComponent } from './page/page.component';
 import { LanguageComponent } from "./language/language.component";
 import { RuleComponent } from './credtop/rule/rule.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule],
@@ -28,6 +29,7 @@ import { RuleComponent } from './credtop/rule/rule.component';
     PageComponent,
     LanguageComponent,
     RuleComponent,
+    ModalComponent,
   ],
   exports: [
     HeaderComponent,
@@ -40,6 +42,7 @@ import { RuleComponent } from './credtop/rule/rule.component';
     PupoutComponent,
     PageComponent,
     LanguageComponent,
+    ModalComponent,
   ]
 })
 export class ComponentsModule {}

@@ -1,0 +1,26 @@
+ 
+ 
+ <!-- <ng-container *ngIf="data.show"> -->
+   <!-- 提示信息窗口 -->
+     <div id="notebox" [style.left.px]= "popup.note.left" [style.top.px]= "popup.note.top" [style.width.px]='content_width'>
+      <div class="flex-c content" [ngClass]="{scale:scale}" >
+          <div class="flex-r top"
+          [ngClass]="{center:data.center}" 
+          (mousedown)="popmousedown($event)"
+          (mouseleave)="popmouseup($event)"
+          (mouseup)="popmouseup($event)"
+          (mousemove)="popmousmove($event)">
+              <span>{{data.title}}</span>
+              <i (click)="click()"> &times; </i>
+          </div>
+          <div id="note" class="flex-c note">
+              <ng-content></ng-content>
+          </div>
+      </div>
+    </div>
+    <!-- 遮罩层 -->
+    <div class="shade" [style.width.px]="popup.shade.w" [style.height.px]="popup.shade.h">
+    </div>
+ <!-- </ng-container> -->
+
+

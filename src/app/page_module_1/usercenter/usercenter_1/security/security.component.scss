@@ -159,3 +159,42 @@
 .bg_2 {
     background-color: white;
 }
+
+.formbox{
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    form{
+        width: 100%;
+        label{
+            display: inline-block;
+            width: 40%;
+            text-align: right;
+            
+        }
+        input{
+            width: 180px;
+            height: 32px;
+            line-height: 30px;
+            border: 1px solid #ccc;
+            padding-left: 4px;
+            margin: 10px 0;
+        }
+        .btn{
+            height: 30px;
+            line-height: 28px;
+            padding: 0 20px;;
+            text-align: center;
+            color: white;
+            background: linear-gradient(to top, #c76401, #fba915);
+            border: 1px solid #c76401;
+            border-radius: 2px;
+            cursor: pointer;
+            outline: none;
+            box-shadow: none;
+            margin: 10px;
+            margin-left: 0;
+        }
+    }
+}

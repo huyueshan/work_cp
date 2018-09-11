@@ -1,5 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { USERLIST, userdef } from "../../../../../factory/usercent";
+
+import { Router } from "@angular/router";
+
+import { HttpInterceptorService } from "../../../../../factory/Http.Service";
+
+import { Api } from "../../../../../factory/api.model";
+
 import userModel from '../../../../../status/user.model';
 @Component({
   selector: "app-userlist",
@@ -7,8 +14,10 @@ import userModel from '../../../../../status/user.model';
   styleUrls: ["./userlist.component.scss"]
 })
 export class UserlistComponent implements OnInit {
-  public now_lang :any=userModel.langpackage;
+    public now_lang :any=userModel.langpackage;
   public now_lang_type :any='zh';
+
+  public pagestatus = 0;
   public querydatelistindex = 0;
   public querydata = {
     username: "tt",
@@ -51,6 +60,315 @@ export class UserlistComponent implements OnInit {
     }
   ];
   public userlistdata: USERLIST[];
+  
+  public income= [
+    {
+      title: this.now_lang.User_center_c.Slfk_5c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jsexf_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Shexf_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Xjexf_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Txffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Qqffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Xjlk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Ahk3_c,
+      checked: false
+    },
+    {
+      title:  this.now_lang.User_center_c.Xjexf_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Txffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Qqffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Xjlk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Ahk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Hbk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Nmgk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Bjpk10_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Sdexf_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Bjkl8_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Cqssc_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jsffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jslhc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Slfk28_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jd15fc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Slfk_5c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jsexf_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Shexf_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Xjexf_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Txffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Qqffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Xjlk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Ahk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Xjexf_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Txffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Qqffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Xjlk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Ahk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Hbk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Nmgk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Bjpk10_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Sdexf_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Bjkl8_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Cqssc_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jsffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jslhc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Slfk28_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jd15fc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Slfk_5c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jsexf_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Shexf_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Xjexf_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Txffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Qqffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Xjlk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Ahk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Xjexf_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Txffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Qqffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Xjlk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Ahk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Hbk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Nmgk3_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Bjpk10_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Sdexf_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Bjkl8_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Cqssc_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jsffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jslhc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Slfk28_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jd15fc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Sdexf_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Bjkl8_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Cqssc_o,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jsffc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jslhc_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Slfk28_c,
+      checked: false
+    },
+    {
+      title: this.now_lang.User_center_c.Jd15fc_c,
+      checked: false
+    },
+  ]
+  
+  ;
 
   public takedata = [
     {
@@ -104,10 +422,14 @@ export class UserlistComponent implements OnInit {
       action: ["详情", "团队总览","返点设置", "账变记录" ]
     },
   ];
-  constructor() {}
+  constructor( private http:HttpInterceptorService,private router: Router) {}
 
   ngOnInit() {
-    this.inttable();
+
+    this.http.get(Api.gettest,{}).then(res => {
+        console.log('请求到的数据：', res);
+        this.inttable();
+    });
   }
 
   // 初始表格数据
@@ -121,6 +443,15 @@ export class UserlistComponent implements OnInit {
     this.userlistdata = data;
   }
   
+  changestatus(i){
+      this.pagestatus = i;
+  }
+
+  linkrouter(R){
+    this.router.navigate([R]);
+  }
+
+
   // 分页组件点击页码事件，参数i为点击页码数
   getPageData(i) {
     //  此处请求数据

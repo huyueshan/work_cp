@@ -1,67 +1,189 @@
 <div class="flex-c container">
-  <div class="flex-c querycontent">
-    <span class="flex-r" style="justify-content: flex-start; height: 50px; border-bottom: 1px solid #ccc; padding: 0 10px;">
-      <span class="query_item">
-        <label for="username">{{now_lang.User_center_c.Yestday}}： </label>
-        <input type="text" id="username" name="username" [(ngModel)]="querydata.username" />
-      </span>
-      <span class="query_item">
-        <label for="username">{{now_lang.User_center_c.Balance}}： </label>
-        <input type="text" id="min" name="min" [(ngModel)]="querydata.min" />
-        <label for="username">{{now_lang.User_center_c.Go}} </label>
-        <input type="text" id="max" name="max" [(ngModel)]="querydata.max" />
-      </span>
-      <span class="query_item">
-        <label for="starttime">{{now_lang.User_center_c.Login_time}} ： </label>
-        <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
-        <label for="endtime">{{now_lang.User_center_c.Go}} </label>
-        <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
-      </span>
-    </span>
-    <div class="flex-r" style="height: 50px; padding: 0 10px;">
-      <span class="flex-r" style="justify-content: flex-start;">
-        <span class="query_item" *ngFor="let item of querydatelist; let i=index" style=" padding-right: 10px">
-          <span class="datebtn  " [ngClass]="{bd_y:querydatelistindex == i}" (click)="querydatelistindex = i">{{item.text}}</span>
-        </span>
-      </span>
-      <span class="flex-r">
-        <span class="querybtn">{{now_lang.User_center_c.Reset}}</span>
-        <span class="querybtn">{{now_lang.User_center_c.Search}}</span>
-      </span>
-    </div>
-  </div>
+    <ng-container *ngIf="pagestatus === 0">
+        <div class="flex-c querycontent">
+            <span class="flex-r" style="justify-content: flex-start; height: 50px; border-bottom: 1px solid #ccc; padding: 0 10px;">
+                <span class="query_item">
+                    <label for="username">{{now_lang.User_center_c.Yestday}}： </label>
+                    <input type="text" id="username" name="username" [(ngModel)]="querydata.username" />
+                </span>
+                <span class="query_item">
+                    <label for="username">{{now_lang.User_center_c.Balance}}： </label>
+                    <input type="text" id="min" name="min" [(ngModel)]="querydata.min" />
+                    <label for="username">{{now_lang.User_center_c.Go}} </label>
+                    <input type="text" id="max" name="max" [(ngModel)]="querydata.max" />
+                </span>
+                <span class="query_item">
+                    <label for="starttime">{{now_lang.User_center_c.Login_time}} ： </label>
+                    <input type="date" id="starttime" name="starttime" [(ngModel)]="querydata.starttime" />
+                    <label for="endtime">{{now_lang.User_center_c.Go}} </label>
+                    <input type="date" id="endtime" name="endtime" [(ngModel)]="querydata.endtime" />
+                </span>
+            </span>
+            <div class="flex-r" style="height: 50px; padding: 0 10px;">
+                <span class="flex-r" style="justify-content: flex-start;">
+                    <span class="query_item" *ngFor="let item of querydatelist; let i=index" style=" padding-right: 10px">
+                        <span class="datebtn  " [ngClass]="{bd_y:querydatelistindex == i}" (click)="querydatelistindex = i">{{item.text}}</span>
+                    </span>
+                </span>
+                <span class="flex-r">
+                    <span class="querybtn">{{now_lang.User_center_c.Reset}}</span>
+                    <span class="querybtn">{{now_lang.User_center_c.Search}}</span>
+                </span>
+            </div>
+        </div>
+        <div class=" flex-c tablebox">
+            <div class="tablewrap">
+                <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4" align="center">
+                    <tr class="bg_1">
+                        <th>{{now_lang.User_center_c.User_name}}</th>
+                        <th>{{now_lang.User_center_c.User_type}}</th>
+                        <th style="width: 140px">{{now_lang.User_center_c.Regist_time}}</th>
+                        <th style="width: 140px">{{now_lang.User_center_c.Last_login_time}}</th>
+                        <th>{{now_lang.User_center_c.Balance}}</th>
+                        <th>{{now_lang.User_center_c.Back_point_class}}</th>
+                        <th>{{now_lang.User_center_c.State}}</th>
+                        <th style="width: 240px">用户操作</th>
+                    </tr>
+                    <tr *ngFor="let item of userlistdata">
+                        <td>{{item.name}}</td>
+                        <td>{{item.type}}</td>
+                        <td>{{item.time}}</td>
+                        <td>{{item.lasttime}}</td>
+                        <td>{{item.money}}</td>
+                        <td>{{item.rebates}}</td>
+                        <td>{{item.status}}</td>
+                        <td>
+                            <span class="padr">
+                                <a class="color_y" href="javascript:;" (click)="changestatus(1)">详情</a>
+                                <a class="color_y" href="javascript:;" (click)="linkrouter('/usercenter/groupview')">团队总览</a>
+                                <a class="color_y" href="javascript:;" (click)="changestatus(2)">返点设置</a>
+                                <a class="color_y" href="javascript:;" (click)="linkrouter('/usercenter/acchange')">账变记录</a>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <app-page [pageParams]="pagination" (changeCurPage)="getPageData($event)"></app-page>
 
-  <div class=" flex-c tablebox">
-    <div class="tablewrap">
-      <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4"   align="center">
-        <tr class="bg_1">
-          <th>{{now_lang.User_center_c.User_name}}</th>
-          <th>{{now_lang.User_center_c.User_type}}</th>
-          <th style="width: 140px">{{now_lang.User_center_c.Regist_time}}</th>
-          <th style="width: 140px">{{now_lang.User_center_c.Last_login_time}}</th>
-          <th>{{now_lang.User_center_c.Balance}}</th>
-          <th>{{now_lang.User_center_c.Back_point_class}}</th>
-          <th>{{now_lang.User_center_c.State}}</th>
-          <th style="width: 240px">用户操作</th>
-        </tr>
-        <tr *ngFor="let item of userlistdata">
-          <td>{{item.name}}</td>
-          <td>{{item.type}}</td>
-          <td>{{item.time}}</td>
-          <td>{{item.lasttime}}</td>
-          <td>{{item.money}}</td>
-          <td>{{item.rebates}}</td>
-          <td>{{item.status}}</td>
-          <td>
-            <span class="padr" *ngFor="let child of item.action">
-              <a class="color_y" href="javascript:;">{{child}}</a>
-              
-              </span>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <app-page [pageParams]="pagination" (changeCurPage)="getPageData($event)"></app-page>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="pagestatus === 3">
+        <div class="flex-c infobox">
+            <div class="top">
+                <span>用户名：cwcs001</span>
+            </div>
+            <div class="tablewrap">
+                <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4" align="center">
+                    <tr class="bg_1">
+                        <th>返点等级</th>
+                        <th>cwcs001 拥有数量</th>
+                        <th>cwcs001 剩余数量</th>
+                        <th>分配数量</th>
+                        <th>您的配额</th>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="flex-r btnbox">
+                <span class="btn">提交</span>
+                <span class="btn" (click)="changestatus(0)">返回</span>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="pagestatus === 2">
+        <div class="flex-c fandianbox">
+            <dl class="flex-r item">
+                <td>用户账号：</td>
+                <dd> <span> myangni </span> </dd>
+            </dl>
+            <dl class="flex-r item">
+                <td>用户昵称：</td>
+                <dd> <span> 大头 </span> </dd>
+            </dl>
+            <dl class="flex-r item">
+                <td>返点等级：</td>
+                <dd> <span> 0.1% </span> </dd>
+            </dl>
+            <dl class="flex-r item">
+                <td>您的返点：</td>
+                <dd> <span> 7.8% </span> </dd>
+            </dl>
+            <dl class="flex-r item">
+                <td>用户返点：</td>
+                <dd class="flex-r selecbox">
+                    <label for="fanselc"></label>
+                    <select name="fanselc" id="fanselc" placeholder="0.1%-------无限制">
+                        <option value="0.1%">0.1%</option>
+                        <option value="0.1%">0.2%</option>
+                        <option value="0.1%">0.3%</option>
+                        <option value="无限制">无限制</option>
+                    </select>
+                    <small>（可填范围：0.1%~7.7%)</small>
+                </dd>
+            </dl>
+            <dl class="flex-r item">
+                <td>您的返点：</td>
+                <dd class="flex-r radiobox">
+                    <input type="radio" name="type" value="会员"> <span>会员</span>
+                    <input type="radio" name="type" value="代理"> <span>代理</span>
+                </dd>
+            </dl>
+            <div class="flex-r btnbox">
+                <span class="btn">提交</span>
+                <span class="btn" (click)="changestatus(0)">返回</span>
 
-  </div>
+            </div>
+
+        </div>
+    </ng-container>
+    <ng-container *ngIf="pagestatus === 1">
+        <div class="flex-c infobox infobox1">
+
+            <div class="flex-c top">
+                <span>下属用户详情</span>
+                <span class="btn" (click)="changestatus(3)">下属用户信息 </span>
+            </div>
+            <ul class="flex-r gamelist">
+                <li *ngFor="let item of income">{{item.title}}</li>
+
+            </ul>
+            <div class="tablewrap">
+                <table  width="100%" border="0" cellspacing="0" cellpadding="4" align="center">
+                    <tr>
+                        <th>用户昵称：</th>
+                        <td>test02</td>
+                    </tr>
+                    <tr>
+                        <th>用户等级：</th>
+                        <td>test02</td>
+                    </tr>
+                    <tr>
+                        <th>用户等级：</th>
+                        <td>代理用户</td>
+                    </tr>
+
+                    <tr>
+                        <th>可用金额：</th>
+                        <td>1900</td>
+                    </tr>
+                    <tr>
+                        <th>最后登陆时间：</th>
+                        <td>2018-08-22</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="flex-r btnbox">
+                <span class="btn" (click)="changestatus(0)">返回</span>
+            </div>
+
+        </div>
+
+    </ng-container>
+
 </div>

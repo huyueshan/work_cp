@@ -39,9 +39,9 @@ export class PageinitService {
   }
 
   //登陆判断
-  ISLOG() {
+  ISLOG(data = {}) {
     // 如果已经登陆，直接请求后台验证 获取数据
-    this.http.post(Api.logintest, {}).then(result => {
+    this.http.post(Api.logintest, data).then(result => {
       if (result.success) {
         // success(Validate) 为登陆状态是否正常--后台返回对象的键名
         // 如果返回的登陆状态true，更新用户在线时长 金额等信息
@@ -59,7 +59,7 @@ export class PageinitService {
   }
 
   // 开始运行页面  参数authority 为true表示用在用户没有登录也可以访问的页面
-  READY(authority = false) {
+  READY(data, authority = false) {
     // 先清除定时器，再创建。
     clearInterval(this.checkStatus);
 
@@ -74,8 +74,8 @@ export class PageinitService {
       this.Transfer.nowOnline += 1; // 测试。在线人数每3秒加一
       console.log('在线人数： '+ this.Transfer.nowOnline);
       if (Base.Store.get("isLoaded") && !authority) {
-        this.ISLOG();
+        this.ISLOG(data);
       }
-    }, 3000);
+    }, 10000);
   }
 }

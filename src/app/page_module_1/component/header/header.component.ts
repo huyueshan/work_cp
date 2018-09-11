@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit,OnDestroy {
 	ngOnInit(){
         
         // http请求测试
-            this.Pginit.READY();
+            this.Pginit.READY({});
 
 		this.now_lang=userModel.langpackage;
 		this.now_lang_type=userModel.now_lang_type;

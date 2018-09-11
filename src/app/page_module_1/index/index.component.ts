@@ -232,12 +232,12 @@ export class IndexComponent implements OnInit, OnDestroy {
         window.scrollTo(0,520);
     }
 
-        this.Pginit.READY(true);
+        this.Pginit.READY({},true);
   }
 
   ngOnDestroy(){
 
-      // 凡是引入了PageinitService 服务的页面都需要做下面异步操作
+      // 凡是引入了PageinitService 服务的页面都需要做下面操作
     clearInterval(this.Pginit.checkStatus);  // 清除Pageinit.Service 中的定时器  ！！！！！！！！！！！！！！！！！！！！！！！！
 
   }

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DISCOUNT, userdef } from "../../../../../factory/usercent";
+
+import { HttpInterceptorService } from "../../../../../factory/Http.Service";
+
+import { Api } from "../../../../../factory/api.model";
+
 import userModel from '../../../../../status/user.model';
 @Component({
   selector: 'app-discountinfo',
@@ -22,6 +27,15 @@ export class DiscountinfoComponent implements OnInit {
   };
   public discountdata: DISCOUNT[];
 
+ 
+    // 传给弹窗模块数据
+    public  modalInfo={
+        title:'title',
+        width:200,
+        show: false,
+    }
+ 
+ 
   public takedata = [
     {
       name: '天天签到送彩金',
@@ -51,11 +65,16 @@ export class DiscountinfoComponent implements OnInit {
       action: '详情',
     },
   ];
-  constructor() {}
+  constructor( private http:HttpInterceptorService) {}
 
   ngOnInit() {
     this.now_lang_type=userModel.now_lang_type;
-    this.inttable();
+
+    this.http.get(Api.gettest,{}).then(res => {
+        console.log('请求到的数据：', res);
+        this.inttable();
+    });
+
   }
 
   // 初始表格数据
@@ -68,6 +87,41 @@ export class DiscountinfoComponent implements OnInit {
     }
     this.discountdata = data;
   }
+
+  // 显示弹窗
+  detail(){
+    this.MODAL({width:960,});
+  }
+
+
+
+
+  // 弹窗关闭事件 可以自定义命名
+  closeModal(e){
+      this.modalInfo.show = false;
+  }
+
+  // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
+  MODAL(data){
+      let o = {
+          title:'优惠活动详情',   // title不传值默认
+          center:true,  // title 是否居中
+          width:600,
+          show: true,
+      }
+      this.modalInfo = Object.assign({},o,data);
+  }
+  // 分页组件点击页码事件，参数i为点击页码数
+  getPageData(i) {
+    //  此处请求数据
+}
+
+
+
+
+
+
+
   // 设置数据量小于10条时的空表格数据
   setemptydata() {
     let data = {};
@@ -76,9 +130,5 @@ export class DiscountinfoComponent implements OnInit {
     }
     return data;
   }
-  // 分页组件点击页码事件，参数i为点击页码数
-  getPageData(i) {
-    //  此处请求数据
-}
 }
 

@@ -29,11 +29,89 @@
           <td>{{item.status}}</td>
           <td>{{item.rebates}}</td>
           <td>{{item.time}}</td>
-          <td class="color_y">{{item.action}}</td>
+          <td> <span class="color_y" (click)="detail()"> {{item.action}}</span> </td>
         </tr>
       </table>
     </div>
     <app-page [pageParams]="pagination" (changeCurPage)="getPageData($event)"></app-page>
 
   </div>
+</div>
+
+<div *ngIf="modalInfo.show" >
+    <app-modal [data]='modalInfo' (close)="closeModal($event)">
+        <div class="flex-c activity">
+                <div class="tablewrap">
+                  <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4"   align="center">
+                    <tr class="bg_1">
+                        <th>活动名称</th>
+                        <th>活动内容</th>
+                        <th>红利金额</th>
+                    </tr>
+                    <tr>
+                        <td>幸运首充</td>
+                        <td>投注活动</td>
+                        <td><strong class="color_r">0</strong></td>
+                    </tr>
+                  </table>
+                </div>
+                <section class="item">
+                    <h3>活动详情</h3>
+                    <ul>
+                        <li>
+                            <p> 1：新用户当日注册，充值￥100元以上（充值不累计）方可系统自动发送彩金，要一倍流水方可提款！ </p>
+                        </li>
+                        <li>
+                            <p> 2：系统发送彩金之前必须先绑定银行账号否则系统将判断不符合申请条件拒绝赠予彩金。 </p>
+                        </li>
+                        <li>
+                            <p> 3：只限娱乐中心当日首次充值奖励（就是该会员账号第一笔充值金额）</p>
+                        </li>
+                    </ul>
+                </section>
+                <section class="item">
+                    <h3>活动规则</h3>
+                    <ul>
+                        <li>
+                            <p> 当日首次充值金额100  或1000     领取加奖1%  </p>
+                        </li>
+                        <li>
+                            <p> 当日首次充值金额1000 或10000   领取加奖2% </p>
+                        </li>
+                        <li>
+                            <p> 当日首次充值金额10000或100000领取加奖3% </p>
+                        </li>
+                    </ul>
+                </section>
+                <section class="item">
+                    <h3>活动细则</h3>
+                    <ul>
+                        <li>
+                            <p> 1：娱乐中心平台所有彩金均以人民币（CNY）为结算金额；  </p>
+                        </li>
+                        <li>
+                            <p> 2：娱乐中心平台所有优惠为玩家而设，如果发现任何会员，以不诚实的方式套取红利，我平台有权取消会员账户结余的权利； </p>
+                        </li>
+                        <li>
+                            <p> 3：娱乐中心平台保留活动最终解释权，以及在无通知的情况下修改，终止活动的权利，适用于所有优惠。 </p>
+                        </li>
+                    </ul>
+                </section>
+                <section class="item">
+                    <h3>注意事项</h3>
+                    <ul>
+                        <li>
+                            <p> 每个银行卡户名，每位会员，每一相同IP，每一电子邮箱，每一电话号码，相同支付方式（借记卡/信用卡/银行账户）及共享计算机环境（例如网吧，其他公用计算机等）只能享受一次优惠；若会员有重复申请账号行为，公司保留取消或收回会员优惠彩金的权利。 好运彩票平台的所有优惠为玩家而设，如发现任何团体或个人，以不诚实方式套取红利或任何威胁，滥用公司优惠等行为。公司保留冻结，取消该团体或个人账户结余的权利。</p>
+                        </li>
+                        <li>
+                            <p> 若会员对活动有争议时，为确保双方利益，杜绝身份盗用行为，好运彩票平台有权要求会员向我们提供充足有效文件，用以确认是否享有该优惠的资质。 此活动可与其他优惠同时进行享用。 </p>
+                        </li>
+                    </ul>
+                </section>
+
+
+        </div>
+    
+    </app-modal>
+
 </div>
