@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
+import { HttpInterceptorService } from "../../../../../factory/Http.Service";
+
+import { Api } from "../../../../../factory/api.model";
+
 import userModel from '../../../../../status/user.model';
 @Component({
   selector: 'app-webnote',
@@ -48,9 +53,14 @@ export class WebnoteComponent implements OnInit {
       hover:false,
     },
   ];
-  constructor() { }
+  constructor( private http:HttpInterceptorService) {}
 
   ngOnInit() {
+
+    this.http.get(Api.gettest,{}).then(res => {
+        console.log('请求到的数据：', res);
+    });
+
   }
 enter(i){
   this.webnotedata[i].hover = true;

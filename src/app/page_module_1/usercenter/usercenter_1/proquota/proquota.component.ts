@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { QUOTA, userdef } from "../../../../../factory/usercent";
+
+import { HttpInterceptorService } from "../../../../../factory/Http.Service";
+
+import { Api } from "../../../../../factory/api.model";
+
 import userModel from '../../../../../status/user.model';
 @Component({
   selector: 'app-proquota',
@@ -73,10 +78,14 @@ export class ProquotaComponent implements OnInit {
       max: 200000,
     },
   ];
-  constructor() {}
+  constructor( private http:HttpInterceptorService) {}
 
   ngOnInit() {
-    this.inttable();
+
+    this.http.get(Api.gettest,{}).then(res => {
+        console.log('请求到的数据：', res);
+        this.inttable();
+    });
   }
 
   // 初始表格数据

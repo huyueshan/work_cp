@@ -5,7 +5,7 @@ import {
 } from "@angular/core";
 import {
     Router,
-    ActivatedRoute,
+    ActivatedRoute
 } from "@angular/router";
 
 import {
@@ -27,31 +27,44 @@ import {
     styleUrls: ["./exf.component.scss"]
 })
 export class EXFofficialComponent implements OnInit {
+    public loadpage = false;
+    // 导入txt
+    @ViewChild("uploadFile")
+    uploadFile: any;
+    public filestatus = true;
+    public curtextstr = "";
     public countabo: any = {
         count: 5,
         plan: 10
     };
-    //模式
-    public models: string[] = ["元", "角", "分", "厘"];
+    public now_lang: any = userModel.langpackage; // 语言
+    public now_lang_type: any = "zh";
+
+    public models: string[] = ["元", "角", "分", "厘"]; //金额单位模式
     public model: string = "0";
     public ballcurr: any = {}; // 当前选中的球以及匹配状态
     public tabcurr: any = {}; // 当前选中的tab信息
     public choosem_status = false; // 当前选中的tab信息
+    public omitname = ""; // 遗漏选择
+    public sureballlist: any = []; // 确认选号
+    public filterstatus = false;
+    public currtabname = ""; // 时时彩二级导航切换
+    public mathstatus = false; // 随机按钮显示隐藏状态
     // 统计当前所有下注数据
-    orderinfo: any = {
+    public orderinfo: any = {
         total: 0,
         betcount: 0,
         money: 0
     };
-    abotitle: any = {
+    public abotitle: any = {
         dyw: "第一位",
         dew: "第二位",
         dsw: "第三位",
         dsiw: "第四位",
-        dww: "第五位",
+        dww: "第五位"
     };
     // 所有要用到的号码
-    match_tab: any = {
+    public match_tab: any = {
         0: {
             0: 0,
             1: 1,
@@ -94,24 +107,12 @@ export class EXFofficialComponent implements OnInit {
         },
         5: {}
     };
-    totalinfo: any = {
+    public totalinfo: any = {
         count: 0,
         sum: 0,
         amount: 0
     }; //当前下注信息
-    modelarr = [1, 10, 100, 1000]; // 下注模式对应的要除以的金额
-    // 传给弹窗组件数据
-    public  popoutInfo={
-        title:'string',
-        msg:'string',
-        event: false,
-        show: false,
-    }
-    constructor(
-        private route: ActivatedRoute,
-        private router: Router
-    ) {}
-    loadpage = false;
+    public modelarr = [1, 10, 100, 1000]; // 下注模式对应的要除以的金额
     public resultdata = [{
             sta: "20180517014",
             num: "2 9 0 8 7"
@@ -181,22 +182,19 @@ export class EXFofficialComponent implements OnInit {
             money: "9999"
         }
     ];
-    multiple_input: any = {
+    public multiple_input: any = {
         value: 1
     };
-    // public multiple_input = 1;
     public radom_input: any = {
         value: 1
     };
     public multi_select = [10, 50, 100, 500, 1000, 2000, 5000, 10000];
     public ul_hidden = true;
-    public now_tips = "这是一个比较短的提示!";
+    public now_tips = "";
     public tips_hidden = true;
     public riskvalue = -0.2;
-    // 拖拽数据
-    public rangepercent = 0;
-    public rangenum = 180200;
-    // 拖拽数据结束
+    public rangepercent = 0; // 拖拽数据
+    public rangenum = 180200; // 拖拽金额数据
     public now_tips_menu: any = "1_1";
     public now_description = "";
     public hothidden = false;
@@ -210,73 +208,57 @@ export class EXFofficialComponent implements OnInit {
     public other_rules = {
         reward_rule: '<div> 奖金计算说明：<p style="margin-left:1em;">非常规时时彩中奖后，根据中奖号码球号的奖金组，中奖奖金需要乘以球号的奖金组，如：</p><p style="margin-left:1em;line-height: 25px;padding:3px 0;">1、北京时时彩后三直选（1800奖金组）：下注321，开奖号码54321，其中3号球的奖金组为：1.014，2号球的奖金组为：0.984，1号球的奖金组为1.022；那么中奖后的实际奖金=1800*1.014*0.984*1.022=1835.509</p><p style="margin-left:1em;line-height: 25px;padding:3px 0;">2、若北京时时彩后三直选（1800奖金组）：下注246，开奖号码54246，其中2号球的奖金组为：0.984，4号球的奖金组为：0.976，6号球的奖金组为0.98；那么中奖后的实际奖金=1800*0.984*0.976*0.98=1694.117</P></div>'
     };
-    public cpnav = {
-        style: "official",
-        prev: "20180517022",
-        prevball: [2, 5, 9, 0, 8],
-        next: "20180517023",
-        time: ""
-    };
-    public now_lang: any = userModel.langpackage;
-    public now_lang_type: any = "zh";
-//追号数据
-    public lotdata = [
-        {
-            lot_num:'20181719',
-            multiple:0,
-            price:2,
-            take_money:0,
-            expire_time:'2018-06-11 15:19:30',
-            checkon:false
+    //追号数据
+    public lotdata = [{
+            lot_num: "20181719",
+            multiple: 0,
+            price: 2,
+            take_money: 0,
+            expire_time: "2018-06-11 15:19:30",
+            checkon: false
         },
         {
-            lot_num:'20181720',
-            multiple:0,
-            price:2,
-            take_money:0,
-            expire_time:'2018-06-11 15:19:30',
-            checkon:false
+            lot_num: "20181720",
+            multiple: 0,
+            price: 2,
+            take_money: 0,
+            expire_time: "2018-06-11 15:19:30",
+            checkon: false
         },
         {
-            lot_num:'20181721',
-            multiple:0,
-            price:2,
-            take_money:0,
-            expire_time:'2018-06-11 15:19:30',
-            checkon:false
+            lot_num: "20181721",
+            multiple: 0,
+            price: 2,
+            take_money: 0,
+            expire_time: "2018-06-11 15:19:30",
+            checkon: false
         }
-    ]
-    //追号提交数据
-    public lotdata_submit :any = [];
-
-    public typeoptiondata :any = [
-      5,
-      10,
-      15,
-      25,
-      'all'
     ];
+    //追号提交数据
+    public lotdata_submit: any = [];
+
+    public typeoptiondata: any = [5, 10, 15, 25, "all"];
     // 复制追号数据
     public lotdata_now = $.extend(true, [], this.lotdata);
     // 追号配置
-    public chase_config_ori :any = {
-        multiple:1,
-        chase_amount:5,
-        select_amount:5,
-        chase_rule:{
-            number:1,
-            multiple:2
+    public chase_config_ori: any = {
+        multiple: 1,
+        chase_amount: 5,
+        select_amount: 5,
+        chase_rule: {
+            number: 1,
+            multiple: 2
         },
-        multiple_option:1
-    }
-    public Open_stop :any = false
-    public Win_stop :any = false
-    public chase_number_config :any = $.extend(true, {}, this.chase_config_ori);
+        multiple_option: 1
+    };
+    public Open_stop: any = false;
+    public Win_stop: any = false;
+    public chase_number_config: any = $.extend(true, {}, this.chase_config_ori);
     //目前追号面板
-    public c_now_panel :any = 'one'
-    public chase_money :any = 0;
-    public chase_amount :any = 0;
-//追号数据结束
+    public c_now_panel: any = "one";
+    public chase_money: any = 0;
+    public chase_amount: any = 0;
+    //追号数据结束
     public items_show = {
         sdexf_ffc: {
             tabitem: [
@@ -370,16 +352,15 @@ export class EXFofficialComponent implements OnInit {
     //路由id
     public routid;
     public now_tab2click_num;
-    // public rangevalue = rangevalue;
     //方形选球板
     public square_show = false;
-    status = {
+    public status = {
         menu_1: 1, //一级tab默认项
         menu_2: 1 //二级tab默认项
     };
+
     // 一级tab
-    menu_1 = [
-        {
+    public menu_1 = [{
             name: this.now_lang.Lot_tab.Three_star,
             active: 1
         },
@@ -411,12 +392,12 @@ export class EXFofficialComponent implements OnInit {
 
         {
             name: this.now_lang.Lot_tab.Dragon_tiger,
-            href: 'lottery/creditexf/sdexf'
+            href: "lottery/creditexf/sdexf"
         }
     ];
 
     // 2级tab数据以及对应要显示的内容
-    menu_2_data = [{
+    public menu_2_data = [{
             title: this.now_lang.Lot_tab.ForT_gro1,
             menu: [{
                     name: this.now_lang.Lot_tab.ForT_str_eve,
@@ -424,7 +405,7 @@ export class EXFofficialComponent implements OnInit {
                     arr: ["dyw", "dew", "dsw"],
                     format: ["n|n|n"],
                     datarule: ["Rule_11", 1],
-					addzero:true
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.ForT_str_odd,
@@ -433,7 +414,7 @@ export class EXFofficialComponent implements OnInit {
                     isupload: true,
                     format: ["n,n,n"],
                     datarule: ["Rule_d3", 3],
-					addzero:true
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.ForT_gro_eve,
@@ -441,8 +422,8 @@ export class EXFofficialComponent implements OnInit {
                     arr: ["zx"],
                     format: ["n|n|n"],
                     datarule: ["Rule_3", 3],
-					addgang:true,
-					addzero:true
+                    addgang: true,
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.ForT_gro_odd,
@@ -451,7 +432,7 @@ export class EXFofficialComponent implements OnInit {
                     isupload: true,
                     format: ["n,n,n"],
                     datarule: ["Rule_d3", 3, "Z"],
-					addzero:true
+                    addzero: true
                 }
             ],
             active: 1
@@ -464,7 +445,7 @@ export class EXFofficialComponent implements OnInit {
                     arr: ["dyw", "dew"],
                     format: ["n|n"],
                     datarule: ["Rule_11", 2],
-					addzero:true
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.ForTwo_str_odd,
@@ -473,7 +454,7 @@ export class EXFofficialComponent implements OnInit {
                     isupload: true,
                     format: ["n,n"],
                     datarule: ["Rule_d3", 2],
-					addzero:true
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.BackTwo_gro_eve,
@@ -481,8 +462,8 @@ export class EXFofficialComponent implements OnInit {
                     arr: ["zx"],
                     format: ["n|n"],
                     datarule: ["Rule_3", 2],
-					addgang:true,
-					addzero:true
+                    addgang: true,
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.BackTwo_gro_odd,
@@ -491,7 +472,7 @@ export class EXFofficialComponent implements OnInit {
                     isupload: true,
                     format: ["n,n"],
                     datarule: ["Rule_d3", 2, "Z"],
-					addzero:true
+                    addzero: true
                 }
             ],
             active: 2
@@ -504,33 +485,32 @@ export class EXFofficialComponent implements OnInit {
                 arr: ["dyw", "dew", "dsw", "dsiw", "dww"],
                 format: ["n"],
                 datarule: ["Rule_6", 1],
-				addzero:true
+                addzero: true
             }],
             active: 3
         },
-		{
+        {
             title: this.now_lang.Lot_tab.Thr_Inde_gall,
             menu: [{
                 name: this.now_lang.Lot_tab.Thr_Inde_gall,
                 index: 1,
-				arr: ["qsw"],
-				format: ["n"],
-				datarule: ['Rule_3', 1],
-				addgang:true,
-				addzero:true
+                arr: ["qsw"],
+                format: ["n"],
+                datarule: ["Rule_3", 1],
+                addgang: true,
+                addzero: true
             }],
             active: 4
         },
         {
             title: this.now_lang.Lot_tab.Indeterminate_gallbladder,
             menu: [{
-                    name: this.now_lang.Lot_tab.Indeterminate_gallbladder,
-                    index: 1,
-                    arr: ["qsw"],
-                    format: ["n"],
-                    datarule: ['Rule_12', 1]
-                }
-            ],
+                name: this.now_lang.Lot_tab.Indeterminate_gallbladder,
+                index: 1,
+                arr: ["qsw"],
+                format: ["n"],
+                datarule: ["Rule_12", 1]
+            }],
             active: 4
         },
         {
@@ -539,16 +519,16 @@ export class EXFofficialComponent implements OnInit {
                     name: this.now_lang.Lot_tab.Order_and_double,
                     index: 1,
                     arr: ["dds"],
-					format: ["n"],
-					datarule: ['Rule_12', 1]
+                    format: ["n"],
+                    datarule: ["Rule_12", 1]
                 },
                 {
                     name: this.now_lang.Lot_tab.Guess_mid,
                     index: 2,
                     arr: ["czw"],
-					format: ["n"],
-					datarule: ['Rule_12', 1],
-					addzero:true
+                    format: ["n"],
+                    datarule: ["Rule_12", 1],
+                    addzero: true
                 }
             ],
             active: 5
@@ -558,29 +538,29 @@ export class EXFofficialComponent implements OnInit {
             menu: [{
                     name: this.now_lang.Lot_tab.One_in_one,
                     index: 1,
-					isupload: true,
-					arr: [""],
+                    isupload: true,
+                    arr: [""],
                     format: ["n"],
                     datarule: ["Rule_d3", 1],
-					addzero:true
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Two_in_two,
                     index: 2,
-					arr: [""],
+                    arr: [""],
                     isupload: true,
                     format: ["n,n"],
                     datarule: ["Rule_d3", 2],
-					addzero:true
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Three_in_three,
                     index: 3,
-					arr: [""],
+                    arr: [""],
                     isupload: true,
                     format: ["n,n,n"],
                     datarule: ["Rule_d3", 3],
-					addzero:true
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Four_in_four,
@@ -589,7 +569,7 @@ export class EXFofficialComponent implements OnInit {
                     isupload: true,
                     format: ["n,n,n,n"],
                     datarule: ["Rule_d3", 4],
-					addzero:true
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Five_in_five,
@@ -598,7 +578,7 @@ export class EXFofficialComponent implements OnInit {
                     isupload: true,
                     format: ["n,n,n,n,n"],
                     datarule: ["Rule_d3", 5],
-					addzero:true
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Six_in_five,
@@ -607,7 +587,7 @@ export class EXFofficialComponent implements OnInit {
                     isupload: true,
                     format: ["n,n,n,n,n,n"],
                     datarule: ["Rule_d3", 6],
-					addzero:true
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Seven_in_five,
@@ -616,7 +596,7 @@ export class EXFofficialComponent implements OnInit {
                     isupload: true,
                     format: ["n,n,n,n,n,n,n"],
                     datarule: ["Rule_d3", 7],
-					addzero:true
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Eight_in_five,
@@ -625,7 +605,7 @@ export class EXFofficialComponent implements OnInit {
                     isupload: true,
                     format: ["n,n,n,n,n,n,n,n"],
                     datarule: ["Rule_d3", 8],
-					addzero:true
+                    addzero: true
                 }
             ],
             active: 6
@@ -637,18 +617,18 @@ export class EXFofficialComponent implements OnInit {
                     index: 1,
                     arr: ["xyzy"],
                     format: ["n"],
-					datarule: ['Rule_3', 1],
-					addgang:true,
-					addzero:true
+                    datarule: ["Rule_3", 1],
+                    addgang: true,
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Two_in_two,
                     index: 2,
                     arr: ["xeze"],
                     format: ["n|n"],
-                    datarule: ['Rule_3', 2],
-					addgang:true,
-					addzero:true
+                    datarule: ["Rule_3", 2],
+                    addgang: true,
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Three_in_three,
@@ -656,53 +636,53 @@ export class EXFofficialComponent implements OnInit {
                     arr: ["xszs"],
                     format: ["n|n|n"],
                     datarule: ["Rule_3", 3],
-					addgang:true,
-					addzero:true
+                    addgang: true,
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Four_in_four,
                     index: 4,
                     arr: ["xsizsi"],
-					format: ["n|n|n|n"],
+                    format: ["n|n|n|n"],
                     datarule: ["Rule_3", 4],
-					addgang:true,
-					addzero:true
+                    addgang: true,
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Five_in_five,
                     index: 5,
                     arr: ["xwzw"],
-					format: ["n|n|n|n|n"],
+                    format: ["n|n|n|n|n"],
                     datarule: ["Rule_3", 5],
-					addgang:true,
-					addzero:true
+                    addgang: true,
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Six_in_five,
                     index: 6,
                     arr: ["xlzw"],
-					format: ["n|n|n|n|n|n"],
+                    format: ["n|n|n|n|n|n"],
                     datarule: ["Rule_3", 6],
-					addgang:true,
-					addzero:true
+                    addgang: true,
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Seven_in_five,
                     index: 7,
                     arr: ["xqzw"],
-					format: ["n|n|n|n|n|n|n"],
+                    format: ["n|n|n|n|n|n|n"],
                     datarule: ["Rule_3", 7],
-					addgang:true,
-					addzero:true
+                    addgang: true,
+                    addzero: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Eight_in_five,
                     index: 8,
                     arr: ["xbzw"],
-					format: ["n|n|n|n|n|n|n|n"],
+                    format: ["n|n|n|n|n|n|n|n"],
                     datarule: ["Rule_3", 8],
-					addgang:true,
-					addzero:true
+                    addgang: true,
+                    addzero: true
                 }
             ],
             active: 7
@@ -733,8 +713,8 @@ export class EXFofficialComponent implements OnInit {
             active: 8
         }
     ];
-    menu_2 = []; //存储当前一级导航对应的耳机导航
-    ball_tab = {
+    public menu_2 = []; //存储当前一级导航对应的二级导航
+    public ball_tab = {
         1: [
             this.now_lang.Ball_tab.All,
             this.now_lang.Ball_tab.Big,
@@ -747,18 +727,18 @@ export class EXFofficialComponent implements OnInit {
         3: [],
         4: ["全", "清"]
     };
-    now_balllist = []; //当前号码列表
-	
-	ddsmatch={
-		0:'5单0双',
-		1:'4单1双',
-		2:'3单2双',
-		3:'2单3双',
-		4:'1单4双',
-		5:'0单5双'
-	};
+    public now_balllist = []; //当前号码列表
+
+    public ddsmatch = {
+        0: "5单0双",
+        1: "4单1双",
+        2: "3单2双",
+        3: "2单3双",
+        4: "1单4双",
+        5: "0单5双"
+    };
     // 所有号码的列表数据
-    ball_data = {
+    public ball_data = {
         dyw: {
             title: "第一位",
             ball: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
@@ -869,7 +849,7 @@ export class EXFofficialComponent implements OnInit {
                     range: "",
                     radix: "0.8976"
                 },
-				{
+                {
                     value: 9,
                     range: "",
                     radix: "0.8976"
@@ -877,7 +857,7 @@ export class EXFofficialComponent implements OnInit {
             ],
             tab: this.ball_tab[1],
             index: 9,
-			yclass:true
+            yclass: true
         },
         xyzy: {
             title: "选一中一",
@@ -928,228 +908,7 @@ export class EXFofficialComponent implements OnInit {
             index: 9
         }
     };
-// 追号函数
-    typeoptchange() {
-        let that = this;
-        if (that.chase_number_config.select_amount == 'all') {
-            that.chase_number_config.chase_amount = that.lotdata_now.length;
-        }else{
-            that.chase_number_config.chase_amount = that.chase_number_config.select_amount;
-        }
-    }
-    check_lot(item){
-        let that = this;
-        if (item.checkon) {
-            if (item.multiple == 0) {
-                item.multiple = that.chase_number_config.multiple;
-                item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
-            }
-
-        }else{
-            item.multiple = 0;
-            item.take_money = 0;
-        }
-        that.repanel_data()
-    }
-    // 生成计划
-    produce_plan(){
-        let that = this;
-        that.lotdata_now = $.extend(true, [], that.lotdata);
-        let gap_number,gap_multiple,multiple,chase_amount;
-        if (that.c_now_panel == 'two') {
-            gap_number = that.chase_number_config.chase_rule.number;
-            gap_multiple = that.chase_number_config.chase_rule.multiple;
-            multiple = that.chase_number_config.multiple;
-            chase_amount = that.chase_number_config.chase_amount;
-            if(chase_amount>that.lotdata_now.length){
-                chase_amount = that.lotdata_now.length;
-            }
-            for (var i = 0; i <= chase_amount-1; i++) {
-                that.lotdata_now[i].checkon = true;
-                that.lotdata_now[i].multiple = multiple;
-                that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
-                if ((i+1)%gap_number == 0) {
-                    multiple = multiple*gap_multiple;
-                }; 
-
-            };          
-        }else{
-            multiple = that.chase_number_config.multiple;
-            chase_amount = that.chase_number_config.chase_amount;
-            if(chase_amount>that.lotdata_now.length){
-                chase_amount = that.lotdata_now.length;
-            }
-            for (var i = 0; i <= chase_amount-1; i++) {
-
-                that.lotdata_now[i].checkon = true;
-                that.lotdata_now[i].multiple = multiple;
-                that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
-            };
-        }
-        that.repanel_data()
-    }
-    //单个金钱计算
-    get_takemon(item,e){
-        let that = this;
-        if (item.multiple == 0) {
-            item.checkon = false;
-        }else{
-            item.checkon = true;
-        }
-        // for (var k = 0; k <= that.sureballlist.length-1; k++) {
-
-        // }
-        item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
-        that.repanel_data()
-    }
-    changeregnum(e) {
-        let v = e.target;
-        v.value = v.value.replace(/\D/g, "");
-        if (Number(v.value) === 0 && v.value !== "") {
-            v.value = 0;
-        }
-        if (Number(v.value) > 0) {
-            v.value = Number(v.value);
-        }
-    }
-    // 总金钱总期数计算
-    repanel_data(){
-        let that = this;
-        let amount = 0;
-        let chase_amount = 0;
-        for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-            for (var k = 0; k <= that.sureballlist.length-1; k++) {
-                amount = that.lotdata_now[i].multiple*that.lotdata_now[i].price/that.modelarr[that.model]+amount;
-            }
-            if (that.lotdata_now[i].checkon) {
-                chase_amount = chase_amount+1;
-            };
-        };
-        that.chase_amount = chase_amount;
-        if(that.chase_amount>that.lotdata_now.length){
-            that.chase_amount = that.lotdata_now.length;
-        }
-        that.chase_money = amount;
-    }
-    //清空追号
-    rechase_data(){
-        let that = this;
-        that.lotdata_now = $.extend(true, [], that.lotdata);
-        that.repanel_data()
-    }
-    //清空追号所有数据
-    rechase_dataall(){
-        let that = this;
-        that.lotdata_now = $.extend(true, [], that.lotdata);
-        that.chase_number_config = $.extend(true, {}, that.chase_config_ori);
-        that.repanel_data()
-    }
-    tab_chase(para,item_one,item_two){
-        let that = this;
-        that.rechase_dataall();
-        that.c_now_panel = para;
-        if (para == 'one') {
-            $(item_one).addClass('active');
-            $(item_two).removeClass('active');
-            $('.one').addClass('active')
-            $('.two').removeClass('active')
-        }else if(para == 'two'){
-            $(item_two).addClass('active');
-            $(item_one).removeClass('active');
-            $('.two').addClass('active')
-            $('.one').removeClass('active')
-        }
-    }
-    //提交追号
-    submit_chase(){
-        let that = this;
-        //清空
-        that.lotdata_submit = [];
-        for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-            if (that.lotdata_now[i].checkon != false) {
-                for (var k = 0; k <= that.sureballlist.length-1; k++) {
-                        let rechase :any= {};
-                        rechase.Open_stop = that.Open_stop;
-                        rechase.Win_stop = that.Win_stop;
-                        rechase.multiple = that.lotdata_now[i].multiple;
-                        rechase.model = that.model;
-                        rechase.count = 1;
-                        rechase.sum = (2*rechase.multiple) /that.modelarr[rechase.model]
-                        rechase.amount = that.totalinfo.amount;
-                        rechase.ball = that.sureballlist[k].ball;
-                        rechase.name = that.sureballlist[k].name;
-                        rechase.issue = that.lotdata_now[i].lot_num;
-                        that.lotdata_submit.push(rechase)
-                }
-            };
-        }
-        if(!that.lotdata_submit[0]){
-            that.POPNOTE({msg:'请选择追号期数'});
-            return
-        }else{
-            that.POPNOTE({msg:`您确定追号${that.lotdata_now.length}期么? 总投入${that.chase_money}元。`},that.betnow);
-            return
-        }
-        
-        
-    }
-    betnow(){
-        let that = this;
-        // 在此处提交追号所有号码
-    }
-    close_chase(){
-        $('#layer2').find('.chase_container').removeClass('show_this');
-        let that = this;
-        that.rechase_dataall()
-    }
-    chase_number(){
-        let that = this;
-        if (!that.sureballlist[0]) {
-            that.POPNOTE({msg:'注单列表为空，请先下注！或者随机1注',btn:'随机一注'},that.radomshowchase);
-            return false
-        };
-        that.showchase();
-        
-    }  
-    show_chasenumber(param,nextrun){
-        let msg = param.msg;
-        let til = param.til;
-        let self = this;
-        let str = '';   
-        let dom = $(this.parseDom(str))
-        dom.find('.close').on('click',function(){
-            self.hid_layer();
-        }) 
-        dom.find('.confirm_box').on('click',function(){
-            nextrun();
-        })
-        $('#layer').append(dom);
-        setTimeout(function(){
-            dom.addClass('tobig')
-        }, 10)
-        window.onresize = function () {
-        }
-    }
-  
-    radomshowchase(){
-        this.mathball(this.menu_2);
-        $('#layer2').find('.chase_container').addClass('show_this');
-    }
-    showchase(){
-        $('#layer2').find('.chase_container').addClass('show_this');
-    }
-    hid_layer(){
-        document.getElementById("layer").innerHTML = '';
-    }
-    // 弹层1
-    parseDom(arg) {
-    　　 var objE = document.createElement("div");
-    　　 objE.innerHTML = arg;
-    　　 return objE.childNodes;
-    };
-//追号函数结束
-    // 遗漏数据
-    omitarr = {
+    public omitarr = {
         0: [],
         1: [],
         2: [],
@@ -1157,7 +916,7 @@ export class EXFofficialComponent implements OnInit {
         4: []
     };
     //所有的规则
-    lot_rules = {
+    public lot_rules = {
         "1_1": {
             description: "从第一位、第二位、第三位中至少各选择1个号码。",
             example: "如：第一位选择01，第二位选择02，第三位选择03，开奖号码顺序为01，02，03**，即为中奖。",
@@ -1300,7 +1059,7 @@ export class EXFofficialComponent implements OnInit {
         }
     };
 
-    now_matchtab = {
+    public now_matchtab = {
         0: {},
         1: {},
         2: {},
@@ -1309,7 +1068,7 @@ export class EXFofficialComponent implements OnInit {
         5: {}
     };
     //用来存储选中的号
-    now_matchball = {
+    public now_matchball = {
         0: {},
         1: {},
         2: {},
@@ -1318,8 +1077,29 @@ export class EXFofficialComponent implements OnInit {
         5: {}
     };
     //选中的大小单双的tab
-    ballindex = -1;
-    up_ball = 1;
+    public ballindex = -1;
+    public up_ball = 1;
+
+    public lock_multible: any = false; // 锁定倍数
+
+   
+    //传给彩票投注头部导航组件数据 
+    public cpnav = {
+        style: "official",
+        prev: "20180517022",
+        prevball: [2, 5, 9, 0, 8],
+        next: "20180517023",
+        time: ""
+    };
+    // 传给弹窗组件数据
+    public popoutInfo = {
+        title: "string",
+        msg: "string",
+        event: false,
+        show: false
+    };
+
+    constructor(private route: ActivatedRoute, private router: Router) {}
     ngOnInit() {
         let that = this;
         //获取当前id
@@ -1354,51 +1134,29 @@ export class EXFofficialComponent implements OnInit {
             this.balllist(["dyw", "dew", "dsw"]);
             this.now_description = this.lot_rules[this.now_tips_menu]["description"];
             this.tabmenu(this.menu_1[0]);
-            this.delball('clear', '');
+            this.delball("clear", "");
         });
     }
     ngAfterViewInit() {
         this.inittab2();
     }
 
-    // 拖动条函数
-    drag_tag() {
-        let that = this;
-        $("#range_tag").on("mousedown", function (e) {
-            let distance_X;
-            let orin_x = e.pageX || e.clientX + document.body.scrollLeft;
-            let orin_left = parseInt($("#range_tag").css("left"));
-            let now_left;
-            $("body").on("mousemove", function (e) {
-                e = e || window.event;
-                let now_x = e.pageX || e.clientX + document.body.scrollLeft;
-                distance_X = now_x - orin_x;
-                now_left = orin_left + distance_X;
-                if (now_left < 0) {
-                    now_left = 0;
-                } else if (now_left > 70) {
-                    now_left = 70;
-                }
-                $("#range_tag").css("left", now_left);
-                if (now_left <= 26) {
-                    that.rangepercent = 0.1;
-                    that.rangenum = 180000;
-                } else {
-                    that.rangepercent = 0;
-                    that.rangenum = 180200;
-                }
-            });
-            $("body").on("mouseup", function () {
-                $("body").unbind();
-            });
-        });
-    }
     // 通过id获取目前显示的项目配置文件
     getPageId() {
         let idarray = this.router.url.split("/");
         this.nowPageId = idarray[idarray.length - 1] + "_ffc";
         this.nowitems = this.items_show[this.nowPageId];
     }
+    //路由函数
+    linkrouter(t) {
+        this.router.navigate([t]);
+    }
+    routlink() {
+        let str;
+        this.route.params.subscribe(data => (str = data.id));
+        this.router.navigate(["/lottery/creditexf", str]);
+    }
+                                //  ==================导航事件========================
     inittab2() {
         let ulMax = $(".typetab").outerWidth();
         let liWidth = 0;
@@ -1498,48 +1256,8 @@ export class EXFofficialComponent implements OnInit {
         });
         liWidth = 0;
     }
-    //路由函数
-    linkrouter(t) {
-        this.router.navigate([t]);
-    }
-    routlink(){
-        let str ;
-        this.route.params.subscribe(data=>str=data.id);
-        this.router.navigate(['/lottery/creditexf', str]);
-      }
-    //拖拽变数
-    // 滑块左侧递减事件
-    rangevaluelessen() {
-        let that = this;
-        $("#range_tag").css("left", 0);
-        that.rangepercent = 0.1;
-        that.rangenum = 180000;
-        this.countbet(this.ballcurr.totalbet);
-    }
-    // 滑块左侧递加事件
-    // 滑块左侧递加事件
-    rangevalueadd() {
-        let that = this;
-        $("#range_tag").css("left", 70);
-        that.rangepercent = 0;
-        that.rangenum = 180200;
-        this.countbet(this.ballcurr.totalbet);
-    }
 
-    //拖拽变数结束
-    // 自带钩子监听
-    ngDoCheck() {
-        if (
-            this.totalinfo.sum > 0 &&
-            this.rangenum !=
-            (this.totalinfo.amount + this.totalinfo.sum) /
-            parseFloat(this.multiple_input.value)
-        ) {
-            this.countbet(this.ballcurr.totalbet);
-        }
-    }
-	mathstatus = false  // 随机按钮显示隐藏状态
-    // 时时彩一级导航切换
+    // 一级导航切换
     tabmenu(data) {
         let that = this;
         // 分离方形与圆形选球板
@@ -1548,7 +1266,6 @@ export class EXFofficialComponent implements OnInit {
         } else {
             this.square_show = false;
         }
-        // that.now_tab2click_num = that.menu_2_data[data.active-1]['menu'][0].arr.length;
         that.inittab();
         if (data.href) {
             that.router.navigateByUrl(data.href);
@@ -1583,15 +1300,14 @@ export class EXFofficialComponent implements OnInit {
         if (this.tabcurr.isupload) {
             this.up_ball = 2;
         }
-		if(this.tabcurr.datarule[0]=='Rule_12'){
-			this.mathstatus = true
-		}else{
-			this.mathstatus = false
-		}
+        if (this.tabcurr.datarule[0] == "Rule_12") {
+            this.mathstatus = true;
+        } else {
+            this.mathstatus = false;
+        }
     }
 
-    // 时时彩二级导航切换
-    currtabname = "";
+    //二级导航切换
     tabmenu2(data) {
         let that = this;
         that.inittab();
@@ -1599,17 +1315,17 @@ export class EXFofficialComponent implements OnInit {
         that.tabcurr = data;
         that.status.menu_2 = data.index;
         if (data.isupload) {
-            that.up_ball = 2
-            this.balllist(data.arr)
+            that.up_ball = 2;
+            this.balllist(data.arr);
         } else {
-            that.up_ball = 1
-            this.balllist(data.arr)
+            that.up_ball = 1;
+            this.balllist(data.arr);
         }
         if (data.isupload) {
             that.hothidden = true;
-        } else if (that.status.menu_1<=8){
+        } else if (that.status.menu_1 <= 8) {
             that.hothidden = false;
-        }else{
+        } else {
             that.hothidden = true;
         }
         that.now_tips_menu = that.status.menu_1 + "_" + that.status.menu_2;
@@ -1620,30 +1336,57 @@ export class EXFofficialComponent implements OnInit {
                 this.match_tab[i].active = false;
             }
         }
-		if(this.tabcurr.datarule[0]=='Rule_12'){
-			this.mathstatus = true
-		}else{
-			this.mathstatus = false
-		}
-    }
-    // 时时彩下注区左侧显示列表
-    balllist(arr) {
-        let that = this;
-        that.now_balllist = [];
-        arr.map(function (res) {
-            if (res == "w" || res == "q" || res == "b" || res == "s" || res == "g") {
-                that.hothidden = false;
-            } else {
-                that.hothidden = true;
-            }
-            that.now_balllist.push(that.ball_data[res]);
-        });
-        if (that.tabcurr.choose) {
-            that.choosem_status = true;
+        if (this.tabcurr.datarule[0] == "Rule_12") {
+            this.mathstatus = true;
         } else {
-            that.choosem_status = false;
+            this.mathstatus = false;
         }
     }
+
+    // 每次点击需要初始化的事件
+    inittab() {
+        this.now_matchball = {
+            0: {},
+            1: {},
+            2: {},
+            3: {},
+            4: {},
+            5: {}
+        };
+        this.now_matchtab = {
+            0: {},
+            1: {},
+            2: {},
+            3: {},
+            4: {},
+            5: {}
+        };
+        this.omitarr = {
+            0: [],
+            1: [],
+            2: [],
+            3: [],
+            4: []
+        };
+        this.omitname = "";
+        this.ballcurr = {};
+        $(".numright")
+            .find("li")
+            .removeClass("active");
+        this.totalinfo = {
+            count: 0,
+            sum: 0,
+            amount: 0
+        };
+        this.countabo = {
+            count: 5,
+            plan: 10
+        };
+        $("#fiveabso input[type='checkbox']").prop("checked", "true");
+        $("#fileReader").val(null);
+    }
+                            // ==================导航切换事件结束========================
+
 
     // 选中号码
     choosetab(index, clickindex, val, that) {
@@ -1666,106 +1409,109 @@ export class EXFofficialComponent implements OnInit {
             this.match_tab[0]["单"] = "单";
             this.match_tab[0]["双"] = "双";
         } else {
-			if(this.tabcurr.arr[0]=='dds'){
-				this.match_tab = {
-					0: {
-						0: 0,
-						1: 1,
-						2: 2,
-						3: 3,
-						4: 4,
-						5: 5
-					},
-					1:{}
-				}
-			}else if(this.tabcurr.arr[0]=='czw'){
-				this.match_tab = {
-					0: {
-						3: 3,
-						4: 4,
-						5: 5,
-						6: 6,
-						7: 7,
-						8: 8,
-						9: 9
-					},
-					1: {
-						6: 6,
-						7: 7,
-						8: 8,
-						9: 9
-					},
-					2: {
-						3: 3,
-						4: 4,
-						5: 5
-					},
-					3: {
-						3: 3,
-						5: 5,
-						7: 7,
-						9: 9
-					},
-					4: {
-						4: 4,
-						6: 6,
-						8: 8
-					},
-					5: {}
-				};
-			}else{
-				this.match_tab = {
-					0: {
-						1: 1,
-						2: 2,
-						3: 3,
-						4: 4,
-						5: 5,
-						6: 6,
-						7: 7,
-						8: 8,
-						9: 9,
-						10: 10,
-						11: 11
-					},
-					1: {
-						6: 6,
-						7: 7,
-						8: 8,
-						9: 9,
-						10: 10,
-						11: 11
-					},
-					2: {
-						1: 1,
-						2: 2,
-						3: 3,
-						4: 4,
-						5: 5
-					},
-					3: {
-						1: 1,
-						3: 3,
-						5: 5,
-						7: 7,
-						9: 9,
-						11: 11
-					},
-					4: {
-						2: 2,
-						4: 4,
-						6: 6,
-						8: 8,
-						10: 10
-					},
-					5: {}
-				};
-			}
+            if (this.tabcurr.arr[0] == "dds") {
+                this.match_tab = {
+                    0: {
+                        0: 0,
+                        1: 1,
+                        2: 2,
+                        3: 3,
+                        4: 4,
+                        5: 5
+                    },
+                    1: {}
+                };
+            } else if (this.tabcurr.arr[0] == "czw") {
+                this.match_tab = {
+                    0: {
+                        3: 3,
+                        4: 4,
+                        5: 5,
+                        6: 6,
+                        7: 7,
+                        8: 8,
+                        9: 9
+                    },
+                    1: {
+                        6: 6,
+                        7: 7,
+                        8: 8,
+                        9: 9
+                    },
+                    2: {
+                        3: 3,
+                        4: 4,
+                        5: 5
+                    },
+                    3: {
+                        3: 3,
+                        5: 5,
+                        7: 7,
+                        9: 9
+                    },
+                    4: {
+                        4: 4,
+                        6: 6,
+                        8: 8
+                    },
+                    5: {}
+                };
+            } else {
+                this.match_tab = {
+                    0: {
+                        1: 1,
+                        2: 2,
+                        3: 3,
+                        4: 4,
+                        5: 5,
+                        6: 6,
+                        7: 7,
+                        8: 8,
+                        9: 9,
+                        10: 10,
+                        11: 11
+                    },
+                    1: {
+                        6: 6,
+                        7: 7,
+                        8: 8,
+                        9: 9,
+                        10: 10,
+                        11: 11
+                    },
+                    2: {
+                        1: 1,
+                        2: 2,
+                        3: 3,
+                        4: 4,
+                        5: 5
+                    },
+                    3: {
+                        1: 1,
+                        3: 3,
+                        5: 5,
+                        7: 7,
+                        9: 9,
+                        11: 11
+                    },
+                    4: {
+                        2: 2,
+                        4: 4,
+                        6: 6,
+                        8: 8,
+                        10: 10
+                    },
+                    5: {}
+                };
+            }
         }
         this.now_matchtab[index] = {};
         this.ballindex = index;
         this.now_matchtab[index] = this.match_tab[clickindex];
-        $(that).parent(".numright").find("li").removeClass("active");
+        $(that)
+            .parent(".numright")
+            .find("li")
+            .removeClass("active");
         if (Base._.hasArr(this.tabcurr.arr[0], carr)) {
             if (val == this.ball_tab[4][1]) {
                 this.now_matchball[clickindex] = "";
@@ -1892,10 +1638,6 @@ export class EXFofficialComponent implements OnInit {
         }
     }
 
-    // 导入txt
-    filestatus = true;
-    @ViewChild("uploadFile") uploadFile: any;
-    curtextstr = "";
     filetxt(e, id, that) {
         let val,
             self = this;
@@ -1928,7 +1670,6 @@ export class EXFofficialComponent implements OnInit {
         let str = Utils.algorithm.getNum($("#" + id).val());
         this.filedata(str, "");
     }
-	public filterstatus = false
     // 处理输入框的数据
     filedata(str, type) {
         let self = this;
@@ -1965,12 +1706,14 @@ export class EXFofficialComponent implements OnInit {
                 amount: 0
             };
         }
-		this.filterstatus = false
+        this.filterstatus = false;
     }
     // 处理过滤结果
     filteresult(id, type) {
         if ($("#" + id).val() == "") {
-            this.POPNOTE({msg:'您还没有输入号码'});
+            this.POPNOTE({
+                msg: "您还没有输入号码"
+            });
             return;
         }
         let self = this,
@@ -1999,11 +1742,13 @@ export class EXFofficialComponent implements OnInit {
                     val + obj.allarr[i][0].split(",").join("");
             }
         }
-		this.filterstatus = true
+        this.filterstatus = true;
         if (type == "del") {
             $("#" + id).val(val);
             if (rep == 0 && nob == 0) {
-                self.POPNOTE({msg:"没有重复号码"});
+                self.POPNOTE({
+                    msg: "没有重复号码"
+                });
             } else {
                 con =
                     "已经为您过滤了" +
@@ -2012,24 +1757,34 @@ export class EXFofficialComponent implements OnInit {
                     nob +
                     "个无效号，过滤内容为：" +
                     ball;
-                    self.POPNOTE({msg:con});
+                self.POPNOTE({
+                    msg: con
+                });
             }
         } else {
             if (rep != 0 || nob != 0) {
-                $('#' + id).val(val)
-                con = '将要自动过滤' + rep + '个重复号，' + nob + '个无效号，过滤内容为：' + ball
-                self.POPNOTE({msg:con},self.qdfunc);
+                $("#" + id).val(val);
+                con =
+                    "将要自动过滤" +
+                    rep +
+                    "个重复号，" +
+                    nob +
+                    "个无效号，过滤内容为：" +
+                    ball;
+                self.POPNOTE({
+                    msg: con
+                }, self.qdfunc);
             } else {
-				if(self.filterstatus){
-					self.addball(self.menu_2,self.ballcurr.status)
-					$('#' + id).val(null)
-				}
+                if (self.filterstatus) {
+                    self.addball(self.menu_2, self.ballcurr.status);
+                    $("#" + id).val(null);
+                }
             }
         }
-	}
-	qdfunc(){
-		this.addball(this.menu_2,this.ballcurr.status)
-	}
+    }
+    qdfunc() {
+        this.addball(this.menu_2, this.ballcurr.status);
+    }
     // 计算当前点击投注信息
     countbet(totalbet) {
         if (!totalbet) {
@@ -2063,51 +1818,7 @@ export class EXFofficialComponent implements OnInit {
         this.totalinfo.amount = 180000 / this.modelarr[this.model] - sum;
     }
 
-    // 每次点击需要初始化的事件
-    inittab() {
-        this.now_matchball = {
-            0: {},
-            1: {},
-            2: {},
-            3: {},
-            4: {},
-            5: {}
-        };
-        this.now_matchtab = {
-            0: {},
-            1: {},
-            2: {},
-            3: {},
-            4: {},
-            5: {}
-        };
-        this.omitarr = {
-            0: [],
-            1: [],
-            2: [],
-            3: [],
-            4: []
-        };
-        this.omitname = "";
-        this.ballcurr = {};
-        $(".numright")
-            .find("li")
-            .removeClass("active");
-        this.totalinfo = {
-            count: 0,
-            sum: 0,
-            amount: 0
-        };
-        this.countabo = {
-            count: 5,
-            plan: 10
-        };
-        $("#fiveabso input[type='checkbox']").prop("checked", "true");
-        $("#fileReader").val(null);
-    }
-
     // 遗漏选择
-    omitname = "";
     checkomit(obj, type) {
         let that = this;
         if ($(obj).is(":checked")) {
@@ -2145,83 +1856,98 @@ export class EXFofficialComponent implements OnInit {
     }
 
     // 确认选号
-    sureballlist: any = [];
-    addball(arrob,type){
-		let that = this
-		if(!type){
-            that.POPNOTE({msg:'号码选择不完整，请重新选择'});
-			return
-		}
-		let arr = []
-		if (that.tabcurr.isupload) {
-			if(!that.filterstatus){
-				that.filteresult('fileReader', '');
-				return
-			}
-		}
-		if(that.tabcurr.choose){
-			var _selfs;
-			var _arr = [];
-			var _indexs = [];
-			var _where = 0;
-			var _total = [];
-			var arrc = new Array();
-			$("#fiveabso input:checkbox:checked").each(function(i){
-				arrc[i] = $(this).val();
-			});
-			for(var i=0;i<that.tabcurr.datarule[1];i++){
-				_indexs.push(i)
-			}
-			_arr = arrc
-			_selfs = new Array(that.tabcurr.datarule[1])
-			Utils.algorithm.plzh(_selfs, _arr, _indexs, _total, _where);
-			for(var i=0;i<that.ballcurr.ball.length;i++){
-				if(that.ballcurr.ball[i]!=''){
-					for(var j=0;j<_total.length;j++){
-						let obj:any={}
-						obj.ball = that.ballcurr.ball[i]
-						obj.name = that.currtabname
-						for(var k=0;k<that.tabcurr.datarule[1];k++){
-							obj.name = obj.name + that.abotitle[_total[j][k]]
-						}
-						obj.multiple = that.multiple_input.value
-						obj.model = that.model
-						obj.count = that.totalinfo.count/_total.length
-						obj.sum = that.totalinfo.sum/_total.length
-						obj.amount = that.totalinfo.amount
-						that.sureballlist.push(obj)
-					}
-				}
-			}
-		}else{
-			for(var i=0;i<that.ballcurr.ball.length;i++){
-				if(that.ballcurr.ball[i]!=''){
-					let obj:any={}
-					if(that.tabcurr.addzero){
-						obj.ball = that.ballcurr.ball[i]
-					}else{
-						obj.ball = that.tabcurr.datarule[0]=='Rule_12'?that.ddsmatch[that.ballcurr.ball[i]]:that.ballcurr.ball[i]
-					}
-					obj.name = that.tabcurr.datarule[0]=='Rule_6'?that.currtabname+that.ball_data[that.tabcurr.arr[i]].title:arrob[0].title+that.currtabname
-					obj.multiple = that.multiple_input.value
-					obj.model = that.model
-					obj.count = that.tabcurr.datarule[0]=='Rule_6' || that.tabcurr.datarule[0]=='Rule_12'?that.ballcurr.allarr[i].length:that.totalinfo.count
-					obj.sum = that.tabcurr.datarule[0]=='Rule_6' || that.tabcurr.datarule[0]=='Rule_12'?(that.ballcurr.allarr[i].length/that.ballcurr.totalbet)*that.totalinfo.sum:that.totalinfo.sum
-					obj.amount = that.totalinfo.amount
-					that.sureballlist.push(obj)
-				}
-			}
-		} 
-		that.allbet(that.sureballlist)
-		this.inittab()
-		// 如果一级导航是趣味型
+    addball(arrob, type) {
+        let that = this;
+        if (!type) {
+            that.POPNOTE({
+                msg: "号码选择不完整，请重新选择"
+            });
+            return;
+        }
+        let arr = [];
+        if (that.tabcurr.isupload) {
+            if (!that.filterstatus) {
+                that.filteresult("fileReader", "");
+                return;
+            }
+        }
+        if (that.tabcurr.choose) {
+            var _selfs;
+            var _arr = [];
+            var _indexs = [];
+            var _where = 0;
+            var _total = [];
+            var arrc = new Array();
+            $("#fiveabso input:checkbox:checked").each(function (i) {
+                arrc[i] = $(this).val();
+            });
+            for (var i = 0; i < that.tabcurr.datarule[1]; i++) {
+                _indexs.push(i);
+            }
+            _arr = arrc;
+            _selfs = new Array(that.tabcurr.datarule[1]);
+            Utils.algorithm.plzh(_selfs, _arr, _indexs, _total, _where);
+            for (var i = 0; i < that.ballcurr.ball.length; i++) {
+                if (that.ballcurr.ball[i] != "") {
+                    for (var j = 0; j < _total.length; j++) {
+                        let obj: any = {};
+                        obj.ball = that.ballcurr.ball[i];
+                        obj.name = that.currtabname;
+                        for (var k = 0; k < that.tabcurr.datarule[1]; k++) {
+                            obj.name = obj.name + that.abotitle[_total[j][k]];
+                        }
+                        obj.multiple = that.multiple_input.value;
+                        obj.model = that.model;
+                        obj.count = that.totalinfo.count / _total.length;
+                        obj.sum = that.totalinfo.sum / _total.length;
+                        obj.amount = that.totalinfo.amount;
+                        that.sureballlist.push(obj);
+                    }
+                }
+            }
+        } else {
+            for (var i = 0; i < that.ballcurr.ball.length; i++) {
+                if (that.ballcurr.ball[i] != "") {
+                    let obj: any = {};
+                    if (that.tabcurr.addzero) {
+                        obj.ball = that.ballcurr.ball[i];
+                    } else {
+                        obj.ball =
+                            that.tabcurr.datarule[0] == "Rule_12" ?
+                            that.ddsmatch[that.ballcurr.ball[i]] :
+                            that.ballcurr.ball[i];
+                    }
+                    obj.name =
+                        that.tabcurr.datarule[0] == "Rule_6" ?
+                        that.currtabname + that.ball_data[that.tabcurr.arr[i]].title :
+                        arrob[0].title + that.currtabname;
+                    obj.multiple = that.multiple_input.value;
+                    obj.model = that.model;
+                    obj.count =
+                        that.tabcurr.datarule[0] == "Rule_6" ||
+                        that.tabcurr.datarule[0] == "Rule_12" ?
+                        that.ballcurr.allarr[i].length :
+                        that.totalinfo.count;
+                    obj.sum =
+                        that.tabcurr.datarule[0] == "Rule_6" ||
+                        that.tabcurr.datarule[0] == "Rule_12" ?
+                        (that.ballcurr.allarr[i].length / that.ballcurr.totalbet) *
+                        that.totalinfo.sum :
+                        that.totalinfo.sum;
+                    obj.amount = that.totalinfo.amount;
+                    that.sureballlist.push(obj);
+                }
+            }
+        }
+        that.allbet(that.sureballlist);
+        this.inittab();
+        // 如果一级导航是趣味型
         if (this.status.menu_1 === 5) {
             for (let i = 0; i < this.match_tab.length; i++) {
                 this.match_tab[i].active = false;
             }
         }
-	}
-
+    }
 
     allbet(data) {
         let self = this;
@@ -2245,13 +1971,17 @@ export class EXFofficialComponent implements OnInit {
         }
         this.allbet(this.sureballlist);
     }
-	// 确认投注
-	affirm(){
-        if (this.sureballlist.length<1) {
-            this.POPNOTE({msg:'没有投注内容！'});
-        }else{
-            this.POPNOTE({msg:'投注成功！'});
-            this.delball('clear','');
+    // 确认投注
+    affirm() {
+        if (this.sureballlist.length < 1) {
+            this.POPNOTE({
+                msg: "没有投注内容！"
+            });
+        } else {
+            this.POPNOTE({
+                msg: "投注成功！"
+            });
+            this.delball("clear", "");
         }
     }
 
@@ -2260,7 +1990,9 @@ export class EXFofficialComponent implements OnInit {
         let that = this;
         let obj: any = {};
         if (that.radom_input.value == 0) {
-            that.POPNOTE({msg:'随机注数不能小于1'});
+            that.POPNOTE({
+                msg: "随机注数不能小于1"
+            });
             return;
         }
         arr.map(function (res) {
@@ -2276,37 +2008,37 @@ export class EXFofficialComponent implements OnInit {
             redata.ball = Utils.Randomrule_1(obj);
             redata.name = that.currtabname;
             if (that.tabcurr.choose || that.tabcurr.datarule[0] == "Rule_6") {
-              let ab = Utils.algorithm.RandomArray(
-                ["dyw", "dew", "dsw", "dsiw", "dww"],
-                that.tabcurr.datarule[1]
-              );
-              let newab = new Array(that.tabcurr.datarule[1]);
-              ab.map(function(res) {
-                if (res == "dyw") {
-                  newab[0] = "dyw";
+                let ab = Utils.algorithm.RandomArray(
+                    ["dyw", "dew", "dsw", "dsiw", "dww"],
+                    that.tabcurr.datarule[1]
+                );
+                let newab = new Array(that.tabcurr.datarule[1]);
+                ab.map(function (res) {
+                    if (res == "dyw") {
+                        newab[0] = "dyw";
+                    }
+                    if (res == "dew") {
+                        newab[1] = "dew";
+                    }
+                    if (res == "dsw") {
+                        newab[2] = "dsw";
+                    }
+                    if (res == "dsiw") {
+                        newab[3] = "dsiw";
+                    }
+                    if (res == "dww") {
+                        newab[4] = "dww";
+                    }
+                });
+                for (var k = 0; k < newab.length; k++) {
+                    if (newab[k] == "" || typeof newab[k] == "undefined") {
+                        newab.splice(k, 1);
+                        k--;
+                    }
                 }
-                if (res == "dew") {
-                  newab[1] = "dew";
+                for (var k = 0; k < that.tabcurr.datarule[1]; k++) {
+                    redata.name = redata.name + that.abotitle[newab[k]];
                 }
-                if (res == "dsw") {
-                  newab[2] = "dsw";
-                }
-                if (res == "dsiw") {
-                  newab[3] = "dsiw";
-                }
-                if (res == "dww") {
-                  newab[4] = "dww";
-                }
-              });
-              for (var k = 0; k < newab.length; k++) {
-                if (newab[k] == "" || typeof newab[k] == "undefined") {
-                  newab.splice(k, 1);
-                  k--;
-                }
-              }
-              for (var k = 0; k < that.tabcurr.datarule[1]; k++) {
-                redata.name = redata.name + that.abotitle[newab[k]];
-              }
             }
             redata.multiple = that.multiple_input.value;
             redata.model = that.model;
@@ -2323,35 +2055,118 @@ export class EXFofficialComponent implements OnInit {
         }
     }
 
-    addrem(item){
+                 //  =================== 中间操作事件 ===============================
+
+    // 滑块左侧递减事件
+    rangevaluelessen() {
+        let that = this;
+        $("#range_tag").css("left", 0);
+        that.rangepercent = 0.1;
+        that.rangenum = 180000;
+        this.countbet(this.ballcurr.totalbet);
+    }
+    // 滑块左侧递加事件
+    rangevalueadd() {
+        let that = this;
+        $("#range_tag").css("left", 70);
+        that.rangepercent = 0;
+        that.rangenum = 180200;
+        this.countbet(this.ballcurr.totalbet);
+    }
+    // 拖动条函数
+    drag_tag() {
+        let that = this;
+        $("#range_tag").on("mousedown", function (e) {
+            let distance_X;
+            let orin_x = e.pageX || e.clientX + document.body.scrollLeft;
+            let orin_left = parseInt($("#range_tag").css("left"));
+            let now_left;
+            $("body").on("mousemove", function (e) {
+                e = e || window.event;
+                let now_x = e.pageX || e.clientX + document.body.scrollLeft;
+                distance_X = now_x - orin_x;
+                now_left = orin_left + distance_X;
+                if (now_left < 0) {
+                    now_left = 0;
+                } else if (now_left > 70) {
+                    now_left = 70;
+                }
+                $("#range_tag").css("left", now_left);
+                if (now_left <= 26) {
+                    that.rangepercent = 0.1;
+                    that.rangenum = 180000;
+                } else {
+                    that.rangepercent = 0;
+                    that.rangenum = 180200;
+                }
+            });
+            $("body").on("mouseup", function () {
+                $("body").unbind();
+            });
+        });
+    }
+    // 锁定倍数方法
+    lock_multiple(item) {
+        let now_btn = $(item.target);
+        if (!$(item.target).hasClass("switch_btn")) {
+            now_btn = $(item.target).parent();
+        }
+        if (now_btn.hasClass("on")) {
+            this.lock_multible = false;
+            $("#testinput").removeAttr("disabled");
+        } else {
+            this.lock_multible = true;
+            $("#testinput").attr({
+                disabled: "disabled"
+            });
+        }
+    }
+    // 时时彩下注区左侧显示列表
+    balllist(arr) {
+        let that = this;
+        that.now_balllist = [];
+        arr.map(function (res) {
+            if (res == "w" || res == "q" || res == "b" || res == "s" || res == "g") {
+                that.hothidden = false;
+            } else {
+                that.hothidden = true;
+            }
+            that.now_balllist.push(that.ball_data[res]);
+        });
+        if (that.tabcurr.choose) {
+            that.choosem_status = true;
+        } else {
+            that.choosem_status = false;
+        }
+    }
+    addrem(item) {
         //倍数锁
         if (this.lock_multible) {
-            return false
-        };
-        this.multiple_input.value = parseInt(this.multiple_input.value);
-        this.radom_input.value = parseInt(this.radom_input.value);
-        if (item=='multiple') {
-            this.multiple_input.value = this.multiple_input.value+1;
-            this.countbet(this.ballcurr.totalbet)
-        }else if(item=='radom'){
-            this.radom_input.value = this.radom_input.value +1;
+            return false;
         }
-        
-    }
-    minusrem(item){
-        if (this.lock_multible) {
-            return false
-        };
         this.multiple_input.value = parseInt(this.multiple_input.value);
         this.radom_input.value = parseInt(this.radom_input.value);
-        if (item=='multiple') {
-            if (this.multiple_input.value>1) {
-                this.multiple_input.value = this.multiple_input.value-1;
-                this.countbet(this.ballcurr.totalbet)
+        if (item == "multiple") {
+            this.multiple_input.value = this.multiple_input.value + 1;
+            this.countbet(this.ballcurr.totalbet);
+        } else if (item == "radom") {
+            this.radom_input.value = this.radom_input.value + 1;
+        }
+    }
+    minusrem(item) {
+        if (this.lock_multible) {
+            return false;
+        }
+        this.multiple_input.value = parseInt(this.multiple_input.value);
+        this.radom_input.value = parseInt(this.radom_input.value);
+        if (item == "multiple") {
+            if (this.multiple_input.value > 1) {
+                this.multiple_input.value = this.multiple_input.value - 1;
+                this.countbet(this.ballcurr.totalbet);
             }
-        }else if(item=='radom'){
-            if (this.radom_input.value>1) {
-                this.radom_input.value = this.radom_input.value-1;
+        } else if (item == "radom") {
+            if (this.radom_input.value > 1) {
+                this.radom_input.value = this.radom_input.value - 1;
             }
         }
     }
@@ -2405,7 +2220,7 @@ export class EXFofficialComponent implements OnInit {
     hid_tips(item, em) {
         em.classList.remove("tipsshow");
     }
-    // inputurl隐藏显示
+    // 选择倍数隐藏显示
     toggle_ul(item) {
         let self = this;
         this.inmoneyfocus(item);
@@ -2413,45 +2228,277 @@ export class EXFofficialComponent implements OnInit {
             self.ul_hidden = !self.ul_hidden;
         }, 200);
     }
+        //  =================== 中间操作事件结束 ===============================
+
+                              //  ===================追号函数=========================
+    // 追号函数
+    typeoptchange() {
+        let that = this;
+        if (that.chase_number_config.select_amount == "all") {
+            that.chase_number_config.chase_amount = that.lotdata_now.length;
+        } else {
+            that.chase_number_config.chase_amount =
+                that.chase_number_config.select_amount;
+        }
+    }
+    check_lot(item) {
+        let that = this;
+        if (item.checkon) {
+            if (item.multiple == 0) {
+                item.multiple = that.chase_number_config.multiple;
+                item.take_money =
+                    ((item.multiple * item.price) / that.modelarr[that.model]) *
+                    that.sureballlist.length;
+            }
+        } else {
+            item.multiple = 0;
+            item.take_money = 0;
+        }
+        that.repanel_data();
+    }
+    // 生成计划
+    produce_plan() {
+        let that = this;
+        that.lotdata_now = $.extend(true, [], that.lotdata);
+        let gap_number, gap_multiple, multiple, chase_amount;
+        if (that.c_now_panel == "two") {
+            gap_number = that.chase_number_config.chase_rule.number;
+            gap_multiple = that.chase_number_config.chase_rule.multiple;
+            multiple = that.chase_number_config.multiple;
+            chase_amount = that.chase_number_config.chase_amount;
+            if (chase_amount > that.lotdata_now.length) {
+                chase_amount = that.lotdata_now.length;
+            }
+            for (var i = 0; i <= chase_amount - 1; i++) {
+                that.lotdata_now[i].checkon = true;
+                that.lotdata_now[i].multiple = multiple;
+                that.lotdata_now[i].take_money =
+                    ((multiple * that.lotdata_now[i].price) / that.modelarr[that.model]) *
+                    that.sureballlist.length;
+                if ((i + 1) % gap_number == 0) {
+                    multiple = multiple * gap_multiple;
+                }
+            }
+        } else {
+            multiple = that.chase_number_config.multiple;
+            chase_amount = that.chase_number_config.chase_amount;
+            if (chase_amount > that.lotdata_now.length) {
+                chase_amount = that.lotdata_now.length;
+            }
+            for (var i = 0; i <= chase_amount - 1; i++) {
+                that.lotdata_now[i].checkon = true;
+                that.lotdata_now[i].multiple = multiple;
+                that.lotdata_now[i].take_money =
+                    ((multiple * that.lotdata_now[i].price) / that.modelarr[that.model]) *
+                    that.sureballlist.length;
+            }
+        }
+        that.repanel_data();
+    }
+    //单个金钱计算
+    get_takemon(item, e) {
+        let that = this;
+        if (item.multiple == 0) {
+            item.checkon = false;
+        } else {
+            item.checkon = true;
+        }
+        item.take_money =
+            ((item.multiple * item.price) / that.modelarr[that.model]) *
+            that.sureballlist.length;
+        that.repanel_data();
+    }
+    changeregnum(e) {
+        let v = e.target;
+        v.value = v.value.replace(/\D/g, "");
+        if (Number(v.value) === 0 && v.value !== "") {
+            v.value = 0;
+        }
+        if (Number(v.value) > 0) {
+            v.value = Number(v.value);
+        }
+    }
+    // 总金钱总期数计算
+    repanel_data() {
+        let that = this;
+        let amount = 0;
+        let chase_amount = 0;
+        for (var i = 0; i <= that.lotdata_now.length - 1; i++) {
+            for (var k = 0; k <= that.sureballlist.length - 1; k++) {
+                amount =
+                    (that.lotdata_now[i].multiple * that.lotdata_now[i].price) /
+                    that.modelarr[that.model] +
+                    amount;
+            }
+            if (that.lotdata_now[i].checkon) {
+                chase_amount = chase_amount + 1;
+            }
+        }
+        that.chase_amount = chase_amount;
+        if (that.chase_amount > that.lotdata_now.length) {
+            that.chase_amount = that.lotdata_now.length;
+        }
+        that.chase_money = amount;
+    }
+    //清空追号
+    rechase_data() {
+        let that = this;
+        that.lotdata_now = $.extend(true, [], that.lotdata);
+        that.repanel_data();
+    }
+    //清空追号所有数据
+    rechase_dataall() {
+        let that = this;
+        that.lotdata_now = $.extend(true, [], that.lotdata);
+        that.chase_number_config = $.extend(true, {}, that.chase_config_ori);
+        that.repanel_data();
+    }
+    tab_chase(para, item_one, item_two) {
+        let that = this;
+        that.rechase_dataall();
+        that.c_now_panel = para;
+        if (para == "one") {
+            $(item_one).addClass("active");
+            $(item_two).removeClass("active");
+            $(".one").addClass("active");
+            $(".two").removeClass("active");
+        } else if (para == "two") {
+            $(item_two).addClass("active");
+            $(item_one).removeClass("active");
+            $(".two").addClass("active");
+            $(".one").removeClass("active");
+        }
+    }
+    //提交追号
+    submit_chase() {
+        let that = this;
+        //清空
+        that.lotdata_submit = [];
+        for (var i = 0; i <= that.lotdata_now.length - 1; i++) {
+            if (that.lotdata_now[i].checkon != false) {
+                for (var k = 0; k <= that.sureballlist.length - 1; k++) {
+                    let rechase: any = {};
+                    rechase.Open_stop = that.Open_stop;
+                    rechase.Win_stop = that.Win_stop;
+                    rechase.multiple = that.lotdata_now[i].multiple;
+                    rechase.model = that.model;
+                    rechase.count = 1;
+                    rechase.sum = (2 * rechase.multiple) / that.modelarr[rechase.model];
+                    rechase.amount = that.totalinfo.amount;
+                    rechase.ball = that.sureballlist[k].ball;
+                    rechase.name = that.sureballlist[k].name;
+                    rechase.issue = that.lotdata_now[i].lot_num;
+                    that.lotdata_submit.push(rechase);
+                }
+            }
+        }
+        if (!that.lotdata_submit[0]) {
+            that.POPNOTE({
+                msg: "请选择追号期数"
+            });
+            return;
+        } else {
+            that.POPNOTE({
+                    msg: `您确定追号${that.lotdata_now.length}期么? 总投入${
+            that.chase_money
+          }元。`
+                },
+                that.betnow
+            );
+            return;
+        }
+    }
+    betnow() {
+        let that = this;
+        // 在此处提交追号所有号码
+    }
+    close_chase() {
+        $("#layer2")
+            .find(".chase_container")
+            .removeClass("show_this");
+        let that = this;
+        that.rechase_dataall();
+    }
+    chase_number() {
+        let that = this;
+        if (!that.sureballlist[0]) {
+            that.POPNOTE({
+                    msg: "注单列表为空，请先下注！或者随机1注",
+                    btn: "随机一注"
+                },
+                that.radomshowchase
+            );
+            return false;
+        }
+        that.showchase();
+    }
+    show_chasenumber(param, nextrun) {
+        let msg = param.msg;
+        let til = param.til;
+        let self = this;
+        let str = "";
+        let dom = $(this.parseDom(str));
+        dom.find(".close").on("click", function () {
+            self.hid_layer();
+        });
+        dom.find(".confirm_box").on("click", function () {
+            nextrun();
+        });
+        $("#layer").append(dom);
+        setTimeout(function () {
+            dom.addClass("tobig");
+        }, 10);
+        window.onresize = function () {};
+    }
+
+    radomshowchase() {
+        this.mathball(this.menu_2);
+        $("#layer2")
+            .find(".chase_container")
+            .addClass("show_this");
+    }
+    showchase() {
+        $("#layer2")
+            .find(".chase_container")
+            .addClass("show_this");
+    }
+    hid_layer() {
+        document.getElementById("layer").innerHTML = "";
+    }
+    // 弹层1
+    parseDom(arg) {
+        var objE = document.createElement("div");
+        objE.innerHTML = arg;
+        return objE.childNodes;
+    }
+                              // ====================追号函数结束=========================
+
+
     // 绑定给弹窗组件的事件；
-    NOTARIZE(){
-        return
+    NOTARIZE() {
+        return;
     }
     // 弹窗关闭事件 可以自定义命名
-    closePopouot(e){
+    closePopouot(e) {
         this.popoutInfo.show = false;
     }
 
     // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
-    POPNOTE(data,fn=null){
+    POPNOTE(data, fn = null) {
         let o = {
-            title:'操作提示',   //title不传值默认为 ‘操作提示’
-            msg:' ',
+            title: "操作提示", //title不传值默认为 ‘操作提示’
+            msg: " ",
             event: false,
-            show: true,
-        }
-        if (typeof fn === 'function') {
+            show: true
+        };
+        if (typeof fn === "function") {
             this.NOTARIZE = fn;
             o.event = true;
-        }else{
-            this.NOTARIZE = ()=>{return};
+        } else {
+            this.NOTARIZE = () => {
+                return;
+            };
         }
-        this.popoutInfo = Object.assign({},o,data);
-    }
-    // 锁定倍数
-    public lock_multible :any=false;
-    lock_multiple(item){
-        let now_btn = $(item.target);
-        if (!$(item.target).hasClass('switch_btn')) {
-            now_btn = $(item.target).parent();
-        }
-        if(now_btn.hasClass('on')){
-            this.lock_multible = false;
-            $('#testinput').removeAttr('disabled');
-        }else{
-            this.lock_multible = true;
-            $('#testinput').attr({disabled: 'disabled'});
-        }
-
+        this.popoutInfo = Object.assign({}, o, data);
     }
 }

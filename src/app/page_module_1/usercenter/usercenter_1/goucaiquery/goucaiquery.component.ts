@@ -1,6 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 
 import { GOUC, userdef } from "../../../../../factory/usercent";
+
+import { HttpInterceptorService } from "../../../../../factory/Http.Service";
+
+import { Api } from "../../../../../factory/api.model";
+
 import userModel from '../../../../../status/user.model';
 @Component({
   selector: "app-goucaiquery",
@@ -71,11 +76,15 @@ export class GoucaiqueryComponent implements OnInit {
       state: false
     }
   ];
-  constructor() {}
+  constructor( private http:HttpInterceptorService) {}
 
   ngOnInit() {
     this.now_lang_type=userModel.now_lang_type;
-    this.inttable();
+
+    this.http.get(Api.gettest,{}).then(res => {
+        console.log('请求到的数据：', res);
+        this.inttable();
+    });
   }
   // 初始表格数据
   inttable() {

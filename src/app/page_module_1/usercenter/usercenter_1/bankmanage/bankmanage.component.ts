@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
+import { HttpInterceptorService } from "../../../../../factory/Http.Service";
+
+import { Api } from "../../../../../factory/api.model";
+
 import userModel from '../../../../../status/user.model';
 @Component({
   selector: 'app-bankmanage',
@@ -34,10 +39,14 @@ export class BankmanageComponent implements OnInit {
         scale: false,
     },
 };
-  constructor() { }
+  constructor( private http:HttpInterceptorService) { }
 
   ngOnInit() {
     this.now_lang_type=userModel.now_lang_type;
+
+    this.http.get(Api.gettest,{}).then(res => {
+        console.log('请求到的数据：', res);
+    });
   }
   addbank(){
     let p = this.popup;

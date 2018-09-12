@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
+import { HttpInterceptorService } from "../../../../../factory/Http.Service";
+
+import { Api } from "../../../../../factory/api.model";
+
 import userModel from '../../../../../status/user.model';
 @Component({
   selector: 'app-regismanage',
@@ -18,9 +23,14 @@ export class RegismanageComponent implements OnInit {
     group:this.now_lang.User_center_c.Quota_bonus_group,
     other:'',
   }
-  constructor() { }
+  constructor( private http:HttpInterceptorService) {}
 
   ngOnInit() {
+
+    this.http.get(Api.gettest,{}).then(res => {
+        console.log('请求到的数据：', res);
+    });
+
   }
 
 }

@@ -1,4 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+
+import { HttpInterceptorService } from "../../../../../factory/Http.Service";
+
+import { Api } from "../../../../../factory/api.model";
+
 import userModel from '../../../../../status/user.model';
 
 @Component({
@@ -68,10 +73,14 @@ export class PronoteComponent implements OnInit {
       isread: false
     }
   ];
-  constructor() {}
+  constructor( private http:HttpInterceptorService) {}
 
   ngOnInit() {
-    this.noreadnumb();
+
+    this.http.get(Api.gettest,{}).then(res => {
+        console.log('请求到的数据：', res);
+        this.noreadnumb();
+    });
   }
 
   read() {

@@ -6,6 +6,11 @@ import userModel from '../../../../../status/user.model';
 
 import { OFFTYPE, CREDITTYPE } from '../../../../../factory/cpdata';
 
+import { HttpInterceptorService } from "../../../../../factory/Http.Service";
+
+import { Api } from "../../../../../factory/api.model";
+
+
 @Component({
     selector: 'app-proinfo',
     templateUrl: './proinfo.component.html',
@@ -588,9 +593,14 @@ export class ProinfoComponent implements OnInit {
 
     public offdata = OFFTYPE[this.curgametype].official;
     public creditdata = [];
-    constructor() {}
+    constructor( private http:HttpInterceptorService ) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+
+        this.http.get(Api.gettest,{}).then(res => {
+            console.log('请求到的数据：', res);
+        });
+    }
 
     selchange(){
         if (this.curgamename === this.game) {

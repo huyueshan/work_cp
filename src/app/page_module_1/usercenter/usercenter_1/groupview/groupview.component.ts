@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
+import { HttpInterceptorService } from "../../../../../factory/Http.Service";
+
+import { Api } from "../../../../../factory/api.model";
+
 import userModel from '../../../../../status/user.model';
 @Component({
   selector: 'app-groupview',
@@ -95,9 +100,20 @@ export class GroupviewComponent implements OnInit {
       active: false
     }
   ];
-  constructor() { }
+  constructor( private http:HttpInterceptorService) { }
 
   ngOnInit() {
+
+    this.http.get(Api.gettest,{}).then(res => {
+        console.log('请求到的数据：', res);
+        // 图标分析
+        this.run_echarts()
+    });
+
+}
+
+    // 图标分析
+  run_echarts(){
     let echarts = require('echarts');
     let ele = document.getElementById('drawbox');
     let myChart = echarts.init(ele);
@@ -212,7 +228,9 @@ export class GroupviewComponent implements OnInit {
     };
 
     myChart.setOption(option);
+
   }
+
   setdrawdata(i) {
     this.drawdata = this.drawdatalist[i].data;
   }

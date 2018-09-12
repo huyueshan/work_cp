@@ -1,4 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+
+import { HttpInterceptorService } from "../../../../../factory/Http.Service";
+
+import { Api } from "../../../../../factory/api.model";
+
 import userModel from '../../../../../status/user.model';
 @Component({
   selector: "app-regisgeneralize",
@@ -74,9 +79,14 @@ export class RegisgeneralizeComponent implements OnInit {
       rebates:'0.071',
     },
   ];
-  constructor() {}
+  constructor( private http:HttpInterceptorService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.http.get(Api.gettest,{}).then(res => {
+        console.log('请求到的数据：', res);
+    });
+}
 
     // 分页组件点击页码事件，参数i为点击页码数
     getPageData(i) {

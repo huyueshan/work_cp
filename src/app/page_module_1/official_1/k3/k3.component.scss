@@ -1,12 +1,5 @@
 @charset "UTF-8";
-@import '../../images/common';
-html,body {height:100%;}
 $yellow:#fe8f00;
-.nav{
-	width:100%;
-	position:relative;
-	float:left;
-}
 *{
 	-webkit-user-select:none;
 	-moz-user-select:none;
@@ -86,213 +79,15 @@ input[type="number"]{
 	display: none;
 }
 .tipshidden{
-	/* display: none; */
 	visibility: hidden;
 }
 
 
 .tipsshow{
-	/* display: block; */
 	visibility: visible;
 	transform:translateY(-110%) scale(1);
 }
-.check_ballplace{
-	height: 35px;
-	width: 100%;
-	background-color: #fff;
-	clear: both;
-	>div{
-		height: 100%;
-		line-height: 35px;
-		vertical-align: top;
-		font-size: 14px;
-		float: left;
-	}
-	.til{
-		text-indent: 38px;
-		width: 15%;
-	}
-	.check_box{
-		width: 25%;
-	}
-	.check_box input{
-		margin-top: 10px;
-		margin-right: 5px;
-		vertical-align: top;
-	}
-	.tips_right{
-		width: 60%;
-	}
-	.tips_right>div{
-		display: inline-block;
-	}
-}
 
-.topbox{
-	width:1200px;
-	margin:0 auto;
-	overflow:hidden;
-	height:40px;
-	.topleft{
-		float:left;
-		overflow:hidden;
-		height:40px;
-		.time{
-			float:left;
-			height:15px;
-			line-height:15px;
-			border-right:1px solid #ffffff;
-			padding-right:10px;
-			color:#fff;
-			margin-top:12px;
-			font-size:14px;
-		}
-		.language{
-			margin-top:9px;
-			float:left;
-			margin-left:10px;
-			cursor:pointer;
-			img{
-				height:16px;
-			}
-		}
-	}
-	.topright{
-		float:right;
-		overflow:hidden;
-		height:40px;
-		.userinfo{
-			float:left;
-			padding:10px;
-			font-size:14px;
-			color:#fff;
-			.title{
-				float:left;
-			}
-			.getinfo{
-				float:left;
-				color:#fff;
-			}
-			.mr20{
-				margin-right:20px;
-			}
-			.ml10{
-				margin-left:20px;
-			}
-			.money{
-				float:left;
-				width: 80px;
-				color:$yellow;
-			}
-			.titlerel{
-				float:left;
-				margin-left:10px;
-				margin-top:3px;
-				cursor:pointer;
-			}
-		}
-		.centerlist{
-			float:left; 
-			height:40px;
-			padding:12px 0px;
-			margin-left:20px;
-			li{
-				float:left;
-				color:#fff;
-				list-style:none;
-				padding:0px 10px;
-				height:14px;
-				line-height:14px;
-				border-right:1px solid #fff;
-				a{
-					color:#fff;
-					cursor:pointer;
-					:hover{
-						color:$yellow;
-					}
-				}
-			}
-			:last-child{
-				padding-right:0px;
-				border-right:none;
-			}
-			
-		}
-	}
-}
-
-.headbox{
-	width:1200px;
-	margin:0 auto;
-	overflow:hidden;
-	height:80px;
-	padding:10px 0px;
-	.headleft{
-		float:left;
-		overflow:hidden;
-		height:100%;
-		width:370px;
-		.logo{
-			height:60px;
-		}
-	}
-	.headright{
-		float:right;
-		overflow:hidden;
-		height:100%;
-		width:830px;
-		.navtab{
-			float:right; 
-			padding:12px 0px;
-			margin-left:20px;
-			li{
-				float:left;
-				color:#fff;
-				list-style:none;
-				margin-right:45px;
-				.pc{
-					font-size:16px;
-					text-align:center;
-					margin-bottom:0px;
-					font-weight:bold;
-				}
-				.pe{
-					font-size:12px;
-					text-align:center;
-					width:100%;
-					margin-bottom:0px;
-				}
-				a{
-					color:#333;
-					cursor:pointer;
-					text-decoration:none;
-					:hover{
-						color:$yellow;
-					}
-				}
-				:hover{
-					color:$yellow;
-				}
-			}
-			:last-child{
-				margin-right:0px;
-			}
-			
-		}
-	}
-}
-.banner{
-	width:100%;
-	float:left;
-	text-align:center;
-	height:200px;
-	.img{
-		height:200px;
-		margin:0 auto;
-		background:url(../../images/banner_10.jpg) center no-repeat;
-		background-size:cover;
-	}
-}
 .conbox{
 	width:100%;
 	float:left;
@@ -1163,25 +958,12 @@ input[type="number"]{
 		}
 	}
 }
-.fl{
-	float:left;
-}
 
 .btnh_w120_h40{
 	cursor: pointer;
     width: 120px;
     height: 35px;
     line-height: 35px;
-    text-align: center;
-    font-size: 16px;
-    color: #fff;
-    border-radius: 4px;
-}
-.btnh_w150_h50{
-	cursor: pointer;
-    width: 150px;
-    height: 45px;
-    line-height: 45px;
     text-align: center;
     font-size: 16px;
     color: #fff;
@@ -1222,86 +1004,6 @@ input[type="number"]{
 }
 .mb10{
 	margin-bottom:10px;
-}
-input[type="range"] {
-  display: inline-block;
-  position: relative;
-  width: 90px;
-  height: 22px;
-  background: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  outline: none;
-  margin:0px 5px;
-}
-
-/*range中心圆点*/
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 12px;
-  width: 18px;
-  border-radius: 5px;
-  background-color: #fe8f00;
-  cursor: pointer;
-  margin-top: -4px;
-}
-
-input[type="range"]::-moz-range-thumb {
-  -moz-appearance: none;
-  appearance: none;
-  height: 12px;
-  width: 18px;
-  border-radius: 5px;
-  background-color: #fe8f00;
-  cursor: pointer;
-}
-input[type="range"]::-ms-thumb {
-  -ms-appearance: none;
-  appearance: none;
-  height: 12px;
-  width: 18px;
-  border-radius: 5px;
-  background-color: #fe8f00;
-  cursor: pointer;
-  margin-top: 1px;
-}
-input[type="range"]::slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 12px;
-  width: 18px;
-  border-radius: 5px;
-  background-color: #fe8f00;
-  cursor: pointer;
-  margin-top: -6px;
-}
-/*range轨道*/
-input[type="range"]::-webkit-slider-runnable-track {
-  width: 100px;
-  height: 4px;
-  background-color: #fe8f00;
-  border-radius: 2px;
-  cursor: pointer;
-}
-input[type="range"]::-moz-range-track {
-  width: 100px;
-  height: 4px;
-  background-color: #fe8f00;
-  border-radius: 2px;
-  cursor: pointer;
-}
-input[type="range"]::-ms-track {
-  width: 100px;
-  height: 4px;
-  border-color: transparent;
-  color: #fe8f00;
-  border-radius: 2px;
-  background: #fe8f00;
-  cursor: pointer;
 }
 
 .flex-r {
@@ -1351,9 +1053,6 @@ input[type="range"]::-ms-track {
 	height: 50px;
 	width: 100%;
 	background-color: #333333;
-	
-	/* -webkit-background-size: 20px; */
-	/* background-size: 20px; */
   }
   .til_ico{
   	display: inline-block;
@@ -1405,43 +1104,12 @@ input[type="range"]::-ms-track {
   padding-left: 20px;
   font-size: 18px;
 }
-.userbtngroupbtngroup {
-  width: 100%;
-  padding-top: 16px;
-  justify-content: space-between;
-}
-.userbtngroupbtngroup span {
-  width: 70px;
-  height: 30px;
-  line-height: 28px;
-  text-align: center;
-  background-color: #525151;
-  color: #ccc;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-}
 .resultinfobox {
   width: 100%;
   padding-top: 20px;
 }
-.resultinfo,
-.tabtn {
+.resultinfo {
   width: 100%;
-}
-.tabtn span {
-  width: 50%;
-  height: 50px;
-  font-size: 16px;
-  line-height: 50px;
-  text-align: center;
-  color: white;
-  cursor:pointer;
-  background-color: #333;
-}
-.tabtn span.btnactive {
-  color: white;
-  border-color: #fe8f00;
-  background-color: #fe8f00;
 }
 .resultinfo .resultul{
 	width: 100%;
@@ -1476,39 +1144,6 @@ input[type="range"]::-ms-track {
 }
 .resultitem:last-child {
   border-bottom: none;
-}
-.querybox {
-  padding: 5px 20px;
-  justify-content: flex-end;
-  background-color: #eee;
-}
-select#qishu {
-  width: 100px;
-  height: 30px;
-  line-height: 28px;
-  border-color: #ccc;
-}
-.querybox,
-.resultbox,
-.resulttable {
-  width: 100%;
-}
-.resulttable {
-  height: 340px;
-  background-color: white;
-  overflow-y: scroll;
-}
-.resulttable table {
-  table-layout: fixed;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-}
-.resulttable table td {
-  text-align: left;
-  padding-left: 8px;
-  height: 30px;
-  border: 1px solid #ccc;
 }
 // 右边信息区域样式结束
 

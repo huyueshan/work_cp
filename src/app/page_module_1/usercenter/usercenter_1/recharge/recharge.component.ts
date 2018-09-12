@@ -1,4 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+
+import { HttpInterceptorService } from "../../../../../factory/Http.Service";
+
+import { Api } from "../../../../../factory/api.model";
+
 import userModel from '../../../../../status/user.model';
 @Component({
   selector: "app-recharge",
@@ -200,9 +205,14 @@ export class RechargeComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor( private http:HttpInterceptorService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.http.get(Api.gettest,{}).then(res => {
+        console.log('请求到的数据：', res);
+    });
+}
   rechitem(i) {
     this.rechitemindex = i;
   }

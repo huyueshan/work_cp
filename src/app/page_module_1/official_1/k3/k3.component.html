@@ -252,14 +252,12 @@
 							{{now_description}}
 								<div class="tips" #tips2 [ngClass]="{tipshidden:tips_hidden}">
 									<span>{{now_tips}}</span>
-									<!-- 111 -->
 								</div>
 							</div>
 							<div class="example"  style="padding-left:19px;"><i class="i2" (mouseenter)="show_tips('example',tips1)"  (mouseleave)="hid_tips('example',tips1)"></i>
 							{{now_lang.Ball_tab.Choose_examp}}
 								<div class="tips" #tips1 [ngClass]="{tipshidden:tips_hidden}">
 									<span [innerHtml]='now_tips'></span>
-									<!-- 111 -->
 								</div>
 
 							</div>
@@ -267,7 +265,6 @@
 								{{now_lang.Ball_tab.Play_examp}}
 								<div class="tips" #tips  [ngClass]="{tipshidden:tips_hidden}">
 									<span [innerHtml]='now_tips'></span>
-									<!-- 111 -->
 								</div>
 							</div>
 						</div>
@@ -293,12 +290,6 @@
 											</div>
 										</li>
 
-									</ul>
-								</div>
-								<div class="choosecheck" [hidden]="!omitarr[val.index] || omitarr[val.index].length<1">
-									<div class="name">{{omitname}}</div>
-									<ul class="numlist">
-										<li class="active" *ngFor="let eldata of omitarr[val.index]">{{eldata}}</li>
 									</ul>
 								</div>
 							</div>
@@ -450,7 +441,6 @@
 	                                <span class='name_font'>{{item.name}}</span>
 	                                <span>{{item.type}}</span>
 	                                <span class='font_orange'>{{item.money}}</span>
-	                                <!-- <strong class="flex-r resultitemr color_y">2 9 0 8 7</strong> -->
 	                            </li>
                             </ul>
                             

@@ -4,7 +4,8 @@ import {
     ViewChild
 } from '@angular/core';
 import {
-    Router, ActivatedRoute,
+    Router,
+    ActivatedRoute,
 } from "@angular/router";
 
 import {
@@ -28,95 +29,33 @@ import {
 })
 
 export class SSCofficialComponent implements OnInit {
+    @ViewChild('uploadFile') uploadFile: any
 
-    // 传给弹窗组件数据
-    public  popoutInfo={
-        title:'string',
-        msg:'string',
-        event: false,
-        show: false,
-    }
-    constructor(private route: ActivatedRoute, private router: Router) {}
-    public cpnav = {
-        style: "official",
-        prev: '20180517022',
-        prevball: [8, 5, 2, 3, 9],
-        next: '20180517023',
-        time: ''
-    };
-    loadpage = false;
-    public resultdata = [{
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }, {
-        'sta': '20180517014',
-        'num': '2 9 0 8 7'
-    }];
-    public rankdata = [{
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }, {
-        'name': '王刚',
-        'type': '时时彩',
-        'money': '9999'
-    }];
-    multiple_input: any = {
+    public loadpage = false;
+
+    public now_lang: any = userModel.langpackage; // 语言
+    public now_lang_type: any = 'zh';
+
+    public models: string[] = ["元", "角", "分", "厘"]; //金额单位模式
+    public model: string = '0';
+
+    public multiple_input: any = {
         value: 1
     };
-    // public multiple_input = 1;
     public radom_input: any = {
         value: 1
     };
     public multi_select = [10, 50, 100, 500, 1000, 2000, 5000, 10000];
     public ul_hidden = true;
-    public now_tips = '这是一个比较短的提示!';
+    public now_tips = '';
     public tips_hidden = true;
     public riskvalue = -0.2;
-    public rangepercent = 0;
+    public rangepercent = 0; // 拖拽数据
+    public rangenum = 180200; // 拖拽金额数据
     public now_tips_menu: any = '1_1';
     public now_description = '';
-    public rangenum = 180200;
     public hothidden = false;
-    public nowitems :any={};
+    public nowitems: any = {};
     public userInfo = {
         name: '赌神',
         balance: '9999.99',
@@ -126,75 +65,21 @@ export class SSCofficialComponent implements OnInit {
     public curinpt = {
         value: ''
     };
-    // public rangevalue = rangevalue;
-    public now_lang: any = userModel.langpackage;
-    public now_lang_type: any = 'zh';
-    //追号数据
-    public lotdata = [
-        {
-            lot_num:'20181719',
-            multiple:0,
-            price:2,
-            take_money:0,
-            expire_time:'2018-06-11 15:19:30',
-            checkon:false
-        },
-        {
-            lot_num:'20181720',
-            multiple:0,
-            price:2,
-            take_money:0,
-            expire_time:'2018-06-11 15:19:30',
-            checkon:false
-        },
-        {
-            lot_num:'20181721',
-            multiple:0,
-            price:2,
-            take_money:0,
-            expire_time:'2018-06-11 15:19:30',
-            checkon:false
-        }
-    ]
-    //追号提交数据
-    public lotdata_submit :any = [];
 
-    public typeoptiondata :any = [
-      5,
-      10,
-      15,
-      25,
-      'all'
-    ];
-    // 复制追号数据
-    public lotdata_now = $.extend(true, [], this.lotdata);
-    // 追号配置
-    public chase_config_ori :any = {
-        multiple:1,
-        chase_amount:5,
-        select_amount:5,
-        chase_rule:{
-            number:1,
-            multiple:2
-        },
-        multiple_option:1
-    }
-    public Open_stop :any = false
-    public Win_stop :any = false
-    public chase_number_config :any = $.extend(true, {}, this.chase_config_ori);
-    //目前追号面板
-    public c_now_panel :any = 'one'
-    public chase_money :any = 0;
-    public chase_amount :any = 0;
-    //追号数据结束
+    public lock_multible: any = false; // 锁定倍数
 
 
-    status = {
+    public ballcurr: any = {} // 当前选中的球以及匹配状态
+    public tabcurr: any = {} // 当前选中的tab信息
+    public choosem_status = false // 当前选中的tab信息
+    public currtabname = '' // 二级导航切换
+    public menu_2 = []; //存储当前一级导航对应的耳机导航
+    public status = {
         menu_1: 1, //一级tab默认项
         menu_2: 1 //二级tab默认项
     }
     // 一级tab
-    menu_1 = [{
+    public menu_1 = [{
             name: this.now_lang.Lot_tab.Five_star,
             active: 1
         },
@@ -257,7 +142,7 @@ export class SSCofficialComponent implements OnInit {
     ];
 
     // 2级tab数据以及对应要显示的内容
-    menu_2_data = [
+    public menu_2_data = [
         {
             title: this.now_lang.Lot_tab.Five_star_str,
             menu: [{
@@ -266,7 +151,7 @@ export class SSCofficialComponent implements OnInit {
                     arr: ['w', 'q', 'b', 's', 'g'],
                     format: ["n|n|n|n|n"],
                     datarule: ['Rule_1', 5],
-                    hot:true
+                    hot: true
                 },
                 {
                     name: this.now_lang.Lot_tab.Five_star_odd,
@@ -282,7 +167,7 @@ export class SSCofficialComponent implements OnInit {
                     arr: ['w', 'q', 'b', 's', 'g'],
                     format: ["n|n|n|n|n"],
                     datarule: ['Rule_2', 5],
-                    hot:true
+                    hot: true
                 }
             ],
             active: 1
@@ -336,7 +221,7 @@ export class SSCofficialComponent implements OnInit {
                 arr: ['w', 'q', 'b', 's'],
                 format: ["n|n|n|n"],
                 datarule: ['Rule_1', 4],
-                hot:true
+                hot: true
             }, {
                 name: this.now_lang.Lot_tab.ForF_star_odd,
                 index: 2,
@@ -350,7 +235,7 @@ export class SSCofficialComponent implements OnInit {
                 arr: ['w', 'q', 'b', 's'],
                 format: ["n|n|n|n"],
                 datarule: ['Rule_2', 4],
-                hot:true
+                hot: true
             }],
             active: 2
         },
@@ -391,7 +276,7 @@ export class SSCofficialComponent implements OnInit {
                 arr: ['q', 'b', 's', 'g'],
                 format: ["n|n|n|n"],
                 datarule: ['Rule_1', 4],
-                hot:true
+                hot: true
             }, {
                 name: this.now_lang.Lot_tab.BackF_star_odd,
                 index: 2,
@@ -405,7 +290,7 @@ export class SSCofficialComponent implements OnInit {
                 arr: ['q', 'b', 's', 'g'],
                 format: ["n|n|n|n"],
                 datarule: ['Rule_2', 4],
-                hot:true
+                hot: true
             }],
             active: 3
         },
@@ -446,7 +331,7 @@ export class SSCofficialComponent implements OnInit {
                 arr: ['b', 's', 'g'],
                 format: ["n|n|n"],
                 datarule: ['Rule_1', 3],
-                hot:true
+                hot: true
             }, {
                 name: this.now_lang.Lot_tab.BackT_star_odd,
                 index: 2,
@@ -501,7 +386,7 @@ export class SSCofficialComponent implements OnInit {
                 arr: ['w', 'q', 'b'],
                 format: ["n|n|n"],
                 datarule: ['Rule_1', 3],
-                hot:true
+                hot: true
             }, {
                 name: this.now_lang.Lot_tab.ForT_str_odd,
                 index: 2,
@@ -558,7 +443,7 @@ export class SSCofficialComponent implements OnInit {
                 arr: ['q', 'b', 's'],
                 format: ["n|n|n"],
                 datarule: ['Rule_1', 3],
-                hot:true
+                hot: true
             }, {
                 name: this.now_lang.Lot_tab.MidT_str_odd,
                 index: 2,
@@ -613,7 +498,7 @@ export class SSCofficialComponent implements OnInit {
                 arr: ['s', 'g'],
                 format: ["n|n"],
                 datarule: ['Rule_1', 2],
-                hot:true
+                hot: true
             }, {
                 name: this.now_lang.Lot_tab.BackTwo_str_odd,
                 index: 2,
@@ -627,7 +512,7 @@ export class SSCofficialComponent implements OnInit {
                 arr: ['w', 'q'],
                 format: ["n|n"],
                 datarule: ['Rule_1', 2],
-                hot:true
+                hot: true
             }, {
                 name: this.now_lang.Lot_tab.ForTwo_str_odd,
                 index: 4,
@@ -701,7 +586,7 @@ export class SSCofficialComponent implements OnInit {
                 arr: ['w', 'q', 'b', 's', 'g'],
                 format: ["n"],
                 datarule: ['Rule_6', 1],
-                hot:true
+                hot: true
             }],
             active: 8
         },
@@ -946,18 +831,17 @@ export class SSCofficialComponent implements OnInit {
             active: 14
         }
     ]
-     
-    menu_2 = []; //存储当前一级导航对应的耳机导航
-    ball_tab = {
+
+    public ball_tab = {
         1: [this.now_lang.Ball_tab.All, this.now_lang.Ball_tab.Big, this.now_lang.Ball_tab.Small, this.now_lang.Ball_tab.Odd, this.now_lang.Ball_tab.Even, this.now_lang.Ball_tab.Clear],
         2: [this.now_lang.Ball_tab.All, this.now_lang.Ball_tab.Clear],
         3: [],
         4: ['全', '清'],
     };
-    now_balllist = []; //当前号码列表
+    public now_balllist = []; //当前号码列表
 
     // 所有号码的列表数据
-    ball_data = {
+    public ball_data = {
         'w': {
             title: '万位',
             ball: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -1122,7 +1006,7 @@ export class SSCofficialComponent implements OnInit {
         }
     };
     // 遗漏数据
-    omitarr = {
+    public omitarr = {
         0: [],
         1: [],
         2: [],
@@ -1130,7 +1014,7 @@ export class SSCofficialComponent implements OnInit {
         4: []
     }
     // 所有要用到的号码
-    match_tab: any = {
+    public match_tab: any = {
         0: {
             0: 0,
             1: 1,
@@ -1173,229 +1057,40 @@ export class SSCofficialComponent implements OnInit {
         },
         5: {}
     };
+    // 统计当前所有下注数据
+    public orderinfo: any = {
+        "total": 0,
+        "betcount": 0,
+        'money': 0
+    }
+    public sureballlist: any = []; // 确认选号
+    public abotitle: any = {
+        "w": '万',
+        "q": '千',
+        "b": '百',
+        "s": '十',
+        "g": '个'
+    }
+    public omitname = ''; // 遗漏选择
 
-// 追号函数
-    typeoptchange() {
-        let that = this;
-        if (that.chase_number_config.select_amount == 'all') {
-            that.chase_number_config.chase_amount = that.lotdata_now.length;
-        }else{
-            that.chase_number_config.chase_amount = that.chase_number_config.select_amount;
-        }
-    }
-    check_lot(item){
-        let that = this;
-        if (item.checkon) {
-            if (item.multiple == 0) {
-                item.multiple = that.chase_number_config.multiple;
-                item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
-            }
+    public totalinfo: any = {
+        count: 0,
+        sum: 0,
+        amount: 0
+    } //当前下注信息
+    public modelarr = [1, 10, 100, 1000] // 下注模式对应的要除以的金额
 
-        }else{
-            item.multiple = 0;
-            item.take_money = 0;
-        }
-        that.repanel_data()
-    }
-    // 生成计划
-    produce_plan(){
-        let that = this;
-        that.lotdata_now = $.extend(true, [], that.lotdata);
-        let gap_number,gap_multiple,multiple,chase_amount;
-        if (that.c_now_panel == 'two') {
-            gap_number = that.chase_number_config.chase_rule.number;
-            gap_multiple = that.chase_number_config.chase_rule.multiple;
-            multiple = that.chase_number_config.multiple;
-            chase_amount = that.chase_number_config.chase_amount;
-            if(chase_amount>that.lotdata_now.length){
-                chase_amount = that.lotdata_now.length;
-            }
-            for (var i = 0; i <= chase_amount-1; i++) {
-                that.lotdata_now[i].checkon = true;
-                that.lotdata_now[i].multiple = multiple;
-                that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
-                if ((i+1)%gap_number == 0) {
-                    multiple = multiple*gap_multiple;
-                }; 
+    // 导入txt
+    public filestatus = true
+    public curtextstr = '';
+    public filterstatus = false
 
-            };          
-        }else{
-            multiple = that.chase_number_config.multiple;
-            chase_amount = that.chase_number_config.chase_amount;
-            if(chase_amount>that.lotdata_now.length){
-                chase_amount = that.lotdata_now.length;
-            }
-            for (var i = 0; i <= chase_amount-1; i++) {
-
-                that.lotdata_now[i].checkon = true;
-                that.lotdata_now[i].multiple = multiple;
-                that.lotdata_now[i].take_money = multiple*that.lotdata_now[i].price/that.modelarr[that.model]*that.sureballlist.length;
-            };
-        }
-        that.repanel_data()
+    public countabo: any = {
+        count: 5,
+        plan: 10
     }
-    //单个金钱计算
-    get_takemon(item,e){
-        let that = this;
-        if (item.multiple == 0) {
-            item.checkon = false;
-        }else{
-            item.checkon = true;
-        }
-        item.take_money = item.multiple*item.price/that.modelarr[that.model]*that.sureballlist.length;
-        that.repanel_data()
-    }
-    changeregnum(e) {
-        let v = e.target;
-        v.value = v.value.replace(/\D/g, "");
-        if (Number(v.value) === 0 && v.value !== "") {
-            v.value = 0;
-        }
-        if (Number(v.value) > 0) {
-            v.value = Number(v.value);
-        }
-    }
-    // 总金钱总期数计算
-    repanel_data(){
-        let that = this;
-        let amount = 0;
-        let chase_amount = 0;
-        for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-            for (var k = 0; k <= that.sureballlist.length-1; k++) {
-                amount = that.lotdata_now[i].multiple*that.lotdata_now[i].price/that.modelarr[that.model]+amount;
-            }
-            if (that.lotdata_now[i].checkon) {
-                chase_amount = chase_amount+1;
-            };
-        };
-        that.chase_amount = chase_amount;
-        if(that.chase_amount>that.lotdata_now.length){
-            that.chase_amount = that.lotdata_now.length;
-        }
-        that.chase_money = amount;
-    }
-    //清空追号
-    rechase_data(){
-        let that = this;
-        that.lotdata_now = $.extend(true, [], that.lotdata);
-        that.repanel_data()
-    }
-    //清空追号所有数据
-    rechase_dataall(){
-        let that = this;
-        that.lotdata_now = $.extend(true, [], that.lotdata);
-        that.chase_number_config = $.extend(true, {}, that.chase_config_ori);
-        that.repanel_data()
-    }
-    tab_chase(para,item_one,item_two){
-        let that = this;
-        that.rechase_dataall();
-        that.c_now_panel = para;
-        if (para == 'one') {
-            $(item_one).addClass('active');
-            $(item_two).removeClass('active');
-            $('.one').addClass('active')
-            $('.two').removeClass('active')
-        }else if(para == 'two'){
-            $(item_two).addClass('active');
-            $(item_one).removeClass('active');
-            $('.two').addClass('active')
-            $('.one').removeClass('active')
-        }
-    }
-    //提交追号
-    submit_chase(){
-        let that = this;
-        //清空
-        that.lotdata_submit = [];
-        for (var i = 0; i <= that.lotdata_now.length-1; i++) {
-            if (that.lotdata_now[i].checkon != false) {
-                for (var k = 0; k <= that.sureballlist.length-1; k++) {
-                        let rechase :any= {};
-                        rechase.Open_stop = that.Open_stop;
-                        rechase.Win_stop = that.Win_stop;
-                        rechase.multiple = that.lotdata_now[i].multiple;
-                        rechase.model = that.model;
-                        rechase.count = 1;
-                        rechase.sum = (2*rechase.multiple) /that.modelarr[rechase.model]
-                        rechase.amount = that.totalinfo.amount;
-                        rechase.ball = that.sureballlist[k].ball;
-                        rechase.name = that.sureballlist[k].name;
-                        rechase.issue = that.lotdata_now[i].lot_num;
-                        that.lotdata_submit.push(rechase)
-                }
-            };
-        }
-        if(!that.lotdata_submit[0]){
-            that.POPNOTE({msg:'请选择追号期数'});
-            return
-        }else{
-            that.POPNOTE({msg:`您确定追号${that.lotdata_now.length}期么? 总投入${that.chase_money}元。`},that.betnow);
-            return
-        }
-        
-        
-    }
-    betnow(){
-        // 在此处提交追号所有号码
-    }
-    close_chase(){
-        $('#layer2').find('.chase_container').removeClass('show_this');
-        let that = this;
-        that.rechase_dataall()
-    }
-    chase_number(){
-        let that = this;
-        if (!that.sureballlist[0]) {
-            that.POPNOTE({msg:'注单列表为空，请先下注！或者随机1注',btn:'随机一注'},that.radomshowchase);
-            return false
-        };
-        that.showchase();
-        
-    }  
-    show_chasenumber(param,nextrun){
-        let msg = param.msg;
-        let til = param.til;
-        let self = this;
-        let str = '';   
-        let dom = $(this.parseDom(str))
-        dom.find('.close').on('click',function(){
-            self.hid_layer();
-        }) 
-        dom.find('.confirm_box').on('click',function(){
-            nextrun();
-        })
-        $('#layer').append(dom);
-        setTimeout(function(){
-            dom.addClass('tobig')
-        }, 10)
-        window.onresize = function () {
-        }
-    }
-  
-    radomshowchase(){
-        this.mathball(this.menu_2);
-        $('#layer2').find('.chase_container').addClass('show_this');
-    }
-    showchase(){
-        $('#layer2').find('.chase_container').addClass('show_this');
-    }
-    hid_layer(){
-        document.getElementById("layer").innerHTML = '';
-    }
-    // 弹层1
-    parseDom(arg) {
-    　　 var objE = document.createElement("div");
-    　　 objE.innerHTML = arg;
-    　　 return objE.childNodes;
-    };
-//追号函数结束
-
-
-
-
     //所有的规则
-    lot_rules = {
+    public lot_rules = {
         '1_1': {
             description: "从万位、千位、百位、十位、个位中选择一个5位数号码组成一注。",
             example: "投注方案：23456；<br>开奖号码：23456，<br>即中五星直选。",
@@ -1831,26 +1526,160 @@ export class SSCofficialComponent implements OnInit {
 
         },
     }
-    now_matchtab = {
+    public now_matchtab = {
         0: {},
         1: {},
         2: {},
         3: {},
         4: {},
         5: {}
-    }; 
+    };
     //用来存储选中的号
-    now_matchball = {
+    public now_matchball = {
         0: {},
         1: {},
         2: {},
         3: {},
         4: {},
         5: {}
-    }; 
+    };
     //选中的大小单双的tab
-    ballindex = -1;
-    up_ball = 1;
+    public ballindex = -1;
+    public up_ball = 1;
+    public resultdata = [
+        {
+        'sta': '20180517014',
+        'num': '2 9 0 8 7'
+    }, {
+        'sta': '20180517014',
+        'num': '2 9 0 8 7'
+    }, {
+        'sta': '20180517014',
+        'num': '2 9 0 8 7'
+    }, {
+        'sta': '20180517014',
+        'num': '2 9 0 8 7'
+    }, {
+        'sta': '20180517014',
+        'num': '2 9 0 8 7'
+    }, {
+        'sta': '20180517014',
+        'num': '2 9 0 8 7'
+    }, {
+        'sta': '20180517014',
+        'num': '2 9 0 8 7'
+    }, {
+        'sta': '20180517014',
+        'num': '2 9 0 8 7'
+    }];
+    public rankdata = [{
+        'name': '王刚',
+        'type': '时时彩',
+        'money': '9999'
+    }, {
+        'name': '王刚',
+        'type': '时时彩',
+        'money': '9999'
+    }, {
+        'name': '王刚',
+        'type': '时时彩',
+        'money': '9999'
+    }, {
+        'name': '王刚',
+        'type': '时时彩',
+        'money': '9999'
+    }, {
+        'name': '王刚',
+        'type': '时时彩',
+        'money': '9999'
+    }, {
+        'name': '王刚',
+        'type': '时时彩',
+        'money': '9999'
+    }, {
+        'name': '王刚',
+        'type': '时时彩',
+        'money': '9999'
+    }];
+
+    //追号数据
+    public lotdata = [{
+            lot_num: '20181719',
+            multiple: 0,
+            price: 2,
+            take_money: 0,
+            expire_time: '2018-06-11 15:19:30',
+            checkon: false
+        },
+        {
+            lot_num: '20181720',
+            multiple: 0,
+            price: 2,
+            take_money: 0,
+            expire_time: '2018-06-11 15:19:30',
+            checkon: false
+        },
+        {
+            lot_num: '20181721',
+            multiple: 0,
+            price: 2,
+            take_money: 0,
+            expire_time: '2018-06-11 15:19:30',
+            checkon: false
+        }
+    ]
+    //追号提交数据
+    public lotdata_submit: any = [];
+
+    public typeoptiondata: any = [
+        5,
+        10,
+        15,
+        25,
+        'all'
+    ];
+    // 复制追号数据
+    public lotdata_now = $.extend(true, [], this.lotdata);
+    // 追号配置
+    public chase_config_ori: any = {
+        multiple: 1,
+        chase_amount: 5,
+        select_amount: 5,
+        chase_rule: {
+            number: 1,
+            multiple: 2
+        },
+        multiple_option: 1
+    }
+    public Open_stop: any = false
+    public Win_stop: any = false
+    public chase_number_config: any = $.extend(true, {}, this.chase_config_ori);
+    //目前追号面板
+    public c_now_panel: any = 'one'
+    public chase_money: any = 0;
+    public chase_amount: any = 0;
+    //追号数据结束
+
+    //传给彩票投注头部导航组件数据
+    public cpnav = {
+        style: "official",
+        prev: '20180517022',
+        prevball: [8, 5, 2, 3, 9],
+        next: '20180517023',
+        time: ''
+    };
+
+    // 传给弹窗组件数据
+    public popoutInfo = {
+        title: 'string',
+        msg: 'string',
+        event: false,
+        show: false,
+    }
+
+
+
+    constructor(private route: ActivatedRoute, private router: Router) {}
     ngOnInit() {
         let that = this
         this.now_lang_type = userModel.now_lang_type;
@@ -1881,9 +1710,9 @@ export class SSCofficialComponent implements OnInit {
             this.now_description = this.lot_rules[this.now_tips_menu]['description'];
             $('.tab_li').removeClass('hide_it');
             this.tabmenu(this.menu_1[0])
-            this.delball('clear','');
-            if(this.tabcurr.isupload){
-                this.up_ball=2
+            this.delball('clear', '');
+            if (this.tabcurr.isupload) {
+                this.up_ball = 2
             }
         });
         // 注册拖拽
@@ -1893,38 +1722,79 @@ export class SSCofficialComponent implements OnInit {
     ngAfterViewInit() {
         this.inittab2();
     }
-    // 拖动条函数
-    drag_tag() {
-        let that = this;
-        $('#range_tag').on('mousedown', function (e) {
-            let distance_X;
-            let orin_x = e.pageX || e.clientX + document.body.scrollLeft;
-            let orin_left = parseInt($('#range_tag').css('left'));
-            let now_left;
-            $('body').on('mousemove', function (e) {
-                e = e || window.event;
-                let now_x = e.pageX || e.clientX + document.body.scrollLeft;
-                distance_X = now_x - orin_x;
-                now_left = orin_left + distance_X;
-                if (now_left < 0) {
-                    now_left = 0
-                } else if (now_left > 70) {
-                    now_left = 70
-                }
-                $('#range_tag').css("left", now_left);
-                if (now_left <= 26) {
-                    that.rangepercent = 0.1
-                    that.rangenum = 180000
-                } else {
-                    that.rangepercent = 0
-                    that.rangenum = 180200
-                }
-            })
-            $('body').on('mouseup', function () {
-                $('body').unbind();
-            })
-        })
 
+
+
+
+    //  ==================导航事件========================
+    // 时时彩一级导航切换
+    tabmenu(data) {
+        let that = this
+        that.inittab()
+        if (data.href) {
+            that.router.navigateByUrl(data.href)
+        } else {
+            that.status.menu_1 = data.active
+            that.status.menu_2 = 1
+            that.menu_2 = []
+            that.up_ball = 1
+            that.menu_2_data.map(function (res) {
+                if (res.active == that.status.menu_1) {
+                    that.menu_2.push(res)
+                }
+            })
+            that.tabcurr = that.menu_2[0].menu[0]
+            if (that.menu_2[0].menu[0].arr) {
+                that.balllist(that.menu_2[0].menu[0].arr)
+            } else {
+                that.up_ball = 2
+            }
+            that.currtabname = that.menu_2[0].menu[0].name;
+
+            // 配置规则提示
+            that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
+            that.now_description = that.lot_rules[that.now_tips_menu]['description'];
+            if (that.tabcurr.hot) {
+                that.hothidden = true;
+            } else {
+                that.hothidden = false;
+            }
+        }
+        if (this.tabcurr.isupload) {
+            this.up_ball = 2
+        }
+        this.checkabo(5);
+    }
+
+    // 二级导航切换
+    tabmenu2(data) {
+        let that = this
+        that.inittab()
+        that.currtabname = data.name
+        that.tabcurr = data
+        that.status.menu_2 = data.index;
+        if (data.isupload) {
+            that.up_ball = 2
+            this.balllist(data.arr)
+        } else {
+            that.up_ball = 1
+            this.balllist(data.arr)
+        }
+        if (data.isupload) {
+            that.hothidden = true;
+        } else if (that.status.menu_1 <= 8) {
+            that.hothidden = false;
+        } else {
+            that.hothidden = true;
+        }
+        if (data.hot) {
+            that.hothidden = true;
+        } else {
+            that.hothidden = false;
+        }
+        that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
+        that.now_description = that.lot_rules[that.now_tips_menu]['description'];
+        this.checkabo(5);
     }
     //tab切换暂时是写死的
     inittab2() {
@@ -2029,99 +1899,54 @@ export class SSCofficialComponent implements OnInit {
         });
         liWidth = 0;
     }
+    // 每次点击需要初始化的事件
+    inittab() {
+        this.now_matchball = {
+            0: {},
+            1: {},
+            2: {},
+            3: {},
+            4: {},
+            5: {}
+        }
+        this.now_matchtab = {
+            0: {},
+            1: {},
+            2: {},
+            3: {},
+            4: {},
+            5: {}
+        };
+        this.omitarr = {
+            0: [],
+            1: [],
+            2: [],
+            3: [],
+            4: []
+        }
+        this.omitname = ''
+        this.ballcurr = {}
+        $('.numright').find('li').removeClass('active');
+        this.totalinfo = {
+            count: 0,
+            sum: 0,
+            amount: 0
+        }
+        this.countabo = {
+            count: 5,
+            plan: 10
+        }
+        $("#fiveabso input[type='checkbox']").prop("checked", "true");
+        $('#fileReader').val(null)
+    }
+    // ==================导航切换事件结束========================
+
+
+
+
     //路由函数                      
     linkrouter(t) {
         this.router.navigate([t]);
-    }
-    // 滑块左侧递减事件
-    rangevaluelessen() {
-        let that = this;
-        $('#range_tag').css("left", 0);
-        that.rangepercent = 0.1
-        that.rangenum = 180000
-        this.countbet(this.ballcurr.totalbet)
-    }
-
-    // 自带钩子监听
-    ngDoCheck() {
-    }
-    // 滑块左侧递加事件
-    rangevalueadd() {
-        let that = this;
-        $('#range_tag').css("left", 70);
-        that.rangepercent = 0
-        that.rangenum = 180200
-        this.countbet(this.ballcurr.totalbet)
-    }
-    // 时时彩一级导航切换
-    tabmenu(data) {
-        let that = this
-        that.inittab()
-        if (data.href) {
-            that.router.navigateByUrl(data.href)
-        } else {
-            that.status.menu_1 = data.active
-            that.status.menu_2 = 1
-            that.menu_2 = []
-            that.up_ball = 1
-            that.menu_2_data.map(function (res) {
-                if (res.active == that.status.menu_1) {
-                    that.menu_2.push(res)
-                }
-            })
-            that.tabcurr = that.menu_2[0].menu[0]
-            if (that.menu_2[0].menu[0].arr) {
-                that.balllist(that.menu_2[0].menu[0].arr)
-            } else {
-                that.up_ball = 2
-            }
-            that.currtabname = that.menu_2[0].menu[0].name;
-
-            // 配置规则提示
-            that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
-            that.now_description = that.lot_rules[that.now_tips_menu]['description'];
-            if (that.tabcurr.hot) {
-                that.hothidden = true;
-            } else {
-                that.hothidden = false;
-            }
-        }
-        if (this.tabcurr.isupload) {
-            this.up_ball = 2
-        }
-        this.checkabo(5);
-    }
-
-    // 时时彩二级导航切换
-    currtabname = ''
-    tabmenu2(data) {
-        let that = this
-        that.inittab()
-        that.currtabname = data.name
-        that.tabcurr = data
-        that.status.menu_2 = data.index;
-        if (data.isupload) {
-            that.up_ball = 2
-            this.balllist(data.arr)
-        } else {
-            that.up_ball = 1
-            this.balllist(data.arr)
-        }
-        if (data.isupload) {
-            that.hothidden = true;
-        } else if (that.status.menu_1<=8){
-            that.hothidden = false;
-        }else{
-            that.hothidden = true;
-        }
-		if (data.hot) {
-			that.hothidden = true;
-		} else {
-			that.hothidden = false;
-		}
-        that.now_tips_menu = that.status.menu_1 + '_' + that.status.menu_2;
-        that.now_description = that.lot_rules[that.now_tips_menu]['description'];
-        this.checkabo(5);
     }
     // 时时彩下注区左侧显示列表
     balllist(arr) {
@@ -2142,13 +1967,6 @@ export class SSCofficialComponent implements OnInit {
         }
     }
 
-    //模式
-    models: string[] = ['元', '角', '分', '厘'];
-    model: string = '0';
-
-    public ballcurr: any = {} // 当前选中的球以及匹配状态
-    public tabcurr: any = {} // 当前选中的tab信息
-    public choosem_status = false // 当前选中的tab信息
 
     // 选中号码
     choosetab(index, clickindex, val, that) {
@@ -2294,68 +2112,51 @@ export class SSCofficialComponent implements OnInit {
         }
     }
 
-    countabo: any = {
-        count: 5,
-        plan: 10
-    }
-
     //选中的位置
     checkabo(i = 0) {
-      let length = 0;
-      if (i) {
-        length = i;
-      } else {
-        var arr = new Array();
-        $("#fiveabso input:checkbox:checked").each(function(i) {
-          arr[i] = $(this).val();
-        });
-  
-        length = arr.length;
-      }
-      let self = this;
-      if (length > 1) {
-        if (self.tabcurr.datarule[0] == "Rule_d2") {
-          self.filedata(self.curtextstr, "");
+        let length = 0;
+        if (i) {
+            length = i;
         } else {
-          arr &&
-            (self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](
-              self.now_matchtab,
-              self.tabcurr,
-              arr
-            ));
+            var arr = new Array();
+            $("#fiveabso input:checkbox:checked").each(function (i) {
+                arr[i] = $(this).val();
+            });
+
+            length = arr.length;
         }
-        if (self.ballcurr.status) {
-          self.countbet(self.ballcurr.totalbet);
+        let self = this;
+        if (length > 1) {
+            if (self.tabcurr.datarule[0] == "Rule_d2") {
+                self.filedata(self.curtextstr, "");
+            } else {
+                arr &&
+                    (self.ballcurr = Utils.Matchrule[self.tabcurr.datarule[0]](
+                        self.now_matchtab,
+                        self.tabcurr,
+                        arr
+                    ));
+            }
+            if (self.ballcurr.status) {
+                self.countbet(self.ballcurr.totalbet);
+            } else {
+                self.totalinfo = {
+                    count: 0,
+                    sum: 0,
+                    amount: 0
+                };
+            }
+        }
+        this.countabo.count = length;
+        if (length >= self.tabcurr.datarule[1]) {
+            this.countabo.plan = Utils.algorithm.arrangement(
+                length,
+                self.tabcurr.datarule[1]
+            );
         } else {
-          self.totalinfo = {
-            count: 0,
-            sum: 0,
-            amount: 0
-          };
+            this.countabo.plan = 0;
         }
-      }
-      this.countabo.count = length;
-      if (length >= self.tabcurr.datarule[1]) {
-        this.countabo.plan = Utils.algorithm.arrangement(
-          length,
-          self.tabcurr.datarule[1]
-        );
-      } else {
-        this.countabo.plan = 0;
-      }
     }
-
-    totalinfo: any = {
-        count: 0,
-        sum: 0,
-        amount: 0
-    } //当前下注信息
-    modelarr = [1, 10, 100, 1000] // 下注模式对应的要除以的金额
-
-    // 导入txt
-    filestatus = true
-    @ViewChild('uploadFile') uploadFile: any
-    curtextstr = ''
     filetxt(e, id, that) {
         let val, self = this
         if (e.target.files[0]) {
@@ -2387,7 +2188,6 @@ export class SSCofficialComponent implements OnInit {
         let str = Utils.algorithm.getNum($('#' + id).val())
         this.filedata(str, '')
     }
-	public filterstatus = false
     // 处理输入框的数据
     filedata(str, type) {
         let self = this
@@ -2417,13 +2217,15 @@ export class SSCofficialComponent implements OnInit {
                 amount: 0
             }
         }
-		this.filterstatus = false
+        this.filterstatus = false
     }
     // 处理过滤结果
-	
+
     filteresult(id, type) {
         if ($('#' + id).val() == '') {
-            this.POPNOTE({msg:'您还没有输入号码'});
+            this.POPNOTE({
+                msg: '您还没有输入号码'
+            });
             return
         }
         let self = this,
@@ -2449,157 +2251,55 @@ export class SSCofficialComponent implements OnInit {
                 val = i < obj.allarr.length - 1 ? val + obj.allarr[i][0].split(',').join('') + '，' : val + obj.allarr[i][0].split(',').join('')
             }
         }
-		this.filterstatus = true
+        this.filterstatus = true
         if (type == 'del') {
             $('#' + id).val(val)
             if (rep == 0 && nob == 0) {
-                self.POPNOTE({msg:'没有重复号码'});
+                self.POPNOTE({
+                    msg: '没有重复号码'
+                });
             } else {
                 con = '已经为您过滤了' + rep + '个重复号，' + nob + '个无效号，过滤内容为：' + ball
-                self.POPNOTE({msg:con});
+                self.POPNOTE({
+                    msg: con
+                });
             }
         } else {
             if (rep != 0 || nob != 0) {
                 $('#' + id).val(val)
                 con = '将要自动过滤' + rep + '个重复号，' + nob + '个无效号，过滤内容为：' + ball
-                self.POPNOTE({msg:con},self.qdfunc);
+                self.POPNOTE({
+                    msg: con
+                }, self.qdfunc);
             } else {
-				if(self.filterstatus){
-					self.addball(self.menu_2,self.ballcurr.status)
-					$('#' + id).val(null)
-				}
-            }
-        }
-		
-    }
-	qdfunc(){
-		this.addball(this.menu_2,this.ballcurr.status)
-	}
-    // 计算当前点击投注信息
-    countbet(totalbet) {
-        if (!totalbet) {
-            return
-        }
-        let sum, amount;
-        sum = (this.multiple_input.value * totalbet * 2) / this.modelarr[this.model];
-        amount = Math.round((((this.rangenum / this.modelarr[this.model]) * this.multiple_input.value) - sum) * 100) / 100
-        this.totalinfo = {
-            count: totalbet,
-            sum: sum,
-            amount: amount
-        }
-    }
-
-    // 改变金额模式
-    modelchange(count) {
-        if (this.totalinfo.sum == 0) {
-            return
-        }
-        let sum;
-        sum = (this.multiple_input.value * count * 2) / this.modelarr[this.model]
-        this.totalinfo.sum = sum;
-        this.totalinfo.amount = (180000 / this.modelarr[this.model]) - sum;
-    }
-
-    // 每次点击需要初始化的事件
-    inittab() {
-        this.now_matchball = {
-            0: {},
-            1: {},
-            2: {},
-            3: {},
-            4: {},
-            5: {}
-        }
-        this.now_matchtab = {
-            0: {},
-            1: {},
-            2: {},
-            3: {},
-            4: {},
-            5: {}
-        };
-        this.omitarr = {
-            0: [],
-            1: [],
-            2: [],
-            3: [],
-            4: []
-        }
-        this.omitname = ''
-        this.ballcurr = {}
-        $('.numright').find('li').removeClass('active');
-        this.totalinfo = {
-            count: 0,
-            sum: 0,
-            amount: 0
-        }
-        this.countabo = {
-            count: 5,
-            plan: 10
-        }
-        $("#fiveabso input[type='checkbox']").prop("checked", "true");
-        $('#fileReader').val(null)
-    }
-
-    // 遗漏选择
-    omitname = ''
-    checkomit(obj, type) {
-        let that = this
-        if ($(obj).is(':checked')) {
-            $("input:checkbox[name='ballcheck']").prop("checked", false)
-            $(obj).prop("checked", true)
-
-            if (type == 'yl') {
-                that.omitarr = {
-                    0: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    1: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    2: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    3: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    4: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07']
+                if (self.filterstatus) {
+                    self.addball(self.menu_2, self.ballcurr.status)
+                    $('#' + id).val(null)
                 }
-                that.omitname = '当前遗漏'
-            } else {
-                that.omitarr = {
-                    0: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    1: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    2: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    3: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
-                    4: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07']
-                }
-                that.omitname = '当前冷热'
-            }
-        } else {
-            that.omitarr = {
-                0: [],
-                1: [],
-                2: [],
-                3: [],
-                4: []
             }
         }
+
     }
-    abotitle: any = {
-        "w": '万',
-        "q": '千',
-        "b": '百',
-        "s": '十',
-        "g": '个'
+    qdfunc() {
+        this.addball(this.menu_2, this.ballcurr.status)
     }
+
+
     // 确认选号
-    sureballlist: any = []
     addball(arrob, type) {
         let that = this
         if (!type) {
-            that.POPNOTE({msg:'号码选择不完整，请重新选择'});
+            that.POPNOTE({
+                msg: '号码选择不完整，请重新选择'
+            });
             return
         }
         let arr = []
         if (that.tabcurr.isupload) {
-			if(!that.filterstatus){
-				that.filteresult('fileReader', '');
-				return
-			}
+            if (!that.filterstatus) {
+                that.filteresult('fileReader', '');
+                return
+            }
         }
         if (that.tabcurr.choose) {
             var _selfs;
@@ -2641,7 +2341,7 @@ export class SSCofficialComponent implements OnInit {
                     let obj: any = {}
                     obj.ball = that.ballcurr.ball[i]
                     // obj.name = that.currtabname
-					obj.name = arrob[0].menu[0].datarule[0]=='Rule_6'?that.currtabname+that.ball_data[that.tabcurr.arr[i]].title:that.currtabname
+                    obj.name = arrob[0].menu[0].datarule[0] == 'Rule_6' ? that.currtabname + that.ball_data[that.tabcurr.arr[i]].title : that.currtabname
                     obj.multiple = that.multiple_input.value
                     obj.model = that.model
                     obj.count = arrob[0].menu[0].datarule[0] == 'Rule_6' ? that.ballcurr.allarr[i].length : that.totalinfo.count
@@ -2657,11 +2357,6 @@ export class SSCofficialComponent implements OnInit {
     }
 
     // 统计当前所有下注数据
-    orderinfo: any = {
-        "total": 0,
-        "betcount": 0,
-        'money': 0
-    }
     allbet(data) {
         let self = this;
         let betcount = 0,
@@ -2684,13 +2379,17 @@ export class SSCofficialComponent implements OnInit {
         }
         this.allbet(this.sureballlist)
     }
-	// 确认投注
-	affirm(){
-        if (this.sureballlist.length<1) {
-            this.POPNOTE({msg:'没有投注内容！'});
-        }else{
-            this.POPNOTE({msg:'投注成功！'});
-            this.delball('clear','');
+    // 确认投注
+    affirm() {
+        if (this.sureballlist.length < 1) {
+            this.POPNOTE({
+                msg: '没有投注内容！'
+            });
+        } else {
+            this.POPNOTE({
+                msg: '投注成功！'
+            });
+            this.delball('clear', '');
         }
     }
 
@@ -2699,7 +2398,9 @@ export class SSCofficialComponent implements OnInit {
         let that = this
         let obj: any = {}
         if (that.radom_input.value == 0) {
-            that.POPNOTE({msg:'随机注数不能小于1'});
+            that.POPNOTE({
+                msg: '随机注数不能小于1'
+            });
             return
         }
         arr.map(function (res) {
@@ -2714,7 +2415,7 @@ export class SSCofficialComponent implements OnInit {
             let redata: any = {}
             redata.ball = Utils.Randomrule(obj)
             redata.name = that.currtabname
-            if (that.tabcurr.choose || that.tabcurr.datarule[0]=='Rule_6') {
+            if (that.tabcurr.choose || that.tabcurr.datarule[0] == 'Rule_6') {
                 let ab = Utils.algorithm.RandomArray(['w', 'q', 'b', 's', 'g'], that.tabcurr.datarule[1])
                 let newab = new Array(that.tabcurr.datarule[1])
                 ab.map(function (res) {
@@ -2741,7 +2442,7 @@ export class SSCofficialComponent implements OnInit {
                     }
                 }
                 for (var k = 0; k < that.tabcurr.datarule[1]; k++) {
-                    redata.name = that.tabcurr.datarule[0]=='Rule_6'?redata.name + that.abotitle[newab[k]]+'位':redata.name + that.abotitle[newab[k]]
+                    redata.name = that.tabcurr.datarule[0] == 'Rule_6' ? redata.name + that.abotitle[newab[k]] + '位' : redata.name + that.abotitle[newab[k]]
                 }
             }
             redata.multiple = that.multiple_input.value
@@ -2756,35 +2457,150 @@ export class SSCofficialComponent implements OnInit {
         }
     }
 
-    addrem(item){
+
+    //  =================== 中间操作事件 ===============================
+    // 拖动条函数
+    drag_tag() {
+        let that = this;
+        $('#range_tag').on('mousedown', function (e) {
+            let distance_X;
+            let orin_x = e.pageX || e.clientX + document.body.scrollLeft;
+            let orin_left = parseInt($('#range_tag').css('left'));
+            let now_left;
+            $('body').on('mousemove', function (e) {
+                e = e || window.event;
+                let now_x = e.pageX || e.clientX + document.body.scrollLeft;
+                distance_X = now_x - orin_x;
+                now_left = orin_left + distance_X;
+                if (now_left < 0) {
+                    now_left = 0
+                } else if (now_left > 70) {
+                    now_left = 70
+                }
+                $('#range_tag').css("left", now_left);
+                if (now_left <= 26) {
+                    that.rangepercent = 0.1
+                    that.rangenum = 180000
+                } else {
+                    that.rangepercent = 0
+                    that.rangenum = 180200
+                }
+            })
+            $('body').on('mouseup', function () {
+                $('body').unbind();
+            })
+        })
+
+    }
+    // 滑块左侧递减事件
+    rangevaluelessen() {
+        let that = this;
+        $('#range_tag').css("left", 0);
+        that.rangepercent = 0.1
+        that.rangenum = 180000
+        this.countbet(this.ballcurr.totalbet)
+    }
+
+    // 滑块左侧递加事件
+    rangevalueadd() {
+        let that = this;
+        $('#range_tag').css("left", 70);
+        that.rangepercent = 0
+        that.rangenum = 180200
+        this.countbet(this.ballcurr.totalbet)
+    }
+    // 计算当前点击投注信息
+    countbet(totalbet) {
+        if (!totalbet) {
+            return
+        }
+        let sum, amount;
+        sum = (this.multiple_input.value * totalbet * 2) / this.modelarr[this.model];
+        amount = Math.round((((this.rangenum / this.modelarr[this.model]) * this.multiple_input.value) - sum) * 100) / 100
+        this.totalinfo = {
+            count: totalbet,
+            sum: sum,
+            amount: amount
+        }
+    }
+
+    // 改变金额模式
+    modelchange(count) {
+        if (this.totalinfo.sum == 0) {
+            return
+        }
+        let sum;
+        sum = (this.multiple_input.value * count * 2) / this.modelarr[this.model]
+        this.totalinfo.sum = sum;
+        this.totalinfo.amount = (180000 / this.modelarr[this.model]) - sum;
+    }
+
+
+    // 遗漏选择
+    checkomit(obj, type) {
+        let that = this
+        if ($(obj).is(':checked')) {
+            $("input:checkbox[name='ballcheck']").prop("checked", false)
+            $(obj).prop("checked", true)
+
+            if (type == 'yl') {
+                that.omitarr = {
+                    0: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                    1: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                    2: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                    3: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                    4: ['05', '25', '13', '26', '14', '08', '11', '32', '19', '07']
+                }
+                that.omitname = '当前遗漏'
+            } else {
+                that.omitarr = {
+                    0: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                    1: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                    2: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                    3: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07'],
+                    4: ['09', '25', '13', '26', '14', '08', '11', '32', '19', '07']
+                }
+                that.omitname = '当前冷热'
+            }
+        } else {
+            that.omitarr = {
+                0: [],
+                1: [],
+                2: [],
+                3: [],
+                4: []
+            }
+        }
+    }
+    addrem(item) {
         //倍数锁
         if (this.lock_multible) {
             return false
         };
         this.multiple_input.value = parseInt(this.multiple_input.value);
         this.radom_input.value = parseInt(this.radom_input.value);
-        if (item=='multiple') {
-            this.multiple_input.value = this.multiple_input.value+1;
+        if (item == 'multiple') {
+            this.multiple_input.value = this.multiple_input.value + 1;
             this.countbet(this.ballcurr.totalbet)
-        }else if(item=='radom'){
-            this.radom_input.value = this.radom_input.value +1;
+        } else if (item == 'radom') {
+            this.radom_input.value = this.radom_input.value + 1;
         }
-        
+
     }
-    minusrem(item){
+    minusrem(item) {
         if (this.lock_multible) {
             return false
         };
         this.multiple_input.value = parseInt(this.multiple_input.value);
         this.radom_input.value = parseInt(this.radom_input.value);
-        if (item=='multiple') {
-            if (this.multiple_input.value>1) {
-                this.multiple_input.value = this.multiple_input.value-1;
+        if (item == 'multiple') {
+            if (this.multiple_input.value > 1) {
+                this.multiple_input.value = this.multiple_input.value - 1;
                 this.countbet(this.ballcurr.totalbet)
             }
-        }else if(item=='radom'){
-            if (this.radom_input.value>1) {
-                this.radom_input.value = this.radom_input.value-1;
+        } else if (item == 'radom') {
+            if (this.radom_input.value > 1) {
+                this.radom_input.value = this.radom_input.value - 1;
             }
         }
     }
@@ -2839,76 +2655,279 @@ export class SSCofficialComponent implements OnInit {
             self.ul_hidden = !self.ul_hidden;
         }, 200)
     }
-    // 弹层1
-    // parseDom(arg) {　　
-    //     var objE = document.createElement("div");　　
-    //     objE.innerHTML = arg;　　
-    //     return objE.childNodes;
-    // };
-    // show_layer(param, nextrun) {
-    //     let msg = param.msg;
-    //     let til = param.til;
-    //     let self = this;
-    //     let str = '<div class="cover_bg" #cover_bg></div><div id="layer_box" #layer><div class="top_til"><div class="til">' + til + '</div><div class="close">x</div></div><div class="content_box">' + msg + '</div><div class="confirm_box"><div class="confirm_btn">确定</div></div></div>';
-    //     let dom = $(this.parseDom(str))
-    //     dom.find('.close').on('click', function () {
-    //         self.hid_layer();
-    //     })
-    //     dom.find('.confirm_box').on('click', function () {
-    //         if (nextrun == '' || !nextrun) {
-    //             self.hid_layer();
-    //         } else {
-    //             nextrun();
-    //         }
+    //  =================== 中间操作事件结束 ===============================
 
-    //     })
-    //     $('#layer').append(dom);
-    //     setTimeout(function () {
-    //         dom.addClass('tobig')
-    //     }, 10)
-    //     window.onresize = function () {}
-    // }
-    // hid_layer() {
-    //     document.getElementById("layer").innerHTML = '';
-    // }    
+
+
+
+    //  ===================追号函数=========================
+    typeoptchange() {
+        let that = this;
+        if (that.chase_number_config.select_amount == 'all') {
+            that.chase_number_config.chase_amount = that.lotdata_now.length;
+        } else {
+            that.chase_number_config.chase_amount = that.chase_number_config.select_amount;
+        }
+    }
+    check_lot(item) {
+        let that = this;
+        if (item.checkon) {
+            if (item.multiple == 0) {
+                item.multiple = that.chase_number_config.multiple;
+                item.take_money = item.multiple * item.price / that.modelarr[that.model] * that.sureballlist.length;
+            }
+
+        } else {
+            item.multiple = 0;
+            item.take_money = 0;
+        }
+        that.repanel_data()
+    }
+    // 生成计划
+    produce_plan() {
+        let that = this;
+        that.lotdata_now = $.extend(true, [], that.lotdata);
+        let gap_number, gap_multiple, multiple, chase_amount;
+        if (that.c_now_panel == 'two') {
+            gap_number = that.chase_number_config.chase_rule.number;
+            gap_multiple = that.chase_number_config.chase_rule.multiple;
+            multiple = that.chase_number_config.multiple;
+            chase_amount = that.chase_number_config.chase_amount;
+            if (chase_amount > that.lotdata_now.length) {
+                chase_amount = that.lotdata_now.length;
+            }
+            for (var i = 0; i <= chase_amount - 1; i++) {
+                that.lotdata_now[i].checkon = true;
+                that.lotdata_now[i].multiple = multiple;
+                that.lotdata_now[i].take_money = multiple * that.lotdata_now[i].price / that.modelarr[that.model] * that.sureballlist.length;
+                if ((i + 1) % gap_number == 0) {
+                    multiple = multiple * gap_multiple;
+                };
+
+            };
+        } else {
+            multiple = that.chase_number_config.multiple;
+            chase_amount = that.chase_number_config.chase_amount;
+            if (chase_amount > that.lotdata_now.length) {
+                chase_amount = that.lotdata_now.length;
+            }
+            for (var i = 0; i <= chase_amount - 1; i++) {
+
+                that.lotdata_now[i].checkon = true;
+                that.lotdata_now[i].multiple = multiple;
+                that.lotdata_now[i].take_money = multiple * that.lotdata_now[i].price / that.modelarr[that.model] * that.sureballlist.length;
+            };
+        }
+        that.repanel_data()
+    }
+    //单个金钱计算
+    get_takemon(item, e) {
+        let that = this;
+        if (item.multiple == 0) {
+            item.checkon = false;
+        } else {
+            item.checkon = true;
+        }
+        item.take_money = item.multiple * item.price / that.modelarr[that.model] * that.sureballlist.length;
+        that.repanel_data()
+    }
+    changeregnum(e) {
+        let v = e.target;
+        v.value = v.value.replace(/\D/g, "");
+        if (Number(v.value) === 0 && v.value !== "") {
+            v.value = 0;
+        }
+        if (Number(v.value) > 0) {
+            v.value = Number(v.value);
+        }
+    }
+    // 总金钱总期数计算
+    repanel_data() {
+        let that = this;
+        let amount = 0;
+        let chase_amount = 0;
+        for (var i = 0; i <= that.lotdata_now.length - 1; i++) {
+            for (var k = 0; k <= that.sureballlist.length - 1; k++) {
+                amount = that.lotdata_now[i].multiple * that.lotdata_now[i].price / that.modelarr[that.model] + amount;
+            }
+            if (that.lotdata_now[i].checkon) {
+                chase_amount = chase_amount + 1;
+            };
+        };
+        that.chase_amount = chase_amount;
+        if (that.chase_amount > that.lotdata_now.length) {
+            that.chase_amount = that.lotdata_now.length;
+        }
+        that.chase_money = amount;
+    }
+    //清空追号
+    rechase_data() {
+        let that = this;
+        that.lotdata_now = $.extend(true, [], that.lotdata);
+        that.repanel_data()
+    }
+    //清空追号所有数据
+    rechase_dataall() {
+        let that = this;
+        that.lotdata_now = $.extend(true, [], that.lotdata);
+        that.chase_number_config = $.extend(true, {}, that.chase_config_ori);
+        that.repanel_data()
+    }
+    tab_chase(para, item_one, item_two) {
+        let that = this;
+        that.rechase_dataall();
+        that.c_now_panel = para;
+        if (para == 'one') {
+            $(item_one).addClass('active');
+            $(item_two).removeClass('active');
+            $('.one').addClass('active')
+            $('.two').removeClass('active')
+        } else if (para == 'two') {
+            $(item_two).addClass('active');
+            $(item_one).removeClass('active');
+            $('.two').addClass('active')
+            $('.one').removeClass('active')
+        }
+    }
+    //提交追号
+    submit_chase() {
+        let that = this;
+        //清空
+        that.lotdata_submit = [];
+        for (var i = 0; i <= that.lotdata_now.length - 1; i++) {
+            if (that.lotdata_now[i].checkon != false) {
+                for (var k = 0; k <= that.sureballlist.length - 1; k++) {
+                    let rechase: any = {};
+                    rechase.Open_stop = that.Open_stop;
+                    rechase.Win_stop = that.Win_stop;
+                    rechase.multiple = that.lotdata_now[i].multiple;
+                    rechase.model = that.model;
+                    rechase.count = 1;
+                    rechase.sum = (2 * rechase.multiple) / that.modelarr[rechase.model]
+                    rechase.amount = that.totalinfo.amount;
+                    rechase.ball = that.sureballlist[k].ball;
+                    rechase.name = that.sureballlist[k].name;
+                    rechase.issue = that.lotdata_now[i].lot_num;
+                    that.lotdata_submit.push(rechase)
+                }
+            };
+        }
+        if (!that.lotdata_submit[0]) {
+            that.POPNOTE({
+                msg: '请选择追号期数'
+            });
+            return
+        } else {
+            that.POPNOTE({
+                msg: `您确定追号${that.lotdata_now.length}期么? 总投入${that.chase_money}元。`
+            }, that.betnow);
+            return
+        }
+
+
+    }
+    betnow() {
+        // 在此处提交追号所有号码
+    }
+    close_chase() {
+        $('#layer2').find('.chase_container').removeClass('show_this');
+        let that = this;
+        that.rechase_dataall()
+    }
+    chase_number() {
+        let that = this;
+        if (!that.sureballlist[0]) {
+            that.POPNOTE({
+                msg: '注单列表为空，请先下注！或者随机1注',
+                btn: '随机一注'
+            }, that.radomshowchase);
+            return false
+        };
+        that.showchase();
+
+    }
+    show_chasenumber(param, nextrun) {
+        let msg = param.msg;
+        let til = param.til;
+        let self = this;
+        let str = '';
+        let dom = $(this.parseDom(str))
+        dom.find('.close').on('click', function () {
+            self.hid_layer();
+        })
+        dom.find('.confirm_box').on('click', function () {
+            nextrun();
+        })
+        $('#layer').append(dom);
+        setTimeout(function () {
+            dom.addClass('tobig')
+        }, 10)
+        window.onresize = function () {}
+    }
+
+    radomshowchase() {
+        this.mathball(this.menu_2);
+        $('#layer2').find('.chase_container').addClass('show_this');
+    }
+    showchase() {
+        $('#layer2').find('.chase_container').addClass('show_this');
+    }
+    hid_layer() {
+        document.getElementById("layer").innerHTML = '';
+    }
+    // 弹层1
+    parseDom(arg) {
+        var objE = document.createElement("div");
+        objE.innerHTML = arg;
+        return objE.childNodes;
+    };
+    // ====================追号函数结束=========================
+
+
+
+
+
     // 绑定给弹窗组件的事件；
-    NOTARIZE(){
+    NOTARIZE() {
         return
     }
     // 弹窗关闭事件 可以自定义命名
-    closePopouot(e){
+    closePopouot(e) {
         this.popoutInfo.show = false;
     }
 
     // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
-    POPNOTE(data,fn=null){
+    POPNOTE(data, fn = null) {
         let o = {
-            title:'操作提示',   //title不传值默认为 ‘操作提示’
-            msg:' ',
+            title: '操作提示', //title不传值默认为 ‘操作提示’
+            msg: ' ',
             event: false,
             show: true,
         }
         if (typeof fn === 'function') {
             this.NOTARIZE = fn;
             o.event = true;
-        }else{
-            this.NOTARIZE = ()=>{return};
+        } else {
+            this.NOTARIZE = () => {
+                return
+            };
         }
-        this.popoutInfo = Object.assign({},o,data);
+        this.popoutInfo = Object.assign({}, o, data);
     }
     // 锁定倍数
-    public lock_multible :any=false;
-    lock_multiple(item){
+    lock_multiple(item) {
         let now_btn = $(item.target);
         if (!$(item.target).hasClass('switch_btn')) {
             now_btn = $(item.target).parent();
         }
-        if(now_btn.hasClass('on')){
+        if (now_btn.hasClass('on')) {
             this.lock_multible = false;
             $('#testinput').removeAttr('disabled');
-        }else{
+        } else {
             this.lock_multible = true;
-            $('#testinput').attr({disabled: 'disabled'});
+            $('#testinput').attr({
+                disabled: 'disabled'
+            });
         }
 
     }

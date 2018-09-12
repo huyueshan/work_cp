@@ -65,6 +65,7 @@ export class DiscountinfoComponent implements OnInit {
       action: '详情',
     },
   ];
+ 
   constructor( private http:HttpInterceptorService) {}
 
   ngOnInit() {

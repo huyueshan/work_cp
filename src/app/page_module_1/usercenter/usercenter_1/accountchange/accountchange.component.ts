@@ -1,6 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 
 import { ACCHANGE, userdef } from "../../../../../factory/usercent";
+
+import { HttpInterceptorService } from "../../../../../factory/Http.Service";
+
+import { Api } from "../../../../../factory/api.model";
+
 import userModel from '../../../../../status/user.model';
 @Component({
   selector: "app-accountchange",
@@ -214,12 +219,19 @@ export class AccountchangeComponent implements OnInit {
       rebates: "期数20180522021  彩种：重庆时时彩"
     },
   ];
-  constructor() {}
+  constructor(private http:HttpInterceptorService) {}
 
   ngOnInit() {
     this.now_lang_type=userModel.now_lang_type;
-    this.inttable();
+
+    this.http.get(Api.gettest,{}).then(res => {
+        console.log('请求到的数据：', res);
+        this.inttable();
+    });
   }
+
+
+
   checkchange(t, i) {
     let c = this.checkdatas;
     c.all = true;
@@ -259,6 +271,8 @@ export class AccountchangeComponent implements OnInit {
     }
   }
 
+
+
   // 初始表格数据
   inttable() {
     let data = [];
@@ -268,6 +282,8 @@ export class AccountchangeComponent implements OnInit {
     }
     this.acchangedata = data;
   }
+
+
   // 设置数据量小于10条时的空表格数据
   setemptydata() {
     let data = {};
@@ -276,6 +292,8 @@ export class AccountchangeComponent implements OnInit {
     }
     return data;
   }
+
+  
   // 分页组件点击页码事件，参数i为点击页码数
   getPageData(i) {
     //  此处请求数据

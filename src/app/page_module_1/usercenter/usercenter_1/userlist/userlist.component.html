@@ -67,35 +67,51 @@
 
         </div>
     </ng-container>
-    <ng-container *ngIf="pagestatus === 3">
-        <div class="flex-c infobox">
-            <div class="top">
-                <span>用户名：cwcs001</span>
+    
+    <ng-container *ngIf="pagestatus === 1">
+        <div class="flex-c infobox infobox1">
+
+            <div class="flex-c top">
+                <span>下属用户详情</span>
+                <span class="btn" (click)="changestatus(3)">下属用户信息 </span>
             </div>
+            <ul class="flex-r gamelist">
+                <li *ngFor="let item of income">{{item.title}}</li>
+
+            </ul>
             <div class="tablewrap">
-                <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4" align="center">
-                    <tr class="bg_1">
-                        <th>返点等级</th>
-                        <th>cwcs001 拥有数量</th>
-                        <th>cwcs001 剩余数量</th>
-                        <th>分配数量</th>
-                        <th>您的配额</th>
+                <table  width="100%" border="0" cellspacing="0" cellpadding="4" align="center">
+                    <tr>
+                        <th>用户昵称：</th>
+                        <td>test02</td>
                     </tr>
                     <tr>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <th>用户等级：</th>
+                        <td>test02</td>
+                    </tr>
+                    <tr>
+                        <th>用户等级：</th>
+                        <td>代理用户</td>
+                    </tr>
+
+                    <tr>
+                        <th>可用金额：</th>
+                        <td>1900</td>
+                    </tr>
+                    <tr>
+                        <th>最后登陆时间：</th>
+                        <td>2018-08-22</td>
                     </tr>
                 </table>
             </div>
             <div class="flex-r btnbox">
-                <span class="btn">提交</span>
                 <span class="btn" (click)="changestatus(0)">返回</span>
             </div>
+
         </div>
+
     </ng-container>
+
     <ng-container *ngIf="pagestatus === 2">
         <div class="flex-c fandianbox">
             <dl class="flex-r item">
@@ -142,48 +158,35 @@
 
         </div>
     </ng-container>
-    <ng-container *ngIf="pagestatus === 1">
-        <div class="flex-c infobox infobox1">
 
-            <div class="flex-c top">
-                <span>下属用户详情</span>
-                <span class="btn" (click)="changestatus(3)">下属用户信息 </span>
+    <ng-container *ngIf="pagestatus === 3">
+        <div class="flex-c infobox">
+            <div class="top">
+                <span>用户名：cwcs001</span>
             </div>
-            <ul class="flex-r gamelist">
-                <li *ngFor="let item of income">{{item.title}}</li>
-
-            </ul>
             <div class="tablewrap">
-                <table  width="100%" border="0" cellspacing="0" cellpadding="4" align="center">
-                    <tr>
-                        <th>用户昵称：</th>
-                        <td>test02</td>
+                <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4" align="center">
+                    <tr class="bg_1">
+                        <th>返点等级</th>
+                        <th>cwcs001 拥有数量</th>
+                        <th>cwcs001 剩余数量</th>
+                        <th>分配数量</th>
+                        <th>您的配额</th>
                     </tr>
                     <tr>
-                        <th>用户等级：</th>
-                        <td>test02</td>
-                    </tr>
-                    <tr>
-                        <th>用户等级：</th>
-                        <td>代理用户</td>
-                    </tr>
-
-                    <tr>
-                        <th>可用金额：</th>
-                        <td>1900</td>
-                    </tr>
-                    <tr>
-                        <th>最后登陆时间：</th>
-                        <td>2018-08-22</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
                 </table>
             </div>
             <div class="flex-r btnbox">
+                <span class="btn">提交</span>
                 <span class="btn" (click)="changestatus(0)">返回</span>
             </div>
-
         </div>
-
     </ng-container>
-
+    
 </div>
