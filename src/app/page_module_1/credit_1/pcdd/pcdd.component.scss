@@ -1,5 +1,4 @@
 
-// @import "../ssc/ssc.component.scss";
 
 * {
     -webkit-user-select: none;
@@ -691,7 +690,7 @@
             border-top: none;
             table {
                 table-layout: fixed;
-                width: 100%; // border: 1px solid #ccc;
+                width: 100%;
                 border-collapse: collapse;
                 tr:nth-child(even) {
                     background-color: #eee;

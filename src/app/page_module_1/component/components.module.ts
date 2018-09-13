@@ -14,6 +14,8 @@ import { PageComponent } from './page/page.component';
 import { LanguageComponent } from "./language/language.component";
 import { RuleComponent } from './credtop/rule/rule.component';
 import { ModalComponent } from './modal/modal.component';
+import { SetmoneyComponent } from './setmoney/setmoney.component';
+
 
 @NgModule({
   imports: [CommonModule, FormsModule],
@@ -30,6 +32,7 @@ import { ModalComponent } from './modal/modal.component';
     LanguageComponent,
     RuleComponent,
     ModalComponent,
+    SetmoneyComponent,
   ],
   exports: [
     HeaderComponent,
@@ -43,6 +46,7 @@ import { ModalComponent } from './modal/modal.component';
     PageComponent,
     LanguageComponent,
     ModalComponent,
+    SetmoneyComponent,
   ]
 })
 export class ComponentsModule {}

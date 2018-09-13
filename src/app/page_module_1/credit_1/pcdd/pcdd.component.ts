@@ -3,7 +3,6 @@ import {
     OnInit,
     OnDestroy,
     AfterViewInit,
-    ElementRef
 } from "@angular/core";
 import {
     Router,
@@ -21,14 +20,7 @@ import {
 })
 export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     loadpage = false;
-    public cpnav = {
-        style: "credit",
-        prev: "20180517022",
-        prevball: [2, 5, 9, 0, 8],
-        next: "20180517023",
-        time: ""
-    };
-    public routeid;
+    public routeid;  // 当前彩票的路由ID
     public odds = 7.8; // 赔率
     public rastep = 7.8; // 滑动条步长
     public rangevalue = this.odds; //绑定滑动条数据
@@ -38,7 +30,7 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     public type = 1; // 控制 玩法
     public curinpt; //当前操作的金额输入框
     public selectbtnvalue = 0; //控制 一般 、快捷按钮数据
-    public inputshow = true;
+    public inputshow = true;  // 一般玩法下每个单元的input显示
     public btolast = 0; //控制 前中后选择
     public selmoeny = [100, 200, 500, 1000, 5000]; // 活动选择金额框数据
     public newpoint = false; // 绑定提交时的最新赔率
@@ -444,7 +436,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     };
 
     // =弹窗对话框数据
-
     public popup = {
         // 遮罩层
         shade: {
@@ -488,6 +479,16 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         point: "-",
         money: "-"
     };
+
+
+    // 传给头部彩票导航组件的数据
+    public cpnav = {
+        style: "credit",
+        prev: "20180517022",
+        prevball: [2, 5, 9, 0, 8],
+        next: "20180517023",
+        time: ""
+    };
     // 传给弹窗组件数据
     public  popoutInfo={
         title:'string',
@@ -496,7 +497,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         show: false,
     }
     constructor(
-        private el: ElementRef,
         private router: Router,
         private route: ActivatedRoute
     ) {}
@@ -528,6 +528,9 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     ngAfterViewInit() {}
     ngOnDestroy() {}
+
+
+
     // 设置赔率
     POINT() {
         let p = this.POINt_data;
@@ -545,7 +548,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         d3.point = p.pcdata3[0].point;
         d3.step = p.pcdata3[0].step;
     }
-
     setpoint(data, d, name) {
         if (d[name] !== null) {
             for (let t = 0; t < data.length; t++) {
@@ -585,15 +587,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         }
     }
 
-    // 禁用快选活动框事件
-    setboxvalid() {
-        this.boxvalid = !this.boxvalid;
-        let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
-        this.POPNOTE({msg:s});
-        // setTimeout(() => {
-        //     this.popup.note.show = false;
-        // }, 2000);
-    }
     // 滑块左侧递减事件
     rangevaluelessen() {
         if (this.rangevalue > 0) {
@@ -606,6 +599,10 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
             this.rangevalue += this.rastep;
         }
     }
+
+
+
+
     // 切换一般 /快捷 事件
     tabclick(i) {
         if (this.selectbtnvalue===i) {
@@ -673,7 +670,28 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
             p.setnumb.data[i].value = p.setnumb.data[i].value.replace(/\D/g, "");
         }
     }
+    // 设置快捷金额窗口
+    SETM() {
+        let p = this.popup;
+        this.setfixed(p.setnumb, 260, 410);
+        p.setnumb.scale = false;
+        p.setnumb.show = true;
+        p.shade.show = true;
+        setTimeout(() => {
+            p.setnumb.scale = true;
+        }, 10);
+    }
+    // 禁用快选活动框事件
+    setboxvalid() {
+        this.boxvalid = !this.boxvalid;
+        let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
+        this.POPNOTE({msg:s});
+    }
     //====快选金额事件end=============
+
+
+
+    
     // 提示信息窗口关闭事件
     close() {
         let p = this.popup;
@@ -691,17 +709,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         p.shade.show = true;
         setTimeout(() => {
             p.sub.scale = true;
-        }, 10);
-    }
-    // 设置快捷金额窗口
-    SETM() {
-        let p = this.popup;
-        this.setfixed(p.setnumb, 260, 410);
-        p.setnumb.scale = false;
-        p.setnumb.show = true;
-        p.shade.show = true;
-        setTimeout(() => {
-            p.setnumb.scale = true;
         }, 10);
     }
     setfixed(t, w, h) {
@@ -734,35 +741,14 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         }
     }
 
+
+
+
     // 输入框获取焦点事件
     inmoneyfoc(e, i) {
         this.curinpt = i;
         this.setposition(e);
     }
-
-    // curinpt为当前操作输入框 变量
-    // i 数组当前index
-    inmoneyfocus(e, i) {
-        if (i == "all") {
-            this.curinpt = this.setallmoney;
-        } else {
-            this.curinpt = this.selballdata;
-        }
-        this.setposition(e);
-    }
-    // 整合 金额框获得焦点事件 /curinpt为当前操作输入框 变量
-    // t、i 、q 为对应数据的key值或者index
-    inmoney1focus(e, i) {
-        this.curinpt = this.pcdata1[i];
-        this.setposition(e);
-    }
-    // 龙虎斗 金额框获得焦点事件 /curinpt为当前操作输入框 变量
-    // t、i 、q 为对应数据的key值或者index
-    inmoney2focus(e, i, q) {
-        this.curinpt = this.pcdata2[i][q];
-        this.setposition(e);
-    }
-
     //页面输入框焦点离开后隐藏金额选择框方法
     inmoneyblur() {
         // 必须延迟，不然点击不到选择框
@@ -799,6 +785,10 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         this.curinpt.value = i;
         this.boxshow = false;
     }
+
+
+
+
     // 重置当前页面所有的输入框
     reset() {
         this.amend("");
@@ -850,7 +840,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
             v.value = Number(v.value);
         }
     }
-
     // 确认提交按钮事件
     sub() {
         let data = [];
@@ -921,6 +910,9 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         }, 2000);
     }
 
+
+
+
     linkrouter(t) {
         this.router.navigate([t]);
     }
@@ -956,6 +948,10 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         }
         return data;
     }    
+
+
+
+
     // 绑定给弹窗组件的事件；
     NOTARIZE(){
         return

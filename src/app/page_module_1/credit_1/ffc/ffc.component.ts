@@ -3,7 +3,6 @@ import {
     OnInit,
     OnDestroy,
     AfterViewInit,
-    ElementRef
 } from "@angular/core";
 import {
     Router,
@@ -21,16 +20,6 @@ import {
 })
 export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     loadpage = false;
-	public gamedata:any ={
-		gametype:'FFC'
-	}
-    public cpnav = {
-        style: "credit",
-        prev: "20180517022",
-        prevball: [2, 5, 9, 0, 8],
-        next: "20180517023",
-        time: ""
-    };
     public odds = 7.8; // 赔率
     public rastep = 7.8; // 滑动条步长
     public rangevalue = 7.8; //绑定滑动条数据
@@ -40,7 +29,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     public type = 1; // 控制 玩法
     public curinpt; //当前操作的金额输入框
     public selectbtnvalue = 0; //控制 一般 、快捷按钮数据
-    public inputshow = true;
+    public inputshow = true; // 一般玩法下每个单元的input显示
     public btolast = 0; //控制 前中后选择
     public selmoeny = [100, 200, 500, 1000, 5000]; // 活动选择金额框数据
     public routeid;
@@ -50,7 +39,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
         value: "",
         point: 0,
         step: 0,
-        checked:false,
+        checked: false,
     };
     public typedata = [{
             id: 1,
@@ -267,8 +256,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
             ]
         }
     };
-    public betdatam = [
-        {
+    public betdatam = [{
             title: "第一球",
             data1: this.setbigorsmall(),
             data2: this.setball()
@@ -297,35 +285,35 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
             title: "总和",
             data1: [{
                     name: "总大",
-                    title:"大小",
+                    title: "大小",
                     value: "",
                     point: 0,
                     step: 0,
-                    checked:false,
+                    checked: false,
                 },
                 {
                     name: "总小",
-                    title:"大小",
+                    title: "大小",
                     value: "",
                     point: 0,
                     step: 0,
-                    checked:false,
+                    checked: false,
                 },
                 {
                     name: "总单",
-                    title:"单双",
+                    title: "单双",
                     value: "",
                     point: 0,
                     step: 0,
-                    checked:false,
+                    checked: false,
                 },
                 {
                     name: "总双",
-                    title:"单双",
+                    title: "单双",
                     value: "",
                     point: 0,
-                    step: 0 ,
-                    checked:false,
+                    step: 0,
+                    checked: false,
                 }
             ],
             data2: []
@@ -338,35 +326,35 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 point: 0,
                 step: 0,
-                    checked:false,
+                checked: false,
             },
             {
                 name: "顺子",
                 value: "",
                 point: 0,
                 step: 0,
-                    checked:false,
+                checked: false,
             },
             {
                 name: "对子",
                 value: "",
                 point: 0,
                 step: 0,
-                    checked:false,
+                checked: false,
             },
             {
                 name: "杂六",
                 value: "",
                 point: 0,
                 step: 0,
-                    checked:false,
+                checked: false,
             },
             {
                 name: "半顺",
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             }
         ]
     };
@@ -378,19 +366,19 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value3: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             }
         },
         {
@@ -400,19 +388,19 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value3: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             }
         },
         {
@@ -422,19 +410,19 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value3: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             }
         },
         {
@@ -444,19 +432,19 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value3: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             }
         },
         {
@@ -466,19 +454,19 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value3: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             }
         },
         {
@@ -488,19 +476,19 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value3: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             }
         },
         {
@@ -510,19 +498,19 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value3: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             }
         },
         {
@@ -532,19 +520,19 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value3: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             }
         },
         {
@@ -554,19 +542,19 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value3: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             }
         },
         {
@@ -576,92 +564,91 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value2: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             },
             value3: {
                 value: "",
                 point: 0,
                 step: 0,
-                checked:false,
+                checked: false,
             }
         }
     ];
-    public betdata3 = [
-        {
+    public betdata3 = [{
             numb: 0,
             value: "",
             point: 0,
             step: 0,
-                checked:false,
+            checked: false,
         },
         {
             numb: 1,
             value: "",
             point: 0,
             step: 0,
-                checked:false,
+            checked: false,
         },
         {
             numb: 2,
             value: "",
             point: 0,
             step: 0,
-                checked:false,
+            checked: false,
         },
         {
             numb: 3,
             value: "",
             point: 0,
             step: 0,
-                checked:false,
+            checked: false,
         },
         {
             numb: 4,
             value: "",
             point: 0,
             step: 0,
-                checked:false,
+            checked: false,
         },
         {
             numb: 5,
             value: "",
             point: 0,
             step: 0,
-                checked:false,
+            checked: false,
         },
         {
             numb: 6,
             value: "",
             point: 0,
             step: 0,
-                checked:false,
+            checked: false,
         },
         {
             numb: 7,
             value: "",
             point: 0,
             step: 0,
-                checked:false,
+            checked: false,
         },
         {
             numb: 8,
             value: "",
             point: 0,
             step: 0,
-                checked:false,
+            checked: false,
         },
         {
             numb: 9,
             value: "",
             point: 0,
             step: 0,
-                checked:false,
+            checked: false,
         },
     ];
     // =弹窗对话框数据
@@ -708,14 +695,32 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
         point: "-",
         money: "-"
     };
+
+
+    // 传给问路组件的数据
+    public gamedata: any = {
+        gametype: 'FFC'
+    }
+    // 传给头部彩票导航组件的数据
+    public cpnav = {
+        style: "credit",
+        prev: "20180517022",
+        prevball: [2, 5, 9, 0, 8],
+        next: "20180517023",
+        time: ""
+    };
     // 传给弹窗组件数据
-    public  popoutInfo={
-        title:'string',
-        msg:'string',
+    public popoutInfo = {
+        title: 'string',
+        msg: 'string',
         event: false,
         show: false,
     }
-    constructor(private el: ElementRef, private router: Router, private route: ActivatedRoute) {}
+
+
+
+
+    constructor(private router: Router, private route: ActivatedRoute) {}
 
     ngOnInit() {
         this.loadpage = userModel.platform;
@@ -733,7 +738,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
         // this.setlink();
         this.route.params.subscribe(data => {
             this.type = 1;
-            if (this.selectbtnvalue===0) {
+            if (this.selectbtnvalue === 0) {
                 this.reset();
             }
             this.tabclick(0);
@@ -746,6 +751,10 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     ngAfterViewInit() {}
     ngOnDestroy() {}
+
+
+
+
 
     POINT() {
         let _that = this;
@@ -796,15 +805,6 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
             }
         }
     }
-    // 禁用快选活动框事件
-    setboxvalid() {
-        this.boxvalid = !this.boxvalid;
-        let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
-        this.POPNOTE({msg:s});
-        // setTimeout(() => {
-        //     this.popup.note.show = false;
-        // }, 2000);
-    }
     // 滑块左侧递减事件
     rangevaluelessen() {
         if (this.rangevalue > 0) {
@@ -824,14 +824,14 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     // 切换玩法事件 /整合/龙虎斗/全五中一
     togtype(i) {
-        if (this.type!==i) {
+        if (this.type !== i) {
             this.reset();
             this.type = i;
         }
     }
     // 切换一般 /快捷 事件
     tabclick(i) {
-        if (this.selectbtnvalue===i) {
+        if (this.selectbtnvalue === i) {
             return;
         }
         if (i === 0) {
@@ -855,6 +855,9 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
             this.SETM();
         }
     }
+
+
+
     //====快选金额事件开始=============
     savenum() {
         let d = [];
@@ -862,10 +865,14 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
         for (let i = 0; i < p.length; i++) {
             d.push(Number(p[i].value));
         };
-        d.sort((a,b)=>{return a-b});
+        d.sort((a, b) => {
+            return a - b
+        });
         Base.Store.set("selmoeny", d, true);
         this.selmoeny = d;
-        this.POPNOTE({msg:'保存成功！'});
+        this.POPNOTE({
+            msg: '保存成功！'
+        });
         // setTimeout(() => {
         //     this.close();
         // }, 2000);
@@ -896,7 +903,30 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
             p.setnumb.data[i].value = p.setnumb.data[i].value.replace(/\D/g, "");
         }
     }
+    // 设置快捷金额窗口
+    SETM() {
+        let p = this.popup;
+        this.setfixed(p.setnumb, 260, 410);
+        p.setnumb.scale = false;
+        p.setnumb.show = true;
+        p.shade.show = true;
+        setTimeout(() => {
+            p.setnumb.scale = true;
+        }, 10);
+    }
+    // 禁用快选活动框事件
+    setboxvalid() {
+        this.boxvalid = !this.boxvalid;
+        let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
+        this.POPNOTE({
+            msg: s
+        });
+    }
     //====快选金额事件end=============
+
+
+
+
     // 提示信息窗口关闭事件
     close() {
         let p = this.popup;
@@ -914,17 +944,6 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
         p.shade.show = true;
         setTimeout(() => {
             p.sub.scale = true;
-        }, 10);
-    }
-    // 设置快捷金额窗口
-    SETM() {
-        let p = this.popup;
-        this.setfixed(p.setnumb, 260, 410);
-        p.setnumb.scale = false;
-        p.setnumb.show = true;
-        p.shade.show = true;
-        setTimeout(() => {
-            p.setnumb.scale = true;
         }, 10);
     }
     setfixed(t, w, h) {
@@ -956,15 +975,15 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
             t.top = ev.clientY - t.dragtop;
         }
     }
-    // inmoneyfoc($event, item)
-    // inmoneyfoc($event, child)
+
+
+
 
     // 输入框获取焦点事件
     inmoneyfoc(e, i) {
         this.curinpt = i;
         this.setposition(e);
     }
-
     //页面输入框焦点离开后隐藏金额选择框方法
     inmoneyblur() {
         // 必须延迟，不然点击不到选择框
@@ -993,11 +1012,15 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     // 选择框点击选项方法，赋值给当前操作的输入框
     optinclick(i) {
         if (this.curinpt == this.setallmoney) {
-            this.amend(i,true);
+            this.amend(i, true);
         }
         this.curinpt.value = i;
         this.boxshow = false;
     }
+
+
+
+
     // 重置当前页面所有的输入框
     reset() {
         this.amend("");
@@ -1006,10 +1029,10 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     // 快捷选项下的输入框值改变后的方法，
     allchange() {
         let v = this.setallmoney.value;
-        this.amend(v,true);
+        this.amend(v, true);
     }
 
-    amend(v, bol=false) {
+    amend(v, bol = false) {
         if (this.type === 3) {
             let d = this.betdata3;
             this.setvalue(d, v, bol);
@@ -1017,19 +1040,19 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
         if (this.type === 2) {
             let d = this.betdata2;
             for (let q = 0; q < d.length; q++) {
-                d[q].value1.value = this.selectbtnvalue===1?(d[q].value1.checked?v:""):v;
-                d[q].value2.value = this.selectbtnvalue===1?(d[q].value2.checked?v:""):v;
-                d[q].value3.value = this.selectbtnvalue===1?(d[q].value3.checked?v:""):v;
-                d[q].value1.checked = bol?d[q].value1.checked:false;
-                d[q].value2.checked = bol?d[q].value2.checked:false;
-                d[q].value3.checked = bol?d[q].value3.checked:false;
+                d[q].value1.value = this.selectbtnvalue === 1 ? (d[q].value1.checked ? v : "") : v;
+                d[q].value2.value = this.selectbtnvalue === 1 ? (d[q].value2.checked ? v : "") : v;
+                d[q].value3.value = this.selectbtnvalue === 1 ? (d[q].value3.checked ? v : "") : v;
+                d[q].value1.checked = bol ? d[q].value1.checked : false;
+                d[q].value2.checked = bol ? d[q].value2.checked : false;
+                d[q].value3.checked = bol ? d[q].value3.checked : false;
             }
         }
         if (this.type === 1) {
             let d = this.betdatam;
             for (let w = 0; w < d.length; w++) {
-                this.setvalue(d[w].data1, v,bol);
-                this.setvalue(d[w].data2, v,bol);
+                this.setvalue(d[w].data1, v, bol);
+                this.setvalue(d[w].data2, v, bol);
             }
             let b = this.betdatab.data1;
             this.setvalue(b, v, bol);
@@ -1038,33 +1061,33 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     };
 
     // 设置单元数据金额
-    setvalue(d, v,bol) {
+    setvalue(d, v, bol) {
         if (d) {
             for (let q = 0; q < d.length; q++) {
                 if (d[q] instanceof Array) {
                     for (let w = 0; w < d[q].length; w++) {
                         if (d[q][w].numb !== null && d[q][w].name !== null) {
-                            d[q][w].value = this.selectbtnvalue===1?(d[q][w].checked?v:""):v;
-                            d[q][w].checked = bol?d[q][w].checked:false;
+                            d[q][w].value = this.selectbtnvalue === 1 ? (d[q][w].checked ? v : "") : v;
+                            d[q][w].checked = bol ? d[q][w].checked : false;
                         }
                     }
                 } else {
                     if (d[q].numb !== null && d[q].name !== null) {
-                        d[q].value = this.selectbtnvalue===1?(d[q].checked?v:""):v;
-                        d[q].checked = bol?d[q].checked:false;
+                        d[q].value = this.selectbtnvalue === 1 ? (d[q].checked ? v : "") : v;
+                        d[q].checked = bol ? d[q].checked : false;
                     }
                 }
             }
         }
     }
-    
-    rapid(item){
-        if(item.numb===null||item.name===null){
+
+    rapid(item) {
+        if (item.numb === null || item.name === null) {
             return;
         }
-        if(this.selectbtnvalue===1){
+        if (this.selectbtnvalue === 1) {
             item.checked = !item.checked
-            item.value = item.checked?this.setallmoney.value:"";
+            item.value = item.checked ? this.setallmoney.value : "";
         }
     }
 
@@ -1143,13 +1166,19 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
         } else {
             // ===此处提示完成投注内容提示
             if (this.selectbtnvalue === 1) {
-                if (this.setallmoney.value==="") {
-                    this.POPNOTE({msg:'请填写下注金额！'});
-                }else{
-                    this.POPNOTE({msg:'请选择号码！'});
+                if (this.setallmoney.value === "") {
+                    this.POPNOTE({
+                        msg: '请填写下注金额！'
+                    });
+                } else {
+                    this.POPNOTE({
+                        msg: '请选择号码！'
+                    });
                 }
-            }else{
-                this.POPNOTE({msg:'请完成投注内容！'});
+            } else {
+                this.POPNOTE({
+                    msg: '请完成投注内容！'
+                });
             }
             return false;
         }
@@ -1177,11 +1206,16 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     submit() {
         this.close();
         this.reset();
-        this.POPNOTE({msg:'提交订单成功！'});
+        this.POPNOTE({
+            msg: '提交订单成功！'
+        });
         setTimeout(() => {
             this.close();
         }, 2000);
     }
+
+
+
 
     linkrouter(t) {
         this.router.navigate([t]);
@@ -1191,6 +1225,9 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
         this.route.params.subscribe(data => str = data.id);
         this.router.navigate(['/lottery/officialffc', str]);
     }
+
+
+
 
     // 设置整合 球的数据
     setball() {
@@ -1205,7 +1242,7 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
     setbigorsmall() {
         let data = [];
         let d = ["大", "小", "单", "双"];
-        let t = ["大小","大小","单双","单双"]
+        let t = ["大小", "大小", "单双", "单双"]
         for (let i = 0; i < d.length; i++) {
             data[i] = {
                 name: d[i],
@@ -1217,30 +1254,37 @@ export class FfccreditComponent implements OnInit, OnDestroy, AfterViewInit {
             };
         }
         return data;
-    } 
+    }
+
+
+
+
+
     // 绑定给弹窗组件的事件；
-    NOTARIZE(){
+    NOTARIZE() {
         return
     }
     // 弹窗关闭事件 可以自定义命名
-    closePopouot(e){
+    closePopouot(e) {
         this.popoutInfo.show = false;
     }
 
     // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
-    POPNOTE(data,fn=null){
+    POPNOTE(data, fn = null) {
         let o = {
-            title:'操作提示',   //title不传值默认为 ‘操作提示’
-            msg:' ',
+            title: '操作提示', //title不传值默认为 ‘操作提示’
+            msg: ' ',
             event: false,
             show: true,
         }
         if (typeof fn === 'function') {
             this.NOTARIZE = fn;
             o.event = true;
-        }else{
-            this.NOTARIZE = ()=>{return};
+        } else {
+            this.NOTARIZE = () => {
+                return
+            };
         }
-        this.popoutInfo = Object.assign({},o,data);
+        this.popoutInfo = Object.assign({}, o, data);
     }
 }

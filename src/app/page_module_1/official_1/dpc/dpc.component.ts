@@ -2773,7 +2773,7 @@ export class DPCofficialComponent implements OnInit {
 
         for (let i = 0; i < that.radom_input.value; i++) {
             let redata: any = {};
-            redata.ball = Utils.Randomrule(obj);
+            redata.ball = this.status.menu_1 === 10? Utils.Randomrule_2(2) : Utils.Randomrule(obj);
             redata.name = that.currtabname;
             if (that.tabcurr.choose || that.tabcurr.datarule[0] == "Rule_6") {
                 let ab = Utils.algorithm.RandomArray(

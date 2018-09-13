@@ -82,6 +82,11 @@ input[type="number"]{
 	visibility: hidden;
 }
 
+.tipsshow{
+	/* display: block; */
+	visibility: visible;
+	transform:translateY(-110%) scale(1);
+}
 .conbox{
 	width:100%;
 	float:left;

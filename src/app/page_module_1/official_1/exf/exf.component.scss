@@ -61,6 +61,11 @@ input[type="number"]{
 .tipshidden{
 	visibility: hidden;
 }
+.tipsshow{
+	/* display: block; */
+	visibility: visible;
+	transform:translateY(-110%) scale(1);
+}
 
 .conbox{
 	width:100%;

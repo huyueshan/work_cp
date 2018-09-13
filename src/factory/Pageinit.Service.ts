@@ -20,7 +20,7 @@ export class PageinitService {
   // 用户登录
   USERLOG(data) {
     this.http.post(Api.logintest, data).then(res => {
-      console.log("~~~~~~~~~~~~~~~~~~~~登录状态！，返回信息：", res);
+      console.log("~~~~~~~~~~~~~~~~~~~~登录成功！，返回信息：", res);
       if (data.username) {
         this.Transfer.user_name = data.username;
       }
@@ -34,7 +34,8 @@ export class PageinitService {
       console.log("==============退出登录，返回信息：", res);
       Base.Store.remove("isLoaded");
       clearInterval(this.checkStatus); // 清除定时刷新定时器
-      history.go(0);
+      this.ISLOG(data);
+    //   history.go(0);
     });
   }
 
@@ -45,14 +46,14 @@ export class PageinitService {
       if (result.success) {
         // success(Validate) 为登陆状态是否正常--后台返回对象的键名
         // 如果返回的登陆状态true，更新用户在线时长 金额等信息
-        console.log("+++++++++已经登录，返回用户信息：", result);
+        console.log("+++++++++登录状态，返回用户信息：", result);
 
         return true;
       } else {
         // 如果返回的登陆状态false， 登出账号， 转到重新登陆提示页面
-        this.USEROUT();
-        this.router.navigateByUrl("AgainLogin");
-        console.log("=========已经退出登陆，请重新登陆");
+        // this.USEROUT();
+        // this.router.navigateByUrl("AgainLogin");
+        console.log("=========服务器返回登录异常", result);
         return false;
       }
     });
@@ -71,7 +72,7 @@ export class PageinitService {
 
     /// 定时刷新检测是否已在其他地方登录
     this.checkStatus = setInterval(() => {
-      this.Transfer.nowOnline += 1; // 测试。在线人数每3秒加一
+      this.Transfer.nowOnline += 1; // 测试。在线人数定时加一
       console.log('在线人数： '+ this.Transfer.nowOnline);
       if (Base.Store.get("isLoaded") && !authority) {
         this.ISLOG(data);

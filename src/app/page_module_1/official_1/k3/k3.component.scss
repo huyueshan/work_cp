@@ -84,10 +84,10 @@ input[type="number"]{
 
 
 .tipsshow{
+	/* display: block; */
 	visibility: visible;
 	transform:translateY(-110%) scale(1);
 }
-
 .conbox{
 	width:100%;
 	float:left;

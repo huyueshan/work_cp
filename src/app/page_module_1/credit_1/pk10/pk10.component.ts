@@ -3,7 +3,6 @@ import {
     OnInit,
     OnDestroy,
     AfterViewInit,
-    ElementRef
 } from "@angular/core";
 import {
     Router,
@@ -21,16 +20,7 @@ import {
 })
 export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     loadpage = false;
-    public cpnav = {
-        style: "credit",
-        prev: "20180517022",
-        prevball: [2, 5, 9, 0, 8],
-        next: "20180517023",
-        time: ""
-    };
-	public gamedata:any ={
-		gametype:'PK10'
-	}
+    public routeid;  // 当前彩票的路由ID
     public odds = 7.8; // 赔率
     public rastep = 7.8; // 滑动条步长
     public rangevalue = 7.8; //绑定滑动条数据
@@ -40,10 +30,9 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     public type = 1; // 控制 玩法
     public curinpt; //当前操作的金额输入框
     public selectbtnvalue = 0; //控制 一般 、快捷按钮数据
-    public inputshow = true;
+    public inputshow = true;  // 一般玩法下每个单元的input显示
     public btolast = 0; //控制 前中后选择
     public selmoeny = [100, 200, 500, 1000, 5000]; // 活动选择金额框数据
-    public routeid;
     public newpoint = false; // 绑定提交时的最新赔率
     public BALL = {
         numb: 0,
@@ -969,6 +958,21 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         point: "-",
         money: "-"
     };
+
+
+    
+    // 传给头部彩票导航组件的数据
+    public cpnav = {
+        style: "credit",
+        prev: "20180517022",
+        prevball: [2, 5, 9, 0, 8],
+        next: "20180517023",
+        time: ""
+    };
+    // 传给问路组件的数据
+	public gamedata:any ={
+		gametype:'PK10'
+	}
     // 传给弹窗组件数据
     public  popoutInfo={
         title:'string',
@@ -976,12 +980,13 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         event: false,
         show: false,
     }
+
+
+
     constructor(
-        private el: ElementRef,
         private router: Router,
         private route: ActivatedRoute
     ) {}
-
     ngOnInit() {
         this.loadpage = userModel.platform;
 
@@ -1009,6 +1014,10 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
     }
     ngAfterViewInit() {}
     ngOnDestroy() {}
+
+
+
+
     // 设置赔率
     POINT() {
         let _that = this;
@@ -1048,7 +1057,6 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
             this.setpoint(p.betdata1.data3, d1c[q], "name");
         }
     }
-
     setpoint(data, d, name) {
         if (d[name] !== null) {
             for (let t = 0; t < data.length; t++) {
@@ -1061,15 +1069,7 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         }
     }
 
-    // 禁用快选活动框事件
-    setboxvalid() {
-        this.boxvalid = !this.boxvalid;
-        let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
-        this.POPNOTE({msg:s});
-        // setTimeout(() => {
-        //     this.popup.note.show = false;
-        // }, 2000);
-    }
+    
     // 滑块左侧递减事件
     rangevaluelessen() {
         if (this.rangevalue > 0) {
@@ -1116,6 +1116,8 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         }
     }
 
+
+
     //====快选金额事件开始=============
     savenum() {
         let d = [];
@@ -1157,7 +1159,28 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
             p.setnumb.data[i].value = p.setnumb.data[i].value.replace(/\D/g, "");
         }
     }
+    // 设置快捷金额窗口
+    SETM() {
+        let p = this.popup;
+        this.setfixed(p.setnumb, 260, 410);
+        p.setnumb.scale = false;
+        p.setnumb.show = true;
+        p.shade.show = true;
+        setTimeout(() => {
+            p.setnumb.scale = true;
+        }, 10);
+    }
+    // 禁用快选活动框事件
+    setboxvalid() {
+        this.boxvalid = !this.boxvalid;
+        let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
+        this.POPNOTE({msg:s});
+    }
     //====快选金额事件end=============
+
+
+
+
     // 提示信息窗口关闭事件
     close() {
         let p = this.popup;
@@ -1176,17 +1199,6 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         p.shade.show = true;
         setTimeout(() => {
             p.sub.scale = true;
-        }, 10);
-    }
-    // 设置快捷金额窗口
-    SETM() {
-        let p = this.popup;
-        this.setfixed(p.setnumb, 260, 410);
-        p.setnumb.scale = false;
-        p.setnumb.show = true;
-        p.shade.show = true;
-        setTimeout(() => {
-            p.setnumb.scale = true;
         }, 10);
     }
     setfixed(t, w, h) {
@@ -1219,12 +1231,15 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         }
     }
 
+
+
+
+
     // 输入框获取焦点事件
     inmoneyfoc(e, i) {
         this.curinpt = i;
         this.setposition(e);
     }
-
     //页面输入框焦点离开后隐藏金额选择框方法
     inmoneyblur() {
         // 必须延迟，不然点击不到选择框
@@ -1268,7 +1283,6 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         let v = this.setallmoney.value;
         this.amend(v,true);
     }
-
     amend(v, bol=false) {
         if (this.type === 4) {
             let d = this.betdata4_1;
@@ -1295,7 +1309,6 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
             this.setvalue(this.pkdata1_3, v, bol);
         }
     }
-
     // 设置单元数据金额
     setvalue(d, v,bol) {
         if (d) {
@@ -1316,7 +1329,6 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
             }
         }
     }
-    
     rapid(item){
         if(item.numb===null||item.name===null){
             return;
@@ -1338,6 +1350,9 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
             v.value = Number(v.value);
         }
     }
+
+
+
 
     // 确认提交按钮事件
     sub() {
@@ -1398,7 +1413,6 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
             return false;
         }
     }
-
     //设置单元数据提交
     setsubdata(d, data, str) {
         for (let q = 0; q < d.length; q++) {
@@ -1430,6 +1444,8 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         }, 2000);
     }
 
+
+
     linkrouter(t) {
         this.router.navigate([t]);
     }
@@ -1438,6 +1454,8 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
         this.route.params.subscribe(data => (str = data.id));
         this.router.navigate(["/lottery/officialpk10", str]);
     }
+
+
 
     // 设置整合 球的数据
     setball() {
@@ -1473,7 +1491,11 @@ export class Pk10Component implements OnInit, OnDestroy, AfterViewInit {
             }
         }
         return data;
-    }    
+    }  
+    
+    
+
+    
     // 绑定给弹窗组件的事件；
     NOTARIZE(){
         return

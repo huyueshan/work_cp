@@ -89,19 +89,16 @@ export class DiscountinfoComponent implements OnInit {
     this.discountdata = data;
   }
 
+
+
   // 显示弹窗
   detail(){
     this.MODAL({width:960,});
   }
-
-
-
-
   // 弹窗关闭事件 可以自定义命名
   closeModal(e){
       this.modalInfo.show = false;
   }
-
   // 弹窗显示事件 data为对象 fn传一个方法时点击确认时触发
   MODAL(data){
       let o = {

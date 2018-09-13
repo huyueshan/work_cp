@@ -641,9 +641,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         Base.Store.set("selmoeny", d, true);
         this.selmoeny = d;
         this.POPNOTE({msg:'保存成功！'});
-        // setTimeout(() => {
-        //     this.close();
-        // }, 2000);
     }
     numbdel() {
         this.popup.setnumb.value = "";
@@ -737,30 +734,6 @@ export class PcddComponent implements OnInit, OnDestroy, AfterViewInit {
         this.curinpt = i;
         this.setposition(e);
     }
-
-    // curinpt为当前操作输入框 变量
-    // i 数组当前index
-    inmoneyfocus(e, i) {
-        if (i == "all") {
-            this.curinpt = this.setallmoney;
-        } else {
-            this.curinpt = this.selballdata;
-        }
-        this.setposition(e);
-    }
-    // 整合 金额框获得焦点事件 /curinpt为当前操作输入框 变量
-    // t、i 、q 为对应数据的key值或者index
-    inmoney1focus(e, i) {
-        this.curinpt = this.pcdata1[i];
-        this.setposition(e);
-    }
-    // 龙虎斗 金额框获得焦点事件 /curinpt为当前操作输入框 变量
-    // t、i 、q 为对应数据的key值或者index
-    inmoney2focus(e, i, q) {
-        this.curinpt = this.pcdata2[i][q];
-        this.setposition(e);
-    }
-
     //页面输入框焦点离开后隐藏金额选择框方法
     inmoneyblur() {
         // 必须延迟，不然点击不到选择框

@@ -3,10 +3,8 @@ import {
     OnInit,
     OnDestroy,
     AfterViewInit,
-    ElementRef
 } from "@angular/core";
 import {
-    Router,
     ActivatedRoute,
 } from "@angular/router";
 import userModel from "../../../../status/user.model";
@@ -22,24 +20,14 @@ import { formmod } from '../../../../factory/form';
 })
 export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     loadpage = false;
-    public cpnav = {
-        style: "credit",
-        prev: "20180517022",
-        prevball: [2, 5, 9, 0, 8],
-        next: "20180517023",
-        time: ""
-    };
-	public gamedata:any ={
-		gametype:'PK10'
-	}
-    public routeid;
+    public routeid;  // 当前彩票的路由ID
     public rastep = 7.8; // 滑动条步长
     public odds = 7.8; // 赔率
     public rangevalue = 7.8; //绑定滑动条数据
     public delay = true; // 选择金额框判断
     public boxshow = false; // 选择金额框显示判断
     public boxvalid = true; // 选择金额框禁用判断
-    public type = 1; // 控制 玩法
+    public type = 1; // 控制 玩法  导航tab位置 从1开始
     public curinpt; //当前操作的金额输入框
     public year = ""; //当前年的生肖
     public setallmoney = {
@@ -47,8 +35,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     }; //绑定快捷金额
 
     public selectbtnvalue = 0; //控制 一般 、快捷按钮数据
-    public inputshow = true;
-    public allinput = false;
+    public inputshow = true;  // 一般玩法下每个单元的input显示
+    public allinput = false;  // 快捷玩法下显示统一的金额input
     public btolast = 0; //控制 前中后选择
     public selmoeny = [100, 200, 500, 1000, 5000]; // 活动选择金额框数据
     public newpoint = false; // 绑定提交时的最新赔率
@@ -600,6 +588,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         lianxiaostactive: 0
     };
     
+     // 各项目赔率数据
     public POINt_data = {
         dpcdata1: {
             data1: this.setBallPoint(44.482, 3.822 / 7.8),
@@ -1176,6 +1165,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             }
         }
     };
+
     public dpcdata1 = {
         title: "特码",
         data1: this.setball(),
@@ -2339,7 +2329,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             }
         ]
     };
-    public dpcdata13 = [{
+    public dpcdata13 = [
+        {
             numb: 0,
             title: "正一VS正二",
             value1: {
@@ -2636,7 +2627,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     ];
 
     // =弹窗对话框数据
-
     public popup = {
         // 遮罩层
         shade: {
@@ -2668,6 +2658,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             data: []
         }
     };
+
     public notetip = [
         "只有二全中、二中特、特串支持对碰",
         "快捷方式只有选中六肖中(不中)后才能使用。",
@@ -2679,7 +2670,7 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     public subdata = [];
     public submoney = 0;
     public subob = {
-        channel: "pk10",
+        channel: "",
         type: "-",
         id: "20180808",
         ball: "-",
@@ -2687,6 +2678,21 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         point: "-",
         money: "-"
     };
+
+
+
+    // 传给头部彩票导航组件的数据
+    public cpnav = {
+        style: "credit",
+        prev: "20180517022",
+        prevball: [2, 5, 9, 0, 8],
+        next: "20180517023",
+        time: ""
+    };
+    // 传给问路组件的数据
+	public gamedata:any ={
+		gametype:'PK10'
+	}
     // 传给弹窗组件数据
     public  popoutInfo={
         title:'string',
@@ -2695,8 +2701,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         show: false,
     }
     constructor(
-        private el: ElementRef,
-        private router: Router,
         private route: ActivatedRoute
     ) {}
 
@@ -2728,6 +2732,10 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     ngAfterViewInit() {}
     ngOnDestroy() {}
+
+
+
+
     // 设置赔率
     POINT() {
         let _that = this;
@@ -2815,15 +2823,11 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             }
         }
     }
-    // 禁用快选活动框事件
-    setboxvalid() {
-        this.boxvalid = !this.boxvalid;
-        let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
-        this.POPNOTE({msg:s});
-        // setTimeout(() => {
-        //     this.popup.note.show = false;
-        // }, 2000);
-    }
+
+
+
+
+
     // 滑块左侧递减事件
     rangevaluelessen() {
         if (this.rangevalue > 0) {
@@ -2874,6 +2878,11 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             this.SETM();
         }
     }
+
+
+
+
+
     //====快选金额事件开始=============
     savenum() {
         let d = [];
@@ -2915,7 +2924,28 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             p.setnumb.data[i].value = p.setnumb.data[i].value.replace(/\D/g, "");
         }
     }
+    // 禁用快选活动框事件
+    setboxvalid() {
+        this.boxvalid = !this.boxvalid;
+        let s = this.boxvalid ? "快捷金额已开启" : "快捷金额已禁用";
+        this.POPNOTE({msg:s});
+    }
+    // 设置快捷金额窗口
+    SETM() {
+        let p = this.popup;
+        this.setfixed(p.setnumb, 260, 410);
+        p.setnumb.scale = false;
+        p.setnumb.show = true;
+        p.shade.show = true;
+        setTimeout(() => {
+            p.setnumb.scale = true;
+        }, 10);
+    }
     //====快选金额事件end=============
+
+
+
+
     // 提示信息窗口关闭事件
     close() {
         let p = this.popup;
@@ -2933,17 +2963,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         p.shade.show = true;
         setTimeout(() => {
             p.sub.scale = true;
-        }, 10);
-    }
-    // 设置快捷金额窗口
-    SETM() {
-        let p = this.popup;
-        this.setfixed(p.setnumb, 260, 410);
-        p.setnumb.scale = false;
-        p.setnumb.show = true;
-        p.shade.show = true;
-        setTimeout(() => {
-            p.setnumb.scale = true;
         }, 10);
     }
     setfixed(t, w, h) {
@@ -2975,6 +2994,9 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             t.top = ev.clientY - t.dragtop;
         }
     }
+
+
+
     // 输入框获取焦点事件
     inmoneyfoc(e, i) {
         this.curinpt = i;
@@ -3009,6 +3031,9 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             this.delay = false;
         }, 200);
     }
+
+
+
 
     // 正特选项点击事件
     zhengteclick(i) {
@@ -3777,6 +3802,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         }
     }
 
+
+
     // 快速投注提交事件
     ktsub() {
         if (Number(this.kuaitoudata.value) <= 0) {
@@ -3879,7 +3906,6 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             this.close();
         }, 2000);
     }
-
     // 快速投注点击和提交事件
     ktclick(t, n) {
         let d = this.kuaitoudata;
@@ -3933,6 +3959,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         }
         d.ktstr = d.ktarr.join(", ");
     }
+
+
 
     // 设置波色球的数据
     setball() {
@@ -4178,6 +4206,8 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
         value = null;
         return this.count_group(arr, z - 1);
     }
+
+    // 设置数据方法
     setBallPoint(p, s) {
         let data = [];
         for (let i = 1; i < 50; i++) {
@@ -4276,7 +4306,10 @@ export class DpcComponent implements OnInit, OnDestroy, AfterViewInit {
             }
         ];
         return data;
-    }    
+    } 
+    
+    
+
     // 绑定给弹窗组件的事件；
     NOTARIZE(){
         return

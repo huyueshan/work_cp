@@ -2,7 +2,7 @@ import {
     Component,
     OnInit,
     Input,
-    AfterViewInit,
+    AfterContentInit,
     Output,
     EventEmitter,
     HostListener,
@@ -15,7 +15,8 @@ import {
     templateUrl: './modal.component.html',
     styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent implements OnInit, AfterViewInit {
+export class ModalComponent implements OnInit,
+AfterContentInit{
     @Input() data: {
         title: string,        // title 名字
         center?: boolean,   // title是否居中
@@ -30,7 +31,7 @@ export class ModalComponent implements OnInit, AfterViewInit {
     public scale = false;
 
     public content_width = 600;
-    public content_height = 180;
+    public content_height = 50;
 
     public popup = {
         // 遮罩层
@@ -47,29 +48,29 @@ export class ModalComponent implements OnInit, AfterViewInit {
             top: 0,
         },
     };
-    constructor(private el: ElementRef) {}
 
+
+    constructor(private el: ElementRef) {}
     ngOnInit() {
         this.content_width = this.data.width ? this.data.width : this.content_width
         this.scale = false;
+        let p = this.popup;
+        this.setfixed(p.note, this.content_width, this.content_height);
     }
     ngOnChanges() {
-        // this.init();
     }
-    ngAfterViewInit() {
+    ngAfterContentInit(){
         this.init();
+
     }
+
 
     init(){
         let p = this.popup;
         setTimeout(() => {
             p.shade.w = screen.width;
             p.shade.h = screen.height;
-            // 此处需要先判断 不然angular有报错
-            if (this.data.show) {
-                this.content_height = this.el.nativeElement.querySelector('#note').offsetHeight;
-            }
-            console.log(this.content_height);
+            this.content_height = this.el.nativeElement.querySelector('#note').offsetHeight;
             this.setfixed(p.note, this.content_width, this.content_height);
             this.scale = true;
         }, 10);

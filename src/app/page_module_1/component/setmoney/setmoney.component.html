@@ -1,0 +1,30 @@
+ 
+ 
+ <ng-container *ngIf="transfer.Credit_setnumb">
+   <app-modal [data]='modalInfo' (close)="closeModal($event)">
+       
+                <div class="flex-c main">
+                    <p>注意： </p>
+                    <p>设置只保存在您的电脑，清空浏览器缓存或 更换电脑会显示默认值。</p>
+                    <div class="flex-c setinput">
+
+                        <span class="flex-r item" *ngFor="let item of setnumb.data; let i=index">
+                            <input type="text" name="setinput" maxlength="9" [(ngModel)]="setnumb.data[i].value" (keyup)="changeregset(i)">
+                            <span (click)="setnumbdel(i)">删除</span>
+                        </span>
+                        <span class="flex-r item" *ngIf="setnumb.data.length<5" >
+                            <input type="text" name="setinput" maxlength="9" [(ngModel)]="setnumb.value" (keyup)="changeregset(-1)">
+                            <span (click)="addnumb()">增加</span>
+                            <span (click)="numbdel()">删除</span>
+                        </span>
+
+                    </div>
+                    <div class="flex-r btnbox">
+                        <span class="btn1" (click)="setboxvalid()">{{transfer.Credit_boxvalid?'禁用':'开启'}}</span>
+                        <span class="btn2" (click)="savenum()">保存</span>
+                    </div>
+                </div>
+
+   </app-modal>
+ </ng-container>
+

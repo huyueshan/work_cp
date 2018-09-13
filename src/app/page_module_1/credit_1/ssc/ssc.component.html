@@ -175,10 +175,10 @@
 
                         </div>
                         <!-- 活动选择框 -->
-                        <div id="selectbox" [ngStyle]="{'top': boxposition.y, 'left': boxposition.x}"  *ngIf ="boxshow && boxvalid">
+                        <div id="selectbox" [ngStyle]="{'top': boxposition.y, 'left': boxposition.x}"  *ngIf ="boxshow && transfer.Credit_boxvalid">
                             <div class="flex-c selectwrap">
                                 <i></i>
-                                <span class="option" *ngFor="let item of selmoeny" (mousedown)="optinclick(item)">{{item}}元</span>
+                                <span class="option" *ngFor="let item of transfer.Credit_selmoeny" (mousedown)="optinclick(item)">{{item}}元</span>
                             </div>
                         </div>
                         <!-- 底部问路-->
@@ -280,5 +280,6 @@
             </div>
         </div>
     </div>
-	 
+     
+    <app-setmoney></app-setmoney>
     <app-pupout [data]='popoutInfo' (close)="closePopouot($event)" (notarize)="NOTARIZE()"></app-pupout>

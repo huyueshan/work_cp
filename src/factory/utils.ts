@@ -741,7 +741,7 @@ const Matchrule = {
 		len.type = 'file'
 		obj.ball.push(TranBall(obj,len))
 		return obj
-	},
+    },
 }
 
 const Randomrule = (obj) =>{
@@ -840,6 +840,16 @@ const Randomrule_1 = (obj) =>{
 		}
 	})
 	return o
+}
+
+const Randomrule_2 = (n) => {
+    let data = [];
+    let ball = ['大','小','单','双',];
+    for (let i = 0; i < n; i++) {
+        let num = Math.floor(Math.random() * ball.length);
+        data.push(ball[num])
+    }
+    return data.join("|")
 }
 
 //-- 改造选号显示
@@ -1249,6 +1259,7 @@ export const Utils= {
 	TranBall,
 	algorithm,
 	Randomrule,
-	Randomrule_1
+    Randomrule_1,
+    Randomrule_2,
 };
 

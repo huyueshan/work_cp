@@ -11,6 +11,7 @@ $yellow:#fe8f00;
 .orange_font{
 	color: #fe8f00;
 }
+
 .jiangjin_tips{
 	float: left;
     position: relative;
@@ -30,6 +31,7 @@ $yellow:#fe8f00;
 /* 提示 */
 .tips{
 	width: 250px;
+	/* min-height: 74px; */
 	padding: 10px 25px;
 	background-color: #222;
 	line-height: 25px;
@@ -37,6 +39,7 @@ $yellow:#fe8f00;
 	left: 0;
 	top:0;
 	color: white;
+	/* margin-top: -125%; */
 	transform:translateY(-110%) scale(0.5);
 	margin-left: -125px;
 	border:2px solid #fe8f00;
@@ -45,8 +48,19 @@ $yellow:#fe8f00;
 	transition:0.1s ease;
 }
 .long_tips{
-	text-align: left;
+    text-align: left;
 	width: 400px;
+}
+.ulhidden{
+	display: none;
+}
+.tipshidden{
+	visibility: hidden;
+}
+
+.tipsshow{
+	visibility: visible;
+	transform:translateY(-110%) scale(1);
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -72,12 +86,6 @@ input[type="number"]{
 	li:hover{
 		background-color: #eee;
 	}
-}
-.ulhidden{
-	display: none;
-}
-.tipshidden{
-	visibility: hidden;
 }
 
 .check_ballplace{

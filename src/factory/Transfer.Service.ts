@@ -48,6 +48,16 @@ export class TransferService {
     public cur_longhu:boolean =false;     // 是否定位龙虎投注页面
 
 
+
+    // 信用页面数据
+
+    public Credit_setnumb:boolean = false; // 快选金额弹出隐藏
+
+    public Credit_selmoeny = [100, 200, 500, 1000, 5000]; // 快选金额默认数组
+
+    public Credit_boxvalid = true; // 快选金额开启关闭， true为开启状态
+
+
     constructor() {}
 
 

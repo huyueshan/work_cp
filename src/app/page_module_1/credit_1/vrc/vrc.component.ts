@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
 import userModel from "../../../../status/user.model";
 
 @Component({
@@ -9,14 +8,6 @@ import userModel from "../../../../status/user.model";
 })
 export class VRcComponent implements OnInit {
   loadpage = false;
-    public outnumber = [3,9,5] //开奖号码
-    public cpnav = {
-        style: "official",
-        prev:'20180517022',
-        prevball:[3,9,5],
-        next:'20180517023',
-        time:''
-    };
   public vidon = true; //视频盒子开关
   public chattab = 0; // 聊天盒子tab
   public chatput = ''; // 绑定聊天盒子输入框
@@ -120,7 +111,6 @@ export class VRcComponent implements OnInit {
   public tabledata = []; // 当前表单显示数据
 
   public querystyle = 0;
-  //   public tablestatus = 0; // 绑定表单状态 未开奖/撤单/中奖/未中奖
 
   //弹窗
   public shade = {
@@ -129,6 +119,24 @@ export class VRcComponent implements OnInit {
     h: 0
   };
   public shadedata;
+  public pagination = {
+      totalNum:0,  //总数据条数 
+      pageSize: 4, // 每页显示数量
+      curPage: 1, //当前页
+      segmentSize: 5, //最大显示页码标签数量
+      totalPage:0,// 最大页码数。
+  };
+
+
+
+  // 传给头部彩票导航组件的数据
+  public cpnav = {
+      style: "official",
+      prev:'20180517022',
+      prevball:[3,9,5],
+      next:'20180517023',
+      time:''
+  };
   //传给分页组件数据
   public PAGOB = {
     totalNum:0, 
@@ -137,13 +145,6 @@ export class VRcComponent implements OnInit {
     segmentSize: 5, 
     totalPage:10,
 }; 
-  public pagination = {
-      totalNum:0,  //总数据条数 
-      pageSize: 4, // 每页显示数量
-      curPage: 1, //当前页
-      segmentSize: 5, //最大显示页码标签数量
-      totalPage:0,// 最大页码数。
-  };
   // 传给弹窗组件数据
   public  popoutInfo={
       title:'string',
@@ -152,13 +153,16 @@ export class VRcComponent implements OnInit {
       show: false,
   }
 
-  constructor(private router: Router) {}
 
+  constructor() {}
   ngOnInit() {
     this.loadpage = userModel.platform;
     this.setshade();
     
 }
+
+
+
 // 显示弹窗
 shadec(i){
     this.shadedata = this.tabledata[i];
@@ -179,11 +183,13 @@ chedan(){
     this.shade.w = screen.width;
     this.shade.h = screen.height;
   }
+
+
+
+
   //表单删除事件
   del(i) {
     this.tabledata.splice(i, 1);
-    // let n = this.pagination.pageSize * (this.pagination.curPage - 1) + i
-    // this.toudata.splice(n, 1)
   }
   // 提交按钮事件
   sub() {
@@ -245,16 +251,15 @@ chedan(){
           this.actiondata[n].value = 0;
       }
   }
-  linkrouter(L) {
-    // 跳转路由
-    this.router.navigate([L]);
-  }
-  
+
+
   // 分页组件点击页码事件，参数i为点击页码数
   getPageData(i) {
       let start = this.pagination.pageSize * (i-1);
       this.tabledata = this.toudata.slice(start,start+this.pagination.pageSize)
   }
+
+
   // 绑定给弹窗组件的事件；
   NOTARIZE(){
       return

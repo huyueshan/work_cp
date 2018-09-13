@@ -62,9 +62,12 @@ input[type="number"]{
 
 
 .tipsshow{
+	/* display: block; */
 	visibility: visible;
 	transform:translateY(-110%) scale(1);
 }
+
+
 .check_ballplace{
 	height: 35px;
 	width: 100%;

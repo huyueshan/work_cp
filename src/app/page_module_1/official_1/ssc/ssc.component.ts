@@ -56,18 +56,11 @@ export class SSCofficialComponent implements OnInit {
     public now_description = '';
     public hothidden = false;
     public nowitems: any = {};
-    public userInfo = {
-        name: '赌神',
-        balance: '9999.99',
-        id: '007',
-        img: '../../images/cqssc_13.png'
-    };
     public curinpt = {
         value: ''
     };
 
     public lock_multible: any = false; // 锁定倍数
-
 
     public ballcurr: any = {} // 当前选中的球以及匹配状态
     public tabcurr: any = {} // 当前选中的tab信息
@@ -79,7 +72,8 @@ export class SSCofficialComponent implements OnInit {
         menu_2: 1 //二级tab默认项
     }
     // 一级tab
-    public menu_1 = [{
+    public menu_1 = [
+        {
             name: this.now_lang.Lot_tab.Five_star,
             active: 1
         },
@@ -1543,6 +1537,13 @@ export class SSCofficialComponent implements OnInit {
         4: {},
         5: {}
     };
+    // 用户信息
+    public userInfo = {
+        name: '赌神',
+        balance: '9999.99',
+        id: '007',
+        img: '../../images/cqssc_13.png'
+    };
     //选中的大小单双的tab
     public ballindex = -1;
     public up_ball = 1;
@@ -2410,10 +2411,9 @@ export class SSCofficialComponent implements OnInit {
                 }
             })
         })
-
         for (let i = 0; i < that.radom_input.value; i++) {
             let redata: any = {}
-            redata.ball = Utils.Randomrule(obj)
+            redata.ball = this.status.menu_1 === 10? Utils.Randomrule_2(2) : Utils.Randomrule(obj)
             redata.name = that.currtabname
             if (that.tabcurr.choose || that.tabcurr.datarule[0] == 'Rule_6') {
                 let ab = Utils.algorithm.RandomArray(['w', 'q', 'b', 's', 'g'], that.tabcurr.datarule[1])
@@ -2535,6 +2535,23 @@ export class SSCofficialComponent implements OnInit {
         this.totalinfo.amount = (180000 / this.modelarr[this.model]) - sum;
     }
 
+    // 锁定倍数
+    lock_multiple(item) {
+        let now_btn = $(item.target);
+        if (!$(item.target).hasClass('switch_btn')) {
+            now_btn = $(item.target).parent();
+        }
+        if (now_btn.hasClass('on')) {
+            this.lock_multible = false;
+            $('#testinput').removeAttr('disabled');
+        } else {
+            this.lock_multible = true;
+            $('#testinput').attr({
+                disabled: 'disabled'
+            });
+        }
+
+    }
 
     // 遗漏选择
     checkomit(obj, type) {
@@ -2913,22 +2930,5 @@ export class SSCofficialComponent implements OnInit {
             };
         }
         this.popoutInfo = Object.assign({}, o, data);
-    }
-    // 锁定倍数
-    lock_multiple(item) {
-        let now_btn = $(item.target);
-        if (!$(item.target).hasClass('switch_btn')) {
-            now_btn = $(item.target).parent();
-        }
-        if (now_btn.hasClass('on')) {
-            this.lock_multible = false;
-            $('#testinput').removeAttr('disabled');
-        } else {
-            this.lock_multible = true;
-            $('#testinput').attr({
-                disabled: 'disabled'
-            });
-        }
-
     }
 }
