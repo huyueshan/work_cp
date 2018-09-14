@@ -151,7 +151,62 @@ const appRoutes: Routes = [
         loadChildren: '../app/page_module_3/activity/activity.module#ActivityModule',
         canActivate: [RouteguardService]
         
-    }
+    },
+
+
+	//模板5的路由
+    {
+        path: 'login',
+        loadChildren: '../app/page_module_5/login/login.module#LoginModule',
+        canActivate: [RouteguardService]
+    },
+    {
+        path: 'forgetpass',
+        loadChildren: '../app/page_module_5/forgetpass/forgetpass.module#ForgetpassModule',
+        canActivate: [RouteguardService]
+    }, 
+    {
+        path: 'index',
+        loadChildren: '../app/page_module_5/index/index.module#IndexModule',
+        canActivate: [RouteguardService]
+    },
+    {
+        path: 'result',
+        loadChildren: '../app/page_module_5/result/result.module#ResultModule',
+        canActivate: [RouteguardService]
+    },  
+    {
+        path: 'lottery',
+        loadChildren: '../app/page_module_5/lottery/layout.module#LayoutModule',
+        canActivate: [RouteguardService]
+    },  
+    {
+        path: 'home',
+        loadChildren: '../app/page_module_5/home/home.module#HomeModule',
+        canActivate: [RouteguardService]
+    }, 
+    {
+        path: 'register',
+        loadChildren: '../app/page_module_5/register/register.module#RegisterModule',
+        canActivate: [RouteguardService]
+    },
+    {
+        path: 'index',
+        loadChildren: '../app/page_module_5/index/index.module#IndexModule',
+        canActivate: [RouteguardService]
+    },
+    {
+        path: 'usercenter',
+        loadChildren: '../app/page_module_5/usercenter/usercenter.module#UsercenterModule',
+        canActivate: [RouteguardService]
+        
+    },
+    {
+        path: 'AgainLogin',
+        loadChildren: '../app/page_module_5/AgainLogin/AgainLogin.module#AgainLoginModule',
+        canActivate: [RouteguardService]
+        
+    },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes, { useHash: true })],

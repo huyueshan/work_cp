@@ -1,0 +1,56 @@
+<div class="flex-c mycontainer">
+  <div class="flex-c formbox bg_1">
+    <span class="flex-r formitem">
+      <label for="type">{{now_lang.User_center_c.Customer_type}}：</label>
+      <select id="type" name="type" [(ngModel)]="formdata.type">
+        <option value="代理" selected>{{now_lang.User_center_c.Agent}}</option>
+        <option value="option1">option1</option>
+        <option value="option2">option2</option>
+        <option value="option3">option3</option>
+      </select>
+    </span>
+    <span class="flex-r formitem">
+      <label for="name">{{now_lang.User_center_c.Nickname}}：</label>
+      <input type="text" id="name" name="type" placeholder="2-6个字符" [(ngModel)]="formdata.name">
+    </span>
+    <span class="flex-r formitem">
+      <label for="account">{{now_lang.User_center_c.Landing_account}}：</label>
+      <input type="text" id="account" name="account" placeholder="3-15个字符（数字+字母）" [(ngModel)]="formdata.account">
+    </span>
+    <span class="flex-r formitem">
+      <label for="password1">{{now_lang.User_center_c.Login_password}}：</label>
+      <input type="text" id="password1" name="password1" placeholder="6-15个字符（数字+字母）" [(ngModel)]="formdata.password1">
+    </span>
+    <span class="flex-r formitem">
+      <label for="password2">{{now_lang.User_center_c.Duplicate_password}}：</label>
+      <input type="text" id="password2" name="password2" placeholder="再次输入密码" [(ngModel)]="formdata.password2">
+    </span>
+    <span class="flex-r formitem radiobox">
+      <label>{{now_lang.User_center_c.Tips17}}：</label>
+      <input type="radio" name="inform" value="true" [(ngModel)]="formdata.inform" />{{now_lang.User_center_c.Yes}} 
+      <input type="radio" name="inform" value="false" [(ngModel)]="formdata.inform" />{{now_lang.User_center_c.No}}
+    </span>
+    <span class="flex-r formitem radiobox">
+      <span class="flex-r groupbox">
+        <span [ngClass]="{bg_y:formdata.group=='配额奖金组'}" (click)="formdata.group='配额奖金组'">{{now_lang.User_center_c.Quota_fund_group}}</span>
+        <span [ngClass]="{bg_y:formdata.group=='其他资金组'}" (click)="formdata.group='其他资金组'">{{now_lang.User_center_c.Choose_other_moneygro}}</span>
+      </span>
+    </span>
+    <span class="flex-r formitem" *ngIf="formdata.group=='其他资金组'" >
+        <label for="other">{{now_lang.User_center_c.Set_up_a_bonus}}：</label>
+        <select id="other" name="other" [(ngModel)]="formdata.other">
+          <option value="代理" selected>{{now_lang.User_center_c.Agent}}</option>
+          <option value="option1">option1</option>
+          <option value="option2">option2</option>
+          <option value="option3">option3</option>
+        </select>
+        <p style="padding-left: 10px;">{{now_lang.User_center_c.Tips18}}</p>
+      </span>
+  </div>
+
+  <div class="subbox">
+    <button class="btn bg_y">{{now_lang.User_center_c.Immediate_registration}}</button>
+  </div>
+
+
+</div>

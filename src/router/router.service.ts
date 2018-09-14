@@ -282,6 +282,70 @@ export class RouteguardService implements CanActivate{
 				redirectTo: 'index',
 				pathMatch: 'full'  // 必须要设置
 			}
+        ];
+        const item5:Routes =[
+			{
+				path: '',
+				redirectTo: 'index',
+				pathMatch: 'full'
+			},
+			{
+				path: 'login',
+				loadChildren: '../app/page_module_5/login/login.module#LoginModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'forgetpass',
+				loadChildren: '../app/page_module_5/forgetpass/forgetpass.module#ForgetpassModule',
+				canActivate: [RouteguardService]
+			}, 
+			{
+				path: 'index',
+				loadChildren: '../app/page_module_5/index/index.module#IndexModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'result',
+				loadChildren: '../app/page_module_5/result/result.module#ResultModule',
+				canActivate: [RouteguardService]
+			},  
+			{
+				path: 'lottery',
+				loadChildren: '../app/page_module_5/lottery/layout.module#LayoutModule',
+				canActivate: [RouteguardService]
+			},  
+			{
+				path: 'home',
+				loadChildren: '../app/page_module_5/home/home.module#HomeModule',
+				canActivate: [RouteguardService]
+			}, 
+			{
+				path: 'register',
+				loadChildren: '../app/page_module_5/register/register.module#RegisterModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'index',
+				loadChildren: '../app/page_module_5/index/index.module#IndexModule',
+				canActivate: [RouteguardService]
+			},
+			{
+				path: 'usercenter',
+				loadChildren: '../app/page_module_5/usercenter/usercenter.module#UsercenterModule',
+				canActivate: [RouteguardService]
+				
+			},
+			{
+				path: 'AgainLogin',
+				loadChildren: '../app/page_module_5/AgainLogin/AgainLogin.module#AgainLoginModule',
+				canActivate: [RouteguardService]
+				
+			},
+			{
+				path: '**',   // 错误路由重定向[写在最后一个],可作为404页面
+				redirectTo: 'index',
+				pathMatch: 'full'  // 必须要设置
+			}
 		];
 		// 下面固定，勿动
 		const routitem = 'item'+t;

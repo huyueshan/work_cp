@@ -13,10 +13,10 @@
                         <span class="flex-r">
                             <strong>￥</strong>
                             <span class="flex-r rangebox">
-                                <span class="showvalue">{{(odds-rangevalue)| number : '1.0-1'}}%</span>
+                                <span class="showvalue">{{(transfer.user_odds - transfer.user_rangevalue)| number : '1.0-1'}}%</span>
                                 <span class="icon" (click)="rangevaluelessen()">-</span>
                                 <span class="flex-r range">
-                                    <input type="range" name="points" min="0" max="{{odds}}" step="{{rastep}}" id="points" [(ngModel)]="rangevalue">
+                                    <input type="range" name="points" min="0" max="{{transfer.user_odds}}" step="{{transfer.user_rastep}}" id="points" [(ngModel)]="transfer.user_rangevalue">
                                 </span>
                                 <span class="icon" (click)="rangevalueadd()">+</span>
                             </span>
@@ -50,7 +50,7 @@
                                         <span class="flex-r item1" [title]="'球号：'+item.numb">
                                             <i [ngClass]="{bgred: item.red , bggreen: item.green , bgblue: item.blue, bggray: item.gray}">{{item.numb}}</i>
                                         </span>
-                                        <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -63,7 +63,7 @@
                                 <div class="flex-r">
                                     <div class="flex-r itembox sanbao" [ngClass]="{checkbg:selectbtnvalue===1&&selballdata.checked}">
                                         <span class="flex-r item1 " (click)="rapid(selballdata)"> {{selballdata.name}}</span>
-                                        <span class="item2 color_y" (click)="rapid(selballdata)">{{(selballdata.point+(selballdata.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" (click)="rapid(selballdata)">{{(selballdata.point+(selballdata.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="flex-r item4" (click)="sanbaoclick(1)">
                                             <span class="flex-r">
                                                 <i [ngClass]="{bgred: selballdata.value1.styn === 'red',
@@ -139,7 +139,7 @@
                                         <span class="item1" [title]="child.title+'：'+child.name">
                                             {{child.name}}
                                         </span>
-                                        <span class="item2 color_y" *ngIf="child.name!==null">{{(child.point+(child.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="child.name!==null">{{(child.point+(child.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="child.value" (focus)="inmoneyfoc($event, child)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()" *ngIf="child.name!==null">

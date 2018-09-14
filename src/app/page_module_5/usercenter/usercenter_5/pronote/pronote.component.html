@@ -1,0 +1,41 @@
+<div class="flex-c mycontainer">
+  <div class="flex-r querycontent">
+    <span class="flex-r" style="justify-content: flex-start;">
+      <span class="query_item">
+        <span class="btn btn1" (click)="clear()">{{now_lang.User_center_c.Delet_choose}}</span>
+        <span class="btn btn1" (click)="read()">{{now_lang.User_center_c.Sign_readed}}</span>
+      </span>
+    </span>
+    <p>{{now_lang.User_center_c.Unread}}（
+      <span class="color_y">{{noread}}</span>
+      ）/{{now_lang.User_center_c.All}}（{{pronotedata.length}}）</p>
+  </div>
+  <div class=" flex-c tablebox">
+    <div class="tablewrap">
+      <table id="table" width="100%" border="0" cellspacing="0" cellpadding="4"   align="center">
+        <tr class="bg_1">
+          <th>
+            <span class="flex-r" style="justify-content:center;">
+              <input type="checkbox" name="all" id="all" [(ngModel)]="checkall"  (change)="allchange()">{{now_lang.User_center_c.All_choose}}
+            </span>
+          </th>
+          <th>{{now_lang.User_center_c.Send_from}}</th>
+          <th>{{now_lang.User_center_c.Theme}}</th>
+          <th>{{now_lang.User_center_c.Time}}</th>
+        </tr>
+        <tr *ngFor="let item of pronotedata"
+        [ngClass]="{color_dark:item.isread}" >
+          <td>
+            <input type="checkbox" name="{{item.id}}" id="{{item.id}}" [(ngModel)]="item.check"
+            (change)="itemchange()"/>
+          </td>
+          <td>{{item.addresser}}</td>
+          <td>{{item.theme}}</td>
+          <td>{{item.time}}</td>
+        </tr>
+      </table>
+    </div>
+    <app-page [pageParams]="pagination" (changeCurPage)="getPageData($event)"></app-page>
+
+  </div>
+</div>

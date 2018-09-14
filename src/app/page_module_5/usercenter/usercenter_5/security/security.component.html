@@ -1,0 +1,108 @@
+<div class=".flex-c securitybox">
+  <div class = "flex-r securityhead">
+    <span>{{now_lang.User_center_c.Security_class}}</span>
+    <span class="color_y">75{{now_lang.User_center_c.Score}}</span>
+    <span style="padding-left: 10px;">
+      <div class="pipe">
+        <div class="pipetop"></div>
+      </div>
+    </span>
+    <small>{{now_lang.User_center_c.Existence}}<i class="color_y">1</i> {{now_lang.User_center_c.Num_risk}}</small>
+  </div>
+  <div class="flex-r securityitem">
+    <div class="flex-r">
+      <i class="securityicon1"></i>
+      <div class="flex-c securityinfo">
+        <span>{{now_lang.User_center_c.Account_password}}</span>
+        <p>{{now_lang.User_center_c.Tips3}}</p>
+      </div>
+    </div>
+    <button class="xiugaibtn" (click)="detail(0)">{{now_lang.User_center_c.Change_it}}</button>
+  </div>
+  <div class="flex-r securityitem">
+    <div class="flex-r">
+      <i class="securityicon2"></i>
+      <div class="flex-c securityinfo">
+        <span>{{now_lang.User_center_c.Outmoney_password}}</span>
+        <p>{{now_lang.User_center_c.Tips4}}</p>
+      </div>
+    </div>
+    <button class="xiugaibtn" (click)="detail(1)">{{now_lang.User_center_c.Change_it}}</button>
+  </div>
+  <div class="flex-r securityitem">
+    <div class="flex-r">
+      <i class="securityicon3"></i>
+      <div class="flex-c securityinfo">
+        <span>{{now_lang.User_center_c.Phone_binding}}</span>
+        <p>{{now_lang.User_center_c.Tips5}}</p>
+      </div>
+    </div>
+    <button class="xiugaibtn" (click)="detail(2)" >{{now_lang.User_center_c.Change_it}}</button>
+  </div>
+  <div class="flex-r securityitem">
+    <div class="flex-r">
+      <i class="securityicon4"></i>
+      <div class="flex-c securityinfo">
+        <span>{{now_lang.User_center_c.Security_question}}</span>
+        <p class="color_y">{{now_lang.User_center_c.Tips6}}</p>
+      </div>
+    </div>
+    <button class="xiugaibtn" (click)="detail(3)">{{now_lang.User_center_c.Change_it}}</button>
+  </div>
+  <div class ="securityhead" style="height:60px; padding-top:20px;">
+    <span>{{now_lang.User_center_c.Login_history}}</span>
+  </div>
+  <div class="histinfo">
+    <p >{{now_lang.User_center_c.Tips71}}<span class="color_y">1</span>{{now_lang.User_center_c.Tips72}}<span class="color_y" style="cursor: pointer;" (click)="detail(0)">{{now_lang.User_center_c.Change_password}}</span> </p>
+  </div>
+  <div class="tablewrap">
+      <table id="table" width="100%" border="1" cellspacing="0" cellpadding="4"   align="center">
+        <tr class="bg_1">
+          <th>{{now_lang.User_center_c.Time}}</th>
+          <th>{{now_lang.User_center_c.Place}}</th>
+          <th>{{now_lang.User_center_c.Ip_adress}}</th>
+          <th>{{now_lang.User_center_c.Browser}}</th>
+          <th>{{now_lang.User_center_c.Login_mode}}</th>
+        </tr>
+        <tr class="bg_2">
+          <td>2018-05-28  10:25:36</td>
+          <td>{{now_lang.User_center_c.Login_mode1}}</td>
+          <td>47.52.61.232</td>
+          <td>{{now_lang.User_center_c.Login_mode2}}</td>
+          <td>{{now_lang.User_center_c.Login_mode3}}</td>
+        </tr>
+      </table>
+    </div>
+  
+  
+
+</div>
+
+<div *ngIf="modalInfo.show" >
+        <app-modal [data]='modalInfo' (close)="closeModal($event)">
+            <div class="flex-c formbox">
+                <form>
+                    <ul>
+                        <li>
+                            <label for="cur_pswd">请输入原登录密码：</label>
+                            <input id="cur_pswd" type="password" autocomplete=''>
+                        </li>
+                        <li>
+                            <label for="new_pswd">请输入新登录密码：</label>
+                            <input id="new_pswd" type="password" autocomplete='' placeholder="6-13个字符(数字或字母)">
+                        </li>
+                        <li>
+                            <label for="scend_pswd">请再次输入新登录密码：</label>
+                            <input id="scend_pswd" type="password" autocomplete=''>
+                        </li>
+                        <li>
+                            <label for="cur_pswd"></label>
+                            <button class="btn">修改</button>
+                            <button class="btn">重置</button>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+
+        </app-modal>
+</div>

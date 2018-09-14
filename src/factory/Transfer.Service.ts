@@ -31,6 +31,12 @@ export class TransferService {
     public user_moneytype:string = 'RMB';
  
     public user_money:number = 0;
+
+    public user_odds:number = 7.8 ;      // 用户最大返点 || 赔率
+
+    public user_rangevalue:number = 7.8 ;      // 用户选择的 返点 || 赔率 值
+
+    public user_rastep:number = 0.1 ;      // 用户 返点 || 赔率 可选步长（赔率拖动条的步长值）
  
  
 
@@ -45,7 +51,7 @@ export class TransferService {
 
     public cur_gameTYPE:string = 'official';   // 'official' || 'credit'
 
-    public cur_longhu:boolean =false;     // 是否定位龙虎投注页面
+    public cur_tolonghu:boolean = false;     // 是否定位龙虎投注页面
 
 
 
@@ -55,7 +61,12 @@ export class TransferService {
 
     public Credit_selmoeny = [100, 200, 500, 1000, 5000]; // 快选金额默认数组
 
-    public Credit_boxvalid = true; // 快选金额开启关闭， true为开启状态
+    public Credit_sel_on = true; // 快选金额开启关闭， true为开启状态
+
+
+
+
+
 
 
     constructor() {}
@@ -86,6 +97,18 @@ export class TransferService {
             window.sessionStorage.setItem(name,value);
         }
         _that[name] = value;
+    }
+
+            // 初始服务数据  主要是统一初始用户保存在LocalStorage的数据
+            // 统一在app.component.js中 初始。
+    initdata(){
+        // 初始信用玩法快选金额数据
+        if (JSON.parse(window.localStorage.getItem("selmoeny"))) {
+            this.Credit_selmoeny = JSON.parse(window.localStorage.getItem("selmoeny"));
+        } 
+        if (window.localStorage.getItem("sel_on").toString()) {    // 此处判断不能使用JSON.parse！
+            this.Credit_sel_on = JSON.parse(window.localStorage.getItem("sel_on"));
+        }
     }
 
 }

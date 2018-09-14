@@ -1,0 +1,273 @@
+.flex-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+}
+
+.flex-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+.color_y {
+    color: #fe8f00;
+    font-size: 12px;
+}
+
+.gamenav {
+    width: 100%;
+    color: #ccc;
+    .padright {
+        position: relative;
+        padding-right: 20px;
+        .allnav {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 240px;
+            z-index: 999;
+            .sidel {
+                width: 100%;
+                height: auto;
+                padding-bottom: 210px;
+                border: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-content: space-between;
+                overflow: hidden;
+                background-color: transparent;
+                .flex-sr {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-content: center;
+                    align-items: center;
+                }
+                .flex-sc {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-content: space-between;
+                }
+                li {
+                    width: 100%;
+                    font-size: 14px;
+                    color: white;
+                    .itembox {
+                        font-size: 14px;
+                        height: 42px;
+                        line-height: 40px;
+                        padding:0 12px 0 20px;
+                        font-weight: bold;
+                        background-color: #fe8f00;
+                        border-bottom: 2px solid white;
+                        cursor: pointer;
+                        .itemboxiconr {
+                            font-size: 30px;
+                            line-height: 32px;
+                            padding-top: 4px;
+                            padding-right: 6px;
+                            transform: rotate(0);
+                        }
+                        .iconactive {
+                            line-height: 48px;
+                            padding-right: 0;
+                            transform: rotate(90deg);
+                        }
+                        .sideicon {
+                            width: 36px;
+                            height: 24px;
+                            background: url('../../images/cred01.png');
+                            background-repeat: no-repeat;
+                        }
+                    }
+                    .itembox:hover {
+                        background-color: #FE7200;
+                    }
+                    .item {
+                        font-size: 12px;
+                        height: 32px;
+                        line-height: 30px;
+                        padding:0 18px 0 60px;
+                        background-color: #525151;
+                        color: white;
+                        border-bottom: 1px solid white;
+                        cursor: pointer;
+                    }
+                    .itemactive,
+                    .item:hover {
+                        color: #fe8f00;
+                    }
+                    .yborder {
+                        background-color: #FE7200;
+                    }
+                }
+            }
+        }
+
+    }
+    .navitem {
+        height: 100px;
+        background-color: #333;
+        border-radius: 4px;
+        overflow: hidden;
+        .fltitle {
+            width: 150px;
+            line-height: 22px;
+            padding-left: 30px;
+        }
+
+    }
+    .alltype {
+        
+        width: 240px;
+        .fltitle {
+            background: #fe8f00;
+            width: 40px;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            line-height: 20px;
+            height: 100px;
+            padding: 10px 10px;
+            cursor: pointer;
+        }
+        .fltitle.en{
+            width: 40px;
+            padding: 10px 13px;
+            line-height: 14px;
+            letter-spacing: 5px;
+            white-space:wrap;
+            word-break:break-all;
+        }
+        .frimg {
+            flex: 1;
+            justify-content: center;
+        }
+    
+    }
+    .gametime {
+        width: 340px;
+        .frtime {
+            text-align: center;
+            padding-right: 10px;
+            li {
+                list-style: none;
+                display: block;
+                width: 50px;
+                height: 50px;
+                background: url("../../images/sscsprites.png") -53px -0;
+                line-height: 50px;
+                text-align: center;
+                color: #fff;
+                font-size: 16px;
+            }
+        }
+    }
+    .gameresult {
+        width: 580px;
+        .resultball{
+            flex: 1;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            i{
+                display: inline-block;
+                width:50px;
+                height: 50px;
+                line-height: 46px;
+                font-size: 24px;
+                text-align: center;
+                color: white;
+                background: url('../../images/resultball.png') -10px -64px;
+                transform: rotatey(0deg);
+                transition: transform 1000ms ease;
+            }
+            .rotates{
+                transform:rotatey(360deg);
+            }
+            .bg_r50{
+                background: url('../../images/resultball.png') -10px -204px;
+            }
+            .bg_b50{
+                background: url('../../images/resultball.png') -10px -274px;
+            }
+            .bg_g50{
+                background: url('../../images/resultball.png') -10px -344px;
+            }
+            .bg_gray50{
+                background: url('../../images/resultball.png') -10px -134px;
+            }
+            .xian{
+                font-size: 20px;
+                font-weight: bold;
+                color: #4291DB;
+            }
+            .zhuang{
+                font-size: 20px;
+                font-weight: bold;
+                color: #fe8f00;
+            }
+        }
+        .resultball1{
+            padding: 0 60px 0 30px;
+        }
+        .resultball2{
+            padding-right: 4px;
+            i{
+                width:34px;
+                height: 34px;
+                line-height: 30px;
+                font-size: 16px;
+                margin: 2px 0;
+                background: url('../../images/resultball.png') -10px -10px;
+            }
+        }
+        .resultball3{
+            padding: 0 30px;
+            span{
+                font-size: 22px;
+                font-weight: bold;
+            }
+        }
+        .resultball4{
+            padding-right: 20px;
+            span{
+                font-size: 14px;
+                font-weight: bold;
+                align-self: center;
+            }
+            .jia{
+                font-size: 22px;
+                font-weight: bold;
+                padding-bottom: 24px;
+
+            }
+
+        }
+    }
+    .line {
+        width: 2px;
+        height: 52px;
+        background: url("../../images/sscsprites.png") -161px -0;
+    }
+    .currresult {
+        font-size: 12px;
+        line-height: 16px;
+        width: 68px;
+        height: 100px;
+        justify-content: center;
+        align-items: center;
+        span{
+            color: #fe8f00;
+            margin: 5px 0;
+            border-bottom: 1px solid #fe8f00;
+            cursor: pointer;
+        }
+    }
+}

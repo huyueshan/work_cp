@@ -1,0 +1,342 @@
+@charset "UTF-8";
+html,body {height:100%;}
+.body{
+    background: url(../images/bg.jpg) center no-repeat;
+	height:100%;
+	overflow:hidden;
+	background-size:cover;
+}
+
+.loginmod{
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-240px;
+	margin-top:-290px;
+	overflow:hidden;
+	z-index:10;
+	-webkit-animation: cloud_two 0.1s linear;
+	-moz-animation: cloud_two 0.1s  linear;
+	-o-animation: cloud_two 0.1s  linear;
+	animation: cloud_two 0.1s  linear;
+}
+.loginmod .logo{
+	text-align:center;
+    margin-bottom:50px;
+    
+    cursor: pointer;
+}
+.dialog_login{
+	width:480px;
+	height:380px;
+	overflow:hidden;
+	position:relative;
+	background:rgba(255,255,255,0.3);
+	border-radius:4px;
+}
+.dialog_login .dialog_title{
+	position:absolute;
+	width:100%;
+	height:30px;
+	line-height:30px;
+	left:0px;
+	top:30px;
+	color:#fff;
+	text-align:center;
+	font-size:18px;
+}
+.dialog_login .close_login{
+	position:absolute;
+	width:25px;
+	height:25px;
+	right:35px;
+	top:45px;
+	cursor:pointer;
+	z-index:10;
+}
+.form{
+	width:100%;
+	position:relative;
+}
+.logincon{
+	margin-top:70px;
+	padding: 0px;
+}
+.form .form-group{
+	width:100%;
+	position:relative;
+	padding:0px 50px;
+	overflow:hidden;
+	margin-bottom:10px;
+	text-align:center;
+}
+.form .form-group .control-label{
+	position: absolute;
+	font-size:14px;
+	color: #fff;
+	z-index: 1;
+}
+.form .form-group .control-label i{
+	padding:0 5px;
+	color:red;
+	font-style:normal;
+}
+.form .form-group .input{
+	position: relative;
+    line-height:50px;
+	float: left;
+	font-size:14px;
+	color: #A9671E;
+	width:100%;
+}
+.bg-user {
+	left:60px;
+	top:13px;
+    width: 20px; height: 20px;
+    background: url('../images/log-reg.png') -100px -10px;
+}
+.bg-password{
+	left:60px;
+	top:13px;
+	width: 20px; height: 20px;
+    background: url('../images/log-reg.png') -10px -55px;
+}
+.bg-code {
+	left:60px;
+	top:13px;
+    width: 20px; height: 20px;
+    background: url('../images/log-reg.png') -50px -55px;
+}
+input::-webkit-input-placeholder {
+	color: #999;
+	font-size: 14px;
+}
+input::-moz-placeholder {
+	color: #999;
+	font-size: 14px;
+}
+input::-ms-input-placeholder {
+	color: #999;
+	font-size: 14px;
+}
+.form .form-group .input .form-control{
+	display: block;
+    width: 330px;
+    height: 30px;
+    padding: 6px 12px 6px 35px;
+    line-height: 50px;
+    color: #FAFFFA;
+    border: 2px solid #7C7E91;
+    border-radius: 4px;
+	float: left;
+	background:rgba(0,0,0,0.3);
+	outline:none;
+	font-size: 14px;
+} 
+.form .form-group .input .form-controltext{
+	display: block;
+    width: 360px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #A9671E;
+    background-color: #fff;
+    border: none;
+    border-radius: 4px;
+	float: left;
+	background-color:#FEDDB2;
+	outline:none;
+	font-size: 12px;
+} 
+.form .form-group .input .code{
+    width: 180px;
+}
+.form .form-group .input .codebtn{
+	float:left;
+	width:90px;
+	height:50px;
+	line-height:50px;
+	background: #353538;
+	background-size:cover;
+	margin-left:10px;
+	text-align:center;
+	color:#999;
+	font-size:12px;
+	cursor:pointer;
+	border-radius:4px;
+}
+.form .form-group .input .codebtnfil{
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: gray;
+	display:none;
+}
+.form .form-group .input .codebtn:hover{
+	background: #1e1e1f;
+	background-size:cover;
+}
+.form .form-group .input .codewait{
+	float:left;
+	width:90px;
+	height:34px;
+	line-height:34px;
+	background-size:cover;
+	margin-left:10px;
+	text-align:center;
+	color:#fff;
+	font-size:14px;
+}
+.form .form-group .input .tip{
+	float: left;
+	height:22px;
+	line-height:22px;
+	font-size:12px;
+	width:100%;
+	color:red;
+	text-align:left;
+}
+
+.form .errtip{
+	width: 100%;
+    position: relative;
+    padding: 0px 50px;
+    overflow: hidden;
+    text-align: center;
+	min-height:33px;
+}
+.form .errtip .icon-err{
+	position:absolute;
+	left:60px;
+	top:5px;
+    width: 20px; height: 20px;
+    background: url('../images/vrc01.png') -3px -45px;
+}
+.form .errtip .alltip{
+	width:100%;
+    font-size: 12px;
+    text-align: left;
+	word-break: break-word ; 
+    float:left;
+	background-color: #f2dede;
+    color: #6C6C6C;
+	padding:5px;
+	border-radius:2px;
+	padding-left:40px;
+	margin-bottom:0px;
+}
+.form .red{
+	color:red;
+}
+.form .green{
+	color:#329824;
+}
+.btnsubmit{
+	width:100%;
+	position:relative;
+	overflow:hidden;
+	text-align:center;
+	padding:0px 50px;
+	margin-top:10px;
+}
+.btnsubmit .btntitle{
+	width:100%;
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	display: inline-block;
+	color:#fff;
+	cursor:pointer;
+	background:#D29217;
+	border-radius:4px;
+	text-decoration:none;
+}
+.btnsubmit .btntitle:hover{
+	background:#F8A300;
+}
+.btnsubmit .btndefault {
+    width: 330px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    display: inline-block;
+    color: #1D2975;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #1D2975;
+}
+.tipcon{
+	font-size:14px;
+	line-height:30px;
+	text-align:center;
+}
+.btnsubmit .codebtn{
+	width:90px;
+	height:37px;
+	line-height:37px;
+	background-size:cover;
+	text-align:center;
+	color:#fff;
+	font-size:14px;
+	cursor:pointer;
+	display: inline-block;
+}
+.btnsubmit .codebtn:hover{
+	background-size:cover;
+}
+.btnsubmit .forget{
+	width:100%;
+	line-height:30px;
+	font-size:14px;
+	color: #999;
+	text-align:left;
+	margin-top:5px;
+}
+.btnsubmit .forget a{
+	color: #c9333a;
+	text-decoration:none;
+	cursor:pointer;
+	font-size:14px;
+}
+.btnsubmit .forget .aleft{
+	color: #D29217;
+	float:left;
+}
+.btnsubmit .forget .aright{
+	color: #fff;
+	float:right;
+}
+.form-group .input .tx_code{
+	display: block;
+    width: 140px;
+    height: 45px;
+    line-height: 50px;
+    color: #8c8c8c;
+    border: 2px solid #7C7E91;
+    border-radius: 4px;
+    float: right;
+    background: rgba(0, 0, 0, 0.3);
+    outline: none;
+    font-size: 14px;
+	padding:5px;
+	cursor: pointer;
+}
+.form-group .input .tx_code .yzmcode{
+	width:70px;
+	height:30px;
+	float:left;
+}
+.form-group .input .tx_code .getimg{
+	font-size:12px;
+	line-height:30px;
+	float:right;
+	color:#ccc;
+}
+input:-webkit-autofill {
+	background-color: #FAFFBD;
+	background-image: none;
+	color: #000;
+}

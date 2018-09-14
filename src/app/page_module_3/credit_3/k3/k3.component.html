@@ -17,10 +17,10 @@
                         <span class="flex-r">
                             <strong>￥</strong>
                             <span class="flex-r rangebox">
-                                <span class="showvalue">{{(odds-rangevalue)| number : '1.0-1'}}%</span>
+                                <span class="showvalue">{{(transfer.user_odds - transfer.user_rangevalue)| number : '1.0-1'}}%</span>
                                 <span class="icon" (click)="rangevaluelessen()">-</span>
                                 <span class="flex-r range">
-                                    <input type="range" name="points" min="0" max="{{odds}}" step="{{rastep}}" id="points" [(ngModel)]="rangevalue">
+                                    <input type="range" name="points" min="0" max="{{transfer.user_odds}}" step="{{transfer.user_rastep}}" id="points" [(ngModel)]="transfer.user_rangevalue">
                                 </span>
                                 <span class="icon" (click)="rangevalueadd()">+</span>
                             </span>
@@ -51,7 +51,7 @@
                                         <span class="flex-r item1" [title]="k3data1.title+'：'+item.numb">
                                             <i [ngStyle]="{'background-position-y': imgtop[item.numb].top}"></i>
                                         </span>
-                                        <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -63,7 +63,7 @@
                                         <span class="flex-r item1" *ngIf="item.name !== null" [title]="'大小：'+item.name">
                                             {{item.name}}
                                         </span>
-                                        <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow && item.name !== null">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -78,7 +78,7 @@
                                                 <span class="flex-r item1" [title]="'全骰：'+item.name">
                                                     {{item.name}}
                                                 </span>
-                                                <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                                <span class="item2 color_y">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                                 <span class="item3" *ngIf="inputshow">
                                                     <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                         (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -91,7 +91,7 @@
                                         <span class="flex-r item1 " *ngIf="item.numb !== null" [title]="'围骰：'+item.numb">
                                             <i [ngStyle]="{'background-position-y': imgtop[item.numb].top}"></i>
                                         </span>
-                                        <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow && item.numb !== null">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -107,7 +107,7 @@
                                             <i [ngStyle]="{'background-position-y': imgtop[item.numb[0]].top}"></i>
                                             <i [ngStyle]="{'background-position-y': imgtop[item.numb[1]].top}"></i>
                                         </span>
-                                        <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow && item.numb !== null">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -122,7 +122,7 @@
                                         <span class="flex-r item1 doubicon" [title]="k3data4.title+'：'+item.name">
                                             {{item.name}}
                                         </span>
-                                        <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -138,7 +138,7 @@
                                                 <i [ngStyle]="{'background-position-y': imgtop[item.numb[0]].top}"></i>
                                                 <i [ngStyle]="{'background-position-y': imgtop[item.numb[1]].top}"></i>
                                         </span>
-                                        <span class="item2 color_y">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">

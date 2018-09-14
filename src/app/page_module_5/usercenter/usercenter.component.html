@@ -1,0 +1,76 @@
+<div class="flex-c userbox" [hidden]="!loadpage">
+  <div>
+    <app-header [username]="'test08'" [curpath]="'usercenter'"></app-header>
+  </div>
+  <div class="usercontent flex-r">
+    <div class="sidebox">
+        <app-side [navtitle]="'用户中心'"
+        [data]="usersidedata" [bgurl]="bgurl" #side></app-side>
+
+    </div>
+    <div class="flex-c content">
+      <!-- 右边内容区头部 -->
+      <div class="flex-r contop">
+        <div class="flex-r contopl">
+          <i></i>
+          <div>
+            <strong>{{now_lang.User_center.Hello}},</strong>
+            <span>test02</span>
+          </div>
+        </div>
+        <div class="flex-c contopr">
+
+          <span class="cottitle">
+            <strong>{{now_lang.User_center.Balance}}</strong>
+            <span>{{now_lang.User_center.Frozen_balance}}：0.00{{now_lang.User_center.Yuan}}</span>
+          </span>
+          <div class="flex-r cotmid">
+            <span>
+              <strong>9999.00</strong>
+              <small>{{now_lang.User_center.Yuan}}</small> &nbsp;
+            </span>
+            <span>
+              <a routerLink="/usercenter/recharge">
+                <span class="btn chongzhi btnb">{{now_lang.User_center.Inmoney}} </span>
+              </a>
+            </span>
+            <span>
+                <a routerLink="/usercenter/withdrawdeposit">
+                  <span class="btn tixian btnb">{{now_lang.User_center.Outmoney}} </span>
+                </a>
+            </span>
+          </div>
+          <span class="cotinfo">
+            {{now_lang.User_center.Last_login}}： 2018-05-22 10：07：10
+          </span>
+        </div>
+      </div>
+      <!-- 面包屑 -->
+      <div class="flex-r crumbs">
+        <p>
+          <a>{{side.navtitle}}</a>>
+          <a>{{side.currentparent}}</a>>
+          <span>{{side.currentitem}}</span>
+        </p>
+        <div *ngIf="side.currentitem==='充值记录'">
+            <span class="btn chongzhi">{{now_lang.User_center.Inmoney_history}}</span>
+            <span class="btn tixian">{{now_lang.User_center.Out_money_history}}</span>
+        </div>
+        <div *ngIf="side.currentitem==='站内短信'">
+          <span class="btn chongzhi">{{now_lang.User_center.Message_box}}</span>
+          <span class="btn tixian">{{now_lang.User_center.Outmessage_box}}</span>
+        </div>
+      </div>
+      <!-- 表格内容 -->
+      <div class="tablecontent">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="footer">
+    <app-footer></app-footer>
+  </div>
+
+</div>

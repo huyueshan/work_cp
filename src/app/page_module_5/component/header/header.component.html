@@ -1,0 +1,104 @@
+<meta name="viewport" content="width=1200">
+<div class="container">
+  <div class="nav" style="background:#000000;">
+    <div class="topbox">
+      <div class="topleft">
+        <span class="time">{{time| date:'yyyy-MM-dd  HH:mm:ss'}}</span>
+        <!-- <span class="time">2018-05-17 10:10</span> -->
+        <language class="language_box"></language>
+      </div>
+      <div class="topright">
+        <div class="userinfo flex-r" style="height: 40px;">
+          <span class="title">{{now_lang.HEADER.WELCOME}}，</span>
+          <!-- <span class="title" style="font-size:14px;">欢迎您，</span> -->
+          <a class="getinfo mr20" href="javascript:;">{{Transfer.user_name}}</a>
+          <!-- <a class="getinfo mr20" href="javascript:;">test007</a> -->
+          <span class="title mr20">{{now_lang.HEADER.MYCOUNT}}</span>
+          <span class="title mr20">{{now_lang.HEADER.BALANCE}}</span>
+          <span class="money" #money>{{Transfer.nowOnline}}</span>
+          <span class="titlerel bg-refaul_03" #refresh (click)="refresh_money(money,refresh)"></span>
+        </div>
+        <ul class="centerlist">
+          <li>
+            <a href="#/usercenter/recharge">{{now_lang.HEADER.INMONEY}}</a>
+          </li>
+          <li>
+            <a href="#/usercenter/withdrawdeposit">{{now_lang.HEADER.OUTMONEY}}</a>
+          </li>
+          <li class="voice">
+            <a (click)="voiceonoff(1)">{{now_lang.HEADER.SET_VOICE}}</a>
+            <div class="voicebox" *ngIf ="voiceshow">
+                <ul>
+                    <li *ngFor="let item of voice; let i = index" > 
+                        <span class="title">{{item.name}}</span> 
+                        <span class="togbtn" (click)="voiceclick(i)"><i [ngClass]="{checked:item.checked}" ></i></span>
+                    </li>
+                </ul>
+                <div class="voicebtn">
+                    <span class="active" (click)="voiceonoff(0)">确定</span>
+                    <span (click)="voiceonoff(0)">取消</span>
+                </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- 导航 -->
+  <div class="nav" style="background:#fff;">
+    <div class="headbox">
+      <div class="headleft">
+        <img class="logo" src="../../images/1_LOGO.png" />
+      </div>
+      <div class="headright" [ngClass]="{'en':now_lang_type==='en'}" >
+        <ul class="navtab">
+          <li>
+            <a href="#/index" [ngClass]="{color_y:curpath === pathdata[0]}">
+              <p class="pc">{{now_lang.NAV.HOME}}</p>
+              <p class="pe">Home</p>
+            </a>
+          </li>
+          <li>
+            <a href="#/lottery" [ngClass]="{color_y:curpath === pathdata[1]}">
+              <p class="pc">{{now_lang.NAV.LOOTERY}}</p>
+              <p class="pe">Lootery</p>
+            </a>
+          </li>
+          <li>
+            <a href="#/usercenter" [ngClass]="{color_y:curpath === pathdata[2]}">
+              <p class="pc">{{now_lang.NAV.USERCENTER}}</p>
+              <p class="pe">UserCenter</p>
+            </a>
+          </li>
+          <li>
+            <a href="#/usercenter/discount" [ngClass]="{color_y:curpath === pathdata[3]}">
+              <p class="pc">{{now_lang.NAV.ACTIVITY}}</p>
+              <p class="pe">Activity</p>
+            </a>
+          </li>
+          <li>
+            <a href="#/usercenter/webnote" [ngClass]="{color_y:curpath === pathdata[4]}">
+              <p class="pc">{{now_lang.NAV.ANNOUNCEMENT}}</p>
+              <p class="pe">Announncement</p>
+            </a>
+          </li>
+          <li>
+            <a href="#/usercenter/proinfo" [ngClass]="{color_y:curpath === pathdata[5]}">
+              <p class="pc">{{now_lang.NAV.GAMEINFOMATION}}</p>
+              <p class="pe">GameInformation</p>
+            </a>
+          </li>
+          <li>
+            <a (click)="linkclick(1)" href="javascript:;" [ngClass]="{color_y:curpath === pathdata[6]}">
+              <p class="pc">{{now_lang.NAV.MOBIE}}</p>
+              <p class="pe">Mobile</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class='flex-c banner'>
+    <!-- <img src="../../images/banner_10.jpg" /> -->
+  </div>
+</div>

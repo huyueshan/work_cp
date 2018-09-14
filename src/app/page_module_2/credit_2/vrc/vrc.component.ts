@@ -259,7 +259,7 @@ chedan(){
   }
   changereg() {
     let v = this.custom;
-    v.value = v.value.replace(/\D/g, "");
+    v.value = v.value.toString().replace(/\D/g, "");
     if (Number(v.value) === 0 || v.value === "") {
         v.value = "1";
     }

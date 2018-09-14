@@ -14,6 +14,8 @@ import {
     Base
 } from "../../../../factory/base.model";
 
+import { TransferService } from '../../../../factory/Transfer.Service';
+
 @Component({
     selector: "app-k3",
     templateUrl: "./k3.component.html",
@@ -29,9 +31,6 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
         time: ""
     };
     public routeid;
-    public odds = 7.8; // 赔率
-    public rastep = 7.8; // 滑动条步长
-    public rangevalue = 7.8; //绑定滑动条数据
     public delay = true; // 选择金额框判断
     public boxshow = false; // 选择金额框显示判断
     public boxvalid = true; // 选择金额框禁用判断
@@ -613,7 +612,7 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
     constructor(
         private el: ElementRef,
         private router: Router,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,public transfer: TransferService
     ) {}
 
     ngOnInit() {
@@ -689,14 +688,14 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
     }
     // 滑块左侧递减事件
     rangevaluelessen() {
-        if (this.rangevalue > 0) {
-            this.rangevalue -= this.rastep;
+        if (this.transfer.user_rangevalue > 0) {
+            this.transfer.user_rangevalue -= this.transfer.user_rastep;
         }
     }
     // 滑块左侧递加事件
     rangevalueadd() {
-        if (this.rangevalue < this.odds) {
-            this.rangevalue += this.rastep;
+        if (this.transfer.user_rangevalue < this.transfer.user_odds) {
+            this.transfer.user_rangevalue += this.transfer.user_rastep;
         }
     }
     // 切换一般 /快捷 事件
@@ -762,9 +761,9 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
     changeregset(i) {
         let p = this.popup;
         if (i === -1) {
-            p.setnumb.value = p.setnumb.value.replace(/\D/g, "");
+            p.setnumb.value = p.setnumb.value.toString().replace(/\D/g, "");
         } else {
-            p.setnumb.data[i].value = p.setnumb.data[i].value.replace(/\D/g, "");
+            p.setnumb.data[i].value = p.setnumb.data[i].value.toString().replace(/\D/g, "");
         }
     }
     //====快选金额事件end=============
@@ -913,7 +912,7 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
     // 限制输入框只能输入数字
     changereg() {
         let v = this.curinpt;
-        v.value = v.value.replace(/\D/g, "");
+        v.value = v.value.toString().replace(/\D/g, "");
         if (Number(v.value) === 0 && v.value !== "") {
             v.value = 0;
         }
@@ -970,7 +969,7 @@ export class K3Component implements OnInit, OnDestroy, AfterViewInit {
                         data[l].ball = d[q].name;
                     }
                     data[l].type = "大小骰宝 - " + str;
-                    data[l].point = parseFloat((d[q].point + (d[q].step * this.rangevalue)).toFixed(3));
+                    data[l].point = parseFloat((d[q].point + (d[q].step * this.transfer.user_rangevalue)).toFixed(3));
                     data[l].money = d[q].value;
                 }
             }

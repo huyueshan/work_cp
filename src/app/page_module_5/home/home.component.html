@@ -1,0 +1,36 @@
+
+
+<!-- 弹窗组件可以放在任意位置 -->
+<app-pupout [data]='popoutInfo' (close)="closePopouot($event)" (notarize)="NOTARIZE()"></app-pupout>
+
+<!-- 用法 -->
+<div class="btngroup">
+    <button (click)="click1()">提示按钮</button>
+    <button (click)="click2()">带事件按钮</button>
+</div>
+
+<div class="page"> 
+    <!-- 调用分页组件 -->
+    <app-page [pageParams]="pagination" (changeCurPage)="getPageData($event)"></app-page>
+
+    <!-- 分页组件参数设置 -->
+    <label>每页显示：
+        <select name="size" id="size" [(ngModel)]="selectdata.pageSize" (change)="pageParamschange()">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+        </select>
+            条
+    </label>
+    <label>最多显示
+        <select name="segment" id="segment" [(ngModel)]="selectdata.segmentSize" (change)="pageParamschange()">
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
+        个页码标签
+    </label>
+</div>

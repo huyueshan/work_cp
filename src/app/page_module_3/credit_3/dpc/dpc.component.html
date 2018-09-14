@@ -15,11 +15,11 @@
                             <span class="flex-r rangebox">
                                 <span class="showvalue" *ngIf="type===7">0%</span>
                                 <ng-container *ngIf="!(type===7)">
-                                    <span class="showvalue">{{(odds-rangevalue)| number : '1.0-1'}}%</span>
+                                    <span class="showvalue">{{(transfer.user_odds - transfer.user_rangevalue)| number : '1.0-1'}}%</span>
 
                                     <span class="icon" (click)="rangevaluelessen()">-</span>
                                     <span class="flex-r range">
-                                        <input type="range" name="points" min="0" max="{{odds}}" step="{{rastep}}" id="points" [(ngModel)]="rangevalue">
+                                        <input type="range" name="points" min="0" max="{{transfer.user_odds}}" step="{{transfer.user_rastep}}" id="points" [(ngModel)]="transfer.user_rangevalue">
                                     </span>
                                     <span class="icon" (click)="rangevalueadd()">+</span>
                                 </ng-container>
@@ -53,7 +53,7 @@
                                         <span class="flex-r item1 " *ngIf="item.numb !== null" [title]="dpcdata1.title+':'+item.numb">
                                             <i [ngClass]="{bgred: item.red , bgblue: item.blue, bggreen: item.green }">{{item.numb}}</i>
                                         </span>
-                                        <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow && item.numb !== null">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -68,7 +68,7 @@
                                         <span class="item1" *ngIf="child.name!==null" [title]="child.title+':'+child.name">
                                             {{child.name}}
                                         </span>
-                                        <span class="item2 color_y" *ngIf="child.name!==null">{{(child.point+(child.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="child.name!==null">{{(child.point+(child.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="child.value" (focus)="inmoneyfoc($event, child)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()" *ngIf="child.name!==null">
@@ -98,7 +98,7 @@
                                         <span class="flex-r item1 " *ngIf="item.name !== null">
                                             {{item.name}}
                                         </span>
-                                        <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow && item.name !== null">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -143,7 +143,7 @@
                                         <span class="flex-r item1 " *ngIf="item.name !== null" [title]="dpcdata3.title+':'+item.name">
                                             {{item.name}}
                                         </span>
-                                        <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow && item.name !== null">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -176,7 +176,7 @@
                                         <span class="flex-r item1 " *ngIf="item.numb !== null" [title]="dpcdata4.title+':'+item.numb">
                                             <i [ngClass]="{bgred: item.red , bgblue: item.blue, bggreen: item.green }">{{item.numb}}</i>
                                         </span>
-                                        <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow && item.numb !== null">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -214,7 +214,7 @@
                                         <span class="flex-r item1 " *ngIf="item.numb !== null" [title]="dpcdata5.title+':'+item.numb">
                                             <i [ngClass]="{bgred: item.red , bgblue: item.blue, bggreen: item.green }">{{item.numb}}</i>
                                         </span>
-                                        <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow && item.numb !== null">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -246,7 +246,7 @@
                                         <span class="item1" *ngIf="child.name!==null" [title]="item.title+child.title+':'+child.name">
                                             {{child.name}}
                                         </span>
-                                        <span class="item2 color_y" *ngIf="child.name!==null">{{(child.point+(child.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="child.name!==null">{{(child.point+(child.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="child.value" (focus)="inmoneyfoc($event, child)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()" *ngIf="child.name!==null">
@@ -284,7 +284,7 @@
                                             <span class="flex-r item1 " *ngIf="item.numb !== null" [title]="optionsdata.lianmastyle[optionsdata.lianmastactive]+':'+item.numb">
                                                 <i [ngClass]="{bgred: item.red , bgblue: item.blue, bggreen: item.green }">{{item.numb}}</i>
                                             </span>
-                                            <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                            <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                             <span class="flex-r item3" *ngIf="item.numb !== null">
                                                 <input type="checkbox" name="check" [(ngModel)]="item.checked" (change)="chechange(i,1)" [disabled]="item.disabled" />
                                             </span>
@@ -324,7 +324,7 @@
                                             <span class="flex-r item1 " *ngIf="item.name !== null">
                                                 {{item.name}}
                                             </span>
-                                            <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                            <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                             <span class="item3">
                                                 <input type="checkbox" name="check" [(ngModel)]="item.checked" [disabled]="item.disabled" (change)="chechange(i,2)" />
                                             </span>
@@ -367,7 +367,7 @@
                                             <span class="flex-r item1 " *ngIf="item.name !== null">
                                                 {{item.name}}
                                             </span>
-                                            <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                            <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                             <span class="item3">
                                                 <input type="checkbox" name="check" [(ngModel)]="item.checked" [disabled]="item.disabled" (change)="chechange(i,3)" />
                                             </span>
@@ -420,7 +420,7 @@
                                         <span class="flex-r item1 " *ngIf="item.name !== null" [title]="dpcdata8.title+':'+item.name">
                                             {{item.name}}
                                         </span>
-                                        <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow && item.name !== null">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -466,7 +466,7 @@
                                         <span class="flex-r item1 " *ngIf="item.name !== null" [title]="dpcdata9.title+':'+item.name">
                                             {{item.name}}
                                         </span>
-                                        <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3" *ngIf="inputshow && item.name !== null">
                                             <input type="text" maxlength="9" class="inmoney" name="inmoney" [(ngModel)]="item.value" (focus)="inmoneyfoc($event, item)"
                                                 (blur)="inmoneyblur()" (keyup)="changereg()">
@@ -573,7 +573,7 @@
                                         <span class="flex-r item1 " *ngIf="item.numb !== null" [title]="optionsdata.zixuanno[optionsdata.zixuactive]+':'+item.numb">
                                             <i [ngClass]="{bgred: item.red , bgblue: item.blue, bggreen: item.green }">{{item.numb}}</i>
                                         </span>
-                                        <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="item.numb !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="flex-r item3" *ngIf="item.numb !== null">
                                             <input type="checkbox" name="check" [(ngModel)]="item.checked" [disabled]="item.disabled" (change)="chechange(i,1)" />
                                         </span>
@@ -626,7 +626,7 @@
                                         <span class="flex-r item1 " *ngIf="item.name !== null" [title]="optionsdata.lianxiaostyle[optionsdata.lianxiaostactive]+':'+item.name">
                                             {{item.name}}
                                         </span>
-                                        <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*rangevalue))| number : '1.0-3'}} </span>
+                                        <span class="item2 color_y" *ngIf="item.name !== null">{{(item.point+(item.step*transfer.user_rangevalue))| number : '1.0-3'}} </span>
                                         <span class="item3">
                                             <input type="checkbox" name="check" [(ngModel)]="item.checked" [disabled]="item.disabled" (change)="chechange(i,1)" />
                                         </span>
@@ -656,11 +656,11 @@
                                         <span class="flex-r item2">
                                             <span class="flex-r item2info" [ngClass]="{togstyle2:!inputshow,checkbg:selectbtnvalue===1&&item.value1.checked}" (click)="rapid(item.value1)">
                                                 <span class="color_r">龙</span>
-                                                <span class="color_y">{{(item.value1.point+(item.value1.step*rangevalue))| number : '1.0-3'}}</span>
+                                                <span class="color_y">{{(item.value1.point+(item.value1.step*transfer.user_rangevalue))| number : '1.0-3'}}</span>
                                             </span>
                                             <span class="flex-r item2info" [ngClass]="{togstyle2:!inputshow,checkbg:selectbtnvalue===1&&item.value2.checked}" (click)="rapid(item.value2)">
                                                 <span class="color_b">虎</span>
-                                                <span class="color_y">{{(item.value2.point+(item.value2.step*rangevalue))| number : '1.0-3'}}</span>
+                                                <span class="color_y">{{(item.value2.point+(item.value2.step*transfer.user_rangevalue))| number : '1.0-3'}}</span>
                                             </span>
                                         </span>
                                         <span class="flex-r item3" *ngIf="inputshow">

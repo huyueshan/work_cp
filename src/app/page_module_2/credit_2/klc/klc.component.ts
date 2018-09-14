@@ -1630,9 +1630,9 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     changeregset(i) {
         let p = this.popup;
         if (i === -1) {
-            p.setnumb.value = p.setnumb.value.replace(/\D/g, "");
+            p.setnumb.value = p.setnumb.value.toString().replace(/\D/g, "");
         } else {
-            p.setnumb.data[i].value = p.setnumb.data[i].value.replace(/\D/g, "");
+            p.setnumb.data[i].value = p.setnumb.data[i].value.toString().replace(/\D/g, "");
         }
     }
     //====快选金额事件end=============
@@ -1815,7 +1815,7 @@ export class KlcComponent implements OnInit, OnDestroy, AfterViewInit {
     // 限制输入框只能输入数字
     changereg() {
         let v = this.curinpt;
-        v.value = v.value.replace(/\D/g, "");
+        v.value = v.value.toString().replace(/\D/g, "");
         if (Number(v.value) === 0 && v.value !== "") {
             v.value = 0;
         }

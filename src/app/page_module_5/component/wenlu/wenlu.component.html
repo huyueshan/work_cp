@@ -1,0 +1,19 @@
+<div class="flex-c sscbottom">
+    <ul class="flex-r tabbox">
+        <li class="tabitem">
+            <select id="typeoption" name="typeoption" [(ngModel)]="typeoption" (change)="typeoptchange()">
+                <option *ngFor="let item of typeoptiondata" value="{{item}}">{{item}}</option>
+            </select>
+        </li>
+        <li class="tabitem" *ngFor="let item of bottomtabdata; let i=index" (click)="changeWay(i)">
+            <span class="tabbtn" [ngClass]="{tabbtnactive:bottabactive == i }">
+                {{item.name}}
+            </span>
+        </li>
+    </ul>
+    <div class="waybill-main">
+        <div class="w-item clear" id="WAYBILL-BODY" style="margin-left:10px;">
+        </div>
+    </div>
+</div>
+
