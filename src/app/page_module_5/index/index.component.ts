@@ -17,182 +17,6 @@ export class IndexComponent implements OnInit, OnDestroy {
   // 头部左边导航数据
   public now_lang :any=userModel.langpackage;
   public now_lang_type :any='zh';
-  public navdatal = [
-    {
-      text: this.now_lang.index.Index,
-      bgpositiony: -10,
-      isover: false,
-      link: ""
-    },
-    {
-      text: this.now_lang.index.Lot_lobby,
-      bgpositiony: -114,
-      isover: false,
-      link: "/lottery"
-    },
-    {
-      text: this.now_lang.index.User_center,
-      bgpositiony: -218,
-      isover: false,
-      link: "/usercenter"
-    },
-    {
-      text: this.now_lang.index.Discount,
-      bgpositiony: -322,
-      isover: false,
-      link: "/usercenter/discount"
-    }
-  ];
-  // 头部右边导航数据
-  public navdatar = [
-    {
-      text: this.now_lang.index.Notice,
-      bgpositiony: -10,
-      isover: false,
-      link: "/usercenter/webnote"
-    },
-    {
-      text: this.now_lang.index.Lot_info,
-      bgpositiony: -114,
-      isover: false,
-      link: "/usercenter/proinfo"
-    },
-    {
-      text: this.now_lang.index.Pho_bet,
-      bgpositiony: -218,
-      isover: false,
-      link: "game2"
-    },
-    {
-      text:  this.now_lang.index.Client_service,
-      bgpositiony: -322,
-      isover: false,
-      link: ""
-    }
-  ];
-  // 中间内容取tab数据
-  public mdtabdata = [
-    {
-      text: this.now_lang.index.Hot_game,
-      link: ""
-    },
-    {
-      text: this.now_lang.index.App_down,
-      link: ""
-    },
-    {
-      text: this.now_lang.index.Discount,
-      link: ""
-    }
-  ];
-  // 热门游戏彩种球数据
-  public ball_list = [
-    {
-      x: -10,
-      y: -10,
-      left: "-240",
-      link: "/lottery/officialssc"
-    },
-    {
-      x: -122,
-      y: -134,
-      left: "-120",
-      link: "/lottery/officialssc"
-    },
-    {
-      x: -10,
-      y: -258,
-      left: "0",
-      link: "/lottery/officialssc/cq"
-    },
-    {
-      x: -346,
-      y: -134,
-      left: "120",
-      link: "/lottery/officialssc"
-    },
-    {
-      x: -10,
-      y: -258,
-      left: "240",
-      link: "/lottery/officialssc"
-    },
-    {
-      x: -10,
-      y: -258,
-      left: "360",
-      link: "/lottery/officialpk10/bjpk"
-    },
-    {
-      x: -10,
-      y: -258,
-      left: "480",
-      link: "/lottery/officialpk10/bjpk"
-    },
-    {
-      x: -10,
-      y: -10,
-      left: "600",
-      link: "/lottery/officialpk10/bjpk"
-    },
-    {
-      x: -122,
-      y: -134,
-      left: "720",
-      link: "/lottery/officialpk10/bjpk"
-    },
-    {
-      x: -346,
-      y: -134,
-      left: "840",
-      link: "/lottery/officialssc"
-    },
-    {
-      x: -10,
-      y: -258,
-      left: "960",
-      link: "/lottery/officialssc"
-    },
-    {
-      x: -10,
-      y: -10,
-      left: "1080",
-      link: "/lottery/officialssc"
-    },
-    {
-      x: -122,
-      y: -134,
-      left: "1200",
-      link: "/lottery/officialssc"
-    },
-    {
-      x: -346,
-      y: -134,
-      left: "1320",
-      link: "/lottery/officialssc"
-    },
-  ];
-  // 热门游戏内容区数据
-  public hotcard_list = [
-    {
-      src: require("../images/shishicai.jpg"),
-      title: this.now_lang.index.ssc,
-      link: "/lottery/officialssc"
-    },
-    {
-      src: require("../images/shifencai.jpg"),
-      title: this.now_lang.index.fsc,
-      link: "/lottery/officialffc"
-    },
-    {
-      src: require("../images/VR_cai.jpg"),
-      title: this.now_lang.index.vrc,
-    //   link: "/lottery/creditpk10"
-      link: "/lottery/vrc"
-    }
-  ];
-  // 投注排行和中奖排行数据
-  public touzhu_list = [, , , , , , , , , , ];
   // 登陆表单数据
   public logindata = {
     name: {
@@ -222,6 +46,45 @@ export class IndexComponent implements OnInit, OnDestroy {
     password: /^[\d]{1,15}$/,
     security: /^(\d){4}$/
   };
+
+  public resultdata = [5,2,9,3,6];
+  public hisdata = [,,,,,,,,,,,]
+  public gamedata = [
+      {
+          name:'时时彩',
+          result:[5,2,9,3,6],
+          time:50 ,
+          src:require("../images/mod5/ssc80_m5.png"),
+          width:84,
+          link:'',
+      },
+      {
+          name:'福彩',
+          result:[5,2,9,3,6],
+          time:50 ,
+          src:require("../images/mod5/fc80_m5.png"),
+          width:70,
+          link:'',
+      },
+      {
+          name:'幸运彩',
+          result:[5,2,9,3,6],
+          time:50 ,
+          src:require("../images/mod5/xy80_m5.png"),
+          width:70,
+          link:'',
+      },
+      {
+          name:'快乐彩',
+          result:[5,2,9,3,6],
+          time:50 ,
+          src:require("../images/mod5/klc80_m5.png"),
+          width:88,
+          link:'',
+      },
+  ]
+  
+  
   constructor(private route: ActivatedRoute, private router: Router, private Pginit:PageinitService, private Transfer:TransferService) {}
 
   ngOnInit() {
@@ -251,54 +114,6 @@ export class IndexComponent implements OnInit, OnDestroy {
       }
   }
 
-  // 中间内容区tab切换事件
-  mdtabclick(i) {
-    this.tabactive = i;
-  }
-  // 头部左右导航鼠标经过事件
-  navmouseenter(i, t) {
-    if (t == "left") {
-      this.navdatal[i].isover = true;
-    } else {
-      this.navdatar[i].isover = true;
-    }
-  }
-  navmouseleave(i, t) {
-    if (t == "left") {
-      this.navdatal[i].isover = false;
-    } else {
-      this.navdatar[i].isover = false;
-    }
-  }
-  // todo:热门游戏小球移动效果
-  ballclick(t) {
-    let data = this.ball_list;
-    if (t == "left") {
-      if (Number(data[0].left) < -600) {
-        return;
-      } else {
-        for (let i = 0; i < data.length; i++) {
-          data[i].left = "" + (Number(data[i].left) - 120);
-        }
-      }
-    } else {
-      if (Number(data[data.length - 1].left) > 1320) {
-        return;
-      } else {
-        for (let i = 0; i < data.length; i++) {
-          data[i].left = "" + (Number(data[i].left) + 120);
-        }
-      }
-    }
-  }
-  linkrouter(t) {
-      if (t === "game2") {
-        window.location.hash = "#game";
-        this.tabactive = 1;
-        return;
-      }
-    this.router.navigate([t]);
-  }
   // 登陆表单输入框获取焦点事件
   focus(t) {
     this.logindata[t].err = false;

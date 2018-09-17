@@ -1,196 +1,102 @@
-<div class="container">
-    <div id="header">
-        <div class="flex-r head  font14">
-            <div class="flex-r">
-                <div class="sidenavl">
-                    <span *ngFor="let item of navdatal; let i=index" [style.background-position-y.px]="item.bgpositiony" [ngClass]="{'navhover': item.isover}"
-                        (mouseenter)="navmouseenter(i,'left')" (mouseleave)="navmouseleave(i,'left')" (click)="linkrouter(item.link)">{{item.text}}</span>
-                </div>
-            </div>
-            <div class="flex-c headmid">
-                <div class="flex-r topnav">
-                    <span>{{now_lang.Top_nav.Add_collect}}</span>|
-                    <span>{{now_lang.Top_nav.Set_index}}</span>|
-                    <span>{{now_lang.Top_nav.Agent_in}}</span>|
-                    <span>{{now_lang.Top_nav.Agent_login}}</span>|
-                    <span>{{now_lang.Top_nav.Phone_stake}}</span>
-                    <language></language>
-                </div>
-                <div class="topimg">
-                    <img src="../images/logo_03.png" alt="">
-                </div>
-            </div>
-            <div class="flex-r">
-                <div class="sidenavr">
-                    <span *ngFor="let item of navdatar; let i=index" [style.background-position-y.px]="item.bgpositiony" [ngClass]="{'navhover': item.isover}"
-                        (mouseenter)="navmouseenter(i,'right')" (mouseleave)="navmouseleave(i,'right')" (click)="linkrouter(item.link)">{{item.text}}</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="headformbox">
-            <form>
-                <div class="headformbg flex-r">
-                    <div class="flex-r errbox" *ngIf="errinfo.show">
-                            <span class="color_r">*</span><p>{{errinfo.content}}</p>
-                    </div>
-                    
-                    <div class="accountbox" [ngClass]="{errbd:logindata.name.err}">
-                        <label for="account"></label>
-                        <input type="text"
-                        name="name"
-                        id="account"
-                        placeholder={{now_lang.index.User_pho}}
-                        [(ngModel)]="logindata.name.value"
-                        (focus)="focus('name')" />
-                    </div>
-                    <div class="passbox" [ngClass]="{errbd:logindata.password.err}">
-                        <label for="password"></label>
-                        <input type="password"
-                        name="password"
-                        id="password"
-                        placeholder={{now_lang.index.Password}}
-                        autocomplete=''
-                        [(ngModel)]="logindata.password.value"
-                        (focus)="focus('password')" />
-                        <span class="forgetbtn" (click)="linkrouter('/usercenter/security')">{{now_lang.index.Forget}}?</span>
-                    </div>
-                    <div class="secubox flex-r" [ngClass]="{errbd:logindata.security.err}">
-                        <label for="security"></label>
-                        <input type="text"
-                        name="security"
-                        id="security"
-                        placeholder={{now_lang.index.Smscode}}
-                        [(ngModel)]="logindata.security.value"
-                        (focus)="focus('security')"security
-                        />
-                        <span class="secuimg"></span>
-                    </div>
-                    <div class="btngroup flex-r">
-                        <div class="btn_loding" (click)="onsubmit()">
-                            <span>{{now_lang.index.Login}}</span>
-                        </div>
-                        <a href="#/register" class="btn_reg">
-                            <span>{{now_lang.index.Regist}}</span>
-                        </a>
-                        <div class="btn_demo" (click)="outlog()">
-                            <span>{{now_lang.index.Try_play}}</span>
-                        </div>
-                    </div>
-    
-                </div>
-            </form>
-        </div>
-
+<div class="flex-c container">
+    <div style="width:100%;">
+        <app-header [username]="'test08'" [curpath]="'index'"></app-header>
     </div>
-    <div id="contain">
 
-        <div class="flex-c cont" id="game">
-            <div class="md-top">
-                <div class="flex-r md-tab">
-                    <span *ngFor="let item of mdtabdata; let i=index" [ngClass]="{'tableactive': tabactive === i}" (click)="mdtabclick(i)">{{item.text}}</span>
+    <div class="flex-c contentbox">
+        <div class="flex-c midimg">
+            <img src="../images/mod5/indextext_m5_01.png" alt="豪彩">
 
-                    <div class="flex-r md-new">
-                        <i></i>
-                        {{now_lang.index.Last_news}}：
+            <!-- <img src="../images/mod5/index_m5_01.png" alt="豪彩" width="100%" height="auto"> -->
+            <div class="flex-r content">
+                <div class="flex-r contwrap">
+
+                    <div class="flex-c cont_l">
+                        <div class="flex-r top"> </div>
+                        <div class="active"></div>
                     </div>
-                    <div class="marq">
-                        <marquee scrollamount="1" scrolldelay="50">{{now_lang.index.news1}}</marquee>
-                    </div>
-                </div>
-            </div>
-            <!-- tab内容热门游戏 -->
-            <div class="flex-c hot" *ngIf="tabactive === 0">
-                <div class="flex-r md-ball">
-                    <div (click)="ballclick('left')" class="l-icon">
-                        <i></i>
-                    </div>
-                    <div class="ball-box">
-                        <div>
-                            <div class="ball" *ngFor="let item of ball_list; let i=index" [style.background-position-y.px]="item.y" [style.background-position-x.px]="item.x"
-                                [style.left.px]="item.left" (click)="linkrouter(item.link)"></div>
-                        </div>
-                    </div>
-                    <div (click)="ballclick('right')" class="r-icon">
-                        <i></i>
-                    </div>
-                </div>
-                <div class="flex-r  md-content">
-                    <div class="hot-card" *ngFor="let item of hotcard_list; let i=index">
-                        <div>
-                            <img src="{{item.src}}" alt="" width="100%" height="auto" (click)="linkrouter(item.link)" />
-                        </div>
-                        <div class="flex-c hot-card-info">
-                            <span class="flex-r card-head">
-                                <i></i>
-                                <span>{{item.title}}</span>
-                                <i></i>
+                    <div class="flex-c cont_r">
+                        <div class="flex-c top">
+                            <span class="flex-r toplink">
+                                <span>
+                                    <a href="javascript:;">登录</a>
+                                    <i>|</i>
+                                    <a href="javascript:;">注册</a>
+                                </span>
+                                <span>
+                                        <a href="javascript:;">联系客服</a>
+                                        <a href="javascript:;">忘记密码？</a>
+                                </span>
                             </span>
-                            <span>{{now_lang.index.tips1}}</span>
-                            <span class="card-btn" (click)="linkrouter(item.link)">{{now_lang.index.Begin_now}}</span>
                         </div>
-                    </div>
-                    <div class="hot-card paihang-card">
-                        <div class="tab_btn">
-                            <span [ngClass]="{'tableactive': tableactive===0}" (click)="tableactive=0">{{now_lang.index.Bet_rank}}</span>
-                            <span [ngClass]="{'tableactive': tableactive===1}" (click)="tableactive=1">{{now_lang.index.Win_rank}}</span>
-                        </div>
-                        <div class="flex-c tab_info" *ngIf="tableactive===0">
-                            <div class="flex-r info_tr" *ngFor="let item of touzhu_list">
-                                <i></i>
-                                <div class="flex-r info-text">
-                                    <span>QWE******</span>
-                                    <span>
-                                        <span style="color:#FEA202;">12345678</span>元</span>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="flex-c tab_info" *ngIf="tableactive===1">
-                            <div class="flex-r info_tr" *ngFor="let item of touzhu_list">
-                                <i></i>
-                                <div class="flex-r info-text">
-                                    <span>CZH+++++</span>
-                                    <span>
-                                        <span style="color:#FEA202;">123456</span>元</span>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!-- tab移动端下载 -->
-            <div class="phonedown" *ngIf="tabactive === 1">
-            </div>
-            <!-- tab优惠活动 -->
-            <div class="special" *ngIf="tabactive === 2">
-                <div class="flex-r special-content">
-                    <div class="l-icon">
-                        <i></i>
-                    </div>
-                    <div class="flex-c special-box">
-                        <div>
-                            <img src="../images/special_01.jpg" alt="">
-                        </div>
-                        <div>
-                            <img src="../images/special_02.jpg" alt="">
-                        </div>
-                        <div>
-                            <img src="../images/special_03.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="r-icon">
-                        <i></i>
+                        <div class="flex-c infowrap"></div>
                     </div>
                 </div>
 
+            </div>
+        </div>
+        <div class="flex-c cpsite">
+            <h2 class="sitetitle">彩票专区</h2>
+
+            <div class="flex-r sitecon">
+                <div class="flex-c siteitem games">
+                    <div class="flex-r top">
+                        <span class="flex-c">
+                            <span class="lineicon"></span>
+                            <strong>重庆时时彩</strong>
+                        </span>
+                        <span class="ritiaon">时时彩</span>
+                    </div>
+                    <p>第201800917088期 <span>开奖结果</span> </p>
+                    <div class="flex-r restlist">
+                        <i *ngFor="let item of resultdata">{{item}}</i>
+                    </div>
+                    <p>第201800917089期 <span>投注剩余时间</span> </p>
+                    <div class="flex-c timewrap">
+                        <div class="timeicion">
+
+                        </div>
+                        <div class="stock">
+                        </div>
+
+                    </div>
+
+                    <div class="flex-r foot">
+                        <i class="to_l"></i>
+                        <div class="flex-r gameswrap">
+                            <!-- <div class="flex-r gamesbox"></div> -->
+                            <span class="flex-r game" *ngFor="let item of gamedata">
+                                <i [style.width.px]="item.width">
+                                    <img [src]="item.src" alt="item.name">
+                                </i>
+                            </span>
+                        </div>
+                        <i class="to_r"></i>
+                    </div>
+
+                </div>
+                <div class="flex-c siteitem historys">
+                    <div class="flex-r top">
+                        <strong>开奖历史</strong>
+                        <span class="lineicon"></span>
+                    </div>
+                    <ul class="flex-c hiswrap">
+                        <li class="flex-r hisitem" *ngFor="let item of hisdata; let i=index">
+                            <span class="flex-r">
+                                <i>{{i+1}}</i>
+                                20180917088</span>
+                            <span>0,5,6,7,3</span>
+                        </li>
+                    </ul>
+
+
+                </div>
             </div>
 
         </div>
     </div>
+
+
 
     <app-footer></app-footer>
 

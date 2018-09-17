@@ -1,49 +1,29 @@
-<div id="footer">
-  <div class="flex-c foot">
-    <div class="flex-r foottop">
-      <a class="flex-r  foottopitem" *ngFor="let item of foottopitem_list; let i=index">
-        <i [style.background-position-x.px]="item.x"></i>
-        <div class="flex-c" style="padding-left: 4px">
-          <span class="font16">{{item.zh}}</span>
-          <span class="font10">{{item.en}}</span>
+<div id="footer" class="flex-c footerbox">
+    <footer class="flex-c foot">
+        <nav class="flex-r fotnav">
+            <a href="javascript:;">帮帮我</a>
+            <i>|</i>
+            <a href="javascript:;">联系我们</a>
+            <i>|</i>
+            <a href="javascript:;">隐私声明</a>
+            <i>|</i>
+            <a href="javascript:;">条款和条件</a>
+            <i>|</i>
+            <a href="javascript:;">移动端下载</a>
 
-        </div>
-
-      </a>
-
-    </div>
-    <div class="flex-r footmid">
-      <div class="footbank flex-c">
-        <p>银行卡类型 Bank card type</p>
-        <div>
-          <img src="../../images/banks.png" alt="">
-        </div>
-      </div>
-      <div class="foothelp flex-c" style="justify-content: flex-start">
-        <p>使用帮助 Guide</p>
-        <div class="flex-r" style="height: 50px;">
-          <div class="flex-r foothelpitem" *ngFor="let item of foothelp_list">
-            <i></i>
-            <span>{{item.text}}</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <div class="footbottom">
-      <p class="font14">
-        <a href="#">首页</a><span>|</span>
-        <a href="#/usercenter">用户中心</a><span>|</span>
-        <a href="#/lottery">彩票大厅</a><span>|</span>
-        <a href="#/usercenter/discount">优惠活动</a><span>|</span>
-        <a href="#/usercenter/webnote">平台公告</a><span>|</span>
-        <a href="#/usercenter/proinfo">彩种信息</a><span>|</span>
-        <a href="javascript:;" (click)="linkclick(1)">手机下注</a>
-      </p>
-      <p class="font12">豪彩娱乐版权所有 Copyright © 2018 HaoCaiYuLe Co. Group All Rights Reser</p>
-    </div>
-
-  </div>
-
+        </nav>
+        <p class="footinfo">
+            豪彩公司版权所有
+        </p>
+        <p class="footinfo">
+                Copyright © 2018 HaoCaiYuLe Co. Group All Rights Reser
+        </p>
+        <p class="footinfo">
+                © 2018 HaoCaiYuLe Co. Group All Rights Reser
+        </p>
+        <p class="footinfo">
+            本网络游戏适合18+岁的用户使用；为了您的健康，请合理控制游戏时间。
+        </p>
+    </footer>
 </div>
 
